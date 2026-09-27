@@ -147,14 +147,15 @@ WHERE {
     }
     FILTER (?key = ?reference)
   }
+  BIND (REPLACE(?reference, "/_history/[A-Za-z0-9.-]{1,64}$", "") AS ?referenceWithoutVersion)
   BIND (IF(BOUND(?heldAtKey), IF(?heldAtKey = 1, ?inputAtKey, 1/0),
         IF(STRSTARTS(?reference, "urn:uuid:"), ?reference,
-        IF(REGEX(?reference, "^Patient/[A-Za-z0-9.-]{1,64}$"),
-           CONCAT(?server, "|Patient|", STRAFTER(?reference, "Patient/")),
-        IF(REGEX(?reference, "^[A-Za-z][A-Za-z0-9+.-]*://[^/]+(/.*)?/Patient/[A-Za-z0-9.-]{1,64}$"),
-           CONCAT(LCASE(REPLACE(?reference, "^([^:]+://[^/]+).*$", "$1")),
-                  REPLACE(REPLACE(?reference, "^[^:]+://[^/]+", ""), "/+Patient/[^/]+$", ""),
-                  "|Patient|", REPLACE(?reference, "^.*/Patient/", "")),
+        IF(REGEX(?referenceWithoutVersion, "^Patient/[A-Za-z0-9.-]{1,64}$"),
+           CONCAT(?server, "|Patient|", STRAFTER(?referenceWithoutVersion, "Patient/")),
+        IF(REGEX(?referenceWithoutVersion, "^[A-Za-z][A-Za-z0-9+.-]*://[^/]+(/.*)?/Patient/[A-Za-z0-9.-]{1,64}$"),
+           CONCAT(LCASE(REPLACE(?referenceWithoutVersion, "^([^:]+://[^/]+).*$", "$1")),
+                  REPLACE(REPLACE(?referenceWithoutVersion, "^[^:]+://[^/]+", ""), "/+Patient/[^/]+$", ""),
+                  "|Patient|", REPLACE(?referenceWithoutVersion, "^.*/Patient/", "")),
            1/0)))) AS ?patientInput)
   BIND (SHA256(CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|", ?patientInput)) AS ?patientHash)
   BIND (REPLACE(REPLACE(REPLACE(REPLACE(SUBSTR(?patientHash, 17, 1),

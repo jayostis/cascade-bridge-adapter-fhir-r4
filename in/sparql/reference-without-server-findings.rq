@@ -47,6 +47,6 @@ WHERE {
   ?resource ?member ?reference .
   FILTER (?member IN (xyz:patient, xyz:subject))
   ?reference xyz:reference ?value .
-  FILTER (REGEX(?value, "^[A-Z][A-Za-z]+/[A-Za-z0-9.-]{1,64}$"))
+  FILTER (REGEX(?value, "^[A-Z][A-Za-z]+/[A-Za-z0-9.-]{1,64}(/_history/[A-Za-z0-9.-]{1,64})?$"))
   BIND (CONCAT(?resourcePointer, "/", STRAFTER(STR(?member), "http://sparql.xyz/facade-x/data/"), "/reference") AS ?pointer)
 }
