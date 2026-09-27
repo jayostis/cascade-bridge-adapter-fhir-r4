@@ -332,6 +332,156 @@
         },
         {
           "@id": "vocab/CLAUDE.md"
+        },
+        {
+          "@id": "fixtures/expected/allergy-no-id-penicillin.ttl"
+        },
+        {
+          "@id": "fixtures/findings/allergy-no-id-penicillin.ttl"
+        },
+        {
+          "@id": "fixtures/expected/allergy-no-id-penicillin-compact.ttl"
+        },
+        {
+          "@id": "fixtures/findings/allergy-no-id-penicillin-compact.ttl"
+        },
+        {
+          "@id": "fixtures/expected/allergy-no-id-sulfa.ttl"
+        },
+        {
+          "@id": "fixtures/findings/allergy-no-id-sulfa.ttl"
+        },
+        {
+          "@id": "fixtures/expected/allergy-with-id.ttl"
+        },
+        {
+          "@id": "fixtures/findings/allergy-with-id.ttl"
+        },
+        {
+          "@id": "fixtures/expected/bundle-repeated-condition-id.ttl"
+        },
+        {
+          "@id": "fixtures/findings/bundle-repeated-condition-id.ttl"
+        },
+        {
+          "@id": "fixtures/expected/bundle-two-identical-id-less-allergies.ttl"
+        },
+        {
+          "@id": "fixtures/findings/bundle-two-identical-id-less-allergies.ttl"
+        },
+        {
+          "@id": "fixtures/expected/bundle-urn-uuid-full-urls.ttl"
+        },
+        {
+          "@id": "fixtures/findings/bundle-urn-uuid-full-urls.ttl"
+        },
+        {
+          "@id": "fixtures/expected/condition-no-id-narrative-breast-cancer.ttl"
+        },
+        {
+          "@id": "fixtures/findings/condition-no-id-narrative-breast-cancer.ttl"
+        },
+        {
+          "@id": "fixtures/expected/condition-no-id-narrative-diabetes.ttl"
+        },
+        {
+          "@id": "fixtures/findings/condition-no-id-narrative-diabetes.ttl"
+        },
+        {
+          "@id": "fixtures/expected/condition-no-id-structured-diabetes.ttl"
+        },
+        {
+          "@id": "fixtures/findings/condition-no-id-structured-diabetes.ttl"
+        },
+        {
+          "@id": "fixtures/expected/condition-no-id-structured-hypertension.ttl"
+        },
+        {
+          "@id": "fixtures/findings/condition-no-id-structured-hypertension.ttl"
+        },
+        {
+          "@id": "fixtures/expected/condition-with-id.ttl"
+        },
+        {
+          "@id": "fixtures/findings/condition-with-id.ttl"
+        },
+        {
+          "@id": "fixtures/expected/condition-with-id-meta-fetch-a.ttl"
+        },
+        {
+          "@id": "fixtures/findings/condition-with-id-meta-fetch-a.ttl"
+        },
+        {
+          "@id": "fixtures/expected/condition-with-id-meta-fetch-b.ttl"
+        },
+        {
+          "@id": "fixtures/findings/condition-with-id-meta-fetch-b.ttl"
+        },
+        {
+          "@id": "fixtures/expected/encounter-with-id.ttl"
+        },
+        {
+          "@id": "fixtures/findings/encounter-with-id.ttl"
+        },
+        {
+          "@id": "fixtures/expected/immunization-no-id-2024.ttl"
+        },
+        {
+          "@id": "fixtures/findings/immunization-no-id-2024.ttl"
+        },
+        {
+          "@id": "fixtures/expected/immunization-no-id-2025.ttl"
+        },
+        {
+          "@id": "fixtures/findings/immunization-no-id-2025.ttl"
+        },
+        {
+          "@id": "fixtures/expected/immunization-with-id.ttl"
+        },
+        {
+          "@id": "fixtures/findings/immunization-with-id.ttl"
+        },
+        {
+          "@id": "fixtures/expected/lab-glucose-fasting.ttl"
+        },
+        {
+          "@id": "fixtures/findings/lab-glucose-fasting.ttl"
+        },
+        {
+          "@id": "fixtures/expected/patient-no-id.ttl"
+        },
+        {
+          "@id": "fixtures/findings/patient-no-id.ttl"
+        },
+        {
+          "@id": "fixtures/expected/patient-with-id.ttl"
+        },
+        {
+          "@id": "fixtures/findings/patient-with-id.ttl"
+        },
+        {
+          "@id": "fixtures/expected/procedure-no-id-colonoscopy.ttl"
+        },
+        {
+          "@id": "fixtures/findings/procedure-no-id-colonoscopy.ttl"
+        },
+        {
+          "@id": "fixtures/expected/procedure-no-id-echocardiogram.ttl"
+        },
+        {
+          "@id": "fixtures/findings/procedure-no-id-echocardiogram.ttl"
+        },
+        {
+          "@id": "fixtures/expected/procedure-with-contained-condition.ttl"
+        },
+        {
+          "@id": "fixtures/findings/procedure-with-contained-condition.ttl"
+        },
+        {
+          "@id": "fixtures/expected/procedure-with-id.ttl"
+        },
+        {
+          "@id": "fixtures/findings/procedure-with-id.ttl"
         }
       ]
     },
@@ -1002,6 +1152,806 @@
       "isBasedOn": {
         "@id": "fixtures/in/allergy-no-id-penicillin.json"
       }
+    },
+    {
+      "@id": "fixtures/expected/allergy-no-id-penicillin.ttl",
+      "@type": "File",
+      "name": "Expected graph for allergy-no-id-penicillin",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2110",
+      "sha256": "4d4f1832c7d900f3ac0b00a3a3b3e327ab5b6a8a76e4e0843f14614a0a48ed25",
+      "about": {
+        "@id": "fixtures/in/allergy-no-id-penicillin.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/allergy-no-id-penicillin.ttl",
+      "@type": "File",
+      "name": "Expected findings for allergy-no-id-penicillin",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/allergy-no-id-penicillin.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/allergy-no-id-penicillin-compact.ttl",
+      "@type": "File",
+      "name": "Expected graph for allergy-no-id-penicillin-compact",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1977",
+      "sha256": "3d199f4ab36d27a421acb08972721a38e65e2d8754217f726b29454b3c509812",
+      "about": {
+        "@id": "fixtures/in/allergy-no-id-penicillin-compact.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/allergy-no-id-penicillin-compact.ttl",
+      "@type": "File",
+      "name": "Expected findings for allergy-no-id-penicillin-compact",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1042",
+      "sha256": "77cf526187f56190c0ae5c157f43ae0bf5e3b971d21885eebef704ebccd9bf04",
+      "about": {
+        "@id": "fixtures/in/allergy-no-id-penicillin-compact.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/allergy-no-id-sulfa.ttl",
+      "@type": "File",
+      "name": "Expected graph for allergy-no-id-sulfa",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2115",
+      "sha256": "0340d24e00fdcf31c25b92a69922c39144504ec2f1515d66a2e40d60e6280b66",
+      "about": {
+        "@id": "fixtures/in/allergy-no-id-sulfa.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/allergy-no-id-sulfa.ttl",
+      "@type": "File",
+      "name": "Expected findings for allergy-no-id-sulfa",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/allergy-no-id-sulfa.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/allergy-with-id.ttl",
+      "@type": "File",
+      "name": "Expected graph for allergy-with-id",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2334",
+      "sha256": "ccf3347c0fb4f47d679ca4b70dc5fc668a33ddf57858363d12fb124dc9b5a950",
+      "about": {
+        "@id": "fixtures/in/allergy-with-id.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/allergy-with-id.ttl",
+      "@type": "File",
+      "name": "Expected findings for allergy-with-id",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/allergy-with-id.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/bundle-repeated-condition-id.ttl",
+      "@type": "File",
+      "name": "Expected graph for bundle-repeated-condition-id",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2970",
+      "sha256": "9c200d8133e3754c1aa566aa9c5bd7826e214833bf97fe27a7526601ed84545e",
+      "about": {
+        "@id": "fixtures/in/bundle-repeated-condition-id.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/bundle-repeated-condition-id.ttl",
+      "@type": "File",
+      "name": "Expected findings for bundle-repeated-condition-id",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1812",
+      "sha256": "a39ab0810963ad369ecb1fadb9bea4b9a0b4c83d3dc79b450de62c12080482a4",
+      "about": {
+        "@id": "fixtures/in/bundle-repeated-condition-id.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/bundle-two-identical-id-less-allergies.ttl",
+      "@type": "File",
+      "name": "Expected graph for bundle-two-identical-id-less-allergies",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2766",
+      "sha256": "70e93ed56db835c9638158618cf01d6e61dc378fd9cf4ea4eb07b81bebbb4a41",
+      "about": {
+        "@id": "fixtures/in/bundle-two-identical-id-less-allergies.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/bundle-two-identical-id-less-allergies.ttl",
+      "@type": "File",
+      "name": "Expected findings for bundle-two-identical-id-less-allergies",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/bundle-two-identical-id-less-allergies.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/bundle-urn-uuid-full-urls.ttl",
+      "@type": "File",
+      "name": "Expected graph for bundle-urn-uuid-full-urls",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2800",
+      "sha256": "2ea45c2cbcb6e743a34b3a5ccc0d031982ce11d3f1431a5a92bb0210fe058232",
+      "about": {
+        "@id": "fixtures/in/bundle-urn-uuid-full-urls.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/bundle-urn-uuid-full-urls.ttl",
+      "@type": "File",
+      "name": "Expected findings for bundle-urn-uuid-full-urls",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1054",
+      "sha256": "de6e23a02f190171233eb3e96a5a6b7fec42bd0d74d152fa553c3069295acf5e",
+      "about": {
+        "@id": "fixtures/in/bundle-urn-uuid-full-urls.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/condition-no-id-narrative-breast-cancer.ttl",
+      "@type": "File",
+      "name": "Expected graph for condition-no-id-narrative-breast-cancer",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1906",
+      "sha256": "9f6f53c93a6a7c6e9c0740dbdcfa40716a9a066f94fc5dcf1e28837a5682280b",
+      "about": {
+        "@id": "fixtures/in/condition-no-id-narrative-breast-cancer.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/condition-no-id-narrative-breast-cancer.ttl",
+      "@type": "File",
+      "name": "Expected findings for condition-no-id-narrative-breast-cancer",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1664",
+      "sha256": "6ec634e9a3d1bdc3619860c50351fc35958ac2b42cc5b4987ba99b5b612e751b",
+      "about": {
+        "@id": "fixtures/in/condition-no-id-narrative-breast-cancer.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/condition-no-id-narrative-diabetes.ttl",
+      "@type": "File",
+      "name": "Expected graph for condition-no-id-narrative-diabetes",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1906",
+      "sha256": "356b63a13061f18db2a016b256bf75cba4e10b8654ad127b02d8d9b1302b66f9",
+      "about": {
+        "@id": "fixtures/in/condition-no-id-narrative-diabetes.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/condition-no-id-narrative-diabetes.ttl",
+      "@type": "File",
+      "name": "Expected findings for condition-no-id-narrative-diabetes",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1654",
+      "sha256": "33ce0c174913b39a4ffa92ad706c3ef56590c4f905e42d7b2ecac4750a856c77",
+      "about": {
+        "@id": "fixtures/in/condition-no-id-narrative-diabetes.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/condition-no-id-structured-diabetes.ttl",
+      "@type": "File",
+      "name": "Expected graph for condition-no-id-structured-diabetes",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2122",
+      "sha256": "821c08031944f7456e45786eaa102bc03bdd0f0f3d496b16d1b7c05be63e2e5b",
+      "about": {
+        "@id": "fixtures/in/condition-no-id-structured-diabetes.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/condition-no-id-structured-diabetes.ttl",
+      "@type": "File",
+      "name": "Expected findings for condition-no-id-structured-diabetes",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/condition-no-id-structured-diabetes.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/condition-no-id-structured-hypertension.ttl",
+      "@type": "File",
+      "name": "Expected graph for condition-no-id-structured-hypertension",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2120",
+      "sha256": "62f5f8d439990464872e87dd323ec0373c7c07ec9db4130f40272ebe5e788ca2",
+      "about": {
+        "@id": "fixtures/in/condition-no-id-structured-hypertension.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/condition-no-id-structured-hypertension.ttl",
+      "@type": "File",
+      "name": "Expected findings for condition-no-id-structured-hypertension",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/condition-no-id-structured-hypertension.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/condition-with-id.ttl",
+      "@type": "File",
+      "name": "Expected graph for condition-with-id",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2329",
+      "sha256": "1c5ff5cd065859dcea7f6da457e1e720ff49446d84a7158d43a0eda29d102be5",
+      "about": {
+        "@id": "fixtures/in/condition-with-id.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/condition-with-id.ttl",
+      "@type": "File",
+      "name": "Expected findings for condition-with-id",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/condition-with-id.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/condition-with-id-meta-fetch-a.ttl",
+      "@type": "File",
+      "name": "Expected graph for condition-with-id-meta-fetch-a",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2407",
+      "sha256": "9f7fac833879060185bbd3a70b7134884bcc02496fd21a2b510424f6f4145a74",
+      "about": {
+        "@id": "fixtures/in/condition-with-id-meta-fetch-a.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/condition-with-id-meta-fetch-a.ttl",
+      "@type": "File",
+      "name": "Expected findings for condition-with-id-meta-fetch-a",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1042",
+      "sha256": "7981890610840ab5297594fe708b684a1598698924e1cf22628d065b066e0707",
+      "about": {
+        "@id": "fixtures/in/condition-with-id-meta-fetch-a.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/condition-with-id-meta-fetch-b.ttl",
+      "@type": "File",
+      "name": "Expected graph for condition-with-id-meta-fetch-b",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2408",
+      "sha256": "fd6789d1bffb2be344bb3f07a9ec501ce0762acebe9545427afaa11839dea75c",
+      "about": {
+        "@id": "fixtures/in/condition-with-id-meta-fetch-b.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/condition-with-id-meta-fetch-b.ttl",
+      "@type": "File",
+      "name": "Expected findings for condition-with-id-meta-fetch-b",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1039",
+      "sha256": "9cac3ff23b5717b25d72c329c7a7c9c7e17cdc7be358187e52d8a7120dbe1a73",
+      "about": {
+        "@id": "fixtures/in/condition-with-id-meta-fetch-b.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/encounter-with-id.ttl",
+      "@type": "File",
+      "name": "Expected graph for encounter-with-id",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1558",
+      "sha256": "323730db782721ccc39773a0509919efa2bd72767582d88273d0971396faf351",
+      "about": {
+        "@id": "fixtures/in/encounter-with-id.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/encounter-with-id.ttl",
+      "@type": "File",
+      "name": "Expected findings for encounter-with-id",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1005",
+      "sha256": "489f3a1289776e13478234a9acf0dfb17e067e6b59d422be79a4f6c1c2a6bb39",
+      "about": {
+        "@id": "fixtures/in/encounter-with-id.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/immunization-no-id-2024.ttl",
+      "@type": "File",
+      "name": "Expected graph for immunization-no-id-2024",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2130",
+      "sha256": "0450d4dff76f0e7a51041e5d402101114dbf301c19c7ddb82dc8565c429ec12a",
+      "about": {
+        "@id": "fixtures/in/immunization-no-id-2024.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/immunization-no-id-2024.ttl",
+      "@type": "File",
+      "name": "Expected findings for immunization-no-id-2024",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/immunization-no-id-2024.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/immunization-no-id-2025.ttl",
+      "@type": "File",
+      "name": "Expected graph for immunization-no-id-2025",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2130",
+      "sha256": "6312238624b8467a74d1540a1579213a78f604d6a0ef39b6b1fc16ee56117bff",
+      "about": {
+        "@id": "fixtures/in/immunization-no-id-2025.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/immunization-no-id-2025.ttl",
+      "@type": "File",
+      "name": "Expected findings for immunization-no-id-2025",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/immunization-no-id-2025.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/immunization-with-id.ttl",
+      "@type": "File",
+      "name": "Expected graph for immunization-with-id",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2351",
+      "sha256": "76347e9d8c10ec575bdfccea83157ea908f61c95dadd000acf6aad76d9c91dda",
+      "about": {
+        "@id": "fixtures/in/immunization-with-id.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/immunization-with-id.ttl",
+      "@type": "File",
+      "name": "Expected findings for immunization-with-id",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/immunization-with-id.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/lab-glucose-fasting.ttl",
+      "@type": "File",
+      "name": "Expected graph for lab-glucose-fasting",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1568",
+      "sha256": "00f0e2ba7daecb74eba02b3272e770e739e6e4aa19182cdc74e89d324798fba0",
+      "about": {
+        "@id": "fixtures/in/lab-glucose-fasting.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/lab-glucose-fasting.ttl",
+      "@type": "File",
+      "name": "Expected findings for lab-glucose-fasting",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1009",
+      "sha256": "a8f85a26b03599181e361fa4763c223b7ae446cd426ebeab81a151e34cfb9c7b",
+      "about": {
+        "@id": "fixtures/in/lab-glucose-fasting.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/patient-no-id.ttl",
+      "@type": "File",
+      "name": "Expected graph for patient-no-id",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2010",
+      "sha256": "f0b589ec0041f7e67724b3c792bcea5ec5844843e3058b88df698729721ac125",
+      "about": {
+        "@id": "fixtures/in/patient-no-id.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/patient-no-id.ttl",
+      "@type": "File",
+      "name": "Expected findings for patient-no-id",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1013",
+      "sha256": "187952be17724c150759fd041966489af0e60d826ff7c8e3322cf0e808887a17",
+      "about": {
+        "@id": "fixtures/in/patient-no-id.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/patient-with-id.ttl",
+      "@type": "File",
+      "name": "Expected graph for patient-with-id",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2235",
+      "sha256": "f3205f1136ba9bc769728b8d6ab7f985a8289da8247f030d121051d918b11fb4",
+      "about": {
+        "@id": "fixtures/in/patient-with-id.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/patient-with-id.ttl",
+      "@type": "File",
+      "name": "Expected findings for patient-with-id",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1018",
+      "sha256": "6495cb86b9dd397ac42ed657c7cbc1ed09e1130c6a45c4417374acf71f528ab5",
+      "about": {
+        "@id": "fixtures/in/patient-with-id.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/procedure-no-id-colonoscopy.ttl",
+      "@type": "File",
+      "name": "Expected graph for procedure-no-id-colonoscopy",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2124",
+      "sha256": "507e0ef8a272d174fc5a36df9eb64d9bdeb4796ae2337dd81e26bea8eeabb04c",
+      "about": {
+        "@id": "fixtures/in/procedure-no-id-colonoscopy.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/procedure-no-id-colonoscopy.ttl",
+      "@type": "File",
+      "name": "Expected findings for procedure-no-id-colonoscopy",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/procedure-no-id-colonoscopy.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/procedure-no-id-echocardiogram.ttl",
+      "@type": "File",
+      "name": "Expected graph for procedure-no-id-echocardiogram",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2129",
+      "sha256": "99e0bffd441235045bcc555a818287ca804727b784df1a609440cb804d83504b",
+      "about": {
+        "@id": "fixtures/in/procedure-no-id-echocardiogram.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/procedure-no-id-echocardiogram.ttl",
+      "@type": "File",
+      "name": "Expected findings for procedure-no-id-echocardiogram",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/procedure-no-id-echocardiogram.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/procedure-with-contained-condition.ttl",
+      "@type": "File",
+      "name": "Expected graph for procedure-with-contained-condition",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3076",
+      "sha256": "d21b022bb1753938a768b4b2493ca040c3654feb88b3dc1347fb65573b33c2dc",
+      "about": {
+        "@id": "fixtures/in/procedure-with-contained-condition.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/procedure-with-contained-condition.ttl",
+      "@type": "File",
+      "name": "Expected findings for procedure-with-contained-condition",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1079",
+      "sha256": "b8a8c77f3b104154e78135868375c6d94a54e169069fcb7683ec055c6f2ed9dc",
+      "about": {
+        "@id": "fixtures/in/procedure-with-contained-condition.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/procedure-with-id.ttl",
+      "@type": "File",
+      "name": "Expected graph for procedure-with-id",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2359",
+      "sha256": "a3da2c58f5a2733c9cb8a2590893922d1cd9e563f4ee4d0ca421dcb74b17d9bd",
+      "about": {
+        "@id": "fixtures/in/procedure-with-id.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/procedure-with-id.ttl",
+      "@type": "File",
+      "name": "Expected findings for procedure-with-id",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/procedure-with-id.json"
+      },
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
     },
     {
       "@id": "fixtures/manifest.ttl",

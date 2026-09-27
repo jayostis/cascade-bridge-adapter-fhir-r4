@@ -1,0 +1,45 @@
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov:     <http://www.w3.org/ns/prov#> .
+@prefix pav:      <http://purl.org/pav/> .
+@prefix bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rec:      <https://ns.cascadeprotocol.org/records/v1-draft#> .
+@prefix health:   <https://ns.cascadeprotocol.org/health/v1#> .
+@prefix clinical: <https://ns.cascadeprotocol.org/clinical/v1#> .
+@prefix cascade:  <https://ns.cascadeprotocol.org/core/v1#> .
+@prefix foaf:     <http://xmlns.com/foaf/0.1/> .
+
+<urn:uuid:2e0821df-41c1-89ae-906a-cc97a755afd0>
+  a cascade:PatientProfile .
+
+<ni:///sha-256;Z7xuKHOu2UbA4O0cw0GVQRnA66NUeFei0x-Kg280YI8>
+  prov:specializationOf <urn:uuid:2e0821df-41c1-89ae-906a-cc97a755afd0> ;
+  foaf:familyName "Okonkwo" ;
+  foaf:givenName "Ngozi" ;
+  cascade:dateOfBirth "1972-11-08"^^xsd:date .
+
+[] bridge:arrivedAs <ni:///sha-256;Z7xuKHOu2UbA4O0cw0GVQRnA66NUeFei0x-Kg280YI8> ;
+  bridge:selector "" ;
+  prov:wasDerivedFrom <ni:///sha-256;tQEgRR1IboQ_nxkbdyRRxput_fuyr7mKpVli4o00_-s> ;
+  prov:wasGeneratedBy _:import .
+
+<ni:///sha-256;tQEgRR1IboQ_nxkbdyRRxput_fuyr7mKpVli4o00_-s>
+  a prov:Entity ;
+  bridge:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
+  pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
+  prov:qualifiedAttribution
+    [ prov:agent [ rdfs:label "Meridian Health System" ] ; prov:hadRole rec:author ] ,
+    [ prov:agent [ rdfs:label "Apple Health" ] ; prov:hadRole rec:transmitter ] ;
+  bridge:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
+  bridge:authenticatedAsProxy false ;
+  bridge:sourceFormatVersion "4.0.1" .
+
+_:import
+  a prov:Activity ;
+  prov:used <ni:///sha-256;tQEgRR1IboQ_nxkbdyRRxput_fuyr7mKpVli4o00_-s> ;
+  rdfs:label "Apple Health export" ;
+  prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime ;
+  prov:qualifiedAssociation [
+    prov:hadPlan [ a prov:Plan ; rdfs:label "fhir-r4" ; pav:version "0.1.0" ] ;
+    prov:agent [ ]
+  ] .
