@@ -342,7 +342,10 @@
       "bridge:docRootMemberName": "resourceType",
       "bridge:docRootMemberValue": "Bundle",
       "bridge:jsonPathOfEachRecord": "$.entry[*]",
-      "description": "A Bundle: each entry is a record, so its fullUrl stays with its resource; docs/format.md, \"The two envelopes\"."
+      "description": "A Bundle: each entry is a record, so its fullUrl stays with its resource; docs/format.md, \"The two envelopes\".",
+      "bridge:sourceSchema": {
+        "@id": "schema/fhir.schema.json#/definitions/Bundle_Entry"
+      }
     },
     {
       "@id": "#envelope-resource",
@@ -350,7 +353,10 @@
       "name": "resource",
       "bridge:docRootMemberName": "resourceType",
       "bridge:jsonPathOfEachRecord": "$",
-      "description": "A resource alone: the document is the record."
+      "description": "A resource alone: the document is the record.",
+      "bridge:sourceSchema": {
+        "@id": "schema/fhir.schema.json"
+      }
     },
     {
       "@id": "bridge:sparql-1.1",
