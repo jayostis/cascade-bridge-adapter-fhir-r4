@@ -1,0 +1,391 @@
+@prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix fhirr4: <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#> .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/birthDate" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/category" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/category/coding" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/category/coding/code" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/category/coding/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/class" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of an Encounter, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/class/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of an Encounter, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/class/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of an Encounter, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/class/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of an Encounter, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/code" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/code/coding" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/code/coding/code" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/code/coding/display" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/code/text" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/code/coding/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/code/text" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/code" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/code/coding" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/code/coding/code" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/code/coding/display" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/contained/code/text" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/code/coding/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/code/text" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/id" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/resourceType" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/subject" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/subject/reference" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/criticality" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/effectiveDateTime" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of an Observation, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/fullUrl" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/gender" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:patientGender .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/id" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/meta" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/meta/lastUpdated" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/meta/source" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:serverSource .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/meta/versionId" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/name" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/name/family" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/name/given" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/occurrenceDateTime" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/onsetDateTime" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/patient" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/patient/reference" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/performedDateTime" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/period" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of an Encounter, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/period/end" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of an Encounter, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/period/start" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of an Encounter, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/reasonReference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Holds nothing here but the reference, accounted for at its own path." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/reasonReference/reference" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:procedureReason .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/abatementDateTime" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/birthDate" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/clinicalStatus" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/clinicalStatus/coding" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/clinicalStatus/coding/code" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/clinicalStatus/coding/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/code" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/code/coding" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/code/coding/code" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/code/coding/display" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/resource/code/text" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/code/coding/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/code/text" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/criticality" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/gender" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:patientGender .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/id" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/name" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/name/family" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/name/given" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/onsetDateTime" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/patient" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/patient/reference" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/resourceType" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/subject" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/subject/reference" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resourceType" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/status" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/subject" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/subject/reference" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "The narrative's container; the narrative itself is accounted for at its div." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/text/div" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:narrative .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/text/status" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Whether the narrative was generated from the structured content or written by hand: a fact about the narrative alone, which is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/vaccineCode" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/vaccineCode/coding" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/vaccineCode/coding/code" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/vaccineCode/coding/display" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/vaccineCode/text" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/vaccineCode/coding/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/vaccineCode/text" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/valueQuantity" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of an Observation, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/valueQuantity/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of an Observation, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/valueQuantity/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of an Observation, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/valueQuantity/unit" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of an Observation, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/valueQuantity/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of an Observation, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .

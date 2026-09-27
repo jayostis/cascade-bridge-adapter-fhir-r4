@@ -1,0 +1,61 @@
+PREFIX rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
+PREFIX fx:       <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:      <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX cascade:  <https://ns.cascadeprotocol.org/core/v1#>
+PREFIX health:   <https://ns.cascadeprotocol.org/health/v1#>
+PREFIX clinical: <https://ns.cascadeprotocol.org/clinical/v1#>
+PREFIX foaf:     <http://xmlns.com/foaf/0.1/>
+
+# Only the first name a Patient states is carried: the vocabulary holds one.
+# A birth date FHIR writes with less than a day's precision fits no Cascade
+# date, and is not carried.
+
+CONSTRUCT {
+  ?version ?p ?o .
+}
+WHERE {
+  FILTER NOT EXISTS {
+    bridge:thisDocument bridge:sourceFormatVersion ?stated .
+    FILTER (!STRSTARTS(?stated, "4.0."))
+  }
+  bridge:thisRecord bridge:selector ?recordSelector .
+  ?root a fx:root .
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  { BIND ("" AS ?containedStep) }
+  UNION
+  {
+    ?top xyz:contained ?containedList .
+    ?containedList ?containedSlot ?contained .
+    ?contained xyz:resourceType ?containedType .
+    BIND (CONCAT("/contained/", STR(xsd:integer(STRAFTER(STR(?containedSlot), "#_")) - 1)) AS ?containedStep)
+  }
+  BIND (COALESCE(?contained, ?top) AS ?resource)
+  ?resource xyz:resourceType "Patient" .
+  BIND (IRI(CONCAT("urn:cascade:version-at:", SHA256(CONCAT(?recordSelector, ?topStep, ?containedStep)))) AS ?version)
+
+  {
+    ?resource xyz:name ?names . ?names rdf:_1 ?name . ?name xyz:family ?o .
+    BIND (foaf:familyName AS ?p)
+  }
+  UNION
+  {
+    ?resource xyz:name ?names . ?names rdf:_1 ?name . ?name xyz:given ?given . ?given rdf:_1 ?o .
+    BIND (foaf:givenName AS ?p)
+  }
+  UNION
+  {
+    ?resource xyz:name ?names . ?names rdf:_1 ?name . ?name xyz:text ?o .
+    BIND (foaf:name AS ?p)
+  }
+  UNION
+  {
+    ?resource xyz:birthDate ?birthDate .
+    FILTER (REGEX(?birthDate, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"))
+    BIND (cascade:dateOfBirth AS ?p)
+    BIND (STRDT(?birthDate, xsd:date) AS ?o)
+  }
+}

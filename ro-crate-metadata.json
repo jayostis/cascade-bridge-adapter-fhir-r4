@@ -14,7 +14,12 @@
       "bridge:docRootMemberName": "bridge:docRootMemberName",
       "bridge:docRootMemberValue": "bridge:docRootMemberValue",
       "bridge:jsonPathOfEachRecord": "bridge:jsonPathOfEachRecord",
-      "bridge:testManifest": "bridge:testManifest"
+      "bridge:testManifest": "bridge:testManifest",
+      "bridge:detectQuery": "bridge:detectQuery",
+      "bridge:mapping": "bridge:mapping",
+      "bridge:findingsQuery": "bridge:findingsQuery",
+      "bridge:documentTableQuery": "bridge:documentTableQuery",
+      "bridge:sourceAccounting": "bridge:sourceAccounting"
     }
   ],
   "@graph": [
@@ -37,7 +42,7 @@
       "identifier": "fhir-r4",
       "name": "FHIR R4 JSON",
       "version": "0.1.0",
-      "description": "The Cascade Bridge Adapter for FHIR R4 JSON: the package of data a Cascade Bridge runs to turn FHIR R4 resources, alone or as the entries of a Bundle, into Cascade records. Import-only. This crate is the adapter's manifest: a Bridge reads the root entity first, for the format id, the source media type, the source schema, the two envelopes, the profile the Bridge must offer, the vocabulary pin and the paths, at it, of the ontology and shapes files the adapter is read against, and the gap scheme every finding takes its body from, each gap declaring the sh:resultSeverity its findings carry where that is not sh:Info, and the test manifest. The data entities carry provenance for every committed file, and a sha256 computed locally over the committed bytes of each digested one. Twenty inputs are copied byte for byte from the conformance repository's fixtures/clinical-fhir at the commit isBasedOn names; the others are authored here, and each says so.",
+      "description": "The Cascade Bridge Adapter for FHIR R4 JSON: the package of data a Cascade Bridge runs to turn FHIR R4 resources, alone or as the entries of a Bundle, into Cascade records. Import-only. This crate is the adapter's manifest: a Bridge reads the root entity first, for the format id, the source media type, the source schema, the two envelopes, the detect rule, the document table query, the mappings and the findings queries, the profile the Bridge must offer, the vocabulary pin and the paths, at it, of the ontology and shapes files the adapter is read against, the gap scheme every finding takes its body from, each gap declaring the sh:resultSeverity its findings carry where that is not sh:Info, the source accounting, and the test manifest. The data entities carry provenance for every committed file, and a sha256 computed locally over the committed bytes of each digested one. Twenty inputs are copied byte for byte from the conformance repository's fixtures/clinical-fhir at the commit isBasedOn names; the others are authored here, and each says so.",
       "datePublished": "2026-09-27",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -54,7 +59,7 @@
         }
       ],
       "bridge:cascadeVocabularyPin": {
-        "@id": "https://github.com/jayostis/cascade-vocabulary/commit/10a006a9bd079832d4f2a0b1e3a29151c21d612b"
+        "@id": "https://github.com/jayostis/cascade-vocabulary/commit/0eef44e489f7db91faac1601fd1bed4750106563"
       },
       "bridge:vocabulary": [
         {
@@ -92,8 +97,57 @@
           "@id": "#envelope-resource"
         }
       ],
+      "bridge:detectQuery": {
+        "@id": "in/sparql/detect.rq"
+      },
+      "bridge:documentTableQuery": {
+        "@id": "in/sparql/document-table.rq"
+      },
+      "bridge:mapping": [
+        {
+          "@id": "in/sparql/record.rq"
+        },
+        {
+          "@id": "in/sparql/allergy-intolerance.rq"
+        },
+        {
+          "@id": "in/sparql/condition.rq"
+        },
+        {
+          "@id": "in/sparql/immunization.rq"
+        },
+        {
+          "@id": "in/sparql/procedure.rq"
+        },
+        {
+          "@id": "in/sparql/patient.rq"
+        }
+      ],
+      "bridge:findingsQuery": [
+        {
+          "@id": "in/sparql/resource-type-findings.rq"
+        },
+        {
+          "@id": "in/sparql/document-version-findings.rq"
+        },
+        {
+          "@id": "in/sparql/repeated-id-findings.rq"
+        },
+        {
+          "@id": "in/sparql/reference-without-server-findings.rq"
+        },
+        {
+          "@id": "in/sparql/recorded-date-findings.rq"
+        },
+        {
+          "@id": "in/sparql/reference-display-findings.rq"
+        }
+      ],
       "bridge:gapScheme": {
         "@id": "vocab/fhir-gaps.ttl"
+      },
+      "bridge:sourceAccounting": {
+        "@id": "vocab/fhir-accounting.ttl"
       },
       "bridge:testManifest": {
         "@id": "fixtures/manifest.ttl"
@@ -101,6 +155,51 @@
       "hasPart": [
         {
           "@id": "schema/fhir.schema.json"
+        },
+        {
+          "@id": "in/sparql/detect.rq"
+        },
+        {
+          "@id": "in/sparql/document-table.rq"
+        },
+        {
+          "@id": "in/sparql/record.rq"
+        },
+        {
+          "@id": "in/sparql/allergy-intolerance.rq"
+        },
+        {
+          "@id": "in/sparql/condition.rq"
+        },
+        {
+          "@id": "in/sparql/immunization.rq"
+        },
+        {
+          "@id": "in/sparql/procedure.rq"
+        },
+        {
+          "@id": "in/sparql/patient.rq"
+        },
+        {
+          "@id": "in/sparql/resource-type-findings.rq"
+        },
+        {
+          "@id": "in/sparql/document-version-findings.rq"
+        },
+        {
+          "@id": "in/sparql/repeated-id-findings.rq"
+        },
+        {
+          "@id": "in/sparql/recorded-date-findings.rq"
+        },
+        {
+          "@id": "in/sparql/reference-display-findings.rq"
+        },
+        {
+          "@id": "vocab/fhir-accounting.ttl"
+        },
+        {
+          "@id": "in/sparql/reference-without-server-findings.rq"
         },
         {
           "@id": "vocab/fhir-gaps.ttl"
@@ -220,7 +319,7 @@
           "@id": "https://hl7.org/fhir/R4/fhir.schema.json"
         },
         {
-          "@id": "https://github.com/jayostis/cascade-vocabulary/commit/10a006a9bd079832d4f2a0b1e3a29151c21d612b"
+          "@id": "https://github.com/jayostis/cascade-vocabulary/commit/0eef44e489f7db91faac1601fd1bed4750106563"
         },
         {
           "@id": "docs/format.md"
@@ -269,16 +368,16 @@
       "description": "The RO-Crate 1.2 Profile Crate a conforming adapter package names in conformsTo; the Profile Crate describing it is adapter/profile/ro-crate-metadata.json in cascade-bridge-spec."
     },
     {
-      "@id": "https://github.com/jayostis/cascade-vocabulary/commit/10a006a9bd079832d4f2a0b1e3a29151c21d612b",
+      "@id": "https://github.com/jayostis/cascade-vocabulary/commit/0eef44e489f7db91faac1601fd1bed4750106563",
       "@type": [
         "SoftwareSourceCode",
         "File"
       ],
-      "name": "cascade-vocabulary at 10a006a",
+      "name": "cascade-vocabulary at 0eef44e",
       "codeRepository": {
         "@id": "https://github.com/jayostis/cascade-vocabulary"
       },
-      "version": "10a006a9bd079832d4f2a0b1e3a29151c21d612b",
+      "version": "0eef44e489f7db91faac1601fd1bed4750106563",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -339,12 +438,192 @@
       "description": "HL7's published JSON Schema for FHIR R4 (4.0.1), draft-06, its id http://hl7.org/fhir/json-schema/4.0. Downloaded over HTTPS on 2026-09-27; dateModified is the HTTPS Last-Modified. HL7 publishes no digest beside it; the copy inside fhir.schema.json.zip on the same site, read the same day, has the same sha256."
     },
     {
+      "@id": "in/sparql/detect.rq",
+      "@type": "File",
+      "name": "Detect rule",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "342",
+      "sha256": "1f5607abfc604b1df96a9f6510cff3c0694f24d9e1c3fe0b7172604db2cc5a4a",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The detect rule, bridge:detectQuery: an ASK over the envelope skeleton, true for a JSON document whose value is a FHIR resource, a Bundle among them."
+    },
+    {
+      "@id": "in/sparql/document-table.rq",
+      "@type": "File",
+      "name": "Document table",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "785",
+      "sha256": "6c3eb9dd415aaac5c36e3791f4e3b0966eeed2c0ff8f077338e47708326130cc",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The bridge:documentTableQuery: for each record, where it stands and its resource's type, id and fullUrl, so record.rq tells an id or a urn:uuid the document repeats and resolves a reference to another record of the document."
+    },
+    {
+      "@id": "in/sparql/record.rq",
+      "@type": "File",
+      "name": "Mapping: records, versions and arrivals",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "8491",
+      "sha256": "8ead4e19392c45802686e51659d7f36522a3009a1ceddd446c80b95f273dcb6d",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "For each resource of a mapped type, the record's own and each it contains: the record, named by the Cascade Bridge Specification's naming convention from the server, type and id, the urn:uuid fullUrl, the containing record's name and the local id, or the document and the record's selector; its class, its source URL where its name has one, and its source id; its version, the patient the version is about, and the version's arrival with the resource's meta.versionId and meta.lastUpdated."
+    },
+    {
+      "@id": "in/sparql/allergy-intolerance.rq",
+      "@type": "File",
+      "name": "Mapping: an AllergyIntolerance's version",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "4906",
+      "sha256": "e4c1620c9ff0b309eae8ae06390aee4ba7b14119928f75b9ff58dbc96945af17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "What an AllergyIntolerance says, written on the version record.rq names: allergen, allergen codes, clinical and verification status, type, criticality, category, onset, reactions, their codes and severity, and notes."
+    },
+    {
+      "@id": "in/sparql/condition.rq",
+      "@type": "File",
+      "name": "Mapping: a Condition's version",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "4272",
+      "sha256": "47d28279b79c0a8f7b706b94f306dde4fa8a9d3b197b9d83fd787008ec566eb8",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "What a Condition says, written on the version record.rq names: name, SNOMED CT and ICD-10-CM codes, clinical and verification status, category, onset, abatement and notes."
+    },
+    {
+      "@id": "in/sparql/immunization.rq",
+      "@type": "File",
+      "name": "Mapping: an Immunization's version",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "4254",
+      "sha256": "4457d6dee99f4160b3e91019fc4a6ef90f38f02d963bdd3fa85e6a47b0493384",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "What an Immunization says, written on the version record.rq names: vaccine name and CVX code, date, status, lot number, dose, route, site and notes."
+    },
+    {
+      "@id": "in/sparql/procedure.rq",
+      "@type": "File",
+      "name": "Mapping: a Procedure's version",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "2960",
+      "sha256": "5de9829ead63f58e3a6852704942a8226ca4f73ebf03f248076c2cf4eaa3611a",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "What a Procedure says, written on the version record.rq names: name, SNOMED CT and CPT codes, date and status."
+    },
+    {
+      "@id": "in/sparql/patient.rq",
+      "@type": "File",
+      "name": "Mapping: a Patient's version",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "2217",
+      "sha256": "429d951434bdd6ff8123c9a638ffeec06d266aae676edade7ddce8aaebaa2656",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "What a Patient says, written on the version record.rq names: the first name it states, and its birth date."
+    },
+    {
+      "@id": "in/sparql/resource-type-findings.rq",
+      "@type": "File",
+      "name": "Findings: a resource of a type this release does not map",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "1810",
+      "sha256": "178c445de859cb737ff5c79389311fc2f8efb08486b7533b91b9e89ad548795e",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A finding for each resource, the record's own or one it contains, whose type is not one of the five this release maps."
+    },
+    {
+      "@id": "in/sparql/document-version-findings.rq",
+      "@type": "File",
+      "name": "Findings: a document of a FHIR version other than R4",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "782",
+      "sha256": "68a13bd4b929df232204ee1e16dae36970024cafd633b988e805e4dd9807412a",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A finding for each record of a document whose supplied bridge:sourceFormatVersion is not an R4 version; the mappings write nothing for it."
+    },
+    {
+      "@id": "in/sparql/repeated-id-findings.rq",
+      "@type": "File",
+      "name": "Findings: an id the document repeats",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "2049",
+      "sha256": "96fc9a7a63fcde259d9d6eaf9593fbf2013a863bcc01af4a49b36c00a0199021",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A finding for each record whose resource's type and id, or whose urn:uuid fullUrl, another record of the document holds too, so record.rq names it from the document and its selector."
+    },
+    {
+      "@id": "in/sparql/recorded-date-findings.rq",
+      "@type": "File",
+      "name": "Findings: a recorded date",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "1785",
+      "sha256": "d2a07c78ff3c413b2331f485f07d2bfc1421d3f519569c4109dfd7cd24362fc2",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A finding for each AllergyIntolerance or Condition that states the date it was recorded, which no Cascade predicate carries."
+    },
+    {
+      "@id": "in/sparql/reference-display-findings.rq",
+      "@type": "File",
+      "name": "Findings: a reference's display",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "2324",
+      "sha256": "a423871c10e073e5c7e5724b5b12761402a9b4dcb98a9ee851a1cb2b3b8cc0a2",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A finding for each patient, subject or reason reference of a mapped resource that carries a display string, which no Cascade predicate carries."
+    },
+    {
+      "@id": "vocab/fhir-accounting.ttl",
+      "@type": "File",
+      "name": "FHIR R4 JSON source accounting",
+      "encodingFormat": "text/turtle",
+      "contentSize": "12043",
+      "sha256": "5eedf4c9cd4a0d5622508adc84d981a144ef0d8dcfcc5b3955b1863fbb91fed2",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The file the crate names as bridge:sourceAccounting: one bridge:PathEntry for each path the judged inputs carry below the record, written as JSON Pointer reference tokens from the record, the entry under a Bundle and a resource alone each accounted for at its own paths, and each with its verdict against in/sparql/."
+    },
+    {
+      "@id": "in/sparql/reference-without-server-findings.rq",
+      "@type": "File",
+      "name": "Findings: a patient reference in a document from no known server",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "2123",
+      "sha256": "dbee4cfc26f5d913fcc14e8bb5da4cf0a83bd76943b894d2604d432f0f458cf3",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A finding for each patient or subject reference of a mapped resource written relative to a server, in a document supplied no bridge:serverBaseUrl: it names no record, and record.rq writes no link for it."
+    },
+    {
       "@id": "vocab/fhir-gaps.ttl",
       "@type": "File",
       "name": "FHIR R4 JSON gaps",
       "encodingFormat": "text/turtle",
-      "contentSize": "1521",
-      "sha256": "b478c826493bca656c0856f240f79065e7a4347e214a9c35e52d2f8a1163fd4b",
+      "contentSize": "2780",
+      "sha256": "223ffb83e25320b9de6e34a39f96c4bde2c26cf0e955d51aa26aef911ce5bbb5",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },

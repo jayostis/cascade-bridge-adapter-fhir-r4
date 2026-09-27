@@ -32,3 +32,29 @@ fhirr4:resourceTypeNotMapped a skos:Concept ;
   skos:inScheme fhirr4:gaps ;
   skos:broader bridge:valueNotMapped ;
   sh:resultSeverity sh:Warning .
+
+fhirr4:resourceIdRepeated a skos:Concept ;
+  skos:prefLabel "A resource shares its type and id, or its urn:uuid fullUrl, with another resource of its document, so neither names its record."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:idRepeated .
+
+fhirr4:narrative a skos:Concept ;
+  skos:prefLabel "A resource carries a human-readable narrative, and no Cascade predicate carries it."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:noPredicate .
+
+fhirr4:serverSource a skos:Concept ;
+  skos:prefLabel "A resource's metadata names the system its server received it from, and no Cascade predicate carries it."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:noPredicate .
+
+fhirr4:procedureReason a skos:Concept ;
+  skos:prefLabel "A procedure references the resource it was performed for, and no Cascade predicate carries the link."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:noPredicate .
+
+fhirr4:referenceWithoutServer a skos:Concept ;
+  skos:prefLabel "A resource references its patient relative to a server, in a document from no known server, so the reference names no record and nothing carries it."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:carriedWithLoss ;
+  sh:resultSeverity sh:Warning .
