@@ -482,6 +482,21 @@
         },
         {
           "@id": "fixtures/findings/procedure-with-id.ttl"
+        },
+        {
+          "@id": "views/allergies.rq"
+        },
+        {
+          "@id": "views/conditions.rq"
+        },
+        {
+          "@id": "views/immunizations.rq"
+        },
+        {
+          "@id": "views/procedures.rq"
+        },
+        {
+          "@id": "views/patients.rq"
         }
       ]
     },
@@ -1952,6 +1967,210 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "views/allergies.rq",
+      "@type": "File",
+      "name": "View: allergies",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "1258",
+      "sha256": "fbc71ff10232edcf7c393a6742f92a075a2ef8cf2330a2c1c70e9c0396295b5b",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A SELECT over a Bridge's graph: one row per AllergyRecord record at its current version, else at each version, with its source id and allergen, allergen code, status, verification status, criticality, onset, each a plain string. Not run by a Bridge: #view-comparison-with-cascade-cli names what it is compared with."
+    },
+    {
+      "@id": "views/conditions.rq",
+      "@type": "File",
+      "name": "View: conditions",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "1460",
+      "sha256": "0675b1a65f478b6ec595c7394c57f8293fe2d9e8bcc3694e9d388d09989effaf",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A SELECT over a Bridge's graph: one row per ConditionRecord record at its current version, else at each version, with its source id and name, status, verification status, onset, abatement, SNOMED CT and ICD-10-CM codes, each a plain string. Not run by a Bridge: #view-comparison-with-cascade-cli names what it is compared with."
+    },
+    {
+      "@id": "views/immunizations.rq",
+      "@type": "File",
+      "name": "View: immunizations",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "1085",
+      "sha256": "449df8c84e9f692a7c21bf39d459f53fe07568c82d3ae07c3a73db033614f871",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A SELECT over a Bridge's graph: one row per ImmunizationRecord record at its current version, else at each version, with its source id and vaccine name, vaccine code, status, administration date, each a plain string. Not run by a Bridge: #view-comparison-with-cascade-cli names what it is compared with."
+    },
+    {
+      "@id": "views/procedures.rq",
+      "@type": "File",
+      "name": "View: procedures",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "1119",
+      "sha256": "f948332c4e6cb36be1ac78c971f3048f68640c37669942a0593876b8722612d6",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A SELECT over a Bridge's graph: one row per Procedure record at its current version, else at each version, with its source id and name, SNOMED CT code, status, date, each a plain string. Not run by a Bridge: #view-comparison-with-cascade-cli names what it is compared with."
+    },
+    {
+      "@id": "views/patients.rq",
+      "@type": "File",
+      "name": "View: patients",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "1043",
+      "sha256": "23b57854a0d4b837a58c0ba8f850f6f52d6e786d1f8e8f08ae372ee78d5e1fd1",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A SELECT over a Bridge's graph: one row per PatientProfile record at its current version, else at each version, with its source id and birth date, given, family and whole name, each a plain string. Not run by a Bridge: #view-comparison-with-cascade-cli names what it is compared with."
+    },
+    {
+      "@id": "#view-comparison-with-cascade-cli",
+      "@type": "CreativeWork",
+      "name": "View comparison with cascade-cli",
+      "isBasedOn": {
+        "@id": "https://github.com/the-cascade-protocol/cascade-cli/tree/05d02255855e675f7c1c33d8219e57ac4dc7e47f"
+      },
+      "about": [
+        {
+          "@id": "views/allergies.rq"
+        },
+        {
+          "@id": "views/conditions.rq"
+        },
+        {
+          "@id": "views/immunizations.rq"
+        },
+        {
+          "@id": "views/procedures.rq"
+        },
+        {
+          "@id": "views/patients.rq"
+        }
+      ],
+      "hasPart": [
+        {
+          "@id": "#correction-criticality-as-allergy-severity"
+        },
+        {
+          "@id": "#correction-dates-widened"
+        },
+        {
+          "@id": "#correction-vaccine-code-prefixed"
+        },
+        {
+          "@id": "#correction-snomed-code-as-iri"
+        },
+        {
+          "@id": "#correction-unknown-placeholders"
+        },
+        {
+          "@id": "#correction-predicate-renames"
+        },
+        {
+          "@id": "#correction-never-written"
+        },
+        {
+          "@id": "#correction-merges-id-less-entries"
+        },
+        {
+          "@id": "#correction-drops-contained"
+        }
+      ],
+      "dateCreated": "2026-09-27",
+      "description": "The views over the Bridge's graph for every input agree on every content field with the same fields of cascade-cli's clinical/*.ttl for that input, read through the corrections in hasPart; record names and provenance are not compared. Run once on 2026-09-27, outside CI."
+    },
+    {
+      "@id": "#correction-criticality-as-allergy-severity",
+      "@type": "CreativeWork",
+      "name": "Criticality as allergy severity",
+      "isBasedOn": {
+        "@id": "https://github.com/the-cascade-protocol/cascade-cli/tree/05d02255855e675f7c1c33d8219e57ac4dc7e47f"
+      },
+      "description": "cascade-cli writes AllergyIntolerance.criticality as health:allergySeverity, high as severe, low as mild, unable-to-assess as moderate, where no reaction states a severity; read back as clinical:criticality."
+    },
+    {
+      "@id": "#correction-dates-widened",
+      "@type": "CreativeWork",
+      "name": "Dates widened",
+      "isBasedOn": {
+        "@id": "https://github.com/the-cascade-protocol/cascade-cli/tree/05d02255855e675f7c1c33d8219e57ac4dc7e47f"
+      },
+      "description": "cascade-cli writes a FHIR date as an xsd:dateTime at T00:00:00Z (onset, abatement, administration, performed); the suffix is read off. A birth date stays an xsd:date."
+    },
+    {
+      "@id": "#correction-vaccine-code-prefixed",
+      "@type": "CreativeWork",
+      "name": "Vaccine code prefixed",
+      "isBasedOn": {
+        "@id": "https://github.com/the-cascade-protocol/cascade-cli/tree/05d02255855e675f7c1c33d8219e57ac4dc7e47f"
+      },
+      "description": "cascade-cli writes a CVX code prefixed CVX-, as CVX-141; read as the code alone."
+    },
+    {
+      "@id": "#correction-snomed-code-as-iri",
+      "@type": "CreativeWork",
+      "name": "Snomed code as iri",
+      "isBasedOn": {
+        "@id": "https://github.com/the-cascade-protocol/cascade-cli/tree/05d02255855e675f7c1c33d8219e57ac4dc7e47f"
+      },
+      "description": "A SNOMED CT code written as an IRI in http://snomed.info/sct/ is read as the code alone, on both sides: the adapter's health:snomedCode is an IRI, its clinical:snomedCode a string."
+    },
+    {
+      "@id": "#correction-unknown-placeholders",
+      "@type": "CreativeWork",
+      "name": "Unknown placeholders",
+      "isBasedOn": {
+        "@id": "https://github.com/the-cascade-protocol/cascade-cli/tree/05d02255855e675f7c1c33d8219e57ac4dc7e47f"
+      },
+      "description": "cascade-cli writes Unknown Condition and its like where a resource carries no code; read as absent."
+    },
+    {
+      "@id": "#correction-predicate-renames",
+      "@type": "CreativeWork",
+      "name": "Predicate renames",
+      "isBasedOn": {
+        "@id": "https://github.com/the-cascade-protocol/cascade-cli/tree/05d02255855e675f7c1c33d8219e57ac4dc7e47f"
+      },
+      "description": "cascade-cli writes health:abatementDate, clinical:procedureStatus, clinical:performedDate, clinical:procedureSnomedCode and cascade:profileId where the adapter writes clinical:abatementDate, clinical:status, clinical:procedureDate, clinical:snomedCode and cascade:sourceRecordId."
+    },
+    {
+      "@id": "#correction-never-written",
+      "@type": "CreativeWork",
+      "name": "Never written",
+      "isBasedOn": {
+        "@id": "https://github.com/the-cascade-protocol/cascade-cli/tree/05d02255855e675f7c1c33d8219e57ac4dc7e47f"
+      },
+      "description": "cascade-cli writes no allergen code, no recorded date and no patient name, so those fields are not compared."
+    },
+    {
+      "@id": "#correction-merges-id-less-entries",
+      "@type": "CreativeWork",
+      "name": "Merges id less entries",
+      "isBasedOn": {
+        "@id": "https://github.com/the-cascade-protocol/cascade-cli/tree/05d02255855e675f7c1c33d8219e57ac4dc7e47f"
+      },
+      "description": "cascade-cli names identical id-less entries of one Bundle as one subject, and the entries of a Bundle repeating an id as one subject; the adapter names a record for each."
+    },
+    {
+      "@id": "#correction-drops-contained",
+      "@type": "CreativeWork",
+      "name": "Drops contained",
+      "isBasedOn": {
+        "@id": "https://github.com/the-cascade-protocol/cascade-cli/tree/05d02255855e675f7c1c33d8219e57ac4dc7e47f"
+      },
+      "description": "cascade-cli writes no record for a contained resource."
+    },
+    {
+      "@id": "https://github.com/the-cascade-protocol/cascade-cli/tree/05d02255855e675f7c1c33d8219e57ac4dc7e47f",
+      "@type": "CreativeWork",
+      "name": "cascade-cli at 05d0225",
+      "version": "05d02255855e675f7c1c33d8219e57ac4dc7e47f",
+      "description": "The cascade-cli revision whose FHIR import the views were compared with, its pod import and convert run unmodified on each input. A contextual entity, referenced and not committed."
     },
     {
       "@id": "fixtures/manifest.ttl",
