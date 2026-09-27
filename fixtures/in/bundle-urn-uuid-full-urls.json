@@ -1,0 +1,42 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:5b2f6a1e-8c4d-4e7a-9f3b-2d1c0e9a8b7f",
+      "resource": {
+        "resourceType": "Patient",
+        "name": [
+          {
+            "family": "Rivera",
+            "given": [
+              "Alex"
+            ]
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1985-03-15"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:c3e8d9f2-1a7b-4b6c-8d5e-7f0a9b2c4d61",
+      "resource": {
+        "resourceType": "AllergyIntolerance",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "10180",
+              "display": "Sulfamethoxazole"
+            }
+          ],
+          "text": "Sulfamethoxazole"
+        },
+        "patient": {
+          "reference": "urn:uuid:5b2f6a1e-8c4d-4e7a-9f3b-2d1c0e9a8b7f"
+        },
+        "criticality": "low"
+      }
+    }
+  ]
+}

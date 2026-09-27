@@ -1,0 +1,723 @@
+{
+  "@context": [
+    "https://w3id.org/ro/crate/1.2/context",
+    {
+      "bridge": "https://ns.cascadeprotocol.org/bridge/v1-draft#",
+      "bridge:requiresProfile": "bridge:requiresProfile",
+      "bridge:cascadeVocabularyPin": "bridge:cascadeVocabularyPin",
+      "bridge:vocabulary": "bridge:vocabulary",
+      "bridge:vocabularyFile": "bridge:vocabularyFile",
+      "bridge:sourceMediaType": "bridge:sourceMediaType",
+      "bridge:sourceSchema": "bridge:sourceSchema",
+      "bridge:gapScheme": "bridge:gapScheme"
+    }
+  ],
+  "@graph": [
+    {
+      "@id": "ro-crate-metadata.json",
+      "@type": "CreativeWork",
+      "conformsTo": {
+        "@id": "https://w3id.org/ro/crate/1.2"
+      },
+      "about": {
+        "@id": "./"
+      }
+    },
+    {
+      "@id": "./",
+      "@type": [
+        "Dataset",
+        "bridge:Adapter"
+      ],
+      "identifier": "fhir-r4",
+      "name": "FHIR R4 JSON",
+      "version": "0.1.0",
+      "description": "The Cascade Bridge Adapter for FHIR R4 JSON: the package of data a Cascade Bridge runs to turn FHIR R4 resources, alone or as the entries of a Bundle, into Cascade records. Import-only. This crate is the adapter's manifest: a Bridge reads the root entity first, for the format id, the source media type, the source schema, the profile the Bridge must offer, the vocabulary pin and the paths, at it, of the ontology and shapes files the adapter is read against, and the gap scheme every finding takes its body from, each gap declaring the sh:resultSeverity its findings carry where that is not sh:Info. The data entities carry provenance for every committed file, and a sha256 computed locally over the committed bytes of each digested one. Twenty inputs are copied byte for byte from the conformance repository's fixtures/clinical-fhir at the commit isBasedOn names; the others are authored here, and each says so.",
+      "datePublished": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "conformsTo": {
+        "@id": "https://ns.cascadeprotocol.org/bridge/v1-draft/adapter-profile/"
+      },
+      "isBasedOn": {
+        "@id": "https://github.com/jayostis/conformance/tree/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir"
+      },
+      "bridge:requiresProfile": [
+        {
+          "@id": "bridge:sparql-1.1"
+        }
+      ],
+      "bridge:cascadeVocabularyPin": {
+        "@id": "https://github.com/jayostis/cascade-vocabulary/commit/5ddc50c190109d7e4d5f027873fda00739e510fb"
+      },
+      "bridge:vocabulary": [
+        {
+          "@id": "https://ns.cascadeprotocol.org/core/v1#"
+        },
+        {
+          "@id": "https://ns.cascadeprotocol.org/health/v1#"
+        },
+        {
+          "@id": "https://ns.cascadeprotocol.org/clinical/v1#"
+        },
+        {
+          "@id": "https://ns.cascadeprotocol.org/records/v1-draft#"
+        }
+      ],
+      "bridge:vocabularyFile": [
+        "ontologies/core/v1/core.ttl",
+        "ontologies/core/v1/core.shapes.ttl",
+        "ontologies/health/v1/health.ttl",
+        "ontologies/health/v1/health.shapes.ttl",
+        "ontologies/clinical/v1/clinical.ttl",
+        "ontologies/clinical/v1/clinical.shapes.ttl",
+        "ontologies/records/v1-draft/records.ttl",
+        "ontologies/records/v1-draft/records.shapes.ttl"
+      ],
+      "bridge:sourceMediaType": "application/fhir+json",
+      "bridge:sourceSchema": {
+        "@id": "schema/fhir.schema.json"
+      },
+      "bridge:gapScheme": {
+        "@id": "vocab/fhir-gaps.ttl"
+      },
+      "hasPart": [
+        {
+          "@id": "schema/fhir.schema.json"
+        },
+        {
+          "@id": "vocab/fhir-gaps.ttl"
+        },
+        {
+          "@id": "fixtures/in/allergy-with-id.json"
+        },
+        {
+          "@id": "fixtures/in/allergy-no-id-penicillin.json"
+        },
+        {
+          "@id": "fixtures/in/allergy-no-id-sulfa.json"
+        },
+        {
+          "@id": "fixtures/in/condition-with-id.json"
+        },
+        {
+          "@id": "fixtures/in/condition-with-id-meta-fetch-a.json"
+        },
+        {
+          "@id": "fixtures/in/condition-with-id-meta-fetch-b.json"
+        },
+        {
+          "@id": "fixtures/in/condition-no-id-structured-hypertension.json"
+        },
+        {
+          "@id": "fixtures/in/condition-no-id-structured-diabetes.json"
+        },
+        {
+          "@id": "fixtures/in/condition-no-id-narrative-diabetes.json"
+        },
+        {
+          "@id": "fixtures/in/condition-no-id-narrative-breast-cancer.json"
+        },
+        {
+          "@id": "fixtures/in/immunization-with-id.json"
+        },
+        {
+          "@id": "fixtures/in/immunization-no-id-2024.json"
+        },
+        {
+          "@id": "fixtures/in/immunization-no-id-2025.json"
+        },
+        {
+          "@id": "fixtures/in/procedure-with-id.json"
+        },
+        {
+          "@id": "fixtures/in/procedure-no-id-colonoscopy.json"
+        },
+        {
+          "@id": "fixtures/in/procedure-no-id-echocardiogram.json"
+        },
+        {
+          "@id": "fixtures/in/patient-with-id.json"
+        },
+        {
+          "@id": "fixtures/in/patient-no-id.json"
+        },
+        {
+          "@id": "fixtures/in/encounter-with-id.json"
+        },
+        {
+          "@id": "fixtures/in/lab-glucose-fasting.json"
+        },
+        {
+          "@id": "fixtures/in/bundle-two-identical-id-less-allergies.json"
+        },
+        {
+          "@id": "fixtures/in/bundle-urn-uuid-full-urls.json"
+        },
+        {
+          "@id": "fixtures/in/procedure-with-contained-condition.json"
+        },
+        {
+          "@id": "fixtures/in/bundle-repeated-condition-id.json"
+        },
+        {
+          "@id": "fixtures/in/allergy-no-id-penicillin-compact.json"
+        },
+        {
+          "@id": "https://hl7.org/fhir/R4/fhir.schema.json"
+        },
+        {
+          "@id": "https://github.com/jayostis/cascade-vocabulary/commit/5ddc50c190109d7e4d5f027873fda00739e510fb"
+        },
+        {
+          "@id": "docs/format.md"
+        },
+        {
+          "@id": "fixtures/CLAUDE.md"
+        },
+        {
+          "@id": "schema/CLAUDE.md"
+        },
+        {
+          "@id": "vocab/CLAUDE.md"
+        }
+      ]
+    },
+    {
+      "@id": "bridge:sparql-1.1",
+      "@type": "bridge:Profile",
+      "name": "sparql-1.1",
+      "description": "Declared in the Cascade Bridge Specification's vocabulary, vocab/bridge.ttl in cascade-bridge-spec."
+    },
+    {
+      "@id": "https://ns.cascadeprotocol.org/bridge/v1-draft/adapter-profile/",
+      "@type": [
+        "CreativeWork",
+        "Profile"
+      ],
+      "name": "Cascade Bridge Adapter profile",
+      "description": "The RO-Crate 1.2 Profile Crate a conforming adapter package names in conformsTo; the Profile Crate describing it is adapter/profile/ro-crate-metadata.json in cascade-bridge-spec."
+    },
+    {
+      "@id": "https://github.com/jayostis/cascade-vocabulary/commit/5ddc50c190109d7e4d5f027873fda00739e510fb",
+      "@type": [
+        "SoftwareSourceCode",
+        "File"
+      ],
+      "name": "cascade-vocabulary at 5ddc50c",
+      "codeRepository": {
+        "@id": "https://github.com/jayostis/cascade-vocabulary"
+      },
+      "version": "5ddc50c190109d7e4d5f027873fda00739e510fb",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The cascade-vocabulary revision the adapter's vocabularies are pinned to; the paths in bridge:vocabularyFile are read at it. A web-based data entity, referenced and not committed: the RO-Crate 1.2 validator reads every SoftwareSourceCode as a script that must be a File in hasPart."
+    },
+    {
+      "@id": "https://ns.cascadeprotocol.org/core/v1#",
+      "@type": "DefinedTermSet",
+      "name": "Cascade core vocabulary",
+      "description": "One of the vocabularies the adapter writes, as cascade-vocabulary declares it at the pin."
+    },
+    {
+      "@id": "https://ns.cascadeprotocol.org/health/v1#",
+      "@type": "DefinedTermSet",
+      "name": "Cascade health vocabulary",
+      "description": "One of the vocabularies the adapter writes, as cascade-vocabulary declares it at the pin."
+    },
+    {
+      "@id": "https://ns.cascadeprotocol.org/clinical/v1#",
+      "@type": "DefinedTermSet",
+      "name": "Cascade clinical vocabulary",
+      "description": "One of the vocabularies the adapter writes, as cascade-vocabulary declares it at the pin."
+    },
+    {
+      "@id": "https://ns.cascadeprotocol.org/records/v1-draft#",
+      "@type": "DefinedTermSet",
+      "name": "Cascade records vocabulary",
+      "description": "One of the vocabularies the adapter writes, as cascade-vocabulary declares it at the pin."
+    },
+    {
+      "@id": "schema/fhir.schema.json",
+      "@type": "File",
+      "name": "FHIR R4 JSON Schema, pinned copy",
+      "encodingFormat": "application/schema+json",
+      "contentSize": "3386892",
+      "sha256": "2230406893b4cf002a4ee1e5e2bbeca22ac5d2d4931b3e9ef7b9594bbc376a01",
+      "version": "4.0.1",
+      "isBasedOn": {
+        "@id": "https://hl7.org/fhir/R4/fhir.schema.json"
+      },
+      "license": {
+        "@id": "https://spdx.org/licenses/CC0-1.0"
+      },
+      "description": "HL7's JSON Schema for FHIR R4, pinned byte for byte: the source schema every record is validated against. Identical to the file at the isBasedOn URL on 2026-09-27; sha256 is computed locally over the committed bytes. Never edited; to change it, replace it from its source and update contentSize and sha256 in the same commit."
+    },
+    {
+      "@id": "https://hl7.org/fhir/R4/fhir.schema.json",
+      "@type": "File",
+      "name": "FHIR R4 JSON Schema",
+      "encodingFormat": "application/schema+json",
+      "contentSize": "3386892",
+      "sha256": "2230406893b4cf002a4ee1e5e2bbeca22ac5d2d4931b3e9ef7b9594bbc376a01",
+      "version": "4.0.1",
+      "dateModified": "2025-03-21",
+      "license": {
+        "@id": "https://spdx.org/licenses/CC0-1.0"
+      },
+      "description": "HL7's published JSON Schema for FHIR R4 (4.0.1), draft-06, its id http://hl7.org/fhir/json-schema/4.0. Downloaded over HTTPS on 2026-09-27; dateModified is the HTTPS Last-Modified. HL7 publishes no digest beside it; the copy inside fhir.schema.json.zip on the same site, read the same day, has the same sha256."
+    },
+    {
+      "@id": "vocab/fhir-gaps.ttl",
+      "@type": "File",
+      "name": "FHIR R4 JSON gaps",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1521",
+      "sha256": "b478c826493bca656c0856f240f79065e7a4347e214a9c35e52d2f8a1163fd4b",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The scheme every finding this adapter reports takes its body from: one skos:Concept per gap, in this adapter's own namespace (https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#), each under one of the bridge:gapKinds the Cascade Bridge Specification declares."
+    },
+    {
+      "@id": "fixtures/in/allergy-with-id.json",
+      "@type": "File",
+      "name": "AllergyIntolerance with an id: penicillin G",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "360",
+      "sha256": "d2b7b67e56847f9a132b376c37d8076702dd1e2df0b237e3a52ba62713385569",
+      "sameAs": {
+        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/allergy-with-id.json"
+      },
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "An AllergyIntolerance to penicillin G (RxNorm 7980), criticality high, id alg-pcn-1. Copied byte for byte from the conformance repository at 0ea48bb (the file last changed at a5ffbc6, 2026-08-03). Written by hand for that corpus, not captured from a server: no fetch date, server or query exists to record."
+    },
+    {
+      "@id": "fixtures/in/allergy-no-id-penicillin.json",
+      "@type": "File",
+      "name": "AllergyIntolerance without an id: penicillin G",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "339",
+      "sha256": "1c0e1482af4578ca8bf2ddeaadcbbe8e9f4a4b00f87437fc46a59b33b07bf950",
+      "sameAs": {
+        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/allergy-no-id-penicillin.json"
+      },
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The penicillin G allergy of allergy-with-id.json with no id. Copied byte for byte from the conformance repository at 0ea48bb (the file last changed at a5ffbc6, 2026-08-03). Written by hand for that corpus, not captured from a server: no fetch date, server or query exists to record."
+    },
+    {
+      "@id": "fixtures/in/allergy-no-id-sulfa.json",
+      "@type": "File",
+      "name": "AllergyIntolerance without an id: sulfamethoxazole",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "348",
+      "sha256": "ee3b3a640d7dd72dbe4cf004fb94cad8ec42b816a0febe892e0eeac9ca00d333",
+      "sameAs": {
+        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/allergy-no-id-sulfa.json"
+      },
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "An AllergyIntolerance to sulfamethoxazole (RxNorm 10180), criticality high, with no id. Copied byte for byte from the conformance repository at 0ea48bb (the file last changed at a5ffbc6, 2026-08-03). Written by hand for that corpus, not captured from a server: no fetch date, server or query exists to record."
+    },
+    {
+      "@id": "fixtures/in/condition-with-id.json",
+      "@type": "File",
+      "name": "Condition with an id: essential hypertension",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "363",
+      "sha256": "4761a9def4d0461e1c9bc4b8d079b70a6b969ba4874dd53c5d2808eee4796e92",
+      "sameAs": {
+        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/condition-with-id.json"
+      },
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Condition of essential hypertension (SNOMED CT 38341003), onset 2021-04-02, id cond-htn-1. Copied byte for byte from the conformance repository at 0ea48bb (the file last changed at a5ffbc6, 2026-08-03). Written by hand for that corpus, not captured from a server: no fetch date, server or query exists to record."
+    },
+    {
+      "@id": "fixtures/in/condition-with-id-meta-fetch-a.json",
+      "@type": "File",
+      "name": "Condition cond-htn-1 as one server read returned it",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "494",
+      "sha256": "4fe3e1f3444d6e5d788110647ffc61807c825a043624f6f2ff12b1655c8b9413",
+      "sameAs": {
+        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/condition-with-id-meta-fetch-a.json"
+      },
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "condition-with-id.json with the meta a server read adds: versionId, lastUpdated and source. Copied byte for byte from the conformance repository at 0ea48bb (the file last changed at a5ffbc6, 2026-08-03). Written by hand for that corpus, not captured from a server: no fetch date, server or query exists to record."
+    },
+    {
+      "@id": "fixtures/in/condition-with-id-meta-fetch-b.json",
+      "@type": "File",
+      "name": "Condition cond-htn-1 as another server read returned it",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "495",
+      "sha256": "2a8d80209db1cbba456fc3f0d4af46940789c4c3f35789ae85fa5e07abc2f2f1",
+      "sameAs": {
+        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/condition-with-id-meta-fetch-b.json"
+      },
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The same content as condition-with-id-meta-fetch-a.json, with a different versionId, lastUpdated and source. Copied byte for byte from the conformance repository at 0ea48bb (the file last changed at a5ffbc6, 2026-08-03). Written by hand for that corpus, not captured from a server: no fetch date, server or query exists to record."
+    },
+    {
+      "@id": "fixtures/in/condition-no-id-structured-hypertension.json",
+      "@type": "File",
+      "name": "Condition without an id: essential hypertension",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "341",
+      "sha256": "24147d36c2b81a2948f81ccf9dbb9a01466888b4cfed3482c67686dd3678e0b4",
+      "sameAs": {
+        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/condition-no-id-structured-hypertension.json"
+      },
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The hypertension of condition-with-id.json with no id. Copied byte for byte from the conformance repository at 0ea48bb (the file last changed at a5ffbc6, 2026-08-03). Written by hand for that corpus, not captured from a server: no fetch date, server or query exists to record."
+    },
+    {
+      "@id": "fixtures/in/condition-no-id-structured-diabetes.json",
+      "@type": "File",
+      "name": "Condition without an id: type 2 diabetes",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "345",
+      "sha256": "e284b6e13793ecf64744611dc21b2887d77814553caba234cb6ac7a4e592c0d6",
+      "sameAs": {
+        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/condition-no-id-structured-diabetes.json"
+      },
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A coded Condition of type 2 diabetes mellitus, with no id. Copied byte for byte from the conformance repository at 0ea48bb (the file last changed at a5ffbc6, 2026-08-03). Written by hand for that corpus, not captured from a server: no fetch date, server or query exists to record."
+    },
+    {
+      "@id": "fixtures/in/condition-no-id-narrative-diabetes.json",
+      "@type": "File",
+      "name": "Condition without an id, narrative only: type 2 diabetes",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "166",
+      "sha256": "2ca34932cbeeb1b9c5162216cab1c9bd623cef9bcd79ce0874f18cedf1b0a283",
+      "sameAs": {
+        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/condition-no-id-narrative-diabetes.json"
+      },
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Condition whose only content is a narrative reading Type 2 diabetes mellitus: no code, no onset, no subject. FHIR R4 requires a Condition's subject, so it fails schema/fhir.schema.json. Copied byte for byte from the conformance repository at 0ea48bb (the file last changed at a5ffbc6, 2026-08-03). Written by hand for that corpus, not captured from a server: no fetch date, server or query exists to record."
+    },
+    {
+      "@id": "fixtures/in/condition-no-id-narrative-breast-cancer.json",
+      "@type": "File",
+      "name": "Condition without an id, narrative only: metastatic breast cancer",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "166",
+      "sha256": "d7785734ea567d110563605d5280764f43219dbe6cf90e093c26ad2ec52860fe",
+      "sameAs": {
+        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/condition-no-id-narrative-breast-cancer.json"
+      },
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Condition whose only content is a narrative reading Metastatic breast cancer: no code, no onset, no subject. FHIR R4 requires a Condition's subject, so it fails schema/fhir.schema.json. Copied byte for byte from the conformance repository at 0ea48bb (the file last changed at a5ffbc6, 2026-08-03). Written by hand for that corpus, not captured from a server: no fetch date, server or query exists to record."
+    },
+    {
+      "@id": "fixtures/in/immunization-with-id.json",
+      "@type": "File",
+      "name": "Immunization with an id: seasonal influenza, 2025",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "399",
+      "sha256": "b0f0ac71cbdfaf3b56ee459737af67ce4f253c8c948eb40d376724a9cce1acb8",
+      "sameAs": {
+        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/immunization-with-id.json"
+      },
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "An Immunization with seasonal influenza vaccine (CVX 141) on 2025-10-15, id imm-flu-2025. Copied byte for byte from the conformance repository at 0ea48bb (the file last changed at a5ffbc6, 2026-08-03). Written by hand for that corpus, not captured from a server: no fetch date, server or query exists to record."
+    },
+    {
+      "@id": "fixtures/in/immunization-no-id-2024.json",
+      "@type": "File",
+      "name": "Immunization without an id: seasonal influenza, 2024",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "375",
+      "sha256": "d2c4156b3d6ee1ed8f0fb6f33965699c9de3255183abe7ce14277e192131e30e",
+      "sameAs": {
+        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/immunization-no-id-2024.json"
+      },
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The same vaccine on 2024-10-11, with no id. Copied byte for byte from the conformance repository at 0ea48bb (the file last changed at a5ffbc6, 2026-08-03). Written by hand for that corpus, not captured from a server: no fetch date, server or query exists to record."
+    },
+    {
+      "@id": "fixtures/in/immunization-no-id-2025.json",
+      "@type": "File",
+      "name": "Immunization without an id: seasonal influenza, 2025",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "375",
+      "sha256": "0bf4d358fec2e86195283bd5a64ce62f2ef00a7e5245e07a989cb3db7a7c8323",
+      "sameAs": {
+        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/immunization-no-id-2025.json"
+      },
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The dose of immunization-with-id.json with no id. Copied byte for byte from the conformance repository at 0ea48bb (the file last changed at a5ffbc6, 2026-08-03). Written by hand for that corpus, not captured from a server: no fetch date, server or query exists to record."
+    },
+    {
+      "@id": "fixtures/in/procedure-with-id.json",
+      "@type": "File",
+      "name": "Procedure with an id: colonoscopy",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "378",
+      "sha256": "a6a8e9555297368de5c3302b743f1cfe53deccaca4a5812a967244526a3b03a6",
+      "sameAs": {
+        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/procedure-with-id.json"
+      },
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A completed colonoscopy (SNOMED CT 73761001) on 2025-02-18, id proc-colonoscopy-1. Copied byte for byte from the conformance repository at 0ea48bb (the file last changed at a5ffbc6, 2026-08-03). Written by hand for that corpus, not captured from a server: no fetch date, server or query exists to record."
+    },
+    {
+      "@id": "fixtures/in/procedure-no-id-colonoscopy.json",
+      "@type": "File",
+      "name": "Procedure without an id: colonoscopy",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "348",
+      "sha256": "64737f146250bc93aab280774727a923dc246b15f4b9b303e5dd422980db0206",
+      "sameAs": {
+        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/procedure-no-id-colonoscopy.json"
+      },
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The colonoscopy of procedure-with-id.json with no id. Copied byte for byte from the conformance repository at 0ea48bb (the file last changed at a5ffbc6, 2026-08-03). Written by hand for that corpus, not captured from a server: no fetch date, server or query exists to record."
+    },
+    {
+      "@id": "fixtures/in/procedure-no-id-echocardiogram.json",
+      "@type": "File",
+      "name": "Procedure without an id: echocardiogram",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "358",
+      "sha256": "7cfefe9e6666b8f8db4b815990e9cd1bdff147a67702e04fa1e0b29cd18da21f",
+      "sameAs": {
+        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/procedure-no-id-echocardiogram.json"
+      },
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "An echocardiogram (SNOMED CT 40701008) on 2025-03-22, with no id. Copied byte for byte from the conformance repository at 0ea48bb (the file last changed at a5ffbc6, 2026-08-03). Written by hand for that corpus, not captured from a server: no fetch date, server or query exists to record."
+    },
+    {
+      "@id": "fixtures/in/patient-with-id.json",
+      "@type": "File",
+      "name": "Patient with an id",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "207",
+      "sha256": "88bb6fb4ce098c61d1633f78ac808164be961b70fec85841306f0263570e4b2a",
+      "sameAs": {
+        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/patient-with-id.json"
+      },
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Patient with a name, gender and birth date, id pat-conformance-1, the patient every other copied input references. Copied byte for byte from the conformance repository at 0ea48bb (the file last changed at a5ffbc6, 2026-08-03). Written by hand for that corpus, not captured from a server: no fetch date, server or query exists to record."
+    },
+    {
+      "@id": "fixtures/in/patient-no-id.json",
+      "@type": "File",
+      "name": "Patient without an id",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "180",
+      "sha256": "b50120451d486e843f9f191b772451c69badfdfbb2afb98aa55962e28d34ffeb",
+      "sameAs": {
+        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/patient-no-id.json"
+      },
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "Another person, with a name, gender and birth date and no id. Copied byte for byte from the conformance repository at 0ea48bb (the file last changed at a5ffbc6, 2026-08-03). Written by hand for that corpus, not captured from a server: no fetch date, server or query exists to record."
+    },
+    {
+      "@id": "fixtures/in/encounter-with-id.json",
+      "@type": "File",
+      "name": "Encounter with an id, a type this release does not map",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "367",
+      "sha256": "93ab47aee7a3e7bb80bdf7a2a5feb94012d79d637c5a079b57df8020de08214c",
+      "sameAs": {
+        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/encounter-with-id.json"
+      },
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "An ambulatory Encounter, id enc-visit-1. Its expected output is a finding and no record. Copied byte for byte from the conformance repository at 0ea48bb (the file last changed at a5ffbc6, 2026-08-03). Written by hand for that corpus, not captured from a server: no fetch date, server or query exists to record."
+    },
+    {
+      "@id": "fixtures/in/lab-glucose-fasting.json",
+      "@type": "File",
+      "name": "Observation with an id, a type this release does not map",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "713",
+      "sha256": "f0b8b3d5e077b2e14fdcd2cf838424dfda4ce738ea99cc1d535f1d60268cd97c",
+      "sameAs": {
+        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/lab-glucose-fasting.json"
+      },
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A laboratory Observation of fasting blood glucose (LOINC 2339-0), id obs-glucose-fasting. Its expected output is a finding and no record. Copied byte for byte from the conformance repository at 0ea48bb (the file last changed at a5ffbc6, 2026-08-03). Written by hand for that corpus, not captured from a server: no fetch date, server or query exists to record."
+    },
+    {
+      "@id": "fixtures/in/bundle-two-identical-id-less-allergies.json",
+      "@type": "File",
+      "name": "Bundle of two identical AllergyIntolerance entries without ids",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "1004",
+      "sha256": "7a13dca99d3227a3af924156266171dc2c00278e9cec21eb2cff5cf61df15ea0",
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A collection Bundle whose two entries hold identical AllergyIntolerance resources with no id and no fullUrl: the penicillin G allergy of allergy-no-id-penicillin.json. Authored here on 2026-09-27, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/bundle-urn-uuid-full-urls.json",
+      "@type": "File",
+      "name": "Bundle whose entries are named by urn:uuid fullUrls",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "979",
+      "sha256": "76e44e829a4a94261f12cc345343e2ea34283f72d945eda7475028b79ec16597",
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A collection Bundle of a Patient and an AllergyIntolerance, neither with an id, each entry with a urn:uuid fullUrl; the allergy references the patient by that urn. Authored here on 2026-09-27, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/procedure-with-contained-condition.json",
+      "@type": "File",
+      "name": "Procedure with a contained Condition",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "844",
+      "sha256": "1541e1371fc08d1c3186e038704346fcc5b14a3aaafcc14d94d88869c92d8801",
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A completed echocardiogram, id proc-echo-1, holding its reason as a contained Condition with the local id reason, which reasonReference names as #reason. Authored here on 2026-09-27, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/bundle-repeated-condition-id.json",
+      "@type": "File",
+      "name": "Bundle repeating a Condition id",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "1541",
+      "sha256": "3ba11e86a5e97c1d95c62ecdbeeef55b3d9ba2be30d3b52741565081bd61467b",
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A collection Bundle of two Conditions with the same id, cond-htn-1, one active and one resolved, neither with a fullUrl. Authored here on 2026-09-27, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/allergy-no-id-penicillin-compact.json",
+      "@type": "File",
+      "name": "AllergyIntolerance without an id: penicillin G, written compactly",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "249",
+      "sha256": "1b50690a37bae1836466e76590e7095bc899dac8a40c502efd12e8733041ff70",
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The same JSON value as allergy-no-id-penicillin.json, members in the same order, written on one line without insignificant whitespace: the same content in different bytes. Authored here on 2026-09-27, for a case the conformance corpus does not hold.",
+      "isBasedOn": {
+        "@id": "fixtures/in/allergy-no-id-penicillin.json"
+      }
+    },
+    {
+      "@id": "docs/format.md",
+      "@type": "File",
+      "name": "FHIR R4 JSON, as the adapter sees it",
+      "encodingFormat": "text/markdown",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "What a record is, the two envelopes, JSON as FHIR writes it, the schema, the versions in and out of scope, and what is known about the committed inputs. Read from hl7.org/fhir/R4/ on 2026-09-27."
+    },
+    {
+      "@id": "fixtures/CLAUDE.md",
+      "@type": "File",
+      "name": "Agent context for the fixtures directory",
+      "encodingFormat": "text/markdown",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "How the fixtures are treated: every byte is recorded, an input is copied or authored here and never edited, and the check on copied inputs that the specification's lint cannot run."
+    },
+    {
+      "@id": "schema/CLAUDE.md",
+      "@type": "File",
+      "name": "Agent context for the schema directory",
+      "encodingFormat": "text/markdown",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The schema is HL7's verbatim copy, and how it is changed."
+    },
+    {
+      "@id": "vocab/CLAUDE.md",
+      "@type": "File",
+      "name": "Agent context for the vocab directory",
+      "encodingFormat": "text/markdown",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "What a lookup table is and how its rows are written, what a gap is and is not, what changes with it when a gap is added, removed or renamed, and how a path of the source gets its verdict."
+    },
+    {
+      "@id": "https://github.com/jayostis/conformance/tree/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir",
+      "@type": "CreativeWork",
+      "name": "conformance fixtures/clinical-fhir at 0ea48bb",
+      "version": "0ea48bb1c044ac9bf8086d456601357135cf79e6",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The general clinical FHIR fixtures the copied inputs are taken from, and identity-expectations.json, the relations between them the test manifest asserts where both inputs are of a mapped type. A contextual entity: the source of the fixtures, not part of the crate. The commit is on the fork, jayostis/conformance, and is not an ancestor of the-cascade-protocol/conformance main, so this entity and the inputs' links name the fork."
+    },
+    {
+      "@id": "https://spdx.org/licenses/Apache-2.0",
+      "@type": "CreativeWork",
+      "name": "Apache License 2.0",
+      "identifier": "Apache-2.0",
+      "sameAs": {
+        "@id": "https://www.apache.org/licenses/LICENSE-2.0"
+      },
+      "description": "The licence of the adapter package and of the conformance fixtures. The text is at the sameAs URL and in LICENSE."
+    },
+    {
+      "@id": "https://spdx.org/licenses/CC0-1.0",
+      "@type": "CreativeWork",
+      "name": "Creative Commons Zero v1.0 Universal",
+      "identifier": "CC0-1.0",
+      "sameAs": {
+        "@id": "https://creativecommons.org/publicdomain/zero/1.0/"
+      },
+      "description": "The licence HL7 publishes the FHIR specification, and so its JSON Schema, under."
+    }
+  ]
+}
