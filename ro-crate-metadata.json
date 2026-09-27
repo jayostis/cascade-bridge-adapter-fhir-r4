@@ -9,7 +9,12 @@
       "bridge:vocabularyFile": "bridge:vocabularyFile",
       "bridge:sourceMediaType": "bridge:sourceMediaType",
       "bridge:sourceSchema": "bridge:sourceSchema",
-      "bridge:gapScheme": "bridge:gapScheme"
+      "bridge:gapScheme": "bridge:gapScheme",
+      "bridge:envelope": "bridge:envelope",
+      "bridge:docRootMemberName": "bridge:docRootMemberName",
+      "bridge:docRootMemberValue": "bridge:docRootMemberValue",
+      "bridge:jsonPathOfEachRecord": "bridge:jsonPathOfEachRecord",
+      "bridge:testManifest": "bridge:testManifest"
     }
   ],
   "@graph": [
@@ -32,7 +37,7 @@
       "identifier": "fhir-r4",
       "name": "FHIR R4 JSON",
       "version": "0.1.0",
-      "description": "The Cascade Bridge Adapter for FHIR R4 JSON: the package of data a Cascade Bridge runs to turn FHIR R4 resources, alone or as the entries of a Bundle, into Cascade records. Import-only. This crate is the adapter's manifest: a Bridge reads the root entity first, for the format id, the source media type, the source schema, the profile the Bridge must offer, the vocabulary pin and the paths, at it, of the ontology and shapes files the adapter is read against, and the gap scheme every finding takes its body from, each gap declaring the sh:resultSeverity its findings carry where that is not sh:Info. The data entities carry provenance for every committed file, and a sha256 computed locally over the committed bytes of each digested one. Twenty inputs are copied byte for byte from the conformance repository's fixtures/clinical-fhir at the commit isBasedOn names; the others are authored here, and each says so.",
+      "description": "The Cascade Bridge Adapter for FHIR R4 JSON: the package of data a Cascade Bridge runs to turn FHIR R4 resources, alone or as the entries of a Bundle, into Cascade records. Import-only. This crate is the adapter's manifest: a Bridge reads the root entity first, for the format id, the source media type, the source schema, the two envelopes, the profile the Bridge must offer, the vocabulary pin and the paths, at it, of the ontology and shapes files the adapter is read against, and the gap scheme every finding takes its body from, each gap declaring the sh:resultSeverity its findings carry where that is not sh:Info, and the test manifest. The data entities carry provenance for every committed file, and a sha256 computed locally over the committed bytes of each digested one. Twenty inputs are copied byte for byte from the conformance repository's fixtures/clinical-fhir at the commit isBasedOn names; the others are authored here, and each says so.",
       "datePublished": "2026-09-27",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -49,7 +54,7 @@
         }
       ],
       "bridge:cascadeVocabularyPin": {
-        "@id": "https://github.com/jayostis/cascade-vocabulary/commit/5ddc50c190109d7e4d5f027873fda00739e510fb"
+        "@id": "https://github.com/jayostis/cascade-vocabulary/commit/10a006a9bd079832d4f2a0b1e3a29151c21d612b"
       },
       "bridge:vocabulary": [
         {
@@ -79,8 +84,19 @@
       "bridge:sourceSchema": {
         "@id": "schema/fhir.schema.json"
       },
+      "bridge:envelope": [
+        {
+          "@id": "#envelope-bundle"
+        },
+        {
+          "@id": "#envelope-resource"
+        }
+      ],
       "bridge:gapScheme": {
         "@id": "vocab/fhir-gaps.ttl"
+      },
+      "bridge:testManifest": {
+        "@id": "fixtures/manifest.ttl"
       },
       "hasPart": [
         {
@@ -165,10 +181,46 @@
           "@id": "fixtures/in/allergy-no-id-penicillin-compact.json"
         },
         {
+          "@id": "fixtures/manifest.ttl"
+        },
+        {
+          "@id": "fixtures/facts/meridian.ttl"
+        },
+        {
+          "@id": "fixtures/facts/no-server.ttl"
+        },
+        {
+          "@id": "fixtures/facts/allergyintolerance-alg-pcn-1.ttl"
+        },
+        {
+          "@id": "fixtures/facts/condition-cond-htn-1.ttl"
+        },
+        {
+          "@id": "fixtures/facts/condition-cond-htn-1-2026-09-08.ttl"
+        },
+        {
+          "@id": "fixtures/facts/immunization-imm-flu-2025.ttl"
+        },
+        {
+          "@id": "fixtures/facts/procedure-proc-colonoscopy-1.ttl"
+        },
+        {
+          "@id": "fixtures/facts/procedure-proc-echo-1.ttl"
+        },
+        {
+          "@id": "fixtures/facts/patient-pat-conformance-1.ttl"
+        },
+        {
+          "@id": "fixtures/facts/encounter-enc-visit-1.ttl"
+        },
+        {
+          "@id": "fixtures/facts/observation-obs-glucose-fasting.ttl"
+        },
+        {
           "@id": "https://hl7.org/fhir/R4/fhir.schema.json"
         },
         {
-          "@id": "https://github.com/jayostis/cascade-vocabulary/commit/5ddc50c190109d7e4d5f027873fda00739e510fb"
+          "@id": "https://github.com/jayostis/cascade-vocabulary/commit/10a006a9bd079832d4f2a0b1e3a29151c21d612b"
         },
         {
           "@id": "docs/format.md"
@@ -183,6 +235,23 @@
           "@id": "vocab/CLAUDE.md"
         }
       ]
+    },
+    {
+      "@id": "#envelope-bundle",
+      "@type": "bridge:Envelope",
+      "name": "bundle",
+      "bridge:docRootMemberName": "resourceType",
+      "bridge:docRootMemberValue": "Bundle",
+      "bridge:jsonPathOfEachRecord": "$.entry[*]",
+      "description": "A Bundle: each entry is a record, so its fullUrl stays with its resource; docs/format.md, \"The two envelopes\"."
+    },
+    {
+      "@id": "#envelope-resource",
+      "@type": "bridge:Envelope",
+      "name": "resource",
+      "bridge:docRootMemberName": "resourceType",
+      "bridge:jsonPathOfEachRecord": "$",
+      "description": "A resource alone: the document is the record."
     },
     {
       "@id": "bridge:sparql-1.1",
@@ -200,16 +269,16 @@
       "description": "The RO-Crate 1.2 Profile Crate a conforming adapter package names in conformsTo; the Profile Crate describing it is adapter/profile/ro-crate-metadata.json in cascade-bridge-spec."
     },
     {
-      "@id": "https://github.com/jayostis/cascade-vocabulary/commit/5ddc50c190109d7e4d5f027873fda00739e510fb",
+      "@id": "https://github.com/jayostis/cascade-vocabulary/commit/10a006a9bd079832d4f2a0b1e3a29151c21d612b",
       "@type": [
         "SoftwareSourceCode",
         "File"
       ],
-      "name": "cascade-vocabulary at 5ddc50c",
+      "name": "cascade-vocabulary at 10a006a",
       "codeRepository": {
         "@id": "https://github.com/jayostis/cascade-vocabulary"
       },
-      "version": "5ddc50c190109d7e4d5f027873fda00739e510fb",
+      "version": "10a006a9bd079832d4f2a0b1e3a29151c21d612b",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -648,6 +717,158 @@
       "isBasedOn": {
         "@id": "fixtures/in/allergy-no-id-penicillin.json"
       }
+    },
+    {
+      "@id": "fixtures/manifest.ttl",
+      "@type": "File",
+      "name": "Test manifest",
+      "encodingFormat": "text/turtle",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      }
+    },
+    {
+      "@id": "fixtures/facts/meridian.ttl",
+      "@type": "File",
+      "name": "Facts supplied with a document fetched from the Meridian server",
+      "encodingFormat": "text/turtle",
+      "contentSize": "940",
+      "sha256": "b3076389c8cef6f2b297944b7f6709024adc130469cb56ecda5d6dd7fda3491d",
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The server, the author, the transmitter, the retrieval and the import, supplied with every input that names no single resource on the server: the bare resources without an id and the Bundles. Made up here on 2026-09-27: no server was fetched."
+    },
+    {
+      "@id": "fixtures/facts/no-server.ttl",
+      "@type": "File",
+      "name": "Facts supplied with a document from no known server",
+      "encodingFormat": "text/turtle",
+      "contentSize": "870",
+      "sha256": "d8d9354f303335a7d2d3fc60df36f38f16321401ba56c4268bde8006b398d8ce",
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The facts of meridian.ttl with no server base URL. Made up here on 2026-09-27: no server was fetched."
+    },
+    {
+      "@id": "fixtures/facts/allergyintolerance-alg-pcn-1.ttl",
+      "@type": "File",
+      "name": "Facts supplied with AllergyIntolerance alg-pcn-1",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1035",
+      "sha256": "ea8cbe7c2996a75610c8f522869af4a0924dbd9fac4067ba9590fd6ae60c8c08",
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The facts of meridian.ttl, and the resource's full URL on the server it was retrieved from. Made up here on 2026-09-27: no server was fetched."
+    },
+    {
+      "@id": "fixtures/facts/condition-cond-htn-1.ttl",
+      "@type": "File",
+      "name": "Facts supplied with Condition cond-htn-1",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1027",
+      "sha256": "49be11f63b02947093f2cd82329c2d60c8f60c2224b60e36575be498f49ec46c",
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The facts of meridian.ttl, and the resource's full URL on the server it was retrieved from. Made up here on 2026-09-27: no server was fetched."
+    },
+    {
+      "@id": "fixtures/facts/condition-cond-htn-1-2026-09-08.ttl",
+      "@type": "File",
+      "name": "Facts supplied with Condition cond-htn-1, retrieved again on 2026-09-08",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1027",
+      "sha256": "e9f3b1ef34f5af5b3b67c72fca7a150ba65a5d0f88995e95d08315eb75e74f9c",
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The facts of condition-cond-htn-1.ttl, retrieved and imported a week later. Made up here on 2026-09-27: no server was fetched."
+    },
+    {
+      "@id": "fixtures/facts/immunization-imm-flu-2025.ttl",
+      "@type": "File",
+      "name": "Facts supplied with Immunization imm-flu-2025",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1032",
+      "sha256": "e96618d8167bec29e13368f3f1afee52ac69c0d5a8057e7ca9e0a76e8e72a86e",
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The facts of meridian.ttl, and the resource's full URL on the server it was retrieved from. Made up here on 2026-09-27: no server was fetched."
+    },
+    {
+      "@id": "fixtures/facts/procedure-proc-colonoscopy-1.ttl",
+      "@type": "File",
+      "name": "Facts supplied with Procedure proc-colonoscopy-1",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1035",
+      "sha256": "a959dd407537e332dca09aadc27292e471f5170252b9d85899a102b413e98bbd",
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The facts of meridian.ttl, and the resource's full URL on the server it was retrieved from. Made up here on 2026-09-27: no server was fetched."
+    },
+    {
+      "@id": "fixtures/facts/procedure-proc-echo-1.ttl",
+      "@type": "File",
+      "name": "Facts supplied with Procedure proc-echo-1",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1028",
+      "sha256": "8f229c8582abb10ff9631ff4144acb7887d34ab49153d8aa768a33ac018cc7f3",
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The facts of meridian.ttl, and the resource's full URL on the server it was retrieved from. Made up here on 2026-09-27: no server was fetched."
+    },
+    {
+      "@id": "fixtures/facts/patient-pat-conformance-1.ttl",
+      "@type": "File",
+      "name": "Facts supplied with Patient pat-conformance-1",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1032",
+      "sha256": "a1ebf2babc8e2f69a131e2cd13dee0f599a0ac78c915141b8fe65ba7bfb29cf3",
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The facts of meridian.ttl, and the resource's full URL on the server it was retrieved from. Made up here on 2026-09-27: no server was fetched."
+    },
+    {
+      "@id": "fixtures/facts/encounter-enc-visit-1.ttl",
+      "@type": "File",
+      "name": "Facts supplied with Encounter enc-visit-1",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1028",
+      "sha256": "6778a72fafecf241ee74d2754e4063f718a7e9defe7e8281d54c19661cc69e3b",
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The facts of meridian.ttl, and the resource's full URL on the server it was retrieved from. Made up here on 2026-09-27: no server was fetched."
+    },
+    {
+      "@id": "fixtures/facts/observation-obs-glucose-fasting.ttl",
+      "@type": "File",
+      "name": "Facts supplied with Observation obs-glucose-fasting",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1038",
+      "sha256": "e7a6819f74e584f44c77628bc7f08964052579771ebe8ad3250376a64a532aa0",
+      "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The facts of meridian.ttl, and the resource's full URL on the server it was retrieved from. Made up here on 2026-09-27: no server was fetched."
     },
     {
       "@id": "docs/format.md",

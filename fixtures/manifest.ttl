@@ -1,0 +1,583 @@
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix mf:     <http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#> .
+@prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+
+<> a mf:Manifest ;
+  rdfs:label "cascade-bridge-adapter-fhir-r4 fixture cases" ;
+  bridge:adapter <../> ;
+  mf:entries (
+    <#allergy-with-id>
+    <#allergy-no-id-penicillin>
+    <#allergy-no-id-penicillin-compact>
+    <#allergy-no-id-sulfa>
+    <#condition-with-id>
+    <#condition-with-id-meta-fetch-a>
+    <#condition-with-id-meta-fetch-b>
+    <#condition-no-id-structured-hypertension>
+    <#condition-no-id-structured-diabetes>
+    <#condition-no-id-narrative-diabetes>
+    <#condition-no-id-narrative-breast-cancer>
+    <#immunization-with-id>
+    <#immunization-no-id-2024>
+    <#immunization-no-id-2025>
+    <#procedure-with-id>
+    <#procedure-no-id-colonoscopy>
+    <#procedure-no-id-echocardiogram>
+    <#procedure-with-contained-condition>
+    <#patient-with-id>
+    <#patient-no-id>
+    <#bundle-two-identical-id-less-allergies>
+    <#bundle-urn-uuid-full-urls>
+    <#bundle-repeated-condition-id>
+    <#encounter-with-id>
+    <#lab-glucose-fasting>
+    <#condition-no-id-differs-only-in-narrative>
+    <#condition-no-id-different-structured-content>
+    <#allergy-no-id-different-allergen>
+    <#immunization-no-id-different-dates>
+    <#procedure-no-id-different-procedures>
+    <#patient-no-id-different-people>
+    <#condition-same-record-two-server-fetches>
+    <#condition-id-bearing-differs-from-id-less>
+    <#allergy-id-bearing-differs-from-id-less>
+    <#immunization-id-bearing-differs-from-id-less>
+    <#bundle-two-identical-id-less-allergies-name-two-records>
+    <#allergy-no-id-penicillin-imported-twice-names-one-record>
+    <#allergy-no-id-penicillin-compact-copy-names-another-record>
+    <#bundle-urn-uuid-full-urls-entry-imported-twice-names-one-record>
+    <#bundle-repeated-condition-id-names-two-records>
+  ) .
+
+<#allergy-with-id> a bridge:IsomorphicConversionTest ;
+  mf:name "allergy-with-id" ;
+  mf:action [
+    bridge:input <in/allergy-with-id.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/allergyintolerance-alg-pcn-1.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/allergy-with-id.ttl> ;
+    bridge:expectedFindings <findings/allergy-with-id.ttl>
+  ] .
+
+<#allergy-no-id-penicillin> a bridge:IsomorphicConversionTest ;
+  mf:name "allergy-no-id-penicillin" ;
+  mf:action [
+    bridge:input <in/allergy-no-id-penicillin.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/allergy-no-id-penicillin.ttl> ;
+    bridge:expectedFindings <findings/allergy-no-id-penicillin.ttl>
+  ] .
+
+<#allergy-no-id-penicillin-compact> a bridge:IsomorphicConversionTest ;
+  mf:name "allergy-no-id-penicillin-compact" ;
+  mf:action [
+    bridge:input <in/allergy-no-id-penicillin-compact.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/no-server.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/allergy-no-id-penicillin-compact.ttl> ;
+    bridge:expectedFindings <findings/allergy-no-id-penicillin-compact.ttl>
+  ] .
+
+<#allergy-no-id-sulfa> a bridge:IsomorphicConversionTest ;
+  mf:name "allergy-no-id-sulfa" ;
+  mf:action [
+    bridge:input <in/allergy-no-id-sulfa.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/allergy-no-id-sulfa.ttl> ;
+    bridge:expectedFindings <findings/allergy-no-id-sulfa.ttl>
+  ] .
+
+<#condition-with-id> a bridge:IsomorphicConversionTest ;
+  mf:name "condition-with-id" ;
+  mf:action [
+    bridge:input <in/condition-with-id.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/condition-cond-htn-1.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/condition-with-id.ttl> ;
+    bridge:expectedFindings <findings/condition-with-id.ttl>
+  ] .
+
+<#condition-with-id-meta-fetch-a> a bridge:IsomorphicConversionTest ;
+  mf:name "condition-with-id-meta-fetch-a" ;
+  mf:action [
+    bridge:input <in/condition-with-id-meta-fetch-a.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/condition-cond-htn-1.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/condition-with-id-meta-fetch-a.ttl> ;
+    bridge:expectedFindings <findings/condition-with-id-meta-fetch-a.ttl>
+  ] .
+
+<#condition-with-id-meta-fetch-b> a bridge:IsomorphicConversionTest ;
+  mf:name "condition-with-id-meta-fetch-b" ;
+  mf:action [
+    bridge:input <in/condition-with-id-meta-fetch-b.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/condition-cond-htn-1-2026-09-08.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/condition-with-id-meta-fetch-b.ttl> ;
+    bridge:expectedFindings <findings/condition-with-id-meta-fetch-b.ttl>
+  ] .
+
+<#condition-no-id-structured-hypertension> a bridge:IsomorphicConversionTest ;
+  mf:name "condition-no-id-structured-hypertension" ;
+  mf:action [
+    bridge:input <in/condition-no-id-structured-hypertension.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/condition-no-id-structured-hypertension.ttl> ;
+    bridge:expectedFindings <findings/condition-no-id-structured-hypertension.ttl>
+  ] .
+
+<#condition-no-id-structured-diabetes> a bridge:IsomorphicConversionTest ;
+  mf:name "condition-no-id-structured-diabetes" ;
+  mf:action [
+    bridge:input <in/condition-no-id-structured-diabetes.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/condition-no-id-structured-diabetes.ttl> ;
+    bridge:expectedFindings <findings/condition-no-id-structured-diabetes.ttl>
+  ] .
+
+<#condition-no-id-narrative-diabetes> a bridge:IsomorphicConversionTest ;
+  mf:name "condition-no-id-narrative-diabetes" ;
+  mf:action [
+    bridge:input <in/condition-no-id-narrative-diabetes.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/condition-no-id-narrative-diabetes.ttl> ;
+    bridge:expectedFindings <findings/condition-no-id-narrative-diabetes.ttl>
+  ] .
+
+<#condition-no-id-narrative-breast-cancer> a bridge:IsomorphicConversionTest ;
+  mf:name "condition-no-id-narrative-breast-cancer" ;
+  mf:action [
+    bridge:input <in/condition-no-id-narrative-breast-cancer.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/condition-no-id-narrative-breast-cancer.ttl> ;
+    bridge:expectedFindings <findings/condition-no-id-narrative-breast-cancer.ttl>
+  ] .
+
+<#immunization-with-id> a bridge:IsomorphicConversionTest ;
+  mf:name "immunization-with-id" ;
+  mf:action [
+    bridge:input <in/immunization-with-id.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/immunization-imm-flu-2025.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/immunization-with-id.ttl> ;
+    bridge:expectedFindings <findings/immunization-with-id.ttl>
+  ] .
+
+<#immunization-no-id-2024> a bridge:IsomorphicConversionTest ;
+  mf:name "immunization-no-id-2024" ;
+  mf:action [
+    bridge:input <in/immunization-no-id-2024.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/immunization-no-id-2024.ttl> ;
+    bridge:expectedFindings <findings/immunization-no-id-2024.ttl>
+  ] .
+
+<#immunization-no-id-2025> a bridge:IsomorphicConversionTest ;
+  mf:name "immunization-no-id-2025" ;
+  mf:action [
+    bridge:input <in/immunization-no-id-2025.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/immunization-no-id-2025.ttl> ;
+    bridge:expectedFindings <findings/immunization-no-id-2025.ttl>
+  ] .
+
+<#procedure-with-id> a bridge:IsomorphicConversionTest ;
+  mf:name "procedure-with-id" ;
+  mf:action [
+    bridge:input <in/procedure-with-id.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/procedure-proc-colonoscopy-1.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/procedure-with-id.ttl> ;
+    bridge:expectedFindings <findings/procedure-with-id.ttl>
+  ] .
+
+<#procedure-no-id-colonoscopy> a bridge:IsomorphicConversionTest ;
+  mf:name "procedure-no-id-colonoscopy" ;
+  mf:action [
+    bridge:input <in/procedure-no-id-colonoscopy.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/procedure-no-id-colonoscopy.ttl> ;
+    bridge:expectedFindings <findings/procedure-no-id-colonoscopy.ttl>
+  ] .
+
+<#procedure-no-id-echocardiogram> a bridge:IsomorphicConversionTest ;
+  mf:name "procedure-no-id-echocardiogram" ;
+  mf:action [
+    bridge:input <in/procedure-no-id-echocardiogram.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/procedure-no-id-echocardiogram.ttl> ;
+    bridge:expectedFindings <findings/procedure-no-id-echocardiogram.ttl>
+  ] .
+
+<#procedure-with-contained-condition> a bridge:IsomorphicConversionTest ;
+  mf:name "procedure-with-contained-condition" ;
+  mf:action [
+    bridge:input <in/procedure-with-contained-condition.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/procedure-proc-echo-1.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/procedure-with-contained-condition.ttl> ;
+    bridge:expectedFindings <findings/procedure-with-contained-condition.ttl>
+  ] .
+
+<#patient-with-id> a bridge:IsomorphicConversionTest ;
+  mf:name "patient-with-id" ;
+  mf:action [
+    bridge:input <in/patient-with-id.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/patient-pat-conformance-1.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/patient-with-id.ttl> ;
+    bridge:expectedFindings <findings/patient-with-id.ttl>
+  ] .
+
+<#patient-no-id> a bridge:IsomorphicConversionTest ;
+  mf:name "patient-no-id" ;
+  mf:action [
+    bridge:input <in/patient-no-id.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/patient-no-id.ttl> ;
+    bridge:expectedFindings <findings/patient-no-id.ttl>
+  ] .
+
+<#bundle-two-identical-id-less-allergies> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-two-identical-id-less-allergies" ;
+  mf:action [
+    bridge:input <in/bundle-two-identical-id-less-allergies.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-two-identical-id-less-allergies.ttl> ;
+    bridge:expectedFindings <findings/bundle-two-identical-id-less-allergies.ttl>
+  ] .
+
+<#bundle-urn-uuid-full-urls> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-urn-uuid-full-urls" ;
+  mf:action [
+    bridge:input <in/bundle-urn-uuid-full-urls.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-urn-uuid-full-urls.ttl> ;
+    bridge:expectedFindings <findings/bundle-urn-uuid-full-urls.ttl>
+  ] .
+
+<#bundle-repeated-condition-id> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-repeated-condition-id" ;
+  rdfs:comment "Two entries holding one Condition id: each is named from the document's SHA-256 and its selector, and each carries a finding of the repeated id." ;
+  mf:action [
+    bridge:input <in/bundle-repeated-condition-id.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-repeated-condition-id.ttl> ;
+    bridge:expectedFindings <findings/bundle-repeated-condition-id.ttl>
+  ] .
+
+<#encounter-with-id> a bridge:IsomorphicConversionTest ;
+  mf:name "encounter-with-id" ;
+  rdfs:comment "A type this release does not map: a finding, and no record." ;
+  mf:action [
+    bridge:input <in/encounter-with-id.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/encounter-enc-visit-1.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/encounter-with-id.ttl> ;
+    bridge:expectedFindings <findings/encounter-with-id.ttl>
+  ] .
+
+<#lab-glucose-fasting> a bridge:IsomorphicConversionTest ;
+  mf:name "lab-glucose-fasting" ;
+  rdfs:comment "A type this release does not map: a finding, and no record." ;
+  mf:action [
+    bridge:input <in/lab-glucose-fasting.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/observation-obs-glucose-fasting.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/lab-glucose-fasting.ttl> ;
+    bridge:expectedFindings <findings/lab-glucose-fasting.ttl>
+  ] .
+
+<#condition-no-id-differs-only-in-narrative> a bridge:IdentityRelationTest ;
+  mf:name "condition-no-id-differs-only-in-narrative" ;
+  mf:action [
+    bridge:conversion [
+      bridge:input <in/condition-no-id-narrative-diabetes.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/meridian.ttl>
+    ] , [
+      bridge:input <in/condition-no-id-narrative-breast-cancer.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/meridian.ttl>
+    ]
+  ] ;
+  mf:result [ bridge:sameRecord false ] .
+
+<#condition-no-id-different-structured-content> a bridge:IdentityRelationTest ;
+  mf:name "condition-no-id-different-structured-content" ;
+  mf:action [
+    bridge:conversion [
+      bridge:input <in/condition-no-id-structured-hypertension.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/meridian.ttl>
+    ] , [
+      bridge:input <in/condition-no-id-structured-diabetes.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/meridian.ttl>
+    ]
+  ] ;
+  mf:result [ bridge:sameRecord false ] .
+
+<#allergy-no-id-different-allergen> a bridge:IdentityRelationTest ;
+  mf:name "allergy-no-id-different-allergen" ;
+  mf:action [
+    bridge:conversion [
+      bridge:input <in/allergy-no-id-penicillin.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/meridian.ttl>
+    ] , [
+      bridge:input <in/allergy-no-id-sulfa.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/meridian.ttl>
+    ]
+  ] ;
+  mf:result [ bridge:sameRecord false ] .
+
+<#immunization-no-id-different-dates> a bridge:IdentityRelationTest ;
+  mf:name "immunization-no-id-different-dates" ;
+  mf:action [
+    bridge:conversion [
+      bridge:input <in/immunization-no-id-2024.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/meridian.ttl>
+    ] , [
+      bridge:input <in/immunization-no-id-2025.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/meridian.ttl>
+    ]
+  ] ;
+  mf:result [ bridge:sameRecord false ] .
+
+<#procedure-no-id-different-procedures> a bridge:IdentityRelationTest ;
+  mf:name "procedure-no-id-different-procedures" ;
+  mf:action [
+    bridge:conversion [
+      bridge:input <in/procedure-no-id-colonoscopy.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/meridian.ttl>
+    ] , [
+      bridge:input <in/procedure-no-id-echocardiogram.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/meridian.ttl>
+    ]
+  ] ;
+  mf:result [ bridge:sameRecord false ] .
+
+<#patient-no-id-different-people> a bridge:IdentityRelationTest ;
+  mf:name "patient-no-id-different-people" ;
+  mf:action [
+    bridge:conversion [
+      bridge:input <in/patient-with-id.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/patient-pat-conformance-1.ttl>
+    ] , [
+      bridge:input <in/patient-no-id.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/meridian.ttl>
+    ]
+  ] ;
+  mf:result [ bridge:sameRecord false ] .
+
+<#condition-same-record-two-server-fetches> a bridge:IdentityRelationTest ;
+  mf:name "condition-same-record-two-server-fetches" ;
+  mf:action [
+    bridge:conversion [
+      bridge:input <in/condition-with-id-meta-fetch-a.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/condition-cond-htn-1.ttl>
+    ] , [
+      bridge:input <in/condition-with-id-meta-fetch-b.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/condition-cond-htn-1-2026-09-08.ttl>
+    ]
+  ] ;
+  mf:result [ bridge:sameRecord true ] .
+
+<#condition-id-bearing-differs-from-id-less> a bridge:IdentityRelationTest ;
+  mf:name "condition-id-bearing-differs-from-id-less" ;
+  mf:action [
+    bridge:conversion [
+      bridge:input <in/condition-with-id.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/condition-cond-htn-1.ttl>
+    ] , [
+      bridge:input <in/condition-no-id-structured-hypertension.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/meridian.ttl>
+    ]
+  ] ;
+  mf:result [ bridge:sameRecord false ] .
+
+<#allergy-id-bearing-differs-from-id-less> a bridge:IdentityRelationTest ;
+  mf:name "allergy-id-bearing-differs-from-id-less" ;
+  mf:action [
+    bridge:conversion [
+      bridge:input <in/allergy-with-id.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/allergyintolerance-alg-pcn-1.ttl>
+    ] , [
+      bridge:input <in/allergy-no-id-penicillin.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/meridian.ttl>
+    ]
+  ] ;
+  mf:result [ bridge:sameRecord false ] .
+
+<#immunization-id-bearing-differs-from-id-less> a bridge:IdentityRelationTest ;
+  mf:name "immunization-id-bearing-differs-from-id-less" ;
+  mf:action [
+    bridge:conversion [
+      bridge:input <in/immunization-with-id.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/immunization-imm-flu-2025.ttl>
+    ] , [
+      bridge:input <in/immunization-no-id-2025.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/meridian.ttl>
+    ]
+  ] ;
+  mf:result [ bridge:sameRecord false ] .
+
+<#bundle-two-identical-id-less-allergies-name-two-records> a bridge:IdentityRelationTest ;
+  mf:name "bundle-two-identical-id-less-allergies-name-two-records" ;
+  mf:action [
+    bridge:conversion [
+      bridge:input <in/bundle-two-identical-id-less-allergies.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+      bridge:facts <facts/meridian.ttl> ;
+      bridge:selector "/entry/0"
+    ] , [
+      bridge:input <in/bundle-two-identical-id-less-allergies.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+      bridge:facts <facts/meridian.ttl> ;
+      bridge:selector "/entry/1"
+    ]
+  ] ;
+  mf:result [ bridge:sameRecord false ] .
+
+<#allergy-no-id-penicillin-imported-twice-names-one-record> a bridge:IdentityRelationTest ;
+  mf:name "allergy-no-id-penicillin-imported-twice-names-one-record" ;
+  mf:action [
+    bridge:conversion [
+      bridge:input <in/allergy-no-id-penicillin.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/meridian.ttl>
+    ] , [
+      bridge:input <in/allergy-no-id-penicillin.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/meridian.ttl>
+    ]
+  ] ;
+  mf:result [ bridge:sameRecord true ] .
+
+<#allergy-no-id-penicillin-compact-copy-names-another-record> a bridge:IdentityRelationTest ;
+  mf:name "allergy-no-id-penicillin-compact-copy-names-another-record" ;
+  mf:action [
+    bridge:conversion [
+      bridge:input <in/allergy-no-id-penicillin.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/meridian.ttl>
+    ] , [
+      bridge:input <in/allergy-no-id-penicillin-compact.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/no-server.ttl>
+    ]
+  ] ;
+  mf:result [ bridge:sameRecord false ] .
+
+<#bundle-urn-uuid-full-urls-entry-imported-twice-names-one-record> a bridge:IdentityRelationTest ;
+  mf:name "bundle-urn-uuid-full-urls-entry-imported-twice-names-one-record" ;
+  mf:action [
+    bridge:conversion [
+      bridge:input <in/bundle-urn-uuid-full-urls.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+      bridge:facts <facts/meridian.ttl> ;
+      bridge:selector "/entry/1"
+    ] , [
+      bridge:input <in/bundle-urn-uuid-full-urls.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+      bridge:facts <facts/meridian.ttl> ;
+      bridge:selector "/entry/1"
+    ]
+  ] ;
+  mf:result [ bridge:sameRecord true ] .
+
+<#bundle-repeated-condition-id-names-two-records> a bridge:IdentityRelationTest ;
+  mf:name "bundle-repeated-condition-id-names-two-records" ;
+  mf:action [
+    bridge:conversion [
+      bridge:input <in/bundle-repeated-condition-id.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+      bridge:facts <facts/meridian.ttl> ;
+      bridge:selector "/entry/0"
+    ] , [
+      bridge:input <in/bundle-repeated-condition-id.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+      bridge:facts <facts/meridian.ttl> ;
+      bridge:selector "/entry/1"
+    ]
+  ] ;
+  mf:result [ bridge:sameRecord false ] .

@@ -6,7 +6,7 @@ judged by, and the crate records where every file came from.
 
 ## Every byte is recorded, and inputs are never edited
 
-Every file under `in/`, `expected/` and `findings/` has its digest in the crate,
+Every file under `in/`, `facts/`, `expected/` and `findings/` has its digest in the crate,
 and `.gitattributes` and `.editorconfig` protect them from normalisation. A
 change updates the crate's digest, size and description in the same commit.
 
