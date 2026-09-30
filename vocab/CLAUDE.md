@@ -55,8 +55,10 @@ rather than to the rule that finds it.
 
 ## A verdict on a path is read, never inferred from its name
 
-The source accounting holds one `bridge:PathEntry` for each path the judged
-inputs carry below the record.
+The source accounting holds one `bridge:PathEntry` for each path a mapping
+reads and each path the judged inputs carry, at every place a resource stands
+in a record: the record itself, `/resource` in a Bundle entry, and `/contained`
+under either. A path is relative to the record, so the envelopes' paths differ.
 
 - The same member name holds different things under different parents
   (`display` in a `Coding` and in a `Reference`), so a verdict is settled

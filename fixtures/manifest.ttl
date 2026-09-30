@@ -7,10 +7,12 @@
   bridge:adapter <../> ;
   mf:entries (
     <#allergy-with-id>
+    <#allergy-every-mapped-element>
     <#allergy-no-id-penicillin>
     <#allergy-no-id-penicillin-compact>
     <#allergy-no-id-sulfa>
     <#condition-with-id>
+    <#condition-every-mapped-element>
     <#condition-with-id-meta-fetch-a>
     <#condition-with-id-meta-fetch-b>
     <#condition-no-id-structured-hypertension>
@@ -18,6 +20,7 @@
     <#condition-no-id-narrative-diabetes>
     <#condition-no-id-narrative-breast-cancer>
     <#immunization-with-id>
+    <#immunization-every-mapped-element>
     <#immunization-no-id-2024>
     <#immunization-no-id-2025>
     <#procedure-with-id>
@@ -58,6 +61,18 @@
   mf:result [
     bridge:expectedGraph <expected/allergy-with-id.ttl> ;
     bridge:expectedFindings <findings/allergy-with-id.ttl>
+  ] .
+
+<#allergy-every-mapped-element> a bridge:IsomorphicConversionTest ;
+  mf:name "allergy-every-mapped-element" ;
+  mf:action [
+    bridge:input <in/allergy-every-mapped-element.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/allergy-every-mapped-element.ttl> ;
+    bridge:expectedFindings <findings/allergy-every-mapped-element.ttl>
   ] .
 
 <#allergy-no-id-penicillin> a bridge:IsomorphicConversionTest ;
@@ -106,6 +121,18 @@
   mf:result [
     bridge:expectedGraph <expected/condition-with-id.ttl> ;
     bridge:expectedFindings <findings/condition-with-id.ttl>
+  ] .
+
+<#condition-every-mapped-element> a bridge:IsomorphicConversionTest ;
+  mf:name "condition-every-mapped-element" ;
+  mf:action [
+    bridge:input <in/condition-every-mapped-element.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/condition-every-mapped-element.ttl> ;
+    bridge:expectedFindings <findings/condition-every-mapped-element.ttl>
   ] .
 
 <#condition-with-id-meta-fetch-a> a bridge:IsomorphicConversionTest ;
@@ -190,6 +217,18 @@
   mf:result [
     bridge:expectedGraph <expected/immunization-with-id.ttl> ;
     bridge:expectedFindings <findings/immunization-with-id.ttl>
+  ] .
+
+<#immunization-every-mapped-element> a bridge:IsomorphicConversionTest ;
+  mf:name "immunization-every-mapped-element" ;
+  mf:action [
+    bridge:input <in/immunization-every-mapped-element.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/immunization-every-mapped-element.ttl> ;
+    bridge:expectedFindings <findings/immunization-every-mapped-element.ttl>
   ] .
 
 <#immunization-no-id-2024> a bridge:IsomorphicConversionTest ;

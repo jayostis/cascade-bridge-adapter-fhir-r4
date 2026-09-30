@@ -208,6 +208,9 @@
           "@id": "fixtures/in/allergy-with-id.json"
         },
         {
+          "@id": "fixtures/in/allergy-every-mapped-element.json"
+        },
+        {
           "@id": "fixtures/in/allergy-no-id-penicillin.json"
         },
         {
@@ -215,6 +218,9 @@
         },
         {
           "@id": "fixtures/in/condition-with-id.json"
+        },
+        {
+          "@id": "fixtures/in/condition-every-mapped-element.json"
         },
         {
           "@id": "fixtures/in/condition-with-id-meta-fetch-a.json"
@@ -236,6 +242,9 @@
         },
         {
           "@id": "fixtures/in/immunization-with-id.json"
+        },
+        {
+          "@id": "fixtures/in/immunization-every-mapped-element.json"
         },
         {
           "@id": "fixtures/in/immunization-no-id-2024.json"
@@ -358,6 +367,12 @@
           "@id": "fixtures/findings/allergy-with-id.ttl"
         },
         {
+          "@id": "fixtures/expected/allergy-every-mapped-element.ttl"
+        },
+        {
+          "@id": "fixtures/findings/allergy-every-mapped-element.ttl"
+        },
+        {
           "@id": "fixtures/expected/bundle-repeated-condition-id.ttl"
         },
         {
@@ -406,6 +421,12 @@
           "@id": "fixtures/findings/condition-with-id.ttl"
         },
         {
+          "@id": "fixtures/expected/condition-every-mapped-element.ttl"
+        },
+        {
+          "@id": "fixtures/findings/condition-every-mapped-element.ttl"
+        },
+        {
           "@id": "fixtures/expected/condition-with-id-meta-fetch-a.ttl"
         },
         {
@@ -440,6 +461,12 @@
         },
         {
           "@id": "fixtures/findings/immunization-with-id.ttl"
+        },
+        {
+          "@id": "fixtures/expected/immunization-every-mapped-element.ttl"
+        },
+        {
+          "@id": "fixtures/findings/immunization-every-mapped-element.ttl"
         },
         {
           "@id": "fixtures/expected/lab-glucose-fasting.ttl"
@@ -769,12 +796,12 @@
       "@type": "File",
       "name": "FHIR R4 JSON source accounting",
       "encodingFormat": "text/turtle",
-      "contentSize": "12043",
-      "sha256": "5eedf4c9cd4a0d5622508adc84d981a144ef0d8dcfcc5b3955b1863fbb91fed2",
+      "contentSize": "48771",
+      "sha256": "406b1ce167087c78026e3ed7d613d524ee149d81796fa2faff46157b590c7459",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The file the crate names as bridge:sourceAccounting: one bridge:PathEntry for each path the judged inputs carry below the record, written as JSON Pointer reference tokens from the record, the entry under a Bundle and a resource alone each accounted for at its own paths, and each with its verdict against in/sparql/."
+      "description": "The file the crate names as bridge:sourceAccounting: one bridge:PathEntry for each path a mapping in in/sparql/ reads and each path the judged inputs carry, written as JSON Pointer reference tokens from the record, at every place a resource stands in one: the record under the resource envelope, /resource under the Bundle envelope, and /contained under either; each with its verdict against in/sparql/."
     },
     {
       "@id": "in/sparql/reference-without-server-findings.rq",
@@ -814,6 +841,19 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "An AllergyIntolerance to penicillin G (RxNorm 7980), criticality high, id alg-pcn-1. Copied byte for byte from the conformance repository at 0ea48bb (the file last changed at a5ffbc6, 2026-08-03). Written by hand for that corpus, not captured from a server: no fetch date, server or query exists to record."
+    },
+    {
+      "@id": "fixtures/in/allergy-every-mapped-element.json",
+      "@type": "File",
+      "name": "AllergyIntolerance with an id and every element the adapter maps",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "1262",
+      "sha256": "28b972e265fad8b96c126bd5ff98a0b97d56c7d2562b339b24925701f0322a91",
+      "dateCreated": "2026-09-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "An AllergyIntolerance to codeine (RxNorm 2670), id alg-codeine-2, carrying every element in/sparql/allergy-intolerance.rq and in/sparql/record.rq read: meta, clinicalStatus, verificationStatus, type, category, criticality, code, patient, onsetDateTime, a reaction with a coded manifestation and a severity, and a note. Authored here on 2026-09-30, for a case the conformance corpus does not hold: a resource alone whose every mapped path the source accounting must account for."
     },
     {
       "@id": "fixtures/in/allergy-no-id-penicillin.json",
@@ -859,6 +899,19 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "A Condition of essential hypertension (SNOMED CT 38341003), onset 2021-04-02, id cond-htn-1. Copied byte for byte from the conformance repository at 0ea48bb (the file last changed at a5ffbc6, 2026-08-03). Written by hand for that corpus, not captured from a server: no fetch date, server or query exists to record."
+    },
+    {
+      "@id": "fixtures/in/condition-every-mapped-element.json",
+      "@type": "File",
+      "name": "Condition with an id and every element the adapter maps",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "1156",
+      "sha256": "44e8c852ea54fadfa80f9241624755bd3c398561f83ca6206cf0325753ddca1e",
+      "dateCreated": "2026-09-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Condition, acute bronchitis (SNOMED CT 10509002, ICD-10-CM J20.9), id cond-bronch-2, carrying every element in/sparql/condition.rq and in/sparql/record.rq read: clinicalStatus, verificationStatus, a coded category, code, subject, onsetDateTime, abatementDateTime and a note. Authored here on 2026-09-30, for a case the conformance corpus does not hold: a resource alone whose every mapped path the source accounting must account for."
     },
     {
       "@id": "fixtures/in/condition-with-id-meta-fetch-a.json",
@@ -964,6 +1017,19 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "An Immunization with seasonal influenza vaccine (CVX 141) on 2025-10-15, id imm-flu-2025. Copied byte for byte from the conformance repository at 0ea48bb (the file last changed at a5ffbc6, 2026-08-03). Written by hand for that corpus, not captured from a server: no fetch date, server or query exists to record."
+    },
+    {
+      "@id": "fixtures/in/immunization-every-mapped-element.json",
+      "@type": "File",
+      "name": "Immunization with an id and every element the adapter maps",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "655",
+      "sha256": "4a1ee11fd736a80197d5b86d6e008d5a01e2cb4be6b4d4fcc535606744555f88",
+      "dateCreated": "2026-09-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "An Immunization, Tdap (CVX 115), id imm-tdap-1, carrying every element in/sparql/immunization.rq and in/sparql/record.rq read: status, vaccineCode, patient, occurrenceDateTime, lotNumber, a site by its text, a route by its coding's display alone, doseQuantity and a note. Authored here on 2026-09-30, for a case the conformance corpus does not hold: a resource alone whose every mapped path the source accounting must account for."
     },
     {
       "@id": "fixtures/in/immunization-no-id-2024.json",
@@ -1297,6 +1363,38 @@
       "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
     },
     {
+      "@id": "fixtures/expected/allergy-every-mapped-element.ttl",
+      "@type": "File",
+      "name": "Expected graph for allergy-every-mapped-element",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2697",
+      "sha256": "bd9f0e0d6f0c46dd753bc5bd0f6ef6fbf0aef6a94f4fe49db480b4d59509d5ee",
+      "about": {
+        "@id": "fixtures/in/allergy-every-mapped-element.json"
+      },
+      "dateCreated": "2026-09-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/allergy-every-mapped-element.ttl",
+      "@type": "File",
+      "name": "Expected findings for allergy-every-mapped-element",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/allergy-every-mapped-element.json"
+      },
+      "dateCreated": "2026-09-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
       "@id": "fixtures/expected/bundle-repeated-condition-id.ttl",
       "@type": "File",
       "name": "Expected graph for bundle-repeated-condition-id",
@@ -1553,6 +1651,38 @@
       "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
     },
     {
+      "@id": "fixtures/expected/condition-every-mapped-element.ttl",
+      "@type": "File",
+      "name": "Expected graph for condition-every-mapped-element",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2517",
+      "sha256": "49e4a7a008a2e8e10c18405b4eaa18a03edaef42b99a4ade02d2dcf53b5de750",
+      "about": {
+        "@id": "fixtures/in/condition-every-mapped-element.json"
+      },
+      "dateCreated": "2026-09-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/condition-every-mapped-element.ttl",
+      "@type": "File",
+      "name": "Expected findings for condition-every-mapped-element",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/condition-every-mapped-element.json"
+      },
+      "dateCreated": "2026-09-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
       "@id": "fixtures/expected/condition-with-id-meta-fetch-a.ttl",
       "@type": "File",
       "name": "Expected graph for condition-with-id-meta-fetch-a",
@@ -1739,6 +1869,38 @@
         "@id": "fixtures/in/immunization-with-id.json"
       },
       "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/immunization-every-mapped-element.ttl",
+      "@type": "File",
+      "name": "Expected graph for immunization-every-mapped-element",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2409",
+      "sha256": "f968df640b338aeb69093219098d53f69c42e54aec0c07bdc0c65c40218b2bab",
+      "about": {
+        "@id": "fixtures/in/immunization-every-mapped-element.json"
+      },
+      "dateCreated": "2026-09-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/immunization-every-mapped-element.ttl",
+      "@type": "File",
+      "name": "Expected findings for immunization-every-mapped-element",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/immunization-every-mapped-element.json"
+      },
+      "dateCreated": "2026-09-30",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
