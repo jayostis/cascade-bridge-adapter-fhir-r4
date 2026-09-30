@@ -1,0 +1,11 @@
+PREFIX fx:  <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz: <http://sparql.xyz/facade-x/data/>
+
+# A FHIR JSON document is one resource, a Bundle among them. Nothing in it says
+# which FHIR version it is written in; docs/format.md, "Versions".
+
+ASK {
+  ?root a fx:root ;
+    xyz:resourceType ?type .
+  FILTER (REGEX(?type, "^[A-Z][A-Za-z]+$"))
+}

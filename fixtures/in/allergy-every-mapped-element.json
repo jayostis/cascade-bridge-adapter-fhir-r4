@@ -1,0 +1,64 @@
+{
+  "resourceType": "AllergyIntolerance",
+  "id": "alg-codeine-2",
+  "meta": {
+    "versionId": "2",
+    "lastUpdated": "2026-04-08T13:05:00Z"
+  },
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+        "code": "active"
+      }
+    ]
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+        "code": "confirmed"
+      }
+    ]
+  },
+  "type": "intolerance",
+  "category": [
+    "medication"
+  ],
+  "criticality": "low",
+  "code": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "2670",
+        "display": "Codeine"
+      }
+    ],
+    "text": "Codeine"
+  },
+  "patient": {
+    "reference": "Patient/pat-conformance-1"
+  },
+  "onsetDateTime": "2019-03-14",
+  "reaction": [
+    {
+      "manifestation": [
+        {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "422587007"
+            }
+          ],
+          "text": "Nausea"
+        }
+      ],
+      "severity": "mild"
+    }
+  ],
+  "note": [
+    {
+      "text": "Nausea within an hour of each dose."
+    }
+  ]
+}

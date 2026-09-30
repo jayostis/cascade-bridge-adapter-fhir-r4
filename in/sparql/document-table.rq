@@ -1,0 +1,23 @@
+PREFIX fx:     <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:    <http://sparql.xyz/facade-x/data/>
+PREFIX bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX fhirr4: <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+
+# One row per record: where it stands, and the id and fullUrl another record's
+# name or reference is decided by.
+
+CONSTRUCT {
+  [] fhirr4:heldAt ?selector ;
+    fhirr4:resourceType ?type ;
+    fhirr4:resourceId ?id ;
+    fhirr4:fullUrl ?fullUrl .
+}
+WHERE {
+  bridge:thisRecord bridge:selector ?selector .
+  ?root a fx:root .
+  { ?root xyz:resourceType ?type . BIND (?root AS ?resource) }
+  UNION
+  { ?root xyz:resource ?resource . ?resource xyz:resourceType ?type }
+  OPTIONAL { ?resource xyz:id ?id }
+  OPTIONAL { ?root xyz:fullUrl ?fullUrl }
+}

@@ -1,0 +1,60 @@
+@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
+@prefix sh:     <http://www.w3.org/ns/shacl#> .
+@prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix fhirr4: <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#> .
+
+fhirr4:gaps a skos:ConceptScheme ;
+  skos:prefLabel "FHIR R4 JSON gaps"@en .
+
+fhirr4:documentNotR4 a skos:Concept ;
+  skos:prefLabel "A document states a FHIR version other than R4, and nothing in it is carried."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:valueNotMapped ;
+  sh:resultSeverity sh:Warning .
+
+fhirr4:patientGender a skos:Concept ;
+  skos:prefLabel "A patient carries an administrative gender, and no Cascade predicate carries it."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:noPredicate .
+
+fhirr4:recordedDate a skos:Concept ;
+  skos:prefLabel "An allergy or a condition carries the date it was first recorded, and no Cascade predicate carries it."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:noPredicate .
+
+fhirr4:referenceDisplay a skos:Concept ;
+  skos:prefLabel "A reference carries a display string beside the resource it points at, and no Cascade predicate carries it."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:noPredicate .
+
+fhirr4:resourceTypeNotMapped a skos:Concept ;
+  skos:prefLabel "A resource is of a type this release of the adapter does not map, and nothing in it is carried."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:valueNotMapped ;
+  sh:resultSeverity sh:Warning .
+
+fhirr4:resourceIdRepeated a skos:Concept ;
+  skos:prefLabel "A resource shares its type and id, or its urn:uuid fullUrl, with another resource of its document, so neither names its record."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:idRepeated .
+
+fhirr4:narrative a skos:Concept ;
+  skos:prefLabel "A resource carries a human-readable narrative, and no Cascade predicate carries it."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:noPredicate .
+
+fhirr4:serverSource a skos:Concept ;
+  skos:prefLabel "A resource's metadata names the system its server received it from, and no Cascade predicate carries it."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:noPredicate .
+
+fhirr4:procedureReason a skos:Concept ;
+  skos:prefLabel "A procedure references the resource it was performed for, and no Cascade predicate carries the link."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:noPredicate .
+
+fhirr4:referenceWithoutServer a skos:Concept ;
+  skos:prefLabel "A resource references its patient relative to a server, in a document from no known server, so the reference names no record and nothing carries it."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:carriedWithLoss ;
+  sh:resultSeverity sh:Warning .

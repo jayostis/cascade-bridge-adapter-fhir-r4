@@ -1,0 +1,66 @@
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov:     <http://www.w3.org/ns/prov#> .
+@prefix pav:      <http://purl.org/pav/> .
+@prefix bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rec:      <https://ns.cascadeprotocol.org/records/v1-draft#> .
+@prefix health:   <https://ns.cascadeprotocol.org/health/v1#> .
+@prefix clinical: <https://ns.cascadeprotocol.org/clinical/v1#> .
+@prefix cascade:  <https://ns.cascadeprotocol.org/core/v1#> .
+@prefix foaf:     <http://xmlns.com/foaf/0.1/> .
+
+<urn:uuid:81c94479-36b7-8500-bf9d-93c60ef79c88>
+  a health:ConditionRecord ;
+  health:sourceRecordId "cond-htn-1" .
+
+<ni:///sha-256;uqV6RYlPjV_GefVm3vMObuiT-G4tZRRZoNg0301cDn8>
+  prov:specializationOf <urn:uuid:81c94479-36b7-8500-bf9d-93c60ef79c88> ;
+  health:conditionName "Essential hypertension" ;
+  health:onsetDate "2021-04-02"^^xsd:date ;
+  health:snomedCode <http://snomed.info/sct/38341003> ;
+  health:status "active" ;
+  rec:patient <urn:uuid:24c23e99-ff68-841f-a7a4-ebe3bd997ada> .
+
+[] bridge:arrivedAs <ni:///sha-256;uqV6RYlPjV_GefVm3vMObuiT-G4tZRRZoNg0301cDn8> ;
+  bridge:selector "/entry/0" ;
+  prov:wasDerivedFrom <ni:///sha-256;O6EehqXpfB2Vxi7Nvu71Wz2bor4w07UnQVZQgb1hRns> ;
+  prov:wasGeneratedBy _:import .
+
+<urn:uuid:906892ac-4cf0-833e-bfd8-843cb2b9ef6b>
+  a health:ConditionRecord ;
+  health:sourceRecordId "cond-htn-1" .
+
+<ni:///sha-256;qlPXTx_X1xX2vL744DLg6NgEAZzPvvK6Xbb5TsfkZek>
+  prov:specializationOf <urn:uuid:906892ac-4cf0-833e-bfd8-843cb2b9ef6b> ;
+  clinical:abatementDate "2025-11-20"^^xsd:date ;
+  health:conditionName "Essential hypertension" ;
+  health:onsetDate "2021-04-02"^^xsd:date ;
+  health:snomedCode <http://snomed.info/sct/38341003> ;
+  health:status "resolved" ;
+  rec:patient <urn:uuid:24c23e99-ff68-841f-a7a4-ebe3bd997ada> .
+
+[] bridge:arrivedAs <ni:///sha-256;qlPXTx_X1xX2vL744DLg6NgEAZzPvvK6Xbb5TsfkZek> ;
+  bridge:selector "/entry/1" ;
+  prov:wasDerivedFrom <ni:///sha-256;O6EehqXpfB2Vxi7Nvu71Wz2bor4w07UnQVZQgb1hRns> ;
+  prov:wasGeneratedBy _:import .
+
+<ni:///sha-256;O6EehqXpfB2Vxi7Nvu71Wz2bor4w07UnQVZQgb1hRns>
+  a prov:Entity ;
+  bridge:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
+  pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
+  prov:qualifiedAttribution
+    [ prov:agent [ rdfs:label "Meridian Health System" ] ; prov:hadRole rec:author ] ,
+    [ prov:agent [ rdfs:label "Apple Health" ] ; prov:hadRole rec:transmitter ] ;
+  bridge:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
+  bridge:authenticatedAsProxy false ;
+  bridge:sourceFormatVersion "4.0.1" .
+
+_:import
+  a prov:Activity ;
+  prov:used <ni:///sha-256;O6EehqXpfB2Vxi7Nvu71Wz2bor4w07UnQVZQgb1hRns> ;
+  rdfs:label "Apple Health export" ;
+  prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime ;
+  prov:qualifiedAssociation [
+    prov:hadPlan [ a prov:Plan ; rdfs:label "fhir-r4" ; pav:version "0.1.0" ] ;
+    prov:agent [ ]
+  ] .

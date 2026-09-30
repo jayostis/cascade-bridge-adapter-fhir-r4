@@ -1,0 +1,52 @@
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX sh:      <http://www.w3.org/ns/shacl#>
+PREFIX oa:      <http://www.w3.org/ns/oa#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX fx:      <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:     <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:  <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+
+CONSTRUCT {
+  [] a oa:Annotation ;
+    oa:hasTarget [
+      oa:hasSource bridge:thisRecord ;
+      oa:hasSelector [
+        a oa:FragmentSelector ;
+        dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+        rdf:value ?pointer
+      ]
+    ] ;
+    oa:hasBody fhirr4:resourceIdRepeated ;
+    oa:motivatedBy oa:classifying ;
+    sh:value ?value .
+}
+WHERE {
+  FILTER NOT EXISTS {
+    bridge:thisDocument bridge:sourceFormatVersion ?stated .
+    FILTER (!STRSTARTS(?stated, "4.0."))
+  }
+  bridge:thisRecord bridge:selector ?recordSelector .
+  ?root a fx:root .
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  FILTER (?topType IN ("AllergyIntolerance", "Condition", "Immunization", "Procedure", "Patient"))
+  { ?top xyz:id ?value . BIND ("id" AS ?held) }
+  UNION
+  { ?root xyz:fullUrl ?value . FILTER (STRSTARTS(?value, "urn:uuid:")) BIND ("fullUrl" AS ?held) }
+  FILTER (IF(?held = "id",
+             EXISTS {
+               ?sameId fhirr4:resourceType ?topType ;
+                 fhirr4:resourceId ?value ;
+                 fhirr4:heldAt ?sameIdSelector .
+               FILTER (?sameIdSelector != ?recordSelector)
+             },
+             EXISTS {
+               ?sameUrl fhirr4:fullUrl ?value ;
+                 fhirr4:heldAt ?sameUrlSelector .
+               FILTER (?sameUrlSelector != ?recordSelector)
+             }))
+  BIND (IF(?held = "id", CONCAT(?topStep, "/id"), "/fullUrl") AS ?pointer)
+}
