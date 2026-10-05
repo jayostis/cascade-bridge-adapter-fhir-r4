@@ -1,0 +1,59 @@
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov:     <http://www.w3.org/ns/prov#> .
+@prefix pav:      <http://purl.org/pav/> .
+@prefix bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rec:      <https://ns.cascadeprotocol.org/records/v1-draft#> .
+@prefix health:   <https://ns.cascadeprotocol.org/health/v1#> .
+@prefix clinical: <https://ns.cascadeprotocol.org/clinical/v1#> .
+@prefix cascade:  <https://ns.cascadeprotocol.org/core/v1#> .
+@prefix foaf:     <http://xmlns.com/foaf/0.1/> .
+
+<urn:uuid:a71f6337-42ec-802b-b7f4-cac47e59a3c7>
+  a health:AllergyRecord ;
+  health:sourceRecordId "alg-codeine-2" ;
+  rec:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/AllergyIntolerance/alg-codeine-2> .
+
+<ni:///sha-256;R7_QZH8rn3mKjAOYV8pfe0E3TtjaleabstUuORwurgI>
+  prov:specializationOf <urn:uuid:a71f6337-42ec-802b-b7f4-cac47e59a3c7> ;
+  clinical:allergyType "intolerance" ;
+  clinical:criticality "low" ;
+  clinical:status "active" ;
+  clinical:verificationStatus "confirmed" ;
+  health:allergen "Codeine" ;
+  health:allergenCode <http://www.nlm.nih.gov/research/umls/rxnorm/2670> ;
+  health:allergyCategory "medication" ;
+  health:allergySeverity "mild" ;
+  health:manifestationCode <http://snomed.info/sct/422587007> ;
+  health:notes "Nausea within an hour of each dose." ;
+  health:onsetDate "2019-03-14"^^xsd:date ;
+  health:reaction "Nausea" ;
+  rec:patient <urn:uuid:24c23e99-ff68-841f-a7a4-ebe3bd997ada> .
+
+[] bridge:arrivedAs <ni:///sha-256;R7_QZH8rn3mKjAOYV8pfe0E3TtjaleabstUuORwurgI> ;
+  pav:version "2" ;
+  pav:lastUpdateOn "2026-04-08T13:05:00Z"^^xsd:dateTime ;
+  bridge:selector "" ;
+  prov:wasDerivedFrom <ni:///sha-256;KLly4mX62LlsEmvV_5iguX1Wx9JWKzObJJJXAfAyKpE> ;
+  prov:wasGeneratedBy _:import .
+
+<ni:///sha-256;KLly4mX62LlsEmvV_5iguX1Wx9JWKzObJJJXAfAyKpE>
+  a prov:Entity ;
+  bridge:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
+  pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
+  prov:qualifiedAttribution
+    [ prov:agent [ rdfs:label "Meridian Health System" ] ; prov:hadRole rec:author ] ,
+    [ prov:agent [ rdfs:label "Apple Health" ] ; prov:hadRole rec:transmitter ] ;
+  bridge:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
+  bridge:authenticatedAsProxy false ;
+  bridge:sourceFormatVersion "4.0.1" .
+
+_:import
+  a prov:Activity ;
+  prov:used <ni:///sha-256;KLly4mX62LlsEmvV_5iguX1Wx9JWKzObJJJXAfAyKpE> ;
+  rdfs:label "Apple Health export" ;
+  prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime ;
+  prov:qualifiedAssociation [
+    prov:hadPlan [ a prov:Plan ; rdfs:label "fhir-r4" ; pav:version "0.1.0" ] ;
+    prov:agent [ ]
+  ] .

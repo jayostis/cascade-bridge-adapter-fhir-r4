@@ -1,0 +1,61 @@
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov:     <http://www.w3.org/ns/prov#> .
+@prefix pav:      <http://purl.org/pav/> .
+@prefix bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rec:      <https://ns.cascadeprotocol.org/records/v1-draft#> .
+@prefix health:   <https://ns.cascadeprotocol.org/health/v1#> .
+@prefix clinical: <https://ns.cascadeprotocol.org/clinical/v1#> .
+@prefix cascade:  <https://ns.cascadeprotocol.org/core/v1#> .
+@prefix foaf:     <http://xmlns.com/foaf/0.1/> .
+
+<urn:uuid:0e59de17-243e-8943-aae3-6ff660634435>
+  a health:AllergyRecord .
+
+<ni:///sha-256;iFN3-bofzYzgTGFMp__pcZsz0ox4bqsrjmHO47R6zCM>
+  prov:specializationOf <urn:uuid:0e59de17-243e-8943-aae3-6ff660634435> ;
+  clinical:criticality "high" ;
+  health:allergen "Penicillin G" ;
+  health:allergenCode <http://www.nlm.nih.gov/research/umls/rxnorm/7980> ;
+  rec:patient <urn:uuid:24c23e99-ff68-841f-a7a4-ebe3bd997ada> .
+
+[] bridge:arrivedAs <ni:///sha-256;iFN3-bofzYzgTGFMp__pcZsz0ox4bqsrjmHO47R6zCM> ;
+  bridge:selector "/entry/0" ;
+  prov:wasDerivedFrom <ni:///sha-256;ehPcqZ0yJ6OvkkFWJmFx3CwAJ46c7CHrLP9c9h3xXqA> ;
+  prov:wasGeneratedBy _:import .
+
+<urn:uuid:ccf6936c-7fe9-8df4-ac32-f5f29d426f23>
+  a health:AllergyRecord .
+
+<ni:///sha-256;Mi4BBZk7U81NErEzkugRBp0ht88DZ7tkT9J4bAfOCXw>
+  prov:specializationOf <urn:uuid:ccf6936c-7fe9-8df4-ac32-f5f29d426f23> ;
+  clinical:criticality "high" ;
+  health:allergen "Penicillin G" ;
+  health:allergenCode <http://www.nlm.nih.gov/research/umls/rxnorm/7980> ;
+  rec:patient <urn:uuid:24c23e99-ff68-841f-a7a4-ebe3bd997ada> .
+
+[] bridge:arrivedAs <ni:///sha-256;Mi4BBZk7U81NErEzkugRBp0ht88DZ7tkT9J4bAfOCXw> ;
+  bridge:selector "/entry/1" ;
+  prov:wasDerivedFrom <ni:///sha-256;ehPcqZ0yJ6OvkkFWJmFx3CwAJ46c7CHrLP9c9h3xXqA> ;
+  prov:wasGeneratedBy _:import .
+
+<ni:///sha-256;ehPcqZ0yJ6OvkkFWJmFx3CwAJ46c7CHrLP9c9h3xXqA>
+  a prov:Entity ;
+  bridge:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
+  pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
+  prov:qualifiedAttribution
+    [ prov:agent [ rdfs:label "Meridian Health System" ] ; prov:hadRole rec:author ] ,
+    [ prov:agent [ rdfs:label "Apple Health" ] ; prov:hadRole rec:transmitter ] ;
+  bridge:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
+  bridge:authenticatedAsProxy false ;
+  bridge:sourceFormatVersion "4.0.1" .
+
+_:import
+  a prov:Activity ;
+  prov:used <ni:///sha-256;ehPcqZ0yJ6OvkkFWJmFx3CwAJ46c7CHrLP9c9h3xXqA> ;
+  rdfs:label "Apple Health export" ;
+  prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime ;
+  prov:qualifiedAssociation [
+    prov:hadPlan [ a prov:Plan ; rdfs:label "fhir-r4" ; pav:version "0.1.0" ] ;
+    prov:agent [ ]
+  ] .

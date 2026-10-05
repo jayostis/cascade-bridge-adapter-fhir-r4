@@ -1,0 +1,39 @@
+{
+  "resourceType": "Immunization",
+  "id": "imm-tdap-1",
+  "status": "completed",
+  "vaccineCode": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/sid/cvx",
+        "code": "115",
+        "display": "Tdap"
+      }
+    ],
+    "text": "Tdap"
+  },
+  "patient": {
+    "reference": "Patient/pat-conformance-1"
+  },
+  "occurrenceDateTime": "2024-05-06",
+  "lotNumber": "TD4471B",
+  "site": {
+    "text": "Left deltoid"
+  },
+  "route": {
+    "coding": [
+      {
+        "display": "Intramuscular"
+      }
+    ]
+  },
+  "doseQuantity": {
+    "value": 0.5,
+    "unit": "mL"
+  },
+  "note": [
+    {
+      "text": "No reaction observed."
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "resourceType": "Procedure",
+  "id": "proc-echo-1",
+  "contained": [
+    {
+      "resourceType": "Condition",
+      "id": "reason",
+      "code": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "48867003",
+            "display": "Bradycardia"
+          }
+        ],
+        "text": "Bradycardia"
+      },
+      "subject": {
+        "reference": "Patient/pat-conformance-1"
+      }
+    }
+  ],
+  "status": "completed",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "40701008",
+        "display": "Echocardiography"
+      }
+    ],
+    "text": "Echocardiography"
+  },
+  "subject": {
+    "reference": "Patient/pat-conformance-1"
+  },
+  "performedDateTime": "2025-06-11",
+  "reasonReference": [
+    {
+      "reference": "#reason"
+    }
+  ]
+}
