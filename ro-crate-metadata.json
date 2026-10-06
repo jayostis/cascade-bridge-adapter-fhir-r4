@@ -4,7 +4,7 @@
     {
       "bridge": "https://ns.cascadeprotocol.org/bridge/v1-draft#",
       "bridge:requiresProfile": "bridge:requiresProfile",
-      "bridge:cascadeVocabularyPin": "bridge:cascadeVocabularyPin",
+      "bridge:cascadeVocabularyRepository": "bridge:cascadeVocabularyRepository",
       "bridge:vocabulary": "bridge:vocabulary",
       "bridge:vocabularyFile": "bridge:vocabularyFile",
       "bridge:sourceMediaType": "bridge:sourceMediaType",
@@ -42,7 +42,7 @@
       "identifier": "fhir-r4",
       "name": "FHIR R4 JSON",
       "version": "0.1.0",
-      "description": "The Cascade Bridge Adapter for FHIR R4 JSON: the package of data a Cascade Bridge runs to turn FHIR R4 resources, alone or as the entries of a Bundle, into Cascade records. Import-only. This crate is the adapter's manifest: a Bridge reads the root entity first, for the format id, the source media type, the source schema, the two envelopes, the detect rule, the document table query, the mappings and the findings queries, the profile the Bridge must offer, the vocabulary pin and the paths, at it, of the ontology and shapes files the adapter is read against, the gap scheme every finding takes its body from, each gap declaring the sh:resultSeverity its findings carry where that is not sh:Info, the source accounting, and the test manifest. The data entities carry provenance for every committed file, and a sha256 computed locally over the committed bytes of each digested one. Twenty inputs are copied byte for byte from the conformance repository's fixtures/clinical-fhir at the commit isBasedOn names; the others are authored here, and each says so.",
+      "description": "The Cascade Bridge Adapter for FHIR R4 JSON: the package of data a Cascade Bridge runs to turn FHIR R4 resources, alone or as the entries of a Bundle, into Cascade records. Import-only. This crate is the adapter's manifest: a Bridge reads the root entity first, for the format id, the source media type, the source schema, the two envelopes, the detect rule, the document table query, the mappings and the findings queries, the profile the Bridge must offer, the vocabulary repository and the paths, in it, of the ontology and shapes files the adapter is read against, the gap scheme every finding takes its body from, each gap declaring the sh:resultSeverity its findings carry where that is not sh:Info, the source accounting, and the test manifest. The data entities carry provenance for every committed file, and a sha256 computed locally over the committed bytes of each digested one. Twenty inputs are copied byte for byte from the conformance repository's fixtures/clinical-fhir at the commit isBasedOn names; the others are authored here, and each says so.",
       "datePublished": "2026-09-27",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -58,8 +58,8 @@
           "@id": "bridge:sparql-1.1"
         }
       ],
-      "bridge:cascadeVocabularyPin": {
-        "@id": "https://github.com/jayostis/cascade-vocabulary/commit/5ea5ff607d4557ff6def9c2adb4cfa572aa60003"
+      "bridge:cascadeVocabularyRepository": {
+        "@id": "https://github.com/jayostis/cascade-vocabulary"
       },
       "bridge:vocabulary": [
         {
@@ -328,7 +328,7 @@
           "@id": "https://hl7.org/fhir/R4/fhir.schema.json"
         },
         {
-          "@id": "https://github.com/jayostis/cascade-vocabulary/commit/5ea5ff607d4557ff6def9c2adb4cfa572aa60003"
+          "@id": "https://github.com/jayostis/cascade-vocabulary"
         },
         {
           "@id": "docs/format.md"
@@ -566,44 +566,40 @@
       "description": "The RO-Crate 1.2 Profile Crate a conforming adapter package names in conformsTo; the Profile Crate describing it is adapter/profile/ro-crate-metadata.json in cascade-bridge-spec."
     },
     {
-      "@id": "https://github.com/jayostis/cascade-vocabulary/commit/5ea5ff607d4557ff6def9c2adb4cfa572aa60003",
+      "@id": "https://github.com/jayostis/cascade-vocabulary",
       "@type": [
         "SoftwareSourceCode",
         "File"
       ],
-      "name": "cascade-vocabulary at 5ea5ff6",
-      "codeRepository": {
-        "@id": "https://github.com/jayostis/cascade-vocabulary"
-      },
-      "version": "5ea5ff607d4557ff6def9c2adb4cfa572aa60003",
+      "name": "cascade-vocabulary",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The cascade-vocabulary revision the adapter's vocabularies are pinned to; the paths in bridge:vocabularyFile are read at it. A web-based data entity, referenced and not committed: the RO-Crate 1.2 validator reads every SoftwareSourceCode as a script that must be a File in hasPart."
+      "description": "The repository the adapter's vocabularies are read from, at the version a run picks; the paths in bridge:vocabularyFile are read there. A web-based data entity, referenced and not committed: the RO-Crate 1.2 validator reads every SoftwareSourceCode as a script that must be a File in hasPart."
     },
     {
       "@id": "https://ns.cascadeprotocol.org/core/v1#",
       "@type": "DefinedTermSet",
       "name": "Cascade core vocabulary",
-      "description": "One of the vocabularies the adapter writes, as cascade-vocabulary declares it at the pin."
+      "description": "One of the vocabularies the adapter writes, as cascade-vocabulary declares it."
     },
     {
       "@id": "https://ns.cascadeprotocol.org/health/v1#",
       "@type": "DefinedTermSet",
       "name": "Cascade health vocabulary",
-      "description": "One of the vocabularies the adapter writes, as cascade-vocabulary declares it at the pin."
+      "description": "One of the vocabularies the adapter writes, as cascade-vocabulary declares it."
     },
     {
       "@id": "https://ns.cascadeprotocol.org/clinical/v1#",
       "@type": "DefinedTermSet",
       "name": "Cascade clinical vocabulary",
-      "description": "One of the vocabularies the adapter writes, as cascade-vocabulary declares it at the pin."
+      "description": "One of the vocabularies the adapter writes, as cascade-vocabulary declares it."
     },
     {
       "@id": "https://ns.cascadeprotocol.org/records/v1-draft#",
       "@type": "DefinedTermSet",
       "name": "Cascade records vocabulary",
-      "description": "One of the vocabularies the adapter writes, as cascade-vocabulary declares it at the pin."
+      "description": "One of the vocabularies the adapter writes, as cascade-vocabulary declares it."
     },
     {
       "@id": "schema/fhir.schema.json",
