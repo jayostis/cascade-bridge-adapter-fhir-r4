@@ -24,8 +24,8 @@ the layout the README's. Do not re-derive them.
 - **No copy of the specification.** The `bridge:` vocabulary and its SHACL shapes
   live in `cascade-bridge-spec`. To change one, change it there.
 - **No Cascade terms are minted here.** The terms this adapter writes are
-  [cascade-vocabulary](https://github.com/jayostis/cascade-vocabulary)'s, at the
-  commit the crate's `bridge:cascadeVocabularyPin` names. A value with no term
+  [cascade-vocabulary](https://github.com/jayostis/cascade-vocabulary)'s, the
+  repository the crate's `bridge:cascadeVocabularyRepository` names. A value with no term
   there goes in the adapter's own namespace (`vocab/`) or is reported as a
   finding; a missing term is added in that repository.
 
