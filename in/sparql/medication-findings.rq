@@ -8,9 +8,13 @@ PREFIX xyz:     <http://sparql.xyz/facade-x/data/>
 PREFIX bridge:  <https://ns.cascadeprotocol.org/bridge/v1-draft#>
 PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 
-# A medication's reference to a Medication resolves as medication.rq resolves
-# it, and one that does not is reported. A note is carried for the other kinds
-# at the same path, so the source accounting cannot report a medication's.
+# What medication.rq leaves behind at a path the source accounting carries for
+# another kind, or carries where it holds one value: a reference that resolves
+# to no one Medication, a note, every code but the one RxNorm code carried,
+# whether the medication's own or the referenced Medication's, and every dosage
+# text but the first. A reference resolves as medication-table.rq says, and a
+# Medication's codes are reported only where a reference resolves to it:
+# resource-type-findings.rq reports one nothing resolves to.
 
 CONSTRUCT {
   [] a oa:Annotation ;
@@ -45,14 +49,14 @@ WHERE {
     BIND (CONCAT("/contained/", STR(xsd:integer(STRAFTER(STR(?containedSlot), "#_")) - 1)) AS ?containedStep)
   }
   BIND (COALESCE(?contained, ?top) AS ?resource)
+  BIND (CONCAT(?recordSelector, ?topStep, ?containedStep) AS ?resourcePointer)
   ?resource xyz:resourceType ?type .
-  FILTER (?type IN ("MedicationRequest", "MedicationStatement"))
 
   {
     ?resource xyz:medicationReference ?reference .
     ?reference xyz:reference ?value .
     BIND ("/medicationReference/reference" AS ?step)
-    BIND (fhirr4:medicationOutsideDocument AS ?gap)
+    BIND (fhirr4:medicationReferenceUnresolved AS ?gap)
   }
   UNION
   {
@@ -60,29 +64,67 @@ WHERE {
     BIND (CONCAT("/note/", STR(xsd:integer(STRAFTER(STR(?noteSlot), "#_")) - 1), "/text") AS ?step)
     BIND (fhirr4:medicationNote AS ?gap)
   }
-  FILTER (?gap != fhirr4:medicationOutsideDocument || NOT EXISTS {
-    {
-      ?held fhirr4:medicationAt ?heldPointer ;
-        fhirr4:medicationId ?heldId .
-      FILTER (?value = CONCAT("#", ?heldId)
-              && STRSTARTS(?heldPointer, CONCAT(?recordSelector, ?topStep, "/contained/")))
+  UNION
+  {
+    ?resource ?codeMember ?concept .
+    VALUES (?codeMember ?codeStep) {
+      (xyz:medicationCodeableConcept "/medicationCodeableConcept")
+      (xyz:code "/code")
     }
-    UNION
-    {
-      ?entry fhirr4:heldAt ?entrySelector ;
-        fhirr4:resourceType "Medication" .
-      OPTIONAL { ?entry fhirr4:resourceId ?entryId }
-      OPTIONAL { ?entry fhirr4:fullUrl ?entryUrl }
-      FILTER (?value = ?entryUrl || ?value = CONCAT("Medication/", ?entryId))
-      FILTER NOT EXISTS {
-        ?other fhirr4:heldAt ?otherSelector ;
-          fhirr4:resourceType "Medication" .
-        OPTIONAL { ?other fhirr4:resourceId ?otherId }
-        OPTIONAL { ?other fhirr4:fullUrl ?otherUrl }
-        FILTER (?otherSelector != ?entrySelector
-                && (?otherUrl = ?value || CONCAT("Medication/", ?otherId) = ?value))
-      }
+    ?concept xyz:coding ?codings . ?codings ?codingSlot ?coding .
+    ?coding xyz:code ?value .
+    OPTIONAL { ?coding xyz:system ?system }
+    FILTER (!COALESCE(?system = "http://www.nlm.nih.gov/research/umls/rxnorm", false) || EXISTS {
+      ?codings ?earlierSlot ?earlier .
+      ?earlier xyz:system "http://www.nlm.nih.gov/research/umls/rxnorm" ;
+        xyz:code ?earlierCode .
+      FILTER (xsd:integer(STRAFTER(STR(?earlierSlot), "#_")) < xsd:integer(STRAFTER(STR(?codingSlot), "#_")))
+    })
+    BIND (CONCAT(?codeStep, "/coding/", STR(xsd:integer(STRAFTER(STR(?codingSlot), "#_")) - 1), "/code") AS ?step)
+    BIND (fhirr4:medicationCode AS ?gap)
+  }
+  UNION
+  {
+    ?resource ?dosageMember ?dosages .
+    VALUES (?dosageMember ?dosageStep) {
+      (xyz:dosage "/dosage/")
+      (xyz:dosageInstruction "/dosageInstruction/")
     }
-  })
+    ?dosages ?dosageSlot ?dosage . ?dosage xyz:text ?value .
+    FILTER (?dosageSlot != rdf:_1)
+    BIND (CONCAT(?dosageStep, STR(xsd:integer(STRAFTER(STR(?dosageSlot), "#_")) - 1), "/text") AS ?step)
+    BIND (fhirr4:medicationDosageRepeated AS ?gap)
+  }
+  FILTER (IF(?type = "Medication",
+             STRSTARTS(?step, "/code/") && EXISTS {
+               ?resolving fhirr4:medicationReferenceFrom ?from ;
+                 fhirr4:medicationReferenceTo ?key ;
+                 fhirr4:medicationScope ?scope .
+               ?held fhirr4:medicationAt ?resourcePointer ;
+                 fhirr4:medicationKey ?key ;
+                 fhirr4:medicationScope ?scope .
+               FILTER NOT EXISTS {
+                 ?rival fhirr4:medicationAt ?rivalPointer ;
+                   fhirr4:medicationKey ?key ;
+                   fhirr4:medicationScope ?scope .
+                 FILTER (?rivalPointer != ?resourcePointer)
+               }
+             },
+             ?type IN ("MedicationRequest", "MedicationStatement")
+             && !STRSTARTS(?step, "/code/")
+             && (?gap != fhirr4:medicationReferenceUnresolved || NOT EXISTS {
+               ?resolving fhirr4:medicationReferenceFrom ?resourcePointer ;
+                 fhirr4:medicationReferenceTo ?key ;
+                 fhirr4:medicationScope ?scope .
+               ?held fhirr4:medicationAt ?medicationPointer ;
+                 fhirr4:medicationKey ?key ;
+                 fhirr4:medicationScope ?scope .
+               FILTER NOT EXISTS {
+                 ?rival fhirr4:medicationAt ?rivalPointer ;
+                   fhirr4:medicationKey ?key ;
+                   fhirr4:medicationScope ?scope .
+                 FILTER (?rivalPointer != ?medicationPointer)
+               }
+             })))
   BIND (CONCAT(?topStep, ?containedStep, ?step) AS ?pointer)
 }

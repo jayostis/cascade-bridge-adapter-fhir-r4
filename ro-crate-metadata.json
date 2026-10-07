@@ -162,6 +162,9 @@
         },
         {
           "@id": "in/sparql/medication-findings.rq"
+        },
+        {
+          "@id": "in/sparql/lab-result-findings.rq"
         }
       ],
       "bridge:table": [
@@ -238,6 +241,9 @@
         },
         {
           "@id": "in/sparql/medication-findings.rq"
+        },
+        {
+          "@id": "in/sparql/lab-result-findings.rq"
         },
         {
           "@id": "vocab/fhir-accounting.ttl"
@@ -379,6 +385,18 @@
         },
         {
           "@id": "fixtures/in/bundle-medication-request-and-medication.json"
+        },
+        {
+          "@id": "fixtures/in/lab-troponin-below-detection.json"
+        },
+        {
+          "@id": "fixtures/in/medication-request-two-rxnorm-codes.json"
+        },
+        {
+          "@id": "fixtures/in/bundle-medication-versioned-reference.json"
+        },
+        {
+          "@id": "fixtures/in/bundle-medication-repeated-id.json"
         },
         {
           "@id": "fixtures/manifest.ttl"
@@ -663,6 +681,30 @@
           "@id": "fixtures/findings/bundle-medication-request-and-medication.ttl"
         },
         {
+          "@id": "fixtures/expected/lab-troponin-below-detection.ttl"
+        },
+        {
+          "@id": "fixtures/findings/lab-troponin-below-detection.ttl"
+        },
+        {
+          "@id": "fixtures/expected/medication-request-two-rxnorm-codes.ttl"
+        },
+        {
+          "@id": "fixtures/findings/medication-request-two-rxnorm-codes.ttl"
+        },
+        {
+          "@id": "fixtures/expected/bundle-medication-versioned-reference.ttl"
+        },
+        {
+          "@id": "fixtures/findings/bundle-medication-versioned-reference.ttl"
+        },
+        {
+          "@id": "fixtures/expected/bundle-medication-repeated-id.ttl"
+        },
+        {
+          "@id": "fixtures/findings/bundle-medication-repeated-id.ttl"
+        },
+        {
           "@id": "fixtures/expected/patient-no-id.ttl"
         },
         {
@@ -864,14 +906,14 @@
     {
       "@id": "in/sparql/medication-table.rq",
       "@type": "File",
-      "name": "Document table: Medications and the references to them",
+      "name": "Document table: Medications, references to them, and their keys",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "2857",
-      "sha256": "84f56a81da94cd1ecd1d3a5e98e7fdf83ba12ea596a0ed4b27be3ebddba9facb",
+      "contentSize": "4341",
+      "sha256": "bb1bb9a9ed9bad7733fa012cedc297f12acc41bc65ad0316be7dd397583ce48a",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "A bridge:documentTableQuery: a row for each Medication of a record, wherever it stands, with its id, its name and its RxNorm codes, and a row for each medication's reference to one, so that medication.rq reads a drug a reference names from the record holding it, and resource-type-findings.rq leaves out a Medication something references."
+      "description": "A bridge:documentTableQuery: a row for each key a Medication of a record can be referenced by, within the scope it holds there, with the Medication's name and first RxNorm code, and a row for each medication's reference, the key it names and that key's scope, a version stripped; medication.rq, medication-findings.rq and resource-type-findings.rq each resolve a reference by joining them, to the one Medication holding its key in its scope."
     },
     {
       "@id": "in/sparql/record.rq",
@@ -950,32 +992,32 @@
       "@type": "File",
       "name": "Mapping: a MedicationRequest's or MedicationStatement's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "6449",
-      "sha256": "33081b5649c017dc21fef2fa738b1835a6f884a8df35214b6f1cc826045d4edb",
+      "contentSize": "5897",
+      "sha256": "9c29d10fce1a62a0f7ca964f02ef4dec85ba64597b4e4e090505757f89a4fa19",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "What a medication says, written on the version record.rq names: its intent, prescribed for a request and reportedUse for a statement; the drug's name and RxNorm codes, from its concept or from the Medication its reference resolves to in the document, else the reference's display; status, start and end dates, and the first dosage's text."
+      "description": "What a medication says, written on the version record.rq names: its intent, prescribed for a request and reportedUse for a statement; the drug's name and RxNorm code, from its concept or from the Medication its reference resolves to in the document, else the reference's display; status, start and end dates, and the first dosage's text."
     },
     {
       "@id": "in/sparql/lab-result.rq",
       "@type": "File",
       "name": "Mapping: a lab result's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "6035",
-      "sha256": "e00cd1211d3ad7d2071082ac0c391d0e6226807b574db304f0ecde967f03f4de",
+      "contentSize": "6783",
+      "sha256": "8a4531b5efb88b4ff159364c94ea30af83a7ac5a5f09325e388a92cddab1b979",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "What a lab result says, written on the version record.rq names: test name and LOINC codes, value as the source wrote it and its unit, reference range, interpretation, performed time and status."
+      "description": "What a lab result says, written on the version record.rq names: test name and LOINC codes, value as the source wrote it with its comparator and its unit, the first reference range, the first interpretation, performed time, notes and status."
     },
     {
       "@id": "in/sparql/resource-type-findings.rq",
       "@type": "File",
       "name": "Findings: a resource of a type this release does not map",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "2572",
-      "sha256": "1466fec5c7aeb6c0b501d94a5858cce02fe47252f9b812c7f26d251450798c26",
+      "contentSize": "2754",
+      "sha256": "7ed25d569ad936b08e4792315a038d8316de3b443bdb16db7cf28fd2eddb4e6c",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1044,22 +1086,34 @@
     {
       "@id": "in/sparql/medication-findings.rq",
       "@type": "File",
-      "name": "Findings: a medication's unresolved reference and its note",
+      "name": "Findings: what a medication's mapping leaves behind",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "3376",
-      "sha256": "ce20f85bad8622b8006d926a5ddcd0f69aa2523826d6b6f88bb548558b7e1c0b",
+      "contentSize": "5512",
+      "sha256": "0047d36af55488f1ee591e50b271e23376a5d4dcdd4d7d934631c70488352e3e",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "Reports fhirr4:medicationOutsideDocument for a medication's reference to a Medication its document does not hold, and fhirr4:medicationNote for a medication's note, which the source accounting carries at the same path for the other kinds."
+      "description": "Reports fhirr4:medicationReferenceUnresolved for a medication's reference that resolves to no one Medication of its document, fhirr4:medicationNote for a medication's note, fhirr4:medicationCode for each code but the one RxNorm code carried, of a medication or of a Medication a reference resolves to, and fhirr4:medicationDosageRepeated for each dosage text after the first, at paths the source accounting carries for the other kinds or where they hold one value."
+    },
+    {
+      "@id": "in/sparql/lab-result-findings.rq",
+      "@type": "File",
+      "name": "Findings: what a lab result's mapping leaves behind",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "3997",
+      "sha256": "de477f9e157678a4feb24e18be8c15bb300859361755acb9e555fd042aeacab4",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "Reports, for an Observation lab-result-table.rq calls a lab result, fhirr4:labResultPeriodEnd for the end of its effectivePeriod, fhirr4:labResultCode for each code outside LOINC, and fhirr4:labResultRangeRepeated and fhirr4:labResultInterpretationRepeated for each value of a reference range or an interpretation after the first, at paths the source accounting carries for the other kinds or where they hold one value."
     },
     {
       "@id": "vocab/fhir-accounting.ttl",
       "@type": "File",
       "name": "FHIR R4 JSON source accounting",
       "encodingFormat": "text/turtle",
-      "contentSize": "92217",
-      "sha256": "2c4e545e6d4b72563525ace2df6d96448e1b6a8ab2f4c23a0aea7f1c7ab928a4",
+      "contentSize": "99043",
+      "sha256": "de113339ea7642b4ace8cffef77ff98719fd531e90f87067bf66300d6d9a668b",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1082,8 +1136,8 @@
       "@type": "File",
       "name": "FHIR R4 JSON gaps",
       "encodingFormat": "text/turtle",
-      "contentSize": "3927",
-      "sha256": "d4aec099e0572f0b9608e153326b82344299947011fc29fa07ac240dd7ff3272",
+      "contentSize": "5471",
+      "sha256": "6de4e89bf51cc10b856de98eeec3d74d2cde160f74a3cf493258294b5a7e407f",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1719,6 +1773,58 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "A collection Bundle: a Medication of metformin (RxNorm 861007), id med-metformin-1; a MedicationRequest, id medrx-metformin-1, referencing it as Medication/med-metformin-1; and a Medication nothing references. Authored here on 2026-10-06, for a case the conformance corpus does not hold: a drug named by a reference another entry of the document resolves."
+    },
+    {
+      "@id": "fixtures/in/lab-troponin-below-detection.json",
+      "@type": "File",
+      "name": "Laboratory Observation below its detection limit",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "1762",
+      "sha256": "4ee7d55d33910ffb66c918e715530681e55313f359aba4f4c9d1b6049a6c9319",
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A laboratory Observation of high-sensitivity troponin I (LOINC 89579-7 and a local code), id obs-troponin-1, whose valueQuantity is 0.01 ng/mL with the comparator <, performed over an effectivePeriod with a start and an end, with two interpretations, a first reference range with only a high bound and a second with a high bound and text, and a note. Authored here on 2026-10-06, for a case the conformance corpus does not hold: a value that is a bound rather than a measurement, a one-sided range, and the elements a lab result carries only once or not at all."
+    },
+    {
+      "@id": "fixtures/in/medication-request-two-rxnorm-codes.json",
+      "@type": "File",
+      "name": "MedicationRequest with two RxNorm codes and two dosages",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "882",
+      "sha256": "544b4e3509d1a587e99f8469ec00adcdab3f8d85ee859164ee06475c26c53fa5",
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A MedicationRequest, id medrx-amlodipine-2, whose medicationCodeableConcept carries a clinical drug's RxNorm code (197361), a branded drug's RxNorm code (212549) and an NDC code, with two dosageInstruction texts, a tapering dose. Authored here on 2026-10-06, for a case the conformance corpus does not hold: a medication coded more than once, and dosed more than once."
+    },
+    {
+      "@id": "fixtures/in/bundle-medication-versioned-reference.json",
+      "@type": "File",
+      "name": "Bundle of a Medication and a request referencing a version of it",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "1201",
+      "sha256": "11e703da89f4cb62dd4f8c8826665b8efe6b3e70ed64f45dbacb88be14fa7ad2",
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A collection Bundle: a Medication of metformin, id med-metformin-2, coded by RxNorm (861007) and NDC; and a MedicationRequest, id medrx-metformin-3, referencing it as Medication/med-metformin-2/_history/3. Authored here on 2026-10-06, for a case the conformance corpus does not hold: a reference naming a version of the Medication it resolves to."
+    },
+    {
+      "@id": "fixtures/in/bundle-medication-repeated-id.json",
+      "@type": "File",
+      "name": "Bundle of two Medications sharing an id, and a request referencing it",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "1046",
+      "sha256": "0ae1780c6a989f67385cb08f1a2066c01502f808c0a53641966733cb666cbe3c",
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A collection Bundle: two Medications, each id med-1, from two servers' fullUrls; and a MedicationRequest, id medrx-unclear-1, referencing Medication/med-1. Authored here on 2026-10-06, for a case the conformance corpus does not hold: a reference its document resolves to more than one Medication."
     },
     {
       "@id": "fixtures/expected/allergy-no-id-penicillin.ttl",
@@ -2765,8 +2871,8 @@
       "@type": "File",
       "name": "Expected findings for medication-request-reference-outside",
       "encodingFormat": "text/turtle",
-      "contentSize": "1064",
-      "sha256": "8ba5e294b793ebba788888a46c8276ec363d527b2ec510b439c53ace1765632b",
+      "contentSize": "1068",
+      "sha256": "b0e898d3b3eff98d7a61aa33742a8dd8e58c5df3ccac4fefcb833d0953e8c314",
       "about": {
         "@id": "fixtures/in/medication-request-reference-outside.json"
       },
@@ -2801,6 +2907,134 @@
       "sha256": "b1569cd7cfa868d525e77a01db513b3c2bf83b30da9dbbdeac63966c7f9596b8",
       "about": {
         "@id": "fixtures/in/bundle-medication-request-and-medication.json"
+      },
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/lab-troponin-below-detection.ttl",
+      "@type": "File",
+      "name": "Expected graph for lab-troponin-below-detection",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2471",
+      "sha256": "11a4fbceb3353273ede9f429255880cd4760f38afe54f439c57233fb7b4c6f57",
+      "about": {
+        "@id": "fixtures/in/lab-troponin-below-detection.json"
+      },
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/lab-troponin-below-detection.ttl",
+      "@type": "File",
+      "name": "Expected findings for lab-troponin-below-detection",
+      "encodingFormat": "text/turtle",
+      "contentSize": "4599",
+      "sha256": "a717c665bc22a57aee5c21cf7a47e8b1f0aa89afb403bd949733600ad20a8a09",
+      "about": {
+        "@id": "fixtures/in/lab-troponin-below-detection.json"
+      },
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/medication-request-two-rxnorm-codes.ttl",
+      "@type": "File",
+      "name": "Expected graph for medication-request-two-rxnorm-codes",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2372",
+      "sha256": "8546baf9cb46eeccb58e429169128acbfe04312236ee4f8453caea3a927b303e",
+      "about": {
+        "@id": "fixtures/in/medication-request-two-rxnorm-codes.json"
+      },
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/medication-request-two-rxnorm-codes.ttl",
+      "@type": "File",
+      "name": "Expected findings for medication-request-two-rxnorm-codes",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2902",
+      "sha256": "d6f57788f571e56d277c424b3c4ae7e7b0e04670be3737de412c3c73f73094f3",
+      "about": {
+        "@id": "fixtures/in/medication-request-two-rxnorm-codes.json"
+      },
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/bundle-medication-versioned-reference.ttl",
+      "@type": "File",
+      "name": "Expected graph for bundle-medication-versioned-reference",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2313",
+      "sha256": "a637c0e6bbf8b2bb0c6395842ede290e3d41f2682ef485ec4b91d595a7b2a8ef",
+      "about": {
+        "@id": "fixtures/in/bundle-medication-versioned-reference.json"
+      },
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/bundle-medication-versioned-reference.ttl",
+      "@type": "File",
+      "name": "Expected findings for bundle-medication-versioned-reference",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1041",
+      "sha256": "6b5dcb2ccf97fd9a1480c2ba662d200143ab29bb2b15d10a5d51b697218176a0",
+      "about": {
+        "@id": "fixtures/in/bundle-medication-versioned-reference.json"
+      },
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/bundle-medication-repeated-id.ttl",
+      "@type": "File",
+      "name": "Expected graph for bundle-medication-repeated-id",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2184",
+      "sha256": "bd30866421e4868572eaf37f9b1324b490abeae72a0ada17dfe57682846f1bd9",
+      "about": {
+        "@id": "fixtures/in/bundle-medication-repeated-id.json"
+      },
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/bundle-medication-repeated-id.ttl",
+      "@type": "File",
+      "name": "Expected findings for bundle-medication-repeated-id",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2685",
+      "sha256": "92fdd8f9f800ecf819504835dbbae2522a9d52677a0dd5e609196442f7bc1116",
+      "about": {
+        "@id": "fixtures/in/bundle-medication-repeated-id.json"
       },
       "dateCreated": "2026-10-06",
       "license": {
@@ -3156,7 +3390,7 @@
         }
       ],
       "dateCreated": "2026-09-27",
-      "description": "The views over the Bridge's graph for every input agree on every content field with the same fields of cascade-cli's clinical/*.ttl for that input, read through the corrections in hasPart; record names and provenance are not compared. Run once on 2026-09-27, outside CI, and for the medication and lab result views on 2026-10-06 over the inputs this release added, with cascade-cli convert --from fhir --to cascade."
+      "description": "The views over the Bridge's graph for every input agree on every content field with the same fields of cascade-cli's clinical/*.ttl for that input, read through the corrections in hasPart; record names and provenance are not compared. Run once on 2026-09-27, outside CI, and for the medication and lab result views on 2026-10-06 over the inputs this release added but four, lab-troponin-below-detection, medication-request-two-rxnorm-codes, bundle-medication-versioned-reference and bundle-medication-repeated-id, which were not compared, with cascade-cli convert --from fhir --to cascade."
     },
     {
       "@id": "#correction-criticality-as-allergy-severity",
@@ -3264,7 +3498,7 @@
       "isBasedOn": {
         "@id": "https://github.com/the-cascade-protocol/cascade-cli/tree/05d02255855e675f7c1c33d8219e57ac4dc7e47f"
       },
-      "description": "cascade-cli names a medication whose drug is a contained Medication or another entry of its Bundle Unknown Medication, with no RxNorm code; the adapter reads the Medication's name and codes. Those fields are not compared for those inputs."
+      "description": "cascade-cli names a medication whose drug is a contained Medication or another entry of its Bundle Unknown Medication, with no RxNorm code; the adapter reads the Medication's name and first RxNorm code. Those fields are not compared for those inputs."
     },
     {
       "@id": "#correction-vital-signs-as-records",

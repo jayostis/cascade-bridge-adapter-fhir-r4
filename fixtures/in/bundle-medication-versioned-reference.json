@@ -1,0 +1,43 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "https://fhir.meridian.example/api/FHIR/R4/Medication/med-metformin-2",
+      "resource": {
+        "resourceType": "Medication",
+        "id": "med-metformin-2",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "861007",
+              "display": "metformin hydrochloride 500 MG Oral Tablet"
+            },
+            {
+              "system": "http://hl7.org/fhir/sid/ndc",
+              "code": "0093-1048-01"
+            }
+          ],
+          "text": "Metformin 500 mg tablet"
+        }
+      }
+    },
+    {
+      "fullUrl": "https://fhir.meridian.example/api/FHIR/R4/MedicationRequest/medrx-metformin-3",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "medrx-metformin-3",
+        "status": "active",
+        "intent": "order",
+        "medicationReference": {
+          "reference": "Medication/med-metformin-2/_history/3"
+        },
+        "subject": {
+          "reference": "Patient/pat-conformance-1"
+        },
+        "authoredOn": "2026-02-18"
+      }
+    }
+  ]
+}

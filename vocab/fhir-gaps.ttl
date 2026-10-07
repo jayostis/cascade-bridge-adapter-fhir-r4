@@ -65,8 +65,8 @@ fhirr4:observationNotLabResult a skos:Concept ;
   skos:broader bridge:valueNotMapped ;
   sh:resultSeverity sh:Warning .
 
-fhirr4:medicationOutsideDocument a skos:Concept ;
-  skos:prefLabel "A medication names its drug by a reference to a Medication resource its document does not hold, so only the reference's display is carried as the drug's name, and no code."@en ;
+fhirr4:medicationReferenceUnresolved a skos:Concept ;
+  skos:prefLabel "A medication names its drug by a reference that resolves to no one Medication resource of its document, so only the reference's display is carried as the drug's name, and no code."@en ;
   skos:inScheme fhirr4:gaps ;
   skos:broader bridge:carriedWithLoss ;
   sh:resultSeverity sh:Warning .
@@ -80,3 +80,36 @@ fhirr4:structuredDosage a skos:Concept ;
   skos:prefLabel "A medication's dosage states its timing, route or dose as structured elements beside its text, and no Cascade predicate carries them."@en ;
   skos:inScheme fhirr4:gaps ;
   skos:broader bridge:noPredicate .
+
+fhirr4:medicationCode a skos:Concept ;
+  skos:prefLabel "A medication, or the Medication resource naming its drug, carries a code other than the one RxNorm code carried, and no Cascade predicate carries it."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:noPredicate .
+
+fhirr4:medicationDosageRepeated a skos:Concept ;
+  skos:prefLabel "A medication carries more than one dosage, and only the first dosage's text is carried."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:carriedWithLoss ;
+  sh:resultSeverity sh:Warning .
+
+fhirr4:labResultPeriodEnd a skos:Concept ;
+  skos:prefLabel "A lab result carries the end of the period it was performed over, and no Cascade predicate carries it."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:noPredicate .
+
+fhirr4:labResultCode a skos:Concept ;
+  skos:prefLabel "A lab result carries a code from a system other than LOINC, and no Cascade predicate carries it."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:noPredicate .
+
+fhirr4:labResultRangeRepeated a skos:Concept ;
+  skos:prefLabel "A lab result carries more than one reference range, and only the first is carried."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:carriedWithLoss ;
+  sh:resultSeverity sh:Warning .
+
+fhirr4:labResultInterpretationRepeated a skos:Concept ;
+  skos:prefLabel "A lab result carries more than one interpretation, and only the first is carried."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:carriedWithLoss ;
+  sh:resultSeverity sh:Warning .

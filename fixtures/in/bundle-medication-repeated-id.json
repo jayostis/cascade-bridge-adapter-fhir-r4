@@ -1,0 +1,42 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "https://fhir.meridian.example/api/FHIR/R4/Medication/med-1",
+      "resource": {
+        "resourceType": "Medication",
+        "id": "med-1",
+        "code": {
+          "text": "Metformin 500 mg tablet"
+        }
+      }
+    },
+    {
+      "fullUrl": "https://fhir.riverside.example/fhir/Medication/med-1",
+      "resource": {
+        "resourceType": "Medication",
+        "id": "med-1",
+        "code": {
+          "text": "Lisinopril 10 mg tablet"
+        }
+      }
+    },
+    {
+      "fullUrl": "https://fhir.meridian.example/api/FHIR/R4/MedicationRequest/medrx-unclear-1",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "medrx-unclear-1",
+        "status": "active",
+        "intent": "order",
+        "medicationReference": {
+          "reference": "Medication/med-1"
+        },
+        "subject": {
+          "reference": "Patient/pat-conformance-1"
+        },
+        "authoredOn": "2026-01-22"
+      }
+    }
+  ]
+}

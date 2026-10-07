@@ -400,6 +400,10 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/effectiveInstant" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/contained/effectivePeriod" ;
   bridge:verdict bridge:consumed .
 
@@ -415,6 +419,16 @@
   bridge:sourcePath "/contained/gender" ;
   bridge:verdict bridge:noHome ;
   bridge:namesGap fhirr4:patientGender .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/hasMember" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A panel is no record: observation-findings.rq reports each member's reference as fhirr4:observationNotLabResult." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/hasMember/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A panel is no record: observation-findings.rq reports each member's reference as fhirr4:observationNotLabResult." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/id" ;
@@ -445,6 +459,10 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/interpretation/coding/system" ;
   bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/interpretation/text" ;
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/issued" ;
@@ -656,6 +674,10 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/referenceRange/text" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/contained/resourceType" ;
   bridge:verdict bridge:consumed .
 
@@ -750,6 +772,27 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/valueCodeableConcept" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/valueCodeableConcept/coding" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/valueCodeableConcept/coding/display" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/contained/valueCodeableConcept/text" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/valueCodeableConcept/text" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/valueInteger" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/contained/valueQuantity" ;
   bridge:verdict bridge:consumed .
 
@@ -757,6 +800,10 @@
   bridge:sourcePath "/contained/valueQuantity/code" ;
   bridge:verdict bridge:redundantWith ;
   bridge:sameFactAs "/contained/valueQuantity/unit" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/valueQuantity/comparator" ;
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/valueQuantity/system" ;
@@ -768,6 +815,10 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/valueQuantity/value" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/valueString" ;
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
@@ -993,6 +1044,10 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/effectiveInstant" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/effectivePeriod" ;
   bridge:verdict bridge:consumed .
 
@@ -1012,6 +1067,16 @@
   bridge:sourcePath "/gender" ;
   bridge:verdict bridge:noHome ;
   bridge:namesGap fhirr4:patientGender .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/hasMember" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A panel is no record: observation-findings.rq reports each member's reference as fhirr4:observationNotLabResult." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/hasMember/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A panel is no record: observation-findings.rq reports each member's reference as fhirr4:observationNotLabResult." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/id" ;
@@ -1042,6 +1107,10 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/interpretation/coding/system" ;
   bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/interpretation/text" ;
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/issued" ;
@@ -1250,6 +1319,10 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/referenceRange/low/value" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/referenceRange/text" ;
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
@@ -1655,6 +1728,10 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/effectiveInstant" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/effectivePeriod" ;
   bridge:verdict bridge:consumed .
 
@@ -1670,6 +1747,16 @@
   bridge:sourcePath "/resource/contained/gender" ;
   bridge:verdict bridge:noHome ;
   bridge:namesGap fhirr4:patientGender .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/hasMember" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A panel is no record: observation-findings.rq reports each member's reference as fhirr4:observationNotLabResult." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/hasMember/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A panel is no record: observation-findings.rq reports each member's reference as fhirr4:observationNotLabResult." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/id" ;
@@ -1700,6 +1787,10 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/interpretation/coding/system" ;
   bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/interpretation/text" ;
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/issued" ;
@@ -1911,6 +2002,10 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/referenceRange/text" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/resourceType" ;
   bridge:verdict bridge:consumed .
 
@@ -2005,6 +2100,27 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/valueCodeableConcept" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/valueCodeableConcept/coding" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/valueCodeableConcept/coding/display" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/resource/contained/valueCodeableConcept/text" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/valueCodeableConcept/text" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/valueInteger" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/valueQuantity" ;
   bridge:verdict bridge:consumed .
 
@@ -2012,6 +2128,10 @@
   bridge:sourcePath "/resource/contained/valueQuantity/code" ;
   bridge:verdict bridge:redundantWith ;
   bridge:sameFactAs "/resource/contained/valueQuantity/unit" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/valueQuantity/comparator" ;
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/valueQuantity/system" ;
@@ -2023,6 +2143,10 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/valueQuantity/value" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/valueString" ;
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
@@ -2248,6 +2372,10 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/effectiveInstant" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/effectivePeriod" ;
   bridge:verdict bridge:consumed .
 
@@ -2263,6 +2391,16 @@
   bridge:sourcePath "/resource/gender" ;
   bridge:verdict bridge:noHome ;
   bridge:namesGap fhirr4:patientGender .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/hasMember" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A panel is no record: observation-findings.rq reports each member's reference as fhirr4:observationNotLabResult." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/hasMember/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A panel is no record: observation-findings.rq reports each member's reference as fhirr4:observationNotLabResult." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/id" ;
@@ -2293,6 +2431,10 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/interpretation/coding/system" ;
   bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/interpretation/text" ;
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/issued" ;
@@ -2504,6 +2646,10 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/referenceRange/text" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/resourceType" ;
   bridge:verdict bridge:consumed .
 
@@ -2598,6 +2744,27 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/valueCodeableConcept" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/valueCodeableConcept/coding" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/valueCodeableConcept/coding/display" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/resource/valueCodeableConcept/text" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/valueCodeableConcept/text" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/valueInteger" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/valueQuantity" ;
   bridge:verdict bridge:consumed .
 
@@ -2605,6 +2772,10 @@
   bridge:sourcePath "/resource/valueQuantity/code" ;
   bridge:verdict bridge:redundantWith ;
   bridge:sameFactAs "/resource/valueQuantity/unit" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/valueQuantity/comparator" ;
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/valueQuantity/system" ;
@@ -2616,6 +2787,10 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/valueQuantity/value" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/valueString" ;
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
@@ -2729,6 +2904,27 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/valueCodeableConcept" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/valueCodeableConcept/coding" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/valueCodeableConcept/coding/display" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/valueCodeableConcept/text" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/valueCodeableConcept/text" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/valueInteger" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/valueQuantity" ;
   bridge:verdict bridge:consumed .
 
@@ -2736,6 +2932,10 @@
   bridge:sourcePath "/valueQuantity/code" ;
   bridge:verdict bridge:redundantWith ;
   bridge:sameFactAs "/valueQuantity/unit" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/valueQuantity/comparator" ;
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/valueQuantity/system" ;
@@ -2747,6 +2947,10 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/valueQuantity/value" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/valueString" ;
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;

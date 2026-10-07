@@ -1,0 +1,37 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "medrx-amlodipine-2",
+  "status": "active",
+  "intent": "order",
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "197361",
+        "display": "amlodipine 5 MG Oral Tablet"
+      },
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "212549",
+        "display": "Norvasc 5 MG Oral Tablet"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/ndc",
+        "code": "0069-1530-66"
+      }
+    ],
+    "text": "Amlodipine 5 mg tablet"
+  },
+  "subject": {
+    "reference": "Patient/pat-conformance-1"
+  },
+  "authoredOn": "2026-03-10",
+  "dosageInstruction": [
+    {
+      "text": "Take 5 mg by mouth once daily for two weeks"
+    },
+    {
+      "text": "Then take 10 mg by mouth once daily"
+    }
+  ]
+}

@@ -11,19 +11,19 @@ PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # prescribed whatever its intent element says.
 #
 # A drug named by reference is read from the Medication the reference resolves
-# to in the document, through medication-table.rq: a contained one by "#" and
-# its id, a Bundle entry by its fullUrl or by type and an id no other entry
-# shares. One outside the document leaves the reference's display as the name.
+# to in the document, as medication-table.rq says. One that resolves to no one
+# Medication leaves the reference's display as the name.
 #
-# Every value is single but the RxNorm codes, so each is bound beside the
-# others rather than in a branch of its own, and a medication stating nothing
-# still states its intent. A date FHIR writes with less than a day's precision
-# fits no Cascade date, and is not carried.
+# A medication states one RxNorm code, the first its codings give, and one
+# dosage, the first dosage's text. Every value is single, so each is bound
+# beside the others rather than in a branch of its own, and a medication
+# stating nothing still states its intent. A date FHIR writes with less than a
+# day's precision fits no Cascade date, and is not carried.
 
 CONSTRUCT {
   ?version clinical:clinicalIntent ?intent ;
     clinical:drugName ?drugName ;
-    clinical:rxNormCode ?conceptRxNorm , ?heldRxNorm ;
+    clinical:rxNormCode ?rxNorm ;
     clinical:status ?status ;
     clinical:startDate ?startDate ;
     clinical:endDate ?endDate ;
@@ -50,46 +50,23 @@ WHERE {
   BIND (COALESCE(?contained, ?top) AS ?resource)
   ?resource xyz:resourceType ?type .
   FILTER (?type IN ("MedicationRequest", "MedicationStatement"))
-  BIND (IRI(CONCAT("urn:cascade:version-at:", SHA256(CONCAT(?recordSelector, ?topStep, ?containedStep)))) AS ?version)
+  BIND (CONCAT(?recordSelector, ?topStep, ?containedStep) AS ?resourcePointer)
+  BIND (IRI(CONCAT("urn:cascade:version-at:", SHA256(?resourcePointer))) AS ?version)
   BIND (IF(?type = "MedicationRequest", "prescribed", "reportedUse") AS ?intent)
 
   OPTIONAL {
-    ?resource xyz:medicationReference ?medicationReference .
-    ?medicationReference xyz:reference ?target .
-    {
-      ?held fhirr4:medicationAt ?medicationPointer ;
-        fhirr4:medicationId ?heldId .
-      BIND (CONCAT("#", ?heldId) AS ?key)
-      BIND (true AS ?inside)
+    ?reference fhirr4:medicationReferenceFrom ?resourcePointer ;
+      fhirr4:medicationReferenceTo ?key ;
+      fhirr4:medicationScope ?scope .
+    ?held fhirr4:medicationAt ?medicationPointer ;
+      fhirr4:medicationKey ?key ;
+      fhirr4:medicationScope ?scope .
+    FILTER NOT EXISTS {
+      ?rival fhirr4:medicationAt ?rivalPointer ;
+        fhirr4:medicationKey ?key ;
+        fhirr4:medicationScope ?scope .
+      FILTER (?rivalPointer != ?medicationPointer)
     }
-    UNION
-    {
-      ?entry fhirr4:heldAt ?entrySelector ;
-        fhirr4:resourceType "Medication" ;
-        fhirr4:resourceId ?entryId .
-      BIND (CONCAT("Medication/", ?entryId) AS ?key)
-      BIND (CONCAT(?entrySelector, "/resource") AS ?medicationPointer)
-      BIND (false AS ?inside)
-    }
-    UNION
-    {
-      ?entry fhirr4:heldAt ?entrySelector ;
-        fhirr4:resourceType "Medication" ;
-        fhirr4:fullUrl ?key .
-      BIND (CONCAT(?entrySelector, "/resource") AS ?medicationPointer)
-      BIND (false AS ?inside)
-    }
-    FILTER (?key = ?target)
-    FILTER (IF(?inside,
-               STRSTARTS(?medicationPointer, CONCAT(?recordSelector, ?topStep, "/contained/")),
-               NOT EXISTS {
-                 ?other fhirr4:heldAt ?otherSelector ;
-                   fhirr4:resourceType "Medication" .
-                 OPTIONAL { ?other fhirr4:resourceId ?otherId }
-                 OPTIONAL { ?other fhirr4:fullUrl ?otherUrl }
-                 FILTER (?otherSelector != ?entrySelector
-                         && (?otherUrl = ?target || CONCAT("Medication/", ?otherId) = ?target))
-               }))
   }
 
   OPTIONAL {
@@ -123,6 +100,12 @@ WHERE {
     ?codedCodings ?codedSlot ?codedCoding .
     ?codedCoding xyz:system "http://www.nlm.nih.gov/research/umls/rxnorm" ;
       xyz:code ?conceptCode .
+    FILTER NOT EXISTS {
+      ?codedCodings ?earlierCodedSlot ?earlierCoded .
+      ?earlierCoded xyz:system "http://www.nlm.nih.gov/research/umls/rxnorm" ;
+        xyz:code ?earlierCode .
+      FILTER (xsd:integer(STRAFTER(STR(?earlierCodedSlot), "#_")) < xsd:integer(STRAFTER(STR(?codedSlot), "#_")))
+    }
   }
   BIND (IRI(CONCAT("http://www.nlm.nih.gov/research/umls/rxnorm/", ENCODE_FOR_URI(?conceptCode))) AS ?conceptRxNorm)
   OPTIONAL {
@@ -130,6 +113,7 @@ WHERE {
       fhirr4:medicationCode ?heldRxNorm .
     FILTER (?codePointer = ?medicationPointer)
   }
+  BIND (COALESCE(?conceptRxNorm, ?heldRxNorm) AS ?rxNorm)
 
   OPTIONAL { ?resource xyz:status ?status }
 
