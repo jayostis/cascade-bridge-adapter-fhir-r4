@@ -34,6 +34,22 @@
     <#bundle-repeated-condition-id>
     <#encounter-with-id>
     <#lab-glucose-fasting>
+    <#lab-every-mapped-element>
+    <#lab-no-category-potassium>
+    <#lab-troponin-below-detection>
+    <#vital-heartrate-with-id>
+    <#vital-no-category-heart-rate>
+    <#medication-with-id>
+    <#medication-no-id-bare>
+    <#medication-no-id-note-only>
+    <#medication-request-every-mapped-element>
+    <#medication-statement-every-mapped-element>
+    <#medication-request-contained-medication>
+    <#medication-request-reference-outside>
+    <#bundle-medication-request-and-medication>
+    <#medication-request-two-rxnorm-codes>
+    <#bundle-medication-versioned-reference>
+    <#bundle-medication-repeated-id>
     <#condition-no-id-differs-only-in-narrative>
     <#condition-no-id-different-structured-content>
     <#allergy-no-id-different-allergen>
@@ -49,6 +65,10 @@
     <#allergy-no-id-penicillin-compact-copy-names-another-record>
     <#bundle-urn-uuid-full-urls-entry-imported-twice-names-one-record>
     <#bundle-repeated-condition-id-names-two-records>
+    <#lab-same-day-same-code-different-value>
+    <#lab-same-day-same-code-different-value-id-less>
+    <#medication-no-id-bare-differs-from-note-only>
+    <#lab-id-bearing-differs-from-id-less>
   ) .
 
 <#allergy-with-id> a bridge:IsomorphicConversionTest ;
@@ -379,7 +399,7 @@
 
 <#lab-glucose-fasting> a bridge:IsomorphicConversionTest ;
   mf:name "lab-glucose-fasting" ;
-  rdfs:comment "A type this release does not map: a finding, and no record." ;
+  rdfs:comment "A laboratory Observation: one lab result, its value written as the source wrote it." ;
   mf:action [
     bridge:input <in/lab-glucose-fasting.json> ;
     bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
@@ -617,6 +637,275 @@
       bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
       bridge:facts <facts/meridian.ttl> ;
       bridge:selector "/entry/1"
+    ]
+  ] ;
+  mf:result [ bridge:sameRecord false ] .
+
+<#lab-every-mapped-element> a bridge:IsomorphicConversionTest ;
+  mf:name "lab-every-mapped-element" ;
+  rdfs:comment "A lab result carrying every element in/sparql/lab-result.rq reads: a value written with a trailing zero, a unit, a reference range, an interpretation and a time with an offset." ;
+  mf:action [
+    bridge:input <in/lab-every-mapped-element.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/observation-obs-hba1c-1.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/lab-every-mapped-element.ttl> ;
+    bridge:expectedFindings <findings/lab-every-mapped-element.ttl>
+  ] .
+
+<#lab-no-category-potassium> a bridge:IsomorphicConversionTest ;
+  mf:name "lab-no-category-potassium" ;
+  rdfs:comment "An Observation with no category and a LOINC code no vital sign carries: a lab result." ;
+  mf:action [
+    bridge:input <in/lab-no-category-potassium.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/lab-no-category-potassium.ttl> ;
+    bridge:expectedFindings <findings/lab-no-category-potassium.ttl>
+  ] .
+
+<#lab-troponin-below-detection> a bridge:IsomorphicConversionTest ;
+  mf:name "lab-troponin-below-detection" ;
+  rdfs:comment "A laboratory Observation below its detection limit: its value keeps its comparator, its one-bounded first range is written as that bound, and its note is carried; a second range, a second interpretation, a code outside LOINC and the end of its period are findings." ;
+  mf:action [
+    bridge:input <in/lab-troponin-below-detection.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/lab-troponin-below-detection.ttl> ;
+    bridge:expectedFindings <findings/lab-troponin-below-detection.ttl>
+  ] .
+
+<#vital-heartrate-with-id> a bridge:IsomorphicConversionTest ;
+  mf:name "vital-heartrate-with-id" ;
+  rdfs:comment "An Observation whose category is vital-signs: a finding, and no record." ;
+  mf:action [
+    bridge:input <in/vital-heartrate-with-id.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/observation-obs-hr-morning.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/vital-heartrate-with-id.ttl> ;
+    bridge:expectedFindings <findings/vital-heartrate-with-id.ttl>
+  ] .
+
+<#vital-no-category-heart-rate> a bridge:IsomorphicConversionTest ;
+  mf:name "vital-no-category-heart-rate" ;
+  rdfs:comment "An Observation with no category and a vital sign's LOINC code: a finding, and no record." ;
+  mf:action [
+    bridge:input <in/vital-no-category-heart-rate.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/vital-no-category-heart-rate.ttl> ;
+    bridge:expectedFindings <findings/vital-no-category-heart-rate.ttl>
+  ] .
+
+<#medication-with-id> a bridge:IsomorphicConversionTest ;
+  mf:name "medication-with-id" ;
+  rdfs:comment "A MedicationStatement: one medication, an entry on a list of what the person takes." ;
+  mf:action [
+    bridge:input <in/medication-with-id.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/medicationstatement-med-lisinopril-1.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/medication-with-id.ttl> ;
+    bridge:expectedFindings <findings/medication-with-id.ttl>
+  ] .
+
+<#medication-no-id-bare> a bridge:IsomorphicConversionTest ;
+  mf:name "medication-no-id-bare" ;
+  rdfs:comment "A MedicationStatement stating nothing: one medication stating only its intent." ;
+  mf:action [
+    bridge:input <in/medication-no-id-bare.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/medication-no-id-bare.ttl> ;
+    bridge:expectedFindings <findings/medication-no-id-bare.ttl>
+  ] .
+
+<#medication-no-id-note-only> a bridge:IsomorphicConversionTest ;
+  mf:name "medication-no-id-note-only" ;
+  rdfs:comment "A MedicationStatement stating only a note: one medication stating only its intent, and the note a finding." ;
+  mf:action [
+    bridge:input <in/medication-no-id-note-only.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/medication-no-id-note-only.ttl> ;
+    bridge:expectedFindings <findings/medication-no-id-note-only.ttl>
+  ] .
+
+<#medication-request-every-mapped-element> a bridge:IsomorphicConversionTest ;
+  mf:name "medication-request-every-mapped-element" ;
+  rdfs:comment "A MedicationRequest carrying every element in/sparql/medication.rq reads of a request: one medication, a prescription." ;
+  mf:action [
+    bridge:input <in/medication-request-every-mapped-element.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/medicationrequest-medrx-atorvastatin-1.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/medication-request-every-mapped-element.ttl> ;
+    bridge:expectedFindings <findings/medication-request-every-mapped-element.ttl>
+  ] .
+
+<#medication-statement-every-mapped-element> a bridge:IsomorphicConversionTest ;
+  mf:name "medication-statement-every-mapped-element" ;
+  rdfs:comment "A MedicationStatement carrying every element in/sparql/medication.rq reads of a statement, its drug named by a coding's display." ;
+  mf:action [
+    bridge:input <in/medication-statement-every-mapped-element.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/medicationstatement-medst-ibuprofen-1.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/medication-statement-every-mapped-element.ttl> ;
+    bridge:expectedFindings <findings/medication-statement-every-mapped-element.ttl>
+  ] .
+
+<#medication-request-contained-medication> a bridge:IsomorphicConversionTest ;
+  mf:name "medication-request-contained-medication" ;
+  rdfs:comment "A MedicationRequest whose drug is a contained Medication: the Medication's code names the drug, and the Medication is no record." ;
+  mf:action [
+    bridge:input <in/medication-request-contained-medication.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/medicationrequest-medrx-amlodipine-1.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/medication-request-contained-medication.ttl> ;
+    bridge:expectedFindings <findings/medication-request-contained-medication.ttl>
+  ] .
+
+<#medication-request-reference-outside> a bridge:IsomorphicConversionTest ;
+  mf:name "medication-request-reference-outside" ;
+  rdfs:comment "A MedicationRequest whose drug is a Medication outside its document, as an Apple Health export holds one: the reference's display names the drug, no code is written, and a finding says so." ;
+  mf:action [
+    bridge:input <in/medication-request-reference-outside.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/medicationrequest-medrx-metformin-2.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/medication-request-reference-outside.ttl> ;
+    bridge:expectedFindings <findings/medication-request-reference-outside.ttl>
+  ] .
+
+<#bundle-medication-request-and-medication> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-medication-request-and-medication" ;
+  rdfs:comment "A Bundle holding a MedicationRequest and the Medication it references by type and id, and a Medication nothing references: the request reads its drug from the other entry; the referenced Medication is no record and no finding; the other is a finding." ;
+  mf:action [
+    bridge:input <in/bundle-medication-request-and-medication.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-medication-request-and-medication.ttl> ;
+    bridge:expectedFindings <findings/bundle-medication-request-and-medication.ttl>
+  ] .
+
+<#medication-request-two-rxnorm-codes> a bridge:IsomorphicConversionTest ;
+  mf:name "medication-request-two-rxnorm-codes" ;
+  rdfs:comment "A MedicationRequest coded by two RxNorm codes and an NDC code, with two dosages: the first RxNorm code and the first dosage are carried, and the other codes and the second dosage are findings." ;
+  mf:action [
+    bridge:input <in/medication-request-two-rxnorm-codes.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/medication-request-two-rxnorm-codes.ttl> ;
+    bridge:expectedFindings <findings/medication-request-two-rxnorm-codes.ttl>
+  ] .
+
+<#bundle-medication-versioned-reference> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-medication-versioned-reference" ;
+  rdfs:comment "A Bundle holding a Medication and a MedicationRequest referencing a version of it: the request reads its drug from the Medication, which is no record and no finding, and the Medication's code outside RxNorm is a finding." ;
+  mf:action [
+    bridge:input <in/bundle-medication-versioned-reference.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-medication-versioned-reference.ttl> ;
+    bridge:expectedFindings <findings/bundle-medication-versioned-reference.ttl>
+  ] .
+
+<#bundle-medication-repeated-id> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-medication-repeated-id" ;
+  rdfs:comment "A Bundle holding two Medications sharing type and id, and a MedicationRequest referencing that type and id: the reference resolves to neither, so the request names no drug and its reference is a finding, and each Medication is a finding." ;
+  mf:action [
+    bridge:input <in/bundle-medication-repeated-id.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-medication-repeated-id.ttl> ;
+    bridge:expectedFindings <findings/bundle-medication-repeated-id.ttl>
+  ] .
+
+<#lab-same-day-same-code-different-value> a bridge:IdentityRelationTest ;
+  mf:name "lab-same-day-same-code-different-value" ;
+  mf:action [
+    bridge:conversion [
+      bridge:input <in/lab-glucose-fasting.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/observation-obs-glucose-fasting.ttl>
+    ] , [
+      bridge:input <in/lab-glucose-postprandial.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/observation-obs-glucose-postprandial.ttl>
+    ]
+  ] ;
+  mf:result [ bridge:sameRecord false ] .
+
+<#lab-same-day-same-code-different-value-id-less> a bridge:IdentityRelationTest ;
+  mf:name "lab-same-day-same-code-different-value-id-less" ;
+  mf:action [
+    bridge:conversion [
+      bridge:input <in/lab-glucose-no-id-fasting.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/meridian.ttl>
+    ] , [
+      bridge:input <in/lab-glucose-no-id-postprandial.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/meridian.ttl>
+    ]
+  ] ;
+  mf:result [ bridge:sameRecord false ] .
+
+<#medication-no-id-bare-differs-from-note-only> a bridge:IdentityRelationTest ;
+  mf:name "medication-no-id-bare-differs-from-note-only" ;
+  rdfs:comment "The conformance corpus's medication-no-id-differs-only-in-narrative, named for what its inputs differ in: a note, not a narrative." ;
+  mf:action [
+    bridge:conversion [
+      bridge:input <in/medication-no-id-bare.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/meridian.ttl>
+    ] , [
+      bridge:input <in/medication-no-id-note-only.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/meridian.ttl>
+    ]
+  ] ;
+  mf:result [ bridge:sameRecord false ] .
+
+<#lab-id-bearing-differs-from-id-less> a bridge:IdentityRelationTest ;
+  mf:name "lab-id-bearing-differs-from-id-less" ;
+  mf:action [
+    bridge:conversion [
+      bridge:input <in/lab-glucose-fasting.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/observation-obs-glucose-fasting.ttl>
+    ] , [
+      bridge:input <in/lab-glucose-no-id-fasting.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/meridian.ttl>
     ]
   ] ;
   mf:result [ bridge:sameRecord false ] .

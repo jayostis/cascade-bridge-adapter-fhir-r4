@@ -1,0 +1,21 @@
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov:   <http://www.w3.org/ns/prov#> .
+@prefix pav:    <http://purl.org/pav/> .
+@prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rec:    <https://ns.cascadeprotocol.org/records/v1-draft#> .
+
+bridge:thisDocument
+  bridge:serverBaseUrl "https://FHIR.Meridian.example/api/FHIR/R4/" ;
+  pav:retrievedFrom <https://FHIR.Meridian.example/api/FHIR/R4/MedicationStatement/med-lisinopril-1> ;
+  pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
+  prov:qualifiedAttribution
+    [ prov:agent [ rdfs:label "Meridian Health System" ] ; prov:hadRole rec:author ] ,
+    [ prov:agent [ rdfs:label "Apple Health" ] ; prov:hadRole rec:transmitter ] ;
+  bridge:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
+  bridge:authenticatedAsProxy false ;
+  bridge:sourceFormatVersion "4.0.1" .
+
+bridge:thisImport
+  rdfs:label "Apple Health export" ;
+  prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .

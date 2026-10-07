@@ -1,0 +1,112 @@
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX sh:      <http://www.w3.org/ns/shacl#>
+PREFIX oa:      <http://www.w3.org/ns/oa#>
+PREFIX skos:    <http://www.w3.org/2004/02/skos/core#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX fx:      <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:     <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:  <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+
+# An Observation lab-result-table.rq does not call a lab result, reported at
+# what decided it: each category it carries, none of them laboratory; with no
+# category, each vital sign's LOINC code; with no category and no LOINC code,
+# its type; and a panel's members.
+
+CONSTRUCT {
+  [] a oa:Annotation ;
+    oa:hasTarget [
+      oa:hasSource bridge:thisRecord ;
+      oa:hasSelector [
+        a oa:FragmentSelector ;
+        dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+        rdf:value ?pointer
+      ]
+    ] ;
+    oa:hasBody fhirr4:observationNotLabResult ;
+    oa:motivatedBy oa:classifying ;
+    sh:value ?value .
+}
+WHERE {
+  FILTER NOT EXISTS {
+    bridge:thisDocument bridge:sourceFormatVersion ?stated .
+    FILTER (!STRSTARTS(?stated, "4.0."))
+  }
+  bridge:thisRecord bridge:selector ?recordSelector .
+  ?root a fx:root .
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  { BIND ("" AS ?containedStep) }
+  UNION
+  {
+    ?top xyz:contained ?containedList .
+    ?containedList ?containedSlot ?contained .
+    ?contained xyz:resourceType ?containedType .
+    BIND (CONCAT("/contained/", STR(xsd:integer(STRAFTER(STR(?containedSlot), "#_")) - 1)) AS ?containedStep)
+  }
+  BIND (COALESCE(?contained, ?top) AS ?resource)
+  ?resource xyz:resourceType "Observation" .
+  FILTER NOT EXISTS {
+    ?lab fhirr4:labResultAt ?labPointer .
+    FILTER (?labPointer = CONCAT(?recordSelector, ?topStep, ?containedStep))
+  }
+  BIND (EXISTS { ?resource xyz:category ?anyCategory } AS ?categorised)
+  BIND (EXISTS {
+          ?resource xyz:category ?labCategories . ?labCategories ?labCategorySlot ?labCategory .
+          ?labCategory xyz:coding ?labCategoryCodings . ?labCategoryCodings ?labCategoryCodingSlot ?labCategoryCoding .
+          ?labCategoryCoding xyz:system "http://terminology.hl7.org/CodeSystem/observation-category" ;
+            xyz:code "laboratory" .
+        } AS ?laboratory)
+  BIND (EXISTS {
+          ?resource xyz:code ?loincConcept . ?loincConcept xyz:coding ?loincCodings .
+          ?loincCodings ?loincCodingSlot ?loincCoding .
+          ?loincCoding xyz:system "http://loinc.org" .
+        } AS ?loinc)
+
+  {
+    ?resource xyz:category ?categories . ?categories ?categorySlot ?category .
+    ?category xyz:coding ?codings . ?codings ?codingSlot ?coding .
+    ?coding xyz:code ?value .
+    BIND (CONCAT("/category/", STR(xsd:integer(STRAFTER(STR(?categorySlot), "#_")) - 1),
+                 "/coding/", STR(xsd:integer(STRAFTER(STR(?codingSlot), "#_")) - 1), "/code") AS ?step)
+    BIND ("category" AS ?decidedBy)
+  }
+  UNION
+  {
+    ?resource xyz:category ?categories . ?categories ?categorySlot ?category .
+    ?category xyz:text ?value .
+    FILTER NOT EXISTS { ?category xyz:coding ?anyCoding }
+    BIND (CONCAT("/category/", STR(xsd:integer(STRAFTER(STR(?categorySlot), "#_")) - 1), "/text") AS ?step)
+    BIND ("category" AS ?decidedBy)
+  }
+  UNION
+  {
+    ?resource xyz:code ?concept . ?concept xyz:coding ?codings . ?codings ?codingSlot ?coding .
+    ?coding xyz:system "http://loinc.org" ;
+      xyz:code ?value .
+    ?vitalSign skos:inScheme fhirr4:vitalSigns ;
+      skos:notation ?value .
+    BIND (CONCAT("/code/coding/", STR(xsd:integer(STRAFTER(STR(?codingSlot), "#_")) - 1), "/code") AS ?step)
+    BIND ("vital sign" AS ?decidedBy)
+  }
+  UNION
+  {
+    ?resource xyz:resourceType ?value .
+    BIND ("/resourceType" AS ?step)
+    BIND ("no code" AS ?decidedBy)
+  }
+  UNION
+  {
+    ?resource xyz:hasMember ?members . ?members ?memberSlot ?member .
+    ?member xyz:reference ?value .
+    BIND (CONCAT("/hasMember/", STR(xsd:integer(STRAFTER(STR(?memberSlot), "#_")) - 1), "/reference") AS ?step)
+    BIND ("panel" AS ?decidedBy)
+  }
+  FILTER (IF(?decidedBy = "category", ?categorised && !?laboratory,
+          IF(?decidedBy = "vital sign", !?categorised,
+          IF(?decidedBy = "no code", !?categorised && !?loinc,
+             ?laboratory || (!?categorised && ?loinc)))))
+  BIND (CONCAT(?topStep, ?containedStep, ?step) AS ?pointer)
+}

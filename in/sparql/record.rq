@@ -82,12 +82,16 @@ WHERE {
 
   ?resource xyz:resourceType ?resourceType .
   VALUES (?resourceType ?class ?sourceIdPredicate) {
-    ("AllergyIntolerance" health:AllergyRecord      health:sourceRecordId)
-    ("Condition"          health:ConditionRecord    health:sourceRecordId)
-    ("Immunization"       health:ImmunizationRecord health:sourceRecordId)
-    ("Procedure"          clinical:Procedure        clinical:sourceRecordId)
-    ("Patient"            cascade:PatientProfile    cascade:sourceRecordId)
+    ("AllergyIntolerance"  health:AllergyRecord      health:sourceRecordId)
+    ("Condition"           health:ConditionRecord    health:sourceRecordId)
+    ("Immunization"        health:ImmunizationRecord health:sourceRecordId)
+    ("Procedure"           clinical:Procedure        clinical:sourceRecordId)
+    ("Patient"             cascade:PatientProfile    cascade:sourceRecordId)
+    ("MedicationRequest"   clinical:Medication       clinical:sourceRecordId)
+    ("MedicationStatement" clinical:Medication       clinical:sourceRecordId)
+    ("Observation"         health:LabResultRecord    health:sourceRecordId)
   }
+  FILTER (?resourceType != "Observation" || EXISTS { ?lab fhirr4:labResultAt ?resourcePointer })
   OPTIONAL { ?resource xyz:id ?resourceId }
 
   BIND (IF(BOUND(?contained),

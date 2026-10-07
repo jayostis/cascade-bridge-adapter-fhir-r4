@@ -21,7 +21,7 @@ compatibility.json       the Bridges that must pass this adapter
 docs/format.md           FHIR R4 JSON as the adapter sees it
 schema/                  HL7's R4 JSON Schema, byte for byte
 in/sparql/               the detect rule, the document table, the mappings and the findings queries
-vocab/                   this adapter's own namespace: its gap scheme and source accounting
+vocab/                   this adapter's own namespace: its gap scheme, source accounting and vital signs table
 views/                   the records-layer views the comparison with cascade-cli ran
 fixtures/                the test manifest, its inputs, and the expected graphs and findings
 .github/workflows/       runs the specification's checks; no logic of its own

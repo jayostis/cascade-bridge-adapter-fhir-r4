@@ -1,0 +1,106 @@
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX sh:      <http://www.w3.org/ns/shacl#>
+PREFIX oa:      <http://www.w3.org/ns/oa#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX fx:      <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:     <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:  <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+
+# What lab-result.rq leaves behind at a path the source accounting carries for
+# another kind, or carries where it holds one value: the end of the period a
+# result was performed over, a code from a system other than LOINC, and each
+# value of a reference range or an interpretation after the first.
+
+CONSTRUCT {
+  [] a oa:Annotation ;
+    oa:hasTarget [
+      oa:hasSource bridge:thisRecord ;
+      oa:hasSelector [
+        a oa:FragmentSelector ;
+        dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+        rdf:value ?pointer
+      ]
+    ] ;
+    oa:hasBody ?gap ;
+    oa:motivatedBy oa:classifying ;
+    sh:value ?value .
+}
+WHERE {
+  FILTER NOT EXISTS {
+    bridge:thisDocument bridge:sourceFormatVersion ?stated .
+    FILTER (!STRSTARTS(?stated, "4.0."))
+  }
+  bridge:thisRecord bridge:selector ?recordSelector .
+  ?root a fx:root .
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  { BIND ("" AS ?containedStep) }
+  UNION
+  {
+    ?top xyz:contained ?containedList .
+    ?containedList ?containedSlot ?contained .
+    ?contained xyz:resourceType ?containedType .
+    BIND (CONCAT("/contained/", STR(xsd:integer(STRAFTER(STR(?containedSlot), "#_")) - 1)) AS ?containedStep)
+  }
+  BIND (COALESCE(?contained, ?top) AS ?resource)
+  ?resource xyz:resourceType "Observation" .
+  ?lab fhirr4:labResultAt ?labPointer .
+  FILTER (?labPointer = CONCAT(?recordSelector, ?topStep, ?containedStep))
+
+  {
+    ?resource xyz:effectivePeriod ?period . ?period xyz:end ?value .
+    BIND ("/effectivePeriod/end" AS ?step)
+    BIND (fhirr4:labResultPeriodEnd AS ?gap)
+  }
+  UNION
+  {
+    ?resource xyz:code ?concept . ?concept xyz:coding ?codings . ?codings ?codingSlot ?coding .
+    ?coding xyz:code ?value .
+    FILTER NOT EXISTS { ?coding xyz:system "http://loinc.org" }
+    BIND (CONCAT("/code/coding/", STR(xsd:integer(STRAFTER(STR(?codingSlot), "#_")) - 1), "/code") AS ?step)
+    BIND (fhirr4:labResultCode AS ?gap)
+  }
+  UNION
+  {
+    ?resource xyz:referenceRange ?ranges . ?ranges ?rangeSlot ?range .
+    FILTER (?rangeSlot != rdf:_1)
+    {
+      ?range xyz:text ?value .
+      BIND ("/text" AS ?rangeStep)
+    }
+    UNION
+    {
+      ?range ?boundMember ?bound . ?bound xyz:value ?value .
+      VALUES (?boundMember ?rangeStep) {
+        (xyz:low "/low/value")
+        (xyz:high "/high/value")
+      }
+    }
+    BIND (CONCAT("/referenceRange/", STR(xsd:integer(STRAFTER(STR(?rangeSlot), "#_")) - 1), ?rangeStep) AS ?step)
+    BIND (fhirr4:labResultRangeRepeated AS ?gap)
+  }
+  UNION
+  {
+    ?resource xyz:interpretation ?interpretations . ?interpretations ?interpretationSlot ?interpretation .
+    FILTER (?interpretationSlot != rdf:_1)
+    {
+      ?interpretation xyz:text ?value .
+      BIND ("/text" AS ?interpretationStep)
+    }
+    UNION
+    {
+      ?interpretation xyz:coding ?interpretationCodings .
+      ?interpretationCodings ?interpretationCodingSlot ?interpretationCoding .
+      ?interpretationCoding xyz:code ?value .
+      BIND (CONCAT("/coding/", STR(xsd:integer(STRAFTER(STR(?interpretationCodingSlot), "#_")) - 1), "/code")
+            AS ?interpretationStep)
+    }
+    BIND (CONCAT("/interpretation/", STR(xsd:integer(STRAFTER(STR(?interpretationSlot), "#_")) - 1),
+                 ?interpretationStep) AS ?step)
+    BIND (fhirr4:labResultInterpretationRepeated AS ?gap)
+  }
+  BIND (CONCAT(?topStep, ?containedStep, ?step) AS ?pointer)
+}

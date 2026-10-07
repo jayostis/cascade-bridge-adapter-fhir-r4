@@ -10,9 +10,24 @@ The FHIR specification is HL7's, published under CC0.
 ## What a record is
 
 A record is one **resource**: a JSON object whose `resourceType` member names
-its type. This release maps five types, `AllergyIntolerance`, `Condition`,
-`Immunization`, `Procedure` and `Patient`; a resource of any other type yields
-a finding and no record.
+its type. This release maps `AllergyIntolerance`, `Condition`, `Immunization`,
+`Procedure`, `Patient`, `MedicationRequest`, `MedicationStatement`, and an
+`Observation` that is a laboratory result; a resource of any other type, and
+any other `Observation`, yields a finding and no record. A `Medication` is read
+through the medication that references it, and is no record of its own.
+
+An `Observation`'s `category` says what kind it is, from
+[observation-category](https://hl7.org/fhir/R4/codesystem-observation-category.html):
+`laboratory`, `vital-signs`, `social-history` and others. It is optional, so a
+code alone may have to tell a lab result from a vital sign: the
+[vital signs profile](https://hl7.org/fhir/R4/observation-vitalsigns.html),
+read on 2026-10-06, fixes the LOINC code of each vital sign. An `Observation`
+with `hasMember` groups others, as a panel does.
+
+A medication names its drug in `medicationCodeableConcept`, or by
+`medicationReference` to a `Medication` resource: contained in it, another
+entry of its Bundle, or a resource the document does not hold. An Apple Health
+export holds one resource per file, so a reference there points outside it.
 
 A resource's `id` is the server's logical id, unique for its type on that
 server. It is optional: a resource written by a client, or assembled into an
@@ -78,6 +93,7 @@ referencing a patient as `Patient/pat-conformance-1`. What each is for is
 their `INVENTORY.md` there, at the commit the crate names.
 
 The two narrative-only Conditions, `condition-no-id-narrative-diabetes` and
-`condition-no-id-narrative-breast-cancer`, carry no `subject`, which FHIR R4
-requires of a Condition, so they fail the schema. Every other input, copied or
-authored, validates against it.
+`condition-no-id-narrative-breast-cancer`, and the two id-less
+MedicationStatements, `medication-no-id-bare` and `medication-no-id-note-only`,
+carry no `subject`, which FHIR R4's schema requires of both types, so the four
+fail the schema. Every other input, copied or authored, validates against it.

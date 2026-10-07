@@ -1,0 +1,103 @@
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX fx:      <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:     <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:  <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+
+# A Medication is no record: a medication that references one in its document
+# reads its name and RxNorm code here, from whichever record holds it. A query
+# runs over one record, so no row here can say which Medication a reference
+# resolves to. Instead a Medication is a row for each key a reference could
+# name it by, and a reference a row of the key it names, each within a scope:
+# a contained Medication is named by "#" and its id within the resource holding
+# it, and an entry by its fullUrl, or by type and id, within the document. A
+# reference to a version of a Medication names the Medication. A reference
+# resolves where exactly one Medication holds its key in its scope, and every
+# query asking joins these rows the same way. A reference is a row whether it
+# resolves or not, so that a Medication nothing resolves to can be reported.
+
+CONSTRUCT {
+  [] fhirr4:medicationAt ?pointer ;
+    fhirr4:medicationKey ?key ;
+    fhirr4:medicationScope ?scope .
+  [] fhirr4:medicationAt ?pointer ;
+    fhirr4:medicationName ?name .
+  [] fhirr4:medicationAt ?pointer ;
+    fhirr4:medicationCode ?rxNormCode .
+  [] fhirr4:medicationReferenceFrom ?pointer ;
+    fhirr4:medicationReferenceTo ?target ;
+    fhirr4:medicationScope ?referenceScope .
+}
+WHERE {
+  bridge:thisRecord bridge:selector ?recordSelector .
+  ?root a fx:root .
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  { BIND ("" AS ?containedStep) }
+  UNION
+  {
+    ?top xyz:contained ?containedList .
+    ?containedList ?containedSlot ?contained .
+    ?contained xyz:resourceType ?containedType .
+    BIND (CONCAT("/contained/", STR(xsd:integer(STRAFTER(STR(?containedSlot), "#_")) - 1)) AS ?containedStep)
+  }
+  BIND (COALESCE(?contained, ?top) AS ?resource)
+  BIND (CONCAT(?recordSelector, ?topStep, ?containedStep) AS ?pointer)
+  {
+    ?resource xyz:resourceType "Medication" ;
+      xyz:id ?id .
+  }
+  UNION
+  {
+    ?resource xyz:resourceType "Medication" .
+    ?root xyz:fullUrl ?fullUrl .
+  }
+  UNION
+  {
+    ?resource xyz:resourceType "Medication" ;
+      xyz:code ?concept .
+    ?concept xyz:text ?name .
+  }
+  UNION
+  {
+    ?resource xyz:resourceType "Medication" ;
+      xyz:code ?concept .
+    ?concept xyz:coding ?codings .
+    ?codings ?codingSlot ?coding . ?coding xyz:display ?name .
+    FILTER NOT EXISTS { ?concept xyz:text ?text }
+    FILTER NOT EXISTS {
+      ?codings ?earlierSlot ?earlier . ?earlier xyz:display ?earlierDisplay .
+      FILTER (xsd:integer(STRAFTER(STR(?earlierSlot), "#_")) < xsd:integer(STRAFTER(STR(?codingSlot), "#_")))
+    }
+  }
+  UNION
+  {
+    ?resource xyz:resourceType "Medication" ;
+      xyz:code ?coded .
+    ?coded xyz:coding ?codings . ?codings ?codingSlot ?coding .
+    ?coding xyz:system "http://www.nlm.nih.gov/research/umls/rxnorm" ;
+      xyz:code ?code .
+    FILTER NOT EXISTS {
+      ?codings ?earlierSlot ?earlier .
+      ?earlier xyz:system "http://www.nlm.nih.gov/research/umls/rxnorm" ;
+        xyz:code ?earlierCode .
+      FILTER (xsd:integer(STRAFTER(STR(?earlierSlot), "#_")) < xsd:integer(STRAFTER(STR(?codingSlot), "#_")))
+    }
+    BIND (IRI(CONCAT("http://www.nlm.nih.gov/research/umls/rxnorm/", ENCODE_FOR_URI(?code))) AS ?rxNormCode)
+  }
+  UNION
+  {
+    ?resource xyz:resourceType ?referrerType ;
+      xyz:medicationReference ?reference .
+    ?reference xyz:reference ?written .
+    FILTER (?referrerType IN ("MedicationRequest", "MedicationStatement"))
+    BIND (REPLACE(?written, "/_history/[A-Za-z0-9.-]{1,64}$", "") AS ?target)
+  }
+  FILTER (!BOUND(?fullUrl) || !BOUND(?contained))
+  BIND (CONCAT(?recordSelector, ?topStep) AS ?container)
+  BIND (IF(BOUND(?id), IF(BOUND(?contained), CONCAT("#", ?id), CONCAT("Medication/", ?id)), ?fullUrl) AS ?key)
+  BIND (IF(BOUND(?key), IF(BOUND(?contained), ?container, ""), 1/0) AS ?scope)
+  BIND (IF(STRSTARTS(?target, "#"), ?container, "") AS ?referenceScope)
+}

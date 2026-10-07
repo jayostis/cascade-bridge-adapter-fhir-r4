@@ -8,6 +8,10 @@ PREFIX xyz:     <http://sparql.xyz/facade-x/data/>
 PREFIX bridge:  <https://ns.cascadeprotocol.org/bridge/v1-draft#>
 PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 
+# An Observation is reported by observation-findings.rq. A Medication is read
+# through the medication whose reference resolves to it, as medication-table.rq
+# says, so only one no reference resolves to is reported.
+
 CONSTRUCT {
   [] a oa:Annotation ;
     oa:hasTarget [
@@ -27,6 +31,7 @@ WHERE {
     bridge:thisDocument bridge:sourceFormatVersion ?stated .
     FILTER (!STRSTARTS(?stated, "4.0."))
   }
+  bridge:thisRecord bridge:selector ?recordSelector .
   ?root a fx:root .
   { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
   UNION
@@ -42,6 +47,22 @@ WHERE {
   BIND (COALESCE(?contained, ?top) AS ?resource)
   BIND (CONCAT(?topStep, ?containedStep) AS ?resourcePointer)
   ?resource xyz:resourceType ?value .
-  FILTER (?value NOT IN ("AllergyIntolerance", "Condition", "Immunization", "Procedure", "Patient"))
+  FILTER (?value NOT IN ("AllergyIntolerance", "Condition", "Immunization", "Procedure", "Patient",
+                        "MedicationRequest", "MedicationStatement", "Observation"))
+  BIND (CONCAT(?recordSelector, ?resourcePointer) AS ?medicationPointer)
+  FILTER (?value != "Medication" || NOT EXISTS {
+    ?resolving fhirr4:medicationReferenceFrom ?from ;
+      fhirr4:medicationReferenceTo ?key ;
+      fhirr4:medicationScope ?scope .
+    ?held fhirr4:medicationAt ?medicationPointer ;
+      fhirr4:medicationKey ?key ;
+      fhirr4:medicationScope ?scope .
+    FILTER NOT EXISTS {
+      ?rival fhirr4:medicationAt ?rivalPointer ;
+        fhirr4:medicationKey ?key ;
+        fhirr4:medicationScope ?scope .
+      FILTER (?rivalPointer != ?medicationPointer)
+    }
+  })
   BIND (CONCAT(?resourcePointer, "/resourceType") AS ?pointer)
 }
