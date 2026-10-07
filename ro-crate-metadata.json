@@ -19,7 +19,8 @@
       "bridge:mapping": "bridge:mapping",
       "bridge:findingsQuery": "bridge:findingsQuery",
       "bridge:documentTableQuery": "bridge:documentTableQuery",
-      "bridge:sourceAccounting": "bridge:sourceAccounting"
+      "bridge:sourceAccounting": "bridge:sourceAccounting",
+      "bridge:table": "bridge:table"
     }
   ],
   "@graph": [
@@ -42,7 +43,7 @@
       "identifier": "fhir-r4",
       "name": "FHIR R4 JSON",
       "version": "0.1.0",
-      "description": "The Cascade Bridge Adapter for FHIR R4 JSON: the package of data a Cascade Bridge runs to turn FHIR R4 resources, alone or as the entries of a Bundle, into Cascade records. Import-only. This crate is the adapter's manifest: a Bridge reads the root entity first, for the format id, the source media type, the source schema, the two envelopes, the detect rule, the document table query, the mappings and the findings queries, the profile the Bridge must offer, the vocabulary repository and the paths, in it, of the ontology and shapes files the adapter is read against, the gap scheme every finding takes its body from, each gap declaring the sh:resultSeverity its findings carry where that is not sh:Info, the source accounting, and the test manifest. The data entities carry provenance for every committed file, and a sha256 computed locally over the committed bytes of each digested one. Twenty inputs are copied byte for byte from the conformance repository's fixtures/clinical-fhir at the commit isBasedOn names; the others are authored here, and each says so.",
+      "description": "The Cascade Bridge Adapter for FHIR R4 JSON: the package of data a Cascade Bridge runs to turn FHIR R4 resources, alone or as the entries of a Bundle, into Cascade records. Import-only. This crate is the adapter's manifest: a Bridge reads the root entity first, for the format id, the source media type, the source schema, the two envelopes, the detect rule, the document table queries, the mappings, the findings queries and the table they read, the profile the Bridge must offer, the vocabulary repository and the paths, in it, of the ontology and shapes files the adapter is read against, the gap scheme every finding takes its body from, each gap declaring the sh:resultSeverity its findings carry where that is not sh:Info, the source accounting, and the test manifest. The data entities carry provenance for every committed file, and a sha256 computed locally over the committed bytes of each digested one. Twenty-seven inputs are copied byte for byte from the conformance repository's fixtures/clinical-fhir at the commit isBasedOn names; the others are authored here, and each says so.",
       "datePublished": "2026-09-27",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -100,9 +101,17 @@
       "bridge:detectQuery": {
         "@id": "in/sparql/detect.rq"
       },
-      "bridge:documentTableQuery": {
-        "@id": "in/sparql/document-table.rq"
-      },
+      "bridge:documentTableQuery": [
+        {
+          "@id": "in/sparql/document-table.rq"
+        },
+        {
+          "@id": "in/sparql/lab-result-table.rq"
+        },
+        {
+          "@id": "in/sparql/medication-table.rq"
+        }
+      ],
       "bridge:mapping": [
         {
           "@id": "in/sparql/record.rq"
@@ -121,6 +130,12 @@
         },
         {
           "@id": "in/sparql/patient.rq"
+        },
+        {
+          "@id": "in/sparql/medication.rq"
+        },
+        {
+          "@id": "in/sparql/lab-result.rq"
         }
       ],
       "bridge:findingsQuery": [
@@ -141,6 +156,17 @@
         },
         {
           "@id": "in/sparql/reference-display-findings.rq"
+        },
+        {
+          "@id": "in/sparql/observation-findings.rq"
+        },
+        {
+          "@id": "in/sparql/medication-findings.rq"
+        }
+      ],
+      "bridge:table": [
+        {
+          "@id": "vocab/fhir-vital-signs.ttl"
         }
       ],
       "bridge:gapScheme": {
@@ -163,6 +189,12 @@
           "@id": "in/sparql/document-table.rq"
         },
         {
+          "@id": "in/sparql/lab-result-table.rq"
+        },
+        {
+          "@id": "in/sparql/medication-table.rq"
+        },
+        {
           "@id": "in/sparql/record.rq"
         },
         {
@@ -181,6 +213,12 @@
           "@id": "in/sparql/patient.rq"
         },
         {
+          "@id": "in/sparql/medication.rq"
+        },
+        {
+          "@id": "in/sparql/lab-result.rq"
+        },
+        {
           "@id": "in/sparql/resource-type-findings.rq"
         },
         {
@@ -196,6 +234,12 @@
           "@id": "in/sparql/reference-display-findings.rq"
         },
         {
+          "@id": "in/sparql/observation-findings.rq"
+        },
+        {
+          "@id": "in/sparql/medication-findings.rq"
+        },
+        {
           "@id": "vocab/fhir-accounting.ttl"
         },
         {
@@ -203,6 +247,9 @@
         },
         {
           "@id": "vocab/fhir-gaps.ttl"
+        },
+        {
+          "@id": "vocab/fhir-vital-signs.ttl"
         },
         {
           "@id": "fixtures/in/allergy-with-id.json"
@@ -274,6 +321,27 @@
           "@id": "fixtures/in/lab-glucose-fasting.json"
         },
         {
+          "@id": "fixtures/in/lab-glucose-postprandial.json"
+        },
+        {
+          "@id": "fixtures/in/lab-glucose-no-id-fasting.json"
+        },
+        {
+          "@id": "fixtures/in/lab-glucose-no-id-postprandial.json"
+        },
+        {
+          "@id": "fixtures/in/medication-with-id.json"
+        },
+        {
+          "@id": "fixtures/in/medication-no-id-bare.json"
+        },
+        {
+          "@id": "fixtures/in/medication-no-id-note-only.json"
+        },
+        {
+          "@id": "fixtures/in/vital-heartrate-with-id.json"
+        },
+        {
           "@id": "fixtures/in/bundle-two-identical-id-less-allergies.json"
         },
         {
@@ -287,6 +355,30 @@
         },
         {
           "@id": "fixtures/in/allergy-no-id-penicillin-compact.json"
+        },
+        {
+          "@id": "fixtures/in/lab-every-mapped-element.json"
+        },
+        {
+          "@id": "fixtures/in/lab-no-category-potassium.json"
+        },
+        {
+          "@id": "fixtures/in/vital-no-category-heart-rate.json"
+        },
+        {
+          "@id": "fixtures/in/medication-request-every-mapped-element.json"
+        },
+        {
+          "@id": "fixtures/in/medication-statement-every-mapped-element.json"
+        },
+        {
+          "@id": "fixtures/in/medication-request-contained-medication.json"
+        },
+        {
+          "@id": "fixtures/in/medication-request-reference-outside.json"
+        },
+        {
+          "@id": "fixtures/in/bundle-medication-request-and-medication.json"
         },
         {
           "@id": "fixtures/manifest.ttl"
@@ -323,6 +415,30 @@
         },
         {
           "@id": "fixtures/facts/observation-obs-glucose-fasting.ttl"
+        },
+        {
+          "@id": "fixtures/facts/observation-obs-glucose-postprandial.ttl"
+        },
+        {
+          "@id": "fixtures/facts/observation-obs-hba1c-1.ttl"
+        },
+        {
+          "@id": "fixtures/facts/observation-obs-hr-morning.ttl"
+        },
+        {
+          "@id": "fixtures/facts/medicationstatement-med-lisinopril-1.ttl"
+        },
+        {
+          "@id": "fixtures/facts/medicationstatement-medst-ibuprofen-1.ttl"
+        },
+        {
+          "@id": "fixtures/facts/medicationrequest-medrx-atorvastatin-1.ttl"
+        },
+        {
+          "@id": "fixtures/facts/medicationrequest-medrx-amlodipine-1.ttl"
+        },
+        {
+          "@id": "fixtures/facts/medicationrequest-medrx-metformin-2.ttl"
         },
         {
           "@id": "https://hl7.org/fhir/R4/fhir.schema.json"
@@ -475,6 +591,78 @@
           "@id": "fixtures/findings/lab-glucose-fasting.ttl"
         },
         {
+          "@id": "fixtures/expected/lab-every-mapped-element.ttl"
+        },
+        {
+          "@id": "fixtures/findings/lab-every-mapped-element.ttl"
+        },
+        {
+          "@id": "fixtures/expected/lab-no-category-potassium.ttl"
+        },
+        {
+          "@id": "fixtures/findings/lab-no-category-potassium.ttl"
+        },
+        {
+          "@id": "fixtures/expected/vital-heartrate-with-id.ttl"
+        },
+        {
+          "@id": "fixtures/findings/vital-heartrate-with-id.ttl"
+        },
+        {
+          "@id": "fixtures/expected/vital-no-category-heart-rate.ttl"
+        },
+        {
+          "@id": "fixtures/findings/vital-no-category-heart-rate.ttl"
+        },
+        {
+          "@id": "fixtures/expected/medication-with-id.ttl"
+        },
+        {
+          "@id": "fixtures/findings/medication-with-id.ttl"
+        },
+        {
+          "@id": "fixtures/expected/medication-no-id-bare.ttl"
+        },
+        {
+          "@id": "fixtures/findings/medication-no-id-bare.ttl"
+        },
+        {
+          "@id": "fixtures/expected/medication-no-id-note-only.ttl"
+        },
+        {
+          "@id": "fixtures/findings/medication-no-id-note-only.ttl"
+        },
+        {
+          "@id": "fixtures/expected/medication-request-every-mapped-element.ttl"
+        },
+        {
+          "@id": "fixtures/findings/medication-request-every-mapped-element.ttl"
+        },
+        {
+          "@id": "fixtures/expected/medication-statement-every-mapped-element.ttl"
+        },
+        {
+          "@id": "fixtures/findings/medication-statement-every-mapped-element.ttl"
+        },
+        {
+          "@id": "fixtures/expected/medication-request-contained-medication.ttl"
+        },
+        {
+          "@id": "fixtures/findings/medication-request-contained-medication.ttl"
+        },
+        {
+          "@id": "fixtures/expected/medication-request-reference-outside.ttl"
+        },
+        {
+          "@id": "fixtures/findings/medication-request-reference-outside.ttl"
+        },
+        {
+          "@id": "fixtures/expected/bundle-medication-request-and-medication.ttl"
+        },
+        {
+          "@id": "fixtures/findings/bundle-medication-request-and-medication.ttl"
+        },
+        {
           "@id": "fixtures/expected/patient-no-id.ttl"
         },
         {
@@ -524,6 +712,12 @@
         },
         {
           "@id": "views/patients.rq"
+        },
+        {
+          "@id": "views/medications.rq"
+        },
+        {
+          "@id": "views/lab-results.rq"
         }
       ]
     },
@@ -653,15 +847,39 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The bridge:documentTableQuery: for each record, where it stands and its resource's type, id and fullUrl, so record.rq tells an id or a urn:uuid the document repeats and resolves a reference to another record of the document."
+      "description": "A bridge:documentTableQuery: for each record, where it stands and its resource's type, id and fullUrl, so record.rq tells an id or a urn:uuid the document repeats and resolves a reference to another record of the document."
+    },
+    {
+      "@id": "in/sparql/lab-result-table.rq",
+      "@type": "File",
+      "name": "Document table: which Observations are lab results",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "2614",
+      "sha256": "445e72d70243cb78b4169c13a8698b8de1551c14c4ac9e189ea85b312e8be306",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A bridge:documentTableQuery: a row for each Observation of a record that is a lab result, wherever it stands, by its category, or, where it has none, by a LOINC code no vital sign of vocab/fhir-vital-signs.ttl carries, a panel excluded; record.rq, lab-result.rq and the findings queries ask it whether one is."
+    },
+    {
+      "@id": "in/sparql/medication-table.rq",
+      "@type": "File",
+      "name": "Document table: Medications and the references to them",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "2857",
+      "sha256": "84f56a81da94cd1ecd1d3a5e98e7fdf83ba12ea596a0ed4b27be3ebddba9facb",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A bridge:documentTableQuery: a row for each Medication of a record, wherever it stands, with its id, its name and its RxNorm codes, and a row for each medication's reference to one, so that medication.rq reads a drug a reference names from the record holding it, and resource-type-findings.rq leaves out a Medication something references."
     },
     {
       "@id": "in/sparql/record.rq",
       "@type": "File",
       "name": "Mapping: records, versions and arrivals",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "8670",
-      "sha256": "4ce390d14dd7294651b7dca8eb515adbe5f69ab1601022ffcb35adde806c0f98",
+      "contentSize": "9004",
+      "sha256": "537478f9f65fdeece92776aaa3e8fdebad862fd1545cb5680be81cd5cbb1f6b9",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -728,12 +946,36 @@
       "description": "What a Patient says, written on the version record.rq names: the first name it states, and its birth date."
     },
     {
+      "@id": "in/sparql/medication.rq",
+      "@type": "File",
+      "name": "Mapping: a MedicationRequest's or MedicationStatement's version",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "6449",
+      "sha256": "33081b5649c017dc21fef2fa738b1835a6f884a8df35214b6f1cc826045d4edb",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "What a medication says, written on the version record.rq names: its intent, prescribed for a request and reportedUse for a statement; the drug's name and RxNorm codes, from its concept or from the Medication its reference resolves to in the document, else the reference's display; status, start and end dates, and the first dosage's text."
+    },
+    {
+      "@id": "in/sparql/lab-result.rq",
+      "@type": "File",
+      "name": "Mapping: a lab result's version",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "6035",
+      "sha256": "e00cd1211d3ad7d2071082ac0c391d0e6226807b574db304f0ecde967f03f4de",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "What a lab result says, written on the version record.rq names: test name and LOINC codes, value as the source wrote it and its unit, reference range, interpretation, performed time and status."
+    },
+    {
       "@id": "in/sparql/resource-type-findings.rq",
       "@type": "File",
       "name": "Findings: a resource of a type this release does not map",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "1810",
-      "sha256": "178c445de859cb737ff5c79389311fc2f8efb08486b7533b91b9e89ad548795e",
+      "contentSize": "2572",
+      "sha256": "1466fec5c7aeb6c0b501d94a5858cce02fe47252f9b812c7f26d251450798c26",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -756,8 +998,8 @@
       "@type": "File",
       "name": "Findings: an id the document repeats",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "2049",
-      "sha256": "96fc9a7a63fcde259d9d6eaf9593fbf2013a863bcc01af4a49b36c00a0199021",
+      "contentSize": "2287",
+      "sha256": "b3ac300c014cea94dde945d322bb39a8ffab9171007a735d0c31b2e25116dd14",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -780,20 +1022,44 @@
       "@type": "File",
       "name": "Findings: a reference's display",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "2324",
-      "sha256": "a423871c10e073e5c7e5724b5b12761402a9b4dcb98a9ee851a1cb2b3b8cc0a2",
+      "contentSize": "2618",
+      "sha256": "2ea6515cafbf4f13c1ab53aa7c98c4cd9a4521922ba3dc0bd0387238f1caa44e",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "A finding for each patient, subject or reason reference of a mapped resource that carries a display string, which no Cascade predicate carries."
     },
     {
+      "@id": "in/sparql/observation-findings.rq",
+      "@type": "File",
+      "name": "Findings: an Observation that is not a lab result",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "4668",
+      "sha256": "d7bf68c033687acfea6afe036080046b01b874e72c6732790ee1be875758427a",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "Reports fhirr4:observationNotLabResult for each Observation lab-result-table.rq does not call a lab result, at what decided it: a category, a vital sign's LOINC code, the type of one with neither category nor LOINC code, or a panel's members."
+    },
+    {
+      "@id": "in/sparql/medication-findings.rq",
+      "@type": "File",
+      "name": "Findings: a medication's unresolved reference and its note",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "3376",
+      "sha256": "ce20f85bad8622b8006d926a5ddcd0f69aa2523826d6b6f88bb548558b7e1c0b",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "Reports fhirr4:medicationOutsideDocument for a medication's reference to a Medication its document does not hold, and fhirr4:medicationNote for a medication's note, which the source accounting carries at the same path for the other kinds."
+    },
+    {
       "@id": "vocab/fhir-accounting.ttl",
       "@type": "File",
       "name": "FHIR R4 JSON source accounting",
       "encodingFormat": "text/turtle",
-      "contentSize": "48771",
-      "sha256": "406b1ce167087c78026e3ed7d613d524ee149d81796fa2faff46157b590c7459",
+      "contentSize": "92217",
+      "sha256": "2c4e545e6d4b72563525ace2df6d96448e1b6a8ab2f4c23a0aea7f1c7ab928a4",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -804,8 +1070,8 @@
       "@type": "File",
       "name": "Findings: a patient reference in a document from no known server",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "2155",
-      "sha256": "7f7f3039fc6e14145454db1bd9b1835ae4a5421e37051d80197a8960d25a45dc",
+      "contentSize": "2449",
+      "sha256": "2e7749d8c60f251f9d81622013e4a29477d966c79e0bd66b35952868e9522c4c",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -816,12 +1082,27 @@
       "@type": "File",
       "name": "FHIR R4 JSON gaps",
       "encodingFormat": "text/turtle",
-      "contentSize": "2780",
-      "sha256": "223ffb83e25320b9de6e34a39f96c4bde2c26cf0e955d51aa26aef911ce5bbb5",
+      "contentSize": "3927",
+      "sha256": "d4aec099e0572f0b9608e153326b82344299947011fc29fa07ac240dd7ff3272",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "The scheme every finding this adapter reports takes its body from: one skos:Concept per gap, in this adapter's own namespace (https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#), each under one of the bridge:gapKinds the Cascade Bridge Specification declares."
+    },
+    {
+      "@id": "vocab/fhir-vital-signs.ttl",
+      "@type": "File",
+      "name": "FHIR R4 vital signs",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2032",
+      "sha256": "270872c1f79f17f68ac13ed235583f814b571d5cf4fbeae4b69f84ef922d1897",
+      "isBasedOn": {
+        "@id": "https://hl7.org/fhir/R4/observation-vitalsigns.html"
+      },
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The bridge:table lab-result-table.rq and observation-findings.rq read to tell a vital sign from a lab result when an Observation carries no category: one skos:Concept per LOINC code of the table of vital signs in FHIR R4's vital signs profile, its skos:notation the code. Transcribed from the isBasedOn page, read on 2026-10-06. Not a concept map: no code maps to a Cascade term, and no entry of the source accounting looks a value up in it."
     },
     {
       "@id": "fixtures/in/allergy-with-id.json",
@@ -1150,7 +1431,7 @@
     {
       "@id": "fixtures/in/lab-glucose-fasting.json",
       "@type": "File",
-      "name": "Observation with an id, a type this release does not map",
+      "name": "Observation with an id: fasting glucose",
       "encodingFormat": "application/fhir+json",
       "contentSize": "713",
       "sha256": "f0b8b3d5e077b2e14fdcd2cf838424dfda4ce738ea99cc1d535f1d60268cd97c",
@@ -1160,7 +1441,112 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "A laboratory Observation of fasting blood glucose (LOINC 2339-0), id obs-glucose-fasting. Its expected output is a finding and no record. Copied byte for byte from the conformance repository at 0ea48bb (the file last changed at a5ffbc6, 2026-08-03). Written by hand for that corpus, not captured from a server: no fetch date, server or query exists to record."
+      "description": "A laboratory Observation of fasting blood glucose (LOINC 2339-0), id obs-glucose-fasting. Copied byte for byte from the conformance repository at 0ea48bb (the file last changed at a5ffbc6, 2026-08-03). Written by hand for that corpus, not captured from a server: no fetch date, server or query exists to record."
+    },
+    {
+      "@id": "fixtures/in/lab-glucose-postprandial.json",
+      "@type": "File",
+      "name": "Observation with an id: post-prandial glucose",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "719",
+      "sha256": "598933ee41457f0659e1c70b04600a30d30fda9d5efc6347852872678d2b822d",
+      "sameAs": {
+        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/lab-glucose-postprandial.json"
+      },
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A laboratory Observation of post-prandial blood glucose (LOINC 2339-0), 310 mg/dL on the day and code of lab-glucose-fasting.json, id obs-glucose-postprandial. Copied byte for byte from the conformance repository at 0ea48bb (the file last changed at a5ffbc6, 2026-08-03). Written by hand for that corpus, not captured from a server: no fetch date, server or query exists to record."
+    },
+    {
+      "@id": "fixtures/in/lab-glucose-no-id-fasting.json",
+      "@type": "File",
+      "name": "Observation with no id: fasting glucose",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "682",
+      "sha256": "c64e8e7fc10bf1d33bac49b1de9f7c427f25f5debafdf78e36ad8074ece7b9ed",
+      "sameAs": {
+        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/lab-glucose-no-id-fasting.json"
+      },
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The fasting glucose of lab-glucose-fasting.json with no id. Copied byte for byte from the conformance repository at 0ea48bb (the file last changed at a5ffbc6, 2026-08-03). Written by hand for that corpus, not captured from a server: no fetch date, server or query exists to record."
+    },
+    {
+      "@id": "fixtures/in/lab-glucose-no-id-postprandial.json",
+      "@type": "File",
+      "name": "Observation with no id: post-prandial glucose",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "683",
+      "sha256": "7bf9b52a17fd89bb9b801dbb7d3d40a74f53718bd3de9cae6d4cdbbaea90a9c2",
+      "sameAs": {
+        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/lab-glucose-no-id-postprandial.json"
+      },
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The post-prandial glucose of lab-glucose-postprandial.json with no id. Copied byte for byte from the conformance repository at 0ea48bb (the file last changed at a5ffbc6, 2026-08-03). Written by hand for that corpus, not captured from a server: no fetch date, server or query exists to record."
+    },
+    {
+      "@id": "fixtures/in/medication-with-id.json",
+      "@type": "File",
+      "name": "MedicationStatement with an id: lisinopril",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "426",
+      "sha256": "8d89c751f75708dfb2f66a2a762d85e5334d0f3034ecccfd40f0c82fffbb87c9",
+      "sameAs": {
+        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/medication-with-id.json"
+      },
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A MedicationStatement of lisinopril (RxNorm 29046), active since 2020-04-01, id med-lisinopril-1. Copied byte for byte from the conformance repository at 0ea48bb (the file last changed at a5ffbc6, 2026-08-03). Written by hand for that corpus, not captured from a server: no fetch date, server or query exists to record."
+    },
+    {
+      "@id": "fixtures/in/medication-no-id-bare.json",
+      "@type": "File",
+      "name": "MedicationStatement stating nothing",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "44",
+      "sha256": "135a494fa33915a713947f15649908a921b429ec8188fb225a2d745562f9a929",
+      "sameAs": {
+        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/medication-no-id-bare.json"
+      },
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A MedicationStatement with no id and no element but its type. Copied byte for byte from the conformance repository at 0ea48bb (the file last changed at a5ffbc6, 2026-08-03). Written by hand for that corpus, not captured from a server: no fetch date, server or query exists to record."
+    },
+    {
+      "@id": "fixtures/in/medication-no-id-note-only.json",
+      "@type": "File",
+      "name": "MedicationStatement stating only a note",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "161",
+      "sha256": "585a18ddc4174f8b5e261b0aad1a356d6d23b6cda0dc280679a83e192573b803",
+      "sameAs": {
+        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/medication-no-id-note-only.json"
+      },
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A MedicationStatement with no id whose only element is a note naming what the patient takes. Copied byte for byte from the conformance repository at 0ea48bb (the file last changed at a5ffbc6, 2026-08-03). Written by hand for that corpus, not captured from a server: no fetch date, server or query exists to record."
+    },
+    {
+      "@id": "fixtures/in/vital-heartrate-with-id.json",
+      "@type": "File",
+      "name": "Observation with an id: a vital sign",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "698",
+      "sha256": "0e82a43a6681ab23a87cca98bd51d96a70155baa0205b720d4fae11f1ee26d6c",
+      "sameAs": {
+        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/vital-heartrate-with-id.json"
+      },
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A vital-signs Observation of heart rate (LOINC 8867-4), id obs-hr-morning. Its expected output is a finding and no record. Copied byte for byte from the conformance repository at 0ea48bb (the file last changed at a5ffbc6, 2026-08-03). Written by hand for that corpus, not captured from a server: no fetch date, server or query exists to record."
     },
     {
       "@id": "fixtures/in/bundle-two-identical-id-less-allergies.json",
@@ -1229,6 +1615,110 @@
       "isBasedOn": {
         "@id": "fixtures/in/allergy-no-id-penicillin.json"
       }
+    },
+    {
+      "@id": "fixtures/in/lab-every-mapped-element.json",
+      "@type": "File",
+      "name": "Observation with an id and every element the adapter maps",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "1406",
+      "sha256": "f56d3bced6ffcdbeb7eb5e79de4d9d425dd940ce89ed7f6c3723f2f90389b1f2",
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A laboratory Observation of hemoglobin A1c (LOINC 4548-4), id obs-hba1c-1, carrying every element in/sparql/lab-result.rq and in/sparql/record.rq read: meta, status, a laboratory category with its display, code, subject, an effectiveDateTime with an offset, issued, a valueQuantity written 6.80, an interpretation and a reference range whose bounds name their unit system and code. Authored here on 2026-10-06, for a case the conformance corpus does not hold: a resource alone whose every mapped path the source accounting must account for."
+    },
+    {
+      "@id": "fixtures/in/lab-no-category-potassium.json",
+      "@type": "File",
+      "name": "Observation with no category: potassium",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "418",
+      "sha256": "08a354e51ed81386150feab22e4aa1c76cbb436b7d3f8ec2ab94ba272e56c76c",
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "An Observation of serum potassium (LOINC 2823-3) with no id and no category, its code named by a coding's display alone. Authored here on 2026-10-06, for a case the conformance corpus does not hold: a lab result told from a vital sign by its code."
+    },
+    {
+      "@id": "fixtures/in/vital-no-category-heart-rate.json",
+      "@type": "File",
+      "name": "Observation with no category: heart rate",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "390",
+      "sha256": "7b302c688a91a3cc3059f74ddb17636d8c31b6e11e91bed6569c18bde10fb3f4",
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "An Observation of heart rate (LOINC 8867-4) with no id and no category. Its expected output is a finding and no record. Authored here on 2026-10-06, for a case the conformance corpus does not hold: a vital sign told from a lab result by its code."
+    },
+    {
+      "@id": "fixtures/in/medication-request-every-mapped-element.json",
+      "@type": "File",
+      "name": "MedicationRequest with an id and every element the adapter maps",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "1322",
+      "sha256": "edb05acd1257e401014fcf521a94711ef676d29ce12973ecf027b1cef5005a0f",
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A MedicationRequest of atorvastatin (RxNorm 617312), id medrx-atorvastatin-1, carrying every element in/sparql/medication.rq and in/sparql/record.rq read of a request: meta, status, intent, medicationCodeableConcept, subject, authoredOn, a dosage instruction with its text, timing, route and dose, as an Apple Health export holds one, and a note. Authored here on 2026-10-06, for a case the conformance corpus does not hold: a resource alone whose every mapped path the source accounting must account for."
+    },
+    {
+      "@id": "fixtures/in/medication-statement-every-mapped-element.json",
+      "@type": "File",
+      "name": "MedicationStatement with an id and every element the adapter maps",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "633",
+      "sha256": "395ffb7c0179b43c2e6e7a577fd6924999cb3de16106b5ed7a1db6e7de1adc12",
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A MedicationStatement of ibuprofen (RxNorm 197806), id medst-ibuprofen-1, carrying every element in/sparql/medication.rq read of a statement: status, a medicationCodeableConcept with no text, subject, effectivePeriod, a dosage's text and a note. Authored here on 2026-10-06, for a case the conformance corpus does not hold: a resource alone whose every mapped path the source accounting must account for."
+    },
+    {
+      "@id": "fixtures/in/medication-request-contained-medication.json",
+      "@type": "File",
+      "name": "MedicationRequest of a contained Medication",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "587",
+      "sha256": "c31e617b2a7ee8407ec19b3ab1ce5c98a116e827bb70238630758414cff89ad3",
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A MedicationRequest of amlodipine, id medrx-amlodipine-1, whose medicationReference is #med1, a contained Medication coded RxNorm 197361. Authored here on 2026-10-06, for a case the conformance corpus does not hold: a drug named by a reference the resource itself resolves."
+    },
+    {
+      "@id": "fixtures/in/medication-request-reference-outside.json",
+      "@type": "File",
+      "name": "MedicationRequest of a Medication outside its document",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "331",
+      "sha256": "e612db7da051c48b0401127e6db89adbc20786f42c5827e53f96d6f4d5885cfd",
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A MedicationRequest of metformin, id medrx-metformin-2, whose medicationReference names Medication/med-metformin-ext with a display, as an Apple Health export holds one resource per file. Authored here on 2026-10-06, for a case the conformance corpus does not hold: a drug named by a reference nothing in the document resolves."
+    },
+    {
+      "@id": "fixtures/in/bundle-medication-request-and-medication.json",
+      "@type": "File",
+      "name": "Bundle of a MedicationRequest and Medications",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "1336",
+      "sha256": "a663a8b35bd6b9c7db1daf6d1b8c40aceaae2028190ad88b50c65144fb3a4b1d",
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A collection Bundle: a Medication of metformin (RxNorm 861007), id med-metformin-1; a MedicationRequest, id medrx-metformin-1, referencing it as Medication/med-metformin-1; and a Medication nothing references. Authored here on 2026-10-06, for a case the conformance corpus does not hold: a drug named by a reference another entry of the document resolves."
     },
     {
       "@id": "fixtures/expected/allergy-no-id-penicillin.ttl",
@@ -1907,12 +2397,12 @@
       "@type": "File",
       "name": "Expected graph for lab-glucose-fasting",
       "encodingFormat": "text/turtle",
-      "contentSize": "1568",
-      "sha256": "00f0e2ba7daecb74eba02b3272e770e739e6e4aa19182cdc74e89d324798fba0",
+      "contentSize": "2389",
+      "sha256": "ed9fad6e609ed210698b0003abcec6872d059f27a67d8a59336713cdfdc2f021",
       "about": {
         "@id": "fixtures/in/lab-glucose-fasting.json"
       },
-      "dateCreated": "2026-09-27",
+      "dateCreated": "2026-10-06",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1923,12 +2413,396 @@
       "@type": "File",
       "name": "Expected findings for lab-glucose-fasting",
       "encodingFormat": "text/turtle",
-      "contentSize": "1009",
-      "sha256": "a8f85a26b03599181e361fa4763c223b7ae446cd426ebeab81a151e34cfb9c7b",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "about": {
         "@id": "fixtures/in/lab-glucose-fasting.json"
       },
-      "dateCreated": "2026-09-27",
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/lab-every-mapped-element.ttl",
+      "@type": "File",
+      "name": "Expected graph for lab-every-mapped-element",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2521",
+      "sha256": "c7d0ddb2602d9dbc7e3a8897a3ccc70bc720bc567d8914ac6baf095d3227a356",
+      "about": {
+        "@id": "fixtures/in/lab-every-mapped-element.json"
+      },
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/lab-every-mapped-element.ttl",
+      "@type": "File",
+      "name": "Expected findings for lab-every-mapped-element",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/lab-every-mapped-element.json"
+      },
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/lab-no-category-potassium.ttl",
+      "@type": "File",
+      "name": "Expected graph for lab-no-category-potassium",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2187",
+      "sha256": "a3aa5e0b22ed0d1f8186b58a443b699ea362781e517525dcba134ff19bf6e658",
+      "about": {
+        "@id": "fixtures/in/lab-no-category-potassium.json"
+      },
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/lab-no-category-potassium.ttl",
+      "@type": "File",
+      "name": "Expected findings for lab-no-category-potassium",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/lab-no-category-potassium.json"
+      },
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/vital-heartrate-with-id.ttl",
+      "@type": "File",
+      "name": "Expected graph for vital-heartrate-with-id",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1516",
+      "sha256": "48260c3567139f7950c678fc65ac8c0ec390f619a82ba4cfb47d1b8bd5544f72",
+      "about": {
+        "@id": "fixtures/in/vital-heartrate-with-id.json"
+      },
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/vital-heartrate-with-id.ttl",
+      "@type": "File",
+      "name": "Expected findings for vital-heartrate-with-id",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1027",
+      "sha256": "efafe3e94b58e4264775c5016d8d0d04c04390a1888916930358a1c81f856a83",
+      "about": {
+        "@id": "fixtures/in/vital-heartrate-with-id.json"
+      },
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/vital-no-category-heart-rate.ttl",
+      "@type": "File",
+      "name": "Expected graph for vital-no-category-heart-rate",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1423",
+      "sha256": "46e28aafd6a6669b23f75480d07d6d3449cdcfc00c772f2fd05b445dafdedd4b",
+      "about": {
+        "@id": "fixtures/in/vital-no-category-heart-rate.json"
+      },
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/vital-no-category-heart-rate.ttl",
+      "@type": "File",
+      "name": "Expected findings for vital-no-category-heart-rate",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1021",
+      "sha256": "6128903d2c314215178a21feea1cc734a40c35d107459043a26b2ce61698813e",
+      "about": {
+        "@id": "fixtures/in/vital-no-category-heart-rate.json"
+      },
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/medication-with-id.ttl",
+      "@type": "File",
+      "name": "Expected graph for medication-with-id",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2401",
+      "sha256": "94e793c3ff5f8788ab14372a2784a04521a94d4d3738523ea4d65381d4a15f49",
+      "about": {
+        "@id": "fixtures/in/medication-with-id.json"
+      },
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/medication-with-id.ttl",
+      "@type": "File",
+      "name": "Expected findings for medication-with-id",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/medication-with-id.json"
+      },
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/medication-no-id-bare.ttl",
+      "@type": "File",
+      "name": "Expected graph for medication-no-id-bare",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1896",
+      "sha256": "e1d90ae749f845b0ee4a594fec995c3df0542a2e812e360b5a72cd0150c69dcd",
+      "about": {
+        "@id": "fixtures/in/medication-no-id-bare.json"
+      },
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/medication-no-id-bare.ttl",
+      "@type": "File",
+      "name": "Expected findings for medication-no-id-bare",
+      "encodingFormat": "text/turtle",
+      "contentSize": "752",
+      "sha256": "e6a0156ab47622dcdf81a7bdf758da43e10eab4f2c17346b780ecb44d8aa5143",
+      "about": {
+        "@id": "fixtures/in/medication-no-id-bare.json"
+      },
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/medication-no-id-note-only.ttl",
+      "@type": "File",
+      "name": "Expected graph for medication-no-id-note-only",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1896",
+      "sha256": "7a55451a57686ed4be3edb88bbac6688b6f3c6a675ceb1f7634ee4efc7979ef5",
+      "about": {
+        "@id": "fixtures/in/medication-no-id-note-only.json"
+      },
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/medication-no-id-note-only.ttl",
+      "@type": "File",
+      "name": "Expected findings for medication-no-id-note-only",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1672",
+      "sha256": "091fbd8cba2be96b96a17c221c4a818b69e93bd7d642f1cf838a2a0f4ccea1fe",
+      "about": {
+        "@id": "fixtures/in/medication-no-id-note-only.json"
+      },
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/medication-request-every-mapped-element.ttl",
+      "@type": "File",
+      "name": "Expected graph for medication-request-every-mapped-element",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2553",
+      "sha256": "a085abd7f22587a55559682efdde3c7adf72ddf178b25ae08d2b85541be20a68",
+      "about": {
+        "@id": "fixtures/in/medication-request-every-mapped-element.json"
+      },
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/medication-request-every-mapped-element.ttl",
+      "@type": "File",
+      "name": "Expected findings for medication-request-every-mapped-element",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3633",
+      "sha256": "9c79c4a37b7714c20db11a5ef12071e8fddefe0cfa11ffbe02468b00e9e620f5",
+      "about": {
+        "@id": "fixtures/in/medication-request-every-mapped-element.json"
+      },
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/medication-statement-every-mapped-element.ttl",
+      "@type": "File",
+      "name": "Expected graph for medication-statement-every-mapped-element",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2536",
+      "sha256": "04dfcaa7a10ee3a673b2ac08c347f4c4bb9be0c9c31f12f345ade4115622430e",
+      "about": {
+        "@id": "fixtures/in/medication-statement-every-mapped-element.json"
+      },
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/medication-statement-every-mapped-element.ttl",
+      "@type": "File",
+      "name": "Expected findings for medication-statement-every-mapped-element",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1040",
+      "sha256": "cc38c93576e4f0af06adc8aa615ba97e9c64c8f50ae70384003b1934263d48f1",
+      "about": {
+        "@id": "fixtures/in/medication-statement-every-mapped-element.json"
+      },
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/medication-request-contained-medication.ttl",
+      "@type": "File",
+      "name": "Expected graph for medication-request-contained-medication",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2414",
+      "sha256": "95453dcd92ddef959a58a9ea2fd9e8471fb4995b8131ae93018796728b0d4235",
+      "about": {
+        "@id": "fixtures/in/medication-request-contained-medication.json"
+      },
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/medication-request-contained-medication.ttl",
+      "@type": "File",
+      "name": "Expected findings for medication-request-contained-medication",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/medication-request-contained-medication.json"
+      },
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/medication-request-reference-outside.ttl",
+      "@type": "File",
+      "name": "Expected graph for medication-request-reference-outside",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2330",
+      "sha256": "30081596c7651820e5114308addbf8204118aa99b4bc2224e6da0a8368828d82",
+      "about": {
+        "@id": "fixtures/in/medication-request-reference-outside.json"
+      },
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/medication-request-reference-outside.ttl",
+      "@type": "File",
+      "name": "Expected findings for medication-request-reference-outside",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1064",
+      "sha256": "8ba5e294b793ebba788888a46c8276ec363d527b2ec510b439c53ace1765632b",
+      "about": {
+        "@id": "fixtures/in/medication-request-reference-outside.json"
+      },
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/bundle-medication-request-and-medication.ttl",
+      "@type": "File",
+      "name": "Expected graph for bundle-medication-request-and-medication",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2313",
+      "sha256": "eb9ff592ee4684a78a444c9a2648c7abcae616ff6bc80673e4d9712e513beeef",
+      "about": {
+        "@id": "fixtures/in/bundle-medication-request-and-medication.json"
+      },
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/bundle-medication-request-and-medication.ttl",
+      "@type": "File",
+      "name": "Expected findings for bundle-medication-request-and-medication",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1046",
+      "sha256": "b1569cd7cfa868d525e77a01db513b3c2bf83b30da9dbbdeac63966c7f9596b8",
+      "about": {
+        "@id": "fixtures/in/bundle-medication-request-and-medication.json"
+      },
+      "dateCreated": "2026-10-06",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2187,6 +3061,30 @@
       "description": "A SELECT over a Bridge's graph: one row per PatientProfile record at its current version, else at each version, with its source id and birth date, given, family and whole name, each a plain string. Not run by a Bridge: #view-comparison-with-cascade-cli names what it is compared with."
     },
     {
+      "@id": "views/medications.rq",
+      "@type": "File",
+      "name": "View: medications",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "1378",
+      "sha256": "a5d5dd5adc1858999e92eb81ed0193073d7407605e4d6bc6666c9304b66c979a",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A SELECT over a Bridge's graph: one row per Medication record at its current version, else at each version, with its source id and drug name, RxNorm code, intent, status, start date, end date and dosage, each a plain string. Not run by a Bridge: #view-comparison-with-cascade-cli names what it is compared with."
+    },
+    {
+      "@id": "views/lab-results.rq",
+      "@type": "File",
+      "name": "View: lab results",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "1475",
+      "sha256": "20fed6ecc711c580df5a5d49e16dc14f8189a3722a0d6ad6e566be8dcf67badd",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A SELECT over a Bridge's graph: one row per LabResultRecord record at its current version, else at each version, with its source id and test name, LOINC code, value, unit, reference range, interpretation, status and performed date, each a plain string. Not run by a Bridge: #view-comparison-with-cascade-cli names what it is compared with."
+    },
+    {
       "@id": "#view-comparison-with-cascade-cli",
       "@type": "CreativeWork",
       "name": "View comparison with cascade-cli",
@@ -2208,6 +3106,12 @@
         },
         {
           "@id": "views/patients.rq"
+        },
+        {
+          "@id": "views/medications.rq"
+        },
+        {
+          "@id": "views/lab-results.rq"
         }
       ],
       "hasPart": [
@@ -2237,10 +3141,22 @@
         },
         {
           "@id": "#correction-drops-contained"
+        },
+        {
+          "@id": "#correction-loinc-code-with-hash"
+        },
+        {
+          "@id": "#correction-numbers-reprinted"
+        },
+        {
+          "@id": "#correction-medication-reference-unresolved"
+        },
+        {
+          "@id": "#correction-vital-signs-as-records"
         }
       ],
       "dateCreated": "2026-09-27",
-      "description": "The views over the Bridge's graph for every input agree on every content field with the same fields of cascade-cli's clinical/*.ttl for that input, read through the corrections in hasPart; record names and provenance are not compared. Run once on 2026-09-27, outside CI."
+      "description": "The views over the Bridge's graph for every input agree on every content field with the same fields of cascade-cli's clinical/*.ttl for that input, read through the corrections in hasPart; record names and provenance are not compared. Run once on 2026-09-27, outside CI, and for the medication and lab result views on 2026-10-06 over the inputs this release added, with cascade-cli convert --from fhir --to cascade."
     },
     {
       "@id": "#correction-criticality-as-allergy-severity",
@@ -2258,7 +3174,7 @@
       "isBasedOn": {
         "@id": "https://github.com/the-cascade-protocol/cascade-cli/tree/05d02255855e675f7c1c33d8219e57ac4dc7e47f"
       },
-      "description": "cascade-cli writes a FHIR date as an xsd:dateTime at T00:00:00Z (onset, abatement, administration, performed); the suffix is read off. A birth date stays an xsd:date."
+      "description": "cascade-cli writes a FHIR date as an xsd:dateTime at T00:00:00Z (onset, abatement, administration, performed, a medication's start and end); the suffix is read off. A birth date stays an xsd:date."
     },
     {
       "@id": "#correction-vaccine-code-prefixed",
@@ -2285,7 +3201,7 @@
       "isBasedOn": {
         "@id": "https://github.com/the-cascade-protocol/cascade-cli/tree/05d02255855e675f7c1c33d8219e57ac4dc7e47f"
       },
-      "description": "cascade-cli writes Unknown Condition and its like where a resource carries no code; read as absent."
+      "description": "cascade-cli writes Unknown Condition, Unknown Medication and their like where a resource carries no code, and an interpretation of unknown where a lab result states none; read as absent."
     },
     {
       "@id": "#correction-predicate-renames",
@@ -2294,7 +3210,7 @@
       "isBasedOn": {
         "@id": "https://github.com/the-cascade-protocol/cascade-cli/tree/05d02255855e675f7c1c33d8219e57ac4dc7e47f"
       },
-      "description": "cascade-cli writes health:abatementDate, clinical:procedureStatus, clinical:performedDate, clinical:procedureSnomedCode and cascade:profileId where the adapter writes clinical:abatementDate, clinical:status, clinical:procedureDate, clinical:snomedCode and cascade:sourceRecordId."
+      "description": "cascade-cli writes health:abatementDate, clinical:procedureStatus, clinical:performedDate, clinical:procedureSnomedCode and cascade:profileId where the adapter writes clinical:abatementDate, clinical:status, clinical:procedureDate, clinical:snomedCode and cascade:sourceRecordId; and, of a medication, health:startDate, health:endDate and health:sourceRecordId where the adapter writes clinical:startDate, clinical:endDate and clinical:sourceRecordId."
     },
     {
       "@id": "#correction-never-written",
@@ -2322,6 +3238,42 @@
         "@id": "https://github.com/the-cascade-protocol/cascade-cli/tree/05d02255855e675f7c1c33d8219e57ac4dc7e47f"
       },
       "description": "cascade-cli writes no record for a contained resource."
+    },
+    {
+      "@id": "#correction-loinc-code-with-hash",
+      "@type": "CreativeWork",
+      "name": "LOINC code with a hash",
+      "isBasedOn": {
+        "@id": "https://github.com/the-cascade-protocol/cascade-cli/tree/05d02255855e675f7c1c33d8219e57ac4dc7e47f"
+      },
+      "description": "cascade-cli writes a LOINC code as an IRI in http://loinc.org/rdf#, where step 2 of jayostis/cascade-runtime-js#70 and the adapter write http://loinc.org/rdf/; read as the code alone."
+    },
+    {
+      "@id": "#correction-numbers-reprinted",
+      "@type": "CreativeWork",
+      "name": "Numbers reprinted",
+      "isBasedOn": {
+        "@id": "https://github.com/the-cascade-protocol/cascade-cli/tree/05d02255855e675f7c1c33d8219e57ac4dc7e47f"
+      },
+      "description": "cascade-cli writes a lab result's value and its reference range's bounds as JavaScript prints the parsed number, 6.8 for 6.80 and 4 for 4.0; the adapter writes the number as the document writes it. Read as numbers."
+    },
+    {
+      "@id": "#correction-medication-reference-unresolved",
+      "@type": "CreativeWork",
+      "name": "Medication reference unresolved",
+      "isBasedOn": {
+        "@id": "https://github.com/the-cascade-protocol/cascade-cli/tree/05d02255855e675f7c1c33d8219e57ac4dc7e47f"
+      },
+      "description": "cascade-cli names a medication whose drug is a contained Medication or another entry of its Bundle Unknown Medication, with no RxNorm code; the adapter reads the Medication's name and codes. Those fields are not compared for those inputs."
+    },
+    {
+      "@id": "#correction-vital-signs-as-records",
+      "@type": "CreativeWork",
+      "name": "Vital signs as records",
+      "isBasedOn": {
+        "@id": "https://github.com/the-cascade-protocol/cascade-cli/tree/05d02255855e675f7c1c33d8219e57ac4dc7e47f"
+      },
+      "description": "cascade-cli writes a vital-sign Observation as a clinical:VitalSign record; the adapter writes none and reports fhirr4:observationNotLabResult. No view reads it."
     },
     {
       "@id": "https://github.com/the-cascade-protocol/cascade-cli/tree/05d02255855e675f7c1c33d8219e57ac4dc7e47f",
@@ -2481,6 +3433,110 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "The facts of meridian.ttl, and the resource's full URL on the server it was retrieved from. Made up here on 2026-09-27: no server was fetched."
+    },
+    {
+      "@id": "fixtures/facts/observation-obs-glucose-postprandial.ttl",
+      "@type": "File",
+      "name": "Facts supplied with Observation obs-glucose-postprandial",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1043",
+      "sha256": "2ef30ee738c8f8014b3996cd39fe43eff76d397fcfbf9b3602e492fb2ac408da",
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The facts of meridian.ttl, and the resource's full URL on the server it was retrieved from. Made up here on 2026-10-06: no server was fetched."
+    },
+    {
+      "@id": "fixtures/facts/observation-obs-hba1c-1.ttl",
+      "@type": "File",
+      "name": "Facts supplied with Observation obs-hba1c-1",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1030",
+      "sha256": "30c8187f112acb67a4188249cd55994270561f72931f25d966066b165cdcdb46",
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The facts of meridian.ttl, and the resource's full URL on the server it was retrieved from. Made up here on 2026-10-06: no server was fetched."
+    },
+    {
+      "@id": "fixtures/facts/observation-obs-hr-morning.ttl",
+      "@type": "File",
+      "name": "Facts supplied with Observation obs-hr-morning",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1033",
+      "sha256": "10f9cb835c99cb6c624276856a6993974583216683dc5309c7edc58c0e52543c",
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The facts of meridian.ttl, and the resource's full URL on the server it was retrieved from. Made up here on 2026-10-06: no server was fetched."
+    },
+    {
+      "@id": "fixtures/facts/medicationstatement-med-lisinopril-1.ttl",
+      "@type": "File",
+      "name": "Facts supplied with MedicationStatement med-lisinopril-1",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1043",
+      "sha256": "960cc2c8d292489fcdd27cc3e9333bf8a8ea23d76f3affcae941b8cd55d94972",
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The facts of meridian.ttl, and the resource's full URL on the server it was retrieved from. Made up here on 2026-10-06: no server was fetched."
+    },
+    {
+      "@id": "fixtures/facts/medicationstatement-medst-ibuprofen-1.ttl",
+      "@type": "File",
+      "name": "Facts supplied with MedicationStatement medst-ibuprofen-1",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1044",
+      "sha256": "f8ea392ef6eb8cb59aa03a8a8d6ba2e06adb241e6602c5c77d4653d5e12b4349",
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The facts of meridian.ttl, and the resource's full URL on the server it was retrieved from. Made up here on 2026-10-06: no server was fetched."
+    },
+    {
+      "@id": "fixtures/facts/medicationrequest-medrx-atorvastatin-1.ttl",
+      "@type": "File",
+      "name": "Facts supplied with MedicationRequest medrx-atorvastatin-1",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1045",
+      "sha256": "23ecb6a9be002dfcdd855b59de9159ee4c633cd46b6a5d17c486d5c3a36f5593",
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The facts of meridian.ttl, and the resource's full URL on the server it was retrieved from. Made up here on 2026-10-06: no server was fetched."
+    },
+    {
+      "@id": "fixtures/facts/medicationrequest-medrx-amlodipine-1.ttl",
+      "@type": "File",
+      "name": "Facts supplied with MedicationRequest medrx-amlodipine-1",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1043",
+      "sha256": "39cee1f7c145b2110ae8ae5e5449683322f90782a96c79ed5987f88c28359cb8",
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The facts of meridian.ttl, and the resource's full URL on the server it was retrieved from. Made up here on 2026-10-06: no server was fetched."
+    },
+    {
+      "@id": "fixtures/facts/medicationrequest-medrx-metformin-2.ttl",
+      "@type": "File",
+      "name": "Facts supplied with MedicationRequest medrx-metformin-2",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1042",
+      "sha256": "00007f605ec42b32ec92946834b191d9284d62e1a4ff4fca88f3b594438c62a0",
+      "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The facts of meridian.ttl, and the resource's full URL on the server it was retrieved from. Made up here on 2026-10-06: no server was fetched."
     },
     {
       "@id": "docs/format.md",

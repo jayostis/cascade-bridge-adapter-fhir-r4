@@ -1,0 +1,54 @@
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX skos:    <http://www.w3.org/2004/02/skos/core#>
+PREFIX fx:      <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:     <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:  <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+
+# One row for each Observation of the record that is a lab result, wherever it
+# stands, so that every query asking whether one is a record asks this one.
+# A category of laboratory makes one; another category makes none. With no
+# category, a LOINC code makes one unless a LOINC code it carries is a vital
+# sign's. An Observation with members is a panel, and no panel is a record.
+
+CONSTRUCT {
+  [] fhirr4:labResultAt ?pointer .
+}
+WHERE {
+  bridge:thisRecord bridge:selector ?recordSelector .
+  ?root a fx:root .
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  { BIND ("" AS ?containedStep) }
+  UNION
+  {
+    ?top xyz:contained ?containedList .
+    ?containedList ?containedSlot ?contained .
+    ?contained xyz:resourceType ?containedType .
+    BIND (CONCAT("/contained/", STR(xsd:integer(STRAFTER(STR(?containedSlot), "#_")) - 1)) AS ?containedStep)
+  }
+  BIND (COALESCE(?contained, ?top) AS ?resource)
+  ?resource xyz:resourceType "Observation" .
+  FILTER NOT EXISTS { ?resource xyz:hasMember ?member }
+  FILTER (IF(EXISTS { ?resource xyz:category ?categories },
+             EXISTS {
+               ?resource xyz:category ?categories . ?categories ?categorySlot ?category .
+               ?category xyz:coding ?categoryCodings . ?categoryCodings ?categoryCodingSlot ?categoryCoding .
+               ?categoryCoding xyz:system "http://terminology.hl7.org/CodeSystem/observation-category" ;
+                 xyz:code "laboratory" .
+             },
+             EXISTS {
+               ?resource xyz:code ?concept . ?concept xyz:coding ?codings . ?codings ?codingSlot ?coding .
+               ?coding xyz:system "http://loinc.org" .
+             }
+             && NOT EXISTS {
+               ?resource xyz:code ?vitalConcept . ?vitalConcept xyz:coding ?vitalCodings .
+               ?vitalCodings ?vitalCodingSlot ?vitalCoding .
+               ?vitalCoding xyz:system "http://loinc.org" ;
+                 xyz:code ?vitalCode .
+               ?vitalSign skos:inScheme fhirr4:vitalSigns ;
+                 skos:notation ?vitalCode .
+             }))
+  BIND (CONCAT(?recordSelector, ?topStep, ?containedStep) AS ?pointer)
+}

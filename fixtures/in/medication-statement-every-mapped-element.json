@@ -1,0 +1,31 @@
+{
+  "resourceType": "MedicationStatement",
+  "id": "medst-ibuprofen-1",
+  "status": "completed",
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "197806",
+        "display": "ibuprofen 600 MG Oral Tablet"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/pat-conformance-1"
+  },
+  "effectivePeriod": {
+    "start": "2026-01-10",
+    "end": "2026-01-24"
+  },
+  "dosage": [
+    {
+      "text": "600 mg by mouth every 8 hours as needed for pain."
+    }
+  ],
+  "note": [
+    {
+      "text": "Stopped once the sprain healed."
+    }
+  ]
+}

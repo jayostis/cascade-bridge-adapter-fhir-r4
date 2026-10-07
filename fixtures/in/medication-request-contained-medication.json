@@ -1,0 +1,28 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "medrx-amlodipine-1",
+  "contained": [
+    {
+      "resourceType": "Medication",
+      "id": "med1",
+      "code": {
+        "coding": [
+          {
+            "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+            "code": "197361",
+            "display": "amlodipine 5 MG Oral Tablet"
+          }
+        ]
+      }
+    }
+  ],
+  "status": "active",
+  "intent": "order",
+  "medicationReference": {
+    "reference": "#med1"
+  },
+  "subject": {
+    "reference": "Patient/pat-conformance-1"
+  },
+  "authoredOn": "2025-11-20"
+}

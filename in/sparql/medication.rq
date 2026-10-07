@@ -1,0 +1,153 @@
+PREFIX rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
+PREFIX fx:       <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:      <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX clinical: <https://ns.cascadeprotocol.org/clinical/v1#>
+PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+
+# A prescription and an entry on a list of what the person takes are one kind,
+# told apart by their intent, which the resource type decides: a request is
+# prescribed whatever its intent element says.
+#
+# A drug named by reference is read from the Medication the reference resolves
+# to in the document, through medication-table.rq: a contained one by "#" and
+# its id, a Bundle entry by its fullUrl or by type and an id no other entry
+# shares. One outside the document leaves the reference's display as the name.
+#
+# Every value is single but the RxNorm codes, so each is bound beside the
+# others rather than in a branch of its own, and a medication stating nothing
+# still states its intent. A date FHIR writes with less than a day's precision
+# fits no Cascade date, and is not carried.
+
+CONSTRUCT {
+  ?version clinical:clinicalIntent ?intent ;
+    clinical:drugName ?drugName ;
+    clinical:rxNormCode ?conceptRxNorm , ?heldRxNorm ;
+    clinical:status ?status ;
+    clinical:startDate ?startDate ;
+    clinical:endDate ?endDate ;
+    clinical:dosage ?dosage .
+}
+WHERE {
+  FILTER NOT EXISTS {
+    bridge:thisDocument bridge:sourceFormatVersion ?stated .
+    FILTER (!STRSTARTS(?stated, "4.0."))
+  }
+  bridge:thisRecord bridge:selector ?recordSelector .
+  ?root a fx:root .
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  { BIND ("" AS ?containedStep) }
+  UNION
+  {
+    ?top xyz:contained ?containedList .
+    ?containedList ?containedSlot ?contained .
+    ?contained xyz:resourceType ?containedType .
+    BIND (CONCAT("/contained/", STR(xsd:integer(STRAFTER(STR(?containedSlot), "#_")) - 1)) AS ?containedStep)
+  }
+  BIND (COALESCE(?contained, ?top) AS ?resource)
+  ?resource xyz:resourceType ?type .
+  FILTER (?type IN ("MedicationRequest", "MedicationStatement"))
+  BIND (IRI(CONCAT("urn:cascade:version-at:", SHA256(CONCAT(?recordSelector, ?topStep, ?containedStep)))) AS ?version)
+  BIND (IF(?type = "MedicationRequest", "prescribed", "reportedUse") AS ?intent)
+
+  OPTIONAL {
+    ?resource xyz:medicationReference ?medicationReference .
+    ?medicationReference xyz:reference ?target .
+    {
+      ?held fhirr4:medicationAt ?medicationPointer ;
+        fhirr4:medicationId ?heldId .
+      BIND (CONCAT("#", ?heldId) AS ?key)
+      BIND (true AS ?inside)
+    }
+    UNION
+    {
+      ?entry fhirr4:heldAt ?entrySelector ;
+        fhirr4:resourceType "Medication" ;
+        fhirr4:resourceId ?entryId .
+      BIND (CONCAT("Medication/", ?entryId) AS ?key)
+      BIND (CONCAT(?entrySelector, "/resource") AS ?medicationPointer)
+      BIND (false AS ?inside)
+    }
+    UNION
+    {
+      ?entry fhirr4:heldAt ?entrySelector ;
+        fhirr4:resourceType "Medication" ;
+        fhirr4:fullUrl ?key .
+      BIND (CONCAT(?entrySelector, "/resource") AS ?medicationPointer)
+      BIND (false AS ?inside)
+    }
+    FILTER (?key = ?target)
+    FILTER (IF(?inside,
+               STRSTARTS(?medicationPointer, CONCAT(?recordSelector, ?topStep, "/contained/")),
+               NOT EXISTS {
+                 ?other fhirr4:heldAt ?otherSelector ;
+                   fhirr4:resourceType "Medication" .
+                 OPTIONAL { ?other fhirr4:resourceId ?otherId }
+                 OPTIONAL { ?other fhirr4:fullUrl ?otherUrl }
+                 FILTER (?otherSelector != ?entrySelector
+                         && (?otherUrl = ?target || CONCAT("Medication/", ?otherId) = ?target))
+               }))
+  }
+
+  OPTIONAL {
+    ?resource xyz:medicationCodeableConcept ?textConcept .
+    ?textConcept xyz:text ?conceptText .
+  }
+  OPTIONAL {
+    ?resource xyz:medicationCodeableConcept ?displayConcept .
+    ?displayConcept xyz:coding ?displayCodings .
+    ?displayCodings ?displaySlot ?displayCoding .
+    ?displayCoding xyz:display ?conceptDisplay .
+    FILTER NOT EXISTS {
+      ?displayCodings ?earlierSlot ?earlier . ?earlier xyz:display ?earlierDisplay .
+      FILTER (xsd:integer(STRAFTER(STR(?earlierSlot), "#_")) < xsd:integer(STRAFTER(STR(?displaySlot), "#_")))
+    }
+  }
+  OPTIONAL {
+    ?nameRow fhirr4:medicationAt ?namePointer ;
+      fhirr4:medicationName ?heldName .
+    FILTER (?namePointer = ?medicationPointer)
+  }
+  OPTIONAL {
+    ?resource xyz:medicationReference ?displayedReference .
+    ?displayedReference xyz:display ?referenceDisplay .
+  }
+  BIND (COALESCE(?conceptText, ?conceptDisplay, ?heldName, ?referenceDisplay) AS ?drugName)
+
+  OPTIONAL {
+    ?resource xyz:medicationCodeableConcept ?codedConcept .
+    ?codedConcept xyz:coding ?codedCodings .
+    ?codedCodings ?codedSlot ?codedCoding .
+    ?codedCoding xyz:system "http://www.nlm.nih.gov/research/umls/rxnorm" ;
+      xyz:code ?conceptCode .
+  }
+  BIND (IRI(CONCAT("http://www.nlm.nih.gov/research/umls/rxnorm/", ENCODE_FOR_URI(?conceptCode))) AS ?conceptRxNorm)
+  OPTIONAL {
+    ?codeRow fhirr4:medicationAt ?codePointer ;
+      fhirr4:medicationCode ?heldRxNorm .
+    FILTER (?codePointer = ?medicationPointer)
+  }
+
+  OPTIONAL { ?resource xyz:status ?status }
+
+  OPTIONAL { ?resource xyz:effectiveDateTime ?effective }
+  OPTIONAL { ?resource xyz:effectivePeriod ?startPeriod . ?startPeriod xyz:start ?periodStart }
+  OPTIONAL { ?resource xyz:authoredOn ?authored }
+  BIND (COALESCE(?effective, ?periodStart, ?authored) AS ?started)
+  BIND (IF(REGEX(?started, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"), STRDT(?started, xsd:date),
+           IF(REGEX(?started, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T"), STRDT(?started, xsd:dateTime), 1/0)) AS ?startDate)
+
+  OPTIONAL { ?resource xyz:effectivePeriod ?endPeriod . ?endPeriod xyz:end ?ended }
+  BIND (IF(REGEX(?ended, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"), STRDT(?ended, xsd:date),
+           IF(REGEX(?ended, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T"), STRDT(?ended, xsd:dateTime), 1/0)) AS ?endDate)
+
+  OPTIONAL {
+    ?resource ?dosageMember ?dosages .
+    FILTER (?dosageMember IN (xyz:dosage, xyz:dosageInstruction))
+    ?dosages rdf:_1 ?firstDosage .
+    ?firstDosage xyz:text ?dosage .
+  }
+}

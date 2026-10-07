@@ -8,6 +8,10 @@ PREFIX xyz:     <http://sparql.xyz/facade-x/data/>
 PREFIX bridge:  <https://ns.cascadeprotocol.org/bridge/v1-draft#>
 PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 
+# An Observation is reported by observation-findings.rq. A Medication is read
+# through the medication that references it, so only one nothing in its
+# document references is reported.
+
 CONSTRUCT {
   [] a oa:Annotation ;
     oa:hasTarget [
@@ -27,6 +31,7 @@ WHERE {
     bridge:thisDocument bridge:sourceFormatVersion ?stated .
     FILTER (!STRSTARTS(?stated, "4.0."))
   }
+  bridge:thisRecord bridge:selector ?recordSelector .
   ?root a fx:root .
   { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
   UNION
@@ -42,6 +47,16 @@ WHERE {
   BIND (COALESCE(?contained, ?top) AS ?resource)
   BIND (CONCAT(?topStep, ?containedStep) AS ?resourcePointer)
   ?resource xyz:resourceType ?value .
-  FILTER (?value NOT IN ("AllergyIntolerance", "Condition", "Immunization", "Procedure", "Patient"))
+  FILTER (?value NOT IN ("AllergyIntolerance", "Condition", "Immunization", "Procedure", "Patient",
+                        "MedicationRequest", "MedicationStatement", "Observation"))
+  OPTIONAL { ?resource xyz:id ?id }
+  OPTIONAL { ?root xyz:fullUrl ?fullUrl }
+  FILTER (?value != "Medication" || NOT EXISTS {
+    ?referring fhirr4:medicationReferenceFrom ?from ;
+      fhirr4:medicationReferenceTo ?target .
+    FILTER (IF(BOUND(?contained),
+               ?target = CONCAT("#", ?id) && STRSTARTS(?from, CONCAT(?recordSelector, ?topStep)),
+               ?target = ?fullUrl || ?target = CONCAT("Medication/", ?id)))
+  })
   BIND (CONCAT(?resourcePointer, "/resourceType") AS ?pointer)
 }

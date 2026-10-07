@@ -8,30 +8,29 @@
 @prefix clinical: <https://ns.cascadeprotocol.org/clinical/v1#> .
 @prefix cascade:  <https://ns.cascadeprotocol.org/core/v1#> .
 
-<urn:uuid:12377920-1918-8a5c-b04c-15b55635f7ec>
-  a health:LabResultRecord ;
-  health:sourceRecordId "obs-glucose-fasting" ;
-  rec:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Observation/obs-glucose-fasting> .
+<urn:uuid:4e230380-0ef3-8b7b-9afa-4aaac85dc045>
+  a clinical:Medication ;
+  clinical:sourceRecordId "medrx-amlodipine-1" ;
+  rec:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/MedicationRequest/medrx-amlodipine-1> .
 
-<ni:///sha-256;Yuej3AiNssyFfURnmaWwcAJu0cD5L5FWXQ5r5w4U92w>
-  prov:specializationOf <urn:uuid:12377920-1918-8a5c-b04c-15b55635f7ec> ;
-  health:testName "Glucose" ;
-  health:testCode <http://loinc.org/rdf/2339-0> ;
-  health:resultValue "95" ;
-  health:resultUnit "mg/dL" ;
-  health:performedDate "2026-08-02T07:30:00Z"^^xsd:dateTime ;
-  clinical:status "final" ;
+<ni:///sha-256;rFcv-E0XGyjYFP80SuWyg7lY-DVl1YYyNu5HSPFEZ8I>
+  prov:specializationOf <urn:uuid:4e230380-0ef3-8b7b-9afa-4aaac85dc045> ;
+  clinical:clinicalIntent "prescribed" ;
+  clinical:drugName "amlodipine 5 MG Oral Tablet" ;
+  clinical:rxNormCode <http://www.nlm.nih.gov/research/umls/rxnorm/197361> ;
+  clinical:status "active" ;
+  clinical:startDate "2025-11-20"^^xsd:date ;
   rec:patient <urn:uuid:24c23e99-ff68-841f-a7a4-ebe3bd997ada> .
 
-[] bridge:arrivedAs <ni:///sha-256;Yuej3AiNssyFfURnmaWwcAJu0cD5L5FWXQ5r5w4U92w> ;
+[] bridge:arrivedAs <ni:///sha-256;rFcv-E0XGyjYFP80SuWyg7lY-DVl1YYyNu5HSPFEZ8I> ;
   bridge:selector "" ;
-  prov:wasDerivedFrom <ni:///sha-256;8Liz1eB3suFP3NLPg4Qk39pM5zjqmcwdU18dYCaM2Xw> ;
+  prov:wasDerivedFrom <ni:///sha-256;wx5heyp-6EB-wZs6sc5cmKEW6Ce7cCOGMHWEFM_4mtM> ;
   prov:wasGeneratedBy _:import .
 
-<ni:///sha-256;8Liz1eB3suFP3NLPg4Qk39pM5zjqmcwdU18dYCaM2Xw>
+<ni:///sha-256;wx5heyp-6EB-wZs6sc5cmKEW6Ce7cCOGMHWEFM_4mtM>
   a prov:Entity ;
   bridge:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
-  pav:retrievedFrom <https://FHIR.Meridian.example/api/FHIR/R4/Observation/obs-glucose-fasting> ;
+  pav:retrievedFrom <https://FHIR.Meridian.example/api/FHIR/R4/MedicationRequest/medrx-amlodipine-1> ;
   pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
   prov:qualifiedAttribution
     [ prov:agent [ rdfs:label "Meridian Health System" ] ; prov:hadRole rec:author ] ,
@@ -42,7 +41,7 @@
 
 _:import
   a prov:Activity ;
-  prov:used <ni:///sha-256;8Liz1eB3suFP3NLPg4Qk39pM5zjqmcwdU18dYCaM2Xw> ;
+  prov:used <ni:///sha-256;wx5heyp-6EB-wZs6sc5cmKEW6Ce7cCOGMHWEFM_4mtM> ;
   rdfs:label "Apple Health export" ;
   prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime ;
   prov:qualifiedAssociation [

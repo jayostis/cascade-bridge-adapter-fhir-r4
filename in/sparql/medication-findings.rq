@@ -1,0 +1,88 @@
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX sh:      <http://www.w3.org/ns/shacl#>
+PREFIX oa:      <http://www.w3.org/ns/oa#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX fx:      <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:     <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:  <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+
+# A medication's reference to a Medication resolves as medication.rq resolves
+# it, and one that does not is reported. A note is carried for the other kinds
+# at the same path, so the source accounting cannot report a medication's.
+
+CONSTRUCT {
+  [] a oa:Annotation ;
+    oa:hasTarget [
+      oa:hasSource bridge:thisRecord ;
+      oa:hasSelector [
+        a oa:FragmentSelector ;
+        dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+        rdf:value ?pointer
+      ]
+    ] ;
+    oa:hasBody ?gap ;
+    oa:motivatedBy oa:classifying ;
+    sh:value ?value .
+}
+WHERE {
+  FILTER NOT EXISTS {
+    bridge:thisDocument bridge:sourceFormatVersion ?stated .
+    FILTER (!STRSTARTS(?stated, "4.0."))
+  }
+  bridge:thisRecord bridge:selector ?recordSelector .
+  ?root a fx:root .
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  { BIND ("" AS ?containedStep) }
+  UNION
+  {
+    ?top xyz:contained ?containedList .
+    ?containedList ?containedSlot ?contained .
+    ?contained xyz:resourceType ?containedType .
+    BIND (CONCAT("/contained/", STR(xsd:integer(STRAFTER(STR(?containedSlot), "#_")) - 1)) AS ?containedStep)
+  }
+  BIND (COALESCE(?contained, ?top) AS ?resource)
+  ?resource xyz:resourceType ?type .
+  FILTER (?type IN ("MedicationRequest", "MedicationStatement"))
+
+  {
+    ?resource xyz:medicationReference ?reference .
+    ?reference xyz:reference ?value .
+    BIND ("/medicationReference/reference" AS ?step)
+    BIND (fhirr4:medicationOutsideDocument AS ?gap)
+  }
+  UNION
+  {
+    ?resource xyz:note ?notes . ?notes ?noteSlot ?note . ?note xyz:text ?value .
+    BIND (CONCAT("/note/", STR(xsd:integer(STRAFTER(STR(?noteSlot), "#_")) - 1), "/text") AS ?step)
+    BIND (fhirr4:medicationNote AS ?gap)
+  }
+  FILTER (?gap != fhirr4:medicationOutsideDocument || NOT EXISTS {
+    {
+      ?held fhirr4:medicationAt ?heldPointer ;
+        fhirr4:medicationId ?heldId .
+      FILTER (?value = CONCAT("#", ?heldId)
+              && STRSTARTS(?heldPointer, CONCAT(?recordSelector, ?topStep, "/contained/")))
+    }
+    UNION
+    {
+      ?entry fhirr4:heldAt ?entrySelector ;
+        fhirr4:resourceType "Medication" .
+      OPTIONAL { ?entry fhirr4:resourceId ?entryId }
+      OPTIONAL { ?entry fhirr4:fullUrl ?entryUrl }
+      FILTER (?value = ?entryUrl || ?value = CONCAT("Medication/", ?entryId))
+      FILTER NOT EXISTS {
+        ?other fhirr4:heldAt ?otherSelector ;
+          fhirr4:resourceType "Medication" .
+        OPTIONAL { ?other fhirr4:resourceId ?otherId }
+        OPTIONAL { ?other fhirr4:fullUrl ?otherUrl }
+        FILTER (?otherSelector != ?entrySelector
+                && (?otherUrl = ?value || CONCAT("Medication/", ?otherId) = ?value))
+      }
+    }
+  })
+  BIND (CONCAT(?topStep, ?containedStep, ?step) AS ?pointer)
+}

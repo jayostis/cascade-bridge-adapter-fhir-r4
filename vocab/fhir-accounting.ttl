@@ -6,6 +6,10 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/authoredOn" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/birthDate" ;
   bridge:verdict bridge:carried .
 
@@ -20,6 +24,11 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/category/coding/code" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/category/coding/display" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/category/coding/code" .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/category/coding/system" ;
@@ -95,6 +104,10 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/authoredOn" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/contained/birthDate" ;
   bridge:verdict bridge:carried .
 
@@ -109,6 +122,11 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/category/coding/code" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/category/coding/display" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/contained/category/coding/code" .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/category/coding/system" ;
@@ -180,6 +198,192 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosage" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosage/doseAndRate" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:structuredDosage .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosage/doseAndRate/doseQuantity" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosage/doseAndRate/doseQuantity/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosage/doseAndRate/doseQuantity/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosage/doseAndRate/doseQuantity/unit" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosage/doseAndRate/doseQuantity/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosage/route" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:structuredDosage .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosage/route/coding" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosage/route/coding/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosage/route/coding/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosage/route/coding/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosage/route/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosage/text" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosage/timing" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:structuredDosage .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosage/timing/repeat" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosage/timing/repeat/frequency" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosage/timing/repeat/period" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosage/timing/repeat/periodUnit" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosageInstruction" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosageInstruction/doseAndRate" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:structuredDosage .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosageInstruction/doseAndRate/doseQuantity" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosageInstruction/doseAndRate/doseQuantity/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosageInstruction/doseAndRate/doseQuantity/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosageInstruction/doseAndRate/doseQuantity/unit" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosageInstruction/doseAndRate/doseQuantity/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosageInstruction/route" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:structuredDosage .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosageInstruction/route/coding" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosageInstruction/route/coding/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosageInstruction/route/coding/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosageInstruction/route/coding/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosageInstruction/route/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosageInstruction/text" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosageInstruction/timing" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:structuredDosage .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosageInstruction/timing/repeat" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosageInstruction/timing/repeat/frequency" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosageInstruction/timing/repeat/period" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dosageInstruction/timing/repeat/periodUnit" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/contained/doseQuantity" ;
   bridge:verdict bridge:consumed .
 
@@ -193,8 +397,19 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/effectiveDateTime" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of an Observation, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/effectivePeriod" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/effectivePeriod/end" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/effectivePeriod/start" ;
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/gender" ;
@@ -206,8 +421,76 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/intent" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A request is a prescription whatever its intent: its clinical:clinicalIntent is stated from the resource type." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/interpretation" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/interpretation/coding" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/interpretation/coding/code" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/interpretation/coding/display" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/contained/interpretation/coding/code" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/interpretation/coding/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/issued" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "When a result was issued is not when it was performed, and a lab result's time is its performed date." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/contained/lotNumber" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/medicationCodeableConcept" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/medicationCodeableConcept/coding" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/medicationCodeableConcept/coding/code" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/medicationCodeableConcept/coding/display" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/contained/medicationCodeableConcept/text" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/medicationCodeableConcept/coding/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/medicationCodeableConcept/text" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/medicationReference" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/medicationReference/display" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/medicationReference/reference" ;
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/meta" ;
@@ -324,6 +607,55 @@
   bridge:namesGap fhirr4:procedureReason .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/referenceRange" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/referenceRange/high" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/referenceRange/high/code" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/contained/referenceRange/high/unit" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/referenceRange/high/system" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/contained/referenceRange/high/unit" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/referenceRange/high/unit" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/referenceRange/high/value" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/referenceRange/low" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/referenceRange/low/code" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/contained/referenceRange/high/unit" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/referenceRange/low/system" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/contained/referenceRange/high/unit" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/referenceRange/low/unit" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/contained/referenceRange/high/unit" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/referenceRange/low/value" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/contained/resourceType" ;
   bridge:verdict bridge:consumed .
 
@@ -419,28 +751,24 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/valueQuantity" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of an Observation, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/valueQuantity/code" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of an Observation, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/contained/valueQuantity/unit" .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/valueQuantity/system" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of an Observation, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/valueQuantity/unit" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of an Observation, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/valueQuantity/value" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of an Observation, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/verificationStatus" ;
@@ -463,6 +791,192 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/dosage" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosage/doseAndRate" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:structuredDosage .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosage/doseAndRate/doseQuantity" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosage/doseAndRate/doseQuantity/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosage/doseAndRate/doseQuantity/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosage/doseAndRate/doseQuantity/unit" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosage/doseAndRate/doseQuantity/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosage/route" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:structuredDosage .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosage/route/coding" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosage/route/coding/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosage/route/coding/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosage/route/coding/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosage/route/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosage/text" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosage/timing" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:structuredDosage .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosage/timing/repeat" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosage/timing/repeat/frequency" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosage/timing/repeat/period" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosage/timing/repeat/periodUnit" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosageInstruction" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosageInstruction/doseAndRate" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:structuredDosage .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosageInstruction/doseAndRate/doseQuantity" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosageInstruction/doseAndRate/doseQuantity/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosageInstruction/doseAndRate/doseQuantity/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosageInstruction/doseAndRate/doseQuantity/unit" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosageInstruction/doseAndRate/doseQuantity/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosageInstruction/route" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:structuredDosage .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosageInstruction/route/coding" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosageInstruction/route/coding/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosageInstruction/route/coding/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosageInstruction/route/coding/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosageInstruction/route/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosageInstruction/text" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosageInstruction/timing" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:structuredDosage .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosageInstruction/timing/repeat" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosageInstruction/timing/repeat/frequency" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosageInstruction/timing/repeat/period" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dosageInstruction/timing/repeat/periodUnit" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/doseQuantity" ;
   bridge:verdict bridge:consumed .
 
@@ -476,8 +990,19 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/effectiveDateTime" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of an Observation, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/effectivePeriod" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/effectivePeriod/end" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/effectivePeriod/start" ;
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/fullUrl" ;
@@ -493,8 +1018,76 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/intent" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A request is a prescription whatever its intent: its clinical:clinicalIntent is stated from the resource type." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/interpretation" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/interpretation/coding" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/interpretation/coding/code" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/interpretation/coding/display" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/interpretation/coding/code" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/interpretation/coding/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/issued" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "When a result was issued is not when it was performed, and a lab result's time is its performed date." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/lotNumber" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/medicationCodeableConcept" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/medicationCodeableConcept/coding" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/medicationCodeableConcept/coding/code" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/medicationCodeableConcept/coding/display" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/medicationCodeableConcept/text" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/medicationCodeableConcept/coding/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/medicationCodeableConcept/text" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/medicationReference" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/medicationReference/display" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/medicationReference/reference" ;
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/meta" ;
@@ -611,11 +1204,64 @@
   bridge:namesGap fhirr4:procedureReason .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/referenceRange" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/referenceRange/high" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/referenceRange/high/code" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/referenceRange/high/unit" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/referenceRange/high/system" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/referenceRange/high/unit" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/referenceRange/high/unit" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/referenceRange/high/value" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/referenceRange/low" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/referenceRange/low/code" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/referenceRange/high/unit" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/referenceRange/low/system" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/referenceRange/high/unit" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/referenceRange/low/unit" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/referenceRange/high/unit" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/referenceRange/low/value" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource" ;
   bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/abatementDateTime" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/authoredOn" ;
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
@@ -633,6 +1279,11 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/category/coding/code" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/category/coding/display" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/resource/category/coding/code" .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/category/coding/system" ;
@@ -708,6 +1359,10 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/authoredOn" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/birthDate" ;
   bridge:verdict bridge:carried .
 
@@ -722,6 +1377,11 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/category/coding/code" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/category/coding/display" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/resource/contained/category/coding/code" .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/category/coding/system" ;
@@ -793,6 +1453,192 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosage" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosage/doseAndRate" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:structuredDosage .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosage/doseAndRate/doseQuantity" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosage/doseAndRate/doseQuantity/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosage/doseAndRate/doseQuantity/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosage/doseAndRate/doseQuantity/unit" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosage/doseAndRate/doseQuantity/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosage/route" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:structuredDosage .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosage/route/coding" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosage/route/coding/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosage/route/coding/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosage/route/coding/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosage/route/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosage/text" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosage/timing" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:structuredDosage .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosage/timing/repeat" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosage/timing/repeat/frequency" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosage/timing/repeat/period" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosage/timing/repeat/periodUnit" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosageInstruction" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosageInstruction/doseAndRate" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:structuredDosage .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosageInstruction/doseAndRate/doseQuantity" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosageInstruction/doseAndRate/doseQuantity/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosageInstruction/doseAndRate/doseQuantity/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosageInstruction/doseAndRate/doseQuantity/unit" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosageInstruction/doseAndRate/doseQuantity/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosageInstruction/route" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:structuredDosage .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosageInstruction/route/coding" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosageInstruction/route/coding/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosageInstruction/route/coding/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosageInstruction/route/coding/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosageInstruction/route/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosageInstruction/text" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosageInstruction/timing" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:structuredDosage .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosageInstruction/timing/repeat" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosageInstruction/timing/repeat/frequency" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosageInstruction/timing/repeat/period" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dosageInstruction/timing/repeat/periodUnit" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/doseQuantity" ;
   bridge:verdict bridge:consumed .
 
@@ -806,8 +1652,19 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/effectiveDateTime" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of an Observation, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/effectivePeriod" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/effectivePeriod/end" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/effectivePeriod/start" ;
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/gender" ;
@@ -819,8 +1676,76 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/intent" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A request is a prescription whatever its intent: its clinical:clinicalIntent is stated from the resource type." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/interpretation" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/interpretation/coding" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/interpretation/coding/code" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/interpretation/coding/display" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/resource/contained/interpretation/coding/code" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/interpretation/coding/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/issued" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "When a result was issued is not when it was performed, and a lab result's time is its performed date." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/lotNumber" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/medicationCodeableConcept" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/medicationCodeableConcept/coding" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/medicationCodeableConcept/coding/code" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/medicationCodeableConcept/coding/display" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/resource/contained/medicationCodeableConcept/text" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/medicationCodeableConcept/coding/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/medicationCodeableConcept/text" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/medicationReference" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/medicationReference/display" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/medicationReference/reference" ;
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/meta" ;
@@ -937,6 +1862,55 @@
   bridge:namesGap fhirr4:procedureReason .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/referenceRange" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/referenceRange/high" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/referenceRange/high/code" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/resource/contained/referenceRange/high/unit" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/referenceRange/high/system" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/resource/contained/referenceRange/high/unit" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/referenceRange/high/unit" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/referenceRange/high/value" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/referenceRange/low" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/referenceRange/low/code" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/resource/contained/referenceRange/high/unit" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/referenceRange/low/system" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/resource/contained/referenceRange/high/unit" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/referenceRange/low/unit" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/resource/contained/referenceRange/high/unit" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/referenceRange/low/value" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/resourceType" ;
   bridge:verdict bridge:consumed .
 
@@ -1032,28 +2006,24 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/valueQuantity" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of an Observation, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/valueQuantity/code" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of an Observation, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/resource/contained/valueQuantity/unit" .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/valueQuantity/system" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of an Observation, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/valueQuantity/unit" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of an Observation, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/valueQuantity/value" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of an Observation, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/verificationStatus" ;
@@ -1076,6 +2046,192 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosage" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosage/doseAndRate" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:structuredDosage .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosage/doseAndRate/doseQuantity" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosage/doseAndRate/doseQuantity/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosage/doseAndRate/doseQuantity/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosage/doseAndRate/doseQuantity/unit" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosage/doseAndRate/doseQuantity/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosage/route" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:structuredDosage .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosage/route/coding" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosage/route/coding/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosage/route/coding/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosage/route/coding/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosage/route/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosage/text" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosage/timing" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:structuredDosage .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosage/timing/repeat" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosage/timing/repeat/frequency" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosage/timing/repeat/period" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosage/timing/repeat/periodUnit" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosageInstruction" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosageInstruction/doseAndRate" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:structuredDosage .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosageInstruction/doseAndRate/doseQuantity" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosageInstruction/doseAndRate/doseQuantity/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosageInstruction/doseAndRate/doseQuantity/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosageInstruction/doseAndRate/doseQuantity/unit" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosageInstruction/doseAndRate/doseQuantity/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosageInstruction/route" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:structuredDosage .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosageInstruction/route/coding" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosageInstruction/route/coding/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosageInstruction/route/coding/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosageInstruction/route/coding/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosageInstruction/route/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosageInstruction/text" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosageInstruction/timing" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:structuredDosage .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosageInstruction/timing/repeat" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosageInstruction/timing/repeat/frequency" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosageInstruction/timing/repeat/period" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dosageInstruction/timing/repeat/periodUnit" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/doseQuantity" ;
   bridge:verdict bridge:consumed .
 
@@ -1089,8 +2245,19 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/effectiveDateTime" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of an Observation, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/effectivePeriod" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/effectivePeriod/end" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/effectivePeriod/start" ;
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/gender" ;
@@ -1102,8 +2269,76 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/intent" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A request is a prescription whatever its intent: its clinical:clinicalIntent is stated from the resource type." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/interpretation" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/interpretation/coding" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/interpretation/coding/code" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/interpretation/coding/display" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/resource/interpretation/coding/code" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/interpretation/coding/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/issued" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "When a result was issued is not when it was performed, and a lab result's time is its performed date." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/lotNumber" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/medicationCodeableConcept" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/medicationCodeableConcept/coding" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/medicationCodeableConcept/coding/code" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/medicationCodeableConcept/coding/display" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/resource/medicationCodeableConcept/text" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/medicationCodeableConcept/coding/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/medicationCodeableConcept/text" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/medicationReference" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/medicationReference/display" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/medicationReference/reference" ;
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/meta" ;
@@ -1220,6 +2455,55 @@
   bridge:namesGap fhirr4:procedureReason .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/referenceRange" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/referenceRange/high" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/referenceRange/high/code" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/resource/referenceRange/high/unit" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/referenceRange/high/system" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/resource/referenceRange/high/unit" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/referenceRange/high/unit" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/referenceRange/high/value" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/referenceRange/low" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/referenceRange/low/code" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/resource/referenceRange/high/unit" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/referenceRange/low/system" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/resource/referenceRange/high/unit" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/referenceRange/low/unit" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/resource/referenceRange/high/unit" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/referenceRange/low/value" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/resourceType" ;
   bridge:verdict bridge:consumed .
 
@@ -1315,28 +2599,24 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/valueQuantity" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of an Observation, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/valueQuantity/code" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of an Observation, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/resource/valueQuantity/unit" .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/valueQuantity/system" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of an Observation, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/valueQuantity/unit" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of an Observation, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/valueQuantity/value" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of an Observation, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/verificationStatus" ;
@@ -1450,28 +2730,24 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/valueQuantity" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of an Observation, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/valueQuantity/code" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of an Observation, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/valueQuantity/unit" .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/valueQuantity/system" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of an Observation, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/valueQuantity/unit" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of an Observation, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/valueQuantity/value" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of an Observation, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/verificationStatus" ;

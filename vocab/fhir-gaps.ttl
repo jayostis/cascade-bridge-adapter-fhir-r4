@@ -58,3 +58,25 @@ fhirr4:referenceWithoutServer a skos:Concept ;
   skos:inScheme fhirr4:gaps ;
   skos:broader bridge:carriedWithLoss ;
   sh:resultSeverity sh:Warning .
+
+fhirr4:observationNotLabResult a skos:Concept ;
+  skos:prefLabel "An Observation is not a laboratory result, by its category or, where it has none, by its code, or it is a panel of other results, and nothing in it is carried."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:valueNotMapped ;
+  sh:resultSeverity sh:Warning .
+
+fhirr4:medicationOutsideDocument a skos:Concept ;
+  skos:prefLabel "A medication names its drug by a reference to a Medication resource its document does not hold, so only the reference's display is carried as the drug's name, and no code."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:carriedWithLoss ;
+  sh:resultSeverity sh:Warning .
+
+fhirr4:medicationNote a skos:Concept ;
+  skos:prefLabel "A medication carries a note, and no Cascade predicate carries it."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:noPredicate .
+
+fhirr4:structuredDosage a skos:Concept ;
+  skos:prefLabel "A medication's dosage states its timing, route or dose as structured elements beside its text, and no Cascade predicate carries them."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:noPredicate .

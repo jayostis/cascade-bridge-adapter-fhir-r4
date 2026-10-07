@@ -27,6 +27,7 @@ WHERE {
     bridge:thisDocument bridge:sourceFormatVersion ?stated .
     FILTER (!STRSTARTS(?stated, "4.0."))
   }
+  bridge:thisRecord bridge:selector ?recordSelector .
   ?root a fx:root .
   { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
   UNION
@@ -42,7 +43,12 @@ WHERE {
   BIND (COALESCE(?contained, ?top) AS ?resource)
   BIND (CONCAT(?topStep, ?containedStep) AS ?resourcePointer)
   ?resource xyz:resourceType ?type .
-  FILTER (?type IN ("AllergyIntolerance", "Condition", "Immunization", "Procedure", "Patient"))
+  FILTER (?type IN ("AllergyIntolerance", "Condition", "Immunization", "Procedure", "Patient",
+                    "MedicationRequest", "MedicationStatement", "Observation"))
+  FILTER (?type != "Observation" || EXISTS {
+    ?lab fhirr4:labResultAt ?labPointer .
+    FILTER (?labPointer = CONCAT(?recordSelector, ?resourcePointer))
+  })
   {
     ?resource ?member ?reference .
     FILTER (?member IN (xyz:patient, xyz:subject))
