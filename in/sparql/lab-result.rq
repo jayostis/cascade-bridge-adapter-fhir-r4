@@ -15,7 +15,9 @@ PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # as cascade-cli writes one where the source gives no text for it, and a range
 # with one bound as that bound and its comparator, a FHIR range's bounds being
 # inclusive. A lab result states one reference range and one interpretation,
-# the first of each. The time a result was issued is not when it was
+# the first of each, but every LOINC code its concept carries: the vocabulary
+# takes one test code per coding, and a result shares any of them with the
+# same result elsewhere. The time a result was issued is not when it was
 # performed, and is not carried. A date FHIR writes with less than a day's
 # precision fits no Cascade date, and is not carried.
 
