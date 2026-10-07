@@ -93,6 +93,7 @@ referencing a patient as `Patient/pat-conformance-1`. What each is for is
 their `INVENTORY.md` there, at the commit the crate names.
 
 The two narrative-only Conditions, `condition-no-id-narrative-diabetes` and
-`condition-no-id-narrative-breast-cancer`, carry no `subject`, which FHIR R4
-requires of a Condition, so they fail the schema. Every other input, copied or
-authored, validates against it.
+`condition-no-id-narrative-breast-cancer`, and the two id-less
+MedicationStatements, `medication-no-id-bare` and `medication-no-id-note-only`,
+carry no `subject`, which FHIR R4's schema requires of both types, so the four
+fail the schema. Every other input, copied or authored, validates against it.
