@@ -1,0 +1,40 @@
+@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
+@prefix void:   <http://rdfs.org/ns/void#> .
+@prefix dct:    <http://purl.org/dc/terms/> .
+@prefix rec:    <https://ns.cascadeprotocol.org/records/v1-draft#> .
+@prefix fhirr4: <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#> .
+
+fhirr4:codeSystems a skos:ConceptScheme ;
+  skos:prefLabel "The code systems whose codes the mappings write as IRIs"@en .
+
+fhirr4:codeSystemSnomedCt a skos:Concept ;
+  skos:inScheme fhirr4:codeSystems ;
+  skos:notation "http://snomed.info/sct" ;
+  skos:prefLabel "SNOMED CT"@en ;
+  skos:exactMatch rec:SNOMEDCT ;
+  void:uriSpace "http://snomed.info/id/" ;
+  dct:source <https://terminology.hl7.org/SNOMEDCT.html> , <https://github.com/jayostis/cascade-vocabulary/issues/111> .
+
+fhirr4:codeSystemRxNorm a skos:Concept ;
+  skos:inScheme fhirr4:codeSystems ;
+  skos:notation "http://www.nlm.nih.gov/research/umls/rxnorm" ;
+  skos:prefLabel "RxNorm"@en ;
+  skos:exactMatch rec:RxNorm ;
+  void:uriSpace "http://www.nlm.nih.gov/research/umls/rxnorm/" ;
+  dct:source <https://github.com/jayostis/cascade-vocabulary/issues/111> .
+
+fhirr4:codeSystemIcd10Cm a skos:Concept ;
+  skos:inScheme fhirr4:codeSystems ;
+  skos:notation "http://hl7.org/fhir/sid/icd-10-cm" ;
+  skos:prefLabel "ICD-10-CM"@en ;
+  skos:exactMatch rec:ICD10CM ;
+  void:uriSpace "http://hl7.org/fhir/sid/icd-10-cm/" ;
+  dct:source <https://github.com/jayostis/cascade-vocabulary/issues/111> .
+
+fhirr4:codeSystemLoinc a skos:Concept ;
+  skos:inScheme fhirr4:codeSystems ;
+  skos:notation "http://loinc.org" ;
+  skos:prefLabel "LOINC"@en ;
+  skos:exactMatch rec:LOINC ;
+  void:uriSpace "http://loinc.org/rdf/" ;
+  dct:source <https://github.com/HL7/UTG/blob/master/input/sourceOfTruth/external/v3/namingSystems/v3-loinc.xml> , <https://github.com/jayostis/cascade-vocabulary/issues/111> .

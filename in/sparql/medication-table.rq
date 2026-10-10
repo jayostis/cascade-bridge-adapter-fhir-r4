@@ -3,6 +3,8 @@ PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 PREFIX fx:      <http://sparql.xyz/facade-x/ns/>
 PREFIX xyz:     <http://sparql.xyz/facade-x/data/>
 PREFIX bridge:  <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX skos:    <http://www.w3.org/2004/02/skos/core#>
+PREFIX void:    <http://rdfs.org/ns/void#>
 PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 
 # A Medication is no record: a medication that references one in its document
@@ -85,7 +87,10 @@ WHERE {
         xyz:code ?earlierCode .
       FILTER (xsd:integer(STRAFTER(STR(?earlierSlot), "#_")) < xsd:integer(STRAFTER(STR(?codingSlot), "#_")))
     }
-    BIND (IRI(CONCAT("http://www.nlm.nih.gov/research/umls/rxnorm/", ENCODE_FOR_URI(?code))) AS ?rxNormCode)
+    ?codeSystem skos:inScheme fhirr4:codeSystems ;
+      skos:notation "http://www.nlm.nih.gov/research/umls/rxnorm" ;
+      void:uriSpace ?stem .
+    BIND (IRI(CONCAT(?stem, ENCODE_FOR_URI(?code))) AS ?rxNormCode)
   }
   UNION
   {

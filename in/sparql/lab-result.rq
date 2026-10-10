@@ -5,6 +5,8 @@ PREFIX xyz:      <http://sparql.xyz/facade-x/data/>
 PREFIX bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#>
 PREFIX health:   <https://ns.cascadeprotocol.org/health/v1#>
 PREFIX clinical: <https://ns.cascadeprotocol.org/clinical/v1#>
+PREFIX skos:     <http://www.w3.org/2004/02/skos/core#>
+PREFIX void:     <http://rdfs.org/ns/void#>
 PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 
 # Which Observation is a lab result is lab-result-table.rq's to say.
@@ -75,8 +77,11 @@ WHERE {
     ?codedCodings ?codedSlot ?codedCoding .
     ?codedCoding xyz:system "http://loinc.org" ;
       xyz:code ?loinc .
+    ?codeSystem skos:inScheme fhirr4:codeSystems ;
+      skos:notation "http://loinc.org" ;
+      void:uriSpace ?stem .
   }
-  BIND (IRI(CONCAT("http://loinc.org/rdf/", ENCODE_FOR_URI(?loinc))) AS ?testCode)
+  BIND (IRI(CONCAT(?stem, ENCODE_FOR_URI(?loinc))) AS ?testCode)
 
   OPTIONAL { ?resource xyz:valueQuantity ?quantity . ?quantity xyz:value ?quantityValue }
   OPTIONAL { ?resource xyz:valueQuantity ?unitQuantity . ?unitQuantity xyz:unit ?quantityUnit }
