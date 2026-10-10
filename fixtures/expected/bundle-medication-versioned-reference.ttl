@@ -13,16 +13,17 @@
   clinical:sourceRecordId "medrx-metformin-3" ;
   rec:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/MedicationRequest/medrx-metformin-3> .
 
-<ni:///sha-256;diz8Wb6UzQqBmOawKY2TMvGvUCOOZdfesPktSXmKdW0>
+<ni:///sha-256;ApCscqUt4qhoOpigwjdrf9rf3KMgMIhYslGBn0mWwGQ>
   prov:specializationOf <urn:uuid:3743b08a-d026-8c6b-85fa-d427844b46d6> ;
   clinical:clinicalIntent "prescribed" ;
   clinical:drugName "Metformin 500 mg tablet" ;
   clinical:rxNormCode <http://www.nlm.nih.gov/research/umls/rxnorm/861007> ;
+  rec:ndcCode <https://ns.cascadeprotocol.org/codes/ndc11/00093104801> ;
   clinical:status "active" ;
   clinical:startDate "2026-02-18"^^xsd:date ;
   rec:patient <urn:uuid:24c23e99-ff68-841f-a7a4-ebe3bd997ada> .
 
-[] bridge:arrivedAs <ni:///sha-256;diz8Wb6UzQqBmOawKY2TMvGvUCOOZdfesPktSXmKdW0> ;
+[] bridge:arrivedAs <ni:///sha-256;ApCscqUt4qhoOpigwjdrf9rf3KMgMIhYslGBn0mWwGQ> ;
   bridge:selector "/entry/1" ;
   prov:wasDerivedFrom <ni:///sha-256;EecD2on0y2LdT4yIJmZbjv5rPnDtZPRdusuIvhT6etI> ;
   prov:wasGeneratedBy _:import .

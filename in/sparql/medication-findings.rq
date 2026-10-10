@@ -10,9 +10,10 @@ PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 
 # What medication.rq leaves behind at a path the source accounting carries for
 # another kind, or carries where it holds one value: a reference that resolves
-# to no one Medication, a note, every code but the one RxNorm code carried,
-# whether the medication's own or the referenced Medication's, and every dosage
-# text but the first. A reference resolves as medication-table.rq says, and a
+# to no one Medication, a note, every code in a system other than RxNorm or
+# NDC and every NDC that medication.rq makes no 11-digit code of, whether the
+# medication's own or the referenced Medication's, and every dosage text but
+# the first. A reference resolves as medication-table.rq says, and a
 # Medication's codes are reported only where a reference resolves to it:
 # resource-type-findings.rq reports one nothing resolves to.
 
@@ -74,14 +75,11 @@ WHERE {
     ?concept xyz:coding ?codings . ?codings ?codingSlot ?coding .
     ?coding xyz:code ?value .
     OPTIONAL { ?coding xyz:system ?system }
-    FILTER (!COALESCE(?system = "http://www.nlm.nih.gov/research/umls/rxnorm", false) || EXISTS {
-      ?codings ?earlierSlot ?earlier .
-      ?earlier xyz:system "http://www.nlm.nih.gov/research/umls/rxnorm" ;
-        xyz:code ?earlierCode .
-      FILTER (xsd:integer(STRAFTER(STR(?earlierSlot), "#_")) < xsd:integer(STRAFTER(STR(?codingSlot), "#_")))
-    })
+    FILTER (!COALESCE(?system = "http://www.nlm.nih.gov/research/umls/rxnorm", false)
+      && (!COALESCE(?system = "http://hl7.org/fhir/sid/ndc", false)
+          || !REGEX(?value, "^([0-9]{11}|[0-9]{5}-[0-9]{4}-[0-9]{2}|[0-9]{4}-[0-9]{4}-[0-9]{2}|[0-9]{5}-[0-9]{3}-[0-9]{2}|[0-9]{5}-[0-9]{4}-[0-9])$")))
     BIND (CONCAT(?codeStep, "/coding/", STR(xsd:integer(STRAFTER(STR(?codingSlot), "#_")) - 1), "/code") AS ?step)
-    BIND (fhirr4:medicationCode AS ?gap)
+    BIND (IF(COALESCE(?system = "http://hl7.org/fhir/sid/ndc", false), fhirr4:ndcNotNormalised, fhirr4:medicationCode) AS ?gap)
   }
   UNION
   {

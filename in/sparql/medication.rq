@@ -4,7 +4,8 @@ PREFIX fx:       <http://sparql.xyz/facade-x/ns/>
 PREFIX xyz:      <http://sparql.xyz/facade-x/data/>
 PREFIX bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#>
 PREFIX clinical: <https://ns.cascadeprotocol.org/clinical/v1#>
-PREFIX skos:     <http://www.w3.org/2004/02/skos/core#>
+PREFIX rec:      <https://ns.cascadeprotocol.org/records/v1-draft#>
+PREFIX skos:    <http://www.w3.org/2004/02/skos/core#>
 PREFIX void:     <http://rdfs.org/ns/void#>
 PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 
@@ -16,16 +17,22 @@ PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # to in the document, as medication-table.rq says. One that resolves to no one
 # Medication leaves the reference's display as the name.
 #
-# A medication states one RxNorm code, the first its codings give, and one
-# dosage, the first dosage's text. Every value is single, so each is bound
-# beside the others rather than in a branch of its own, and a medication
-# stating nothing still states its intent. A date FHIR writes with less than a
-# day's precision fits no Cascade date, and is not carried.
+# A medication states every RxNorm code and every NDC its codings give, and one
+# dosage, the first dosage's text. An NDC is Cascade's 11-digit code: FHIR's is
+# the 10-digit label code with its hyphens, in one of three segmentings, which
+# the missing digit tells apart; ten digits with no hyphens, or any other
+# value, are no code, and medication-findings.rq reports them. The coding the
+# source marked userSelected is the selected code, the first such carried one.
+# Every other value is single, so each is bound beside the others rather than
+# in a branch of its own, and a medication stating nothing still states its
+# intent. A date FHIR writes with less than a day's precision fits no Cascade
+# date, and is not carried.
 
 CONSTRUCT {
   ?version clinical:clinicalIntent ?intent ;
     clinical:drugName ?drugName ;
-    clinical:rxNormCode ?rxNorm ;
+    ?codeProperty ?codeIri ;
+    rec:selectedCode ?selectedCode ;
     clinical:status ?status ;
     clinical:startDate ?startDate ;
     clinical:endDate ?endDate ;
@@ -97,28 +104,50 @@ WHERE {
   BIND (COALESCE(?conceptText, ?conceptDisplay, ?heldName, ?referenceDisplay) AS ?drugName)
 
   OPTIONAL {
-    ?resource xyz:medicationCodeableConcept ?codedConcept .
-    ?codedConcept xyz:coding ?codedCodings .
-    ?codedCodings ?codedSlot ?codedCoding .
-    ?codedCoding xyz:system "http://www.nlm.nih.gov/research/umls/rxnorm" ;
-      xyz:code ?conceptCode .
-    ?codeSystem skos:inScheme fhirr4:codeSystems ;
-      skos:notation "http://www.nlm.nih.gov/research/umls/rxnorm" ;
-      void:uriSpace ?stem .
-    FILTER NOT EXISTS {
-      ?codedCodings ?earlierCodedSlot ?earlierCoded .
-      ?earlierCoded xyz:system "http://www.nlm.nih.gov/research/umls/rxnorm" ;
-        xyz:code ?earlierCode .
-      FILTER (xsd:integer(STRAFTER(STR(?earlierCodedSlot), "#_")) < xsd:integer(STRAFTER(STR(?codedSlot), "#_")))
+    {
+      ?resource xyz:medicationCodeableConcept ?codedConcept .
+      ?codedConcept xyz:coding ?codedCodings .
+      ?codedCodings ?codedSlot ?codedCoding .
+      ?codedCoding xyz:system ?codedSystem ;
+        xyz:code ?codedValue .
+      OPTIONAL { ?codedCoding xyz:userSelected ?userSelected }
     }
+    UNION
+    {
+      ?codeRow fhirr4:medicationAt ?codePointer ;
+        fhirr4:medicationCodeSystem ?codedSystem ;
+        fhirr4:medicationCodeValue ?codedValue .
+    }
+    FILTER (!BOUND(?codePointer) || ?codePointer = ?medicationPointer)
+    VALUES (?codedSystem ?codeProperty) {
+      ("http://www.nlm.nih.gov/research/umls/rxnorm" clinical:rxNormCode)
+      ("http://hl7.org/fhir/sid/ndc" rec:ndcCode)
+    }
+    ?codeSystem skos:inScheme fhirr4:codeSystems ;
+      skos:notation ?codedSystem ;
+      void:uriSpace ?stem .
+    BIND (IF(?codeProperty = clinical:rxNormCode, ?codedValue,
+             IF(REGEX(?codedValue, "^[0-9]{11}$"), ?codedValue,
+               IF(REGEX(?codedValue, "^[0-9]{5}-[0-9]{4}-[0-9]{2}$"), REPLACE(?codedValue, "-", ""),
+                 IF(REGEX(?codedValue, "^[0-9]{4}-[0-9]{4}-[0-9]{2}$"), CONCAT("0", REPLACE(?codedValue, "-", "")),
+                   IF(REGEX(?codedValue, "^[0-9]{5}-[0-9]{3}-[0-9]{2}$"),
+                      CONCAT(SUBSTR(?codedValue, 1, 5), "0", SUBSTR(?codedValue, 7, 3), SUBSTR(?codedValue, 11, 2)),
+                     IF(REGEX(?codedValue, "^[0-9]{5}-[0-9]{4}-[0-9]$"),
+                        CONCAT(SUBSTR(?codedValue, 1, 5), SUBSTR(?codedValue, 7, 4), "0", SUBSTR(?codedValue, 12, 1)),
+                       1/0)))))) AS ?codeDigits)
+    BIND (IRI(CONCAT(?stem, ENCODE_FOR_URI(?codeDigits))) AS ?codeIri)
+    BIND (IF(STR(?userSelected) = "true" && BOUND(?codeIri) && NOT EXISTS {
+             ?codedCodings ?earlierSlot ?earlier .
+             ?earlier xyz:userSelected ?earlierSelected ;
+               xyz:system ?earlierSystem ;
+               xyz:code ?earlierValue .
+             FILTER (STR(?earlierSelected) = "true"
+               && xsd:integer(STRAFTER(STR(?earlierSlot), "#_")) < xsd:integer(STRAFTER(STR(?codedSlot), "#_"))
+               && (?earlierSystem = "http://www.nlm.nih.gov/research/umls/rxnorm"
+                   || (?earlierSystem = "http://hl7.org/fhir/sid/ndc"
+                       && REGEX(?earlierValue, "^([0-9]{11}|[0-9]{5}-[0-9]{4}-[0-9]{2}|[0-9]{4}-[0-9]{4}-[0-9]{2}|[0-9]{5}-[0-9]{3}-[0-9]{2}|[0-9]{5}-[0-9]{4}-[0-9])$"))))
+           }, ?codeIri, 1/0) AS ?selectedCode)
   }
-  BIND (IRI(CONCAT(?stem, ENCODE_FOR_URI(?conceptCode))) AS ?conceptRxNorm)
-  OPTIONAL {
-    ?codeRow fhirr4:medicationAt ?codePointer ;
-      fhirr4:medicationCode ?heldRxNorm .
-    FILTER (?codePointer = ?medicationPointer)
-  }
-  BIND (COALESCE(?conceptRxNorm, ?heldRxNorm) AS ?rxNorm)
 
   OPTIONAL { ?resource xyz:status ?status }
 

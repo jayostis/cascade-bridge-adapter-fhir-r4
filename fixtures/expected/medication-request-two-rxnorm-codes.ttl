@@ -13,17 +13,20 @@
   clinical:sourceRecordId "medrx-amlodipine-2" ;
   rec:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/MedicationRequest/medrx-amlodipine-2> .
 
-<ni:///sha-256;r4sKCE9bhV1DzAKR-SXgbfZY-dQmyN46ENeD98h869A>
+<ni:///sha-256;tHvWZOJEeq4D9pxejq-58wI_GDo0lR38_OtfAtsl-Fs>
   prov:specializationOf <urn:uuid:75449785-7eb1-8ef2-a642-05b485026a24> ;
   clinical:clinicalIntent "prescribed" ;
   clinical:drugName "Amlodipine 5 mg tablet" ;
-  clinical:rxNormCode <http://www.nlm.nih.gov/research/umls/rxnorm/197361> ;
+  clinical:rxNormCode
+    <http://www.nlm.nih.gov/research/umls/rxnorm/197361> ,
+    <http://www.nlm.nih.gov/research/umls/rxnorm/212549> ;
+  rec:ndcCode <https://ns.cascadeprotocol.org/codes/ndc11/00069153066> ;
   clinical:status "active" ;
   clinical:startDate "2026-03-10"^^xsd:date ;
   clinical:dosage "Take 5 mg by mouth once daily for two weeks" ;
   rec:patient <urn:uuid:24c23e99-ff68-841f-a7a4-ebe3bd997ada> .
 
-[] bridge:arrivedAs <ni:///sha-256;r4sKCE9bhV1DzAKR-SXgbfZY-dQmyN46ENeD98h869A> ;
+[] bridge:arrivedAs <ni:///sha-256;tHvWZOJEeq4D9pxejq-58wI_GDo0lR38_OtfAtsl-Fs> ;
   bridge:selector "" ;
   prov:wasDerivedFrom <ni:///sha-256;VEtONQnRpYfpn4Rp7ACtzas_jYXuhZFk7gZHXCbFP6U> ;
   prov:wasGeneratedBy _:import .

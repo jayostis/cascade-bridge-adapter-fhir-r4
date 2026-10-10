@@ -399,6 +399,9 @@
           "@id": "fixtures/in/medication-request-two-rxnorm-codes.json"
         },
         {
+          "@id": "fixtures/in/medication-request-ndc-forms.json"
+        },
+        {
           "@id": "fixtures/in/bundle-medication-versioned-reference.json"
         },
         {
@@ -699,6 +702,12 @@
           "@id": "fixtures/findings/medication-request-two-rxnorm-codes.ttl"
         },
         {
+          "@id": "fixtures/expected/medication-request-ndc-forms.ttl"
+        },
+        {
+          "@id": "fixtures/findings/medication-request-ndc-forms.ttl"
+        },
+        {
           "@id": "fixtures/expected/bundle-medication-versioned-reference.ttl"
         },
         {
@@ -914,12 +923,12 @@
       "@type": "File",
       "name": "Document table: Medications, references to them, and their keys",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "4545",
-      "sha256": "6a4c79f266d78204c89b1af715f4fb6ba13e73d603f4f3f62bb41f2125929d38",
+      "contentSize": "4072",
+      "sha256": "b65b84fb20c0a70db2a26a4c1ab96a3439f4faab0c879f31110056d66a9e0d82",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "A bridge:documentTableQuery: a row for each key a Medication of a record can be referenced by, within the scope it holds there, with the Medication's name and first RxNorm code, and a row for each medication's reference, the key it names and that key's scope, a version stripped; medication.rq, medication-findings.rq and resource-type-findings.rq each resolve a reference by joining them, to the one Medication holding its key in its scope."
+      "description": "A bridge:documentTableQuery: a row for each key a Medication of a record can be referenced by, within the scope it holds there, with the Medication's name and a row for each of its codings, its system and code as written, and a row for each medication's reference, the key it names and that key's scope, a version stripped; medication.rq, medication-findings.rq and resource-type-findings.rq each resolve a reference by joining them, to the one Medication holding its key in its scope."
     },
     {
       "@id": "in/sparql/record.rq",
@@ -998,8 +1007,8 @@
       "@type": "File",
       "name": "Mapping: a MedicationRequest's or MedicationStatement's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "6103",
-      "sha256": "1160bbb921d601a553c027927508091b6aa54d2748b3a73acb5406ae2d64b829",
+      "contentSize": "8056",
+      "sha256": "212ab2b25a60cd55911bd534168d478aa9278c2f1e5956ebd74f0037eb7afa74",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1094,12 +1103,12 @@
       "@type": "File",
       "name": "Findings: what a medication's mapping leaves behind",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "5512",
-      "sha256": "0047d36af55488f1ee591e50b271e23376a5d4dcdd4d7d934631c70488352e3e",
+      "contentSize": "5611",
+      "sha256": "f1dde565cd619cfbfbc1ca1f2cae7188207e899f8dd91c9a0030a2838c236f80",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "Reports fhirr4:medicationReferenceUnresolved for a medication's reference that resolves to no one Medication of its document, fhirr4:medicationNote for a medication's note, fhirr4:medicationCode for each code but the one RxNorm code carried, of a medication or of a Medication a reference resolves to, and fhirr4:medicationDosageRepeated for each dosage text after the first, at paths the source accounting carries for the other kinds or where they hold one value."
+      "description": "Reports fhirr4:medicationReferenceUnresolved for a medication's reference that resolves to no one Medication of its document, fhirr4:medicationNote for a medication's note, fhirr4:medicationCode for each code in a system other than RxNorm or NDC, fhirr4:ndcNotNormalised for each NDC no 11-digit code can be made of, of a medication or of a Medication a reference resolves to, and fhirr4:medicationDosageRepeated for each dosage text after the first, at paths the source accounting carries for the other kinds or where they hold one value."
     },
     {
       "@id": "in/sparql/lab-result-findings.rq",
@@ -1118,8 +1127,8 @@
       "@type": "File",
       "name": "FHIR R4 JSON source accounting",
       "encodingFormat": "text/turtle",
-      "contentSize": "99043",
-      "sha256": "de113339ea7642b4ace8cffef77ff98719fd531e90f87067bf66300d6d9a668b",
+      "contentSize": "99601",
+      "sha256": "5d76be0d07e24ebec5629acf76d65635f3f7c0873a75abb86c6671bbf5be8ded",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1142,8 +1151,8 @@
       "@type": "File",
       "name": "FHIR R4 JSON gaps",
       "encodingFormat": "text/turtle",
-      "contentSize": "5471",
-      "sha256": "6de4e89bf51cc10b856de98eeec3d74d2cde160f74a3cf493258294b5a7e407f",
+      "contentSize": "5722",
+      "sha256": "526777beac47b3e40f3bd5697870b03c97c71ea61037d3c62adc18dac5cd194c",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1169,8 +1178,8 @@
       "@type": "File",
       "name": "FHIR R4 code systems",
       "encodingFormat": "text/turtle",
-      "contentSize": "1875",
-      "sha256": "e0774ce161fdf40a57af454944189d7a467e9eff85273e5d58be2e4c374dd26d",
+      "contentSize": "2231",
+      "sha256": "915a0fe5790cf99065f856f33c089bbef67a57c355e25ce84e48c14cdc411521",
       "isBasedOn": [
         {
           "@id": "https://terminology.hl7.org/SNOMEDCT.html"
@@ -1185,7 +1194,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The bridge:table every mapping reads for the IRI stem of a code it writes as an IRI: one skos:Concept per Coding.system a mapping reads such a code from, its skos:notation the system URI as FHIR writes it, its skos:exactMatch the Cascade vocabulary's rec:CodeSystem for it and its void:uriSpace the stem, which is never the system URI. SNOMED CT's stem is HL7 Terminology's (SNOMEDCT.html, section RDF) and LOINC's is THO's iri-stem (v3-loinc.xml), authoritative though FHIR R5's table writes https; RxNorm's and ICD-10-CM's are the concatenation-safe forms cascade-vocabulary registers, THO stating none (https://github.com/jayostis/cascade-vocabulary/issues/111). Read on 2026-10-10. Not a concept map: no code maps to a Cascade term, and no entry of the source accounting looks a value up in it."
+      "description": "The bridge:table every mapping reads for the IRI stem of a code it writes as an IRI: one skos:Concept per Coding.system a mapping reads such a code from, its skos:notation the system URI as FHIR writes it, its skos:exactMatch the Cascade vocabulary's rec:CodeSystem for it and its void:uriSpace the stem, which is never the system URI. SNOMED CT's stem is HL7 Terminology's (SNOMEDCT.html, section RDF) and LOINC's is THO's iri-stem (v3-loinc.xml), authoritative though FHIR R5's table writes https; RxNorm's and ICD-10-CM's are the concatenation-safe forms cascade-vocabulary registers, THO stating none (https://github.com/jayostis/cascade-vocabulary/issues/111). NDC's is the 11-digit space cascade-vocabulary registers, the code normalised into it, since FHIR's NDC code is the 10-digit label code (https://hl7.org/fhir/R4/ndc.html, https://github.com/jayostis/cascade-vocabulary/issues/104). Read on 2026-10-10. Not a concept map: no code maps to a Cascade term, and no entry of the source accounting looks a value up in it."
     },
     {
       "@id": "fixtures/in/allergy-with-id.json",
@@ -1828,6 +1837,19 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "A MedicationRequest, id medrx-amlodipine-2, whose medicationCodeableConcept carries a clinical drug's RxNorm code (197361), a branded drug's RxNorm code (212549) and an NDC code, with two dosageInstruction texts, a tapering dose. Authored here on 2026-10-06, for a case the conformance corpus does not hold: a medication coded more than once, and dosed more than once."
+    },
+    {
+      "@id": "fixtures/in/medication-request-ndc-forms.json",
+      "@type": "File",
+      "name": "MedicationRequest with an RxNorm code marked userSelected and five NDC codes",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "976",
+      "sha256": "6a89d981344ccc63a5ee8af13711998005e6bfd58984c249ba4ab235b6d034f2",
+      "dateCreated": "2026-10-10",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A MedicationRequest, id medrx-amlodipine-3, whose medicationCodeableConcept carries a clinical drug's RxNorm code (197361) with userSelected true and five NDC codes: 0378-5209-05 (4-4-2), 12745-202-01 (5-3-2), 62011-0267-1 (5-4-1), 00069153041 (11 digits) and 0069153066 (10 digits with no hyphens). Authored here on 2026-10-10, for a case the conformance corpus does not hold: every form an NDC is carried from, the one that is refused, and the coding the source chose."
     },
     {
       "@id": "fixtures/in/bundle-medication-versioned-reference.json",
@@ -2980,8 +3002,8 @@
       "@type": "File",
       "name": "Expected graph for medication-request-two-rxnorm-codes",
       "encodingFormat": "text/turtle",
-      "contentSize": "2372",
-      "sha256": "8546baf9cb46eeccb58e429169128acbfe04312236ee4f8453caea3a927b303e",
+      "contentSize": "2508",
+      "sha256": "3482cecb4f052f317f0e0dd74330b1031d99ad4320a0189d956028dbdc628c4e",
       "about": {
         "@id": "fixtures/in/medication-request-two-rxnorm-codes.json"
       },
@@ -2996,8 +3018,8 @@
       "@type": "File",
       "name": "Expected findings for medication-request-two-rxnorm-codes",
       "encodingFormat": "text/turtle",
-      "contentSize": "2902",
-      "sha256": "d6f57788f571e56d277c424b3c4ae7e7b0e04670be3737de412c3c73f73094f3",
+      "contentSize": "1064",
+      "sha256": "5bc5ead0009067af2ce58414709596b8b54da5ee49f2375d41adfc01a511e915",
       "about": {
         "@id": "fixtures/in/medication-request-two-rxnorm-codes.json"
       },
@@ -3008,12 +3030,44 @@
       "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
     },
     {
+      "@id": "fixtures/expected/medication-request-ndc-forms.ttl",
+      "@type": "File",
+      "name": "Expected graph for medication-request-ndc-forms",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2646",
+      "sha256": "a8da165636e0ca67a0014f3ee971af6cf81f9187fde0ea21307e764ceb1bfa12",
+      "about": {
+        "@id": "fixtures/in/medication-request-ndc-forms.json"
+      },
+      "dateCreated": "2026-10-10",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/findings/medication-request-ndc-forms.ttl",
+      "@type": "File",
+      "name": "Expected findings for medication-request-ndc-forms",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1036",
+      "sha256": "e54845752646b0f2ad45cb646a2bc0c1963f093aa778192b6a18dfad8bb0768d",
+      "about": {
+        "@id": "fixtures/in/medication-request-ndc-forms.json"
+      },
+      "dateCreated": "2026-10-10",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
       "@id": "fixtures/expected/bundle-medication-versioned-reference.ttl",
       "@type": "File",
       "name": "Expected graph for bundle-medication-versioned-reference",
       "encodingFormat": "text/turtle",
-      "contentSize": "2313",
-      "sha256": "a637c0e6bbf8b2bb0c6395842ede290e3d41f2682ef485ec4b91d595a7b2a8ef",
+      "contentSize": "2386",
+      "sha256": "4bc4da136583f386751c8cc931f7184f7880ac91295712cab44fa5d1325294b6",
       "about": {
         "@id": "fixtures/in/bundle-medication-versioned-reference.json"
       },
@@ -3028,8 +3082,8 @@
       "@type": "File",
       "name": "Expected findings for bundle-medication-versioned-reference",
       "encodingFormat": "text/turtle",
-      "contentSize": "1041",
-      "sha256": "6b5dcb2ccf97fd9a1480c2ba662d200143ab29bb2b15d10a5d51b697218176a0",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "about": {
         "@id": "fixtures/in/bundle-medication-versioned-reference.json"
       },
