@@ -63,6 +63,18 @@ it, so the `fullUrl` stays with the resource it names.
   FHIR `decimal`, so the number's text is the value.
 - The media type is `application/fhir+json`.
 
+## Codes
+
+A `Coding.system` is not the namespace of its codes' IRIs: FHIR R5 says "there
+is no simple formula for determining the correct IRI stem from a
+Coding.system" ([RDF](https://hl7.org/fhir/R5/rdf.html#iri-stem), read on
+2026-10-10). A code's IRI is the stem
+[`vocab/fhir-code-systems.ttl`](../vocab/fhir-code-systems.ttl) gives its
+`Coding.system`, then the code percent-encoded. The stem is
+cascade-vocabulary's `void:uriSpace`, and HL7 Terminology's where it registers
+one, and is never the `Coding.system` URI: SNOMED CT's `http://snomed.info/sct`
+names the code system, and its concepts are under `http://snomed.info/id/`.
+
 ## The schema
 
 HL7 publishes one JSON Schema for R4, `fhir.schema.json`, pinned byte for byte
