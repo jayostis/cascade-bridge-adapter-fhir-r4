@@ -7,6 +7,9 @@ PREFIX cascade:  <https://ns.cascadeprotocol.org/core/v1#>
 PREFIX health:   <https://ns.cascadeprotocol.org/health/v1#>
 PREFIX clinical: <https://ns.cascadeprotocol.org/clinical/v1#>
 PREFIX foaf:     <http://xmlns.com/foaf/0.1/>
+PREFIX skos:     <http://www.w3.org/2004/02/skos/core#>
+PREFIX void:     <http://rdfs.org/ns/void#>
+PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 
 # A date FHIR writes with less than a day's precision fits no Cascade date, and
 # is not carried.
@@ -56,16 +59,22 @@ WHERE {
     ?resource xyz:code ?coded . ?coded xyz:coding ?codings . ?codings ?codingSlot ?coding .
     ?coding xyz:system "http://www.nlm.nih.gov/research/umls/rxnorm" ;
       xyz:code ?code .
+    ?codeSystem skos:inScheme fhirr4:codeSystems ;
+      skos:notation "http://www.nlm.nih.gov/research/umls/rxnorm" ;
+      void:uriSpace ?stem .
     BIND (health:allergenCode AS ?p)
-    BIND (IRI(CONCAT("http://www.nlm.nih.gov/research/umls/rxnorm/", ENCODE_FOR_URI(?code))) AS ?o)
+    BIND (IRI(CONCAT(?stem, ENCODE_FOR_URI(?code))) AS ?o)
   }
   UNION
   {
     ?resource xyz:code ?coded . ?coded xyz:coding ?codings . ?codings ?codingSlot ?coding .
     ?coding xyz:system "http://snomed.info/sct" ;
       xyz:code ?code .
+    ?codeSystem skos:inScheme fhirr4:codeSystems ;
+      skos:notation "http://snomed.info/sct" ;
+      void:uriSpace ?stem .
     BIND (health:allergenCode AS ?p)
-    BIND (IRI(CONCAT("http://snomed.info/sct/", ENCODE_FOR_URI(?code))) AS ?o)
+    BIND (IRI(CONCAT(?stem, ENCODE_FOR_URI(?code))) AS ?o)
   }
   UNION
   {
@@ -119,8 +128,11 @@ WHERE {
     ?manifestation xyz:coding ?codings . ?codings ?codingSlot ?coding .
     ?coding xyz:system "http://snomed.info/sct" ;
       xyz:code ?code .
+    ?codeSystem skos:inScheme fhirr4:codeSystems ;
+      skos:notation "http://snomed.info/sct" ;
+      void:uriSpace ?stem .
     BIND (health:manifestationCode AS ?p)
-    BIND (IRI(CONCAT("http://snomed.info/sct/", ENCODE_FOR_URI(?code))) AS ?o)
+    BIND (IRI(CONCAT(?stem, ENCODE_FOR_URI(?code))) AS ?o)
   }
   UNION
   {

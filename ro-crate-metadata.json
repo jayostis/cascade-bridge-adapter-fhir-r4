@@ -170,6 +170,9 @@
       "bridge:table": [
         {
           "@id": "vocab/fhir-vital-signs.ttl"
+        },
+        {
+          "@id": "vocab/fhir-code-systems.ttl"
         }
       ],
       "bridge:gapScheme": {
@@ -256,6 +259,9 @@
         },
         {
           "@id": "vocab/fhir-vital-signs.ttl"
+        },
+        {
+          "@id": "vocab/fhir-code-systems.ttl"
         },
         {
           "@id": "fixtures/in/allergy-with-id.json"
@@ -908,8 +914,8 @@
       "@type": "File",
       "name": "Document table: Medications, references to them, and their keys",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "4341",
-      "sha256": "bb1bb9a9ed9bad7733fa012cedc297f12acc41bc65ad0316be7dd397583ce48a",
+      "contentSize": "4545",
+      "sha256": "6a4c79f266d78204c89b1af715f4fb6ba13e73d603f4f3f62bb41f2125929d38",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -932,8 +938,8 @@
       "@type": "File",
       "name": "Mapping: an AllergyIntolerance's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "4906",
-      "sha256": "e4c1620c9ff0b309eae8ae06390aee4ba7b14119928f75b9ff58dbc96945af17",
+      "contentSize": "5400",
+      "sha256": "22b3e0116b493cdebb4ed371f3d63306931d14b2f2bbf4f791668091b0beed9a",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -944,8 +950,8 @@
       "@type": "File",
       "name": "Mapping: a Condition's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "4272",
-      "sha256": "47d28279b79c0a8f7b706b94f306dde4fa8a9d3b197b9d83fd787008ec566eb8",
+      "contentSize": "4660",
+      "sha256": "44f31fa11846e9dcf2506b4ca9d1db09f3c4afd3058c6dd669691c58325d9869",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -992,8 +998,8 @@
       "@type": "File",
       "name": "Mapping: a MedicationRequest's or MedicationStatement's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "5897",
-      "sha256": "9c29d10fce1a62a0f7ca964f02ef4dec85ba64597b4e4e090505757f89a4fa19",
+      "contentSize": "6103",
+      "sha256": "1160bbb921d601a553c027927508091b6aa54d2748b3a73acb5406ae2d64b829",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1004,8 +1010,8 @@
       "@type": "File",
       "name": "Mapping: a lab result's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "6940",
-      "sha256": "706e479864ea25084d14d6d802ae939e5b1b4fc0485943899b352c9a1b63bb92",
+      "contentSize": "7142",
+      "sha256": "30b04d52c747e91bbfeb0dc8fa8d1f7a0ebb954f03630a6a7367b70cf4b15679",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1157,6 +1163,29 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "The bridge:table lab-result-table.rq and observation-findings.rq read to tell a vital sign from a lab result when an Observation carries no category: one skos:Concept per LOINC code of the table of vital signs in FHIR R4's vital signs profile, its skos:notation the code. Transcribed from the isBasedOn page, read on 2026-10-06. Not a concept map: no code maps to a Cascade term, and no entry of the source accounting looks a value up in it."
+    },
+    {
+      "@id": "vocab/fhir-code-systems.ttl",
+      "@type": "File",
+      "name": "FHIR R4 code systems",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1841",
+      "sha256": "d82151c31e92a007ad6766e5b4df1e3a9ad74d51a0eaf274bbfc7df0e3f0644e",
+      "isBasedOn": [
+        {
+          "@id": "https://terminology.hl7.org/SNOMEDCT.html"
+        },
+        {
+          "@id": "https://github.com/HL7/UTG/blob/master/input/sourceOfTruth/external/v3/namingSystems/v3-loinc.xml"
+        },
+        {
+          "@id": "https://hl7.org/fhir/R5/rdf.html#iri-stem"
+        }
+      ],
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The bridge:table every mapping reads for the IRI stem of a code it writes as an IRI: one skos:Concept per Coding.system a mapping reads such a code from, its skos:notation the system URI as FHIR writes it, its skos:exactMatch the Cascade vocabulary's rec:CodeSystem for it and its void:uriSpace the stem, which is never the system URI. SNOMED CT's stem is HL7 Terminology's (SNOMEDCT.html, section RDF) and LOINC's is THO's iri-stem (v3-loinc.xml), authoritative though FHIR R5's table writes https; RxNorm's and ICD-10-CM's are the concatenation-safe forms cascade-vocabulary registers, THO stating none (https://github.com/jayostis/cascade-vocabulary/issues/111). Read on 2026-10-10. Not a concept map: no code maps to a Cascade term, and no entry of the source accounting looks a value up in it."
     },
     {
       "@id": "fixtures/in/allergy-with-id.json",
@@ -1959,8 +1988,8 @@
       "@type": "File",
       "name": "Expected graph for allergy-every-mapped-element",
       "encodingFormat": "text/turtle",
-      "contentSize": "2697",
-      "sha256": "bd9f0e0d6f0c46dd753bc5bd0f6ef6fbf0aef6a94f4fe49db480b4d59509d5ee",
+      "contentSize": "2696",
+      "sha256": "560eea81922b910123b976b0f6f2713a41b77c4adbd54220cadea16b73e3c470",
       "about": {
         "@id": "fixtures/in/allergy-every-mapped-element.json"
       },
@@ -1991,8 +2020,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-repeated-condition-id",
       "encodingFormat": "text/turtle",
-      "contentSize": "2970",
-      "sha256": "9c200d8133e3754c1aa566aa9c5bd7826e214833bf97fe27a7526601ed84545e",
+      "contentSize": "2968",
+      "sha256": "fb1b05c1ff2d0f0005eaaf5effbf638f25209be1630f6b4d9766b2f9830380a7",
       "about": {
         "@id": "fixtures/in/bundle-repeated-condition-id.json"
       },
@@ -2151,8 +2180,8 @@
       "@type": "File",
       "name": "Expected graph for condition-no-id-structured-diabetes",
       "encodingFormat": "text/turtle",
-      "contentSize": "2122",
-      "sha256": "821c08031944f7456e45786eaa102bc03bdd0f0f3d496b16d1b7c05be63e2e5b",
+      "contentSize": "2121",
+      "sha256": "668fa7bddf121b4340e4c2ed80ee1bff8db56f7e2bdb630abb64efd00a83ed3d",
       "about": {
         "@id": "fixtures/in/condition-no-id-structured-diabetes.json"
       },
@@ -2183,8 +2212,8 @@
       "@type": "File",
       "name": "Expected graph for condition-no-id-structured-hypertension",
       "encodingFormat": "text/turtle",
-      "contentSize": "2120",
-      "sha256": "62f5f8d439990464872e87dd323ec0373c7c07ec9db4130f40272ebe5e788ca2",
+      "contentSize": "2119",
+      "sha256": "4be1f6ed296c753ceccd3a3c1b1638dd3fb82e43fc276de3d633bb0ec9452bf8",
       "about": {
         "@id": "fixtures/in/condition-no-id-structured-hypertension.json"
       },
@@ -2215,8 +2244,8 @@
       "@type": "File",
       "name": "Expected graph for condition-with-id",
       "encodingFormat": "text/turtle",
-      "contentSize": "2329",
-      "sha256": "1c5ff5cd065859dcea7f6da457e1e720ff49446d84a7158d43a0eda29d102be5",
+      "contentSize": "2328",
+      "sha256": "22eed2437aa94a73d0f1033a95e74bc41f99e80e56a3d878655e25ae9d64c226",
       "about": {
         "@id": "fixtures/in/condition-with-id.json"
       },
@@ -2247,8 +2276,8 @@
       "@type": "File",
       "name": "Expected graph for condition-every-mapped-element",
       "encodingFormat": "text/turtle",
-      "contentSize": "2517",
-      "sha256": "49e4a7a008a2e8e10c18405b4eaa18a03edaef42b99a4ade02d2dcf53b5de750",
+      "contentSize": "2516",
+      "sha256": "15978fb1c618a0968da3c97d3d5e6909830929a19e9352c284b68573ea0ab979",
       "about": {
         "@id": "fixtures/in/condition-every-mapped-element.json"
       },
@@ -2279,8 +2308,8 @@
       "@type": "File",
       "name": "Expected graph for condition-with-id-meta-fetch-a",
       "encodingFormat": "text/turtle",
-      "contentSize": "2407",
-      "sha256": "9f7fac833879060185bbd3a70b7134884bcc02496fd21a2b510424f6f4145a74",
+      "contentSize": "2406",
+      "sha256": "5a7a1efe6e897c436450a95f46eee441456db51da358d2b34e40d5a14a6d900b",
       "about": {
         "@id": "fixtures/in/condition-with-id-meta-fetch-a.json"
       },
@@ -2311,8 +2340,8 @@
       "@type": "File",
       "name": "Expected graph for condition-with-id-meta-fetch-b",
       "encodingFormat": "text/turtle",
-      "contentSize": "2408",
-      "sha256": "fd6789d1bffb2be344bb3f07a9ec501ce0762acebe9545427afaa11839dea75c",
+      "contentSize": "2407",
+      "sha256": "5ab77de587aa13ab2fc00aaf5a12181f26aa665d2b720c32893b3f61bd79c7bd",
       "about": {
         "@id": "fixtures/in/condition-with-id-meta-fetch-b.json"
       },
@@ -3175,8 +3204,8 @@
       "@type": "File",
       "name": "Expected graph for procedure-with-contained-condition",
       "encodingFormat": "text/turtle",
-      "contentSize": "3076",
-      "sha256": "d21b022bb1753938a768b4b2493ca040c3654feb88b3dc1347fb65573b33c2dc",
+      "contentSize": "3075",
+      "sha256": "5e4fbd881c8ed2dc8df07df617a4e0647be4b27228b1d64ad8c4e2a7b4508261",
       "about": {
         "@id": "fixtures/in/procedure-with-contained-condition.json"
       },
@@ -3251,8 +3280,8 @@
       "@type": "File",
       "name": "View: conditions",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "1460",
-      "sha256": "0675b1a65f478b6ec595c7394c57f8293fe2d9e8bcc3694e9d388d09989effaf",
+      "contentSize": "1459",
+      "sha256": "814b2bfa5a1a192320383d1f72961248c6771e263b1d00ed11af6c00a13ec76a",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -3275,8 +3304,8 @@
       "@type": "File",
       "name": "View: procedures",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "1119",
-      "sha256": "f948332c4e6cb36be1ac78c971f3048f68640c37669942a0593876b8722612d6",
+      "contentSize": "1118",
+      "sha256": "20dccb35632c591a6c12a50bba1f77798ee1e0b7ed08d3ea47852abfcf3a85b3",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },

@@ -4,6 +4,8 @@ PREFIX fx:       <http://sparql.xyz/facade-x/ns/>
 PREFIX xyz:      <http://sparql.xyz/facade-x/data/>
 PREFIX bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#>
 PREFIX clinical: <https://ns.cascadeprotocol.org/clinical/v1#>
+PREFIX skos:     <http://www.w3.org/2004/02/skos/core#>
+PREFIX void:     <http://rdfs.org/ns/void#>
 PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 
 # A prescription and an entry on a list of what the person takes are one kind,
@@ -100,6 +102,9 @@ WHERE {
     ?codedCodings ?codedSlot ?codedCoding .
     ?codedCoding xyz:system "http://www.nlm.nih.gov/research/umls/rxnorm" ;
       xyz:code ?conceptCode .
+    ?codeSystem skos:inScheme fhirr4:codeSystems ;
+      skos:notation "http://www.nlm.nih.gov/research/umls/rxnorm" ;
+      void:uriSpace ?stem .
     FILTER NOT EXISTS {
       ?codedCodings ?earlierCodedSlot ?earlierCoded .
       ?earlierCoded xyz:system "http://www.nlm.nih.gov/research/umls/rxnorm" ;
@@ -107,7 +112,7 @@ WHERE {
       FILTER (xsd:integer(STRAFTER(STR(?earlierCodedSlot), "#_")) < xsd:integer(STRAFTER(STR(?codedSlot), "#_")))
     }
   }
-  BIND (IRI(CONCAT("http://www.nlm.nih.gov/research/umls/rxnorm/", ENCODE_FOR_URI(?conceptCode))) AS ?conceptRxNorm)
+  BIND (IRI(CONCAT(?stem, ENCODE_FOR_URI(?conceptCode))) AS ?conceptRxNorm)
   OPTIONAL {
     ?codeRow fhirr4:medicationAt ?codePointer ;
       fhirr4:medicationCode ?heldRxNorm .
