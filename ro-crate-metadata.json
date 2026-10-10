@@ -1169,14 +1169,14 @@
       "@type": "File",
       "name": "FHIR R4 code systems",
       "encodingFormat": "text/turtle",
-      "contentSize": "1841",
-      "sha256": "d82151c31e92a007ad6766e5b4df1e3a9ad74d51a0eaf274bbfc7df0e3f0644e",
+      "contentSize": "1875",
+      "sha256": "e0774ce161fdf40a57af454944189d7a467e9eff85273e5d58be2e4c374dd26d",
       "isBasedOn": [
         {
           "@id": "https://terminology.hl7.org/SNOMEDCT.html"
         },
         {
-          "@id": "https://github.com/HL7/UTG/blob/master/input/sourceOfTruth/external/v3/namingSystems/v3-loinc.xml"
+          "@id": "https://github.com/HL7/UTG/blob/18bfa0662fbf6c9f6f51922e46c534b00d987848/input/sourceOfTruth/external/v3/namingSystems/v3-loinc.xml"
         },
         {
           "@id": "https://hl7.org/fhir/R5/rdf.html#iri-stem"
@@ -3455,7 +3455,7 @@
       "isBasedOn": {
         "@id": "https://github.com/the-cascade-protocol/cascade-cli/tree/05d02255855e675f7c1c33d8219e57ac4dc7e47f"
       },
-      "description": "A SNOMED CT code written as an IRI in http://snomed.info/sct/ is read as the code alone, on both sides: the adapter's health:snomedCode is an IRI, its clinical:snomedCode a string."
+      "description": "A SNOMED CT code written as an IRI in http://snomed.info/id/ is read as the code alone, on both sides: the adapter writes health:snomedCode as that IRI, cascade-cli's output side as its clinical:snomedCode string."
     },
     {
       "@id": "#correction-unknown-placeholders",
