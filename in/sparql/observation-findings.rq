@@ -48,10 +48,8 @@ WHERE {
   }
   BIND (COALESCE(?contained, ?top) AS ?resource)
   ?resource xyz:resourceType "Observation" .
-  FILTER NOT EXISTS {
-    ?lab fhirr4:labResultAt ?labPointer .
-    FILTER (?labPointer = CONCAT(?recordSelector, ?topStep, ?containedStep))
-  }
+  BIND (CONCAT(?recordSelector, ?topStep, ?containedStep) AS ?labPointer)
+  FILTER NOT EXISTS { ?lab fhirr4:labResultAt ?labPointer }
   BIND (EXISTS { ?resource xyz:category ?anyCategory } AS ?categorised)
   BIND (EXISTS {
           ?resource xyz:category ?labCategories . ?labCategories ?labCategorySlot ?labCategory .

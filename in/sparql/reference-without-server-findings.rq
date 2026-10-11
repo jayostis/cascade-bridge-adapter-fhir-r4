@@ -46,10 +46,8 @@ WHERE {
   ?resource xyz:resourceType ?type .
   FILTER (?type IN ("AllergyIntolerance", "Condition", "Immunization", "Procedure", "Patient",
                     "MedicationRequest", "MedicationStatement", "Observation"))
-  FILTER (?type != "Observation" || EXISTS {
-    ?lab fhirr4:labResultAt ?labPointer .
-    FILTER (?labPointer = CONCAT(?recordSelector, ?resourcePointer))
-  })
+  BIND (CONCAT(?recordSelector, ?resourcePointer) AS ?labPointer)
+  FILTER (?type != "Observation" || EXISTS { ?lab fhirr4:labResultAt ?labPointer })
   ?resource ?member ?reference .
   FILTER (?member IN (xyz:patient, xyz:subject))
   ?reference xyz:reference ?value .

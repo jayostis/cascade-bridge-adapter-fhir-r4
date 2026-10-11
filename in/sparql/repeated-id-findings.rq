@@ -34,10 +34,8 @@ WHERE {
   { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
   FILTER (?topType IN ("AllergyIntolerance", "Condition", "Immunization", "Procedure", "Patient",
                        "MedicationRequest", "MedicationStatement", "Observation"))
-  FILTER (?topType != "Observation" || EXISTS {
-    ?lab fhirr4:labResultAt ?labPointer .
-    FILTER (?labPointer = CONCAT(?recordSelector, ?topStep))
-  })
+  BIND (CONCAT(?recordSelector, ?topStep) AS ?labPointer)
+  FILTER (?topType != "Observation" || EXISTS { ?lab fhirr4:labResultAt ?labPointer })
   { ?top xyz:id ?value . BIND ("id" AS ?held) }
   UNION
   { ?root xyz:fullUrl ?value . FILTER (STRSTARTS(?value, "urn:uuid:")) BIND ("fullUrl" AS ?held) }

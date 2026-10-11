@@ -47,8 +47,8 @@ WHERE {
   }
   BIND (COALESCE(?contained, ?top) AS ?resource)
   ?resource xyz:resourceType "Observation" .
+  BIND (CONCAT(?recordSelector, ?topStep, ?containedStep) AS ?labPointer)
   ?lab fhirr4:labResultAt ?labPointer .
-  FILTER (?labPointer = CONCAT(?recordSelector, ?topStep, ?containedStep))
 
   {
     ?resource xyz:effectivePeriod ?period . ?period xyz:end ?value .
