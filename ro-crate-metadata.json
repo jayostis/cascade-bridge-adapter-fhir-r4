@@ -408,6 +408,15 @@
           "@id": "fixtures/in/bundle-medication-repeated-id.json"
         },
         {
+          "@id": "bench/manifest.json"
+        },
+        {
+          "@id": "bench/syn-c521b4f4b8f5b303.json.gz"
+        },
+        {
+          "@id": "bench/synthea-lifetime-a8b18ea4.json.gz"
+        },
+        {
           "@id": "fixtures/manifest.ttl"
         },
         {
@@ -1876,6 +1885,69 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "A collection Bundle: two Medications, each id med-1, from two servers' fullUrls; and a MedicationRequest, id medrx-unclear-1, referencing Medication/med-1. Authored here on 2026-10-06, for a case the conformance corpus does not hold: a reference its document resolves to more than one Medication."
+    },
+    {
+      "@id": "bench/manifest.json",
+      "@type": "File",
+      "name": "Benchmark inputs and what to measure on each",
+      "encodingFormat": "application/json",
+      "dateCreated": "2026-10-11",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The inputs a benchmark harness runs on this adapter, in the shape of bench/manifest.schema.json in cascade-bridge-spec. Each input's sha256 and bytes are of its gunzipped document; the crate's are of the committed file."
+    },
+    {
+      "@id": "bench/syn-c521b4f4b8f5b303.json.gz",
+      "@type": "File",
+      "name": "FHIR R4 benchmark input: the trimmed ten-year Synthea record of the demo hospitals",
+      "encodingFormat": "application/gzip",
+      "contentSize": "34472",
+      "sha256": "3aaeb61230dd766920494a0f7b18ed9b97f5fe9ef90c7ba19f7be31cd994bdf5",
+      "isBasedOn": {
+        "@id": "https://github.com/jayostis/cascade-runtime-js/blob/66f217000cff918ac661a9a1fcfae941b4f98486/packages/demo-hospital/data/cascade-north/patients/syn-c521b4f4b8f5b303.json"
+      },
+      "dateCreated": "2026-10-11",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "Synthea's simulated person Blanche Hermiston as the demo hospital Cascade North holds her: a collection Bundle of 598 entries, 535,201 bytes gunzipped, copied byte for byte from the file isBasedOn names and gzipped with gzip -9 -n. Synthea v4.0.0 is by The MITRE Corporation, under the Apache License 2.0; the person is simulated and none is a real person. The real provider names, addresses, phone numbers and identifiers that Synthea draws from public CMS data were removed or replaced with the demo hospitals' own names. SNOMED CT identifiers and terms stand as Synthea's output writes them, under Synthea's licence terms: this material includes SNOMED Clinical Terms (SNOMED CT) concept identifiers and terms; SNOMED and SNOMED CT are registered trademarks of SNOMED International. This material contains content from LOINC (http://loinc.org), copyright Regenstrief Institute, Inc. and the Logical Observation Identifiers Names and Codes (LOINC) Committee, available at no cost under the license at http://loinc.org/license; LOINC is a registered United States trademark of Regenstrief Institute, Inc."
+    },
+    {
+      "@id": "bench/synthea-lifetime-a8b18ea4.json.gz",
+      "@type": "File",
+      "name": "FHIR R4 benchmark input: the lifetime Synthea record of one person",
+      "encodingFormat": "application/gzip",
+      "contentSize": "4732316",
+      "sha256": "4bfb6e61f1b9a66f59d05c836e57d50c333cb150f6d2b7dbf4e724ee2407d468",
+      "isBasedOn": {
+        "@id": "https://github.com/jayostis/cascade-bridge-spec/blob/651fe561867f1260b9b1144e8f431fba05eb9c7b/bench/synthea/generate.sh"
+      },
+      "dateCreated": "2026-10-11",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "Synthea's simulated person Xochitl Corkery, id a8b18ea4-466a-da66-fd0e-20dbd1de56c5, her untrimmed lifetime record to 2026-10-01: a transaction Bundle of 16,833 entries, 51,227,791 bytes gunzipped, made by the generator isBasedOn names. Synthea v4.0.0 is by The MITRE Corporation, under the Apache License 2.0; the person is simulated and none is a real person. Provider names, street lines, cities, nine-digit ZIP codes and phone numbers are replaced by placeholders; every other identifier is Synthea's own, kept as written. The record keeps the public insurer names in its claims (Cigna Health, Medicare, Medicaid) and Synthea's provider identifiers in its conditional references. SNOMED CT identifiers and terms stand as Synthea's output writes them, under Synthea's licence terms: this material includes SNOMED Clinical Terms (SNOMED CT) concept identifiers and terms; SNOMED and SNOMED CT are registered trademarks of SNOMED International. This material contains content from LOINC (http://loinc.org), copyright Regenstrief Institute, Inc. and the Logical Observation Identifiers Names and Codes (LOINC) Committee, available at no cost under the license at http://loinc.org/license; LOINC is a registered United States trademark of Regenstrief Institute, Inc."
+    },
+    {
+      "@id": "https://github.com/jayostis/cascade-runtime-js/blob/66f217000cff918ac661a9a1fcfae941b4f98486/packages/demo-hospital/data/cascade-north/patients/syn-c521b4f4b8f5b303.json",
+      "@type": "CreativeWork",
+      "name": "syn-c521b4f4b8f5b303.json in cascade-runtime-js at 66f2170",
+      "version": "66f217000cff918ac661a9a1fcfae941b4f98486",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The demo hospitals' copy of the record, last changed at 6f2af43. A contextual entity: the source of the benchmark input, not part of the crate."
+    },
+    {
+      "@id": "https://github.com/jayostis/cascade-bridge-spec/blob/651fe561867f1260b9b1144e8f431fba05eb9c7b/bench/synthea/generate.sh",
+      "@type": "CreativeWork",
+      "name": "generate.sh in cascade-bridge-spec at 651fe56",
+      "version": "651fe561867f1260b9b1144e8f431fba05eb9c7b",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The recipe of the Synthea inputs: it pins Synthea v4.0.0 by the sha256 of its jar, the container image by digest, the seeds and the end date, and scrubs the provider detail. A contextual entity: referenced and not committed here, as an adapter holds no code."
     },
     {
       "@id": "fixtures/expected/allergy-no-id-penicillin.ttl",
