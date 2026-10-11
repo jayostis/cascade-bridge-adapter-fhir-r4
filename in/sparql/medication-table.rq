@@ -3,14 +3,13 @@ PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 PREFIX fx:      <http://sparql.xyz/facade-x/ns/>
 PREFIX xyz:     <http://sparql.xyz/facade-x/data/>
 PREFIX bridge:  <https://ns.cascadeprotocol.org/bridge/v1-draft#>
-PREFIX skos:    <http://www.w3.org/2004/02/skos/core#>
-PREFIX void:    <http://rdfs.org/ns/void#>
 PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 
 # A Medication is no record: a medication that references one in its document
-# reads its name and RxNorm code here, from whichever record holds it. A query
-# runs over one record, so no row here can say which Medication a reference
-# resolves to. Instead a Medication is a row for each key a reference could
+# reads its name and codes here, from whichever record holds it. A code is a
+# row of its system and value as written, since medication.rq makes an IRI of
+# it the same way wherever it was read. A query runs over one record, so no row
+# here can say which Medication a reference resolves to. Instead a Medication is a row for each key a reference could
 # name it by, and a reference a row of the key it names, each within a scope:
 # a contained Medication is named by "#" and its id within the resource holding
 # it, and an entry by its fullUrl, or by type and id, within the document. A
@@ -26,7 +25,8 @@ CONSTRUCT {
   [] fhirr4:medicationAt ?pointer ;
     fhirr4:medicationName ?name .
   [] fhirr4:medicationAt ?pointer ;
-    fhirr4:medicationCode ?rxNormCode .
+    fhirr4:medicationCodeSystem ?system ;
+    fhirr4:medicationCodeValue ?code .
   [] fhirr4:medicationReferenceFrom ?pointer ;
     fhirr4:medicationReferenceTo ?target ;
     fhirr4:medicationScope ?referenceScope .
@@ -79,18 +79,8 @@ WHERE {
     ?resource xyz:resourceType "Medication" ;
       xyz:code ?coded .
     ?coded xyz:coding ?codings . ?codings ?codingSlot ?coding .
-    ?coding xyz:system "http://www.nlm.nih.gov/research/umls/rxnorm" ;
+    ?coding xyz:system ?system ;
       xyz:code ?code .
-    FILTER NOT EXISTS {
-      ?codings ?earlierSlot ?earlier .
-      ?earlier xyz:system "http://www.nlm.nih.gov/research/umls/rxnorm" ;
-        xyz:code ?earlierCode .
-      FILTER (xsd:integer(STRAFTER(STR(?earlierSlot), "#_")) < xsd:integer(STRAFTER(STR(?codingSlot), "#_")))
-    }
-    ?codeSystem skos:inScheme fhirr4:codeSystems ;
-      skos:notation "http://www.nlm.nih.gov/research/umls/rxnorm" ;
-      void:uriSpace ?stem .
-    BIND (IRI(CONCAT(?stem, ENCODE_FOR_URI(?code))) AS ?rxNormCode)
   }
   UNION
   {

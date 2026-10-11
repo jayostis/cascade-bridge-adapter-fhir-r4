@@ -1,0 +1,41 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "medrx-amlodipine-3",
+  "status": "active",
+  "intent": "order",
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "197361",
+        "display": "amlodipine 5 MG Oral Tablet",
+        "userSelected": true
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/ndc",
+        "code": "0378-5209-05"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/ndc",
+        "code": "12745-202-01"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/ndc",
+        "code": "62011-0267-1"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/ndc",
+        "code": "00069153041"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/ndc",
+        "code": "0069153066"
+      }
+    ],
+    "text": "Amlodipine 5 mg tablet"
+  },
+  "subject": {
+    "reference": "Patient/pat-conformance-1"
+  },
+  "authoredOn": "2026-03-10"
+}

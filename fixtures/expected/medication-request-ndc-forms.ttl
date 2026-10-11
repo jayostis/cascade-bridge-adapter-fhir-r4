@@ -1,0 +1,55 @@
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov:     <http://www.w3.org/ns/prov#> .
+@prefix pav:      <http://purl.org/pav/> .
+@prefix bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rec:      <https://ns.cascadeprotocol.org/records/v1-draft#> .
+@prefix health:   <https://ns.cascadeprotocol.org/health/v1#> .
+@prefix clinical: <https://ns.cascadeprotocol.org/clinical/v1#> .
+@prefix cascade:  <https://ns.cascadeprotocol.org/core/v1#> .
+
+<urn:uuid:1d4ce57a-1e2b-873d-ad7b-9de2c7ad6436>
+  a clinical:Medication ;
+  clinical:sourceRecordId "medrx-amlodipine-3" ;
+  rec:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/MedicationRequest/medrx-amlodipine-3> .
+
+<ni:///sha-256;x1TuwLqhPEHkMyc11tKJrd5oRjJfXk-5PJ-THg9Omlc>
+  prov:specializationOf <urn:uuid:1d4ce57a-1e2b-873d-ad7b-9de2c7ad6436> ;
+  clinical:clinicalIntent "prescribed" ;
+  clinical:drugName "Amlodipine 5 mg tablet" ;
+  clinical:rxNormCode <http://www.nlm.nih.gov/research/umls/rxnorm/197361> ;
+  rec:ndcCode
+    <https://ns.cascadeprotocol.org/codes/ndc11/00378520905> ,
+    <https://ns.cascadeprotocol.org/codes/ndc11/12745020201> ,
+    <https://ns.cascadeprotocol.org/codes/ndc11/62011026701> ,
+    <https://ns.cascadeprotocol.org/codes/ndc11/00069153041> ;
+  rec:selectedCode <http://www.nlm.nih.gov/research/umls/rxnorm/197361> ;
+  clinical:status "active" ;
+  clinical:startDate "2026-03-10"^^xsd:date ;
+  rec:patient <urn:uuid:24c23e99-ff68-841f-a7a4-ebe3bd997ada> .
+
+[] bridge:arrivedAs <ni:///sha-256;x1TuwLqhPEHkMyc11tKJrd5oRjJfXk-5PJ-THg9Omlc> ;
+  bridge:selector "" ;
+  prov:wasDerivedFrom <ni:///sha-256;aonZgTRMzGOl7orxNxGZgAXmv9WJhMJJukqyNbbQNPI> ;
+  prov:wasGeneratedBy _:import .
+
+<ni:///sha-256;aonZgTRMzGOl7orxNxGZgAXmv9WJhMJJukqyNbbQNPI>
+  a prov:Entity ;
+  bridge:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
+  pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
+  prov:qualifiedAttribution
+    [ prov:agent [ rdfs:label "Meridian Health System" ] ; prov:hadRole rec:author ] ,
+    [ prov:agent [ rdfs:label "Apple Health" ] ; prov:hadRole rec:transmitter ] ;
+  bridge:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
+  bridge:authenticatedAsProxy false ;
+  bridge:sourceFormatVersion "4.0.1" .
+
+_:import
+  a prov:Activity ;
+  prov:used <ni:///sha-256;aonZgTRMzGOl7orxNxGZgAXmv9WJhMJJukqyNbbQNPI> ;
+  rdfs:label "Apple Health export" ;
+  prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime ;
+  prov:qualifiedAssociation [
+    prov:hadPlan [ a prov:Plan ; rdfs:label "fhir-r4" ; pav:version "0.1.0" ] ;
+    prov:agent [ ]
+  ] .

@@ -28,6 +28,9 @@ A medication names its drug in `medicationCodeableConcept`, or by
 `medicationReference` to a `Medication` resource: contained in it, another
 entry of its Bundle, or a resource the document does not hold. An Apple Health
 export holds one resource per file, so a reference there points outside it.
+Every RxNorm and NDC coding of the drug is carried, and the first of them
+`medicationCodeableConcept` marks `userSelected` is the medication's selected
+code. A `userSelected` on a referenced `Medication`'s coding is not read.
 
 A resource's `id` is the server's logical id, unique for its type on that
 server. It is optional: a resource written by a client, or assembled into an
@@ -74,6 +77,16 @@ Coding.system" ([RDF](https://hl7.org/fhir/R5/rdf.html#iri-stem), read on
 cascade-vocabulary's `void:uriSpace`, and HL7 Terminology's where it registers
 one, and is never the `Coding.system` URI: SNOMED CT's `http://snomed.info/sct`
 names the code system, and its concepts are under `http://snomed.info/id/`.
+
+An NDC is the exception to "then the code": FHIR's NDC code is "the 10 digit NDC
+code, with `-` included" ([NDC](https://hl7.org/fhir/R4/ndc.html)), and Cascade's
+is 11 digits, so a code is normalised into the stem
+`https://ns.cascadeprotocol.org/codes/ndc11/`. It is never FHIR's system URI
+with the 10-digit code. Five forms are carried: 11 digits as written; 5-4-2
+with its hyphens removed; 4-4-2, 5-3-2 and 5-4-1 with a `0` added to the
+segment short of a digit (the labeler, the product, the package). Ten digits
+with no hyphens cannot be told apart, and neither can any other value: it is
+no code, and a finding.
 
 ## The schema
 

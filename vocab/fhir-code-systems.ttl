@@ -23,6 +23,14 @@ fhirr4:codeSystemRxNorm a skos:Concept ;
   void:uriSpace "http://www.nlm.nih.gov/research/umls/rxnorm/" ;
   dct:source <https://github.com/jayostis/cascade-vocabulary/issues/111> .
 
+fhirr4:codeSystemNdc a skos:Concept ;
+  skos:inScheme fhirr4:codeSystems ;
+  skos:notation "http://hl7.org/fhir/sid/ndc" ;
+  skos:prefLabel "NDC"@en ;
+  skos:exactMatch rec:NDC ;
+  void:uriSpace "https://ns.cascadeprotocol.org/codes/ndc11/" ;
+  dct:source <https://hl7.org/fhir/R4/ndc.html> , <https://github.com/jayostis/cascade-vocabulary/issues/104> .
+
 fhirr4:codeSystemIcd10Cm a skos:Concept ;
   skos:inScheme fhirr4:codeSystems ;
   skos:notation "http://hl7.org/fhir/sid/icd-10-cm" ;

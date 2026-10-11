@@ -48,6 +48,7 @@
     <#medication-request-reference-outside>
     <#bundle-medication-request-and-medication>
     <#medication-request-two-rxnorm-codes>
+    <#medication-request-ndc-forms>
     <#bundle-medication-versioned-reference>
     <#bundle-medication-repeated-id>
     <#condition-no-id-differs-only-in-narrative>
@@ -812,7 +813,7 @@
 
 <#medication-request-two-rxnorm-codes> a bridge:IsomorphicConversionTest ;
   mf:name "medication-request-two-rxnorm-codes" ;
-  rdfs:comment "A MedicationRequest coded by two RxNorm codes and an NDC code, with two dosages: the first RxNorm code and the first dosage are carried, and the other codes and the second dosage are findings." ;
+  rdfs:comment "A MedicationRequest coded by two RxNorm codes and an NDC code, with two dosages: both RxNorm codes and the NDC, as its 11-digit code, are carried, and the second dosage alone is a finding." ;
   mf:action [
     bridge:input <in/medication-request-two-rxnorm-codes.json> ;
     bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
@@ -823,9 +824,22 @@
     bridge:expectedFindings <findings/medication-request-two-rxnorm-codes.ttl>
   ] .
 
+<#medication-request-ndc-forms> a bridge:IsomorphicConversionTest ;
+  mf:name "medication-request-ndc-forms" ;
+  rdfs:comment "A MedicationRequest coded by an RxNorm code marked userSelected and five NDC codes: the three 10-digit hyphenated forms 4-4-2, 5-3-2 and 5-4-1 and the 11-digit form are carried as 11-digit codes, the RxNorm code is the selected code, and the 10-digit NDC with no hyphens, whose segments cannot be told, is a finding." ;
+  mf:action [
+    bridge:input <in/medication-request-ndc-forms.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/medication-request-ndc-forms.ttl> ;
+    bridge:expectedFindings <findings/medication-request-ndc-forms.ttl>
+  ] .
+
 <#bundle-medication-versioned-reference> a bridge:IsomorphicConversionTest ;
   mf:name "bundle-medication-versioned-reference" ;
-  rdfs:comment "A Bundle holding a Medication and a MedicationRequest referencing a version of it: the request reads its drug from the Medication, which is no record and no finding, and the Medication's code outside RxNorm is a finding." ;
+  rdfs:comment "A Bundle holding a Medication and a MedicationRequest referencing a version of it: the request reads its drug and its RxNorm code and NDC, as its 11-digit code, from the Medication, which is no record and no finding." ;
   mf:action [
     bridge:input <in/bundle-medication-versioned-reference.json> ;
     bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
