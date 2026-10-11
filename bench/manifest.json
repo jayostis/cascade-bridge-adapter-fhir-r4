@@ -1,0 +1,46 @@
+{
+  "inputs": [
+    {
+      "id": "fhir-r4-synthea-10y-trimmed",
+      "path": "bench/syn-c521b4f4b8f5b303.json.gz",
+      "sha256": "754a05c31942307dbca79ca90bfe6f5b36f60b37d27d8731be829557fefe0c75",
+      "bytes": 535201,
+      "envelope": "ro-crate-metadata.json#envelope-bundle",
+      "measures": [
+        "convert",
+        "memory.grow",
+        "wasm-memory",
+        "rss",
+        "query-time",
+        "query-rows",
+        "records",
+        "triples",
+        "findings",
+        "output-bytes"
+      ],
+      "onPullRequests": false,
+      "timeoutSeconds": 600
+    },
+    {
+      "id": "fhir-r4-synthea-lifetime",
+      "path": "bench/synthea-lifetime-a8b18ea4.json.gz",
+      "sha256": "f20b86408066ece2d25a7b02d380b7652f22d16df9dab613a0c73c9969b17da8",
+      "bytes": 51227791,
+      "envelope": "ro-crate-metadata.json#envelope-bundle",
+      "measures": [
+        "convert",
+        "memory.grow",
+        "wasm-memory",
+        "rss",
+        "query-time",
+        "query-rows",
+        "records",
+        "triples",
+        "findings",
+        "output-bytes"
+      ],
+      "onPullRequests": false,
+      "timeoutSeconds": 3600
+    }
+  ]
+}
