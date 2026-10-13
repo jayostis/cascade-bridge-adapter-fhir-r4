@@ -67,7 +67,7 @@ WHERE {
         ?hgvsValueCoding xyz:system "http://varnomen.hgvs.org" ;
           xyz:code ?hgvsWritten .
         BIND (REPLACE(REPLACE(REPLACE(STR(?hgvsWritten), "^\\s+|\\s+$", ""),
-                              "\\s+\\(p\\..*\\)$", ""),
+                              "\\s*\\(p\\..*\\)$", ""),
                       "^([^:()\\s]+)\\([^()]*\\):", "$1:") AS ?hgvsNormal)
       }
       GROUP BY ?resource
@@ -94,7 +94,8 @@ WHERE {
         BIND (REPLACE(REPLACE(REPLACE(STR(?clinvarWritten), "^\\s+|\\s+$", ""),
                               "^(VCV[0-9]+)\\.[0-9]+$", "$1"),
                       "^(VCV)?0*", "") AS ?clinvarDigits)
-        BIND (IF(REGEX(?clinvarDigits, "^[1-9][0-9]*$"), ?clinvarDigits, 1/0) AS ?clinvarId)
+        FILTER (REGEX(?clinvarDigits, "^[1-9][0-9]*$"))
+        BIND (?clinvarDigits AS ?clinvarId)
       }
       GROUP BY ?resource
     }
@@ -118,7 +119,8 @@ WHERE {
           xyz:display ?geneDisplay .
         FILTER (?geneSystem IN ("http://www.genenames.org/geneId", "http://www.genenames.org"))
         BIND (REPLACE(STR(?geneDisplay), "^\\s+|\\s+$", "") AS ?geneTrimmed)
-        BIND (IF(STRLEN(?geneTrimmed) > 0, ?geneTrimmed, 1/0) AS ?symbol)
+        FILTER (STRLEN(?geneTrimmed) > 0)
+        BIND (?geneTrimmed AS ?symbol)
       }
       GROUP BY ?resource
     }

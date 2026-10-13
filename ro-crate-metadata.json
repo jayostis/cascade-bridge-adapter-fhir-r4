@@ -1194,8 +1194,8 @@
       "@type": "File",
       "name": "Mapping: a variant's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "6090",
-      "sha256": "6dce0b531ee58d7bcbb2e6d9a5c733937b10bbc76b433e6d7b3a3e0307038fcd",
+      "contentSize": "6104",
+      "sha256": "2e5dcb7fc1132028b7cdcc3cfd120ec0045b14b6117c8ce3a4c550e293da2f8e",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1206,8 +1206,8 @@
       "@type": "File",
       "name": "Mapping: a variant interpretation's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "8703",
-      "sha256": "420f3aa632eb1deb505a03e1f591d83ec1a09ba9dd92446833f9b9ff96bf33ff",
+      "contentSize": "8764",
+      "sha256": "7cd46ebb343866283331f65e6f74f1a38de1860d074ff643520c60d6b3f67f7b",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1315,7 +1315,7 @@
       "name": "Findings: what a variant's mapping leaves behind",
       "encodingFormat": "application/sparql-query",
       "contentSize": "10856",
-      "sha256": "6c2289b3d94be92893317c2e5586be7495e0390ed685a0e8b0b0b867c9de9f65",
+      "sha256": "2a116981164c70234bdda4a7ef74627948ae2b3652f409b1bbd49dc81a07c646",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1326,20 +1326,20 @@
       "@type": "File",
       "name": "Findings: what a variant interpretation's mapping leaves behind",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "9773",
-      "sha256": "90bb4d0251b23c1a096434777cb158e6e1e8bb2d70f1032977e5c35de5c9ce8b",
+      "contentSize": "9870",
+      "sha256": "b80f76607186aec3b9c8fae93a77b2ad0e9782aed39afe5e99bb140dc4518686",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "Reports, for an Observation variant-interpretation-table.rq calls a diagnostic implication, fhirr4:interpretationClassification for a classification that is none of the five ACMG/AMP answers or one of several, and fhirr4:interpretationVariantLink for each derivedFrom reference, or for the code where there is none, when derivedFrom does not name exactly one variant record and nothing else."
+      "description": "Reports, for an Observation variant-interpretation-table.rq calls a diagnostic implication, fhirr4:interpretationClassification for a classification that is none of the five ACMG/AMP answers or one of several, and fhirr4:interpretationVariantLink for each derivedFrom reference, or for the code where there is none (a derivedFrom with no reference is none), when derivedFrom does not name exactly one variant record and nothing else."
     },
     {
       "@id": "vocab/fhir-accounting.ttl",
       "@type": "File",
       "name": "FHIR R4 JSON source accounting",
       "encodingFormat": "text/turtle",
-      "contentSize": "184330",
-      "sha256": "7a9a0b1edd49c2da1afe9c868a4f37d6f85234683bafa89d20037319b2c8416b",
+      "contentSize": "190616",
+      "sha256": "178f9511ae2dfba020318d1e52fe67c79748355646dcc125bd413a9ca758a6b4",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2153,26 +2153,26 @@
       "@type": "File",
       "name": "Bundle of variants: the forms of an HGVS expression and what is not carried",
       "encodingFormat": "application/fhir+json",
-      "contentSize": "11147",
-      "sha256": "dc1580c13631d2213d9e49980a76a7f5b90fc2acc9679d47ba83d00392c4a3e8",
+      "contentSize": "14446",
+      "sha256": "518981c08a2caf62c6afe5cd756d39881d0fd19b1066e836de67108490decbf8",
       "dateCreated": "2026-10-13",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "A collection Bundle of a Patient and nine Variants, each with a urn:uuid fullUrl and no id: one for each row of the table of c.HGVS forms docs/format.md gives (the gene in parentheses, a protein change beside it, the transcript only in its own component, no version, a genomic expression, two different expressions); a ClinVar code written VCV000090011, an RCV accession, and two different IDs; a code of dbSNP; a gene with a display and no code, with a code and no display, and two different genes; an Absent variant and a variant with no value at all. Authored here on 2026-10-13, for a case the conformance corpus does not hold."
+      "description": "A collection Bundle of a Patient and twelve Variants, each with a urn:uuid fullUrl and no id: one for each row of the table of c.HGVS forms docs/format.md gives (the gene in parentheses, a protein change beside it with and without a space, the transcript only in its own component, no version, a genomic expression, two different expressions); a ClinVar code written VCV000090011, an RCV accession, and two different IDs; a valid ID beside an RCV accession; a code of dbSNP; a gene with a display and no code, with a code and no display, two different genes, and a gene with a symbol beside one whose display is blank; an Absent variant and a variant with no value at all. Authored here on 2026-10-13, for a case the conformance corpus does not hold."
     },
     {
       "@id": "fixtures/in/bundle-genomics-interpretations.json",
       "@type": "File",
       "name": "Bundle of diagnostic implications: classification, date and link to a variant",
       "encodingFormat": "application/fhir+json",
-      "contentSize": "8542",
-      "sha256": "3d2440668407bc0d3e3ebaff1933f6f01445bc8d6651b8487dead145898e9544",
+      "contentSize": "10209",
+      "sha256": "107104bb03bcb94b3f9e28d353d5654a292a94aeb8e187376e3464168b6037d1",
       "dateCreated": "2026-10-13",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "A collection Bundle of a Patient, two Variants, a genotype and seven Diagnostic Implications, each with a urn:uuid fullUrl and no id: a Pathogenic one issued at 23:30 at an offset of -07:00 and derived from one variant; a text-only classification; one derived from two variants; one derived from a genotype and dated by a year; one with no derivedFrom; one derived from a record the Bundle does not hold and dated by the start of a period; and one whose classification holds two different answers. Authored here on 2026-10-13, for a case the conformance corpus does not hold."
+      "description": "A collection Bundle of a Patient, two Variants, a genotype and nine Diagnostic Implications, each with a urn:uuid fullUrl and no id: a Pathogenic one issued at 23:30 at an offset of -07:00 and derived from one variant; a text-only classification; one derived from two variants; one derived from a genotype and dated by a year; one with no derivedFrom; one derived from a record the Bundle does not hold and dated by the start of a period; one whose classification holds two different answers; one derived from a variant and from a MolecularSequence, which is not read; and one whose derivedFrom holds an identifier and a display and no reference. Authored here on 2026-10-13, for a case the conformance corpus does not hold."
     },
     {
       "@id": "fixtures/in/martin-okafor-harbourline-panel-2022.json",
@@ -3548,8 +3548,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-genomics-variants",
       "encodingFormat": "text/turtle",
-      "contentSize": "7095",
-      "sha256": "ddfb04fd9ab56cd56664b04c7b5d9f3154feb8025a3f32ca070cfa4ce33d015a",
+      "contentSize": "9003",
+      "sha256": "456010da900b0801e87b5e8526b729a2354e58f1a31f7f03762aa3c727d603ca",
       "about": {
         "@id": "fixtures/in/bundle-genomics-variants.json"
       },
@@ -3564,8 +3564,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-genomics-interpretations",
       "encodingFormat": "text/turtle",
-      "contentSize": "9155",
-      "sha256": "d120a0cd7684a0d3b28c136055f71d85378dd1b311397a4ec69620bdb49741e7",
+      "contentSize": "10553",
+      "sha256": "e52e4921138b6eeddfc9ebd1d7a210c690a488465a9ba11967cd6bb1acb8d220",
       "about": {
         "@id": "fixtures/in/bundle-genomics-interpretations.json"
       },
@@ -3676,8 +3676,8 @@
       "@type": "File",
       "name": "Expected findings for bundle-genomics-variants",
       "encodingFormat": "text/turtle",
-      "contentSize": "14288",
-      "sha256": "b28722274c0e92c188af259b2222dd590f5e8fb97546510d888ee2d90dcecd65",
+      "contentSize": "16950",
+      "sha256": "b1568d9d582bb96953eda76d8bb4d7210d189cd3ad917589ac5f19549de9e09c",
       "about": {
         "@id": "fixtures/in/bundle-genomics-variants.json"
       },
@@ -3692,8 +3692,8 @@
       "@type": "File",
       "name": "Expected findings for bundle-genomics-interpretations",
       "encodingFormat": "text/turtle",
-      "contentSize": "5672",
-      "sha256": "b99c6f934154fdb2d3990fef93fb9897efdee03f5532cf33b6ea3343ebd98f7a",
+      "contentSize": "6540",
+      "sha256": "a23d6a2f2f09bfc6084d175668bebe6d925ded792d32aec60027ffd03c65735a",
       "about": {
         "@id": "fixtures/in/bundle-genomics-interpretations.json"
       },

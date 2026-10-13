@@ -459,7 +459,7 @@
 
 <#bundle-genomics-variants> a bridge:IsomorphicConversionTest ;
   mf:name "bundle-genomics-variants" ;
-  rdfs:comment "Variants one for each way an HGVS expression is or is not carried in its normal form, and one for each way a ClinVar code, a gene or a value is not carried: a variant without a value is a record, an Absent one is none." ;
+  rdfs:comment "Variants one for each way an HGVS expression is or is not carried in its normal form, and one for each way a ClinVar code, a gene or a value is not carried, and a valid ClinVar ID or gene beside one that is not carried: a variant without a value is a record, an Absent one is none." ;
   mf:action [
     bridge:input <in/bundle-genomics-variants.json> ;
     bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
@@ -472,7 +472,7 @@
 
 <#bundle-genomics-interpretations> a bridge:IsomorphicConversionTest ;
   mf:name "bundle-genomics-interpretations" ;
-  rdfs:comment "Diagnostic Implications: a classification, a day written in the source's own offset, a link to the one variant, and each way an interpretation is a record without one of them: a text-only classification, two variants, a genotype, no derivedFrom, a variant outside the document, two different classifications." ;
+  rdfs:comment "Diagnostic Implications: a classification, a day written in the source's own offset, a link to the one variant, and each way an interpretation is a record without one of them: a text-only classification, two variants, a genotype, no derivedFrom, a derivedFrom with no reference, a variant outside the document, two different classifications; a variant beside a reference that is not read keeps its link." ;
   mf:action [
     bridge:input <in/bundle-genomics-interpretations.json> ;
     bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;

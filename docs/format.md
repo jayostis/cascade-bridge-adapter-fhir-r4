@@ -69,9 +69,11 @@ category makes them.
   `urn:uuid:` fullUrl, by `Observation/<id>` on a known server or by an absolute
   URL. The interpretation points to that variant's record, named as `rec:patient`
   names a patient, so a record outside the document can be named. A reference to
-  a record of the document must be to a variant. With no such reference, two,
+  a record of the document must be to a variant. With no such reference (a
+  `derivedFrom` with an identifier or a display and no reference is none), two,
   or another beside one, the interpretation is a record without the link, and a
-  finding. A reference to a contained resource is not read.
+  finding. A reference to a contained resource, or to a resource that is not an
+  `Observation`, is not read, and leaves a link to one variant intact.
 
 The three elements of a variant are read from its components, by the code of the
 component, and each is carried only where the variant states it once; two
@@ -93,6 +95,7 @@ the transcript component (51958-7) beside a bare change.
 | `NM_000249.4:c.2042C>T` | `NM_000249.4:c.2042C>T` | none |
 | `NM_000249.3(MLH1):c.2042C>T` | `NM_000249.3:c.2042C>T` | the gene is not carried |
 | `NM_000249.4(MLH1):c.2042C>T (p.Ala681Val)` | `NM_000249.4:c.2042C>T` | the gene and the protein change are not carried |
+| `NM_000249.4(MLH1):c.2042C>T(p.Ala681Val)`, no space before the protein change | `NM_000249.4:c.2042C>T` | the gene and the protein change are not carried |
 | `c.769G>A`, the transcript only in 51958-7 | none | no reference sequence |
 | `NM_000249:c.2042C>T`, no version | none | no reference sequence |
 | `NC_000003.12:g.37048956C>T` | none | not a coding expression |

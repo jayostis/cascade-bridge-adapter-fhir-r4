@@ -77,7 +77,7 @@ WHERE {
     ?hgvsValueCoding xyz:system "http://varnomen.hgvs.org" ;
       xyz:code ?value .
     BIND (REPLACE(STR(?value), "^\\s+|\\s+$", "") AS ?trimmed)
-    BIND (REPLACE(REPLACE(?trimmed, "\\s+\\(p\\..*\\)$", ""), "^([^:()\\s]+)\\([^()]*\\):", "$1:") AS ?normal)
+    BIND (REPLACE(REPLACE(?trimmed, "\\s*\\(p\\..*\\)$", ""), "^([^:()\\s]+)\\([^()]*\\):", "$1:") AS ?normal)
     VALUES ?hgvsKind { "stripped" "invalid" "repeated" }
     BIND (IF(?hgvsKind = "stripped",
              IF(?normal != ?trimmed, fhirr4:variantHgvsGeneOrProtein, 1/0),
@@ -95,7 +95,7 @@ WHERE {
                   ?otherValueCodings ?otherValueSlot ?otherValueCoding .
                   ?otherValueCoding xyz:system "http://varnomen.hgvs.org" ;
                     xyz:code ?otherWritten .
-                  FILTER (REPLACE(REPLACE(REPLACE(STR(?otherWritten),"^\\s+|\\s+$", ""), "\\s+\\(p\\..*\\)$", ""),
+                  FILTER (REPLACE(REPLACE(REPLACE(STR(?otherWritten),"^\\s+|\\s+$", ""), "\\s*\\(p\\..*\\)$", ""),
                                   "^([^:()\\s]+)\\([^()]*\\):", "$1:") != ?normal)
                 }, fhirr4:variantHgvsRepeated, 1/0))) AS ?gap)
     BIND (CONCAT("/component/", STR(xsd:integer(STRAFTER(STR(?hgvsComponentSlot), "#_")) - 1),

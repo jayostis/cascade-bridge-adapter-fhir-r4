@@ -197,6 +197,45 @@
           }
         ]
       }
+    },
+    {
+      "fullUrl": "urn:uuid:5d2e7a90-1b3c-4f68-a0d4-8e6c9b1f2b28",
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "code": {
+          "coding": [{ "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs", "code": "diagnostic-implication" }]
+        },
+        "subject": { "reference": "urn:uuid:5d2e7a90-1b3c-4f68-a0d4-8e6c9b1f2b01" },
+        "derivedFrom": [
+          { "reference": "urn:uuid:5d2e7a90-1b3c-4f68-a0d4-8e6c9b1f2b11" },
+          { "reference": "MolecularSequence/seq-1" }
+        ],
+        "component": [
+          {
+            "code": { "coding": [{ "system": "http://loinc.org", "code": "53037-8" }] },
+            "valueCodeableConcept": { "coding": [{ "system": "http://loinc.org", "code": "LA6675-8", "display": "Benign" }] }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:5d2e7a90-1b3c-4f68-a0d4-8e6c9b1f2b29",
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "code": {
+          "coding": [{ "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs", "code": "diagnostic-implication" }]
+        },
+        "subject": { "reference": "urn:uuid:5d2e7a90-1b3c-4f68-a0d4-8e6c9b1f2b01" },
+        "derivedFrom": [{ "identifier": { "system": "urn:lab", "value": "v-1" }, "display": "variant 1" }],
+        "component": [
+          {
+            "code": { "coding": [{ "system": "http://loinc.org", "code": "53037-8" }] },
+            "valueCodeableConcept": { "coding": [{ "system": "http://loinc.org", "code": "LA6675-8", "display": "Benign" }] }
+          }
+        ]
+      }
     }
   ]
 }

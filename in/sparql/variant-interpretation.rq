@@ -156,6 +156,7 @@ WHERE {
                     IF(!?ambiguous && ?heldIsVariant, ?heldInput, 1/0)),
                  IF(BOUND(?referenceInput) && (!?inDocument || ?knownIsVariant), ?referenceInput, 1/0)) AS ?variantInput)
         BIND (IF(!BOUND(?variantInput) && (?isUrn || ?isRelative || ?isAbsolute), ?reference, 1/0) AS ?otherTarget)
+        FILTER (BOUND(?variantInput) || BOUND(?otherTarget))
       }
       GROUP BY ?resource
     }

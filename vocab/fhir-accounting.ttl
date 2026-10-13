@@ -616,9 +616,34 @@
   bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/derivedFrom/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/derivedFrom/identifier" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/derivedFrom/identifier/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/derivedFrom/identifier/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/contained/derivedFrom/reference" ;
   bridge:verdict bridge:carriedInPart ;
   bridge:namesGap fhirr4:interpretationVariantLink .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/derivedFrom/type" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosage" ;
@@ -1484,6 +1509,26 @@
   bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/derivedFrom/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/derivedFrom/identifier" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/derivedFrom/identifier/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/derivedFrom/identifier/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/derivedFrom/reference" ;
   bridge:verdict bridge:carriedInPart ;
   bridge:namesGap fhirr4:interpretationVariantLink .
@@ -1521,6 +1566,11 @@
   bridge:sourcePath "/dosage/doseAndRate/doseQuantity/value" ;
   bridge:verdict bridge:ignored ;
   bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/derivedFrom/type" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosage/route" ;
@@ -2763,9 +2813,34 @@
   bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/derivedFrom/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/derivedFrom/identifier" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/derivedFrom/identifier/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/derivedFrom/identifier/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/derivedFrom/reference" ;
   bridge:verdict bridge:carriedInPart ;
   bridge:namesGap fhirr4:interpretationVariantLink .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/derivedFrom/type" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosage" ;
@@ -3631,9 +3706,34 @@
   bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/derivedFrom/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/derivedFrom/identifier" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/derivedFrom/identifier/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/derivedFrom/identifier/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/derivedFrom/reference" ;
   bridge:verdict bridge:carriedInPart ;
   bridge:namesGap fhirr4:interpretationVariantLink .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/derivedFrom/type" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosage" ;

@@ -108,7 +108,11 @@ WHERE {
   UNION
   {
     ?resource xyz:resourceType "Observation" .
-    FILTER NOT EXISTS { ?resource xyz:derivedFrom ?anyDerivedFrom }
+    FILTER NOT EXISTS {
+      ?resource xyz:derivedFrom ?anyDerivedFrom .
+      ?anyDerivedFrom ?anySlot ?anyItem .
+      ?anyItem xyz:reference ?anyReference
+    }
     ?resource xyz:code ?codeConcept . ?codeConcept xyz:coding ?codeCodings . ?codeCodings ?codeSlot ?codeCoding .
     ?codeCoding xyz:system "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs" ;
       xyz:code ?value .

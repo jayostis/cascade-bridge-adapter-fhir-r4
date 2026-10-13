@@ -207,6 +207,67 @@
         "code": { "coding": [{ "system": "http://loinc.org", "code": "69548-6", "display": "Genetic variant assessment" }] },
         "subject": { "reference": "urn:uuid:7c1b52f0-3d4a-4e0b-9a61-5f2e8d0c1a01" }
       }
+    },
+    {
+      "fullUrl": "urn:uuid:7c1b52f0-3d4a-4e0b-9a61-5f2e8d0c1a1a",
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [{ "coding": [{ "system": "http://terminology.hl7.org/CodeSystem/observation-category", "code": "laboratory" }] }],
+        "code": { "coding": [{ "system": "http://loinc.org", "code": "69548-6", "display": "Genetic variant assessment" }] },
+        "subject": { "reference": "urn:uuid:7c1b52f0-3d4a-4e0b-9a61-5f2e8d0c1a01" },
+        "valueCodeableConcept": { "coding": [{ "system": "http://loinc.org", "code": "LA9633-4", "display": "Present" }] },
+        "component": [
+          {
+            "code": { "coding": [{ "system": "http://loinc.org", "code": "48004-6" }] },
+            "valueCodeableConcept": {
+              "coding": [{ "system": "http://varnomen.hgvs.org", "code": "NM_000249.4(MLH1):c.2042C>T(p.Ala681Val)" }]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:7c1b52f0-3d4a-4e0b-9a61-5f2e8d0c1a1b",
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [{ "coding": [{ "system": "http://terminology.hl7.org/CodeSystem/observation-category", "code": "laboratory" }] }],
+        "code": { "coding": [{ "system": "http://loinc.org", "code": "69548-6", "display": "Genetic variant assessment" }] },
+        "subject": { "reference": "urn:uuid:7c1b52f0-3d4a-4e0b-9a61-5f2e8d0c1a01" },
+        "valueCodeableConcept": { "coding": [{ "system": "http://loinc.org", "code": "LA9633-4", "display": "Present" }] },
+        "component": [
+          {
+            "code": { "coding": [{ "system": "http://loinc.org", "code": "81252-9" }] },
+            "valueCodeableConcept": { "coding": [{ "system": "http://www.ncbi.nlm.nih.gov/clinvar", "code": "90011" }] }
+          },
+          {
+            "code": { "coding": [{ "system": "http://loinc.org", "code": "81252-9" }] },
+            "valueCodeableConcept": { "coding": [{ "system": "http://www.ncbi.nlm.nih.gov/clinvar", "code": "RCV000664188.1" }] }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:7c1b52f0-3d4a-4e0b-9a61-5f2e8d0c1a1c",
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [{ "coding": [{ "system": "http://terminology.hl7.org/CodeSystem/observation-category", "code": "laboratory" }] }],
+        "code": { "coding": [{ "system": "http://loinc.org", "code": "69548-6", "display": "Genetic variant assessment" }] },
+        "subject": { "reference": "urn:uuid:7c1b52f0-3d4a-4e0b-9a61-5f2e8d0c1a01" },
+        "valueCodeableConcept": { "coding": [{ "system": "http://loinc.org", "code": "LA9633-4", "display": "Present" }] },
+        "component": [
+          {
+            "code": { "coding": [{ "system": "http://loinc.org", "code": "48018-6" }] },
+            "valueCodeableConcept": { "coding": [{ "system": "http://www.genenames.org/geneId", "code": "HGNC:7127", "display": "MLH1" }] }
+          },
+          {
+            "code": { "coding": [{ "system": "http://loinc.org", "code": "48018-6" }] },
+            "valueCodeableConcept": { "coding": [{ "system": "http://www.genenames.org/geneId", "code": "HGNC:7127", "display": "   " }] }
+          }
+        ]
+      }
     }
   ]
 }
