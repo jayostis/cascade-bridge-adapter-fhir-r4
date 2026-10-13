@@ -1,0 +1,186 @@
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX sh:      <http://www.w3.org/ns/shacl#>
+PREFIX oa:      <http://www.w3.org/ns/oa#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX fx:      <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:     <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:  <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+
+# What variant.rq leaves behind: a Variant whose value is not Present, which is
+# no record; an HGVS expression with the gene or the protein change left out,
+# and one it does not carry because it names no reference sequence with a
+# version, is not a coding expression, or is one of several different
+# expressions; a ClinVar code that is no variation's ID, one of several
+# different IDs, and a code of another system beside it; a gene coding with no
+# display, and one of several different gene symbols.
+
+CONSTRUCT {
+  [] a oa:Annotation ;
+    oa:hasTarget [
+      oa:hasSource bridge:thisRecord ;
+      oa:hasSelector [
+        a oa:FragmentSelector ;
+        dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+        rdf:value ?pointer
+      ]
+    ] ;
+    oa:hasBody ?gap ;
+    oa:motivatedBy oa:classifying ;
+    sh:value ?value .
+}
+WHERE {
+  FILTER NOT EXISTS {
+    bridge:thisDocument bridge:sourceFormatVersion ?stated .
+    FILTER (!STRSTARTS(?stated, "4.0."))
+  }
+  bridge:thisRecord bridge:selector ?recordSelector .
+  ?root a fx:root .
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  { BIND ("" AS ?containedStep) }
+  UNION
+  {
+    ?top xyz:contained ?containedList .
+    ?containedList ?containedSlot ?contained .
+    ?contained xyz:resourceType ?containedType .
+    BIND (CONCAT("/contained/", STR(xsd:integer(STRAFTER(STR(?containedSlot), "#_")) - 1)) AS ?containedStep)
+  }
+  BIND (COALESCE(?contained, ?top) AS ?resource)
+  ?resource xyz:resourceType "Observation" .
+  BIND (CONCAT(?recordSelector, ?topStep, ?containedStep) AS ?resourcePointer)
+
+  {
+    ?variant fhirr4:variantNotPresentAt ?resourcePointer .
+    ?resource ?valueMember ?valueNode .
+    FILTER (STRSTARTS(STR(?valueMember), "http://sparql.xyz/facade-x/data/value"))
+    OPTIONAL { ?valueNode xyz:coding ?valueCodings . ?valueCodings rdf:_1 ?valueCoding . ?valueCoding xyz:code ?firstCode }
+    OPTIONAL { ?valueNode xyz:text ?valueText }
+    BIND (COALESCE(?firstCode, ?valueText, IF(isLiteral(?valueNode), STR(?valueNode), 1/0),
+                   STRAFTER(STR(?valueMember), "http://sparql.xyz/facade-x/data/")) AS ?value)
+    BIND (CONCAT("/", STRAFTER(STR(?valueMember), "http://sparql.xyz/facade-x/data/")) AS ?step)
+    BIND (fhirr4:variantNotPresent AS ?gap)
+  }
+  UNION
+  {
+    ?variant fhirr4:variantAt ?resourcePointer .
+    ?resource xyz:component ?hgvsComponents .
+    ?hgvsComponents ?hgvsComponentSlot ?hgvsComponent .
+    ?hgvsComponent xyz:code ?hgvsConcept . ?hgvsConcept xyz:coding ?hgvsCodings .
+    ?hgvsCodings ?hgvsCodingSlot ?hgvsCoding .
+    ?hgvsCoding xyz:system "http://loinc.org" ;
+      xyz:code "48004-6" .
+    ?hgvsComponent xyz:valueCodeableConcept ?hgvsValue . ?hgvsValue xyz:coding ?hgvsValueCodings .
+    ?hgvsValueCodings ?hgvsValueSlot ?hgvsValueCoding .
+    ?hgvsValueCoding xyz:system "http://varnomen.hgvs.org" ;
+      xyz:code ?value .
+    BIND (REPLACE(STR(?value), "^\\s+|\\s+$", "") AS ?trimmed)
+    BIND (REPLACE(REPLACE(?trimmed, "\\s*\\(p\\..*\\)$", ""), "^([^:()\\s]+)\\([^()]*\\):", "$1:") AS ?normal)
+    VALUES ?hgvsKind { "stripped" "invalid" "repeated" }
+    BIND (IF(?hgvsKind = "stripped",
+             IF(?normal != ?trimmed, fhirr4:variantHgvsGeneOrProtein, 1/0),
+          IF(?hgvsKind = "invalid",
+             IF(REGEX(?normal, "^((NM|NG|XM|NC)_[0-9]+\\.[0-9]+|LRG_[0-9]+(t[0-9]+)?):c\\.\\S+$"), 1/0,
+                IF(REGEX(?normal, "(^|:)[gmnopr]\\."), fhirr4:variantHgvsNotCoding, fhirr4:variantHgvsNoReferenceSequence)),
+             IF(EXISTS {
+                  ?resource xyz:component ?otherComponents .
+                  ?otherComponents ?otherComponentSlot ?otherComponent .
+                  ?otherComponent xyz:code ?otherConcept . ?otherConcept xyz:coding ?otherCodings .
+                  ?otherCodings ?otherCodingSlot ?otherCoding .
+                  ?otherCoding xyz:system "http://loinc.org" ;
+                    xyz:code "48004-6" .
+                  ?otherComponent xyz:valueCodeableConcept ?otherValue . ?otherValue xyz:coding ?otherValueCodings .
+                  ?otherValueCodings ?otherValueSlot ?otherValueCoding .
+                  ?otherValueCoding xyz:system "http://varnomen.hgvs.org" ;
+                    xyz:code ?otherWritten .
+                  FILTER (REPLACE(REPLACE(REPLACE(STR(?otherWritten),"^\\s+|\\s+$", ""), "\\s*\\(p\\..*\\)$", ""),
+                                  "^([^:()\\s]+)\\([^()]*\\):", "$1:") != ?normal)
+                }, fhirr4:variantHgvsRepeated, 1/0))) AS ?gap)
+    BIND (CONCAT("/component/", STR(xsd:integer(STRAFTER(STR(?hgvsComponentSlot), "#_")) - 1),
+                 "/valueCodeableConcept/coding/", STR(xsd:integer(STRAFTER(STR(?hgvsValueSlot), "#_")) - 1), "/code") AS ?step)
+  }
+  UNION
+  {
+    ?variant fhirr4:variantAt ?resourcePointer .
+    ?resource xyz:component ?clinvarComponents .
+    ?clinvarComponents ?clinvarComponentSlot ?clinvarComponent .
+    ?clinvarComponent xyz:code ?clinvarConcept . ?clinvarConcept xyz:coding ?clinvarCodings .
+    ?clinvarCodings ?clinvarCodingSlot ?clinvarCoding .
+    ?clinvarCoding xyz:system "http://loinc.org" ;
+      xyz:code "81252-9" .
+    ?clinvarComponent xyz:valueCodeableConcept ?clinvarValue . ?clinvarValue xyz:coding ?clinvarValueCodings .
+    ?clinvarValueCodings ?clinvarValueSlot ?clinvarValueCoding .
+    ?clinvarValueCoding xyz:system ?clinvarSystem ;
+      xyz:code ?value .
+    BIND (REPLACE(REPLACE(REPLACE(STR(?value), "^\\s+|\\s+$", ""), "^(VCV[0-9]+)\\.[0-9]+$", "$1"), "^(VCV)?0*", "") AS ?digits)
+    VALUES ?clinvarKind { "system" "invalid" "repeated" }
+    BIND (IF(?clinvarKind = "system",
+             IF(?clinvarSystem = "http://www.ncbi.nlm.nih.gov/clinvar", 1/0, fhirr4:variantDiscreteVariantCode),
+          IF(?clinvarSystem != "http://www.ncbi.nlm.nih.gov/clinvar", 1/0,
+          IF(?clinvarKind = "invalid",
+             IF(REGEX(?digits, "^[1-9][0-9]*$"), 1/0, fhirr4:variantClinvarNotVariation),
+             IF(REGEX(?digits, "^[1-9][0-9]*$") && EXISTS {
+                  ?resource xyz:component ?otherClinvarComponents .
+                  ?otherClinvarComponents ?otherClinvarComponentSlot ?otherClinvarComponent .
+                  ?otherClinvarComponent xyz:code ?otherClinvarConcept . ?otherClinvarConcept xyz:coding ?otherClinvarCodings .
+                  ?otherClinvarCodings ?otherClinvarCodingSlot ?otherClinvarCoding .
+                  ?otherClinvarCoding xyz:system "http://loinc.org" ;
+                    xyz:code "81252-9" .
+                  ?otherClinvarComponent xyz:valueCodeableConcept ?otherClinvarValue .
+                  ?otherClinvarValue xyz:coding ?otherClinvarValueCodings .
+                  ?otherClinvarValueCodings ?otherClinvarValueSlot ?otherClinvarValueCoding .
+                  ?otherClinvarValueCoding xyz:system "http://www.ncbi.nlm.nih.gov/clinvar" ;
+                    xyz:code ?otherClinvarWritten .
+                  FILTER (REPLACE(REPLACE(REPLACE(STR(?otherClinvarWritten), "^\\s+|\\s+$", ""), "^(VCV[0-9]+)\\.[0-9]+$", "$1"), "^(VCV)?0*", "")
+                          != ?digits
+                          && REGEX(REPLACE(REPLACE(REPLACE(STR(?otherClinvarWritten), "^\\s+|\\s+$", ""), "^(VCV[0-9]+)\\.[0-9]+$", "$1"),
+                                           "^(VCV)?0*", ""), "^[1-9][0-9]*$"))
+                }, fhirr4:variantClinvarRepeated, 1/0)))) AS ?gap)
+    BIND (CONCAT("/component/", STR(xsd:integer(STRAFTER(STR(?clinvarComponentSlot), "#_")) - 1),
+                 "/valueCodeableConcept/coding/", STR(xsd:integer(STRAFTER(STR(?clinvarValueSlot), "#_")) - 1), "/code") AS ?step)
+  }
+  UNION
+  {
+    ?variant fhirr4:variantAt ?resourcePointer .
+    ?resource xyz:component ?geneComponents .
+    ?geneComponents ?geneComponentSlot ?geneComponent .
+    ?geneComponent xyz:code ?geneConcept . ?geneConcept xyz:coding ?geneCodings .
+    ?geneCodings ?geneCodingSlot ?geneCoding .
+    ?geneCoding xyz:system "http://loinc.org" ;
+      xyz:code "48018-6" .
+    ?geneComponent xyz:valueCodeableConcept ?geneValue . ?geneValue xyz:coding ?geneValueCodings .
+    ?geneValueCodings ?geneValueSlot ?geneValueCoding .
+    ?geneValueCoding xyz:system ?geneSystem .
+    FILTER (?geneSystem IN ("http://www.genenames.org/geneId", "http://www.genenames.org"))
+    OPTIONAL { ?geneValueCoding xyz:display ?geneDisplay }
+    OPTIONAL { ?geneValueCoding xyz:code ?geneCode }
+    BIND (REPLACE(STR(?geneDisplay), "^\\s+|\\s+$", "") AS ?symbol)
+    BIND (COALESCE(?geneDisplay, ?geneCode, "") AS ?value)
+    VALUES ?geneKind { "unnamed" "repeated" }
+    BIND (IF(?geneKind = "unnamed",
+             IF(BOUND(?symbol) && STRLEN(?symbol) > 0, 1/0, fhirr4:variantGeneWithoutSymbol),
+             IF(BOUND(?symbol) && STRLEN(?symbol) > 0 && EXISTS {
+                  ?resource xyz:component ?otherGeneComponents .
+                  ?otherGeneComponents ?otherGeneComponentSlot ?otherGeneComponent .
+                  ?otherGeneComponent xyz:code ?otherGeneConcept . ?otherGeneConcept xyz:coding ?otherGeneCodings .
+                  ?otherGeneCodings ?otherGeneCodingSlot ?otherGeneCoding .
+                  ?otherGeneCoding xyz:system "http://loinc.org" ;
+                    xyz:code "48018-6" .
+                  ?otherGeneComponent xyz:valueCodeableConcept ?otherGeneValue .
+                  ?otherGeneValue xyz:coding ?otherGeneValueCodings .
+                  ?otherGeneValueCodings ?otherGeneValueSlot ?otherGeneValueCoding .
+                  ?otherGeneValueCoding xyz:system ?otherGeneSystem ;
+                    xyz:display ?otherGeneDisplay .
+                  FILTER (?otherGeneSystem IN ("http://www.genenames.org/geneId", "http://www.genenames.org")
+                          && STRLEN(REPLACE(STR(?otherGeneDisplay), "^\\s+|\\s+$", "")) > 0
+                          && REPLACE(STR(?otherGeneDisplay), "^\\s+|\\s+$", "") != ?symbol)
+                }, fhirr4:variantGeneRepeated, 1/0)) AS ?gap)
+    BIND (CONCAT("/component/", STR(xsd:integer(STRAFTER(STR(?geneComponentSlot), "#_")) - 1),
+                 "/valueCodeableConcept/coding/", STR(xsd:integer(STRAFTER(STR(?geneValueSlot), "#_")) - 1),
+                 IF(?geneKind = "unnamed", "", "/display")) AS ?step)
+  }
+  FILTER (BOUND(?gap))
+  BIND (CONCAT(?topStep, ?containedStep, ?step) AS ?pointer)
+}

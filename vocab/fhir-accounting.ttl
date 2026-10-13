@@ -6,8 +6,68 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/address" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/address/city" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/address/country" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/address/line" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/address/postalCode" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/address/state" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/address/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/address/type" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/address/use" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/alias" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/authoredOn" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/basedOn" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/basedOn/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/birthDate" ;
@@ -96,6 +156,153 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/collection" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/collection/collector" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/collection/collector/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/component" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/component/code" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/component/code/coding" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/component/code/coding/code" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/component/code/coding/display" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/component/code/coding/code" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/component/code/coding/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/component/valueCodeableConcept" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/component/valueCodeableConcept/coding" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/component/valueCodeableConcept/coding/code" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:variantComponentNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/component/valueCodeableConcept/coding/display" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:variantComponentNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/component/valueCodeableConcept/coding/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/component/valueCodeableConcept/coding/version" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/component/valueCodeableConcept/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/component/valueQuantity" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/component/valueQuantity/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/component/valueQuantity/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/component/valueQuantity/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/component/valueRange" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/component/valueRange/high" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/component/valueRange/high/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/component/valueRange/low" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/component/valueRange/low/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/component/valueString" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/conclusionCode" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/conclusionCode/coding" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/conclusionCode/coding/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/conclusionCode/coding/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/conclusionCode/coding/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/contained" ;
   bridge:verdict bridge:consumed .
 
@@ -104,8 +311,68 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/address" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/address/city" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/address/country" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/address/line" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/address/postalCode" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/address/state" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/address/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/address/type" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/address/use" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/alias" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/contained/authoredOn" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/basedOn" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/basedOn/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/birthDate" ;
@@ -194,8 +461,189 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/collection" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/collection/collector" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/collection/collector/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/component" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/component/code" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/component/code/coding" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/component/code/coding/code" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/component/code/coding/display" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/contained/component/code/coding/code" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/component/code/coding/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/component/valueCodeableConcept" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/component/valueCodeableConcept/coding" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/component/valueCodeableConcept/coding/code" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:variantComponentNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/component/valueCodeableConcept/coding/display" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:variantComponentNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/component/valueCodeableConcept/coding/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/component/valueCodeableConcept/coding/version" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/component/valueCodeableConcept/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/component/valueQuantity" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/component/valueQuantity/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/component/valueQuantity/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/component/valueQuantity/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/component/valueRange" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/component/valueRange/high" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/component/valueRange/high/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/component/valueRange/low" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/component/valueRange/low/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/component/valueString" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/conclusionCode" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/conclusionCode/coding" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/conclusionCode/coding/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/conclusionCode/coding/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/conclusionCode/coding/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/contained/criticality" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/derivedFrom" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/derivedFrom/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/derivedFrom/identifier" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/derivedFrom/identifier/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/derivedFrom/identifier/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/derivedFrom/reference" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:interpretationVariantLink .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/derivedFrom/type" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosage" ;
@@ -397,11 +845,13 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/effectiveDateTime" ;
-  bridge:verdict bridge:carried .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:variantTimeNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/effectiveInstant" ;
-  bridge:verdict bridge:carried .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:variantTimeNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/effectivePeriod" ;
@@ -413,7 +863,53 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/effectivePeriod/start" ;
-  bridge:verdict bridge:carried .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:variantTimeNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/extension" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An extension, as the Genomics Reporting IG's justification of an interpretation: no Cascade predicate carries one." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/extension/url" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An extension, as the Genomics Reporting IG's justification of an interpretation: no Cascade predicate carries one." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/extension/valueRelatedArtifact" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An extension, as the Genomics Reporting IG's justification of an interpretation: no Cascade predicate carries one." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/extension/valueRelatedArtifact/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An extension, as the Genomics Reporting IG's justification of an interpretation: no Cascade predicate carries one." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/extension/valueRelatedArtifact/type" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An extension, as the Genomics Reporting IG's justification of an interpretation: no Cascade predicate carries one." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/focus" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/focus/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/for" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/for/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/gender" ;
@@ -421,18 +917,43 @@
   bridge:namesGap fhirr4:patientGender .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/generalPractitioner" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A patient's general practitioner: no Cascade predicate carries who a patient's doctor is." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/generalPractitioner/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A patient's general practitioner: no Cascade predicate carries who a patient's doctor is." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/contained/hasMember" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A panel is no record: observation-findings.rq reports each member's reference as fhirr4:observationNotLabResult." .
+  bridge:because "A panel is no record: observation-findings.rq reports each member's reference as fhirr4:observationNotLabResult. The members of a complex variant are records of their own, and no Cascade term links them." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/hasMember/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A panel is no record: observation-findings.rq reports each member's reference as fhirr4:observationNotLabResult. The members of a complex variant are records of their own, and no Cascade term links them." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/hasMember/reference" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A panel is no record: observation-findings.rq reports each member's reference as fhirr4:observationNotLabResult." .
+  bridge:because "A panel is no record: observation-findings.rq reports each member's reference as fhirr4:observationNotLabResult. The members of a complex variant are records of their own, and no Cascade term links them." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/id" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/identifier" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A record is named from its id, its urn:uuid fullUrl or its place in the document, never from an identifier a system gives it." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/identifier/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A record is named from its id, its urn:uuid fullUrl or its place in the document, never from an identifier a system gives it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/intent" ;
@@ -466,8 +987,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/issued" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "When a result was issued is not when it was performed, and a lab result's time is its performed date." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:issuedNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/lotNumber" ;
@@ -523,6 +1044,11 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/meta/profile" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A variant and an interpretation are told by their code, which the Genomics Reporting IG fixes, because senders omit the profile." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/contained/meta/source" ;
   bridge:verdict bridge:noHome ;
   bridge:namesGap fhirr4:serverSource .
@@ -530,6 +1056,31 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/meta/versionId" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/method" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "How an observation was made: no Cascade predicate carries it." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/method/coding" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "How an observation was made: no Cascade predicate carries it." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/method/coding/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "How an observation was made: no Cascade predicate carries it." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/method/coding/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "How an observation was made: no Cascade predicate carries it." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/method/coding/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "How an observation was made: no Cascade predicate carries it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/name" ;
@@ -546,6 +1097,11 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/name/text" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/name/use" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Whether a name is official or usual: foaf has no predicate for it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/note" ;
@@ -576,6 +1132,16 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/performer" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Who performed an observation: no Cascade predicate carries it." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/performer/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Who performed an observation: no Cascade predicate carries it." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/contained/period" ;
   bridge:verdict bridge:ignored ;
   bridge:because "An element of an Encounter, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
@@ -589,6 +1155,21 @@
   bridge:sourcePath "/contained/period/start" ;
   bridge:verdict bridge:ignored ;
   bridge:because "An element of an Encounter, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/presentedForm" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/presentedForm/contentType" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/presentedForm/data" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/reaction" ;
@@ -617,6 +1198,16 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/reaction/severity" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/reasonCode" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/reasonCode/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/reasonReference" ;
@@ -682,8 +1273,33 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/requester" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/requester/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/contained/resourceType" ;
   bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/result" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/result/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/result/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/route" ;
@@ -720,6 +1336,16 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/specimen" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "The specimen an observation was made on: no Cascade predicate carries it." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/specimen/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "The specimen an observation was made on: no Cascade predicate carries it." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/contained/status" ;
   bridge:verdict bridge:carried .
 
@@ -730,6 +1356,31 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/subject/reference" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/telecom" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/telecom/rank" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/telecom/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/telecom/use" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/telecom/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/text" ;
@@ -784,9 +1435,17 @@
   bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/valueCodeableConcept/coding/code" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/contained/valueCodeableConcept/coding/display" ;
   bridge:verdict bridge:redundantWith ;
   bridge:sameFactAs "/contained/valueCodeableConcept/text" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/valueCodeableConcept/coding/system" ;
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/valueCodeableConcept/text" ;
@@ -846,6 +1505,35 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/derivedFrom" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/derivedFrom/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/derivedFrom/identifier" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/derivedFrom/identifier/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/derivedFrom/identifier/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/derivedFrom/reference" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:interpretationVariantLink .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/dosage" ;
   bridge:verdict bridge:consumed .
 
@@ -878,6 +1566,11 @@
   bridge:sourcePath "/dosage/doseAndRate/doseQuantity/value" ;
   bridge:verdict bridge:ignored ;
   bridge:because "Part of a structured dosage, reported at its container." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/derivedFrom/type" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosage/route" ;
@@ -1045,11 +1738,13 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/effectiveDateTime" ;
-  bridge:verdict bridge:carried .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:variantTimeNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/effectiveInstant" ;
-  bridge:verdict bridge:carried .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:variantTimeNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/effectivePeriod" ;
@@ -1061,7 +1756,53 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/effectivePeriod/start" ;
-  bridge:verdict bridge:carried .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:variantTimeNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/extension" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An extension, as the Genomics Reporting IG's justification of an interpretation: no Cascade predicate carries one." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/extension/url" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An extension, as the Genomics Reporting IG's justification of an interpretation: no Cascade predicate carries one." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/extension/valueRelatedArtifact" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An extension, as the Genomics Reporting IG's justification of an interpretation: no Cascade predicate carries one." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/extension/valueRelatedArtifact/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An extension, as the Genomics Reporting IG's justification of an interpretation: no Cascade predicate carries one." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/extension/valueRelatedArtifact/type" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An extension, as the Genomics Reporting IG's justification of an interpretation: no Cascade predicate carries one." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/focus" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/focus/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/for" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/for/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/fullUrl" ;
@@ -1073,18 +1814,43 @@
   bridge:namesGap fhirr4:patientGender .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/generalPractitioner" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A patient's general practitioner: no Cascade predicate carries who a patient's doctor is." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/generalPractitioner/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A patient's general practitioner: no Cascade predicate carries who a patient's doctor is." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/hasMember" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A panel is no record: observation-findings.rq reports each member's reference as fhirr4:observationNotLabResult." .
+  bridge:because "A panel is no record: observation-findings.rq reports each member's reference as fhirr4:observationNotLabResult. The members of a complex variant are records of their own, and no Cascade term links them." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/hasMember/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A panel is no record: observation-findings.rq reports each member's reference as fhirr4:observationNotLabResult. The members of a complex variant are records of their own, and no Cascade term links them." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/hasMember/reference" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A panel is no record: observation-findings.rq reports each member's reference as fhirr4:observationNotLabResult." .
+  bridge:because "A panel is no record: observation-findings.rq reports each member's reference as fhirr4:observationNotLabResult. The members of a complex variant are records of their own, and no Cascade term links them." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/id" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/identifier" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A record is named from its id, its urn:uuid fullUrl or its place in the document, never from an identifier a system gives it." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/identifier/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A record is named from its id, its urn:uuid fullUrl or its place in the document, never from an identifier a system gives it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/intent" ;
@@ -1118,8 +1884,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/issued" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "When a result was issued is not when it was performed, and a lab result's time is its performed date." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:issuedNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/lotNumber" ;
@@ -1175,6 +1941,11 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/meta/profile" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A variant and an interpretation are told by their code, which the Genomics Reporting IG fixes, because senders omit the profile." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/meta/source" ;
   bridge:verdict bridge:noHome ;
   bridge:namesGap fhirr4:serverSource .
@@ -1182,6 +1953,31 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/meta/versionId" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/method" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "How an observation was made: no Cascade predicate carries it." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/method/coding" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "How an observation was made: no Cascade predicate carries it." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/method/coding/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "How an observation was made: no Cascade predicate carries it." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/method/coding/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "How an observation was made: no Cascade predicate carries it." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/method/coding/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "How an observation was made: no Cascade predicate carries it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/name" ;
@@ -1198,6 +1994,11 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/name/text" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/name/use" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Whether a name is official or usual: foaf has no predicate for it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/note" ;
@@ -1228,6 +2029,16 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/performer" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Who performed an observation: no Cascade predicate carries it." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/performer/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Who performed an observation: no Cascade predicate carries it." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/period" ;
   bridge:verdict bridge:ignored ;
   bridge:because "An element of an Encounter, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
@@ -1241,6 +2052,21 @@
   bridge:sourcePath "/period/start" ;
   bridge:verdict bridge:ignored ;
   bridge:because "An element of an Encounter, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/presentedForm" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/presentedForm/contentType" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/presentedForm/data" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/reaction" ;
@@ -1269,6 +2095,16 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/reaction/severity" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/reasonCode" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/reasonCode/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/reasonReference" ;
@@ -1334,6 +2170,31 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/request" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "The HTTP request that would create the resource in a transaction Bundle: it says nothing about the resource." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/request/method" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "The HTTP request that would create the resource in a transaction Bundle: it says nothing about the resource." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/request/url" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "The HTTP request that would create the resource in a transaction Bundle: it says nothing about the resource." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/requester" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/requester/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource" ;
   bridge:verdict bridge:consumed .
 
@@ -1342,8 +2203,68 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/address" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/address/city" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/address/country" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/address/line" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/address/postalCode" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/address/state" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/address/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/address/type" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/address/use" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/alias" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/authoredOn" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/basedOn" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/basedOn/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/birthDate" ;
@@ -1432,6 +2353,153 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/collection" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/collection/collector" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/collection/collector/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/component" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/component/code" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/component/code/coding" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/component/code/coding/code" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/component/code/coding/display" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/resource/component/code/coding/code" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/component/code/coding/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/component/valueCodeableConcept" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/component/valueCodeableConcept/coding" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/component/valueCodeableConcept/coding/code" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:variantComponentNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/component/valueCodeableConcept/coding/display" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:variantComponentNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/component/valueCodeableConcept/coding/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/component/valueCodeableConcept/coding/version" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/component/valueCodeableConcept/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/component/valueQuantity" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/component/valueQuantity/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/component/valueQuantity/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/component/valueQuantity/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/component/valueRange" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/component/valueRange/high" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/component/valueRange/high/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/component/valueRange/low" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/component/valueRange/low/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/component/valueString" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/conclusionCode" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/conclusionCode/coding" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/conclusionCode/coding/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/conclusionCode/coding/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/conclusionCode/coding/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained" ;
   bridge:verdict bridge:consumed .
 
@@ -1440,8 +2508,68 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/address" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/address/city" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/address/country" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/address/line" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/address/postalCode" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/address/state" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/address/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/address/type" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/address/use" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/alias" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/authoredOn" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/basedOn" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/basedOn/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/birthDate" ;
@@ -1530,8 +2658,189 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/collection" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/collection/collector" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/collection/collector/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/component" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/component/code" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/component/code/coding" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/component/code/coding/code" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/component/code/coding/display" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/resource/contained/component/code/coding/code" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/component/code/coding/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/component/valueCodeableConcept" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/component/valueCodeableConcept/coding" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/component/valueCodeableConcept/coding/code" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:variantComponentNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/component/valueCodeableConcept/coding/display" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:variantComponentNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/component/valueCodeableConcept/coding/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/component/valueCodeableConcept/coding/version" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/component/valueCodeableConcept/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/component/valueQuantity" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/component/valueQuantity/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/component/valueQuantity/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/component/valueQuantity/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/component/valueRange" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/component/valueRange/high" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/component/valueRange/high/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/component/valueRange/low" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/component/valueRange/low/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/component/valueString" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/conclusionCode" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/conclusionCode/coding" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/conclusionCode/coding/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/conclusionCode/coding/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/conclusionCode/coding/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/criticality" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/derivedFrom" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/derivedFrom/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/derivedFrom/identifier" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/derivedFrom/identifier/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/derivedFrom/identifier/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/derivedFrom/reference" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:interpretationVariantLink .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/derivedFrom/type" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosage" ;
@@ -1733,11 +3042,13 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/effectiveDateTime" ;
-  bridge:verdict bridge:carried .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:variantTimeNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/effectiveInstant" ;
-  bridge:verdict bridge:carried .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:variantTimeNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/effectivePeriod" ;
@@ -1749,7 +3060,53 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/effectivePeriod/start" ;
-  bridge:verdict bridge:carried .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:variantTimeNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/extension" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An extension, as the Genomics Reporting IG's justification of an interpretation: no Cascade predicate carries one." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/extension/url" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An extension, as the Genomics Reporting IG's justification of an interpretation: no Cascade predicate carries one." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/extension/valueRelatedArtifact" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An extension, as the Genomics Reporting IG's justification of an interpretation: no Cascade predicate carries one." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/extension/valueRelatedArtifact/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An extension, as the Genomics Reporting IG's justification of an interpretation: no Cascade predicate carries one." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/extension/valueRelatedArtifact/type" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An extension, as the Genomics Reporting IG's justification of an interpretation: no Cascade predicate carries one." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/focus" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/focus/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/for" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/for/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/gender" ;
@@ -1757,18 +3114,43 @@
   bridge:namesGap fhirr4:patientGender .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/generalPractitioner" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A patient's general practitioner: no Cascade predicate carries who a patient's doctor is." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/generalPractitioner/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A patient's general practitioner: no Cascade predicate carries who a patient's doctor is." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/hasMember" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A panel is no record: observation-findings.rq reports each member's reference as fhirr4:observationNotLabResult." .
+  bridge:because "A panel is no record: observation-findings.rq reports each member's reference as fhirr4:observationNotLabResult. The members of a complex variant are records of their own, and no Cascade term links them." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/hasMember/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A panel is no record: observation-findings.rq reports each member's reference as fhirr4:observationNotLabResult. The members of a complex variant are records of their own, and no Cascade term links them." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/hasMember/reference" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A panel is no record: observation-findings.rq reports each member's reference as fhirr4:observationNotLabResult." .
+  bridge:because "A panel is no record: observation-findings.rq reports each member's reference as fhirr4:observationNotLabResult. The members of a complex variant are records of their own, and no Cascade term links them." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/id" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/identifier" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A record is named from its id, its urn:uuid fullUrl or its place in the document, never from an identifier a system gives it." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/identifier/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A record is named from its id, its urn:uuid fullUrl or its place in the document, never from an identifier a system gives it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/intent" ;
@@ -1802,8 +3184,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/issued" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "When a result was issued is not when it was performed, and a lab result's time is its performed date." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:issuedNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/lotNumber" ;
@@ -1859,6 +3241,11 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/meta/profile" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A variant and an interpretation are told by their code, which the Genomics Reporting IG fixes, because senders omit the profile." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/meta/source" ;
   bridge:verdict bridge:noHome ;
   bridge:namesGap fhirr4:serverSource .
@@ -1866,6 +3253,31 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/meta/versionId" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/method" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "How an observation was made: no Cascade predicate carries it." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/method/coding" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "How an observation was made: no Cascade predicate carries it." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/method/coding/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "How an observation was made: no Cascade predicate carries it." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/method/coding/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "How an observation was made: no Cascade predicate carries it." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/method/coding/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "How an observation was made: no Cascade predicate carries it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/name" ;
@@ -1882,6 +3294,11 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/name/text" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/name/use" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Whether a name is official or usual: foaf has no predicate for it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/note" ;
@@ -1912,6 +3329,16 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/performer" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Who performed an observation: no Cascade predicate carries it." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/performer/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Who performed an observation: no Cascade predicate carries it." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/period" ;
   bridge:verdict bridge:ignored ;
   bridge:because "An element of an Encounter, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
@@ -1925,6 +3352,21 @@
   bridge:sourcePath "/resource/contained/period/start" ;
   bridge:verdict bridge:ignored ;
   bridge:because "An element of an Encounter, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/presentedForm" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/presentedForm/contentType" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/presentedForm/data" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/reaction" ;
@@ -1953,6 +3395,16 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/reaction/severity" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/reasonCode" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/reasonCode/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/reasonReference" ;
@@ -2018,8 +3470,33 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/requester" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/requester/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/resourceType" ;
   bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/result" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/result/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/result/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/route" ;
@@ -2056,6 +3533,16 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/specimen" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "The specimen an observation was made on: no Cascade predicate carries it." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/specimen/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "The specimen an observation was made on: no Cascade predicate carries it." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/status" ;
   bridge:verdict bridge:carried .
 
@@ -2066,6 +3553,31 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/subject/reference" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/telecom" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/telecom/rank" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/telecom/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/telecom/use" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/telecom/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/text" ;
@@ -2120,9 +3632,17 @@
   bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/valueCodeableConcept/coding/code" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/valueCodeableConcept/coding/display" ;
   bridge:verdict bridge:redundantWith ;
   bridge:sameFactAs "/resource/contained/valueCodeableConcept/text" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/valueCodeableConcept/coding/system" ;
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/valueCodeableConcept/text" ;
@@ -2180,6 +3700,40 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/criticality" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/derivedFrom" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/derivedFrom/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/derivedFrom/identifier" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/derivedFrom/identifier/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/derivedFrom/identifier/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/derivedFrom/reference" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:interpretationVariantLink .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/derivedFrom/type" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosage" ;
@@ -2381,11 +3935,13 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/effectiveDateTime" ;
-  bridge:verdict bridge:carried .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:variantTimeNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/effectiveInstant" ;
-  bridge:verdict bridge:carried .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:variantTimeNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/effectivePeriod" ;
@@ -2397,7 +3953,53 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/effectivePeriod/start" ;
-  bridge:verdict bridge:carried .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:variantTimeNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/extension" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An extension, as the Genomics Reporting IG's justification of an interpretation: no Cascade predicate carries one." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/extension/url" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An extension, as the Genomics Reporting IG's justification of an interpretation: no Cascade predicate carries one." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/extension/valueRelatedArtifact" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An extension, as the Genomics Reporting IG's justification of an interpretation: no Cascade predicate carries one." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/extension/valueRelatedArtifact/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An extension, as the Genomics Reporting IG's justification of an interpretation: no Cascade predicate carries one." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/extension/valueRelatedArtifact/type" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An extension, as the Genomics Reporting IG's justification of an interpretation: no Cascade predicate carries one." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/focus" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/focus/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/for" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/for/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/gender" ;
@@ -2405,18 +4007,43 @@
   bridge:namesGap fhirr4:patientGender .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/generalPractitioner" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A patient's general practitioner: no Cascade predicate carries who a patient's doctor is." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/generalPractitioner/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A patient's general practitioner: no Cascade predicate carries who a patient's doctor is." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/hasMember" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A panel is no record: observation-findings.rq reports each member's reference as fhirr4:observationNotLabResult." .
+  bridge:because "A panel is no record: observation-findings.rq reports each member's reference as fhirr4:observationNotLabResult. The members of a complex variant are records of their own, and no Cascade term links them." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/hasMember/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A panel is no record: observation-findings.rq reports each member's reference as fhirr4:observationNotLabResult. The members of a complex variant are records of their own, and no Cascade term links them." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/hasMember/reference" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A panel is no record: observation-findings.rq reports each member's reference as fhirr4:observationNotLabResult." .
+  bridge:because "A panel is no record: observation-findings.rq reports each member's reference as fhirr4:observationNotLabResult. The members of a complex variant are records of their own, and no Cascade term links them." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/id" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/identifier" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A record is named from its id, its urn:uuid fullUrl or its place in the document, never from an identifier a system gives it." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/identifier/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A record is named from its id, its urn:uuid fullUrl or its place in the document, never from an identifier a system gives it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/intent" ;
@@ -2450,8 +4077,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/issued" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "When a result was issued is not when it was performed, and a lab result's time is its performed date." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:issuedNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/lotNumber" ;
@@ -2507,6 +4134,11 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/meta/profile" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A variant and an interpretation are told by their code, which the Genomics Reporting IG fixes, because senders omit the profile." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/meta/source" ;
   bridge:verdict bridge:noHome ;
   bridge:namesGap fhirr4:serverSource .
@@ -2514,6 +4146,31 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/meta/versionId" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/method" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "How an observation was made: no Cascade predicate carries it." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/method/coding" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "How an observation was made: no Cascade predicate carries it." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/method/coding/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "How an observation was made: no Cascade predicate carries it." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/method/coding/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "How an observation was made: no Cascade predicate carries it." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/method/coding/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "How an observation was made: no Cascade predicate carries it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/name" ;
@@ -2530,6 +4187,11 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/name/text" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/name/use" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Whether a name is official or usual: foaf has no predicate for it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/note" ;
@@ -2560,6 +4222,16 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/performer" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Who performed an observation: no Cascade predicate carries it." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/performer/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Who performed an observation: no Cascade predicate carries it." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/period" ;
   bridge:verdict bridge:ignored ;
   bridge:because "An element of an Encounter, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
@@ -2573,6 +4245,21 @@
   bridge:sourcePath "/resource/period/start" ;
   bridge:verdict bridge:ignored ;
   bridge:because "An element of an Encounter, a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/presentedForm" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/presentedForm/contentType" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/presentedForm/data" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/reaction" ;
@@ -2601,6 +4288,16 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/reaction/severity" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/reasonCode" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/reasonCode/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/reasonReference" ;
@@ -2666,8 +4363,33 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/requester" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/requester/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/resourceType" ;
   bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/result" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/result/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/result/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/route" ;
@@ -2704,6 +4426,16 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/specimen" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "The specimen an observation was made on: no Cascade predicate carries it." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/specimen/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "The specimen an observation was made on: no Cascade predicate carries it." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/status" ;
   bridge:verdict bridge:carried .
 
@@ -2714,6 +4446,31 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/subject/reference" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/telecom" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/telecom/rank" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/telecom/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/telecom/use" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/telecom/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/text" ;
@@ -2768,9 +4525,17 @@
   bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/valueCodeableConcept/coding/code" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/valueCodeableConcept/coding/display" ;
   bridge:verdict bridge:redundantWith ;
   bridge:sameFactAs "/resource/valueCodeableConcept/text" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/valueCodeableConcept/coding/system" ;
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/valueCodeableConcept/text" ;
@@ -2830,6 +4595,21 @@
   bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/result" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/result/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/result/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/route" ;
   bridge:verdict bridge:consumed .
 
@@ -2864,6 +4644,16 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/specimen" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "The specimen an observation was made on: no Cascade predicate carries it." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/specimen/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "The specimen an observation was made on: no Cascade predicate carries it." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/status" ;
   bridge:verdict bridge:carried .
 
@@ -2874,6 +4664,31 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/subject/reference" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/telecom" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/telecom/rank" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/telecom/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/telecom/use" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/telecom/value" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/text" ;
@@ -2928,9 +4743,17 @@
   bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/valueCodeableConcept/coding/code" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/valueCodeableConcept/coding/display" ;
   bridge:verdict bridge:redundantWith ;
   bridge:sameFactAs "/valueCodeableConcept/text" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/valueCodeableConcept/coding/system" ;
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/valueCodeableConcept/text" ;

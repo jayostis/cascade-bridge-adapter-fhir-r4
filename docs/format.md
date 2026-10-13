@@ -12,8 +12,9 @@ The FHIR specification is HL7's, published under CC0.
 A record is one **resource**: a JSON object whose `resourceType` member names
 its type. This release maps `AllergyIntolerance`, `Condition`, `Immunization`,
 `Procedure`, `Patient`, `MedicationRequest`, `MedicationStatement`, and an
-`Observation` that is a laboratory result; a resource of any other type, and
-any other `Observation`, yields a finding and no record. A `Medication` is read
+`Observation` that is a laboratory result, a genomic variant or a diagnostic
+implication; a resource of any other type, and any other `Observation`, yields
+a finding and no record. A `Medication` is read
 through the medication that references it, and is no record of its own.
 
 An `Observation`'s `category` says what kind it is, from
@@ -40,6 +41,65 @@ resource.
 
 `resourceType` is not only at a record's root. It names the type of every
 resource nested in another, and a contained resource is a resource.
+
+## Variants and interpretations
+
+Two profiles of the
+[Genomics Reporting IG](https://hl7.org/fhir/uv/genomics-reporting/STU3/),
+read on 2026-10-13, are records. Each is told by its code and never by
+`meta.profile`, which senders omit, or by its category, which both profiles
+require as `laboratory`. The profiles of a haplotype, a genotype, a therapeutic
+implication and a molecular biomarker are not mapped, and stay what their
+category makes them.
+
+- **A variant** is an `Observation` coded LOINC 69548-6, a `genomics:Variant`.
+  Its value is one of Present, Absent, No call and Indeterminate (LL1971-2), or
+  none. Present, or none, makes the record. Any other value makes neither a
+  record nor a lab result, and a finding: a variant record says the person has
+  the variant, and the vocabulary has no term for its absence.
+- **A diagnostic implication** is an `Observation` coded `diagnostic-implication`
+  in the IG's `tbd-codes-cs`, a `genomics:VariantInterpretation`. Its
+  classification is component 53037-8, a LOINC answer
+  [mapped to the five ACMG/AMP classifications](../vocab/fhir-acmg-classifications.ttl):
+  any other answer, text alone, or two different answers state none. Its date is
+  the day of `issued`, else of `effective[x]`, as the source wrote it in its own
+  offset, so `2024-03-21T23:30:00-07:00` is 2024-03-21; a time with less than a
+  day's precision is none.
+- **Its variant** is the one `Observation` its `derivedFrom` names, by a
+  `urn:uuid:` fullUrl, by `Observation/<id>` on a known server or by an absolute
+  URL. The interpretation points to that variant's record, named as `rec:patient`
+  names a patient, so a record outside the document can be named. A reference to
+  a record of the document must be to a variant. With no such reference (a
+  `derivedFrom` with an identifier or a display and no reference is none), two,
+  or another beside one, the interpretation is a record without the link, and a
+  finding. A reference to a contained resource, or to a resource that is not an
+  `Observation`, is not read, and leaves a link to one variant intact.
+
+The three elements of a variant are read from its components, by the code of the
+component, and each is carried only where the variant states it once; two
+different values state none, and a finding.
+
+| component | carried as | rule |
+|---|---|---|
+| 48004-6, c.HGVS | `genomics:hgvsCDot` | the `code` of a coding under `http://varnomen.hgvs.org`, in the normal form below |
+| 81252-9, discrete variant | `genomics:clinvarVariationId` | the digits, with no leading zero, of a code under `http://www.ncbi.nlm.nih.gov/clinvar`: `VCV000090011` is 90011; an RCV or SCV accession is no variation's ID; a code of another system (dbSNP) is not carried |
+| 48018-6, gene studied | `genomics:geneSymbol` | the `display` of a coding under `http://www.genenames.org/geneId`, the IG's system, or `http://www.genenames.org`, which the IG's examples write; a display with no code is the symbol, a code with no display is not |
+
+An HGVS expression is written in more than one form, and the vocabulary's shape
+takes one: the reference sequence with its version, a colon and `c.`, then the
+change. It is read only from the c.HGVS component, and is never composed from
+the transcript component (51958-7) beside a bare change.
+
+| written | carried | finding |
+|---|---|---|
+| `NM_000249.4:c.2042C>T` | `NM_000249.4:c.2042C>T` | none |
+| `NM_000249.3(MLH1):c.2042C>T` | `NM_000249.3:c.2042C>T` | the gene is not carried |
+| `NM_000249.4(MLH1):c.2042C>T (p.Ala681Val)` | `NM_000249.4:c.2042C>T` | the gene and the protein change are not carried |
+| `NM_000249.4(MLH1):c.2042C>T(p.Ala681Val)`, no space before the protein change | `NM_000249.4:c.2042C>T` | the gene and the protein change are not carried |
+| `c.769G>A`, the transcript only in 51958-7 | none | no reference sequence |
+| `NM_000249:c.2042C>T`, no version | none | no reference sequence |
+| `NC_000003.12:g.37048956C>T` | none | not a coding expression |
+| two expressions that differ after the gene and the protein change are left out | none | more than one expression |
 
 ## The two envelopes
 
@@ -116,6 +176,16 @@ The copied inputs are the conformance corpus's general clinical FHIR fixtures,
 written by hand for it, not captured from a server: bare resources, each
 referencing a patient as `Patient/pat-conformance-1`. What each is for is
 their `INVENTORY.md` there, at the commit the crate names.
+
+Three more are example Bundles the Genomics Reporting IG publishes, in that
+corpus's `fixtures/genomics/fhir-genomics-ig/`: whole transaction or collection
+Bundles, with the ids and fullUrls the IG's authors gave them. The resources in
+them that this release does not map (a DiagnosticReport, a Specimen, a Task)
+yield findings and no record. The authored Bundles of variants and
+interpretations are for the rules above, and the two named for Martin Okafor
+are for a story of cascade-vocabulary, jayostis/cascade-vocabulary#138: the
+variants and ClinVar's data are real, and the person, the lab, the hospital, the
+dates and the identifiers are invented.
 
 The two narrative-only Conditions, `condition-no-id-narrative-diabetes` and
 `condition-no-id-narrative-breast-cancer`, and the two id-less

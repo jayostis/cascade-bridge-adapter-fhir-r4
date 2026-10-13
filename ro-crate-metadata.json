@@ -43,7 +43,7 @@
       "identifier": "fhir-r4",
       "name": "FHIR R4 JSON",
       "version": "0.1.0",
-      "description": "The Cascade Bridge Adapter for FHIR R4 JSON: the package of data a Cascade Bridge runs to turn FHIR R4 resources, alone or as the entries of a Bundle, into Cascade records. Import-only. This crate is the adapter's manifest: a Bridge reads the root entity first, for the format id, the source media type, the source schema, the two envelopes, the detect rule, the document table queries, the mappings, the findings queries and the table they read, the profile the Bridge must offer, the vocabulary repository and the paths, in it, of the ontology and shapes files the adapter is read against, the gap scheme every finding takes its body from, each gap declaring the sh:resultSeverity its findings carry where that is not sh:Info, the source accounting, and the test manifest. The data entities carry provenance for every committed file, and a sha256 computed locally over the committed bytes of each digested one. Twenty-seven inputs are copied byte for byte from the conformance repository's fixtures/clinical-fhir at the commit isBasedOn names; the others are authored here, and each says so.",
+      "description": "The Cascade Bridge Adapter for FHIR R4 JSON: the package of data a Cascade Bridge runs to turn FHIR R4 resources, alone or as the entries of a Bundle, into Cascade records. Import-only. This crate is the adapter's manifest: a Bridge reads the root entity first, for the format id, the source media type, the source schema, the two envelopes, the detect rule, the document table queries, the mappings, the findings queries and the table they read, the profile the Bridge must offer, the vocabulary repository and the paths, in it, of the ontology and shapes files the adapter is read against, the gap scheme every finding takes its body from, each gap declaring the sh:resultSeverity its findings carry where that is not sh:Info, the source accounting, and the test manifest. The data entities carry provenance for every committed file, and a sha256 computed locally over the committed bytes of each digested one. Twenty-seven inputs are copied byte for byte from the conformance repository's fixtures/clinical-fhir and three from its fixtures/genomics/fhir-genomics-ig, at the commit isBasedOn names; the others are authored here, and each says so.",
       "datePublished": "2026-09-27",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -51,9 +51,14 @@
       "conformsTo": {
         "@id": "https://ns.cascadeprotocol.org/bridge/v1-draft/adapter-profile/"
       },
-      "isBasedOn": {
-        "@id": "https://github.com/jayostis/conformance/tree/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir"
-      },
+      "isBasedOn": [
+        {
+          "@id": "https://github.com/jayostis/conformance/tree/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir"
+        },
+        {
+          "@id": "https://github.com/jayostis/conformance/tree/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/genomics/fhir-genomics-ig"
+        }
+      ],
       "bridge:requiresProfile": [
         {
           "@id": "bridge:sparql-1.1"
@@ -73,6 +78,9 @@
           "@id": "https://ns.cascadeprotocol.org/clinical/v1#"
         },
         {
+          "@id": "https://ns.cascadeprotocol.org/genomics/v1#"
+        },
+        {
           "@id": "https://ns.cascadeprotocol.org/records/v1-draft#"
         }
       ],
@@ -83,6 +91,8 @@
         "ontologies/health/v1/health.shapes.ttl",
         "ontologies/clinical/v1/clinical.ttl",
         "ontologies/clinical/v1/clinical.shapes.ttl",
+        "ontologies/genomics/v1-draft/genomics.ttl",
+        "ontologies/genomics/v1-draft/genomics.shapes.ttl",
         "ontologies/records/v1-draft/records.ttl",
         "ontologies/records/v1-draft/records.shapes.ttl"
       ],
@@ -107,6 +117,12 @@
         },
         {
           "@id": "in/sparql/lab-result-table.rq"
+        },
+        {
+          "@id": "in/sparql/variant-table.rq"
+        },
+        {
+          "@id": "in/sparql/variant-interpretation-table.rq"
         },
         {
           "@id": "in/sparql/medication-table.rq"
@@ -136,6 +152,12 @@
         },
         {
           "@id": "in/sparql/lab-result.rq"
+        },
+        {
+          "@id": "in/sparql/variant.rq"
+        },
+        {
+          "@id": "in/sparql/variant-interpretation.rq"
         }
       ],
       "bridge:findingsQuery": [
@@ -165,6 +187,12 @@
         },
         {
           "@id": "in/sparql/lab-result-findings.rq"
+        },
+        {
+          "@id": "in/sparql/variant-findings.rq"
+        },
+        {
+          "@id": "in/sparql/variant-interpretation-findings.rq"
         }
       ],
       "bridge:table": [
@@ -173,6 +201,9 @@
         },
         {
           "@id": "vocab/fhir-code-systems.ttl"
+        },
+        {
+          "@id": "vocab/fhir-acmg-classifications.ttl"
         }
       ],
       "bridge:gapScheme": {
@@ -196,6 +227,12 @@
         },
         {
           "@id": "in/sparql/lab-result-table.rq"
+        },
+        {
+          "@id": "in/sparql/variant-table.rq"
+        },
+        {
+          "@id": "in/sparql/variant-interpretation-table.rq"
         },
         {
           "@id": "in/sparql/medication-table.rq"
@@ -225,6 +262,12 @@
           "@id": "in/sparql/lab-result.rq"
         },
         {
+          "@id": "in/sparql/variant.rq"
+        },
+        {
+          "@id": "in/sparql/variant-interpretation.rq"
+        },
+        {
           "@id": "in/sparql/resource-type-findings.rq"
         },
         {
@@ -249,6 +292,12 @@
           "@id": "in/sparql/lab-result-findings.rq"
         },
         {
+          "@id": "in/sparql/variant-findings.rq"
+        },
+        {
+          "@id": "in/sparql/variant-interpretation-findings.rq"
+        },
+        {
           "@id": "vocab/fhir-accounting.ttl"
         },
         {
@@ -262,6 +311,9 @@
         },
         {
           "@id": "vocab/fhir-code-systems.ttl"
+        },
+        {
+          "@id": "vocab/fhir-acmg-classifications.ttl"
         },
         {
           "@id": "fixtures/in/allergy-with-id.json"
@@ -408,6 +460,27 @@
           "@id": "fixtures/in/bundle-medication-repeated-id.json"
         },
         {
+          "@id": "fixtures/in/Bundle-bundle-cgexample.input.json"
+        },
+        {
+          "@id": "fixtures/in/Bundle-bundle-compound-heterozygote.input.json"
+        },
+        {
+          "@id": "fixtures/in/Bundle-bundle-oncology-diagnostic.input.json"
+        },
+        {
+          "@id": "fixtures/in/bundle-genomics-variants.json"
+        },
+        {
+          "@id": "fixtures/in/bundle-genomics-interpretations.json"
+        },
+        {
+          "@id": "fixtures/in/martin-okafor-harbourline-panel-2022.json"
+        },
+        {
+          "@id": "fixtures/in/martin-okafor-st-columba-exome-2024.json"
+        },
+        {
           "@id": "bench/manifest.json"
         },
         {
@@ -424,6 +497,15 @@
         },
         {
           "@id": "fixtures/facts/no-server.ttl"
+        },
+        {
+          "@id": "fixtures/facts/example-org.ttl"
+        },
+        {
+          "@id": "fixtures/facts/martin-okafor-harbourline.ttl"
+        },
+        {
+          "@id": "fixtures/facts/martin-okafor-st-columba.ttl"
         },
         {
           "@id": "fixtures/facts/allergyintolerance-alg-pcn-1.ttl"
@@ -726,7 +808,49 @@
           "@id": "fixtures/expected/bundle-medication-repeated-id.ttl"
         },
         {
+          "@id": "fixtures/expected/Bundle-bundle-cgexample.ttl"
+        },
+        {
+          "@id": "fixtures/expected/Bundle-bundle-compound-heterozygote.ttl"
+        },
+        {
+          "@id": "fixtures/expected/Bundle-bundle-oncology-diagnostic.ttl"
+        },
+        {
+          "@id": "fixtures/expected/bundle-genomics-variants.ttl"
+        },
+        {
+          "@id": "fixtures/expected/bundle-genomics-interpretations.ttl"
+        },
+        {
+          "@id": "fixtures/expected/martin-okafor-harbourline-panel-2022.ttl"
+        },
+        {
+          "@id": "fixtures/expected/martin-okafor-st-columba-exome-2024.ttl"
+        },
+        {
           "@id": "fixtures/findings/bundle-medication-repeated-id.ttl"
+        },
+        {
+          "@id": "fixtures/findings/Bundle-bundle-cgexample.ttl"
+        },
+        {
+          "@id": "fixtures/findings/Bundle-bundle-compound-heterozygote.ttl"
+        },
+        {
+          "@id": "fixtures/findings/Bundle-bundle-oncology-diagnostic.ttl"
+        },
+        {
+          "@id": "fixtures/findings/bundle-genomics-variants.ttl"
+        },
+        {
+          "@id": "fixtures/findings/bundle-genomics-interpretations.ttl"
+        },
+        {
+          "@id": "fixtures/findings/martin-okafor-harbourline-panel-2022.ttl"
+        },
+        {
+          "@id": "fixtures/findings/martin-okafor-st-columba-exome-2024.ttl"
         },
         {
           "@id": "fixtures/expected/patient-no-id.ttl"
@@ -856,6 +980,12 @@
       "description": "One of the vocabularies the adapter writes, as cascade-vocabulary declares it."
     },
     {
+      "@id": "https://ns.cascadeprotocol.org/genomics/v1#",
+      "@type": "DefinedTermSet",
+      "name": "Cascade genomics vocabulary",
+      "description": "One of the vocabularies the adapter writes, as cascade-vocabulary declares it."
+    },
+    {
       "@id": "https://ns.cascadeprotocol.org/records/v1-draft#",
       "@type": "DefinedTermSet",
       "name": "Cascade records vocabulary",
@@ -920,12 +1050,36 @@
       "@type": "File",
       "name": "Document table: which Observations are lab results",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "2614",
-      "sha256": "445e72d70243cb78b4169c13a8698b8de1551c14c4ac9e189ea85b312e8be306",
+      "contentSize": "3224",
+      "sha256": "4eae6c3ba7315bacf25161f006a90378a51c6dc1bf23bbae994c9ecdc2723209",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "A bridge:documentTableQuery: a row for each Observation of a record that is a lab result, wherever it stands, by its category, or, where it has none, by a LOINC code no vital sign of vocab/fhir-vital-signs.ttl carries, a panel excluded; record.rq, lab-result.rq and the findings queries ask it whether one is."
+      "description": "A bridge:documentTableQuery: a row for each Observation of a record that is a lab result, wherever it stands, by its category, or, where it has none, by a LOINC code no vital sign of vocab/fhir-vital-signs.ttl carries, a panel and a Variant or Diagnostic Implication of the Genomics Reporting IG excluded; record.rq, lab-result.rq and the findings queries ask it whether one is."
+    },
+    {
+      "@id": "in/sparql/variant-table.rq",
+      "@type": "File",
+      "name": "Document table: which Observations are variants",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "2183",
+      "sha256": "aad1bc2963f0d873a89d10608d4db6dcbf999f2a7db809b69b11e9d295b96d42",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A bridge:documentTableQuery: a row for each Observation of a record coded LOINC 69548-6, wherever it stands, and not by its profile: fhirr4:variantAt where its value is Present (LA9633-4) or it has none, fhirr4:variantNotPresentAt where it has another value. record.rq, variant.rq and the findings queries ask it whether one is a variant record."
+    },
+    {
+      "@id": "in/sparql/variant-interpretation-table.rq",
+      "@type": "File",
+      "name": "Document table: which Observations are diagnostic implications",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "1562",
+      "sha256": "ec0f155612ea5844a0482a2205fa90083c77fc8bb6ddc374e3d53b6040a86815",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A bridge:documentTableQuery: a row, fhirr4:interpretationAt, for each Observation of a record coded diagnostic-implication in the Genomics Reporting IG's tbd-codes-cs, wherever it stands, and not by its profile; record.rq, variant-interpretation.rq and the findings queries ask it whether one is a variant interpretation record."
     },
     {
       "@id": "in/sparql/medication-table.rq",
@@ -944,12 +1098,12 @@
       "@type": "File",
       "name": "Mapping: records, versions and arrivals",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "9004",
-      "sha256": "537478f9f65fdeece92776aaa3e8fdebad862fd1545cb5680be81cd5cbb1f6b9",
+      "contentSize": "9468",
+      "sha256": "3fb0c34feaba1f428e03214cf028d9ffbfa2c59852c350aff7779f61475496c1",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "For each resource of a mapped type, the record's own and each it contains: the record, named by the Cascade Bridge Specification's naming convention from the server, type and id, the urn:uuid fullUrl, the containing record's name and the local id, or the document and the record's selector; its class, its source URL where its name has one, and its source id; its version, the patient the version is about, and the version's arrival with the resource's meta.versionId and meta.lastUpdated."
+      "description": "For each resource of a mapped type, the record's own and each it contains: the record, named by the Cascade Bridge Specification's naming convention from the server, type and id, the urn:uuid fullUrl, the containing record's name and the local id, or the document and the record's selector; its class, its source URL where its name has one, and its source id where its class has a predicate for one; its version, the patient the version is about, and the version's arrival with the resource's meta.versionId and meta.lastUpdated. An Observation is a lab result, a genomics:Variant or a genomics:VariantInterpretation by the document table that holds its pointer."
     },
     {
       "@id": "in/sparql/allergy-intolerance.rq",
@@ -1036,6 +1190,30 @@
       "description": "What a lab result says, written on the version record.rq names: test name and LOINC codes, value as the source wrote it with its comparator and its unit, the first reference range, the first interpretation, performed time, notes and status."
     },
     {
+      "@id": "in/sparql/variant.rq",
+      "@type": "File",
+      "name": "Mapping: a variant's version",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "6104",
+      "sha256": "2e5dcb7fc1132028b7cdcc3cfd120ec0045b14b6117c8ce3a4c550e293da2f8e",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "What a variant says, written on the version record.rq names: the c.HGVS expression in its normal form, the ClinVar variation ID as digits, the gene symbol and the status. Each is written only where the variant states it once."
+    },
+    {
+      "@id": "in/sparql/variant-interpretation.rq",
+      "@type": "File",
+      "name": "Mapping: a variant interpretation's version",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "8764",
+      "sha256": "7cd46ebb343866283331f65e6f74f1a38de1860d074ff643520c60d6b3f67f7b",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "What a diagnostic implication says, written on the version record.rq names: the ACMG/AMP classification its classification component's LOINC answer maps to through vocab/fhir-acmg-classifications.ttl, the record of the one variant its derivedFrom names, the day it was issued or else took effect, and the status."
+    },
+    {
       "@id": "in/sparql/resource-type-findings.rq",
       "@type": "File",
       "name": "Findings: a resource of a type this release does not map",
@@ -1100,12 +1278,12 @@
       "@type": "File",
       "name": "Findings: an Observation that is not a lab result",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "4668",
-      "sha256": "d7bf68c033687acfea6afe036080046b01b874e72c6732790ee1be875758427a",
+      "contentSize": "5102",
+      "sha256": "dd2f9ed39b5ba2ab961dd26cf73254f056d9925248d65f87091a1d6dc86c863c",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "Reports fhirr4:observationNotLabResult for each Observation lab-result-table.rq does not call a lab result, at what decided it: a category, a vital sign's LOINC code, the type of one with neither category nor LOINC code, or a panel's members."
+      "description": "Reports fhirr4:observationNotLabResult for each Observation lab-result-table.rq does not call a lab result, and that is no variant and no diagnostic implication, at what decided it: a category, a vital sign's LOINC code, the type of one with neither category nor LOINC code, or a panel's members."
     },
     {
       "@id": "in/sparql/medication-findings.rq",
@@ -1132,12 +1310,36 @@
       "description": "Reports, for an Observation lab-result-table.rq calls a lab result, fhirr4:labResultPeriodEnd for the end of its effectivePeriod, fhirr4:labResultCode for each code outside LOINC, and fhirr4:labResultRangeRepeated and fhirr4:labResultInterpretationRepeated for each value of a reference range or an interpretation after the first, at paths the source accounting carries for the other kinds or where they hold one value."
     },
     {
+      "@id": "in/sparql/variant-findings.rq",
+      "@type": "File",
+      "name": "Findings: what a variant's mapping leaves behind",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "10856",
+      "sha256": "2a116981164c70234bdda4a7ef74627948ae2b3652f409b1bbd49dc81a07c646",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "Reports, for an Observation variant-table.rq calls a variant, the gene or protein change an HGVS expression drops (fhirr4:variantHgvsGeneOrProtein), an expression it does not carry (fhirr4:variantHgvsNoReferenceSequence, fhirr4:variantHgvsNotCoding, fhirr4:variantHgvsRepeated), a ClinVar code that is no variation's ID or one of several (fhirr4:variantClinvarNotVariation, fhirr4:variantClinvarRepeated), a code of another system under the discrete variant element (fhirr4:variantDiscreteVariantCode), and a gene coding without a display or one of several symbols (fhirr4:variantGeneWithoutSymbol, fhirr4:variantGeneRepeated); and fhirr4:variantNotPresent for an Observation it calls a variant that is not a record."
+    },
+    {
+      "@id": "in/sparql/variant-interpretation-findings.rq",
+      "@type": "File",
+      "name": "Findings: what a variant interpretation's mapping leaves behind",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "9870",
+      "sha256": "b80f76607186aec3b9c8fae93a77b2ad0e9782aed39afe5e99bb140dc4518686",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "Reports, for an Observation variant-interpretation-table.rq calls a diagnostic implication, fhirr4:interpretationClassification for a classification that is none of the five ACMG/AMP answers or one of several, and fhirr4:interpretationVariantLink for each derivedFrom reference, or for the code where there is none (a derivedFrom with no reference is none), when derivedFrom does not name exactly one variant record and nothing else."
+    },
+    {
       "@id": "vocab/fhir-accounting.ttl",
       "@type": "File",
       "name": "FHIR R4 JSON source accounting",
       "encodingFormat": "text/turtle",
-      "contentSize": "99601",
-      "sha256": "5d76be0d07e24ebec5629acf76d65635f3f7c0873a75abb86c6671bbf5be8ded",
+      "contentSize": "190616",
+      "sha256": "178f9511ae2dfba020318d1e52fe67c79748355646dcc125bd413a9ca758a6b4",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1160,8 +1362,8 @@
       "@type": "File",
       "name": "FHIR R4 JSON gaps",
       "encodingFormat": "text/turtle",
-      "contentSize": "5722",
-      "sha256": "526777beac47b3e40f3bd5697870b03c97c71ea61037d3c62adc18dac5cd194c",
+      "contentSize": "10134",
+      "sha256": "5ea0d272a90d362d88f17b43baadc0d65802b25655375a15243e35c6f1ac0165",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1204,6 +1406,21 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "The bridge:table every mapping reads for the IRI stem of a code it writes as an IRI: one skos:Concept per Coding.system a mapping reads such a code from, its skos:notation the system URI as FHIR writes it, its skos:exactMatch the Cascade vocabulary's rec:CodeSystem for it and its void:uriSpace the stem, which is never the system URI. SNOMED CT's stem is HL7 Terminology's (SNOMEDCT.html, section RDF) and LOINC's is THO's iri-stem (v3-loinc.xml), authoritative though FHIR R5's table writes https; RxNorm's and ICD-10-CM's are the concatenation-safe forms cascade-vocabulary registers, THO stating none (https://github.com/jayostis/cascade-vocabulary/issues/111). NDC's is the 11-digit space cascade-vocabulary registers, the code normalised into it, since FHIR's NDC code is the 10-digit label code (https://hl7.org/fhir/R4/ndc.html, https://github.com/jayostis/cascade-vocabulary/issues/104). Read on 2026-10-10. Not a concept map: no code maps to a Cascade term, and no entry of the source accounting looks a value up in it."
+    },
+    {
+      "@id": "vocab/fhir-acmg-classifications.ttl",
+      "@type": "File",
+      "name": "LOINC answers to ACMG/AMP classifications",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1344",
+      "sha256": "da1962049688f9a19f19769d87360921f77c56652469940d3574719225937e45",
+      "isBasedOn": {
+        "@id": "https://github.com/jayostis/cascade-vocabulary/blob/34c2fb085f44c4271b5c9c68b6ecd2f23bc2eb48/ontologies/records/v1-draft/records.ttl"
+      },
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The bridge:table variant-interpretation.rq and its findings query read to map the LOINC answer of a diagnostic implication's classification (53037-8) to the Cascade term: one skos:Concept per answer, its skos:notation the code in the form a lookup key takes, its skos:exactMatch the genomics: individual. The five rows are transcribed from the skos:exactMatch triples of the isBasedOn file, which a mapping cannot read: a Bridge loads only an adapter's own tables. Read on 2026-10-13. No entry of the source accounting looks a value up in it: the path holds every other component's codes, so the findings query reports a classification no concept maps."
     },
     {
       "@id": "fixtures/in/allergy-with-id.json",
@@ -1885,6 +2102,103 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "A collection Bundle: two Medications, each id med-1, from two servers' fullUrls; and a MedicationRequest, id medrx-unclear-1, referencing Medication/med-1. Authored here on 2026-10-06, for a case the conformance corpus does not hold: a reference its document resolves to more than one Medication."
+    },
+    {
+      "@id": "fixtures/in/Bundle-bundle-cgexample.input.json",
+      "@type": "File",
+      "name": "Genomics Reporting IG example Bundle: a variant, its diagnostic implication and a complex variant",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "61829",
+      "sha256": "b8e0ac45bba3dcb759ce646a2009aa81cac2b9fd1d9c7feaa77a1929a3aa143a",
+      "sameAs": {
+        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/genomics/fhir-genomics-ig/Bundle-bundle-cgexample.input.json"
+      },
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A collection Bundle of the IG's cgexample, its resources named by absolute fullUrls under http://example.org/fhir: a Patient, a discrete variant with a ClinVar ID, a gene, a c.HGVS expression and a dbSNP code, a Pathogenic diagnostic implication derived from it by the relative reference Observation/discrete-variant, a complex variant that has members and no components and its diagnostic implication, a haplotype, a genotype and three therapeutic implications, and a DiagnosticReport, a Specimen, an Organization, a ServiceRequest and a Task. Copied byte for byte from the conformance repository at 0ea48bb (the file last changed at 9d884e6, 2026-05-05), from the Genomics Reporting IG's examples. Written for that corpus, not captured from a server: no fetch date, server or query exists to record."
+    },
+    {
+      "@id": "fixtures/in/Bundle-bundle-compound-heterozygote.input.json",
+      "@type": "File",
+      "name": "Genomics Reporting IG example Bundle: a compound heterozygote's two variants",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "14196",
+      "sha256": "f5caf2418e2cc198603d151339fd527282d1cc73ae9c83e9fcf8869a5a7e1c1e",
+      "sameAs": {
+        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/genomics/fhir-genomics-ig/Bundle-bundle-compound-heterozygote.input.json"
+      },
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A transaction Bundle of two Variants given by c.HGVS alone, a genotype that has them as members, an Organization and a Patient, each with an id and a urn:uuid fullUrl. Copied byte for byte from the conformance repository at 0ea48bb (the file last changed at 9d884e6, 2026-05-05), from the Genomics Reporting IG's examples. Written for that corpus, not captured from a server: no fetch date, server or query exists to record."
+    },
+    {
+      "@id": "fixtures/in/Bundle-bundle-oncology-diagnostic.input.json",
+      "@type": "File",
+      "name": "Genomics Reporting IG example Bundle: an oncology variant and its diagnostic implication",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "23801",
+      "sha256": "00ee21db9c7aadb5335881fa9150d07306b7111bc8589ad3cff5ffc844608ead",
+      "sameAs": {
+        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/genomics/fhir-genomics-ig/Bundle-bundle-oncology-diagnostic.input.json"
+      },
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A transaction Bundle of a Patient, a Practitioner, a Specimen, a molecular biomarker, a Variant with a ClinVar ID, a gene and only a genomic HGVS expression, a Diagnostic Implication derived from it by a urn:uuid fullUrl and dated by its effective time alone, and a DiagnosticReport. Copied byte for byte from the conformance repository at 0ea48bb (the file last changed at 9d884e6, 2026-05-05), from the Genomics Reporting IG's examples. Written for that corpus, not captured from a server: no fetch date, server or query exists to record."
+    },
+    {
+      "@id": "fixtures/in/bundle-genomics-variants.json",
+      "@type": "File",
+      "name": "Bundle of variants: the forms of an HGVS expression and what is not carried",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "14446",
+      "sha256": "518981c08a2caf62c6afe5cd756d39881d0fd19b1066e836de67108490decbf8",
+      "dateCreated": "2026-10-13",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A collection Bundle of a Patient and twelve Variants, each with a urn:uuid fullUrl and no id: one for each row of the table of c.HGVS forms docs/format.md gives (the gene in parentheses, a protein change beside it with and without a space, the transcript only in its own component, no version, a genomic expression, two different expressions); a ClinVar code written VCV000090011, an RCV accession, and two different IDs; a valid ID beside an RCV accession; a code of dbSNP; a gene with a display and no code, with a code and no display, two different genes, and a gene with a symbol beside one whose display is blank; an Absent variant and a variant with no value at all. Authored here on 2026-10-13, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/bundle-genomics-interpretations.json",
+      "@type": "File",
+      "name": "Bundle of diagnostic implications: classification, date and link to a variant",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "10209",
+      "sha256": "107104bb03bcb94b3f9e28d353d5654a292a94aeb8e187376e3464168b6037d1",
+      "dateCreated": "2026-10-13",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A collection Bundle of a Patient, two Variants, a genotype and nine Diagnostic Implications, each with a urn:uuid fullUrl and no id: a Pathogenic one issued at 23:30 at an offset of -07:00 and derived from one variant; a text-only classification; one derived from two variants; one derived from a genotype and dated by a year; one with no derivedFrom; one derived from a record the Bundle does not hold and dated by the start of a period; one whose classification holds two different answers; one derived from a variant and from a MolecularSequence, which is not read; and one whose derivedFrom holds an identifier and a display and no reference. Authored here on 2026-10-13, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/martin-okafor-harbourline-panel-2022.json",
+      "@type": "File",
+      "name": "Martin Okafor's hereditary cancer panel report, Harbourline Genetics, 2022-06-14",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "11214",
+      "sha256": "5bfa27dde974ce16762015541b4781020e4c00d3b9c84d76c19adb3e01123e30",
+      "dateCreated": "2026-10-13",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A collection Bundle, each resource named by a urn:uuid fullUrl and none with an id, of a Patient (Martin Okafor, born 1979-02-08), the DiagnosticReport 51969-4 issued 2022-06-14, three Variants and a Diagnostic Implication derived from each: V1, MLH1 NM_000249.3(MLH1):c.2042C>T written with its gene, no ClinVar ID, Uncertain significance; V2, MSH6 NM_000179.3:c.2633T>C of ClinVar variation 8931, Benign; V5, MLH1 NM_001258271.2:c.1111A>T of variation 405389, on a transcript no submitter used and not in the variation's ClinVar name, no ClinVar ID, Uncertain significance. The variations and what ClinVar says of them are real (variant_summary and hgvs4variation of 2026-10); the person, the lab, the dates and the identifiers are invented. Authored here on 2026-10-13, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/martin-okafor-st-columba-exome-2024.json",
+      "@type": "File",
+      "name": "Martin Okafor's exome and health record, St Columba's Hospital, 2024-03-21",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "14278",
+      "sha256": "44c19c202b37e16b79565ae30d558b0cb1d3791b51552b3cc95aa3588b553149",
+      "dateCreated": "2026-10-13",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A collection Bundle, each resource named by a urn:uuid fullUrl and none with an id, of the same Patient, the DiagnosticReport 51969-4 issued 2024-03-21, three Variants and a Diagnostic Implication derived from each, and his conditions, medications and a procedure: V1', MLH1 NM_000249.4:c.2042C>T of ClinVar variation 90011, Likely pathogenic; V2', the ID and expression of V2, Benign; V4, BRCA2 NM_000059.4:c.7865A>G of variation 91496, a gene outside MLH1, MSH2, MSH6, PMS2 and EPCAM, no ClinVar ID, Uncertain significance. The variations and what ClinVar says of them are real (variant_summary and hgvs4variation of 2026-10); the person, the hospital, the dates and the identifiers are invented. Authored here on 2026-10-13, for a case the conformance corpus does not hold."
     },
     {
       "@id": "bench/manifest.json",
@@ -3182,6 +3496,118 @@
       "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
     },
     {
+      "@id": "fixtures/expected/Bundle-bundle-cgexample.ttl",
+      "@type": "File",
+      "name": "Expected graph for Bundle-bundle-cgexample",
+      "encodingFormat": "text/turtle",
+      "contentSize": "9407",
+      "sha256": "5699a976b9d422ed8fbd820a07daed168739d7a693c225638b0f9d7c539f4f31",
+      "about": {
+        "@id": "fixtures/in/Bundle-bundle-cgexample.input.json"
+      },
+      "dateCreated": "2026-10-13",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/expected/Bundle-bundle-compound-heterozygote.ttl",
+      "@type": "File",
+      "name": "Expected graph for Bundle-bundle-compound-heterozygote",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3225",
+      "sha256": "1219f9a0f91c72519125acbabede12b58455f623a9f9b09cd65dc91122ec1fa1",
+      "about": {
+        "@id": "fixtures/in/Bundle-bundle-compound-heterozygote.input.json"
+      },
+      "dateCreated": "2026-10-13",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/expected/Bundle-bundle-oncology-diagnostic.ttl",
+      "@type": "File",
+      "name": "Expected graph for Bundle-bundle-oncology-diagnostic",
+      "encodingFormat": "text/turtle",
+      "contentSize": "4751",
+      "sha256": "4d9653c3c8e2e4f012215a44699af1623c3206807219f7f581ad31000c9470d5",
+      "about": {
+        "@id": "fixtures/in/Bundle-bundle-oncology-diagnostic.input.json"
+      },
+      "dateCreated": "2026-10-13",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/expected/bundle-genomics-variants.ttl",
+      "@type": "File",
+      "name": "Expected graph for bundle-genomics-variants",
+      "encodingFormat": "text/turtle",
+      "contentSize": "9003",
+      "sha256": "456010da900b0801e87b5e8526b729a2354e58f1a31f7f03762aa3c727d603ca",
+      "about": {
+        "@id": "fixtures/in/bundle-genomics-variants.json"
+      },
+      "dateCreated": "2026-10-13",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/expected/bundle-genomics-interpretations.ttl",
+      "@type": "File",
+      "name": "Expected graph for bundle-genomics-interpretations",
+      "encodingFormat": "text/turtle",
+      "contentSize": "10553",
+      "sha256": "e52e4921138b6eeddfc9ebd1d7a210c690a488465a9ba11967cd6bb1acb8d220",
+      "about": {
+        "@id": "fixtures/in/bundle-genomics-interpretations.json"
+      },
+      "dateCreated": "2026-10-13",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/expected/martin-okafor-harbourline-panel-2022.ttl",
+      "@type": "File",
+      "name": "Expected graph for martin-okafor-harbourline-panel-2022",
+      "encodingFormat": "text/turtle",
+      "contentSize": "6333",
+      "sha256": "58b81f438ec501e722d351d093200d938a4ca1b70f2b9d6d65cf6a07463be45e",
+      "about": {
+        "@id": "fixtures/in/martin-okafor-harbourline-panel-2022.json"
+      },
+      "dateCreated": "2026-10-13",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/expected/martin-okafor-st-columba-exome-2024.ttl",
+      "@type": "File",
+      "name": "Expected graph for martin-okafor-st-columba-exome-2024",
+      "encodingFormat": "text/turtle",
+      "contentSize": "10293",
+      "sha256": "f4c0be2da110d3acc3893a33b05347e819b9ddd4ac6c70021f7c2ea98ce811e0",
+      "about": {
+        "@id": "fixtures/in/martin-okafor-st-columba-exome-2024.json"
+      },
+      "dateCreated": "2026-10-13",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
       "@id": "fixtures/findings/bundle-medication-repeated-id.ttl",
       "@type": "File",
       "name": "Expected findings for bundle-medication-repeated-id",
@@ -3192,6 +3618,118 @@
         "@id": "fixtures/in/bundle-medication-repeated-id.json"
       },
       "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/Bundle-bundle-cgexample.ttl",
+      "@type": "File",
+      "name": "Expected findings for Bundle-bundle-cgexample",
+      "encodingFormat": "text/turtle",
+      "contentSize": "22959",
+      "sha256": "5653638df2a33c6c06917aa07657db298611245aff746fe6adba05fe427b876f",
+      "about": {
+        "@id": "fixtures/in/Bundle-bundle-cgexample.input.json"
+      },
+      "dateCreated": "2026-10-13",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/Bundle-bundle-compound-heterozygote.ttl",
+      "@type": "File",
+      "name": "Expected findings for Bundle-bundle-compound-heterozygote",
+      "encodingFormat": "text/turtle",
+      "contentSize": "8104",
+      "sha256": "02074d37c027507e88a4d167b13c132cabfa68055d7b333b5bcef79d4e078514",
+      "about": {
+        "@id": "fixtures/in/Bundle-bundle-compound-heterozygote.input.json"
+      },
+      "dateCreated": "2026-10-13",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/Bundle-bundle-oncology-diagnostic.ttl",
+      "@type": "File",
+      "name": "Expected findings for Bundle-bundle-oncology-diagnostic",
+      "encodingFormat": "text/turtle",
+      "contentSize": "9553",
+      "sha256": "f480eedbf08dc912a26693bf978851e3500aaff2c3eca3b1ca545c8aafdf5847",
+      "about": {
+        "@id": "fixtures/in/Bundle-bundle-oncology-diagnostic.input.json"
+      },
+      "dateCreated": "2026-10-13",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/bundle-genomics-variants.ttl",
+      "@type": "File",
+      "name": "Expected findings for bundle-genomics-variants",
+      "encodingFormat": "text/turtle",
+      "contentSize": "16950",
+      "sha256": "b1568d9d582bb96953eda76d8bb4d7210d189cd3ad917589ac5f19549de9e09c",
+      "about": {
+        "@id": "fixtures/in/bundle-genomics-variants.json"
+      },
+      "dateCreated": "2026-10-13",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/bundle-genomics-interpretations.ttl",
+      "@type": "File",
+      "name": "Expected findings for bundle-genomics-interpretations",
+      "encodingFormat": "text/turtle",
+      "contentSize": "6540",
+      "sha256": "a23d6a2f2f09bfc6084d175668bebe6d925ded792d32aec60027ffd03c65735a",
+      "about": {
+        "@id": "fixtures/in/bundle-genomics-interpretations.json"
+      },
+      "dateCreated": "2026-10-13",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/martin-okafor-harbourline-panel-2022.ttl",
+      "@type": "File",
+      "name": "Expected findings for martin-okafor-harbourline-panel-2022",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1983",
+      "sha256": "99165646594e5ca5239eadc7d79b1107937a569045e66802d10d143bd7d738c2",
+      "about": {
+        "@id": "fixtures/in/martin-okafor-harbourline-panel-2022.json"
+      },
+      "dateCreated": "2026-10-13",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/martin-okafor-st-columba-exome-2024.ttl",
+      "@type": "File",
+      "name": "Expected findings for martin-okafor-st-columba-exome-2024",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1081",
+      "sha256": "4309c8e0646cd33dbae29e27e3479793f9f0fbdcc2d7ed2cb2f8dd5d84358d9d",
+      "about": {
+        "@id": "fixtures/in/martin-okafor-st-columba-exome-2024.json"
+      },
+      "dateCreated": "2026-10-13",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -3707,6 +4245,45 @@
       "description": "The facts of meridian.ttl with no server base URL. Made up here on 2026-09-27: no server was fetched."
     },
     {
+      "@id": "fixtures/facts/example-org.ttl",
+      "@type": "File",
+      "name": "Facts supplied with a document from the example server",
+      "encodingFormat": "text/turtle",
+      "contentSize": "554",
+      "sha256": "3e07bda8b96894d00d39f6fa876c5416522ac8b557a870f02852c8c3649779d1",
+      "dateCreated": "2026-10-13",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The server, the retrieval and the import, supplied with the Genomics Reporting IG's cgexample Bundle, whose fullUrls name its resources on http://example.org/fhir. Made up here on 2026-10-13: no server was fetched."
+    },
+    {
+      "@id": "fixtures/facts/martin-okafor-harbourline.ttl",
+      "@type": "File",
+      "name": "Facts supplied with Martin Okafor's panel report",
+      "encodingFormat": "text/turtle",
+      "contentSize": "697",
+      "sha256": "19f793ac6f8b7bc2b547a73715570fbe8b469a9f1dc3d740f51f1c31e407dea5",
+      "dateCreated": "2026-10-13",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The author, the retrieval and the import of a document from no known server: Harbourline Genetics' report, retrieved the day after it was issued. Made up here on 2026-10-13: Harbourline Genetics and its report are invented."
+    },
+    {
+      "@id": "fixtures/facts/martin-okafor-st-columba.ttl",
+      "@type": "File",
+      "name": "Facts supplied with Martin Okafor's hospital export",
+      "encodingFormat": "text/turtle",
+      "contentSize": "698",
+      "sha256": "9572b32169c69ee2ea09282ccb04bf66ba9a5704e790f0d17347d58dc08da3cf",
+      "dateCreated": "2026-10-13",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The author, the retrieval and the import of a document from no known server: St Columba's Hospital's export, retrieved the day after the exome was issued. Made up here on 2026-10-13: St Columba's Hospital and its export are invented."
+    },
+    {
       "@id": "fixtures/facts/allergyintolerance-alg-pcn-1.ttl",
       "@type": "File",
       "name": "Facts supplied with AllergyIntolerance alg-pcn-1",
@@ -3976,6 +4553,16 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "The general clinical FHIR fixtures the copied inputs are taken from, and identity-expectations.json, the relations between them the test manifest asserts where both inputs are of a mapped type. A contextual entity: the source of the fixtures, not part of the crate. The commit is on the fork, jayostis/conformance, and is not an ancestor of the-cascade-protocol/conformance main, so this entity and the inputs' links name the fork."
+    },
+    {
+      "@id": "https://github.com/jayostis/conformance/tree/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/genomics/fhir-genomics-ig",
+      "@type": "CreativeWork",
+      "name": "conformance fixtures/genomics/fhir-genomics-ig at 0ea48bb",
+      "version": "0ea48bb1c044ac9bf8086d456601357135cf79e6",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The Genomics Reporting IG's example Bundles, from which three inputs are copied. A contextual entity: the source of the fixtures, not part of the crate. The commit is on the fork, jayostis/conformance, as the other folder's is."
     },
     {
       "@id": "https://spdx.org/licenses/Apache-2.0",

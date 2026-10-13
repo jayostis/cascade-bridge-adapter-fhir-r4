@@ -51,6 +51,13 @@
     <#medication-request-ndc-forms>
     <#bundle-medication-versioned-reference>
     <#bundle-medication-repeated-id>
+    <#Bundle-bundle-cgexample>
+    <#Bundle-bundle-compound-heterozygote>
+    <#Bundle-bundle-oncology-diagnostic>
+    <#bundle-genomics-variants>
+    <#bundle-genomics-interpretations>
+    <#martin-okafor-harbourline-panel-2022>
+    <#martin-okafor-st-columba-exome-2024>
     <#condition-no-id-differs-only-in-narrative>
     <#condition-no-id-different-structured-content>
     <#allergy-no-id-different-allergen>
@@ -409,6 +416,97 @@
   mf:result [
     bridge:expectedGraph <expected/lab-glucose-fasting.ttl> ;
     bridge:expectedFindings <findings/lab-glucose-fasting.ttl>
+  ] .
+
+<#Bundle-bundle-cgexample> a bridge:IsomorphicConversionTest ;
+  mf:name "Bundle-bundle-cgexample" ;
+  rdfs:comment "The Genomics Reporting IG's own example: a Variant and the Pathogenic Diagnostic Implication derived from it by a relative reference are a variant and an interpretation record, a complex variant is a variant without components, and the haplotype, genotype and therapeutic implications stay lab results." ;
+  mf:action [
+    bridge:input <in/Bundle-bundle-cgexample.input.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/example-org.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/Bundle-bundle-cgexample.ttl> ;
+    bridge:expectedFindings <findings/Bundle-bundle-cgexample.ttl>
+  ] .
+
+<#Bundle-bundle-compound-heterozygote> a bridge:IsomorphicConversionTest ;
+  mf:name "Bundle-bundle-compound-heterozygote" ;
+  rdfs:comment "Two Variants given by c.HGVS alone, with no gene and no ClinVar ID, in a Bundle whose resources have ids and no server is known: two variant records named from the document and their places." ;
+  mf:action [
+    bridge:input <in/Bundle-bundle-compound-heterozygote.input.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/no-server.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/Bundle-bundle-compound-heterozygote.ttl> ;
+    bridge:expectedFindings <findings/Bundle-bundle-compound-heterozygote.ttl>
+  ] .
+
+<#Bundle-bundle-oncology-diagnostic> a bridge:IsomorphicConversionTest ;
+  mf:name "Bundle-bundle-oncology-diagnostic" ;
+  rdfs:comment "A Variant with a ClinVar ID and a gene and only a genomic HGVS expression, and a Diagnostic Implication derived from it by a urn:uuid fullUrl, dated by its effective time alone." ;
+  mf:action [
+    bridge:input <in/Bundle-bundle-oncology-diagnostic.input.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/Bundle-bundle-oncology-diagnostic.ttl> ;
+    bridge:expectedFindings <findings/Bundle-bundle-oncology-diagnostic.ttl>
+  ] .
+
+<#bundle-genomics-variants> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-genomics-variants" ;
+  rdfs:comment "Variants one for each way an HGVS expression is or is not carried in its normal form, and one for each way a ClinVar code, a gene or a value is not carried, and a valid ClinVar ID or gene beside one that is not carried: a variant without a value is a record, an Absent one is none." ;
+  mf:action [
+    bridge:input <in/bundle-genomics-variants.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/no-server.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-genomics-variants.ttl> ;
+    bridge:expectedFindings <findings/bundle-genomics-variants.ttl>
+  ] .
+
+<#bundle-genomics-interpretations> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-genomics-interpretations" ;
+  rdfs:comment "Diagnostic Implications: a classification, a day written in the source's own offset, a link to the one variant, and each way an interpretation is a record without one of them: a text-only classification, two variants, a genotype, no derivedFrom, a derivedFrom with no reference, a variant outside the document, two different classifications; a variant beside a reference that is not read keeps its link." ;
+  mf:action [
+    bridge:input <in/bundle-genomics-interpretations.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/no-server.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-genomics-interpretations.ttl> ;
+    bridge:expectedFindings <findings/bundle-genomics-interpretations.ttl>
+  ] .
+
+<#martin-okafor-harbourline-panel-2022> a bridge:IsomorphicConversionTest ;
+  mf:name "martin-okafor-harbourline-panel-2022" ;
+  rdfs:comment "Martin Okafor's hereditary cancer panel report of 2022-06-14: three variants and an interpretation of each, the first variant written with its gene in parentheses, which the normal form leaves out." ;
+  mf:action [
+    bridge:input <in/martin-okafor-harbourline-panel-2022.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/martin-okafor-harbourline.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/martin-okafor-harbourline-panel-2022.ttl> ;
+    bridge:expectedFindings <findings/martin-okafor-harbourline-panel-2022.ttl>
+  ] .
+
+<#martin-okafor-st-columba-exome-2024> a bridge:IsomorphicConversionTest ;
+  mf:name "martin-okafor-st-columba-exome-2024" ;
+  rdfs:comment "Martin Okafor's exome of 2024-03-21 with his conditions, medications and a procedure: three variants and an interpretation of each." ;
+  mf:action [
+    bridge:input <in/martin-okafor-st-columba-exome-2024.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/martin-okafor-st-columba.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/martin-okafor-st-columba-exome-2024.ttl> ;
+    bridge:expectedFindings <findings/martin-okafor-st-columba-exome-2024.ttl>
   ] .
 
 <#condition-no-id-differs-only-in-narrative> a bridge:IdentityRelationTest ;

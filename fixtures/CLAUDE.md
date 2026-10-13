@@ -12,9 +12,9 @@ change updates the crate's digest, size and description in the same commit.
 
 An input is one of two kinds, and the crate says which:
 
-- **Copied**: from `../../conformance`, `fixtures/clinical-fhir/` at the commit
-  the crate's `isBasedOn` names, under the same file name, byte for byte, with
-  a `sameAs` to its blob.
+- **Copied**: from `../../conformance`, `fixtures/clinical-fhir/` or
+  `fixtures/genomics/fhir-genomics-ig/` at the commit the crate's `isBasedOn`
+  names, under the same file name, byte for byte, with a `sameAs` to its blob.
 - **Authored here**: written for a case the conformance corpus does not hold,
   with the date it was written. An authored input is edited only by replacing
   it, as a new file under a new name.
@@ -36,5 +36,5 @@ findings under other blank node labels and in another order
   files as CRLF, and "fixing" that would break the recorded digests.
 
   ```
-  git -C ../../conformance show <commit>:fixtures/clinical-fhir/X.json | cmp - in/X.json
+  git -C ../../conformance show <commit>:fixtures/<folder>/X.json | cmp - in/X.json
   ```
