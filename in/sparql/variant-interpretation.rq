@@ -1,0 +1,172 @@
+PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
+PREFIX skos:     <http://www.w3.org/2004/02/skos/core#>
+PREFIX fx:       <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:      <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX genomics: <https://ns.cascadeprotocol.org/genomics/v1#>
+PREFIX clinical: <https://ns.cascadeprotocol.org/clinical/v1#>
+PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+
+# Which Observation is a diagnostic implication is
+# variant-interpretation-table.rq's to say.
+#
+# The classification is the LOINC answer of the classification component, mapped
+# by vocab/fhir-acmg-classifications.ttl, and is carried only where the
+# interpretation states one classification. The day is that of the source's own
+# clock, as written: issued, else the effective time, and none where the time
+# has less than a day's precision.
+#
+# The variant is the record of the one Observation derivedFrom names, named as
+# record.rq names a record from the reference, in this document or not. A
+# reference to a record of this document must be to a variant; the
+# interpretation is a record without a link, and variant-interpretation-
+# findings.rq reports it, where derivedFrom names no variant, more than one, or
+# anything else beside one. A reference that is not to an Observation, and a
+# reference to a contained resource, are not read.
+
+CONSTRUCT {
+  ?version genomics:acmgClassification ?classification ;
+    genomics:variantInterpreted ?variantRecord ;
+    genomics:interpretedDate ?interpretedDate ;
+    clinical:status ?status .
+}
+WHERE {
+  FILTER NOT EXISTS {
+    bridge:thisDocument bridge:sourceFormatVersion ?stated .
+    FILTER (!STRSTARTS(?stated, "4.0."))
+  }
+  bridge:thisRecord bridge:selector ?recordSelector .
+  ?root a fx:root .
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  { BIND ("" AS ?containedStep) }
+  UNION
+  {
+    ?top xyz:contained ?containedList .
+    ?containedList ?containedSlot ?contained .
+    ?contained xyz:resourceType ?containedType .
+    BIND (CONCAT("/contained/", STR(xsd:integer(STRAFTER(STR(?containedSlot), "#_")) - 1)) AS ?containedStep)
+  }
+  BIND (COALESCE(?contained, ?top) AS ?resource)
+  ?resource xyz:resourceType "Observation" .
+  BIND (CONCAT(?recordSelector, ?topStep, ?containedStep) AS ?resourcePointer)
+  ?interpretation fhirr4:interpretationAt ?resourcePointer .
+  BIND (IRI(CONCAT("urn:cascade:version-at:", SHA256(?resourcePointer))) AS ?version)
+
+  OPTIONAL {
+    {
+      SELECT ?resource (COUNT(DISTINCT ?mapped) AS ?classDistinct) (MIN(?mapped) AS ?classSole)
+      WHERE {
+        ?resource xyz:component ?classComponents .
+        ?classComponents ?classComponentSlot ?classComponent .
+        ?classComponent xyz:code ?classConcept . ?classConcept xyz:coding ?classCodings .
+        ?classCodings ?classCodingSlot ?classCoding .
+        ?classCoding xyz:system "http://loinc.org" ;
+          xyz:code "53037-8" .
+        ?classComponent xyz:valueCodeableConcept ?classValue . ?classValue xyz:coding ?classValueCodings .
+        ?classValueCodings ?classValueSlot ?classValueCoding .
+        ?classValueCoding xyz:system "http://loinc.org" ;
+          xyz:code ?classWritten .
+        BIND (LCASE(REPLACE(STR(?classWritten), "^\\s+|\\s+$", "")) AS ?classKey)
+        ?answer skos:inScheme fhirr4:acmgClassifications ;
+          skos:notation ?classKey ;
+          skos:exactMatch ?mapped .
+      }
+      GROUP BY ?resource
+    }
+    FILTER (?classDistinct = 1)
+    BIND (?classSole AS ?classification)
+  }
+
+  OPTIONAL { ?resource xyz:issued ?issued }
+  OPTIONAL { ?resource xyz:effectiveDateTime ?effective }
+  OPTIONAL { ?resource xyz:effectivePeriod ?period . ?period xyz:start ?periodStart }
+  OPTIONAL { ?resource xyz:effectiveInstant ?instant }
+  BIND (COALESCE(?issued, ?effective, ?periodStart, ?instant) AS ?interpreted)
+  BIND (IF(REGEX(?interpreted, "^[0-9]{4}-[0-9]{2}-[0-9]{2}(T|$)"),
+           STRDT(SUBSTR(?interpreted, 1, 10), xsd:date), 1/0) AS ?interpretedDate)
+
+  OPTIONAL {
+    {
+      SELECT ?resource
+             (COUNT(DISTINCT ?variantInput) AS ?variantTargets)
+             (COUNT(DISTINCT ?otherTarget) AS ?otherTargets)
+             (MIN(?variantInput) AS ?soleInput)
+      WHERE {
+        bridge:thisDocument bridge:sha256 ?document .
+        OPTIONAL { bridge:thisDocument bridge:serverBaseUrl ?server }
+        ?resource xyz:derivedFrom ?derivedFrom .
+        ?derivedFrom ?derivedSlot ?derivedItem .
+        ?derivedItem xyz:reference ?reference .
+
+        OPTIONAL {
+          ?held fhirr4:fullUrl ?reference ;
+            fhirr4:heldAt ?heldSelector ;
+            fhirr4:resourceType ?heldType .
+          FILTER (STRSTARTS(?reference, "urn:uuid:"))
+          OPTIONAL { ?held fhirr4:resourceId ?heldId }
+        }
+        BIND (STRSTARTS(?reference, "urn:uuid:") AS ?isUrn)
+        BIND (BOUND(?heldSelector) && EXISTS {
+                ?otherHeld fhirr4:fullUrl ?reference ;
+                  fhirr4:heldAt ?otherHeldSelector .
+                FILTER (?otherHeldSelector != ?heldSelector)
+              } AS ?ambiguous)
+        BIND (BOUND(?heldSelector) && ?heldType = "Observation" && EXISTS {
+                ?heldVariant fhirr4:variantAt ?heldPointer .
+                FILTER (?heldPointer = ?heldSelector || ?heldPointer = CONCAT(?heldSelector, "/resource"))
+              } AS ?heldIsVariant)
+        BIND (IF(BOUND(?heldId),
+                 IF(BOUND(?server) && NOT EXISTS {
+                      ?sameId fhirr4:resourceType ?heldType ;
+                        fhirr4:resourceId ?heldId ;
+                        fhirr4:heldAt ?sameIdSelector .
+                      FILTER (?sameIdSelector != ?heldSelector)
+                    }, CONCAT(?server, "|", ?heldType, "|", ?heldId), CONCAT(?document, "|", ?heldSelector)),
+                 IF(?ambiguous, CONCAT(?document, "|", ?heldSelector), ?reference)) AS ?heldInput)
+
+        BIND (REPLACE(?reference, "/_history/[A-Za-z0-9.-]{1,64}$", "") AS ?bare)
+        BIND (REGEX(?bare, "^Observation/[A-Za-z0-9.-]{1,64}$") AS ?isRelative)
+        BIND (REGEX(?bare, "^[A-Za-z][A-Za-z0-9+.-]*://[^/]+(/.*)?/Observation/[A-Za-z0-9.-]{1,64}$") AS ?isAbsolute)
+        BIND (IF(?isRelative,
+                 CONCAT(?server, "|Observation|", STRAFTER(?bare, "Observation/")),
+                 IF(?isAbsolute,
+                    CONCAT(LCASE(REPLACE(?bare, "^([^:]+://[^/]+).*$", "$1")),
+                           REPLACE(REPLACE(?bare, "^[^:]+://[^/]+", ""), "/+Observation/[^/]+$", ""),
+                           "|Observation|", REPLACE(?bare, "^.*/Observation/", "")),
+                    1/0)) AS ?referenceInput)
+        BIND (BOUND(?referenceInput) && EXISTS {
+                ?known fhirr4:resourceType "Observation" ;
+                  fhirr4:resourceId ?knownId ;
+                  fhirr4:heldAt ?knownSelector .
+                FILTER (BOUND(?server) && ?referenceInput = CONCAT(?server, "|Observation|", ?knownId))
+              } AS ?inDocument)
+        BIND (?inDocument && EXISTS {
+                ?known fhirr4:resourceType "Observation" ;
+                  fhirr4:resourceId ?knownId ;
+                  fhirr4:heldAt ?knownSelector .
+                FILTER (?referenceInput = CONCAT(?server, "|Observation|", ?knownId))
+                ?knownVariant fhirr4:variantAt ?knownPointer .
+                FILTER (?knownPointer = ?knownSelector || ?knownPointer = CONCAT(?knownSelector, "/resource"))
+              } AS ?knownIsVariant)
+
+        BIND (IF(?isUrn,
+                 IF(!BOUND(?heldSelector), ?reference,
+                    IF(!?ambiguous && ?heldIsVariant, ?heldInput, 1/0)),
+                 IF(BOUND(?referenceInput) && (!?inDocument || ?knownIsVariant), ?referenceInput, 1/0)) AS ?variantInput)
+        BIND (IF(!BOUND(?variantInput) && (?isUrn || ?isRelative || ?isAbsolute), ?reference, 1/0) AS ?otherTarget)
+      }
+      GROUP BY ?resource
+    }
+    FILTER (?variantTargets = 1 && ?otherTargets = 0)
+    BIND (SHA256(CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|", ?soleInput)) AS ?variantHash)
+    BIND (REPLACE(REPLACE(REPLACE(REPLACE(SUBSTR(?variantHash, 17, 1),
+            "[048c]", "8"), "[159d]", "9"), "[26ae]", "a"), "[37bf]", "b") AS ?variantVariant)
+    BIND (IRI(CONCAT("urn:uuid:", SUBSTR(?variantHash, 1, 8), "-", SUBSTR(?variantHash, 9, 4), "-8",
+                     SUBSTR(?variantHash, 14, 3), "-", ?variantVariant, SUBSTR(?variantHash, 18, 3), "-",
+                     SUBSTR(?variantHash, 21, 12))) AS ?variantRecord)
+  }
+
+  OPTIONAL { ?resource xyz:status ?status }
+}

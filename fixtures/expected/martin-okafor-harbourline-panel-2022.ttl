@@ -1,0 +1,143 @@
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov:     <http://www.w3.org/ns/prov#> .
+@prefix pav:      <http://purl.org/pav/> .
+@prefix bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rec:      <https://ns.cascadeprotocol.org/records/v1-draft#> .
+@prefix health:   <https://ns.cascadeprotocol.org/health/v1#> .
+@prefix clinical: <https://ns.cascadeprotocol.org/clinical/v1#> .
+@prefix cascade:  <https://ns.cascadeprotocol.org/core/v1#> .
+@prefix genomics: <https://ns.cascadeprotocol.org/genomics/v1#> .
+@prefix foaf:     <http://xmlns.com/foaf/0.1/> .
+
+<urn:uuid:b21d6039-06b7-877f-a351-cdb8a2412ee0>
+  a cascade:PatientProfile ;
+  rec:sourceUrl <urn:uuid:0a8c1f4e-6d27-4b93-8c15-3e90a7d52001> .
+
+<ni:///sha-256;tDZGJ67k86zWBWAvU4ipN02dUCNlPRXJV_WCM4cFQ6E>
+  prov:specializationOf <urn:uuid:b21d6039-06b7-877f-a351-cdb8a2412ee0> ;
+  foaf:familyName "Okafor" ;
+  foaf:givenName "Martin" ;
+  cascade:dateOfBirth "1979-02-08"^^xsd:date .
+
+[] bridge:arrivedAs <ni:///sha-256;tDZGJ67k86zWBWAvU4ipN02dUCNlPRXJV_WCM4cFQ6E> ;
+  bridge:selector "/entry/0" ;
+  prov:wasDerivedFrom <ni:///sha-256;W_on3el0zhZ2IBVUG0eBAg5MANO5yE12wZrbPgESPjA> ;
+  prov:wasGeneratedBy _:import .
+
+<urn:uuid:5f2ff240-5d0e-8484-82a8-35a333082cbf>
+  a genomics:Variant ;
+  rec:sourceUrl <urn:uuid:0a8c1f4e-6d27-4b93-8c15-3e90a7d52011> .
+
+<ni:///sha-256;Pafl9PjcRG_4lYHL46smqrgNRTrBQmdEvtjp6j_i-Nk>
+  prov:specializationOf <urn:uuid:5f2ff240-5d0e-8484-82a8-35a333082cbf> ;
+  genomics:geneSymbol "MLH1" ;
+  genomics:hgvsCDot "NM_000249.3:c.2042C>T" ;
+  clinical:status "final" ;
+  rec:patient <urn:uuid:b21d6039-06b7-877f-a351-cdb8a2412ee0> .
+
+[] bridge:arrivedAs <ni:///sha-256;Pafl9PjcRG_4lYHL46smqrgNRTrBQmdEvtjp6j_i-Nk> ;
+  bridge:selector "/entry/2" ;
+  prov:wasDerivedFrom <ni:///sha-256;W_on3el0zhZ2IBVUG0eBAg5MANO5yE12wZrbPgESPjA> ;
+  prov:wasGeneratedBy _:import .
+
+<urn:uuid:af509a96-999b-8492-9df9-ea3ae7a6a0cb>
+  a genomics:VariantInterpretation ;
+  rec:sourceUrl <urn:uuid:0a8c1f4e-6d27-4b93-8c15-3e90a7d52021> .
+
+<ni:///sha-256;xAanjtNoZY2wRR5yEeuk3MkrOhowHVippqqlF-qrciU>
+  prov:specializationOf <urn:uuid:af509a96-999b-8492-9df9-ea3ae7a6a0cb> ;
+  genomics:acmgClassification genomics:VUS ;
+  genomics:variantInterpreted <urn:uuid:5f2ff240-5d0e-8484-82a8-35a333082cbf> ;
+  genomics:interpretedDate "2022-06-14"^^xsd:date ;
+  clinical:status "final" ;
+  rec:patient <urn:uuid:b21d6039-06b7-877f-a351-cdb8a2412ee0> .
+
+[] bridge:arrivedAs <ni:///sha-256;xAanjtNoZY2wRR5yEeuk3MkrOhowHVippqqlF-qrciU> ;
+  bridge:selector "/entry/3" ;
+  prov:wasDerivedFrom <ni:///sha-256;W_on3el0zhZ2IBVUG0eBAg5MANO5yE12wZrbPgESPjA> ;
+  prov:wasGeneratedBy _:import .
+
+<urn:uuid:1c6e6513-75e4-8318-9882-8fa3a6d1eebf>
+  a genomics:Variant ;
+  rec:sourceUrl <urn:uuid:0a8c1f4e-6d27-4b93-8c15-3e90a7d52012> .
+
+<ni:///sha-256;zgnV1uXFQIYenUohcwsj-2ZRwn14FQeclg5pvDEtU78>
+  prov:specializationOf <urn:uuid:1c6e6513-75e4-8318-9882-8fa3a6d1eebf> ;
+  genomics:clinvarVariationId "8931" ;
+  genomics:geneSymbol "MSH6" ;
+  genomics:hgvsCDot "NM_000179.3:c.2633T>C" ;
+  clinical:status "final" ;
+  rec:patient <urn:uuid:b21d6039-06b7-877f-a351-cdb8a2412ee0> .
+
+[] bridge:arrivedAs <ni:///sha-256;zgnV1uXFQIYenUohcwsj-2ZRwn14FQeclg5pvDEtU78> ;
+  bridge:selector "/entry/4" ;
+  prov:wasDerivedFrom <ni:///sha-256;W_on3el0zhZ2IBVUG0eBAg5MANO5yE12wZrbPgESPjA> ;
+  prov:wasGeneratedBy _:import .
+
+<urn:uuid:6c9158b1-1d46-8ef4-83a6-ed90e29fcee1>
+  a genomics:VariantInterpretation ;
+  rec:sourceUrl <urn:uuid:0a8c1f4e-6d27-4b93-8c15-3e90a7d52023> .
+
+<ni:///sha-256;GMHrBQnb6snv1wwfAWBAn9hiQEQtvP60KTKEOOoG8SM>
+  prov:specializationOf <urn:uuid:6c9158b1-1d46-8ef4-83a6-ed90e29fcee1> ;
+  genomics:acmgClassification genomics:Benign ;
+  genomics:variantInterpreted <urn:uuid:1c6e6513-75e4-8318-9882-8fa3a6d1eebf> ;
+  genomics:interpretedDate "2022-06-14"^^xsd:date ;
+  clinical:status "final" ;
+  rec:patient <urn:uuid:b21d6039-06b7-877f-a351-cdb8a2412ee0> .
+
+[] bridge:arrivedAs <ni:///sha-256;GMHrBQnb6snv1wwfAWBAn9hiQEQtvP60KTKEOOoG8SM> ;
+  bridge:selector "/entry/5" ;
+  prov:wasDerivedFrom <ni:///sha-256;W_on3el0zhZ2IBVUG0eBAg5MANO5yE12wZrbPgESPjA> ;
+  prov:wasGeneratedBy _:import .
+
+<urn:uuid:576b5cae-fb19-897f-92a2-4a703e73544b>
+  a genomics:Variant ;
+  rec:sourceUrl <urn:uuid:0a8c1f4e-6d27-4b93-8c15-3e90a7d52015> .
+
+<ni:///sha-256;PpYv4nHh4dQWnZTTevHGiJw-TE1yQMJytw0fRbqfEsg>
+  prov:specializationOf <urn:uuid:576b5cae-fb19-897f-92a2-4a703e73544b> ;
+  genomics:geneSymbol "MLH1" ;
+  genomics:hgvsCDot "NM_001258271.2:c.1111A>T" ;
+  clinical:status "final" ;
+  rec:patient <urn:uuid:b21d6039-06b7-877f-a351-cdb8a2412ee0> .
+
+[] bridge:arrivedAs <ni:///sha-256;PpYv4nHh4dQWnZTTevHGiJw-TE1yQMJytw0fRbqfEsg> ;
+  bridge:selector "/entry/6" ;
+  prov:wasDerivedFrom <ni:///sha-256;W_on3el0zhZ2IBVUG0eBAg5MANO5yE12wZrbPgESPjA> ;
+  prov:wasGeneratedBy _:import .
+
+<urn:uuid:19f13aea-8cb1-858e-aa77-54cc355eccfa>
+  a genomics:VariantInterpretation ;
+  rec:sourceUrl <urn:uuid:0a8c1f4e-6d27-4b93-8c15-3e90a7d52026> .
+
+<ni:///sha-256;FS2xsDGQYak_j4gICr3WwMA6SDyiwQGrGxD9B4uoAz8>
+  prov:specializationOf <urn:uuid:19f13aea-8cb1-858e-aa77-54cc355eccfa> ;
+  genomics:acmgClassification genomics:VUS ;
+  genomics:variantInterpreted <urn:uuid:576b5cae-fb19-897f-92a2-4a703e73544b> ;
+  genomics:interpretedDate "2022-06-14"^^xsd:date ;
+  clinical:status "final" ;
+  rec:patient <urn:uuid:b21d6039-06b7-877f-a351-cdb8a2412ee0> .
+
+[] bridge:arrivedAs <ni:///sha-256;FS2xsDGQYak_j4gICr3WwMA6SDyiwQGrGxD9B4uoAz8> ;
+  bridge:selector "/entry/7" ;
+  prov:wasDerivedFrom <ni:///sha-256;W_on3el0zhZ2IBVUG0eBAg5MANO5yE12wZrbPgESPjA> ;
+  prov:wasGeneratedBy _:import .
+
+<ni:///sha-256;W_on3el0zhZ2IBVUG0eBAg5MANO5yE12wZrbPgESPjA>
+  a prov:Entity ;
+  pav:retrievedOn "2022-06-15T09:00:00Z"^^xsd:dateTime ;
+  prov:qualifiedAttribution
+    [ prov:agent [ rdfs:label "Harbourline Genetics" ] ; prov:hadRole rec:author ] ;
+  bridge:sourceFormatVersion "4.0.1" .
+
+_:import
+  a prov:Activity ;
+  prov:used <ni:///sha-256;W_on3el0zhZ2IBVUG0eBAg5MANO5yE12wZrbPgESPjA> ;
+  rdfs:label "Harbourline Genetics panel report" ;
+  prov:startedAtTime "2022-06-15T09:00:04Z"^^xsd:dateTime ;
+  prov:qualifiedAssociation [
+    prov:hadPlan [ a prov:Plan ; rdfs:label "fhir-r4" ; pav:version "0.1.0" ] ;
+    prov:agent [ ]
+  ] .

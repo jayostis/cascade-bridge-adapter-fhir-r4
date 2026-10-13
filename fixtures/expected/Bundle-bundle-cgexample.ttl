@@ -1,0 +1,215 @@
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov:     <http://www.w3.org/ns/prov#> .
+@prefix pav:      <http://purl.org/pav/> .
+@prefix bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rec:      <https://ns.cascadeprotocol.org/records/v1-draft#> .
+@prefix health:   <https://ns.cascadeprotocol.org/health/v1#> .
+@prefix clinical: <https://ns.cascadeprotocol.org/clinical/v1#> .
+@prefix cascade:  <https://ns.cascadeprotocol.org/core/v1#> .
+@prefix genomics: <https://ns.cascadeprotocol.org/genomics/v1#> .
+@prefix foaf:     <http://xmlns.com/foaf/0.1/> .
+
+<urn:uuid:c97321d3-1c4b-8f8c-9f2b-c8af7d90c0b7>
+  a cascade:PatientProfile ;
+  cascade:sourceRecordId "ExamplePatient" ;
+  rec:sourceUrl <http://example.org/fhir/Patient/ExamplePatient> .
+
+<ni:///sha-256;Vkq9VEuFc2C6PIsV26Ag6f6FXfnVKtoI8XxfxbG73j0>
+  prov:specializationOf <urn:uuid:c97321d3-1c4b-8f8c-9f2b-c8af7d90c0b7> .
+
+[] bridge:arrivedAs <ni:///sha-256;Vkq9VEuFc2C6PIsV26Ag6f6FXfnVKtoI8XxfxbG73j0> ;
+  bridge:selector "/entry/1" ;
+  prov:wasDerivedFrom <ni:///sha-256;uOCsRbuj3LdZzmRqIAmqgcrCuf0dnH_qp3oZKaOqFDo> ;
+  prov:wasGeneratedBy _:import .
+
+<urn:uuid:84df07f2-69fc-8e9d-8719-48dc43d887c8>
+  a genomics:Variant ;
+  rec:sourceUrl <http://example.org/fhir/Observation/discrete-variant> .
+
+<ni:///sha-256;YJgX4BQEWGB1iqbBoHV0iRyAJDz20jkt9LOMbIF7FYs>
+  prov:specializationOf <urn:uuid:84df07f2-69fc-8e9d-8719-48dc43d887c8> ;
+  genomics:clinvarVariationId "30880" ;
+  genomics:geneSymbol "ACAD9" ;
+  genomics:hgvsCDot "NM_014049.4:c.1249C>T" ;
+  clinical:status "final" ;
+  rec:patient <urn:uuid:c97321d3-1c4b-8f8c-9f2b-c8af7d90c0b7> .
+
+[] bridge:arrivedAs <ni:///sha-256;YJgX4BQEWGB1iqbBoHV0iRyAJDz20jkt9LOMbIF7FYs> ;
+  bridge:selector "/entry/5" ;
+  prov:wasDerivedFrom <ni:///sha-256;uOCsRbuj3LdZzmRqIAmqgcrCuf0dnH_qp3oZKaOqFDo> ;
+  prov:wasGeneratedBy _:import .
+
+<urn:uuid:ec5d0ae3-f52a-881f-b9a3-3c4fdcfec76a>
+  a genomics:Variant ;
+  rec:sourceUrl <http://example.org/fhir/Observation/complex-variant> .
+
+<ni:///sha-256;OSSNTM86TSaTIuqyhbpxpbkKFn4mUWnRrZG3TBMMGNY>
+  prov:specializationOf <urn:uuid:ec5d0ae3-f52a-881f-b9a3-3c4fdcfec76a> ;
+  clinical:status "final" ;
+  rec:patient <urn:uuid:c97321d3-1c4b-8f8c-9f2b-c8af7d90c0b7> .
+
+[] bridge:arrivedAs <ni:///sha-256;OSSNTM86TSaTIuqyhbpxpbkKFn4mUWnRrZG3TBMMGNY> ;
+  bridge:selector "/entry/7" ;
+  prov:wasDerivedFrom <ni:///sha-256;uOCsRbuj3LdZzmRqIAmqgcrCuf0dnH_qp3oZKaOqFDo> ;
+  prov:wasGeneratedBy _:import .
+
+<urn:uuid:c5fcf540-3648-82ec-bbc2-7047830dfe82>
+  a genomics:Variant ;
+  rec:sourceUrl <http://example.org/fhir/Observation/complex-component-D> .
+
+<ni:///sha-256;lX7kplEmiKHNd6wSC_v85AafX_yYnk26sFjqb1jxihE>
+  prov:specializationOf <urn:uuid:c5fcf540-3648-82ec-bbc2-7047830dfe82> ;
+  genomics:clinvarVariationId "31934" ;
+  genomics:hgvsCDot "NM_000106.5:c.886C>T" ;
+  clinical:status "final" ;
+  rec:patient <urn:uuid:c97321d3-1c4b-8f8c-9f2b-c8af7d90c0b7> .
+
+[] bridge:arrivedAs <ni:///sha-256;lX7kplEmiKHNd6wSC_v85AafX_yYnk26sFjqb1jxihE> ;
+  bridge:selector "/entry/9" ;
+  prov:wasDerivedFrom <ni:///sha-256;uOCsRbuj3LdZzmRqIAmqgcrCuf0dnH_qp3oZKaOqFDo> ;
+  prov:wasGeneratedBy _:import .
+
+<urn:uuid:a11bafb4-36a4-8b14-b0d9-9b29b438c936>
+  a genomics:Variant ;
+  rec:sourceUrl <http://example.org/fhir/Observation/complex-component-E> .
+
+<ni:///sha-256;El0t1qIHx-X-tl8V6hiNsTLohaNmynBzBW58vOxDxOk>
+  prov:specializationOf <urn:uuid:a11bafb4-36a4-8b14-b0d9-9b29b438c936> ;
+  genomics:clinvarVariationId "38486" ;
+  genomics:hgvsCDot "NM_000106.5:c.1457G>C" ;
+  clinical:status "final" ;
+  rec:patient <urn:uuid:c97321d3-1c4b-8f8c-9f2b-c8af7d90c0b7> .
+
+[] bridge:arrivedAs <ni:///sha-256;El0t1qIHx-X-tl8V6hiNsTLohaNmynBzBW58vOxDxOk> ;
+  bridge:selector "/entry/10" ;
+  prov:wasDerivedFrom <ni:///sha-256;uOCsRbuj3LdZzmRqIAmqgcrCuf0dnH_qp3oZKaOqFDo> ;
+  prov:wasGeneratedBy _:import .
+
+<urn:uuid:60e991fc-cb13-8f58-a95f-984856695b02>
+  a genomics:VariantInterpretation ;
+  rec:sourceUrl <http://example.org/fhir/Observation/dis-path> .
+
+<ni:///sha-256;f5opEFMTWwZcdT6TkkFAodREJdnnsH14Zj6QlZlApF0>
+  prov:specializationOf <urn:uuid:60e991fc-cb13-8f58-a95f-984856695b02> ;
+  genomics:acmgClassification genomics:Pathogenic ;
+  genomics:variantInterpreted <urn:uuid:84df07f2-69fc-8e9d-8719-48dc43d887c8> ;
+  genomics:interpretedDate "2016-09-06"^^xsd:date ;
+  clinical:status "final" ;
+  rec:patient <urn:uuid:c97321d3-1c4b-8f8c-9f2b-c8af7d90c0b7> .
+
+[] bridge:arrivedAs <ni:///sha-256;f5opEFMTWwZcdT6TkkFAodREJdnnsH14Zj6QlZlApF0> ;
+  bridge:selector "/entry/6" ;
+  prov:wasDerivedFrom <ni:///sha-256;uOCsRbuj3LdZzmRqIAmqgcrCuf0dnH_qp3oZKaOqFDo> ;
+  prov:wasGeneratedBy _:import .
+
+<urn:uuid:c2d01851-f5db-8c62-80bd-bcf860b4f1c0>
+  a genomics:VariantInterpretation ;
+  rec:sourceUrl <http://example.org/fhir/Observation/complex-dis-path> .
+
+<ni:///sha-256;z0q2lwel12qdpGMxJ9IGLoRu0Ff7Jvuzkfo20Ho-RTA>
+  prov:specializationOf <urn:uuid:c2d01851-f5db-8c62-80bd-bcf860b4f1c0> ;
+  genomics:acmgClassification genomics:Pathogenic ;
+  genomics:variantInterpreted <urn:uuid:ec5d0ae3-f52a-881f-b9a3-3c4fdcfec76a> ;
+  genomics:interpretedDate "2016-09-06"^^xsd:date ;
+  clinical:status "final" ;
+  rec:patient <urn:uuid:c97321d3-1c4b-8f8c-9f2b-c8af7d90c0b7> .
+
+[] bridge:arrivedAs <ni:///sha-256;z0q2lwel12qdpGMxJ9IGLoRu0Ff7Jvuzkfo20Ho-RTA> ;
+  bridge:selector "/entry/8" ;
+  prov:wasDerivedFrom <ni:///sha-256;uOCsRbuj3LdZzmRqIAmqgcrCuf0dnH_qp3oZKaOqFDo> ;
+  prov:wasGeneratedBy _:import .
+
+<urn:uuid:9f27c6f9-9913-87ce-8a4e-71b81bf6cb66>
+  a health:LabResultRecord ;
+  health:sourceRecordId "haplotype" ;
+  rec:sourceUrl <http://example.org/fhir/Observation/haplotype> .
+
+<ni:///sha-256;DkHFlZFt4FXIg7_e6sAhO-d5xCZl6ks57ySpqp4INUw>
+  prov:specializationOf <urn:uuid:9f27c6f9-9913-87ce-8a4e-71b81bf6cb66> ;
+  health:testCode <http://loinc.org/rdf/84414-2> ;
+  clinical:status "final" ;
+  rec:patient <urn:uuid:c97321d3-1c4b-8f8c-9f2b-c8af7d90c0b7> .
+
+[] bridge:arrivedAs <ni:///sha-256;DkHFlZFt4FXIg7_e6sAhO-d5xCZl6ks57ySpqp4INUw> ;
+  bridge:selector "/entry/11" ;
+  prov:wasDerivedFrom <ni:///sha-256;uOCsRbuj3LdZzmRqIAmqgcrCuf0dnH_qp3oZKaOqFDo> ;
+  prov:wasGeneratedBy _:import .
+
+<urn:uuid:92e01904-71ce-8a4a-bfc3-63c1e29f75d6>
+  a health:LabResultRecord ;
+  health:sourceRecordId "genotype" ;
+  rec:sourceUrl <http://example.org/fhir/Observation/genotype> .
+
+<ni:///sha-256;N6ModvXX4_Tu8mOZkpFaKs4Kzt9brSTsd8AYbeX5FKM>
+  prov:specializationOf <urn:uuid:92e01904-71ce-8a4a-bfc3-63c1e29f75d6> ;
+  health:testCode <http://loinc.org/rdf/84413-4> ;
+  health:resultValue "CYP2C9 *2/*5" ;
+  clinical:status "final" ;
+  rec:patient <urn:uuid:c97321d3-1c4b-8f8c-9f2b-c8af7d90c0b7> .
+
+[] bridge:arrivedAs <ni:///sha-256;N6ModvXX4_Tu8mOZkpFaKs4Kzt9brSTsd8AYbeX5FKM> ;
+  bridge:selector "/entry/12" ;
+  prov:wasDerivedFrom <ni:///sha-256;uOCsRbuj3LdZzmRqIAmqgcrCuf0dnH_qp3oZKaOqFDo> ;
+  prov:wasGeneratedBy _:import .
+
+<urn:uuid:0e70ff91-2dde-8511-af6d-0be405966ec9>
+  a health:LabResultRecord ;
+  health:sourceRecordId "metab" ;
+  rec:sourceUrl <http://example.org/fhir/Observation/metab> .
+
+<ni:///sha-256;Ub4y4ybgGo0KV1YC4ate75qEGmSbUt4vFs_IOtVOTSA>
+  prov:specializationOf <urn:uuid:0e70ff91-2dde-8511-af6d-0be405966ec9> ;
+  clinical:status "final" ;
+  rec:patient <urn:uuid:c97321d3-1c4b-8f8c-9f2b-c8af7d90c0b7> .
+
+[] bridge:arrivedAs <ni:///sha-256;Ub4y4ybgGo0KV1YC4ate75qEGmSbUt4vFs_IOtVOTSA> ;
+  bridge:selector "/entry/13" ;
+  prov:wasDerivedFrom <ni:///sha-256;uOCsRbuj3LdZzmRqIAmqgcrCuf0dnH_qp3oZKaOqFDo> ;
+  prov:wasGeneratedBy _:import .
+
+<urn:uuid:85d03363-ea0e-8499-9d5f-b501fe41e0ac>
+  a health:LabResultRecord ;
+  health:sourceRecordId "efficacy" ;
+  rec:sourceUrl <http://example.org/fhir/Observation/efficacy> .
+
+<ni:///sha-256;EJxiAxdyZDKGyA5uikb0RwFf0hGm0UVDma5Up_mKbUQ>
+  prov:specializationOf <urn:uuid:85d03363-ea0e-8499-9d5f-b501fe41e0ac> ;
+  clinical:status "final" ;
+  rec:patient <urn:uuid:c97321d3-1c4b-8f8c-9f2b-c8af7d90c0b7> .
+
+[] bridge:arrivedAs <ni:///sha-256;EJxiAxdyZDKGyA5uikb0RwFf0hGm0UVDma5Up_mKbUQ> ;
+  bridge:selector "/entry/14" ;
+  prov:wasDerivedFrom <ni:///sha-256;uOCsRbuj3LdZzmRqIAmqgcrCuf0dnH_qp3oZKaOqFDo> ;
+  prov:wasGeneratedBy _:import .
+
+<urn:uuid:867bbc96-5f53-8873-a31e-325eedc5570e>
+  a health:LabResultRecord ;
+  health:sourceRecordId "highrisk" ;
+  rec:sourceUrl <http://example.org/fhir/Observation/highrisk> .
+
+<ni:///sha-256;QAS2MdrfR8-1ntV9d0xbwv38qHyig0jeaw1VLWFe6kQ>
+  prov:specializationOf <urn:uuid:867bbc96-5f53-8873-a31e-325eedc5570e> ;
+  clinical:status "final" ;
+  rec:patient <urn:uuid:c97321d3-1c4b-8f8c-9f2b-c8af7d90c0b7> .
+
+[] bridge:arrivedAs <ni:///sha-256;QAS2MdrfR8-1ntV9d0xbwv38qHyig0jeaw1VLWFe6kQ> ;
+  bridge:selector "/entry/15" ;
+  prov:wasDerivedFrom <ni:///sha-256;uOCsRbuj3LdZzmRqIAmqgcrCuf0dnH_qp3oZKaOqFDo> ;
+  prov:wasGeneratedBy _:import .
+
+<ni:///sha-256;uOCsRbuj3LdZzmRqIAmqgcrCuf0dnH_qp3oZKaOqFDo>
+  a prov:Entity ;
+  bridge:serverBaseUrl "http://example.org/fhir" ;
+  pav:retrievedOn "2026-10-13T09:00:00Z"^^xsd:dateTime ;
+  bridge:sourceFormatVersion "4.0.1" .
+
+_:import
+  a prov:Activity ;
+  prov:used <ni:///sha-256;uOCsRbuj3LdZzmRqIAmqgcrCuf0dnH_qp3oZKaOqFDo> ;
+  rdfs:label "Example server export" ;
+  prov:startedAtTime "2026-10-13T09:00:04Z"^^xsd:dateTime ;
+  prov:qualifiedAssociation [
+    prov:hadPlan [ a prov:Plan ; rdfs:label "fhir-r4" ; pav:version "0.1.0" ] ;
+    prov:agent [ ]
+  ] .

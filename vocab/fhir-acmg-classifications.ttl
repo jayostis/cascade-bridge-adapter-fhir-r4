@@ -1,0 +1,36 @@
+@prefix skos:     <http://www.w3.org/2004/02/skos/core#> .
+@prefix genomics: <https://ns.cascadeprotocol.org/genomics/v1#> .
+@prefix fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#> .
+
+fhirr4:acmgClassifications a skos:ConceptScheme ;
+  skos:prefLabel "LOINC answers of a diagnostic implication's classification to ACMG/AMP classifications"@en .
+
+fhirr4:acmgPathogenic a skos:Concept ;
+  skos:inScheme fhirr4:acmgClassifications ;
+  skos:notation "la6668-3" ;
+  skos:prefLabel "Pathogenic"@en ;
+  skos:exactMatch genomics:Pathogenic .
+
+fhirr4:acmgLikelyPathogenic a skos:Concept ;
+  skos:inScheme fhirr4:acmgClassifications ;
+  skos:notation "la26332-9" ;
+  skos:prefLabel "Likely pathogenic"@en ;
+  skos:exactMatch genomics:LikelyPathogenic .
+
+fhirr4:acmgUncertainSignificance a skos:Concept ;
+  skos:inScheme fhirr4:acmgClassifications ;
+  skos:notation "la26333-7" ;
+  skos:prefLabel "Uncertain significance"@en ;
+  skos:exactMatch genomics:VUS .
+
+fhirr4:acmgLikelyBenign a skos:Concept ;
+  skos:inScheme fhirr4:acmgClassifications ;
+  skos:notation "la26334-5" ;
+  skos:prefLabel "Likely benign"@en ;
+  skos:exactMatch genomics:LikelyBenign .
+
+fhirr4:acmgBenign a skos:Concept ;
+  skos:inScheme fhirr4:acmgClassifications ;
+  skos:notation "la6675-8" ;
+  skos:prefLabel "Benign"@en ;
+  skos:exactMatch genomics:Benign .

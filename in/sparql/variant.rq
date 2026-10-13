@@ -1,0 +1,130 @@
+PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
+PREFIX fx:       <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:      <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX genomics: <https://ns.cascadeprotocol.org/genomics/v1#>
+PREFIX clinical: <https://ns.cascadeprotocol.org/clinical/v1#>
+PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+
+# Which Observation is a variant is variant-table.rq's to say. A value is
+# carried only where the variant states it once: two different values of a
+# field state none, because neither is the variant's. variant-findings.rq
+# reports what is left behind.
+#
+# An HGVS expression is read only from the c.HGVS component, never composed
+# from the transcript component beside a bare change, and is carried in the
+# normal form of the vocabulary's shape: the reference sequence with its
+# version, a colon and c., then the change. The gene in parentheses and the
+# protein change after the change are left out; an expression that is not in
+# that form after leaving them out is not carried. A ClinVar ID is the digits
+# of a code under ClinVar's system URI, without leading zeros, so that
+# VCV000090011 and 90011 state one ID; a code that is not a variation's, such
+# as an RCV or SCV accession, is not carried. A gene symbol is the display of
+# a gene studied coding under either system URI HGNC is written with.
+
+CONSTRUCT {
+  ?version genomics:hgvsCDot ?hgvsCDot ;
+    genomics:clinvarVariationId ?clinvarVariationId ;
+    genomics:geneSymbol ?geneSymbol ;
+    clinical:status ?status .
+}
+WHERE {
+  FILTER NOT EXISTS {
+    bridge:thisDocument bridge:sourceFormatVersion ?stated .
+    FILTER (!STRSTARTS(?stated, "4.0."))
+  }
+  bridge:thisRecord bridge:selector ?recordSelector .
+  ?root a fx:root .
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  { BIND ("" AS ?containedStep) }
+  UNION
+  {
+    ?top xyz:contained ?containedList .
+    ?containedList ?containedSlot ?contained .
+    ?contained xyz:resourceType ?containedType .
+    BIND (CONCAT("/contained/", STR(xsd:integer(STRAFTER(STR(?containedSlot), "#_")) - 1)) AS ?containedStep)
+  }
+  BIND (COALESCE(?contained, ?top) AS ?resource)
+  ?resource xyz:resourceType "Observation" .
+  BIND (CONCAT(?recordSelector, ?topStep, ?containedStep) AS ?resourcePointer)
+  ?variant fhirr4:variantAt ?resourcePointer .
+  BIND (IRI(CONCAT("urn:cascade:version-at:", SHA256(?resourcePointer))) AS ?version)
+
+  OPTIONAL {
+    {
+      SELECT ?resource (COUNT(DISTINCT ?hgvsNormal) AS ?hgvsDistinct) (MIN(?hgvsNormal) AS ?hgvsSole)
+      WHERE {
+        ?resource xyz:component ?hgvsComponents .
+        ?hgvsComponents ?hgvsComponentSlot ?hgvsComponent .
+        ?hgvsComponent xyz:code ?hgvsConcept . ?hgvsConcept xyz:coding ?hgvsCodings .
+        ?hgvsCodings ?hgvsCodingSlot ?hgvsCoding .
+        ?hgvsCoding xyz:system "http://loinc.org" ;
+          xyz:code "48004-6" .
+        ?hgvsComponent xyz:valueCodeableConcept ?hgvsValue . ?hgvsValue xyz:coding ?hgvsValueCodings .
+        ?hgvsValueCodings ?hgvsValueSlot ?hgvsValueCoding .
+        ?hgvsValueCoding xyz:system "http://varnomen.hgvs.org" ;
+          xyz:code ?hgvsWritten .
+        BIND (REPLACE(REPLACE(REPLACE(STR(?hgvsWritten), "^\\s+|\\s+$", ""),
+                              "\\s+\\(p\\..*\\)$", ""),
+                      "^([^:()\\s]+)\\([^()]*\\):", "$1:") AS ?hgvsNormal)
+      }
+      GROUP BY ?resource
+    }
+    FILTER (?hgvsDistinct = 1
+            && REGEX(?hgvsSole, "^((NM|NG|XM|NC)_[0-9]+\\.[0-9]+|LRG_[0-9]+(t[0-9]+)?):c\\.\\S+$"))
+    BIND (?hgvsSole AS ?hgvsCDot)
+  }
+
+  OPTIONAL {
+    {
+      SELECT ?resource (COUNT(DISTINCT ?clinvarId) AS ?clinvarDistinct) (MIN(?clinvarId) AS ?clinvarSole)
+      WHERE {
+        ?resource xyz:component ?clinvarComponents .
+        ?clinvarComponents ?clinvarComponentSlot ?clinvarComponent .
+        ?clinvarComponent xyz:code ?clinvarConcept . ?clinvarConcept xyz:coding ?clinvarCodings .
+        ?clinvarCodings ?clinvarCodingSlot ?clinvarCoding .
+        ?clinvarCoding xyz:system "http://loinc.org" ;
+          xyz:code "81252-9" .
+        ?clinvarComponent xyz:valueCodeableConcept ?clinvarValue . ?clinvarValue xyz:coding ?clinvarValueCodings .
+        ?clinvarValueCodings ?clinvarValueSlot ?clinvarValueCoding .
+        ?clinvarValueCoding xyz:system "http://www.ncbi.nlm.nih.gov/clinvar" ;
+          xyz:code ?clinvarWritten .
+        BIND (REPLACE(REPLACE(REPLACE(STR(?clinvarWritten), "^\\s+|\\s+$", ""),
+                              "^(VCV[0-9]+)\\.[0-9]+$", "$1"),
+                      "^(VCV)?0*", "") AS ?clinvarDigits)
+        BIND (IF(REGEX(?clinvarDigits, "^[1-9][0-9]*$"), ?clinvarDigits, 1/0) AS ?clinvarId)
+      }
+      GROUP BY ?resource
+    }
+    FILTER (?clinvarDistinct = 1)
+    BIND (?clinvarSole AS ?clinvarVariationId)
+  }
+
+  OPTIONAL {
+    {
+      SELECT ?resource (COUNT(DISTINCT ?symbol) AS ?geneDistinct) (MIN(?symbol) AS ?geneSole)
+      WHERE {
+        ?resource xyz:component ?geneComponents .
+        ?geneComponents ?geneComponentSlot ?geneComponent .
+        ?geneComponent xyz:code ?geneConcept . ?geneConcept xyz:coding ?geneCodings .
+        ?geneCodings ?geneCodingSlot ?geneCoding .
+        ?geneCoding xyz:system "http://loinc.org" ;
+          xyz:code "48018-6" .
+        ?geneComponent xyz:valueCodeableConcept ?geneValue . ?geneValue xyz:coding ?geneValueCodings .
+        ?geneValueCodings ?geneValueSlot ?geneValueCoding .
+        ?geneValueCoding xyz:system ?geneSystem ;
+          xyz:display ?geneDisplay .
+        FILTER (?geneSystem IN ("http://www.genenames.org/geneId", "http://www.genenames.org"))
+        BIND (REPLACE(STR(?geneDisplay), "^\\s+|\\s+$", "") AS ?geneTrimmed)
+        BIND (IF(STRLEN(?geneTrimmed) > 0, ?geneTrimmed, 1/0) AS ?symbol)
+      }
+      GROUP BY ?resource
+    }
+    FILTER (?geneDistinct = 1)
+    BIND (?geneSole AS ?geneSymbol)
+  }
+
+  OPTIONAL { ?resource xyz:status ?status }
+}

@@ -8,7 +8,8 @@ PREFIX rec:      <https://ns.cascadeprotocol.org/records/v1-draft#>
 PREFIX cascade:  <https://ns.cascadeprotocol.org/core/v1#>
 PREFIX health:   <https://ns.cascadeprotocol.org/health/v1#>
 PREFIX clinical: <https://ns.cascadeprotocol.org/clinical/v1#>
-PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+PREFIX genomics: <https://ns.cascadeprotocol.org/genomics/v1#>
+PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 
 # Names are the naming convention of
 # https://github.com/jayostis/cascade-bridge-spec/blob/main/engine/sparql.md#naming-a-record,
@@ -90,8 +91,13 @@ WHERE {
     ("MedicationRequest"   clinical:Medication       clinical:sourceRecordId)
     ("MedicationStatement" clinical:Medication       clinical:sourceRecordId)
     ("Observation"         health:LabResultRecord    health:sourceRecordId)
+    ("Observation"         genomics:Variant          UNDEF)
+    ("Observation"         genomics:VariantInterpretation UNDEF)
   }
-  FILTER (?resourceType != "Observation" || EXISTS { ?lab fhirr4:labResultAt ?resourcePointer })
+  FILTER (?resourceType != "Observation"
+          || (?class = health:LabResultRecord && EXISTS { ?lab fhirr4:labResultAt ?resourcePointer })
+          || (?class = genomics:Variant && EXISTS { ?variantRow fhirr4:variantAt ?resourcePointer })
+          || (?class = genomics:VariantInterpretation && EXISTS { ?interpretationRow fhirr4:interpretationAt ?resourcePointer }))
   OPTIONAL { ?resource xyz:id ?resourceId }
 
   BIND (IF(BOUND(?contained),

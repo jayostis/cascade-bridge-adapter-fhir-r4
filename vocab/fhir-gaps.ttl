@@ -118,3 +118,88 @@ fhirr4:labResultInterpretationRepeated a skos:Concept ;
   skos:inScheme fhirr4:gaps ;
   skos:broader bridge:carriedWithLoss ;
   sh:resultSeverity sh:Warning .
+
+fhirr4:variantNotPresent a skos:Concept ;
+  skos:prefLabel "A genetic variant assessment states a value other than Present, and a variant record says the person has the variant, so the assessment is no record."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:valueNotMapped ;
+  sh:resultSeverity sh:Warning .
+
+fhirr4:variantHgvsGeneOrProtein a skos:Concept ;
+  skos:prefLabel "A variant's c.HGVS expression names a gene in parentheses or a protein change after the change, and the normal form carries neither."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:carriedWithLoss .
+
+fhirr4:variantHgvsNoReferenceSequence a skos:Concept ;
+  skos:prefLabel "A variant's c.HGVS expression names no reference sequence with a version, of a kind the vocabulary takes, so no expression is carried."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:valueNotMapped ;
+  sh:resultSeverity sh:Warning .
+
+fhirr4:variantHgvsNotCoding a skos:Concept ;
+  skos:prefLabel "A variant's c.HGVS element holds an expression that is not a coding (c.) expression, so no expression is carried."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:valueNotMapped ;
+  sh:resultSeverity sh:Warning .
+
+fhirr4:variantHgvsRepeated a skos:Concept ;
+  skos:prefLabel "A variant states more than one different c.HGVS expression, and a variant states one, so none is carried."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:valueNotMapped ;
+  sh:resultSeverity sh:Warning .
+
+fhirr4:variantClinvarNotVariation a skos:Concept ;
+  skos:prefLabel "A variant's ClinVar code is no variation's ID, as an RCV or SCV accession is not, so no ClinVar ID is carried."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:valueNotMapped ;
+  sh:resultSeverity sh:Warning .
+
+fhirr4:variantClinvarRepeated a skos:Concept ;
+  skos:prefLabel "A variant states more than one different ClinVar variation ID, and a variant states one, so none is carried."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:valueNotMapped ;
+  sh:resultSeverity sh:Warning .
+
+fhirr4:variantDiscreteVariantCode a skos:Concept ;
+  skos:prefLabel "A variant's discrete genetic variant element carries a code from a system other than ClinVar, and no Cascade predicate carries it."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:noPredicate .
+
+fhirr4:variantGeneWithoutSymbol a skos:Concept ;
+  skos:prefLabel "A variant's gene studied coding has no display, and the gene symbol is the display, so no gene symbol is carried."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:valueNotMapped ;
+  sh:resultSeverity sh:Warning .
+
+fhirr4:variantGeneRepeated a skos:Concept ;
+  skos:prefLabel "A variant names more than one different gene symbol, and a variant has one, so none is carried."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:valueNotMapped ;
+  sh:resultSeverity sh:Warning .
+
+fhirr4:interpretationClassification a skos:Concept ;
+  skos:prefLabel "A diagnostic implication's classification is not exactly one of the five ACMG/AMP answers of LOINC, so no classification is carried."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:valueNotMapped ;
+  sh:resultSeverity sh:Warning .
+
+fhirr4:interpretationVariantLink a skos:Concept ;
+  skos:prefLabel "A diagnostic implication is derived from no variant record, from more than one, or from something else beside one, so it states no link to a variant."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:carriedWithLoss ;
+  sh:resultSeverity sh:Warning .
+
+fhirr4:variantComponentNotCarried a skos:Concept ;
+  skos:prefLabel "A variant or a diagnostic implication carries components no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:carriedWithLoss .
+
+fhirr4:issuedNotCarried a skos:Concept ;
+  skos:prefLabel "A result carries the time it was issued, which is not when it was performed, and only a diagnostic implication's is carried, as its date."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:carriedWithLoss .
+
+fhirr4:variantTimeNotCarried a skos:Concept ;
+  skos:prefLabel "A variant carries the time it was collected or resulted, and no Cascade term carries it, though a lab result's and a diagnostic implication's are."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:carriedWithLoss .

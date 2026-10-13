@@ -1,0 +1,198 @@
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX sh:      <http://www.w3.org/ns/shacl#>
+PREFIX oa:      <http://www.w3.org/ns/oa#>
+PREFIX skos:    <http://www.w3.org/2004/02/skos/core#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX fx:      <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:     <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:  <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+
+# What variant-interpretation.rq leaves behind: a classification that is none of
+# the five ACMG/AMP answers, or one of several different answers; and a
+# derivedFrom that does not name exactly one variant record and nothing else
+# that is not one, each of its references, or the code where it has none.
+
+CONSTRUCT {
+  [] a oa:Annotation ;
+    oa:hasTarget [
+      oa:hasSource bridge:thisRecord ;
+      oa:hasSelector [
+        a oa:FragmentSelector ;
+        dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+        rdf:value ?pointer
+      ]
+    ] ;
+    oa:hasBody ?gap ;
+    oa:motivatedBy oa:classifying ;
+    sh:value ?value .
+}
+WHERE {
+  FILTER NOT EXISTS {
+    bridge:thisDocument bridge:sourceFormatVersion ?stated .
+    FILTER (!STRSTARTS(?stated, "4.0."))
+  }
+  bridge:thisRecord bridge:selector ?recordSelector .
+  ?root a fx:root .
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  { BIND ("" AS ?containedStep) }
+  UNION
+  {
+    ?top xyz:contained ?containedList .
+    ?containedList ?containedSlot ?contained .
+    ?contained xyz:resourceType ?containedType .
+    BIND (CONCAT("/contained/", STR(xsd:integer(STRAFTER(STR(?containedSlot), "#_")) - 1)) AS ?containedStep)
+  }
+  BIND (COALESCE(?contained, ?top) AS ?resource)
+  ?resource xyz:resourceType "Observation" .
+  BIND (CONCAT(?recordSelector, ?topStep, ?containedStep) AS ?resourcePointer)
+  ?interpretation fhirr4:interpretationAt ?resourcePointer .
+
+  {
+    ?resource xyz:component ?classComponents .
+    ?classComponents ?classComponentSlot ?classComponent .
+    ?classComponent xyz:code ?classConcept . ?classConcept xyz:coding ?classCodings .
+    ?classCodings ?classCodingSlot ?classCoding .
+    ?classCoding xyz:system "http://loinc.org" ;
+      xyz:code "53037-8" .
+    ?classComponent xyz:valueCodeableConcept ?classValue .
+    OPTIONAL { ?classValue xyz:coding ?firstCodings . ?firstCodings rdf:_1 ?firstCoding . ?firstCoding xyz:code ?firstCode }
+    OPTIONAL { ?classValue xyz:text ?classText }
+    BIND (COALESCE(?firstCode, ?classText, "") AS ?value)
+    BIND (EXISTS {
+            ?classValue xyz:coding ?ownCodings . ?ownCodings ?ownSlot ?ownCoding .
+            ?ownCoding xyz:system "http://loinc.org" ;
+              xyz:code ?ownCode .
+            ?ownAnswer skos:inScheme fhirr4:acmgClassifications ;
+              skos:notation ?ownKey .
+            FILTER (?ownKey = LCASE(REPLACE(STR(?ownCode), "^\\s+|\\s+$", "")))
+          } AS ?answered)
+    BIND (EXISTS {
+            ?resource xyz:component ?aComponents .
+            ?aComponents ?aComponentSlot ?aComponent .
+            ?aComponent xyz:code ?aConcept . ?aConcept xyz:coding ?aCodings .
+            ?aCodings ?aCodingSlot ?aCoding .
+            ?aCoding xyz:system "http://loinc.org" ;
+              xyz:code "53037-8" .
+            ?aComponent xyz:valueCodeableConcept ?aValue . ?aValue xyz:coding ?aValueCodings .
+            ?aValueCodings ?aValueSlot ?aValueCoding .
+            ?aValueCoding xyz:system "http://loinc.org" ;
+              xyz:code ?aCode .
+            ?aAnswer skos:inScheme fhirr4:acmgClassifications ;
+              skos:notation ?aKey ;
+              skos:exactMatch ?aClass .
+            FILTER (?aKey = LCASE(REPLACE(STR(?aCode), "^\\s+|\\s+$", "")))
+            ?resource xyz:component ?bComponents .
+            ?bComponents ?bComponentSlot ?bComponent .
+            ?bComponent xyz:code ?bConcept . ?bConcept xyz:coding ?bCodings .
+            ?bCodings ?bCodingSlot ?bCoding .
+            ?bCoding xyz:system "http://loinc.org" ;
+              xyz:code "53037-8" .
+            ?bComponent xyz:valueCodeableConcept ?bValue . ?bValue xyz:coding ?bValueCodings .
+            ?bValueCodings ?bValueSlot ?bValueCoding .
+            ?bValueCoding xyz:system "http://loinc.org" ;
+              xyz:code ?bCode .
+            ?bAnswer skos:inScheme fhirr4:acmgClassifications ;
+              skos:notation ?bKey ;
+              skos:exactMatch ?bClass .
+            FILTER (?bKey = LCASE(REPLACE(STR(?bCode), "^\\s+|\\s+$", "")) && ?aClass != ?bClass)
+          } AS ?conflicting)
+    FILTER (!?answered || ?conflicting)
+    BIND (CONCAT("/component/", STR(xsd:integer(STRAFTER(STR(?classComponentSlot), "#_")) - 1),
+                 "/valueCodeableConcept") AS ?step)
+    BIND (fhirr4:interpretationClassification AS ?gap)
+  }
+  UNION
+  {
+    ?resource xyz:resourceType "Observation" .
+    FILTER NOT EXISTS { ?resource xyz:derivedFrom ?anyDerivedFrom }
+    ?resource xyz:code ?codeConcept . ?codeConcept xyz:coding ?codeCodings . ?codeCodings ?codeSlot ?codeCoding .
+    ?codeCoding xyz:system "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs" ;
+      xyz:code ?value .
+    BIND (CONCAT("/code/coding/", STR(xsd:integer(STRAFTER(STR(?codeSlot), "#_")) - 1), "/code") AS ?step)
+    BIND (fhirr4:interpretationVariantLink AS ?gap)
+  }
+  UNION
+  {
+    {
+      SELECT ?resource
+             (COUNT(DISTINCT ?variantInput) AS ?variantTargets)
+             (COUNT(DISTINCT ?otherTarget) AS ?otherTargets)
+      WHERE {
+        bridge:thisDocument bridge:sha256 ?document .
+        OPTIONAL { bridge:thisDocument bridge:serverBaseUrl ?server }
+        ?resource xyz:derivedFrom ?derivedFrom .
+        ?derivedFrom ?derivedSlot ?derivedItem .
+        ?derivedItem xyz:reference ?reference .
+
+        OPTIONAL {
+          ?held fhirr4:fullUrl ?reference ;
+            fhirr4:heldAt ?heldSelector ;
+            fhirr4:resourceType ?heldType .
+          FILTER (STRSTARTS(?reference, "urn:uuid:"))
+          OPTIONAL { ?held fhirr4:resourceId ?heldId }
+        }
+        BIND (STRSTARTS(?reference, "urn:uuid:") AS ?isUrn)
+        BIND (BOUND(?heldSelector) && EXISTS {
+                ?otherHeld fhirr4:fullUrl ?reference ;
+                  fhirr4:heldAt ?otherHeldSelector .
+                FILTER (?otherHeldSelector != ?heldSelector)
+              } AS ?ambiguous)
+        BIND (BOUND(?heldSelector) && ?heldType = "Observation" && EXISTS {
+                ?heldVariant fhirr4:variantAt ?heldPointer .
+                FILTER (?heldPointer = ?heldSelector || ?heldPointer = CONCAT(?heldSelector, "/resource"))
+              } AS ?heldIsVariant)
+        BIND (IF(BOUND(?heldId),
+                 IF(BOUND(?server) && NOT EXISTS {
+                      ?sameId fhirr4:resourceType ?heldType ;
+                        fhirr4:resourceId ?heldId ;
+                        fhirr4:heldAt ?sameIdSelector .
+                      FILTER (?sameIdSelector != ?heldSelector)
+                    }, CONCAT(?server, "|", ?heldType, "|", ?heldId), CONCAT(?document, "|", ?heldSelector)),
+                 IF(?ambiguous, CONCAT(?document, "|", ?heldSelector), ?reference)) AS ?heldInput)
+
+        BIND (REPLACE(?reference, "/_history/[A-Za-z0-9.-]{1,64}$", "") AS ?bare)
+        BIND (REGEX(?bare, "^Observation/[A-Za-z0-9.-]{1,64}$") AS ?isRelative)
+        BIND (REGEX(?bare, "^[A-Za-z][A-Za-z0-9+.-]*://[^/]+(/.*)?/Observation/[A-Za-z0-9.-]{1,64}$") AS ?isAbsolute)
+        BIND (IF(?isRelative,
+                 CONCAT(?server, "|Observation|", STRAFTER(?bare, "Observation/")),
+                 IF(?isAbsolute,
+                    CONCAT(LCASE(REPLACE(?bare, "^([^:]+://[^/]+).*$", "$1")),
+                           REPLACE(REPLACE(?bare, "^[^:]+://[^/]+", ""), "/+Observation/[^/]+$", ""),
+                           "|Observation|", REPLACE(?bare, "^.*/Observation/", "")),
+                    1/0)) AS ?referenceInput)
+        BIND (BOUND(?referenceInput) && EXISTS {
+                ?known fhirr4:resourceType "Observation" ;
+                  fhirr4:resourceId ?knownId ;
+                  fhirr4:heldAt ?knownSelector .
+                FILTER (BOUND(?server) && ?referenceInput = CONCAT(?server, "|Observation|", ?knownId))
+              } AS ?inDocument)
+        BIND (?inDocument && EXISTS {
+                ?known fhirr4:resourceType "Observation" ;
+                  fhirr4:resourceId ?knownId ;
+                  fhirr4:heldAt ?knownSelector .
+                FILTER (?referenceInput = CONCAT(?server, "|Observation|", ?knownId))
+                ?knownVariant fhirr4:variantAt ?knownPointer .
+                FILTER (?knownPointer = ?knownSelector || ?knownPointer = CONCAT(?knownSelector, "/resource"))
+              } AS ?knownIsVariant)
+
+        BIND (IF(?isUrn,
+                 IF(!BOUND(?heldSelector), ?reference,
+                    IF(!?ambiguous && ?heldIsVariant, ?heldInput, 1/0)),
+                 IF(BOUND(?referenceInput) && (!?inDocument || ?knownIsVariant), ?referenceInput, 1/0)) AS ?variantInput)
+        BIND (IF(!BOUND(?variantInput) && (?isUrn || ?isRelative || ?isAbsolute), ?reference, 1/0) AS ?otherTarget)
+      }
+      GROUP BY ?resource
+    }
+    FILTER (!(?variantTargets = 1 && ?otherTargets = 0))
+    ?resource xyz:derivedFrom ?linkDerivedFrom .
+    ?linkDerivedFrom ?linkSlot ?linkItem .
+    ?linkItem xyz:reference ?value .
+    BIND (CONCAT("/derivedFrom/", STR(xsd:integer(STRAFTER(STR(?linkSlot), "#_")) - 1), "/reference") AS ?step)
+    BIND (fhirr4:interpretationVariantLink AS ?gap)
+  }
+  BIND (CONCAT(?topStep, ?containedStep, ?step) AS ?pointer)
+}

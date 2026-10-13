@@ -9,7 +9,10 @@ PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # stands, so that every query asking whether one is a record asks this one.
 # A category of laboratory makes one; another category makes none. With no
 # category, a LOINC code makes one unless a LOINC code it carries is a vital
-# sign's. An Observation with members is a panel, and no panel is a record.
+# sign's. An Observation with members is a panel, and no panel is a record. A
+# Variant and a Diagnostic Implication of the Genomics Reporting IG are never
+# lab results, whatever their category: variant-table.rq and
+# variant-interpretation-table.rq say what they are.
 
 CONSTRUCT {
   [] fhirr4:labResultAt ?pointer .
@@ -31,6 +34,16 @@ WHERE {
   BIND (COALESCE(?contained, ?top) AS ?resource)
   ?resource xyz:resourceType "Observation" .
   FILTER NOT EXISTS { ?resource xyz:hasMember ?member }
+  FILTER NOT EXISTS {
+    ?resource xyz:code ?genomicsConcept . ?genomicsConcept xyz:coding ?genomicsCodings .
+    ?genomicsCodings ?genomicsCodingSlot ?genomicsCoding .
+    { ?genomicsCoding xyz:system "http://loinc.org" ; xyz:code "69548-6" }
+    UNION
+    {
+      ?genomicsCoding xyz:system "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs" ;
+        xyz:code "diagnostic-implication"
+    }
+  }
   FILTER (IF(EXISTS { ?resource xyz:category ?categories },
              EXISTS {
                ?resource xyz:category ?categories . ?categories ?categorySlot ?category .

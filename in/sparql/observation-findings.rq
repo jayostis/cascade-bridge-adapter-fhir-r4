@@ -12,7 +12,9 @@ PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # An Observation lab-result-table.rq does not call a lab result, reported at
 # what decided it: each category it carries, none of them laboratory; with no
 # category, each vital sign's LOINC code; with no category and no LOINC code,
-# its type; and a panel's members.
+# its type; and a panel's members. A Variant and a Diagnostic Implication of the
+# Genomics Reporting IG are none of them: variant-findings.rq and
+# variant-interpretation-findings.rq report what they leave behind.
 
 CONSTRUCT {
   [] a oa:Annotation ;
@@ -108,5 +110,10 @@ WHERE {
           IF(?decidedBy = "vital sign", !?categorised,
           IF(?decidedBy = "no code", !?categorised && !?loinc,
              ?laboratory || (!?categorised && ?loinc)))))
+  FILTER NOT EXISTS {
+    VALUES ?genomicsTable { fhirr4:variantAt fhirr4:variantNotPresentAt fhirr4:interpretationAt }
+    ?genomics ?genomicsTable ?genomicsPointer .
+    FILTER (?genomicsPointer = CONCAT(?recordSelector, ?topStep, ?containedStep))
+  }
   BIND (CONCAT(?topStep, ?containedStep, ?step) AS ?pointer)
 }
