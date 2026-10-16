@@ -1,0 +1,65 @@
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov:     <http://www.w3.org/ns/prov#> .
+@prefix pav:      <http://purl.org/pav/> .
+@prefix bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rec:      <https://ns.cascadeprotocol.org/records/v1-draft#> .
+@prefix health:   <https://ns.cascadeprotocol.org/health/v1#> .
+@prefix clinical: <https://ns.cascadeprotocol.org/clinical/v1#> .
+@prefix cascade:  <https://ns.cascadeprotocol.org/core/v1#> .
+@prefix foaf:     <http://xmlns.com/foaf/0.1/> .
+
+<urn:uuid:50b909ba-6560-8004-ad7c-6d96c9d2a3da>
+  a health:ConditionRecord ;
+  health:sourceRecordId "cond-1" ;
+  rec:sourceUrl <https://fhir.example.org/r4/Condition/cond-1> .
+
+<ni:///sha-256;BhuRWA9z1Gxd3hf_KeGoeJSukb2eiTWCW7poCS8Fyik>
+  prov:specializationOf <urn:uuid:50b909ba-6560-8004-ad7c-6d96c9d2a3da> ;
+  health:conditionName "Type 2 diabetes mellitus" ;
+  health:onsetDate "2019-08-20"^^xsd:date ;
+  health:snomedCode <http://snomed.info/id/44054006> ;
+  health:status "active" ;
+  rec:patient <urn:uuid:eb313649-c6ff-8ffa-93e2-2898fe91b570> .
+
+[] bridge:arrivedAs <ni:///sha-256;BhuRWA9z1Gxd3hf_KeGoeJSukb2eiTWCW7poCS8Fyik> ;
+  pav:version "2" ;
+  pav:lastUpdateOn "2024-03-05T14:30:00Z"^^xsd:dateTime ;
+  bridge:selector "/entry/0" ;
+  prov:wasDerivedFrom <ni:///sha-256;rTDteROoR4AP4QAkFeU4cNx_EZ9bknCKSq3zerf0amk> ;
+  prov:wasGeneratedBy _:import .
+
+<urn:uuid:1a5f0da1-4879-8aea-ac22-bd0e68556558>
+  a health:AllergyRecord ;
+  health:sourceRecordId "alg-1" ;
+  rec:sourceUrl <https://fhir.example.org/r4/AllergyIntolerance/alg-1> .
+
+<ni:///sha-256;njQswK2Wn0XBabsdpfoWpzgtecSD2-JoGX_EsgStx6o>
+  prov:specializationOf <urn:uuid:1a5f0da1-4879-8aea-ac22-bd0e68556558> ;
+  health:allergen "Penicillin G" ;
+  health:allergenCode <http://www.nlm.nih.gov/research/umls/rxnorm/7980> ;
+  clinical:criticality "high" ;
+  rec:patient <urn:uuid:eb313649-c6ff-8ffa-93e2-2898fe91b570> .
+
+[] bridge:arrivedAs <ni:///sha-256;njQswK2Wn0XBabsdpfoWpzgtecSD2-JoGX_EsgStx6o> ;
+  pav:version "1" ;
+  pav:lastUpdateOn "2024-01-10T09:05:00Z"^^xsd:dateTime ;
+  bridge:selector "/entry/1" ;
+  prov:wasDerivedFrom <ni:///sha-256;rTDteROoR4AP4QAkFeU4cNx_EZ9bknCKSq3zerf0amk> ;
+  prov:wasGeneratedBy _:import .
+
+<ni:///sha-256;rTDteROoR4AP4QAkFeU4cNx_EZ9bknCKSq3zerf0amk>
+  a prov:Entity ;
+  bridge:serverBaseUrl "https://fhir.example.org/r4" ;
+  pav:retrievedOn "2026-10-16T09:00:00Z"^^xsd:dateTime ;
+  bridge:sourceFormatVersion "4.0.1" .
+
+_:import
+  a prov:Activity ;
+  prov:used <ni:///sha-256;rTDteROoR4AP4QAkFeU4cNx_EZ9bknCKSq3zerf0amk> ;
+  rdfs:label "Example hospital pull" ;
+  prov:startedAtTime "2026-10-16T09:00:04Z"^^xsd:dateTime ;
+  prov:qualifiedAssociation [
+    prov:hadPlan [ a prov:Plan ; rdfs:label "fhir-r4" ; pav:version "0.1.0" ] ;
+    prov:agent [ ]
+  ] .

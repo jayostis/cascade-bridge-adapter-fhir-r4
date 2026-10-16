@@ -460,6 +460,12 @@
           "@id": "fixtures/in/bundle-medication-repeated-id.json"
         },
         {
+          "@id": "fixtures/in/bundle-pull-collection-versions.json"
+        },
+        {
+          "@id": "fixtures/in/bundle-pull-searchset-outcome.json"
+        },
+        {
           "@id": "fixtures/in/Bundle-bundle-cgexample.input.json"
         },
         {
@@ -500,6 +506,9 @@
         },
         {
           "@id": "fixtures/facts/example-org.ttl"
+        },
+        {
+          "@id": "fixtures/facts/example-pull.ttl"
         },
         {
           "@id": "fixtures/facts/martin-okafor-harbourline.ttl"
@@ -808,6 +817,12 @@
           "@id": "fixtures/expected/bundle-medication-repeated-id.ttl"
         },
         {
+          "@id": "fixtures/expected/bundle-pull-collection-versions.ttl"
+        },
+        {
+          "@id": "fixtures/expected/bundle-pull-searchset-outcome.ttl"
+        },
+        {
           "@id": "fixtures/expected/Bundle-bundle-cgexample.ttl"
         },
         {
@@ -830,6 +845,12 @@
         },
         {
           "@id": "fixtures/findings/bundle-medication-repeated-id.ttl"
+        },
+        {
+          "@id": "fixtures/findings/bundle-pull-collection-versions.ttl"
+        },
+        {
+          "@id": "fixtures/findings/bundle-pull-searchset-outcome.ttl"
         },
         {
           "@id": "fixtures/findings/Bundle-bundle-cgexample.ttl"
@@ -2102,6 +2123,32 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "A collection Bundle: two Medications, each id med-1, from two servers' fullUrls; and a MedicationRequest, id medrx-unclear-1, referencing Medication/med-1. Authored here on 2026-10-06, for a case the conformance corpus does not hold: a reference its document resolves to more than one Medication."
+    },
+    {
+      "@id": "fixtures/in/bundle-pull-collection-versions.json",
+      "@type": "File",
+      "name": "Collection Bundle of three records with their server versions",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "2168",
+      "sha256": "31d6d80ce3fe890b0874bb533c0a5905bef2179bcdcba77b844a288ff72574a5",
+      "dateCreated": "2026-10-16",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A collection Bundle as a client assembles it from one server's reads: a Patient (id pat-1), a Condition (id cond-1) and a MedicationStatement (id medst-1), each with a fullUrl of https://fhir.example.org/r4, its type and its id, and each with meta.versionId and meta.lastUpdated. Authored here on 2026-10-16, for a case the conformance corpus does not hold: the shape a runtime's pull sends, whose versions are what a re-pull compares."
+    },
+    {
+      "@id": "fixtures/in/bundle-pull-searchset-outcome.json",
+      "@type": "File",
+      "name": "Searchset Bundle of two matches and an OperationOutcome entry",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "2047",
+      "sha256": "ad30ed7913a847800fe1002415e53870dc7f119f5b92708a4aadf37ab7f46a69",
+      "dateCreated": "2026-10-16",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A searchset Bundle: a Condition (id cond-1) and an AllergyIntolerance (id alg-1), each an entry of search.mode match, and an OperationOutcome of search.mode outcome. Authored here on 2026-10-16, for a case the conformance corpus does not hold: an entry a search adds beside its matches, which a runtime drops but which the adapter reads."
     },
     {
       "@id": "fixtures/in/Bundle-bundle-cgexample.input.json",
@@ -3496,6 +3543,38 @@
       "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
     },
     {
+      "@id": "fixtures/expected/bundle-pull-collection-versions.ttl",
+      "@type": "File",
+      "name": "Expected graph for bundle-pull-collection-versions",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3749",
+      "sha256": "82fa8fb66811edde28fd15910a41dd4331c3f582a2986831f44d37f0982a55f0",
+      "about": {
+        "@id": "fixtures/in/bundle-pull-collection-versions.json"
+      },
+      "dateCreated": "2026-10-16",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
+      "@id": "fixtures/expected/bundle-pull-searchset-outcome.ttl",
+      "@type": "File",
+      "name": "Expected graph for bundle-pull-searchset-outcome",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2855",
+      "sha256": "84947a52193de609b59974bd9a87abf2315726621bdc49db0ce00880398b9abc",
+      "about": {
+        "@id": "fixtures/in/bundle-pull-searchset-outcome.json"
+      },
+      "dateCreated": "2026-10-16",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+    },
+    {
       "@id": "fixtures/expected/Bundle-bundle-cgexample.ttl",
       "@type": "File",
       "name": "Expected graph for Bundle-bundle-cgexample",
@@ -3618,6 +3697,38 @@
         "@id": "fixtures/in/bundle-medication-repeated-id.json"
       },
       "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/bundle-pull-collection-versions.ttl",
+      "@type": "File",
+      "name": "Expected findings for bundle-pull-collection-versions",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/bundle-pull-collection-versions.json"
+      },
+      "dateCreated": "2026-10-16",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/bundle-pull-searchset-outcome.ttl",
+      "@type": "File",
+      "name": "Expected findings for bundle-pull-searchset-outcome",
+      "encodingFormat": "text/turtle",
+      "contentSize": "9486",
+      "sha256": "621e78449aedcd1170da3ac502547dd859d2f22a96e1910cf7866fc006dd1664",
+      "about": {
+        "@id": "fixtures/in/bundle-pull-searchset-outcome.json"
+      },
+      "dateCreated": "2026-10-16",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -4256,6 +4367,19 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "The server, the retrieval and the import, supplied with the Genomics Reporting IG's cgexample Bundle, whose fullUrls name its resources on http://example.org/fhir. Made up here on 2026-10-13: no server was fetched."
+    },
+    {
+      "@id": "fixtures/facts/example-pull.ttl",
+      "@type": "File",
+      "name": "Facts supplied with a document pulled from the example server",
+      "encodingFormat": "text/turtle",
+      "contentSize": "557",
+      "sha256": "c0e6e86b97e93f78ec8180e6562a63d28a6e450cf8e32c85b5c591dbb37d563c",
+      "dateCreated": "2026-10-16",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The server base URL https://fhir.example.org/r4, the retrieval and the import, supplied with the two pulled Bundles, whose records are named by that server, their type and their id. Made up here on 2026-10-16: no server was fetched."
     },
     {
       "@id": "fixtures/facts/martin-okafor-harbourline.ttl",

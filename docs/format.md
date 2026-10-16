@@ -37,7 +37,11 @@ A resource's `id` is the server's logical id, unique for its type on that
 server. It is optional: a resource written by a client, or assembled into an
 export, may carry none. `meta.versionId`, `meta.lastUpdated` and `meta.source`
 are the server's version metadata, and change on a re-fetch of an unchanged
-resource.
+resource. A sender sends one version of each record: a `history` Bundle, which
+repeats a type and id and carries `request` and `response` on each entry, is out
+of scope. The adapter reads neither member and every entry of any Bundle, so the
+repeated id is no name for a record, which falls back to the document and its
+selector, and the versions arrive as records of their own.
 
 `resourceType` is not only at a record's root. It names the type of every
 resource nested in another, and a contained resource is a resource.

@@ -51,6 +51,8 @@
     <#medication-request-ndc-forms>
     <#bundle-medication-versioned-reference>
     <#bundle-medication-repeated-id>
+    <#bundle-pull-collection-versions>
+    <#bundle-pull-searchset-outcome>
     <#Bundle-bundle-cgexample>
     <#Bundle-bundle-compound-heterozygote>
     <#Bundle-bundle-oncology-diagnostic>
@@ -959,6 +961,32 @@
   mf:result [
     bridge:expectedGraph <expected/bundle-medication-repeated-id.ttl> ;
     bridge:expectedFindings <findings/bundle-medication-repeated-id.ttl>
+  ] .
+
+<#bundle-pull-collection-versions> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-pull-collection-versions" ;
+  rdfs:comment "A collection Bundle as a client assembles it from one server's reads: each fullUrl is the server's base, the type and the id, and each resource carries meta.versionId and meta.lastUpdated. Each record is named by the server, type and id, and its version is the pav:version and pav:lastUpdateOn of the version the record arrived as." ;
+  mf:action [
+    bridge:input <in/bundle-pull-collection-versions.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/example-pull.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-pull-collection-versions.ttl> ;
+    bridge:expectedFindings <findings/bundle-pull-collection-versions.ttl>
+  ] .
+
+<#bundle-pull-searchset-outcome> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-pull-searchset-outcome" ;
+  rdfs:comment "A searchset Bundle holding two matches and an OperationOutcome entry of search.mode outcome. The adapter reads every entry whatever the Bundle's type, so the outcome is a resourceTypeNotMapped finding and no record, and the matches are records. Its entry-level search and the outcome's issue are paths the accounting does not name, so each is a census finding." ;
+  mf:action [
+    bridge:input <in/bundle-pull-searchset-outcome.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/example-pull.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-pull-searchset-outcome.ttl> ;
+    bridge:expectedFindings <findings/bundle-pull-searchset-outcome.ttl>
   ] .
 
 <#lab-same-day-same-code-different-value> a bridge:IdentityRelationTest ;
