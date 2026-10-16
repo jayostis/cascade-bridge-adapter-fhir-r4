@@ -1,0 +1,14 @@
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov:   <http://www.w3.org/ns/prov#> .
+@prefix pav:    <http://purl.org/pav/> .
+@prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+
+bridge:thisDocument
+  bridge:serverBaseUrl "https://fhir.example.org/r4" ;
+  pav:retrievedOn "2026-10-16T09:00:00Z"^^xsd:dateTime ;
+  bridge:sourceFormatVersion "4.0.1" .
+
+bridge:thisImport
+  rdfs:label "Example hospital pull" ;
+  prov:startedAtTime "2026-10-16T09:00:04Z"^^xsd:dateTime .

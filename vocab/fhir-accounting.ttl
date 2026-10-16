@@ -4807,3 +4807,93 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/verificationStatus/coding/system" ;
   bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/search" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "How a search found the entry: it says nothing about the resource." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/search/mode" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "How a search found the entry: it says nothing about the resource." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/issue" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/issue/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/issue/diagnostics" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/issue/severity" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/issue" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/issue/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/issue/diagnostics" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/issue/severity" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/issue" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/issue/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/issue/diagnostics" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/issue/severity" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/issue" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/issue/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/issue/diagnostics" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/issue/severity" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .

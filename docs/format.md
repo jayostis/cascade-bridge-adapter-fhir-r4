@@ -39,6 +39,8 @@ export, may carry none. `meta.versionId`, `meta.lastUpdated` and `meta.source`
 are the server's version metadata, and change on a re-fetch of an unchanged
 resource.
 
+A sender sends one version of each record. A `history` Bundle, which repeats a type and id and carries `request` and `response` on each entry, is out of scope: the adapter reads neither member, and reads every entry whatever the Bundle's type, so a repeated id names no record. Each version falls back to the document and its selector, and arrives as a record of its own.
+
 `resourceType` is not only at a record's root. It names the type of every
 resource nested in another, and a contained resource is a resource.
 
