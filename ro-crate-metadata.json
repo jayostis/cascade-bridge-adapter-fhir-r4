@@ -2263,16 +2263,16 @@
       "@type": "File",
       "name": "FHIR R4 benchmark input: the trimmed ten-year Synthea record of the demo hospitals",
       "encodingFormat": "application/gzip",
-      "contentSize": "34472",
-      "sha256": "3aaeb61230dd766920494a0f7b18ed9b97f5fe9ef90c7ba19f7be31cd994bdf5",
+      "contentSize": "60774",
+      "sha256": "7de65487c87c6c27d8576d7031876fcf43172969ec0bfef119f735b685dd750f",
       "isBasedOn": {
-        "@id": "https://github.com/jayostis/cascade-runtime-js/blob/66f217000cff918ac661a9a1fcfae941b4f98486/packages/demo-hospital/data/cascade-north/patients/syn-c521b4f4b8f5b303.json"
+        "@id": "https://github.com/jayostis/cascade-sandbox/tree/6b46cd7b593a46fbc9a6a693a569c5ef81ad61cf"
       },
-      "dateCreated": "2026-10-11",
+      "dateCreated": "2026-10-17",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "Synthea's simulated person Blanche Hermiston as the demo hospital Cascade North holds her: a collection Bundle of 598 entries, 535,201 bytes gunzipped, copied byte for byte from the file isBasedOn names and gzipped with gzip -9 -n. Synthea v4.0.0 is by The MITRE Corporation, under the Apache License 2.0; the person is simulated and none is a real person. The real provider names, addresses, phone numbers and identifiers that Synthea draws from public CMS data were removed or replaced with the demo hospitals' own names. SNOMED CT identifiers and terms stand as Synthea's output writes them, under Synthea's licence terms: this material includes SNOMED Clinical Terms (SNOMED CT) concept identifiers and terms; SNOMED and SNOMED CT are registered trademarks of SNOMED International. This material contains content from LOINC (http://loinc.org), copyright Regenstrief Institute, Inc. and the Logical Observation Identifiers Names and Codes (LOINC) Committee, available at no cost under the license at http://loinc.org/license; LOINC is a registered United States trademark of Regenstrief Institute, Inc."
+      "description": "Synthea's simulated person Blanche Hermiston as the demo hospital Cascade North serves her: a collection Bundle of 647 entries, 1,098,812 bytes gunzipped, made by the command isBasedOn's description names and gzipped with gzip -9 -n. Synthea v4.0.0 is by The MITRE Corporation, under the Apache License 2.0; the person is simulated and none is a real person. The real provider names, addresses, phone numbers and identifiers that Synthea draws from public CMS data were removed or replaced with the demo hospitals' own names. SNOMED CT identifiers and terms stand as Synthea's output writes them, under Synthea's licence terms: this material includes SNOMED Clinical Terms (SNOMED CT) concept identifiers and terms; SNOMED and SNOMED CT are registered trademarks of SNOMED International. This material contains content from LOINC (http://loinc.org), copyright Regenstrief Institute, Inc. and the Logical Observation Identifiers Names and Codes (LOINC) Committee, available at no cost under the license at http://loinc.org/license; LOINC is a registered United States trademark of Regenstrief Institute, Inc."
     },
     {
       "@id": "bench/synthea-lifetime-a8b18ea4.json.gz",
@@ -2291,14 +2291,14 @@
       "description": "Synthea's simulated person Xochitl Corkery, id a8b18ea4-466a-da66-fd0e-20dbd1de56c5, her untrimmed lifetime record to 2026-10-01: a transaction Bundle of 16,833 entries, 51,227,791 bytes gunzipped, made by the generator isBasedOn names. Synthea v4.0.0 is by The MITRE Corporation, under the Apache License 2.0; the person is simulated and none is a real person. Provider names, street lines, cities, nine-digit ZIP codes and phone numbers are replaced by placeholders; every other identifier is Synthea's own, kept as written. The record keeps the public insurer names in its claims (Cigna Health, Medicare, Medicaid) and Synthea's provider identifiers in its conditional references. SNOMED CT identifiers and terms stand as Synthea's output writes them, under Synthea's licence terms: this material includes SNOMED Clinical Terms (SNOMED CT) concept identifiers and terms; SNOMED and SNOMED CT are registered trademarks of SNOMED International. This material contains content from LOINC (http://loinc.org), copyright Regenstrief Institute, Inc. and the Logical Observation Identifiers Names and Codes (LOINC) Committee, available at no cost under the license at http://loinc.org/license; LOINC is a registered United States trademark of Regenstrief Institute, Inc."
     },
     {
-      "@id": "https://github.com/jayostis/cascade-runtime-js/blob/66f217000cff918ac661a9a1fcfae941b4f98486/packages/demo-hospital/data/cascade-north/patients/syn-c521b4f4b8f5b303.json",
+      "@id": "https://github.com/jayostis/cascade-sandbox/tree/6b46cd7b593a46fbc9a6a693a569c5ef81ad61cf",
       "@type": "CreativeWork",
-      "name": "syn-c521b4f4b8f5b303.json in cascade-runtime-js at 66f2170",
-      "version": "66f217000cff918ac661a9a1fcfae941b4f98486",
+      "name": "cascade-sandbox at 6b46cd7",
+      "version": "6b46cd7b593a46fbc9a6a693a569c5ef81ad61cf",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The demo hospitals' copy of the record, last changed at 6f2af43. A contextual entity: the source of the benchmark input, not part of the crate."
+      "description": "The sandbox that serves the demo hospitals. The benchmark input is its export of one patient, made from a checkout of this commit with `npm run export -- cascade-north syn-c521b4f4b8f5b303 <out>` and no --as-of. A contextual entity: the source of the benchmark input, not part of the crate."
     },
     {
       "@id": "https://github.com/jayostis/cascade-bridge-spec/blob/651fe561867f1260b9b1144e8f431fba05eb9c7b/bench/synthea/generate.sh",
