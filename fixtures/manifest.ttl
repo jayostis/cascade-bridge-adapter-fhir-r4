@@ -35,6 +35,7 @@
     <#bundle-two-identical-id-less-allergies>
     <#bundle-urn-uuid-full-urls>
     <#bundle-patient-reference-urn-not-held>
+    <#bundle-patient-reference-relative-to-urn>
     <#bundle-repeated-condition-id>
     <#encounter-with-id>
     <#lab-glucose-fasting>
@@ -62,6 +63,7 @@
     <#Bundle-bundle-oncology-diagnostic>
     <#bundle-genomics-variants>
     <#bundle-genomics-interpretations>
+    <#bundle-interpretation-relative-reference-to-urn>
     <#martin-okafor-harbourline-panel-2022>
     <#martin-okafor-st-columba-exome-2024>
     <#condition-no-id-differs-only-in-narrative>
@@ -437,6 +439,19 @@
     bridge:expectedFindings <findings/bundle-patient-reference-urn-not-held.ttl>
   ] .
 
+<#bundle-patient-reference-relative-to-urn> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-patient-reference-relative-to-urn" ;
+  rdfs:comment "A Patient held under a urn:uuid fullUrl, and two Conditions referencing Patient/<id>: one from an entry whose fullUrl is a urn:uuid, one to the Patient held under a urn:uuid. FHIR gives a [type]/[id] no meaning there, so neither names a patient, and each carries a finding." ;
+  mf:action [
+    bridge:input <in/bundle-patient-reference-relative-to-urn.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-patient-reference-relative-to-urn.ttl> ;
+    bridge:expectedFindings <findings/bundle-patient-reference-relative-to-urn.ttl>
+  ] .
+
 <#bundle-repeated-condition-id> a bridge:IsomorphicConversionTest ;
   mf:name "bundle-repeated-condition-id" ;
   rdfs:comment "Two entries holding one Condition id: each is named from the document's SHA-256 and its selector, and each carries a finding of the repeated id." ;
@@ -539,6 +554,19 @@
   mf:result [
     bridge:expectedGraph <expected/bundle-genomics-interpretations.ttl> ;
     bridge:expectedFindings <findings/bundle-genomics-interpretations.ttl>
+  ] .
+
+<#bundle-interpretation-relative-reference-to-urn> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-interpretation-relative-reference-to-urn" ;
+  rdfs:comment "A variant held under a urn:uuid fullUrl, and two interpretations derived from Observation/<id>: one from an entry whose fullUrl is a urn:uuid, one to the variant held under a urn:uuid. FHIR gives a [type]/[id] no meaning there, so neither links to the variant, and each carries a finding." ;
+  mf:action [
+    bridge:input <in/bundle-interpretation-relative-reference-to-urn.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-interpretation-relative-reference-to-urn.ttl> ;
+    bridge:expectedFindings <findings/bundle-interpretation-relative-reference-to-urn.ttl>
   ] .
 
 <#martin-okafor-harbourline-panel-2022> a bridge:IsomorphicConversionTest ;

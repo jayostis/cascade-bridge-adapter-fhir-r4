@@ -1,0 +1,70 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:8a1c3e5f-2b4d-4f60-9a7b-1c2d3e4f5a01",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "v1",
+        "status": "final",
+        "code": { "coding": [{ "system": "http://loinc.org", "code": "69548-6", "display": "Genetic variant assessment" }] },
+        "valueCodeableConcept": { "coding": [{ "system": "http://loinc.org", "code": "LA9633-4", "display": "Present" }] },
+        "component": [
+          {
+            "code": { "coding": [{ "system": "http://loinc.org", "code": "48004-6" }] },
+            "valueCodeableConcept": { "coding": [{ "system": "http://varnomen.hgvs.org", "code": "NM_000249.4:c.2042C>T" }] }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:8a1c3e5f-2b4d-4f60-9a7b-1c2d3e4f5a02",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "i1",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs",
+              "code": "diagnostic-implication",
+              "display": "Diagnostic Implication"
+            }
+          ]
+        },
+        "derivedFrom": [{ "reference": "Observation/v1" }],
+        "component": [
+          {
+            "code": { "coding": [{ "system": "http://loinc.org", "code": "53037-8" }] },
+            "valueCodeableConcept": { "coding": [{ "system": "http://loinc.org", "code": "LA6668-3", "display": "Pathogenic" }] }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://fhir.meridian.example/api/FHIR/R4/Observation/i2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "i2",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs",
+              "code": "diagnostic-implication",
+              "display": "Diagnostic Implication"
+            }
+          ]
+        },
+        "derivedFrom": [{ "reference": "Observation/v1" }],
+        "component": [
+          {
+            "code": { "coding": [{ "system": "http://loinc.org", "code": "53037-8" }] },
+            "valueCodeableConcept": { "coding": [{ "system": "http://loinc.org", "code": "LA6668-3", "display": "Pathogenic" }] }
+          }
+        ]
+      }
+    }
+  ]
+}

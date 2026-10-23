@@ -1,0 +1,39 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:8a1c3e5f-2b4d-4f60-9a7b-1c2d3e4f5b01",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "p1",
+        "name": [{ "family": "Okafor", "given": ["Martin"] }],
+        "birthDate": "1979-02-08"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:8a1c3e5f-2b4d-4f60-9a7b-1c2d3e4f5b02",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "c1",
+        "code": {
+          "coding": [{ "system": "http://snomed.info/sct", "code": "38341003", "display": "Hypertensive disorder" }],
+          "text": "Hypertension"
+        },
+        "subject": { "reference": "Patient/other" }
+      }
+    },
+    {
+      "fullUrl": "https://fhir.meridian.example/api/FHIR/R4/Condition/c2",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "c2",
+        "code": {
+          "coding": [{ "system": "http://snomed.info/sct", "code": "44054006", "display": "Diabetes mellitus type 2" }],
+          "text": "Type 2 diabetes"
+        },
+        "subject": { "reference": "Patient/p1" }
+      }
+    }
+  ]
+}
