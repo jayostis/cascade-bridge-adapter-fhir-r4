@@ -1,65 +1,62 @@
-@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
-@prefix prov:     <http://www.w3.org/ns/prov#> .
-@prefix pav:      <http://purl.org/pav/> .
-@prefix bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
-@prefix rec:      <https://ns.cascadeprotocol.org/records/v1-draft#> .
-@prefix health:   <https://ns.cascadeprotocol.org/health/v1#> .
-@prefix clinical: <https://ns.cascadeprotocol.org/clinical/v1#> .
-@prefix cascade:  <https://ns.cascadeprotocol.org/core/v1#> .
-@prefix foaf:     <http://xmlns.com/foaf/0.1/> .
-
-<urn:uuid:50b909ba-6560-8004-ad7c-6d96c9d2a3da>
-  a health:ConditionRecord ;
-  health:sourceRecordId "cond-1" ;
-  rec:sourceUrl <https://fhir.example.org/r4/Condition/cond-1> .
-
-<ni:///sha-256;BhuRWA9z1Gxd3hf_KeGoeJSukb2eiTWCW7poCS8Fyik>
-  prov:specializationOf <urn:uuid:50b909ba-6560-8004-ad7c-6d96c9d2a3da> ;
-  health:conditionName "Type 2 diabetes mellitus" ;
-  health:onsetDate "2019-08-20"^^xsd:date ;
-  health:snomedCode <http://snomed.info/id/44054006> ;
-  health:status "active" ;
-  rec:patient <urn:uuid:eb313649-c6ff-8ffa-93e2-2898fe91b570> .
-
-[] bridge:arrivedAs <ni:///sha-256;BhuRWA9z1Gxd3hf_KeGoeJSukb2eiTWCW7poCS8Fyik> ;
-  pav:version "2" ;
-  pav:lastUpdateOn "2024-03-05T14:30:00Z"^^xsd:dateTime ;
-  bridge:selector "/entry/0" ;
-  prov:wasDerivedFrom <ni:///sha-256;rTDteROoR4AP4QAkFeU4cNx_EZ9bknCKSq3zerf0amk> ;
-  prov:wasGeneratedBy _:import .
-
-<urn:uuid:1a5f0da1-4879-8aea-ac22-bd0e68556558>
-  a health:AllergyRecord ;
-  health:sourceRecordId "alg-1" ;
-  rec:sourceUrl <https://fhir.example.org/r4/AllergyIntolerance/alg-1> .
-
-<ni:///sha-256;njQswK2Wn0XBabsdpfoWpzgtecSD2-JoGX_EsgStx6o>
-  prov:specializationOf <urn:uuid:1a5f0da1-4879-8aea-ac22-bd0e68556558> ;
-  health:allergen "Penicillin G" ;
-  health:allergenCode <http://www.nlm.nih.gov/research/umls/rxnorm/7980> ;
-  clinical:criticality "high" ;
-  rec:patient <urn:uuid:eb313649-c6ff-8ffa-93e2-2898fe91b570> .
-
-[] bridge:arrivedAs <ni:///sha-256;njQswK2Wn0XBabsdpfoWpzgtecSD2-JoGX_EsgStx6o> ;
-  pav:version "1" ;
-  pav:lastUpdateOn "2024-01-10T09:05:00Z"^^xsd:dateTime ;
-  bridge:selector "/entry/1" ;
-  prov:wasDerivedFrom <ni:///sha-256;rTDteROoR4AP4QAkFeU4cNx_EZ9bknCKSq3zerf0amk> ;
-  prov:wasGeneratedBy _:import .
-
-<ni:///sha-256;rTDteROoR4AP4QAkFeU4cNx_EZ9bknCKSq3zerf0amk>
-  a prov:Entity ;
-  bridge:serverBaseUrl "https://fhir.example.org/r4" ;
-  pav:retrievedOn "2026-10-16T09:00:00Z"^^xsd:dateTime ;
-  bridge:sourceFormatVersion "4.0.1" .
-
-_:import
-  a prov:Activity ;
-  prov:used <ni:///sha-256;rTDteROoR4AP4QAkFeU4cNx_EZ9bknCKSq3zerf0amk> ;
-  rdfs:label "Example hospital pull" ;
-  prov:startedAtTime "2026-10-16T09:00:04Z"^^xsd:dateTime ;
-  prov:qualifiedAssociation [
-    prov:hadPlan [ a prov:Plan ; rdfs:label "fhir-r4" ; pav:version "0.1.0" ] ;
-    prov:agent [ ]
-  ] .
+@prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix pav: <http://purl.org/pav/> .
+<ni:///sha-256;zLyxaSNPArm6WamlYqiVWXswxDYz7E3sv6N0AU4y5XM> cascade:clinicalStatus "active" ;
+	cascade:onsetDate "2019-08-20"^^xsd:date ;
+	cascade:conditionName "Type 2 diabetes mellitus" ;
+	cascade:snomedCode <http://snomed.info/id/44054006> .
+_:6a3c6f297ca9211c75f53435e76d2e34 pav:lastUpdateOn "2024-03-05T14:30:00Z"^^xsd:dateTime ;
+	pav:version "2" ;
+	bridge:arrivedAs <ni:///sha-256;zLyxaSNPArm6WamlYqiVWXswxDYz7E3sv6N0AU4y5XM> .
+<ni:///sha-256;zLyxaSNPArm6WamlYqiVWXswxDYz7E3sv6N0AU4y5XM> cascade:patient <urn:uuid:dccb6776-d640-88e5-a7b3-7e2e1b860abe> ;
+	prov:specializationOf <urn:uuid:ccae52d2-3ebb-8c94-a910-fa11501c6474> .
+<urn:uuid:ccae52d2-3ebb-8c94-a910-fa11501c6474> cascade:sourceRecordId "cond-1" ;
+	cascade:sourceUrl <https://fhir.example.org/r4/Condition/cond-1> ;
+	a cascade:ProblemOrDiagnosis .
+_:6a3c6f297ca9211c75f53435e76d2e34 oa:hasSelector _:b7088535b3a3ce03728b19757c946a45 ;
+	oa:hasSource <ni:///sha-256;rTDteROoR4AP4QAkFeU4cNx_EZ9bknCKSq3zerf0amk> ;
+	prov:wasDerivedFrom <ni:///sha-256;rTDteROoR4AP4QAkFeU4cNx_EZ9bknCKSq3zerf0amk> ;
+	prov:wasGeneratedBy _:3cc05000c6f5b189cd1639be7f4c4564 .
+_:b7088535b3a3ce03728b19757c946a45 a oa:FragmentSelector ;
+	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/entry/0" .
+<ni:///sha-256;mah1mUSglkanURrd4VyYZ9hz2VtyVN-3qZaQly5uzek> cascade:allergen "Penicillin G" ;
+	cascade:allergyCriticality "high" ;
+	cascade:allergenCode <https://ns.cascadeprotocol.org/codes/rxnorm/7980> .
+_:1f47344da1ed9c632a301c170d569a49 pav:lastUpdateOn "2024-01-10T09:05:00Z"^^xsd:dateTime ;
+	pav:version "1" ;
+	bridge:arrivedAs <ni:///sha-256;mah1mUSglkanURrd4VyYZ9hz2VtyVN-3qZaQly5uzek> .
+<ni:///sha-256;mah1mUSglkanURrd4VyYZ9hz2VtyVN-3qZaQly5uzek> cascade:patient <urn:uuid:dccb6776-d640-88e5-a7b3-7e2e1b860abe> ;
+	prov:specializationOf <urn:uuid:561516e5-535f-8aeb-944c-312d661d176e> .
+<urn:uuid:561516e5-535f-8aeb-944c-312d661d176e> cascade:sourceRecordId "alg-1" ;
+	cascade:sourceUrl <https://fhir.example.org/r4/AllergyIntolerance/alg-1> ;
+	a cascade:AllergyOrIntolerance .
+_:1f47344da1ed9c632a301c170d569a49 oa:hasSelector _:6fe8f410b6fe78beb71a6990ac92d82a ;
+	oa:hasSource <ni:///sha-256;rTDteROoR4AP4QAkFeU4cNx_EZ9bknCKSq3zerf0amk> ;
+	prov:wasDerivedFrom <ni:///sha-256;rTDteROoR4AP4QAkFeU4cNx_EZ9bknCKSq3zerf0amk> ;
+	prov:wasGeneratedBy _:3cc05000c6f5b189cd1639be7f4c4564 .
+_:6fe8f410b6fe78beb71a6990ac92d82a a oa:FragmentSelector ;
+	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/entry/1" .
+<ni:///sha-256;rTDteROoR4AP4QAkFeU4cNx_EZ9bknCKSq3zerf0amk> cascade:serverBaseUrl "https://fhir.example.org/r4" ;
+	pav:retrievedOn "2026-10-16T09:00:00Z"^^xsd:dateTime ;
+	cascade:sourceFormatVersion "4.0.1" .
+_:3cc05000c6f5b189cd1639be7f4c4564 <http://www.w3.org/2000/01/rdf-schema#label> "Example hospital pull" ;
+	prov:startedAtTime "2026-10-16T09:00:04Z"^^xsd:dateTime .
+<ni:///sha-256;rTDteROoR4AP4QAkFeU4cNx_EZ9bknCKSq3zerf0amk> a prov:Entity .
+_:3cc05000c6f5b189cd1639be7f4c4564 a prov:Activity ;
+	prov:used <ni:///sha-256;rTDteROoR4AP4QAkFeU4cNx_EZ9bknCKSq3zerf0amk> ;
+	prov:qualifiedAssociation _:7d178800113715a37bedd3acab732ea6 .
+_:7d178800113715a37bedd3acab732ea6 prov:hadPlan _:ff0c6af457bb2726cca3ac0dd11594b3 .
+_:ff0c6af457bb2726cca3ac0dd11594b3 a prov:Plan ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "fhir-r4" ;
+	pav:version "0.1.0" .
+_:7d178800113715a37bedd3acab732ea6 prov:agent _:2135fd5c04cde336a7a0fd81e304c81f .
+_:2135fd5c04cde336a7a0fd81e304c81f a prov:SoftwareAgent ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Cascade Bridge for Rust" ;
+	pav:version "0.1.0" .

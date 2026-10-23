@@ -2,18 +2,18 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:acfefa68586c648858cd8c7b62ca8b4f a oa:FragmentSelector ;
+_:db99cb5a1771483b4f86a8567378e528 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "" ;
-	oa:refinedBy _:c34073e758c4183ecf38325f27ca8f9b .
-_:e4b6487a6d01616803ac21a46787185f oa:hasSource <../in/medication-request-two-rxnorm-codes.json> .
-_:c34073e758c4183ecf38325f27ca8f9b rdf:value "/dosageInstruction/1/text" ;
+	rdf:value "" .
+_:bebf580abf88798afe1b047eb6e1435b oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/medication-request-two-rxnorm-codes.json> .
+_:db99cb5a1771483b4f86a8567378e528 oa:refinedBy _:c5e7afbf9c4a7541e159b82baf7c6cc0 .
+_:c5e7afbf9c4a7541e159b82baf7c6cc0 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	a oa:FragmentSelector .
-_:e4b6487a6d01616803ac21a46787185f oa:hasSelector _:acfefa68586c648858cd8c7b62ca8b4f .
-_:c9529cb36117daa7ef3028d1d65b48e1 oa:hasTarget _:e4b6487a6d01616803ac21a46787185f ;
+	rdf:value "/dosageInstruction/1/text" .
+_:bebf580abf88798afe1b047eb6e1435b oa:hasSelector _:db99cb5a1771483b4f86a8567378e528 .
+_:f66f15a28f6e950a1f376fe09dbc96bb oa:hasTarget _:bebf580abf88798afe1b047eb6e1435b ;
 	sh:resultSeverity sh:Warning ;
-	sh:value "Then take 10 mg by mouth once daily" ;
-	oa:motivatedBy oa:classifying ;
+	a oa:Annotation ;
 	oa:hasBody fhirr4:medicationDosageRepeated ;
-	a oa:Annotation .
+	oa:motivatedBy oa:classifying ;
+	sh:value "Then take 10 mg by mouth once daily" .

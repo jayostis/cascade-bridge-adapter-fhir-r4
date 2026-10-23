@@ -1,54 +1,57 @@
-@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
-@prefix prov:     <http://www.w3.org/ns/prov#> .
-@prefix pav:      <http://purl.org/pav/> .
-@prefix bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
-@prefix rec:      <https://ns.cascadeprotocol.org/records/v1-draft#> .
-@prefix health:   <https://ns.cascadeprotocol.org/health/v1#> .
-@prefix clinical: <https://ns.cascadeprotocol.org/clinical/v1#> .
-@prefix cascade:  <https://ns.cascadeprotocol.org/core/v1#> .
-@prefix foaf:     <http://xmlns.com/foaf/0.1/> .
-
-<urn:uuid:7c0fbd2e-6693-8557-914c-a9b81d495211>
-  a health:ImmunizationRecord ;
-  health:sourceRecordId "imm-tdap-1" ;
-  rec:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Immunization/imm-tdap-1> .
-
-<ni:///sha-256;9ZMtWUw-QPatTPojgqH5r3dQpvBifgw7maf2cJqHxUs>
-  prov:specializationOf <urn:uuid:7c0fbd2e-6693-8557-914c-a9b81d495211> ;
-  health:administrationDate "2024-05-06"^^xsd:date ;
-  health:doseQuantity "0.5 mL" ;
-  health:lotNumber "TD4471B" ;
-  health:notes "No reaction observed." ;
-  health:route "Intramuscular" ;
-  health:site "Left deltoid" ;
-  health:status "completed" ;
-  health:vaccineCode "115" ;
-  health:vaccineName "Tdap" ;
-  rec:patient <urn:uuid:24c23e99-ff68-841f-a7a4-ebe3bd997ada> .
-
-[] bridge:arrivedAs <ni:///sha-256;9ZMtWUw-QPatTPojgqH5r3dQpvBifgw7maf2cJqHxUs> ;
-  bridge:selector "" ;
-  prov:wasDerivedFrom <ni:///sha-256;Sh7hH9c2qAGX1bhtbgCNWgHiy0vmtNT8xTVgZ0RVX4g> ;
-  prov:wasGeneratedBy _:import .
-
-<ni:///sha-256;Sh7hH9c2qAGX1bhtbgCNWgHiy0vmtNT8xTVgZ0RVX4g>
-  a prov:Entity ;
-  bridge:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
-  pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
-  prov:qualifiedAttribution
-    [ prov:agent [ rdfs:label "Meridian Health System" ] ; prov:hadRole rec:author ] ,
-    [ prov:agent [ rdfs:label "Apple Health" ] ; prov:hadRole rec:transmitter ] ;
-  bridge:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
-  bridge:authenticatedAsProxy false ;
-  bridge:sourceFormatVersion "4.0.1" .
-
-_:import
-  a prov:Activity ;
-  prov:used <ni:///sha-256;Sh7hH9c2qAGX1bhtbgCNWgHiy0vmtNT8xTVgZ0RVX4g> ;
-  rdfs:label "Apple Health export" ;
-  prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime ;
-  prov:qualifiedAssociation [
-    prov:hadPlan [ a prov:Plan ; rdfs:label "fhir-r4" ; pav:version "0.1.0" ] ;
-    prov:agent [ ]
-  ] .
+@prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix pav: <http://purl.org/pav/> .
+<ni:///sha-256;q_fDapoNep9JIsyKg9BJsnPpNsCXrAzVpmSDJPTwOrc> cascade:routeOfAdministration "Intramuscular" ;
+	cascade:vaccinationOccurrenceTime "2024-05-06"^^xsd:date ;
+	cascade:vaccineCode <https://ns.cascadeprotocol.org/codes/cvx/115> ;
+	cascade:doseQuantity "0.5 mL" ;
+	cascade:administrationSite "Left deltoid" ;
+	cascade:lotNumber "TD4471B" ;
+	cascade:notes "No reaction observed." ;
+	cascade:vaccineName "Tdap" ;
+	cascade:workflowStatus "completed" .
+_:b47e02ea009a43d6f42c26a153169877 bridge:arrivedAs <ni:///sha-256;q_fDapoNep9JIsyKg9BJsnPpNsCXrAzVpmSDJPTwOrc> .
+<ni:///sha-256;q_fDapoNep9JIsyKg9BJsnPpNsCXrAzVpmSDJPTwOrc> cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> ;
+	prov:specializationOf <urn:uuid:17a3831f-3277-8c8f-9511-a2ebb415326d> .
+<urn:uuid:17a3831f-3277-8c8f-9511-a2ebb415326d> cascade:sourceRecordId "imm-tdap-1" ;
+	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Immunization/imm-tdap-1> ;
+	a cascade:Vaccination .
+_:b47e02ea009a43d6f42c26a153169877 oa:hasSelector _:b86a4ab30cc2d28a3d0e4d9d384780f5 ;
+	oa:hasSource <ni:///sha-256;Sh7hH9c2qAGX1bhtbgCNWgHiy0vmtNT8xTVgZ0RVX4g> ;
+	prov:wasDerivedFrom <ni:///sha-256;Sh7hH9c2qAGX1bhtbgCNWgHiy0vmtNT8xTVgZ0RVX4g> ;
+	prov:wasGeneratedBy _:2eeb73231ecfea2d6543c32d8920829e .
+_:b86a4ab30cc2d28a3d0e4d9d384780f5 a oa:FragmentSelector ;
+	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "" .
+<ni:///sha-256;Sh7hH9c2qAGX1bhtbgCNWgHiy0vmtNT8xTVgZ0RVX4g> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
+	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
+_:eb2777c6356df4783ebf647f240e1020 prov:agent _:da7e4de4edaba879be924903e1e07ce1 .
+_:da7e4de4edaba879be924903e1e07ce1 <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:eb2777c6356df4783ebf647f240e1020 prov:hadRole cascade:AuthorRole .
+<ni:///sha-256;Sh7hH9c2qAGX1bhtbgCNWgHiy0vmtNT8xTVgZ0RVX4g> prov:qualifiedAttribution _:eb2777c6356df4783ebf647f240e1020 .
+_:d2678cf2be4a41f71a333c48186cc2ff prov:agent _:b2ffad7e43cc5897347b7fb7e77e04c8 .
+_:b2ffad7e43cc5897347b7fb7e77e04c8 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
+_:d2678cf2be4a41f71a333c48186cc2ff prov:hadRole cascade:TransmitterRole .
+<ni:///sha-256;Sh7hH9c2qAGX1bhtbgCNWgHiy0vmtNT8xTVgZ0RVX4g> prov:qualifiedAttribution _:d2678cf2be4a41f71a333c48186cc2ff ;
+	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
+	cascade:authenticatedAsProxy false ;
+	cascade:sourceFormatVersion "4.0.1" .
+_:2eeb73231ecfea2d6543c32d8920829e <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
+	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
+<ni:///sha-256;Sh7hH9c2qAGX1bhtbgCNWgHiy0vmtNT8xTVgZ0RVX4g> a prov:Entity .
+_:2eeb73231ecfea2d6543c32d8920829e a prov:Activity ;
+	prov:used <ni:///sha-256;Sh7hH9c2qAGX1bhtbgCNWgHiy0vmtNT8xTVgZ0RVX4g> ;
+	prov:qualifiedAssociation _:7ed9f0fb9edf39c5de6632de2974e752 .
+_:7ed9f0fb9edf39c5de6632de2974e752 prov:hadPlan _:52c891b8309616b9a95006371e4189b5 .
+_:52c891b8309616b9a95006371e4189b5 a prov:Plan ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "fhir-r4" ;
+	pav:version "0.1.0" .
+_:7ed9f0fb9edf39c5de6632de2974e752 prov:agent _:be11c819d0467e23b24641291074e820 .
+_:be11c819d0467e23b24641291074e820 a prov:SoftwareAgent ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Cascade Bridge for Rust" ;
+	pav:version "0.1.0" .

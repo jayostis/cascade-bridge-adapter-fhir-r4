@@ -2,18 +2,18 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:ec56290baa1f9b439b3fe2607d7829f6 a oa:FragmentSelector ;
+_:d9766593ae21087999d3545bdaa07922 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "" ;
-	oa:refinedBy _:d32dfca027d16afd0e26df029d33a4e9 .
-_:f4da38bacf93d1d8ec844774b2d2d0a0 oa:hasSource <../in/medication-statement-every-mapped-element.json> .
-_:d32dfca027d16afd0e26df029d33a4e9 rdf:value "/note/0/text" ;
+	rdf:value "" .
+_:b3a789b623ec18de24a736bc8717aaba oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/medication-statement-every-mapped-element.json> .
+_:d9766593ae21087999d3545bdaa07922 oa:refinedBy _:fc8c906db23da2e67ea78e56544b153b .
+_:fc8c906db23da2e67ea78e56544b153b a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	a oa:FragmentSelector .
-_:f4da38bacf93d1d8ec844774b2d2d0a0 oa:hasSelector _:ec56290baa1f9b439b3fe2607d7829f6 .
-_:d17c0de3f016829501c79bb133e7e7af oa:hasTarget _:f4da38bacf93d1d8ec844774b2d2d0a0 ;
+	rdf:value "/note/0/text" .
+_:b3a789b623ec18de24a736bc8717aaba oa:hasSelector _:d9766593ae21087999d3545bdaa07922 .
+_:a1a879d6befb8637cc04af46dacf5081 oa:hasTarget _:b3a789b623ec18de24a736bc8717aaba ;
 	sh:resultSeverity sh:Info ;
-	sh:value "Stopped once the sprain healed." ;
-	oa:motivatedBy oa:classifying ;
+	a oa:Annotation ;
 	oa:hasBody fhirr4:medicationNote ;
-	a oa:Annotation .
+	oa:motivatedBy oa:classifying ;
+	sh:value "Stopped once the sprain healed." .

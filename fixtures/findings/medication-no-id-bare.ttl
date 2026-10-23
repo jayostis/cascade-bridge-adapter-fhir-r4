@@ -1,13 +1,13 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:f7b82e0d3118faa93cfba22327c22e03 a oa:FragmentSelector ;
+_:bba8c44a0b238364e41bbf2f39f06bdc a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:daa8e560f97a4fc6ce5e27e17f942975 a oa:Annotation ;
-	oa:hasTarget _:d8f7cc883d85254e3151bba9ae401317 .
-_:d8f7cc883d85254e3151bba9ae401317 oa:hasSource <../in/medication-no-id-bare.json> ;
-	oa:hasSelector _:f7b82e0d3118faa93cfba22327c22e03 .
-_:daa8e560f97a4fc6ce5e27e17f942975 oa:hasBody <https://datatracker.ietf.org/doc/html/draft-wright-json-schema-validation-01#section-6.28> ;
+_:f86cdffd8bdcef149527892d9c343cc5 a oa:Annotation ;
+	oa:hasTarget _:e245e83ae2c4522283b8b0ba8da64b87 .
+_:e245e83ae2c4522283b8b0ba8da64b87 oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/medication-no-id-bare.json> ;
+	oa:hasSelector _:bba8c44a0b238364e41bbf2f39f06bdc .
+_:f86cdffd8bdcef149527892d9c343cc5 oa:hasBody <https://datatracker.ietf.org/doc/html/draft-wright-json-schema-validation-01#section-6.28> ;
 	oa:motivatedBy oa:classifying ;
 	sh:resultSeverity sh:Violation .

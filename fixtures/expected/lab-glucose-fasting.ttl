@@ -1,51 +1,55 @@
-@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
-@prefix prov:     <http://www.w3.org/ns/prov#> .
-@prefix pav:      <http://purl.org/pav/> .
-@prefix bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
-@prefix rec:      <https://ns.cascadeprotocol.org/records/v1-draft#> .
-@prefix health:   <https://ns.cascadeprotocol.org/health/v1#> .
-@prefix clinical: <https://ns.cascadeprotocol.org/clinical/v1#> .
-@prefix cascade:  <https://ns.cascadeprotocol.org/core/v1#> .
-
-<urn:uuid:12377920-1918-8a5c-b04c-15b55635f7ec>
-  a health:LabResultRecord ;
-  health:sourceRecordId "obs-glucose-fasting" ;
-  rec:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Observation/obs-glucose-fasting> .
-
-<ni:///sha-256;Yuej3AiNssyFfURnmaWwcAJu0cD5L5FWXQ5r5w4U92w>
-  prov:specializationOf <urn:uuid:12377920-1918-8a5c-b04c-15b55635f7ec> ;
-  health:testName "Glucose" ;
-  health:testCode <http://loinc.org/rdf/2339-0> ;
-  health:resultValue "95" ;
-  health:resultUnit "mg/dL" ;
-  health:performedDate "2026-08-02T07:30:00Z"^^xsd:dateTime ;
-  clinical:status "final" ;
-  rec:patient <urn:uuid:24c23e99-ff68-841f-a7a4-ebe3bd997ada> .
-
-[] bridge:arrivedAs <ni:///sha-256;Yuej3AiNssyFfURnmaWwcAJu0cD5L5FWXQ5r5w4U92w> ;
-  bridge:selector "" ;
-  prov:wasDerivedFrom <ni:///sha-256;8Liz1eB3suFP3NLPg4Qk39pM5zjqmcwdU18dYCaM2Xw> ;
-  prov:wasGeneratedBy _:import .
-
-<ni:///sha-256;8Liz1eB3suFP3NLPg4Qk39pM5zjqmcwdU18dYCaM2Xw>
-  a prov:Entity ;
-  bridge:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
-  pav:retrievedFrom <https://FHIR.Meridian.example/api/FHIR/R4/Observation/obs-glucose-fasting> ;
-  pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
-  prov:qualifiedAttribution
-    [ prov:agent [ rdfs:label "Meridian Health System" ] ; prov:hadRole rec:author ] ,
-    [ prov:agent [ rdfs:label "Apple Health" ] ; prov:hadRole rec:transmitter ] ;
-  bridge:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
-  bridge:authenticatedAsProxy false ;
-  bridge:sourceFormatVersion "4.0.1" .
-
-_:import
-  a prov:Activity ;
-  prov:used <ni:///sha-256;8Liz1eB3suFP3NLPg4Qk39pM5zjqmcwdU18dYCaM2Xw> ;
-  rdfs:label "Apple Health export" ;
-  prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime ;
-  prov:qualifiedAssociation [
-    prov:hadPlan [ a prov:Plan ; rdfs:label "fhir-r4" ; pav:version "0.1.0" ] ;
-    prov:agent [ ]
-  ] .
+@prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix pav: <http://purl.org/pav/> .
+<ni:///sha-256;z94-YaVLQu4xC4o0ayTbs-yJfSIeIE8AAHlYuC-fsQ8> cascade:workflowStatus "final" ;
+	cascade:resultClinicallyRelevantTime "2026-08-02T07:30:00Z"^^xsd:dateTime ;
+	cascade:resultUnit "mg/dL" ;
+	cascade:resultValue "95" ;
+	cascade:testCode <http://loinc.org/rdf/2339-0> ;
+	cascade:testName "Glucose" .
+_:bf5d233e166c25ce8dd97c0ef42b0f28 bridge:arrivedAs <ni:///sha-256;z94-YaVLQu4xC4o0ayTbs-yJfSIeIE8AAHlYuC-fsQ8> .
+<ni:///sha-256;z94-YaVLQu4xC4o0ayTbs-yJfSIeIE8AAHlYuC-fsQ8> cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> ;
+	prov:specializationOf <urn:uuid:b0767641-8448-81a0-9753-f86ecfe0c5a3> .
+<urn:uuid:b0767641-8448-81a0-9753-f86ecfe0c5a3> cascade:sourceRecordId "obs-glucose-fasting" ;
+	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Observation/obs-glucose-fasting> ;
+	a cascade:LaboratoryTestResult .
+_:bf5d233e166c25ce8dd97c0ef42b0f28 oa:hasSelector _:e8358709b715290691844d3d9e39bfe7 ;
+	oa:hasSource <ni:///sha-256;8Liz1eB3suFP3NLPg4Qk39pM5zjqmcwdU18dYCaM2Xw> ;
+	prov:wasDerivedFrom <ni:///sha-256;8Liz1eB3suFP3NLPg4Qk39pM5zjqmcwdU18dYCaM2Xw> ;
+	prov:wasGeneratedBy _:cbbcbdafc29df3bf95f5457245d28f26 .
+_:e8358709b715290691844d3d9e39bfe7 a oa:FragmentSelector ;
+	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "" .
+<ni:///sha-256;8Liz1eB3suFP3NLPg4Qk39pM5zjqmcwdU18dYCaM2Xw> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
+	pav:retrievedFrom <https://FHIR.Meridian.example/api/FHIR/R4/Observation/obs-glucose-fasting> ;
+	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
+_:9520bfe4e19434eac98be98945cbea8f prov:agent _:48c54efc7747000356cd02c097660f3f .
+_:48c54efc7747000356cd02c097660f3f <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:9520bfe4e19434eac98be98945cbea8f prov:hadRole cascade:AuthorRole .
+<ni:///sha-256;8Liz1eB3suFP3NLPg4Qk39pM5zjqmcwdU18dYCaM2Xw> prov:qualifiedAttribution _:9520bfe4e19434eac98be98945cbea8f .
+_:ed4c394353c9b201bcf7df3f6221320e prov:agent _:5ef4a16fb10bd9dd8f0bc346973af522 .
+_:5ef4a16fb10bd9dd8f0bc346973af522 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
+_:ed4c394353c9b201bcf7df3f6221320e prov:hadRole cascade:TransmitterRole .
+<ni:///sha-256;8Liz1eB3suFP3NLPg4Qk39pM5zjqmcwdU18dYCaM2Xw> prov:qualifiedAttribution _:ed4c394353c9b201bcf7df3f6221320e ;
+	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
+	cascade:authenticatedAsProxy false ;
+	cascade:sourceFormatVersion "4.0.1" .
+_:cbbcbdafc29df3bf95f5457245d28f26 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
+	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
+<ni:///sha-256;8Liz1eB3suFP3NLPg4Qk39pM5zjqmcwdU18dYCaM2Xw> a prov:Entity .
+_:cbbcbdafc29df3bf95f5457245d28f26 a prov:Activity ;
+	prov:used <ni:///sha-256;8Liz1eB3suFP3NLPg4Qk39pM5zjqmcwdU18dYCaM2Xw> ;
+	prov:qualifiedAssociation _:9d5f44093d7b201c36035ce93a7f75e3 .
+_:9d5f44093d7b201c36035ce93a7f75e3 prov:hadPlan _:3c0e8c9947c0bae0adb5100045190368 .
+_:3c0e8c9947c0bae0adb5100045190368 a prov:Plan ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "fhir-r4" ;
+	pav:version "0.1.0" .
+_:9d5f44093d7b201c36035ce93a7f75e3 prov:agent _:828c84906df25088dc01bb67a79d55a9 .
+_:828c84906df25088dc01bb67a79d55a9 a prov:SoftwareAgent ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Cascade Bridge for Rust" ;
+	pav:version "0.1.0" .

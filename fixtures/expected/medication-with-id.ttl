@@ -1,50 +1,54 @@
-@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
-@prefix prov:     <http://www.w3.org/ns/prov#> .
-@prefix pav:      <http://purl.org/pav/> .
-@prefix bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
-@prefix rec:      <https://ns.cascadeprotocol.org/records/v1-draft#> .
-@prefix health:   <https://ns.cascadeprotocol.org/health/v1#> .
-@prefix clinical: <https://ns.cascadeprotocol.org/clinical/v1#> .
-@prefix cascade:  <https://ns.cascadeprotocol.org/core/v1#> .
-
-<urn:uuid:0ee5c42e-43d9-81a8-a9d8-4304363a6386>
-  a clinical:Medication ;
-  clinical:sourceRecordId "med-lisinopril-1" ;
-  rec:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/MedicationStatement/med-lisinopril-1> .
-
-<ni:///sha-256;j1bgipEnaBCgUw4mv_VUKpXJ5ia7IzPdlrae55IUsbw>
-  prov:specializationOf <urn:uuid:0ee5c42e-43d9-81a8-a9d8-4304363a6386> ;
-  clinical:clinicalIntent "reportedUse" ;
-  clinical:drugName "Lisinopril 10 mg" ;
-  clinical:rxNormCode <http://www.nlm.nih.gov/research/umls/rxnorm/29046> ;
-  clinical:status "active" ;
-  clinical:startDate "2020-04-01"^^xsd:date ;
-  rec:patient <urn:uuid:24c23e99-ff68-841f-a7a4-ebe3bd997ada> .
-
-[] bridge:arrivedAs <ni:///sha-256;j1bgipEnaBCgUw4mv_VUKpXJ5ia7IzPdlrae55IUsbw> ;
-  bridge:selector "" ;
-  prov:wasDerivedFrom <ni:///sha-256;jYnHUfdXCN-y9moqdi2F5TNNDzA07Mz9QPDIL_-7h8k> ;
-  prov:wasGeneratedBy _:import .
-
-<ni:///sha-256;jYnHUfdXCN-y9moqdi2F5TNNDzA07Mz9QPDIL_-7h8k>
-  a prov:Entity ;
-  bridge:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
-  pav:retrievedFrom <https://FHIR.Meridian.example/api/FHIR/R4/MedicationStatement/med-lisinopril-1> ;
-  pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
-  prov:qualifiedAttribution
-    [ prov:agent [ rdfs:label "Meridian Health System" ] ; prov:hadRole rec:author ] ,
-    [ prov:agent [ rdfs:label "Apple Health" ] ; prov:hadRole rec:transmitter ] ;
-  bridge:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
-  bridge:authenticatedAsProxy false ;
-  bridge:sourceFormatVersion "4.0.1" .
-
-_:import
-  a prov:Activity ;
-  prov:used <ni:///sha-256;jYnHUfdXCN-y9moqdi2F5TNNDzA07Mz9QPDIL_-7h8k> ;
-  rdfs:label "Apple Health export" ;
-  prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime ;
-  prov:qualifiedAssociation [
-    prov:hadPlan [ a prov:Plan ; rdfs:label "fhir-r4" ; pav:version "0.1.0" ] ;
-    prov:agent [ ]
-  ] .
+@prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix pav: <http://purl.org/pav/> .
+<ni:///sha-256;HeM6AdtVQQq4RLJYASMxIhn6XwVyd-x7g1JOawxOSqI> cascade:prescribedOrReported "reportedUse" ;
+	cascade:drugName "Lisinopril 10 mg" ;
+	cascade:rxNormCode <https://ns.cascadeprotocol.org/codes/rxnorm/29046> ;
+	cascade:workflowStatus "active" ;
+	cascade:medicationUseStartDate "2020-04-01"^^xsd:date .
+_:b85dd8f420c60602783cf17c65c4c74b bridge:arrivedAs <ni:///sha-256;HeM6AdtVQQq4RLJYASMxIhn6XwVyd-x7g1JOawxOSqI> .
+<ni:///sha-256;HeM6AdtVQQq4RLJYASMxIhn6XwVyd-x7g1JOawxOSqI> cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> ;
+	prov:specializationOf <urn:uuid:35ba4d80-bac5-82e2-a5ba-70f54a413e9d> .
+<urn:uuid:35ba4d80-bac5-82e2-a5ba-70f54a413e9d> cascade:sourceRecordId "med-lisinopril-1" ;
+	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/MedicationStatement/med-lisinopril-1> ;
+	a cascade:PrescribedOrReportedMedication .
+_:b85dd8f420c60602783cf17c65c4c74b oa:hasSelector _:e141db3fc21af553792e80e00d7dd982 ;
+	oa:hasSource <ni:///sha-256;jYnHUfdXCN-y9moqdi2F5TNNDzA07Mz9QPDIL_-7h8k> ;
+	prov:wasDerivedFrom <ni:///sha-256;jYnHUfdXCN-y9moqdi2F5TNNDzA07Mz9QPDIL_-7h8k> ;
+	prov:wasGeneratedBy _:f4221c1c0f43d8d00ab4011b365ba18c .
+_:e141db3fc21af553792e80e00d7dd982 a oa:FragmentSelector ;
+	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "" .
+<ni:///sha-256;jYnHUfdXCN-y9moqdi2F5TNNDzA07Mz9QPDIL_-7h8k> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
+	pav:retrievedFrom <https://FHIR.Meridian.example/api/FHIR/R4/MedicationStatement/med-lisinopril-1> ;
+	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
+_:a6b8124eabf6002f0e5ccc4d0972818f prov:agent _:69eba7764e06bb7001d0d1ffee98f08a .
+_:69eba7764e06bb7001d0d1ffee98f08a <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:a6b8124eabf6002f0e5ccc4d0972818f prov:hadRole cascade:AuthorRole .
+<ni:///sha-256;jYnHUfdXCN-y9moqdi2F5TNNDzA07Mz9QPDIL_-7h8k> prov:qualifiedAttribution _:a6b8124eabf6002f0e5ccc4d0972818f .
+_:98d3269331fada550d78b4f44f72a71b prov:agent _:634c3d3fe5637da226bedfcbe3d3e66f .
+_:634c3d3fe5637da226bedfcbe3d3e66f <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
+_:98d3269331fada550d78b4f44f72a71b prov:hadRole cascade:TransmitterRole .
+<ni:///sha-256;jYnHUfdXCN-y9moqdi2F5TNNDzA07Mz9QPDIL_-7h8k> prov:qualifiedAttribution _:98d3269331fada550d78b4f44f72a71b ;
+	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
+	cascade:authenticatedAsProxy false ;
+	cascade:sourceFormatVersion "4.0.1" .
+_:f4221c1c0f43d8d00ab4011b365ba18c <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
+	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
+<ni:///sha-256;jYnHUfdXCN-y9moqdi2F5TNNDzA07Mz9QPDIL_-7h8k> a prov:Entity .
+_:f4221c1c0f43d8d00ab4011b365ba18c a prov:Activity ;
+	prov:used <ni:///sha-256;jYnHUfdXCN-y9moqdi2F5TNNDzA07Mz9QPDIL_-7h8k> ;
+	prov:qualifiedAssociation _:56427de48f47a9d3d16a0a1fc6b059f2 .
+_:56427de48f47a9d3d16a0a1fc6b059f2 prov:hadPlan _:d8bdcf7fdcab310a8ce0c725f91b8b39 .
+_:d8bdcf7fdcab310a8ce0c725f91b8b39 a prov:Plan ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "fhir-r4" ;
+	pav:version "0.1.0" .
+_:56427de48f47a9d3d16a0a1fc6b059f2 prov:agent _:87d1565acaf8f7ddcbdf84b1c8707a82 .
+_:87d1565acaf8f7ddcbdf84b1c8707a82 a prov:SoftwareAgent ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Cascade Bridge for Rust" ;
+	pav:version "0.1.0" .

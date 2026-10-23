@@ -1,100 +1,100 @@
-@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
-@prefix prov:     <http://www.w3.org/ns/prov#> .
-@prefix pav:      <http://purl.org/pav/> .
-@prefix bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
-@prefix rec:      <https://ns.cascadeprotocol.org/records/v1-draft#> .
-@prefix health:   <https://ns.cascadeprotocol.org/health/v1#> .
-@prefix clinical: <https://ns.cascadeprotocol.org/clinical/v1#> .
-@prefix cascade:  <https://ns.cascadeprotocol.org/core/v1#> .
-@prefix genomics: <https://ns.cascadeprotocol.org/genomics/v1#> .
-@prefix foaf:     <http://xmlns.com/foaf/0.1/> .
-
-<urn:uuid:eb0f0f87-a0f4-8791-ba37-3bfa1f03946f>
-  a cascade:PatientProfile ;
-  cascade:sourceRecordId "Inline-Instance-for-oncology-diagnostic-1" ;
-  rec:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Patient/Inline-Instance-for-oncology-diagnostic-1> .
-
-<ni:///sha-256;uxpd0Pxm2iNxBGo7bFPkGGK4vmFhr-0PeVwNszObXqE>
-  prov:specializationOf <urn:uuid:eb0f0f87-a0f4-8791-ba37-3bfa1f03946f> ;
-  foaf:givenName "Carrot" ;
-  cascade:dateOfBirth "1962-12-31"^^xsd:date .
-
-[] bridge:arrivedAs <ni:///sha-256;uxpd0Pxm2iNxBGo7bFPkGGK4vmFhr-0PeVwNszObXqE> ;
-  bridge:selector "/entry/0" ;
-  prov:wasDerivedFrom <ni:///sha-256;AO4h25x6rbUzWIH6kVDQcwa3ERvIWJrTz_X_yERgjq0> ;
-  prov:wasGeneratedBy _:import .
-
-<urn:uuid:9e9979a1-c4c2-89fb-a909-f0d7848908f0>
-  a health:LabResultRecord ;
-  health:sourceRecordId "Inline-Instance-for-oncology-diagnostic-4" ;
-  rec:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Observation/Inline-Instance-for-oncology-diagnostic-4> .
-
-<ni:///sha-256;vO21VMgR0rZGDOIElQ07fZQEP1TIH9nEBbLsiGuWZIA>
-  prov:specializationOf <urn:uuid:9e9979a1-c4c2-89fb-a909-f0d7848908f0> ;
-  health:testName "Mutations/Megabase [# Ratio] in Tumor" ;
-  health:testCode <http://loinc.org/rdf/94076-7> ;
-  health:resultValue "25" ;
-  health:resultUnit "Mutations/Megabase" ;
-  health:performedDate "2019-03-05"^^xsd:date ;
-  clinical:status "final" ;
-  rec:patient <urn:uuid:eb0f0f87-a0f4-8791-ba37-3bfa1f03946f> .
-
-[] bridge:arrivedAs <ni:///sha-256;vO21VMgR0rZGDOIElQ07fZQEP1TIH9nEBbLsiGuWZIA> ;
-  bridge:selector "/entry/3" ;
-  prov:wasDerivedFrom <ni:///sha-256;AO4h25x6rbUzWIH6kVDQcwa3ERvIWJrTz_X_yERgjq0> ;
-  prov:wasGeneratedBy _:import .
-
-<urn:uuid:a83eb0f2-83e2-83cd-a3c3-3c82b18ffdd0>
-  a genomics:Variant ;
-  rec:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Observation/Inline-Instance-for-oncology-diagnostic-5> .
-
-<ni:///sha-256;mi4PxEmRWKsWXfBP5emjkId-Diu1TAoE2jbiykqR0Xk>
-  prov:specializationOf <urn:uuid:a83eb0f2-83e2-83cd-a3c3-3c82b18ffdd0> ;
-  genomics:clinvarVariationId "13961" ;
-  genomics:geneSymbol "BRAF" ;
-  clinical:status "final" ;
-  rec:patient <urn:uuid:eb0f0f87-a0f4-8791-ba37-3bfa1f03946f> .
-
-[] bridge:arrivedAs <ni:///sha-256;mi4PxEmRWKsWXfBP5emjkId-Diu1TAoE2jbiykqR0Xk> ;
-  bridge:selector "/entry/4" ;
-  prov:wasDerivedFrom <ni:///sha-256;AO4h25x6rbUzWIH6kVDQcwa3ERvIWJrTz_X_yERgjq0> ;
-  prov:wasGeneratedBy _:import .
-
-<urn:uuid:9fedd9ac-6a54-8ed0-a0da-8ddd999bfc27>
-  a genomics:VariantInterpretation ;
-  rec:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Observation/Inline-Instance-for-oncology-diagnostic-6> .
-
-<ni:///sha-256;6loIo4qnVDakjIDMqhSuOKzOajK0dlAGz_BN_0DBcOs>
-  prov:specializationOf <urn:uuid:9fedd9ac-6a54-8ed0-a0da-8ddd999bfc27> ;
-  genomics:acmgClassification genomics:Pathogenic ;
-  genomics:variantInterpreted <urn:uuid:a83eb0f2-83e2-83cd-a3c3-3c82b18ffdd0> ;
-  genomics:interpretedDate "2019-03-05"^^xsd:date ;
-  clinical:status "final" ;
-  rec:patient <urn:uuid:eb0f0f87-a0f4-8791-ba37-3bfa1f03946f> .
-
-[] bridge:arrivedAs <ni:///sha-256;6loIo4qnVDakjIDMqhSuOKzOajK0dlAGz_BN_0DBcOs> ;
-  bridge:selector "/entry/5" ;
-  prov:wasDerivedFrom <ni:///sha-256;AO4h25x6rbUzWIH6kVDQcwa3ERvIWJrTz_X_yERgjq0> ;
-  prov:wasGeneratedBy _:import .
-
-<ni:///sha-256;AO4h25x6rbUzWIH6kVDQcwa3ERvIWJrTz_X_yERgjq0>
-  a prov:Entity ;
-  bridge:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
-  pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
-  prov:qualifiedAttribution
-    [ prov:agent [ rdfs:label "Meridian Health System" ] ; prov:hadRole rec:author ] ,
-    [ prov:agent [ rdfs:label "Apple Health" ] ; prov:hadRole rec:transmitter ] ;
-  bridge:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
-  bridge:authenticatedAsProxy false ;
-  bridge:sourceFormatVersion "4.0.1" .
-
-_:import
-  a prov:Activity ;
-  prov:used <ni:///sha-256;AO4h25x6rbUzWIH6kVDQcwa3ERvIWJrTz_X_yERgjq0> ;
-  rdfs:label "Apple Health export" ;
-  prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime ;
-  prov:qualifiedAssociation [
-    prov:hadPlan [ a prov:Plan ; rdfs:label "fhir-r4" ; pav:version "0.1.0" ] ;
-    prov:agent [ ]
-  ] .
+@prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix pav: <http://purl.org/pav/> .
+<ni:///sha-256;CcdxUpN2kNA2g1zOGgzwpD3TQYpwHjX3MhoLenf4LzI> foaf:givenName "Carrot" ;
+	cascade:dateOfBirth "1962-12-31"^^xsd:date .
+_:86b0f03b53bb85db648eb90dc270957c bridge:arrivedAs <ni:///sha-256;CcdxUpN2kNA2g1zOGgzwpD3TQYpwHjX3MhoLenf4LzI> .
+<ni:///sha-256;CcdxUpN2kNA2g1zOGgzwpD3TQYpwHjX3MhoLenf4LzI> prov:specializationOf <urn:uuid:d79a57a7-518a-8e31-b64d-ab3147b4856b> .
+<urn:uuid:d79a57a7-518a-8e31-b64d-ab3147b4856b> cascade:sourceRecordId "Inline-Instance-for-oncology-diagnostic-1" ;
+	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Patient/Inline-Instance-for-oncology-diagnostic-1> ;
+	a cascade:PatientProfile .
+_:86b0f03b53bb85db648eb90dc270957c oa:hasSelector _:be55ef69cb2d27d6b8c1d158033c0e97 ;
+	oa:hasSource <ni:///sha-256;AO4h25x6rbUzWIH6kVDQcwa3ERvIWJrTz_X_yERgjq0> ;
+	prov:wasDerivedFrom <ni:///sha-256;AO4h25x6rbUzWIH6kVDQcwa3ERvIWJrTz_X_yERgjq0> ;
+	prov:wasGeneratedBy _:dbc91de89e8120f9d35937be69ca4b4d .
+_:be55ef69cb2d27d6b8c1d158033c0e97 a oa:FragmentSelector ;
+	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/entry/0" .
+<ni:///sha-256;khZDgVPAS_muKRbQITzZCDUOlgGAbtKdCTIH1UJtJ6Y> cascade:workflowStatus "final" ;
+	cascade:resultClinicallyRelevantTime "2019-03-05"^^xsd:date ;
+	cascade:resultUnit "Mutations/Megabase" ;
+	cascade:resultValue "25" ;
+	cascade:testCode <http://loinc.org/rdf/94076-7> ;
+	cascade:testName "Mutations/Megabase [# Ratio] in Tumor" .
+_:dcb1d237cfa9f2907fc5cf1f191926ea bridge:arrivedAs <ni:///sha-256;khZDgVPAS_muKRbQITzZCDUOlgGAbtKdCTIH1UJtJ6Y> .
+<ni:///sha-256;khZDgVPAS_muKRbQITzZCDUOlgGAbtKdCTIH1UJtJ6Y> cascade:patient <urn:uuid:d79a57a7-518a-8e31-b64d-ab3147b4856b> ;
+	prov:specializationOf <urn:uuid:55a7e34c-f9ec-8e02-ac1d-08ae762d8705> .
+<urn:uuid:55a7e34c-f9ec-8e02-ac1d-08ae762d8705> cascade:sourceRecordId "Inline-Instance-for-oncology-diagnostic-4" ;
+	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Observation/Inline-Instance-for-oncology-diagnostic-4> ;
+	a cascade:LaboratoryTestResult .
+_:dcb1d237cfa9f2907fc5cf1f191926ea oa:hasSelector _:b957248e6ce3af337b4337321259a27d ;
+	oa:hasSource <ni:///sha-256;AO4h25x6rbUzWIH6kVDQcwa3ERvIWJrTz_X_yERgjq0> ;
+	prov:wasDerivedFrom <ni:///sha-256;AO4h25x6rbUzWIH6kVDQcwa3ERvIWJrTz_X_yERgjq0> ;
+	prov:wasGeneratedBy _:dbc91de89e8120f9d35937be69ca4b4d .
+_:b957248e6ce3af337b4337321259a27d a oa:FragmentSelector ;
+	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/entry/3" .
+_:9b5236098fab7314376759e60d57fd02 bridge:arrivedAs <ni:///sha-256;O_neIrLHN50yGIO8jlGRLA6TiqAM_JD0MZ83XADXoSY> .
+<ni:///sha-256;O_neIrLHN50yGIO8jlGRLA6TiqAM_JD0MZ83XADXoSY> cascade:patient <urn:uuid:d79a57a7-518a-8e31-b64d-ab3147b4856b> ;
+	prov:specializationOf <urn:uuid:0f5d4109-5c1b-8f0e-9f33-8f3bb891f934> .
+<urn:uuid:0f5d4109-5c1b-8f0e-9f33-8f3bb891f934> cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Observation/Inline-Instance-for-oncology-diagnostic-5> ;
+	a cascade:GeneticVariantFinding .
+<ni:///sha-256;O_neIrLHN50yGIO8jlGRLA6TiqAM_JD0MZ83XADXoSY> cascade:clinvarVariationId "13961" ;
+	cascade:geneSymbol "BRAF" ;
+	cascade:workflowStatus "final" .
+_:9b5236098fab7314376759e60d57fd02 oa:hasSelector _:c07284423a42d04974e363e72bb4ae39 ;
+	oa:hasSource <ni:///sha-256;AO4h25x6rbUzWIH6kVDQcwa3ERvIWJrTz_X_yERgjq0> ;
+	prov:wasDerivedFrom <ni:///sha-256;AO4h25x6rbUzWIH6kVDQcwa3ERvIWJrTz_X_yERgjq0> ;
+	prov:wasGeneratedBy _:dbc91de89e8120f9d35937be69ca4b4d .
+_:c07284423a42d04974e363e72bb4ae39 a oa:FragmentSelector ;
+	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/entry/4" .
+_:bab141ddd362f8121200a2e463caca90 bridge:arrivedAs <ni:///sha-256;t2cDeyNjLk6RB2WSoCbPplyKrV3Lhfx3f4CJ0xkGFA8> .
+<ni:///sha-256;t2cDeyNjLk6RB2WSoCbPplyKrV3Lhfx3f4CJ0xkGFA8> cascade:patient <urn:uuid:d79a57a7-518a-8e31-b64d-ab3147b4856b> ;
+	prov:specializationOf <urn:uuid:efc1b4b0-fd91-84b5-a073-39d636585289> .
+<urn:uuid:efc1b4b0-fd91-84b5-a073-39d636585289> cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Observation/Inline-Instance-for-oncology-diagnostic-6> ;
+	a cascade:VariantInterpretation .
+<ni:///sha-256;t2cDeyNjLk6RB2WSoCbPplyKrV3Lhfx3f4CJ0xkGFA8> cascade:acmgClassification cascade:Pathogenic ;
+	cascade:variantInterpreted <urn:uuid:0f5d4109-5c1b-8f0e-9f33-8f3bb891f934> ;
+	cascade:interpretedDate "2019-03-05"^^xsd:date ;
+	cascade:workflowStatus "final" .
+_:bab141ddd362f8121200a2e463caca90 oa:hasSelector _:359a384945d7e161259f7e2378097f32 ;
+	oa:hasSource <ni:///sha-256;AO4h25x6rbUzWIH6kVDQcwa3ERvIWJrTz_X_yERgjq0> ;
+	prov:wasDerivedFrom <ni:///sha-256;AO4h25x6rbUzWIH6kVDQcwa3ERvIWJrTz_X_yERgjq0> ;
+	prov:wasGeneratedBy _:dbc91de89e8120f9d35937be69ca4b4d .
+_:359a384945d7e161259f7e2378097f32 a oa:FragmentSelector ;
+	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/entry/5" .
+<ni:///sha-256;AO4h25x6rbUzWIH6kVDQcwa3ERvIWJrTz_X_yERgjq0> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
+	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
+_:f34bd6267233317da438567200730fc0 prov:agent _:a1c145592cda6d1137dc23456b0dc919 .
+_:a1c145592cda6d1137dc23456b0dc919 <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:f34bd6267233317da438567200730fc0 prov:hadRole cascade:AuthorRole .
+<ni:///sha-256;AO4h25x6rbUzWIH6kVDQcwa3ERvIWJrTz_X_yERgjq0> prov:qualifiedAttribution _:f34bd6267233317da438567200730fc0 .
+_:7d303bcf5260ebd2659cdda035ac660e prov:agent _:91eb51c06d2369e7a08a4cbf22aabf1c .
+_:91eb51c06d2369e7a08a4cbf22aabf1c <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
+_:7d303bcf5260ebd2659cdda035ac660e prov:hadRole cascade:TransmitterRole .
+<ni:///sha-256;AO4h25x6rbUzWIH6kVDQcwa3ERvIWJrTz_X_yERgjq0> prov:qualifiedAttribution _:7d303bcf5260ebd2659cdda035ac660e ;
+	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
+	cascade:authenticatedAsProxy false ;
+	cascade:sourceFormatVersion "4.0.1" .
+_:dbc91de89e8120f9d35937be69ca4b4d <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
+	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
+<ni:///sha-256;AO4h25x6rbUzWIH6kVDQcwa3ERvIWJrTz_X_yERgjq0> a prov:Entity .
+_:dbc91de89e8120f9d35937be69ca4b4d a prov:Activity ;
+	prov:used <ni:///sha-256;AO4h25x6rbUzWIH6kVDQcwa3ERvIWJrTz_X_yERgjq0> ;
+	prov:qualifiedAssociation _:7cab2da1f320bfac8e532ec8882a206e .
+_:7cab2da1f320bfac8e532ec8882a206e prov:hadPlan _:50756855330ec4a9a7cba2d27a521c85 .
+_:50756855330ec4a9a7cba2d27a521c85 a prov:Plan ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "fhir-r4" ;
+	pav:version "0.1.0" .
+_:7cab2da1f320bfac8e532ec8882a206e prov:agent _:c17ef9c9dfa6dd757ebaef77892edc88 .
+_:c17ef9c9dfa6dd757ebaef77892edc88 a prov:SoftwareAgent ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Cascade Bridge for Rust" ;
+	pav:version "0.1.0" .

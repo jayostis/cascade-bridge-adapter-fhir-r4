@@ -2,18 +2,18 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:b123a6ad57b92635742c20d64770c28e a oa:FragmentSelector ;
+_:e3c5a971579f300856f87c65e10ed410 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:e949f98ef1e2490cbf0b4b187be5d372 a oa:FragmentSelector ;
+_:d8c8f7156762a7072ec665e44c60df5f a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/gender" .
-_:b123a6ad57b92635742c20d64770c28e oa:refinedBy _:e949f98ef1e2490cbf0b4b187be5d372 .
-_:d45f0ca07be5b6c5fb073de00840ad50 a oa:Annotation ;
-	oa:hasTarget _:c5cd335074181151715239e5e04f106b .
-_:c5cd335074181151715239e5e04f106b oa:hasSource <../in/patient-with-id.json> ;
-	oa:hasSelector _:b123a6ad57b92635742c20d64770c28e .
-_:d45f0ca07be5b6c5fb073de00840ad50 oa:hasBody fhirr4:patientGender ;
+_:e3c5a971579f300856f87c65e10ed410 oa:refinedBy _:d8c8f7156762a7072ec665e44c60df5f .
+_:b2e7ce6d0c12009a77c69e56262ef74 a oa:Annotation ;
+	oa:hasTarget _:f949837d2b1fc0b2fc1d108304d52c3c .
+_:f949837d2b1fc0b2fc1d108304d52c3c oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/patient-with-id.json> ;
+	oa:hasSelector _:e3c5a971579f300856f87c65e10ed410 .
+_:b2e7ce6d0c12009a77c69e56262ef74 oa:hasBody fhirr4:patientGender ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "/gender" ;
 	sh:resultSeverity sh:Info .

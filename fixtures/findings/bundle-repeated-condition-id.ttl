@@ -2,33 +2,33 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:d90d0bce0494f0e9ea0be99805e71e25 a oa:FragmentSelector ;
+_:d1f0b71c9b5a2293bfcadcba702c622a a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/entry/0" ;
-	oa:refinedBy _:def651b0d2eb86c091b7c526e208a269 .
-_:f63ab7f0bfe946027fdee2eb6fb1c4cf oa:hasSource <../in/bundle-repeated-condition-id.json> .
-_:def651b0d2eb86c091b7c526e208a269 rdf:value "/resource/id" ;
+	rdf:value "/entry/0" .
+_:c18c61ed957ca5d63b93586251a2864e oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/bundle-repeated-condition-id.json> .
+_:d1f0b71c9b5a2293bfcadcba702c622a oa:refinedBy _:a1f79a027088d81c5716f81379011258 .
+_:a1f79a027088d81c5716f81379011258 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	a oa:FragmentSelector .
-_:f63ab7f0bfe946027fdee2eb6fb1c4cf oa:hasSelector _:d90d0bce0494f0e9ea0be99805e71e25 .
-_:d202d6f3f9417d76316159b94db92d01 oa:hasTarget _:f63ab7f0bfe946027fdee2eb6fb1c4cf ;
+	rdf:value "/resource/id" .
+_:c18c61ed957ca5d63b93586251a2864e oa:hasSelector _:d1f0b71c9b5a2293bfcadcba702c622a .
+_:ff3a82fcf95f2d0c5a79642f7966e311 oa:hasTarget _:c18c61ed957ca5d63b93586251a2864e ;
 	sh:resultSeverity sh:Info ;
-	sh:value "cond-htn-1" ;
-	oa:motivatedBy oa:classifying ;
+	a oa:Annotation ;
 	oa:hasBody fhirr4:resourceIdRepeated ;
-	a oa:Annotation .
-_:e4c1eabc7a2780d31251f2f7c2b111b7 a oa:FragmentSelector ;
+	oa:motivatedBy oa:classifying ;
+	sh:value "cond-htn-1" .
+_:e31a12761dc9d1c895c71f3e2b5a7f9d a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/entry/1" ;
-	oa:refinedBy _:a955c59a518c6dbfee2c8e4eb81df44d .
-_:bcc6a1425ed5d9fad9cbd8df941aefeb oa:hasSource <../in/bundle-repeated-condition-id.json> .
-_:a955c59a518c6dbfee2c8e4eb81df44d rdf:value "/resource/id" ;
+	rdf:value "/entry/1" .
+_:e549b4e457468523b119cd44f75e5831 oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/bundle-repeated-condition-id.json> .
+_:e31a12761dc9d1c895c71f3e2b5a7f9d oa:refinedBy _:f46befcf5907e21514bae1977f503956 .
+_:f46befcf5907e21514bae1977f503956 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	a oa:FragmentSelector .
-_:bcc6a1425ed5d9fad9cbd8df941aefeb oa:hasSelector _:e4c1eabc7a2780d31251f2f7c2b111b7 .
-_:a6923ad76a23f0a8d8b978b5d4b95a2 oa:hasTarget _:bcc6a1425ed5d9fad9cbd8df941aefeb ;
+	rdf:value "/resource/id" .
+_:e549b4e457468523b119cd44f75e5831 oa:hasSelector _:e31a12761dc9d1c895c71f3e2b5a7f9d .
+_:ad666cb6fa7528241b4bb9f4b8851c3b oa:hasTarget _:e549b4e457468523b119cd44f75e5831 ;
 	sh:resultSeverity sh:Info ;
-	sh:value "cond-htn-1" ;
-	oa:motivatedBy oa:classifying ;
+	a oa:Annotation ;
 	oa:hasBody fhirr4:resourceIdRepeated ;
-	a oa:Annotation .
+	oa:motivatedBy oa:classifying ;
+	sh:value "cond-htn-1" .

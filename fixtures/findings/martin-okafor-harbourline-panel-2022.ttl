@@ -2,31 +2,31 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:ba286b181d518cf280209728ac31b21a a oa:FragmentSelector ;
+_:a8769d822e7a9bc6334c674b9c38e8b2 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/1" .
-_:b690d42e720ec981fdaca923b8ac7725 oa:hasSource <../in/martin-okafor-harbourline-panel-2022.json> .
-_:ba286b181d518cf280209728ac31b21a oa:refinedBy _:d5e00226599b56bf3b8cf5034174a470 .
-_:d5e00226599b56bf3b8cf5034174a470 a oa:FragmentSelector ;
+_:a9e8fb73c2f040fc3dc2454bd1437c54 oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/martin-okafor-harbourline-panel-2022.json> .
+_:a8769d822e7a9bc6334c674b9c38e8b2 oa:refinedBy _:a8d88722935aa6590213fa8eeae0ae39 .
+_:a8d88722935aa6590213fa8eeae0ae39 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/resourceType" .
-_:b690d42e720ec981fdaca923b8ac7725 oa:hasSelector _:ba286b181d518cf280209728ac31b21a .
-_:ca21bb867c7e9adb1efc04e3ced5b2a9 oa:hasTarget _:b690d42e720ec981fdaca923b8ac7725 ;
+_:a9e8fb73c2f040fc3dc2454bd1437c54 oa:hasSelector _:a8769d822e7a9bc6334c674b9c38e8b2 .
+_:bf20845329007c76a7a53ea715d0113f oa:hasTarget _:a9e8fb73c2f040fc3dc2454bd1437c54 ;
 	sh:resultSeverity sh:Warning ;
 	a oa:Annotation ;
 	oa:hasBody fhirr4:resourceTypeNotMapped ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "DiagnosticReport" .
-_:d6ac2a1f244984e15ca47df05f44203d a oa:FragmentSelector ;
+_:efe4486c6a51b335fbc6f93044406ec5 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/2" .
-_:a839a3ef9261cb7ee2de6b1952ec2c8 oa:hasSource <../in/martin-okafor-harbourline-panel-2022.json> .
-_:d6ac2a1f244984e15ca47df05f44203d oa:refinedBy _:ddb23a1f181bac13e7b4bced9864a1c8 .
-_:ddb23a1f181bac13e7b4bced9864a1c8 a oa:FragmentSelector ;
+_:ce89aa0751d841df91226928fb310cd9 oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/martin-okafor-harbourline-panel-2022.json> .
+_:efe4486c6a51b335fbc6f93044406ec5 oa:refinedBy _:ee4e571ffdc355136b68a24436e38458 .
+_:ee4e571ffdc355136b68a24436e38458 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/component/0/valueCodeableConcept/coding/0/code" .
-_:a839a3ef9261cb7ee2de6b1952ec2c8 oa:hasSelector _:d6ac2a1f244984e15ca47df05f44203d .
-_:fc4000660cdb81505e7c035220fa1369 oa:hasTarget _:a839a3ef9261cb7ee2de6b1952ec2c8 ;
+_:ce89aa0751d841df91226928fb310cd9 oa:hasSelector _:efe4486c6a51b335fbc6f93044406ec5 .
+_:d6a9cfd606ddd815523ff352b44fd181 oa:hasTarget _:ce89aa0751d841df91226928fb310cd9 ;
 	sh:resultSeverity sh:Info ;
 	a oa:Annotation ;
 	oa:hasBody fhirr4:variantHgvsGeneOrProtein ;

@@ -2,16 +2,16 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:ae28bfceb4d64e31dccc5c5ff131aa57 a oa:FragmentSelector ;
+_:ec91ba55cf1bc105fb55448ef1539ca1 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/1" .
-_:fd7b97c9cd7e4885041fce8f3bea343f oa:hasSource <../in/martin-okafor-st-columba-exome-2024.json> .
-_:ae28bfceb4d64e31dccc5c5ff131aa57 oa:refinedBy _:e4290c0a35db7207403cba695f924035 .
-_:e4290c0a35db7207403cba695f924035 a oa:FragmentSelector ;
+_:b017d6197a5339b34ca77b67813f2f84 oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/martin-okafor-st-columba-exome-2024.json> .
+_:ec91ba55cf1bc105fb55448ef1539ca1 oa:refinedBy _:f3432efe6cdcf39eee383502d696e8ba .
+_:f3432efe6cdcf39eee383502d696e8ba a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/resourceType" .
-_:fd7b97c9cd7e4885041fce8f3bea343f oa:hasSelector _:ae28bfceb4d64e31dccc5c5ff131aa57 .
-_:eaac1fbf2138861426265672a2fe34e1 oa:hasTarget _:fd7b97c9cd7e4885041fce8f3bea343f ;
+_:b017d6197a5339b34ca77b67813f2f84 oa:hasSelector _:ec91ba55cf1bc105fb55448ef1539ca1 .
+_:d142c34970dcde18c33b02dbc96ae44c oa:hasTarget _:b017d6197a5339b34ca77b67813f2f84 ;
 	sh:resultSeverity sh:Warning ;
 	a oa:Annotation ;
 	oa:hasBody fhirr4:resourceTypeNotMapped ;

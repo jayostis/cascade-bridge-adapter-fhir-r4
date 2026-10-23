@@ -2,18 +2,18 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:fca0216b07341eb3faf64f5421f63cec a oa:FragmentSelector ;
+_:a758ec5429e4013c3bb32723341ec06c a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "" ;
-	oa:refinedBy _:e8f99e22cbc65b881aef5b30810e739c .
-_:cd23041125c35c53cc2ebc0bb18f9de2 oa:hasSource <../in/medication-request-ndc-forms.json> .
-_:e8f99e22cbc65b881aef5b30810e739c rdf:value "/medicationCodeableConcept/coding/5/code" ;
+	rdf:value "" .
+_:ba936af34dee024f31001eaa251a9b5e oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/medication-request-ndc-forms.json> .
+_:a758ec5429e4013c3bb32723341ec06c oa:refinedBy _:ae029a93a3f830baf431b8ccad4699e5 .
+_:ae029a93a3f830baf431b8ccad4699e5 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	a oa:FragmentSelector .
-_:cd23041125c35c53cc2ebc0bb18f9de2 oa:hasSelector _:fca0216b07341eb3faf64f5421f63cec .
-_:f70e33ce3d9a104c830dcb59f7ba8ced oa:hasTarget _:cd23041125c35c53cc2ebc0bb18f9de2 ;
+	rdf:value "/medicationCodeableConcept/coding/5/code" .
+_:ba936af34dee024f31001eaa251a9b5e oa:hasSelector _:a758ec5429e4013c3bb32723341ec06c .
+_:f9658f4b5bbba9e5d5bbac978c7855b6 oa:hasTarget _:ba936af34dee024f31001eaa251a9b5e ;
 	sh:resultSeverity sh:Info ;
-	sh:value "0069153066" ;
-	oa:motivatedBy oa:classifying ;
+	a oa:Annotation ;
 	oa:hasBody fhirr4:ndcNotNormalised ;
-	a oa:Annotation .
+	oa:motivatedBy oa:classifying ;
+	sh:value "0069153066" .

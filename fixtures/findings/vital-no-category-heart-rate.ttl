@@ -2,18 +2,18 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:c9065d55da1d80f2f449f95ffbbfc6d8 a oa:FragmentSelector ;
+_:d8fd2c832db2c6bfbfb20ae3a4355b1e a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "" ;
-	oa:refinedBy _:acc49de2c58f722082a99720a5446899 .
-_:c27932433767899aaaaa92372ea6e25c oa:hasSource <../in/vital-no-category-heart-rate.json> .
-_:acc49de2c58f722082a99720a5446899 rdf:value "/code/coding/0/code" ;
+	rdf:value "" .
+_:a56e1ab6a5a00c486bbb4cf6bc7e2dbb oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/vital-no-category-heart-rate.json> .
+_:d8fd2c832db2c6bfbfb20ae3a4355b1e oa:refinedBy _:e608ed8cc614b5f057b55e57ace6d6fa .
+_:e608ed8cc614b5f057b55e57ace6d6fa a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	a oa:FragmentSelector .
-_:c27932433767899aaaaa92372ea6e25c oa:hasSelector _:c9065d55da1d80f2f449f95ffbbfc6d8 .
-_:b6698eb7deadca1f79f189596c54dab7 oa:hasTarget _:c27932433767899aaaaa92372ea6e25c ;
+	rdf:value "/code/coding/0/code" .
+_:a56e1ab6a5a00c486bbb4cf6bc7e2dbb oa:hasSelector _:d8fd2c832db2c6bfbfb20ae3a4355b1e .
+_:fc8f6fcd22f7f5af5da17911b81d2f07 oa:hasTarget _:a56e1ab6a5a00c486bbb4cf6bc7e2dbb ;
 	sh:resultSeverity sh:Warning ;
-	sh:value "8867-4" ;
-	oa:motivatedBy oa:classifying ;
+	a oa:Annotation ;
 	oa:hasBody fhirr4:observationNotLabResult ;
-	a oa:Annotation .
+	oa:motivatedBy oa:classifying ;
+	sh:value "8867-4" .

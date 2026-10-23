@@ -1,53 +1,55 @@
-@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
-@prefix prov:     <http://www.w3.org/ns/prov#> .
-@prefix pav:      <http://purl.org/pav/> .
-@prefix bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
-@prefix rec:      <https://ns.cascadeprotocol.org/records/v1-draft#> .
-@prefix health:   <https://ns.cascadeprotocol.org/health/v1#> .
-@prefix clinical: <https://ns.cascadeprotocol.org/clinical/v1#> .
-@prefix cascade:  <https://ns.cascadeprotocol.org/core/v1#> .
-
-<urn:uuid:75449785-7eb1-8ef2-a642-05b485026a24>
-  a clinical:Medication ;
-  clinical:sourceRecordId "medrx-amlodipine-2" ;
-  rec:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/MedicationRequest/medrx-amlodipine-2> .
-
-<ni:///sha-256;tHvWZOJEeq4D9pxejq-58wI_GDo0lR38_OtfAtsl-Fs>
-  prov:specializationOf <urn:uuid:75449785-7eb1-8ef2-a642-05b485026a24> ;
-  clinical:clinicalIntent "prescribed" ;
-  clinical:drugName "Amlodipine 5 mg tablet" ;
-  clinical:rxNormCode
-    <http://www.nlm.nih.gov/research/umls/rxnorm/197361> ,
-    <http://www.nlm.nih.gov/research/umls/rxnorm/212549> ;
-  rec:ndcCode <https://ns.cascadeprotocol.org/codes/ndc11/00069153066> ;
-  clinical:status "active" ;
-  clinical:startDate "2026-03-10"^^xsd:date ;
-  clinical:dosage "Take 5 mg by mouth once daily for two weeks" ;
-  rec:patient <urn:uuid:24c23e99-ff68-841f-a7a4-ebe3bd997ada> .
-
-[] bridge:arrivedAs <ni:///sha-256;tHvWZOJEeq4D9pxejq-58wI_GDo0lR38_OtfAtsl-Fs> ;
-  bridge:selector "" ;
-  prov:wasDerivedFrom <ni:///sha-256;VEtONQnRpYfpn4Rp7ACtzas_jYXuhZFk7gZHXCbFP6U> ;
-  prov:wasGeneratedBy _:import .
-
-<ni:///sha-256;VEtONQnRpYfpn4Rp7ACtzas_jYXuhZFk7gZHXCbFP6U>
-  a prov:Entity ;
-  bridge:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
-  pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
-  prov:qualifiedAttribution
-    [ prov:agent [ rdfs:label "Meridian Health System" ] ; prov:hadRole rec:author ] ,
-    [ prov:agent [ rdfs:label "Apple Health" ] ; prov:hadRole rec:transmitter ] ;
-  bridge:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
-  bridge:authenticatedAsProxy false ;
-  bridge:sourceFormatVersion "4.0.1" .
-
-_:import
-  a prov:Activity ;
-  prov:used <ni:///sha-256;VEtONQnRpYfpn4Rp7ACtzas_jYXuhZFk7gZHXCbFP6U> ;
-  rdfs:label "Apple Health export" ;
-  prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime ;
-  prov:qualifiedAssociation [
-    prov:hadPlan [ a prov:Plan ; rdfs:label "fhir-r4" ; pav:version "0.1.0" ] ;
-    prov:agent [ ]
-  ] .
+@prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix pav: <http://purl.org/pav/> .
+<ni:///sha-256;AZ5ca7t_eyVJ9zEojXQrSigPgdKvlFLpmZL-R72TkEc> cascade:prescribedOrReported "prescribed" ;
+	cascade:drugName "Amlodipine 5 mg tablet" ;
+	cascade:ndcCode <https://ns.cascadeprotocol.org/codes/ndc11/00069153066> ;
+	cascade:workflowStatus "active" ;
+	cascade:prescriptionWrittenDate "2026-03-10"^^xsd:date ;
+	cascade:dosage "Take 5 mg by mouth once daily for two weeks" ;
+	cascade:rxNormCode <https://ns.cascadeprotocol.org/codes/rxnorm/212549> , <https://ns.cascadeprotocol.org/codes/rxnorm/197361> .
+_:1e18688ca69df1e11c4e8fffa57378c0 bridge:arrivedAs <ni:///sha-256;AZ5ca7t_eyVJ9zEojXQrSigPgdKvlFLpmZL-R72TkEc> .
+<ni:///sha-256;AZ5ca7t_eyVJ9zEojXQrSigPgdKvlFLpmZL-R72TkEc> cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> ;
+	prov:specializationOf <urn:uuid:c03a321f-11c9-877c-b099-97c607e4a74e> .
+<urn:uuid:c03a321f-11c9-877c-b099-97c607e4a74e> cascade:sourceRecordId "medrx-amlodipine-2" ;
+	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/MedicationRequest/medrx-amlodipine-2> ;
+	a cascade:PrescribedOrReportedMedication .
+_:1e18688ca69df1e11c4e8fffa57378c0 oa:hasSelector _:c0810a4754eb28f3ea06ed9e803e4861 ;
+	oa:hasSource <ni:///sha-256;VEtONQnRpYfpn4Rp7ACtzas_jYXuhZFk7gZHXCbFP6U> ;
+	prov:wasDerivedFrom <ni:///sha-256;VEtONQnRpYfpn4Rp7ACtzas_jYXuhZFk7gZHXCbFP6U> ;
+	prov:wasGeneratedBy _:da2040eb9ead971f0f9c80d7b1286101 .
+_:c0810a4754eb28f3ea06ed9e803e4861 a oa:FragmentSelector ;
+	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "" .
+<ni:///sha-256;VEtONQnRpYfpn4Rp7ACtzas_jYXuhZFk7gZHXCbFP6U> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
+	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
+_:6cfc7471116f3a9ba03aaedf294c47f0 prov:agent _:d3eef8c87b51f2d10a0db7ed0ba0dfb1 .
+_:d3eef8c87b51f2d10a0db7ed0ba0dfb1 <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:6cfc7471116f3a9ba03aaedf294c47f0 prov:hadRole cascade:AuthorRole .
+<ni:///sha-256;VEtONQnRpYfpn4Rp7ACtzas_jYXuhZFk7gZHXCbFP6U> prov:qualifiedAttribution _:6cfc7471116f3a9ba03aaedf294c47f0 .
+_:b1ad0afaf0590dfb5e7da567bacc36cc prov:agent _:c6e550a97c8a00d73c5950a6a72a1fc .
+_:c6e550a97c8a00d73c5950a6a72a1fc <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
+_:b1ad0afaf0590dfb5e7da567bacc36cc prov:hadRole cascade:TransmitterRole .
+<ni:///sha-256;VEtONQnRpYfpn4Rp7ACtzas_jYXuhZFk7gZHXCbFP6U> prov:qualifiedAttribution _:b1ad0afaf0590dfb5e7da567bacc36cc ;
+	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
+	cascade:authenticatedAsProxy false ;
+	cascade:sourceFormatVersion "4.0.1" .
+_:da2040eb9ead971f0f9c80d7b1286101 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
+	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
+<ni:///sha-256;VEtONQnRpYfpn4Rp7ACtzas_jYXuhZFk7gZHXCbFP6U> a prov:Entity .
+_:da2040eb9ead971f0f9c80d7b1286101 a prov:Activity ;
+	prov:used <ni:///sha-256;VEtONQnRpYfpn4Rp7ACtzas_jYXuhZFk7gZHXCbFP6U> ;
+	prov:qualifiedAssociation _:8553d8ca82b399dfbfc6441967465ae1 .
+_:8553d8ca82b399dfbfc6441967465ae1 prov:hadPlan _:a56e0dfe20d2f48e27a0d057e3cd2a90 .
+_:a56e0dfe20d2f48e27a0d057e3cd2a90 a prov:Plan ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "fhir-r4" ;
+	pav:version "0.1.0" .
+_:8553d8ca82b399dfbfc6441967465ae1 prov:agent _:dd1b2d1b3eff1b6cdc5c0227a40f9625 .
+_:dd1b2d1b3eff1b6cdc5c0227a40f9625 a prov:SoftwareAgent ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Cascade Bridge for Rust" ;
+	pav:version "0.1.0" .

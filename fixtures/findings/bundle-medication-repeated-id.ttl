@@ -2,48 +2,48 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:d0002886042895f2b8d5279db73231b1 a oa:FragmentSelector ;
+_:e01501e671357781e35c0839f8b4b2a7 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/entry/0" ;
-	oa:refinedBy _:d9e515f6a21b39bb1708754935fdc320 .
-_:fcff78985c70235a82bdec783db88f1f oa:hasSource <../in/bundle-medication-repeated-id.json> .
-_:d9e515f6a21b39bb1708754935fdc320 rdf:value "/resource/resourceType" ;
+	rdf:value "/entry/0" .
+_:e3e3cab90648a2da88228eb803b798cf oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/bundle-medication-repeated-id.json> .
+_:e01501e671357781e35c0839f8b4b2a7 oa:refinedBy _:f0ee572d00d2e519bd3fbaa3fd899db .
+_:f0ee572d00d2e519bd3fbaa3fd899db a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	a oa:FragmentSelector .
-_:fcff78985c70235a82bdec783db88f1f oa:hasSelector _:d0002886042895f2b8d5279db73231b1 .
-_:af7c5259c709bef8d96a43bfc491e807 oa:hasTarget _:fcff78985c70235a82bdec783db88f1f ;
+	rdf:value "/resource/resourceType" .
+_:e3e3cab90648a2da88228eb803b798cf oa:hasSelector _:e01501e671357781e35c0839f8b4b2a7 .
+_:c4073ea0b613c24772406cb09ce0141a oa:hasTarget _:e3e3cab90648a2da88228eb803b798cf ;
 	sh:resultSeverity sh:Warning ;
-	sh:value "Medication" ;
-	oa:motivatedBy oa:classifying ;
+	a oa:Annotation ;
 	oa:hasBody fhirr4:resourceTypeNotMapped ;
-	a oa:Annotation .
-_:f49a8e82e048759173542dadc11c4ed7 a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/entry/1" ;
-	oa:refinedBy _:f1fda102ad2f7bf68dd0a5392663fae .
-_:cae159f116e67fcb02e021699c99690 oa:hasSource <../in/bundle-medication-repeated-id.json> .
-_:f1fda102ad2f7bf68dd0a5392663fae rdf:value "/resource/resourceType" ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	a oa:FragmentSelector .
-_:cae159f116e67fcb02e021699c99690 oa:hasSelector _:f49a8e82e048759173542dadc11c4ed7 .
-_:dcc7076f697077f467f2bc85af9043c4 oa:hasTarget _:cae159f116e67fcb02e021699c99690 ;
-	sh:resultSeverity sh:Warning ;
-	sh:value "Medication" ;
 	oa:motivatedBy oa:classifying ;
+	sh:value "Medication" .
+_:b342c441d3969a48b9ee0831aef3605e a oa:FragmentSelector ;
+	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/entry/1" .
+_:d0facce7873651a34a6a2035c6e0ceeb oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/bundle-medication-repeated-id.json> .
+_:b342c441d3969a48b9ee0831aef3605e oa:refinedBy _:f5405587e332196084d49f3b6a6ca0f3 .
+_:f5405587e332196084d49f3b6a6ca0f3 a oa:FragmentSelector ;
+	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/resource/resourceType" .
+_:d0facce7873651a34a6a2035c6e0ceeb oa:hasSelector _:b342c441d3969a48b9ee0831aef3605e .
+_:a08d626aabf95ab7529096158846e930 oa:hasTarget _:d0facce7873651a34a6a2035c6e0ceeb ;
+	sh:resultSeverity sh:Warning ;
+	a oa:Annotation ;
 	oa:hasBody fhirr4:resourceTypeNotMapped ;
-	a oa:Annotation .
-_:eed3e066963fea9ef194adb90edb40b3 a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/entry/2" ;
-	oa:refinedBy _:b50a5647377cba49f056078e0c845230 .
-_:b50b96588bbab5a17020b183d31854c8 oa:hasSource <../in/bundle-medication-repeated-id.json> .
-_:b50a5647377cba49f056078e0c845230 rdf:value "/resource/medicationReference/reference" ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	a oa:FragmentSelector .
-_:b50b96588bbab5a17020b183d31854c8 oa:hasSelector _:eed3e066963fea9ef194adb90edb40b3 .
-_:bf2524a6b5c910b3551f83503a2a39e4 oa:hasTarget _:b50b96588bbab5a17020b183d31854c8 ;
-	sh:resultSeverity sh:Warning ;
-	sh:value "Medication/med-1" ;
 	oa:motivatedBy oa:classifying ;
+	sh:value "Medication" .
+_:e99a1099b3727a2d5628a5dc58b88a69 a oa:FragmentSelector ;
+	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/entry/2" .
+_:e799429bc0a3e318242bc560d6ea42cd oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/bundle-medication-repeated-id.json> .
+_:e99a1099b3727a2d5628a5dc58b88a69 oa:refinedBy _:f22ebc450062b6744ee6a27a3d693dc7 .
+_:f22ebc450062b6744ee6a27a3d693dc7 a oa:FragmentSelector ;
+	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/resource/medicationReference/reference" .
+_:e799429bc0a3e318242bc560d6ea42cd oa:hasSelector _:e99a1099b3727a2d5628a5dc58b88a69 .
+_:b2e4ed875c3c48dd533eea70141bdec2 oa:hasTarget _:e799429bc0a3e318242bc560d6ea42cd ;
+	sh:resultSeverity sh:Warning ;
+	a oa:Annotation ;
 	oa:hasBody fhirr4:medicationReferenceUnresolved ;
-	a oa:Annotation .
+	oa:motivatedBy oa:classifying ;
+	sh:value "Medication/med-1" .

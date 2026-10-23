@@ -2,18 +2,18 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:dca63cb188249a57aaf32da731220029 a oa:FragmentSelector ;
+_:cecccc69d43674bd3af7edb21ebb5dc8 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "" ;
-	oa:refinedBy _:aa3f1a229ae8085c8356fbf328d55753 .
-_:e1e344b1035abd55737d69221edf8c6f oa:hasSource <../in/medication-request-reference-outside.json> .
-_:aa3f1a229ae8085c8356fbf328d55753 rdf:value "/medicationReference/reference" ;
+	rdf:value "" .
+_:c06c7ee4661cf30203e8434cba4d0f8a oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/medication-request-reference-outside.json> .
+_:cecccc69d43674bd3af7edb21ebb5dc8 oa:refinedBy _:fd2861d4c4abb4954d0de7d200b33e35 .
+_:fd2861d4c4abb4954d0de7d200b33e35 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	a oa:FragmentSelector .
-_:e1e344b1035abd55737d69221edf8c6f oa:hasSelector _:dca63cb188249a57aaf32da731220029 .
-_:bc1256fe7a819c0d5601dfd12592552f oa:hasTarget _:e1e344b1035abd55737d69221edf8c6f ;
+	rdf:value "/medicationReference/reference" .
+_:c06c7ee4661cf30203e8434cba4d0f8a oa:hasSelector _:cecccc69d43674bd3af7edb21ebb5dc8 .
+_:c3635b1d3676e96c8a211ce6809c883b oa:hasTarget _:c06c7ee4661cf30203e8434cba4d0f8a ;
 	sh:resultSeverity sh:Warning ;
-	sh:value "Medication/med-metformin-ext" ;
-	oa:motivatedBy oa:classifying ;
+	a oa:Annotation ;
 	oa:hasBody fhirr4:medicationReferenceUnresolved ;
-	a oa:Annotation .
+	oa:motivatedBy oa:classifying ;
+	sh:value "Medication/med-metformin-ext" .

@@ -2,106 +2,106 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:ab7e5f5a4d915d1007c3a9f97efa752f a oa:FragmentSelector ;
+_:e471dbb59c78575e481aa97ee0005e0 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/5" .
-_:b1dc69415249866097fb9c712cd41a26 oa:hasSource <../in/bundle-genomics-interpretations.json> .
-_:ab7e5f5a4d915d1007c3a9f97efa752f oa:refinedBy _:fcec5ba047258af231b5c95994d01327 .
-_:fcec5ba047258af231b5c95994d01327 a oa:FragmentSelector ;
+_:d9dbce84cf1a22c375b473621e3a97c4 oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/bundle-genomics-interpretations.json> .
+_:e471dbb59c78575e481aa97ee0005e0 oa:refinedBy _:f888b23a02835b7daa4634ab1674dcda .
+_:f888b23a02835b7daa4634ab1674dcda a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/component/0/valueCodeableConcept" .
-_:b1dc69415249866097fb9c712cd41a26 oa:hasSelector _:ab7e5f5a4d915d1007c3a9f97efa752f .
-_:f0e9d69b705d2a976782071b366a6f98 oa:hasTarget _:b1dc69415249866097fb9c712cd41a26 ;
+_:d9dbce84cf1a22c375b473621e3a97c4 oa:hasSelector _:e471dbb59c78575e481aa97ee0005e0 .
+_:dd8159d020044cc51487af4889137a96 oa:hasTarget _:d9dbce84cf1a22c375b473621e3a97c4 ;
 	sh:resultSeverity sh:Warning ;
 	a oa:Annotation ;
 	oa:hasBody fhirr4:interpretationClassification ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "Pathogenic" .
-_:e669b591e4fef3b43a302ca26df5f0b8 a oa:FragmentSelector ;
+_:ed58e84dec48c3b995b6fb8f98992f21 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/6" .
-_:e492ac777a6c8f426e82dfca10f60e3d oa:hasSource <../in/bundle-genomics-interpretations.json> .
-_:e669b591e4fef3b43a302ca26df5f0b8 oa:refinedBy _:ff0f1c645b008971108862c7d0d11ced .
-_:ff0f1c645b008971108862c7d0d11ced a oa:FragmentSelector ;
+_:a95dad2949efed851ab2c65ccf366ba0 oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/bundle-genomics-interpretations.json> .
+_:ed58e84dec48c3b995b6fb8f98992f21 oa:refinedBy _:ea98bcc1af41d71abe7a53ccebf1fa16 .
+_:ea98bcc1af41d71abe7a53ccebf1fa16 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/derivedFrom/1/reference" .
-_:e492ac777a6c8f426e82dfca10f60e3d oa:hasSelector _:e669b591e4fef3b43a302ca26df5f0b8 .
-_:d4fe371cc7487597778d679d2f16182b oa:hasTarget _:e492ac777a6c8f426e82dfca10f60e3d .
-_:c565fac77556530b796eb6680a7a89eb a oa:FragmentSelector ;
+_:a95dad2949efed851ab2c65ccf366ba0 oa:hasSelector _:ed58e84dec48c3b995b6fb8f98992f21 .
+_:a85d34617c0ac7713a8ded43d2211f55 oa:hasTarget _:a95dad2949efed851ab2c65ccf366ba0 .
+_:b76600eeaadf53d33a7eefc5cd53af7f a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/6" .
-_:a4f7722d3c8cc6265da0f2d04ed04757 oa:hasSource <../in/bundle-genomics-interpretations.json> .
-_:c565fac77556530b796eb6680a7a89eb oa:refinedBy _:ab9d9114f9344cbba209d4c8458d962a .
-_:ab9d9114f9344cbba209d4c8458d962a a oa:FragmentSelector ;
+_:e87acef0396c0cce3d3001a0f6b82d9a oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/bundle-genomics-interpretations.json> .
+_:b76600eeaadf53d33a7eefc5cd53af7f oa:refinedBy _:d0b7c843fd1f6aca52697135ef075310 .
+_:d0b7c843fd1f6aca52697135ef075310 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/derivedFrom/0/reference" .
-_:a4f7722d3c8cc6265da0f2d04ed04757 oa:hasSelector _:c565fac77556530b796eb6680a7a89eb .
-_:fbecb194b79e310c0368eba6fd0fe439 oa:hasTarget _:a4f7722d3c8cc6265da0f2d04ed04757 .
-_:d4fe371cc7487597778d679d2f16182b sh:resultSeverity sh:Warning .
-_:fbecb194b79e310c0368eba6fd0fe439 sh:resultSeverity sh:Warning .
-_:d4fe371cc7487597778d679d2f16182b a oa:Annotation ;
+_:e87acef0396c0cce3d3001a0f6b82d9a oa:hasSelector _:b76600eeaadf53d33a7eefc5cd53af7f .
+_:c1e562330fb57529674bb93b800a0658 oa:hasTarget _:e87acef0396c0cce3d3001a0f6b82d9a .
+_:a85d34617c0ac7713a8ded43d2211f55 sh:resultSeverity sh:Warning .
+_:c1e562330fb57529674bb93b800a0658 sh:resultSeverity sh:Warning .
+_:a85d34617c0ac7713a8ded43d2211f55 a oa:Annotation ;
 	oa:hasBody fhirr4:interpretationVariantLink ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "urn:uuid:5d2e7a90-1b3c-4f68-a0d4-8e6c9b1f2b12" .
-_:fbecb194b79e310c0368eba6fd0fe439 a oa:Annotation ;
+_:c1e562330fb57529674bb93b800a0658 a oa:Annotation ;
 	oa:hasBody fhirr4:interpretationVariantLink ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "urn:uuid:5d2e7a90-1b3c-4f68-a0d4-8e6c9b1f2b11" .
-_:e190d1ede120ba90b0ed0a9dd357ce4b a oa:FragmentSelector ;
+_:bcfc38a8c3569b1261e364d508f3dd93 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/7" .
-_:f3a6a5e19d4f90e8625acf8fce2fa98b oa:hasSource <../in/bundle-genomics-interpretations.json> .
-_:e190d1ede120ba90b0ed0a9dd357ce4b oa:refinedBy _:e8a73daa8593753fbfa8772a6c80b96c .
-_:e8a73daa8593753fbfa8772a6c80b96c a oa:FragmentSelector ;
+_:b9e8dfc1d779f13cf63f6e88658a7124 oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/bundle-genomics-interpretations.json> .
+_:bcfc38a8c3569b1261e364d508f3dd93 oa:refinedBy _:b3a83f7a50e2c4c9f331e20b74614743 .
+_:b3a83f7a50e2c4c9f331e20b74614743 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/derivedFrom/0/reference" .
-_:f3a6a5e19d4f90e8625acf8fce2fa98b oa:hasSelector _:e190d1ede120ba90b0ed0a9dd357ce4b .
-_:dda98d74b7416e996dc91636c7b98af4 oa:hasTarget _:f3a6a5e19d4f90e8625acf8fce2fa98b ;
+_:b9e8dfc1d779f13cf63f6e88658a7124 oa:hasSelector _:bcfc38a8c3569b1261e364d508f3dd93 .
+_:c5182310828a9a24e2a742249a66e144 oa:hasTarget _:b9e8dfc1d779f13cf63f6e88658a7124 ;
 	sh:resultSeverity sh:Warning ;
 	a oa:Annotation ;
 	oa:hasBody fhirr4:interpretationVariantLink ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "urn:uuid:5d2e7a90-1b3c-4f68-a0d4-8e6c9b1f2b13" .
-_:b8cacaccbe14fd6bda2c9c9c242a3bf6 a oa:FragmentSelector ;
+_:caa7cafa485d0b520d9492fb94a06a05 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/8" .
-_:b82337b268445b29f6f317f9d8c6e3e5 oa:hasSource <../in/bundle-genomics-interpretations.json> .
-_:b8cacaccbe14fd6bda2c9c9c242a3bf6 oa:refinedBy _:b8d09f3f94d26fa57bf4d7df5ae3fdcc .
-_:b8d09f3f94d26fa57bf4d7df5ae3fdcc a oa:FragmentSelector ;
+_:f16920d677d6ddd37710e97c54e8376 oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/bundle-genomics-interpretations.json> .
+_:caa7cafa485d0b520d9492fb94a06a05 oa:refinedBy _:ff047427a7671ef889bd0e789bfd97dc .
+_:ff047427a7671ef889bd0e789bfd97dc a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/code/coding/0/code" .
-_:b82337b268445b29f6f317f9d8c6e3e5 oa:hasSelector _:b8cacaccbe14fd6bda2c9c9c242a3bf6 .
-_:d71df6553f0eee04710bf627c46ca54f oa:hasTarget _:b82337b268445b29f6f317f9d8c6e3e5 ;
+_:f16920d677d6ddd37710e97c54e8376 oa:hasSelector _:caa7cafa485d0b520d9492fb94a06a05 .
+_:a59008bec4741559c0e8f9ca19bb3a2 oa:hasTarget _:f16920d677d6ddd37710e97c54e8376 ;
 	sh:resultSeverity sh:Warning ;
 	a oa:Annotation ;
 	oa:hasBody fhirr4:interpretationVariantLink ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "diagnostic-implication" .
-_:eddc4b144fa0d5a9b9ce2133d3649177 a oa:FragmentSelector ;
+_:e50411a671f3012afe0a29f96bef9e84 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/10" .
-_:c69e27661eacf3cf82c4b07f7ab9f66 oa:hasSource <../in/bundle-genomics-interpretations.json> .
-_:eddc4b144fa0d5a9b9ce2133d3649177 oa:refinedBy _:a3c2aa181bce9f8d043c65162801fc89 .
-_:a3c2aa181bce9f8d043c65162801fc89 a oa:FragmentSelector ;
+_:b07eec2c9910b5d2130b55cb2a63d9e8 oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/bundle-genomics-interpretations.json> .
+_:e50411a671f3012afe0a29f96bef9e84 oa:refinedBy _:a6a92c8cfafa240bb57e9a8d37fe0667 .
+_:a6a92c8cfafa240bb57e9a8d37fe0667 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/component/0/valueCodeableConcept" .
-_:c69e27661eacf3cf82c4b07f7ab9f66 oa:hasSelector _:eddc4b144fa0d5a9b9ce2133d3649177 .
-_:a5618edb8501a1ba701544f65046bdae oa:hasTarget _:c69e27661eacf3cf82c4b07f7ab9f66 ;
+_:b07eec2c9910b5d2130b55cb2a63d9e8 oa:hasSelector _:e50411a671f3012afe0a29f96bef9e84 .
+_:f3d2c57f24bdc3e713dbd8a359577b07 oa:hasTarget _:b07eec2c9910b5d2130b55cb2a63d9e8 ;
 	sh:resultSeverity sh:Warning ;
 	a oa:Annotation ;
 	oa:hasBody fhirr4:interpretationClassification ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "LA6668-3" .
-_:aa6877f9ec3be75557deb17fba53d22b a oa:FragmentSelector ;
+_:a11f17e853a76a3a48a154eceae1c198 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/12" .
-_:f4aefcd94eea25f2fc61c77180652ee3 oa:hasSource <../in/bundle-genomics-interpretations.json> .
-_:aa6877f9ec3be75557deb17fba53d22b oa:refinedBy _:b6d5cba02a7680907ffd170a4d4d196d .
-_:b6d5cba02a7680907ffd170a4d4d196d a oa:FragmentSelector ;
+_:a3a0420b3c08e87ed5d32eb64ac4907d oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/bundle-genomics-interpretations.json> .
+_:a11f17e853a76a3a48a154eceae1c198 oa:refinedBy _:bb4dc94eaa50f447345a521416b6c52d .
+_:bb4dc94eaa50f447345a521416b6c52d a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/code/coding/0/code" .
-_:f4aefcd94eea25f2fc61c77180652ee3 oa:hasSelector _:aa6877f9ec3be75557deb17fba53d22b .
-_:dcf0cebb3951a519784b8544415b1c9a oa:hasTarget _:f4aefcd94eea25f2fc61c77180652ee3 ;
+_:a3a0420b3c08e87ed5d32eb64ac4907d oa:hasSelector _:a11f17e853a76a3a48a154eceae1c198 .
+_:afdcfa7a5b38cb6c20706a8a66afd42b oa:hasTarget _:a3a0420b3c08e87ed5d32eb64ac4907d ;
 	sh:resultSeverity sh:Warning ;
 	a oa:Annotation ;
 	oa:hasBody fhirr4:interpretationVariantLink ;

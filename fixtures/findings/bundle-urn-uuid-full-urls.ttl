@@ -2,18 +2,18 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:aa6f3d64f3b30ef277b3fdb4b0616646 a oa:FragmentSelector ;
+_:b6422728a2fec9ce891fd8ad12c3b05e a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/0" .
-_:a398f86319e77a92a02a47020a92d9d0 a oa:FragmentSelector ;
+_:c4d303f6d40b70c713bb9939dad22918 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/gender" .
-_:aa6f3d64f3b30ef277b3fdb4b0616646 oa:refinedBy _:a398f86319e77a92a02a47020a92d9d0 .
-_:e67d21ea3891b612dbaf8ee4cf56b88f a oa:Annotation ;
-	oa:hasTarget _:dfa8fcfead63d3951137146b4a808d4e .
-_:dfa8fcfead63d3951137146b4a808d4e oa:hasSource <../in/bundle-urn-uuid-full-urls.json> ;
-	oa:hasSelector _:aa6f3d64f3b30ef277b3fdb4b0616646 .
-_:e67d21ea3891b612dbaf8ee4cf56b88f oa:hasBody fhirr4:patientGender ;
+_:b6422728a2fec9ce891fd8ad12c3b05e oa:refinedBy _:c4d303f6d40b70c713bb9939dad22918 .
+_:da072699c48a9f02400a2bc5e192c2ab a oa:Annotation ;
+	oa:hasTarget _:c61f7334bce5efe0f4a24ceea9bfc19 .
+_:c61f7334bce5efe0f4a24ceea9bfc19 oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/bundle-urn-uuid-full-urls.json> ;
+	oa:hasSelector _:b6422728a2fec9ce891fd8ad12c3b05e .
+_:da072699c48a9f02400a2bc5e192c2ab oa:hasBody fhirr4:patientGender ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "/resource/gender" ;
 	sh:resultSeverity sh:Info .

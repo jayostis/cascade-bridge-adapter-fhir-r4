@@ -2,18 +2,18 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:bc3ac8c9ca8556181f1614e53e66197 a oa:FragmentSelector ;
+_:eb5f642b430803d9fdec984008af4c9f a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:d89f9b6d2384d856af8e088d04d9460a a oa:FragmentSelector ;
+_:d34c22fe251ea4ce2f3b3d9d72630160 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/meta/source" .
-_:bc3ac8c9ca8556181f1614e53e66197 oa:refinedBy _:d89f9b6d2384d856af8e088d04d9460a .
-_:e6ccc3f0199644e9e1768bfc09706498 a oa:Annotation ;
-	oa:hasTarget _:c0680ecd3ea44742217ad19af6a38762 .
-_:c0680ecd3ea44742217ad19af6a38762 oa:hasSource <../in/condition-with-id-meta-fetch-b.json> ;
-	oa:hasSelector _:bc3ac8c9ca8556181f1614e53e66197 .
-_:e6ccc3f0199644e9e1768bfc09706498 oa:hasBody fhirr4:serverSource ;
+_:eb5f642b430803d9fdec984008af4c9f oa:refinedBy _:d34c22fe251ea4ce2f3b3d9d72630160 .
+_:e35397419c78f509a10fcb801c0d4249 a oa:Annotation ;
+	oa:hasTarget _:a9c5beddec3580d6aea5ecf8c398b48f .
+_:a9c5beddec3580d6aea5ecf8c398b48f oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/condition-with-id-meta-fetch-b.json> ;
+	oa:hasSelector _:eb5f642b430803d9fdec984008af4c9f .
+_:e35397419c78f509a10fcb801c0d4249 oa:hasBody fhirr4:serverSource ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "/meta/source" ;
 	sh:resultSeverity sh:Info .
