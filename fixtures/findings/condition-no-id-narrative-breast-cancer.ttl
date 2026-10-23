@@ -2,28 +2,28 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:c7bbed21dfc338299321bff26017b87c a oa:FragmentSelector ;
+_:ed2ac8433dca33485d7b1f214bd84042 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:c3a77491d23e862c49a206558c5f471c a oa:Annotation ;
-	oa:hasTarget _:f1ed711fe1748a9f4ece97c6bf7cb410 .
-_:f1ed711fe1748a9f4ece97c6bf7cb410 oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/condition-no-id-narrative-breast-cancer.json> ;
-	oa:hasSelector _:c7bbed21dfc338299321bff26017b87c .
-_:c3a77491d23e862c49a206558c5f471c oa:hasBody <https://datatracker.ietf.org/doc/html/draft-wright-json-schema-validation-01#section-6.28> ;
+_:a7a5fef3a825aa85753497924b6d654 a oa:Annotation ;
+	oa:hasTarget _:d57936e0e64957432887b6d175fdc246 .
+_:d57936e0e64957432887b6d175fdc246 oa:hasSource <../in/condition-no-id-narrative-breast-cancer.json> ;
+	oa:hasSelector _:ed2ac8433dca33485d7b1f214bd84042 .
+_:a7a5fef3a825aa85753497924b6d654 oa:hasBody <https://datatracker.ietf.org/doc/html/draft-wright-json-schema-validation-01#section-6.28> ;
 	oa:motivatedBy oa:classifying ;
 	sh:resultSeverity sh:Violation .
-_:edff90832520a990cd82e3fbcf15f59 a oa:FragmentSelector ;
+_:a18f40bc158c1ec13f9147eead5449dd a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:b8564030c284de986307e4547c3c55e1 a oa:FragmentSelector ;
+_:cd6c1f1d82df502052453d24a2ecd6c8 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/text/div" .
-_:edff90832520a990cd82e3fbcf15f59 oa:refinedBy _:b8564030c284de986307e4547c3c55e1 .
-_:ab49581156b5ed6c95cf5796719a37b8 a oa:Annotation ;
-	oa:hasTarget _:c20162ad7243f22c63f495eb7c077b31 .
-_:c20162ad7243f22c63f495eb7c077b31 oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/condition-no-id-narrative-breast-cancer.json> ;
-	oa:hasSelector _:edff90832520a990cd82e3fbcf15f59 .
-_:ab49581156b5ed6c95cf5796719a37b8 oa:hasBody fhirr4:narrative ;
+_:a18f40bc158c1ec13f9147eead5449dd oa:refinedBy _:cd6c1f1d82df502052453d24a2ecd6c8 .
+_:a7a092c1e90c62a994f22cb9e3a8c2ca a oa:Annotation ;
+	oa:hasTarget _:d6622d6024213b64c26af1175d098832 .
+_:d6622d6024213b64c26af1175d098832 oa:hasSource <../in/condition-no-id-narrative-breast-cancer.json> ;
+	oa:hasSelector _:a18f40bc158c1ec13f9147eead5449dd .
+_:a7a092c1e90c62a994f22cb9e3a8c2ca oa:hasBody fhirr4:narrative ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "/text/div" ;
 	sh:resultSeverity sh:Info .

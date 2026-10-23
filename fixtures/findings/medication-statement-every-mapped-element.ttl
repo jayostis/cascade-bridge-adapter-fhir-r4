@@ -2,16 +2,16 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:d9766593ae21087999d3545bdaa07922 a oa:FragmentSelector ;
+_:ecf259e6bc6ffb25a3e96695ce4fd0fc a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:b3a789b623ec18de24a736bc8717aaba oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/medication-statement-every-mapped-element.json> .
-_:d9766593ae21087999d3545bdaa07922 oa:refinedBy _:fc8c906db23da2e67ea78e56544b153b .
-_:fc8c906db23da2e67ea78e56544b153b a oa:FragmentSelector ;
+_:a331a051cab395087deb4c33b53e1357 oa:hasSource <../in/medication-statement-every-mapped-element.json> .
+_:ecf259e6bc6ffb25a3e96695ce4fd0fc oa:refinedBy _:f60dc0be4281b79dea265fc01df72cfe .
+_:f60dc0be4281b79dea265fc01df72cfe a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/note/0/text" .
-_:b3a789b623ec18de24a736bc8717aaba oa:hasSelector _:d9766593ae21087999d3545bdaa07922 .
-_:a1a879d6befb8637cc04af46dacf5081 oa:hasTarget _:b3a789b623ec18de24a736bc8717aaba ;
+_:a331a051cab395087deb4c33b53e1357 oa:hasSelector _:ecf259e6bc6ffb25a3e96695ce4fd0fc .
+_:ebf0d0610e734306731b5e9b3e522f58 oa:hasTarget _:a331a051cab395087deb4c33b53e1357 ;
 	sh:resultSeverity sh:Info ;
 	a oa:Annotation ;
 	oa:hasBody fhirr4:medicationNote ;

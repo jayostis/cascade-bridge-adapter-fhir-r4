@@ -2,16 +2,16 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:cecccc69d43674bd3af7edb21ebb5dc8 a oa:FragmentSelector ;
+_:a68b7de163727d1a382142ce92bacb81 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:c06c7ee4661cf30203e8434cba4d0f8a oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/medication-request-reference-outside.json> .
-_:cecccc69d43674bd3af7edb21ebb5dc8 oa:refinedBy _:fd2861d4c4abb4954d0de7d200b33e35 .
-_:fd2861d4c4abb4954d0de7d200b33e35 a oa:FragmentSelector ;
+_:e11c1072ac5f89270615c104127ae7d2 oa:hasSource <../in/medication-request-reference-outside.json> .
+_:a68b7de163727d1a382142ce92bacb81 oa:refinedBy _:e3351bca351fea22561847c4280a7480 .
+_:e3351bca351fea22561847c4280a7480 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/medicationReference/reference" .
-_:c06c7ee4661cf30203e8434cba4d0f8a oa:hasSelector _:cecccc69d43674bd3af7edb21ebb5dc8 .
-_:c3635b1d3676e96c8a211ce6809c883b oa:hasTarget _:c06c7ee4661cf30203e8434cba4d0f8a ;
+_:e11c1072ac5f89270615c104127ae7d2 oa:hasSelector _:a68b7de163727d1a382142ce92bacb81 .
+_:fc5989b2d6c92496f6982874cb91079e oa:hasTarget _:e11c1072ac5f89270615c104127ae7d2 ;
 	sh:resultSeverity sh:Warning ;
 	a oa:Annotation ;
 	oa:hasBody fhirr4:medicationReferenceUnresolved ;

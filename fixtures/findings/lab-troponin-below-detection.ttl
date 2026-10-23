@@ -2,78 +2,78 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:a71e79fc861a9b02986bef767f953e6e a oa:FragmentSelector ;
+_:cea891add7acbd350a7026942b1d8fb3 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:a948f69ede0aa9bc664a98e0b90c406 oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/lab-troponin-below-detection.json> .
-_:a71e79fc861a9b02986bef767f953e6e oa:refinedBy _:eaf288f33d77e7cb1ed18ab65745f484 .
-_:eaf288f33d77e7cb1ed18ab65745f484 a oa:FragmentSelector ;
+_:e99e45e3d78182421f11252bc7c95e8b oa:hasSource <../in/lab-troponin-below-detection.json> .
+_:cea891add7acbd350a7026942b1d8fb3 oa:refinedBy _:d4db97bb06586f9b4b525b33e61d0912 .
+_:d4db97bb06586f9b4b525b33e61d0912 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/effectivePeriod/end" .
-_:a948f69ede0aa9bc664a98e0b90c406 oa:hasSelector _:a71e79fc861a9b02986bef767f953e6e .
-_:b5f3c8e7abdfb528d444f8683f52f0b9 oa:hasTarget _:a948f69ede0aa9bc664a98e0b90c406 .
-_:d3eccf88da43bcec2cc12ecf2f387429 a oa:FragmentSelector ;
+_:e99e45e3d78182421f11252bc7c95e8b oa:hasSelector _:cea891add7acbd350a7026942b1d8fb3 .
+_:ffac522f842cffea1616697802c03f9a oa:hasTarget _:e99e45e3d78182421f11252bc7c95e8b .
+_:dfaae5b13dcae3c9da6fa057215c1167 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:e8ca43a782955eff47fd875f0cf42bb9 oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/lab-troponin-below-detection.json> .
-_:d3eccf88da43bcec2cc12ecf2f387429 oa:refinedBy _:a92200c0d462989ee9da772542b302fe .
-_:a92200c0d462989ee9da772542b302fe a oa:FragmentSelector ;
+_:c18d6c0564f8ef00bf916729a7a2b893 oa:hasSource <../in/lab-troponin-below-detection.json> .
+_:dfaae5b13dcae3c9da6fa057215c1167 oa:refinedBy _:a27f6793948de8487fad89cff553bce7 .
+_:a27f6793948de8487fad89cff553bce7 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/code/coding/1/code" .
-_:e8ca43a782955eff47fd875f0cf42bb9 oa:hasSelector _:d3eccf88da43bcec2cc12ecf2f387429 .
-_:e35358c0b32d315c0ab45d36898b6e7c oa:hasTarget _:e8ca43a782955eff47fd875f0cf42bb9 .
-_:a83092d28276ad3cc2bc41041de88883 a oa:FragmentSelector ;
+_:c18d6c0564f8ef00bf916729a7a2b893 oa:hasSelector _:dfaae5b13dcae3c9da6fa057215c1167 .
+_:bbee3d28c951264af4a8c47e999c3c61 oa:hasTarget _:c18d6c0564f8ef00bf916729a7a2b893 .
+_:e80d1035499b59b1e3a3f021f985f831 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:b7a9e01b12506931b7c5dbae3fb537bd oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/lab-troponin-below-detection.json> .
-_:a83092d28276ad3cc2bc41041de88883 oa:refinedBy _:db86993c9dedebc3659dbb6a40e87a1e .
-_:db86993c9dedebc3659dbb6a40e87a1e a oa:FragmentSelector ;
+_:e5b7188ac58fee420e1604ce5545fb8e oa:hasSource <../in/lab-troponin-below-detection.json> .
+_:e80d1035499b59b1e3a3f021f985f831 oa:refinedBy _:a110ffde537fb919b330a7bfcf2550b6 .
+_:a110ffde537fb919b330a7bfcf2550b6 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/referenceRange/1/text" .
-_:b7a9e01b12506931b7c5dbae3fb537bd oa:hasSelector _:a83092d28276ad3cc2bc41041de88883 .
-_:de9fb7e66affbbae8bccad339251549f oa:hasTarget _:b7a9e01b12506931b7c5dbae3fb537bd .
-_:e5774b2f5d363c06eaa52e0279e6f005 a oa:FragmentSelector ;
+_:e5b7188ac58fee420e1604ce5545fb8e oa:hasSelector _:e80d1035499b59b1e3a3f021f985f831 .
+_:f2bad31b86ea330f3d2b8f67586e191b oa:hasTarget _:e5b7188ac58fee420e1604ce5545fb8e .
+_:d1d67ba6240725d9828ec0d1d8aa0698 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:d8c8b3774a16ef764a469f9b87e4cfe9 oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/lab-troponin-below-detection.json> .
-_:e5774b2f5d363c06eaa52e0279e6f005 oa:refinedBy _:d474a44a5856d805bc73ee41dad75e89 .
-_:d474a44a5856d805bc73ee41dad75e89 a oa:FragmentSelector ;
+_:ab07d03a9c5304bc7396e7ec41481136 oa:hasSource <../in/lab-troponin-below-detection.json> .
+_:d1d67ba6240725d9828ec0d1d8aa0698 oa:refinedBy _:a479840c99eb8054ae414249bad46a3b .
+_:a479840c99eb8054ae414249bad46a3b a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/referenceRange/1/high/value" .
-_:d8c8b3774a16ef764a469f9b87e4cfe9 oa:hasSelector _:e5774b2f5d363c06eaa52e0279e6f005 .
-_:b53dd40fa556fe223605750095b5fed8 oa:hasTarget _:d8c8b3774a16ef764a469f9b87e4cfe9 .
-_:b6bd83602dfed80c2647b73ccc1c0999 a oa:FragmentSelector ;
+_:ab07d03a9c5304bc7396e7ec41481136 oa:hasSelector _:d1d67ba6240725d9828ec0d1d8aa0698 .
+_:ffcaffe63f38cb695af9b4df5a103442 oa:hasTarget _:ab07d03a9c5304bc7396e7ec41481136 .
+_:a8bd64f4b3eea952fcfd026838c69713 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:e656d62da53cd6103e9d95f87fabc56 oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/lab-troponin-below-detection.json> .
-_:b6bd83602dfed80c2647b73ccc1c0999 oa:refinedBy _:d26dc7fecde2f4f45e7ae2561472d96b .
-_:d26dc7fecde2f4f45e7ae2561472d96b a oa:FragmentSelector ;
+_:ed421265489a3ab9aa4d104d00bd7fa3 oa:hasSource <../in/lab-troponin-below-detection.json> .
+_:a8bd64f4b3eea952fcfd026838c69713 oa:refinedBy _:e0cc578e32afa5ba8eb30659c55f2436 .
+_:e0cc578e32afa5ba8eb30659c55f2436 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/interpretation/1/text" .
-_:e656d62da53cd6103e9d95f87fabc56 oa:hasSelector _:b6bd83602dfed80c2647b73ccc1c0999 .
-_:fad4b7c44540910dda517472ea4e459d oa:hasTarget _:e656d62da53cd6103e9d95f87fabc56 .
-_:b5f3c8e7abdfb528d444f8683f52f0b9 sh:resultSeverity sh:Info .
-_:e35358c0b32d315c0ab45d36898b6e7c sh:resultSeverity sh:Info .
-_:de9fb7e66affbbae8bccad339251549f sh:resultSeverity sh:Warning .
-_:b53dd40fa556fe223605750095b5fed8 sh:resultSeverity sh:Warning .
-_:fad4b7c44540910dda517472ea4e459d sh:resultSeverity sh:Warning .
-_:b5f3c8e7abdfb528d444f8683f52f0b9 a oa:Annotation ;
+_:ed421265489a3ab9aa4d104d00bd7fa3 oa:hasSelector _:a8bd64f4b3eea952fcfd026838c69713 .
+_:e0521509fa6a804363a5f929eba2905 oa:hasTarget _:ed421265489a3ab9aa4d104d00bd7fa3 .
+_:ffac522f842cffea1616697802c03f9a sh:resultSeverity sh:Info .
+_:bbee3d28c951264af4a8c47e999c3c61 sh:resultSeverity sh:Info .
+_:f2bad31b86ea330f3d2b8f67586e191b sh:resultSeverity sh:Warning .
+_:ffcaffe63f38cb695af9b4df5a103442 sh:resultSeverity sh:Warning .
+_:e0521509fa6a804363a5f929eba2905 sh:resultSeverity sh:Warning .
+_:ffac522f842cffea1616697802c03f9a a oa:Annotation ;
 	oa:hasBody fhirr4:labResultPeriodEnd ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "2026-05-02T07:55:00-04:00" .
-_:e35358c0b32d315c0ab45d36898b6e7c a oa:Annotation ;
+_:bbee3d28c951264af4a8c47e999c3c61 a oa:Annotation ;
 	oa:hasBody fhirr4:labResultCode ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "HSTNI" .
-_:de9fb7e66affbbae8bccad339251549f a oa:Annotation ;
+_:f2bad31b86ea330f3d2b8f67586e191b a oa:Annotation ;
 	oa:hasBody fhirr4:labResultRangeRepeated ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "Women: up to 0.03 ng/mL" .
-_:b53dd40fa556fe223605750095b5fed8 a oa:Annotation ;
+_:ffcaffe63f38cb695af9b4df5a103442 a oa:Annotation ;
 	oa:hasBody fhirr4:labResultRangeRepeated ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "0.03" .
-_:fad4b7c44540910dda517472ea4e459d a oa:Annotation ;
+_:e0521509fa6a804363a5f929eba2905 a oa:Annotation ;
 	oa:hasBody fhirr4:labResultInterpretationRepeated ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "Below the limit of detection" .

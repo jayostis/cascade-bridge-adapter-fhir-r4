@@ -2,18 +2,18 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:c4f10018efa8e1069fd452fdcb0f5c5f a oa:FragmentSelector ;
+_:adde3834a92c2f5d51bb7b53c5ce9ca8 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:e435271abc00971ace7a343812f0c9f7 a oa:FragmentSelector ;
+_:d4f903cc93933f04b94fa6515150b52e a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/meta/source" .
-_:c4f10018efa8e1069fd452fdcb0f5c5f oa:refinedBy _:e435271abc00971ace7a343812f0c9f7 .
-_:a47840482879c7ac3ec8d8b0f302e1cf a oa:Annotation ;
-	oa:hasTarget _:f391e912b716528eb3b69743b668f08d .
-_:f391e912b716528eb3b69743b668f08d oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/condition-with-id-meta-fetch-a.json> ;
-	oa:hasSelector _:c4f10018efa8e1069fd452fdcb0f5c5f .
-_:a47840482879c7ac3ec8d8b0f302e1cf oa:hasBody fhirr4:serverSource ;
+_:adde3834a92c2f5d51bb7b53c5ce9ca8 oa:refinedBy _:d4f903cc93933f04b94fa6515150b52e .
+_:fd150036f4b7665cb03545e415596251 a oa:Annotation ;
+	oa:hasTarget _:c69f29c350d4cf6fdcbbb7454cc19264 .
+_:c69f29c350d4cf6fdcbbb7454cc19264 oa:hasSource <../in/condition-with-id-meta-fetch-a.json> ;
+	oa:hasSelector _:adde3834a92c2f5d51bb7b53c5ce9ca8 .
+_:fd150036f4b7665cb03545e415596251 oa:hasBody fhirr4:serverSource ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "/meta/source" ;
 	sh:resultSeverity sh:Info .

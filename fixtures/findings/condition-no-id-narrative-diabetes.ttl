@@ -2,28 +2,28 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:b37db624c754de856136921b7621995a a oa:FragmentSelector ;
+_:aaa284beeabea45588cfff3eb041f657 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:a9bcd2a9977c6830884d1d22989019d6 a oa:Annotation ;
-	oa:hasTarget _:c29d012f66f46c462a9e830b13fb8a4e .
-_:c29d012f66f46c462a9e830b13fb8a4e oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/condition-no-id-narrative-diabetes.json> ;
-	oa:hasSelector _:b37db624c754de856136921b7621995a .
-_:a9bcd2a9977c6830884d1d22989019d6 oa:hasBody <https://datatracker.ietf.org/doc/html/draft-wright-json-schema-validation-01#section-6.28> ;
+_:d2718ff6c922fd838ab0bd2a05f31071 a oa:Annotation ;
+	oa:hasTarget _:b8ce90b2f0b313699ebc93b206876699 .
+_:b8ce90b2f0b313699ebc93b206876699 oa:hasSource <../in/condition-no-id-narrative-diabetes.json> ;
+	oa:hasSelector _:aaa284beeabea45588cfff3eb041f657 .
+_:d2718ff6c922fd838ab0bd2a05f31071 oa:hasBody <https://datatracker.ietf.org/doc/html/draft-wright-json-schema-validation-01#section-6.28> ;
 	oa:motivatedBy oa:classifying ;
 	sh:resultSeverity sh:Violation .
-_:f24b8ab383bfb64770a413e4c2f991a7 a oa:FragmentSelector ;
+_:be9d2de8943ea928287c2328d652bfe1 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:bba75b7bd3bbff0b6ab11d4c7e406153 a oa:FragmentSelector ;
+_:a576842af877c53c11e698aa60188659 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/text/div" .
-_:f24b8ab383bfb64770a413e4c2f991a7 oa:refinedBy _:bba75b7bd3bbff0b6ab11d4c7e406153 .
-_:bf86464de16b1cdeed9de401cdc57cae a oa:Annotation ;
-	oa:hasTarget _:b860747825ced5c632013c3f36ae067e .
-_:b860747825ced5c632013c3f36ae067e oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/condition-no-id-narrative-diabetes.json> ;
-	oa:hasSelector _:f24b8ab383bfb64770a413e4c2f991a7 .
-_:bf86464de16b1cdeed9de401cdc57cae oa:hasBody fhirr4:narrative ;
+_:be9d2de8943ea928287c2328d652bfe1 oa:refinedBy _:a576842af877c53c11e698aa60188659 .
+_:b711b19065ca3a2fab562d2ad993dadf a oa:Annotation ;
+	oa:hasTarget _:e86e57fcd1728303da86e10abc16768a .
+_:e86e57fcd1728303da86e10abc16768a oa:hasSource <../in/condition-no-id-narrative-diabetes.json> ;
+	oa:hasSelector _:be9d2de8943ea928287c2328d652bfe1 .
+_:b711b19065ca3a2fab562d2ad993dadf oa:hasBody fhirr4:narrative ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "/text/div" ;
 	sh:resultSeverity sh:Info .

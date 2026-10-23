@@ -2,16 +2,16 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:ab2d7cc83f37a1d5f3507adf8a89cc1d a oa:FragmentSelector ;
+_:a5465ef1a55c298da264b690b2c894b6 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/2" .
-_:c62ccebbe156c44eaa004704ea885d5b oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/bundle-pull-searchset-outcome.json> .
-_:ab2d7cc83f37a1d5f3507adf8a89cc1d oa:refinedBy _:c572850f3ce57048e48ffbc3d31913bf .
-_:c572850f3ce57048e48ffbc3d31913bf a oa:FragmentSelector ;
+_:febc59e9b4d64e012830974a27dec5ad oa:hasSource <../in/bundle-pull-searchset-outcome.json> .
+_:a5465ef1a55c298da264b690b2c894b6 oa:refinedBy _:c1c26d61a9dee0646fef6c9045db457a .
+_:c1c26d61a9dee0646fef6c9045db457a a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/resourceType" .
-_:c62ccebbe156c44eaa004704ea885d5b oa:hasSelector _:ab2d7cc83f37a1d5f3507adf8a89cc1d .
-_:a512e9e7c028b04d840d34131709be6a oa:hasTarget _:c62ccebbe156c44eaa004704ea885d5b ;
+_:febc59e9b4d64e012830974a27dec5ad oa:hasSelector _:a5465ef1a55c298da264b690b2c894b6 .
+_:abe653e2c5080a2bf505373d62632bbb oa:hasTarget _:febc59e9b4d64e012830974a27dec5ad ;
 	sh:resultSeverity sh:Warning ;
 	a oa:Annotation ;
 	oa:hasBody fhirr4:resourceTypeNotMapped ;

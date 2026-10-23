@@ -2,16 +2,16 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:f002e0c831095379bc15ca7aabcec4e8 a oa:FragmentSelector ;
+_:a6679dab22c4b427c8d6b1b715ab185c a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:a3e131c837e68a4e1f20dda5a4763129 oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/vital-heartrate-with-id.json> .
-_:f002e0c831095379bc15ca7aabcec4e8 oa:refinedBy _:a1097d577a402f61cdaf9644707fa505 .
-_:a1097d577a402f61cdaf9644707fa505 a oa:FragmentSelector ;
+_:d8039b7bfb52fcdad416aea0886588bb oa:hasSource <../in/vital-heartrate-with-id.json> .
+_:a6679dab22c4b427c8d6b1b715ab185c oa:refinedBy _:c90fc01af86dae3630254e742e8ef0e8 .
+_:c90fc01af86dae3630254e742e8ef0e8 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/category/0/coding/0/code" .
-_:a3e131c837e68a4e1f20dda5a4763129 oa:hasSelector _:f002e0c831095379bc15ca7aabcec4e8 .
-_:cc6c9a5baeafc46f3c2e6c179508113b oa:hasTarget _:a3e131c837e68a4e1f20dda5a4763129 ;
+_:d8039b7bfb52fcdad416aea0886588bb oa:hasSelector _:a6679dab22c4b427c8d6b1b715ab185c .
+_:ae4470e86d2edf8368768295c4e15089 oa:hasTarget _:d8039b7bfb52fcdad416aea0886588bb ;
 	sh:resultSeverity sh:Warning ;
 	a oa:Annotation ;
 	oa:hasBody fhirr4:observationNotLabResult ;

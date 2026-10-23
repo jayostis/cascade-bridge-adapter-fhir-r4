@@ -2,18 +2,18 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:ad396caed4b03ec8c50c216c65a30d39 a oa:FragmentSelector ;
+_:cf142cf71555e9d20820a91e9f607254 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:b514179f90400475c42dee95c27c5199 a oa:FragmentSelector ;
+_:c15590a90e834408f0db376e55a25017 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/reasonReference/0/reference" .
-_:ad396caed4b03ec8c50c216c65a30d39 oa:refinedBy _:b514179f90400475c42dee95c27c5199 .
-_:cc36dc2ef41974c3dc95a21d65247116 a oa:Annotation ;
-	oa:hasTarget _:fcc68cacd8d9b2308e56b317f4c81faa .
-_:fcc68cacd8d9b2308e56b317f4c81faa oa:hasSource <../../ws/a1/cascade-bridge-adapter-fhir-r4/fixtures/in/procedure-with-contained-condition.json> ;
-	oa:hasSelector _:ad396caed4b03ec8c50c216c65a30d39 .
-_:cc36dc2ef41974c3dc95a21d65247116 oa:hasBody fhirr4:procedureReason ;
+_:cf142cf71555e9d20820a91e9f607254 oa:refinedBy _:c15590a90e834408f0db376e55a25017 .
+_:a8b0831439cce9a4612259fcc6129db2 a oa:Annotation ;
+	oa:hasTarget _:bef15587b21bc3e518df39cb4a29f543 .
+_:bef15587b21bc3e518df39cb4a29f543 oa:hasSource <../in/procedure-with-contained-condition.json> ;
+	oa:hasSelector _:cf142cf71555e9d20820a91e9f607254 .
+_:a8b0831439cce9a4612259fcc6129db2 oa:hasBody fhirr4:procedureReason ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "/reasonReference/reference" ;
 	sh:resultSeverity sh:Info .
