@@ -320,6 +320,12 @@
           "@id": "fixtures/in/condition-with-id-meta-fetch-b.json"
         },
         {
+          "@id": "fixtures/in/condition-patient-reference-default-port.json"
+        },
+        {
+          "@id": "fixtures/in/condition-patient-reference-userinfo.json"
+        },
+        {
           "@id": "fixtures/in/condition-no-id-structured-hypertension.json"
         },
         {
@@ -392,7 +398,13 @@
           "@id": "fixtures/in/bundle-urn-uuid-full-urls.json"
         },
         {
+          "@id": "fixtures/in/bundle-patient-reference-urn-not-held.json"
+        },
+        {
           "@id": "fixtures/in/procedure-with-contained-condition.json"
+        },
+        {
+          "@id": "fixtures/in/procedure-contained-empty-version-id.json"
         },
         {
           "@id": "fixtures/in/bundle-repeated-condition-id.json"
@@ -614,6 +626,12 @@
           "@id": "fixtures/findings/bundle-urn-uuid-full-urls.ttl"
         },
         {
+          "@id": "fixtures/expected/bundle-patient-reference-urn-not-held.ttl"
+        },
+        {
+          "@id": "fixtures/findings/bundle-patient-reference-urn-not-held.ttl"
+        },
+        {
           "@id": "fixtures/expected/condition-no-id-narrative-breast-cancer.ttl"
         },
         {
@@ -660,6 +678,18 @@
         },
         {
           "@id": "fixtures/findings/condition-with-id-meta-fetch-b.ttl"
+        },
+        {
+          "@id": "fixtures/expected/condition-patient-reference-default-port.ttl"
+        },
+        {
+          "@id": "fixtures/findings/condition-patient-reference-default-port.ttl"
+        },
+        {
+          "@id": "fixtures/expected/condition-patient-reference-userinfo.ttl"
+        },
+        {
+          "@id": "fixtures/findings/condition-patient-reference-userinfo.ttl"
         },
         {
           "@id": "fixtures/expected/encounter-with-id.ttl"
@@ -882,6 +912,12 @@
         },
         {
           "@id": "fixtures/findings/procedure-with-contained-condition.ttl"
+        },
+        {
+          "@id": "fixtures/expected/procedure-contained-empty-version-id.ttl"
+        },
+        {
+          "@id": "fixtures/findings/procedure-contained-empty-version-id.ttl"
         },
         {
           "@id": "fixtures/expected/procedure-with-id.ttl"
@@ -1516,6 +1552,32 @@
       "description": "The same content as condition-with-id-meta-fetch-a.json, with a different versionId, lastUpdated and source. Copied byte for byte from the conformance repository at 0ea48bb (the file last changed at a5ffbc6, 2026-08-03). Written by hand for that corpus, not captured from a server: no fetch date, server or query exists to record."
     },
     {
+      "@id": "fixtures/in/condition-patient-reference-default-port.json",
+      "@type": "File",
+      "name": "Condition referencing its patient by an absolute URL with https's default port",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "370",
+      "sha256": "8ec132dc869f70a008cd92703d424d5150aea308937977d1507f69fc65906bbd",
+      "dateCreated": "2026-10-23",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Condition, id cond-htn-1, whose subject is an absolute URL on the document's own server, its host in another case and the port 443 written. Authored here on 2026-10-23, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/condition-patient-reference-userinfo.json",
+      "@type": "File",
+      "name": "Condition referencing its patient by an absolute URL with userinfo",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "379",
+      "sha256": "35af6c2cb91179451d614e9b2187483f1c8cb4dee69e67527ee0495571848f9e",
+      "dateCreated": "2026-10-23",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Condition, id cond-htn-1, whose subject is an absolute URL whose base carries userinfo before the host. Authored here on 2026-10-23, for a case the conformance corpus does not hold."
+    },
+    {
       "@id": "fixtures/in/condition-no-id-structured-hypertension.json",
       "@type": "File",
       "name": "Condition without an id: essential hypertension",
@@ -1870,6 +1932,19 @@
       "description": "A collection Bundle of a Patient and an AllergyIntolerance, neither with an id, each entry with a urn:uuid fullUrl; the allergy references the patient by that urn. Authored here on 2026-09-27, for a case the conformance corpus does not hold."
     },
     {
+      "@id": "fixtures/in/bundle-patient-reference-urn-not-held.json",
+      "@type": "File",
+      "name": "Bundle whose Condition references a urn:uuid it does not hold",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "576",
+      "sha256": "9c97caeaf8944915ab43759d3f8bc10d82b73c3374b00a9d0e9a099ab2972fbf",
+      "dateCreated": "2026-10-23",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A collection Bundle of one Condition with a urn:uuid fullUrl and no id, whose subject is another urn:uuid no entry has as its fullUrl. Authored here on 2026-10-23, for a case the conformance corpus does not hold."
+    },
+    {
       "@id": "fixtures/in/procedure-with-contained-condition.json",
       "@type": "File",
       "name": "Procedure with a contained Condition",
@@ -1881,6 +1956,19 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "A completed echocardiogram, id proc-echo-1, holding its reason as a contained Condition with the local id reason, which reasonReference names as #reason. Authored here on 2026-09-27, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/procedure-contained-empty-version-id.json",
+      "@type": "File",
+      "name": "Procedure with a contained Condition and an empty meta.versionId",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "924",
+      "sha256": "3b0341370647180cedb4835b66e22a57b1147a4e153637f0748f4d899b44bf26",
+      "dateCreated": "2026-10-23",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "procedure-with-contained-condition.json's echocardiogram with a meta holding an empty versionId and a lastUpdated. Authored here on 2026-10-23, for a case the conformance corpus does not hold."
     },
     {
       "@id": "fixtures/in/bundle-repeated-condition-id.json",
@@ -2280,7 +2368,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/allergy-no-id-penicillin.ttl",
@@ -2312,7 +2400,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/allergy-no-id-penicillin-compact.ttl",
@@ -2344,7 +2432,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/allergy-no-id-sulfa.ttl",
@@ -2376,7 +2464,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/allergy-with-id.ttl",
@@ -2408,7 +2496,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/allergy-every-mapped-element.ttl",
@@ -2440,7 +2528,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/bundle-repeated-condition-id.ttl",
@@ -2472,7 +2560,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/bundle-two-identical-id-less-allergies.ttl",
@@ -2504,7 +2592,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/bundle-urn-uuid-full-urls.ttl",
@@ -2517,6 +2605,38 @@
         "@id": "fixtures/in/bundle-urn-uuid-full-urls.json"
       },
       "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/bundle-patient-reference-urn-not-held.ttl",
+      "@type": "File",
+      "name": "Expected graph for bundle-patient-reference-urn-not-held",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3308",
+      "sha256": "fdc01de5dd07f1caadeeade03da9195f75097fb3f709dc7b695139a998d40623",
+      "about": {
+        "@id": "fixtures/in/bundle-patient-reference-urn-not-held.json"
+      },
+      "dateCreated": "2026-10-23",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/findings/bundle-patient-reference-urn-not-held.ttl",
+      "@type": "File",
+      "name": "Expected findings for bundle-patient-reference-urn-not-held",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1112",
+      "sha256": "84a16f08ff5bcccb454e5fdf2790ffab5b739b896ef28c236c03072114116824",
+      "about": {
+        "@id": "fixtures/in/bundle-patient-reference-urn-not-held.json"
+      },
+      "dateCreated": "2026-10-23",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2536,7 +2656,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/condition-no-id-narrative-breast-cancer.ttl",
@@ -2568,7 +2688,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/condition-no-id-narrative-diabetes.ttl",
@@ -2600,7 +2720,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/condition-no-id-structured-diabetes.ttl",
@@ -2632,7 +2752,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/condition-no-id-structured-hypertension.ttl",
@@ -2664,7 +2784,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/condition-with-id.ttl",
@@ -2696,7 +2816,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/condition-every-mapped-element.ttl",
@@ -2728,7 +2848,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/condition-with-id-meta-fetch-a.ttl",
@@ -2760,7 +2880,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/condition-with-id-meta-fetch-b.ttl",
@@ -2773,6 +2893,70 @@
         "@id": "fixtures/in/condition-with-id-meta-fetch-b.json"
       },
       "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/condition-patient-reference-default-port.ttl",
+      "@type": "File",
+      "name": "Expected graph for condition-patient-reference-default-port",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3576",
+      "sha256": "d92e171c074b59eee809bc8d13aa7bf6ac05d541cd4e0c1f49e30e4b78d1ff49",
+      "about": {
+        "@id": "fixtures/in/condition-patient-reference-default-port.json"
+      },
+      "dateCreated": "2026-10-23",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/findings/condition-patient-reference-default-port.ttl",
+      "@type": "File",
+      "name": "Expected findings for condition-patient-reference-default-port",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/condition-patient-reference-default-port.json"
+      },
+      "dateCreated": "2026-10-23",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/condition-patient-reference-userinfo.ttl",
+      "@type": "File",
+      "name": "Expected graph for condition-patient-reference-userinfo",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3509",
+      "sha256": "671eb03a783ecf4e8cea49d7f080412f0398d0642ee8a283c194b1dc2d3ed534",
+      "about": {
+        "@id": "fixtures/in/condition-patient-reference-userinfo.json"
+      },
+      "dateCreated": "2026-10-23",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/findings/condition-patient-reference-userinfo.ttl",
+      "@type": "File",
+      "name": "Expected findings for condition-patient-reference-userinfo",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1135",
+      "sha256": "20ad27752e7d2786e80f966df8594cb86ce98dcab0fef5b4c140aa6766ce6d78",
+      "about": {
+        "@id": "fixtures/in/condition-patient-reference-userinfo.json"
+      },
+      "dateCreated": "2026-10-23",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2792,7 +2976,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/encounter-with-id.ttl",
@@ -2824,7 +3008,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/immunization-no-id-2024.ttl",
@@ -2856,7 +3040,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/immunization-no-id-2025.ttl",
@@ -2888,7 +3072,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/immunization-with-id.ttl",
@@ -2920,7 +3104,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/immunization-every-mapped-element.ttl",
@@ -2952,7 +3136,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/lab-glucose-fasting.ttl",
@@ -2984,7 +3168,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/lab-every-mapped-element.ttl",
@@ -3016,7 +3200,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/lab-no-category-potassium.ttl",
@@ -3048,7 +3232,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/vital-heartrate-with-id.ttl",
@@ -3080,7 +3264,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/vital-no-category-heart-rate.ttl",
@@ -3112,7 +3296,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/medication-with-id.ttl",
@@ -3144,7 +3328,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/medication-no-id-bare.ttl",
@@ -3176,7 +3360,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/medication-no-id-note-only.ttl",
@@ -3208,7 +3392,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/medication-request-every-mapped-element.ttl",
@@ -3240,7 +3424,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/medication-statement-every-mapped-element.ttl",
@@ -3272,7 +3456,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/medication-request-contained-medication.ttl",
@@ -3304,7 +3488,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/medication-request-reference-outside.ttl",
@@ -3336,7 +3520,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/bundle-medication-request-and-medication.ttl",
@@ -3368,7 +3552,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/lab-troponin-below-detection.ttl",
@@ -3400,7 +3584,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/medication-request-two-rxnorm-codes.ttl",
@@ -3432,7 +3616,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/medication-request-ndc-forms.ttl",
@@ -3464,7 +3648,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/bundle-medication-versioned-reference.ttl",
@@ -3496,7 +3680,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/expected/bundle-pull-collection-versions.ttl",
@@ -3512,7 +3696,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/expected/bundle-pull-searchset-outcome.ttl",
@@ -3528,7 +3712,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/expected/Bundle-bundle-cgexample.ttl",
@@ -3544,7 +3728,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/expected/Bundle-bundle-compound-heterozygote.ttl",
@@ -3560,15 +3744,15 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/expected/Bundle-bundle-oncology-diagnostic.ttl",
       "@type": "File",
       "name": "Expected graph for Bundle-bundle-oncology-diagnostic",
       "encodingFormat": "text/turtle",
-      "contentSize": "7241",
-      "sha256": "a804e6991d9b8566ff6b004deeda3322539ad27f19a717759ddf251273579245",
+      "contentSize": "6769",
+      "sha256": "47df3f2fc130187a8f43798cfdc344da85a6244b61f0e1934c1be56bf32204ce",
       "about": {
         "@id": "fixtures/in/Bundle-bundle-oncology-diagnostic.input.json"
       },
@@ -3576,7 +3760,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/expected/bundle-genomics-variants.ttl",
@@ -3592,7 +3776,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/expected/bundle-genomics-interpretations.ttl",
@@ -3608,7 +3792,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/expected/martin-okafor-harbourline-panel-2022.ttl",
@@ -3624,7 +3808,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/expected/martin-okafor-st-columba-exome-2024.ttl",
@@ -3640,7 +3824,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/bundle-medication-repeated-id.ttl",
@@ -3759,8 +3943,8 @@
       "@type": "File",
       "name": "Expected findings for bundle-genomics-interpretations",
       "encodingFormat": "text/turtle",
-      "contentSize": "6537",
-      "sha256": "3b9cb5158f0e5b18a70449981472eed451d423cbf4651b1396c60f4f314201be",
+      "contentSize": "7432",
+      "sha256": "e46d45b1b0421ef5f77f8cbd30cfe8de400fc189e865de5d7d81d49832e8b5d9",
       "about": {
         "@id": "fixtures/in/bundle-genomics-interpretations.json"
       },
@@ -3816,7 +4000,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/patient-no-id.ttl",
@@ -3848,7 +4032,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/patient-with-id.ttl",
@@ -3880,7 +4064,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/procedure-no-id-colonoscopy.ttl",
@@ -3912,7 +4096,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/procedure-no-id-echocardiogram.ttl",
@@ -3944,7 +4128,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/procedure-with-contained-condition.ttl",
@@ -3957,6 +4141,38 @@
         "@id": "fixtures/in/procedure-with-contained-condition.json"
       },
       "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/procedure-contained-empty-version-id.ttl",
+      "@type": "File",
+      "name": "Expected graph for procedure-contained-empty-version-id",
+      "encodingFormat": "text/turtle",
+      "contentSize": "4872",
+      "sha256": "82880ccb54895dc02c21b8d0cf932145e774931dfb080805c74b66bb53506c61",
+      "about": {
+        "@id": "fixtures/in/procedure-contained-empty-version-id.json"
+      },
+      "dateCreated": "2026-10-23",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/findings/procedure-contained-empty-version-id.ttl",
+      "@type": "File",
+      "name": "Expected findings for procedure-contained-empty-version-id",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1702",
+      "sha256": "8c53281f974bd1140d8eac1f9ff775361f2153cab83c885539df5a18f5ab5558",
+      "about": {
+        "@id": "fixtures/in/procedure-contained-empty-version-id.json"
+      },
+      "dateCreated": "2026-10-23",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -3976,7 +4192,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The records layer a Bridge must produce from the input it is about and the facts its test entry supplies, derived by hand from the Cascade Bridge Specification's naming and versioning rules and the vocabulary, without reading in/sparql/ or any Bridge's output; a Bridge's output was then found equal to it."
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
       "@id": "fixtures/findings/procedure-with-id.ttl",
@@ -4284,8 +4500,8 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "contentSize": "45836",
-      "sha256": "79fc1d8671113a5f409aa88a756eb6a2cc38a4253c7f45159e556b2cffb5444d"
+      "contentSize": "48791",
+      "sha256": "04962db25b22629600af8ce8e736d2e69ad7967fc309249f68c91d1928d17e43"
     },
     {
       "@id": "fixtures/facts/meridian.ttl",
