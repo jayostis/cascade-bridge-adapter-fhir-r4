@@ -1,55 +1,55 @@
-@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
-@prefix prov:     <http://www.w3.org/ns/prov#> .
-@prefix pav:      <http://purl.org/pav/> .
-@prefix bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
-@prefix rec:      <https://ns.cascadeprotocol.org/records/v1-draft#> .
-@prefix health:   <https://ns.cascadeprotocol.org/health/v1#> .
-@prefix clinical: <https://ns.cascadeprotocol.org/clinical/v1#> .
-@prefix cascade:  <https://ns.cascadeprotocol.org/core/v1#> .
-
-<urn:uuid:1d4ce57a-1e2b-873d-ad7b-9de2c7ad6436>
-  a clinical:Medication ;
-  clinical:sourceRecordId "medrx-amlodipine-3" ;
-  rec:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/MedicationRequest/medrx-amlodipine-3> .
-
-<ni:///sha-256;x1TuwLqhPEHkMyc11tKJrd5oRjJfXk-5PJ-THg9Omlc>
-  prov:specializationOf <urn:uuid:1d4ce57a-1e2b-873d-ad7b-9de2c7ad6436> ;
-  clinical:clinicalIntent "prescribed" ;
-  clinical:drugName "Amlodipine 5 mg tablet" ;
-  clinical:rxNormCode <http://www.nlm.nih.gov/research/umls/rxnorm/197361> ;
-  rec:ndcCode
-    <https://ns.cascadeprotocol.org/codes/ndc11/00378520905> ,
-    <https://ns.cascadeprotocol.org/codes/ndc11/12745020201> ,
-    <https://ns.cascadeprotocol.org/codes/ndc11/62011026701> ,
-    <https://ns.cascadeprotocol.org/codes/ndc11/00069153041> ;
-  rec:selectedCode <http://www.nlm.nih.gov/research/umls/rxnorm/197361> ;
-  clinical:status "active" ;
-  clinical:startDate "2026-03-10"^^xsd:date ;
-  rec:patient <urn:uuid:24c23e99-ff68-841f-a7a4-ebe3bd997ada> .
-
-[] bridge:arrivedAs <ni:///sha-256;x1TuwLqhPEHkMyc11tKJrd5oRjJfXk-5PJ-THg9Omlc> ;
-  bridge:selector "" ;
-  prov:wasDerivedFrom <ni:///sha-256;aonZgTRMzGOl7orxNxGZgAXmv9WJhMJJukqyNbbQNPI> ;
-  prov:wasGeneratedBy _:import .
-
-<ni:///sha-256;aonZgTRMzGOl7orxNxGZgAXmv9WJhMJJukqyNbbQNPI>
-  a prov:Entity ;
-  bridge:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
-  pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
-  prov:qualifiedAttribution
-    [ prov:agent [ rdfs:label "Meridian Health System" ] ; prov:hadRole rec:author ] ,
-    [ prov:agent [ rdfs:label "Apple Health" ] ; prov:hadRole rec:transmitter ] ;
-  bridge:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
-  bridge:authenticatedAsProxy false ;
-  bridge:sourceFormatVersion "4.0.1" .
-
-_:import
-  a prov:Activity ;
-  prov:used <ni:///sha-256;aonZgTRMzGOl7orxNxGZgAXmv9WJhMJJukqyNbbQNPI> ;
-  rdfs:label "Apple Health export" ;
-  prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime ;
-  prov:qualifiedAssociation [
-    prov:hadPlan [ a prov:Plan ; rdfs:label "fhir-r4" ; pav:version "0.1.0" ] ;
-    prov:agent [ ]
-  ] .
+@prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix pav: <http://purl.org/pav/> .
+<ni:///sha-256;YD86vgotRbCjkZRxnUdCPwN9iUI0g9noNL6z0jgqKpo> cascade:prescribedOrReported "prescribed" ;
+	cascade:drugName "Amlodipine 5 mg tablet" ;
+	cascade:workflowStatus "active" ;
+	cascade:prescriptionWrittenDate "2026-03-10"^^xsd:date ;
+	cascade:ndcCode <https://ns.cascadeprotocol.org/codes/ndc11/00069153041> , <https://ns.cascadeprotocol.org/codes/ndc11/62011026701> , <https://ns.cascadeprotocol.org/codes/ndc11/12745020201> , <https://ns.cascadeprotocol.org/codes/ndc11/00378520905> ;
+	cascade:rxNormCode <https://ns.cascadeprotocol.org/codes/rxnorm/197361> ;
+	cascade:userSelectedCode <https://ns.cascadeprotocol.org/codes/rxnorm/197361> .
+_:d23b03292b51ee2628b78dedaae51f53 bridge:arrivedAs <ni:///sha-256;YD86vgotRbCjkZRxnUdCPwN9iUI0g9noNL6z0jgqKpo> .
+<ni:///sha-256;YD86vgotRbCjkZRxnUdCPwN9iUI0g9noNL6z0jgqKpo> cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> ;
+	prov:specializationOf <urn:uuid:1cd17aab-01a1-88fa-a3d9-d56b804f6889> .
+<urn:uuid:1cd17aab-01a1-88fa-a3d9-d56b804f6889> cascade:sourceRecordId "medrx-amlodipine-3" ;
+	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/MedicationRequest/medrx-amlodipine-3> ;
+	a cascade:PrescribedOrReportedMedication .
+_:d23b03292b51ee2628b78dedaae51f53 oa:hasSelector _:8b2d7ec708d8efccb99b83c629e93e25 ;
+	oa:hasSource <ni:///sha-256;aonZgTRMzGOl7orxNxGZgAXmv9WJhMJJukqyNbbQNPI> ;
+	prov:wasDerivedFrom <ni:///sha-256;aonZgTRMzGOl7orxNxGZgAXmv9WJhMJJukqyNbbQNPI> ;
+	prov:wasGeneratedBy _:7f715163bd0aeaa37ba3ff51b2e08487 .
+_:8b2d7ec708d8efccb99b83c629e93e25 a oa:FragmentSelector ;
+	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "" .
+<ni:///sha-256;aonZgTRMzGOl7orxNxGZgAXmv9WJhMJJukqyNbbQNPI> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
+	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
+_:c39bc5615a7498765308d43a0d1df6f prov:agent _:931a0e9696c4586b35d41318f99016a3 .
+_:931a0e9696c4586b35d41318f99016a3 <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:c39bc5615a7498765308d43a0d1df6f prov:hadRole cascade:AuthorRole .
+<ni:///sha-256;aonZgTRMzGOl7orxNxGZgAXmv9WJhMJJukqyNbbQNPI> prov:qualifiedAttribution _:c39bc5615a7498765308d43a0d1df6f .
+_:9fc916b9d1d529097b1a3390759ddec8 prov:agent _:48ea9c0aa0f5ee601967154577fb043 .
+_:48ea9c0aa0f5ee601967154577fb043 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
+_:9fc916b9d1d529097b1a3390759ddec8 prov:hadRole cascade:TransmitterRole .
+<ni:///sha-256;aonZgTRMzGOl7orxNxGZgAXmv9WJhMJJukqyNbbQNPI> prov:qualifiedAttribution _:9fc916b9d1d529097b1a3390759ddec8 ;
+	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
+	cascade:authenticatedAsProxy false ;
+	cascade:sourceFormatVersion "4.0.1" .
+_:7f715163bd0aeaa37ba3ff51b2e08487 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
+	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
+<ni:///sha-256;aonZgTRMzGOl7orxNxGZgAXmv9WJhMJJukqyNbbQNPI> a prov:Entity .
+_:7f715163bd0aeaa37ba3ff51b2e08487 a prov:Activity ;
+	prov:used <ni:///sha-256;aonZgTRMzGOl7orxNxGZgAXmv9WJhMJJukqyNbbQNPI> ;
+	prov:qualifiedAssociation _:915a57107a5a50d8e7b186682431af49 .
+_:915a57107a5a50d8e7b186682431af49 prov:hadPlan _:d7376704bec619d28a1f0e96bc0a2959 .
+_:d7376704bec619d28a1f0e96bc0a2959 a prov:Plan ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "fhir-r4" ;
+	pav:version "0.1.0" .
+_:915a57107a5a50d8e7b186682431af49 prov:agent _:5343761d80b4429986a9fde27c99011d .
+_:5343761d80b4429986a9fde27c99011d a prov:SoftwareAgent ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Cascade Bridge for Rust" ;
+	pav:version "0.1.0" .

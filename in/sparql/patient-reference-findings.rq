@@ -1,0 +1,89 @@
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX sh:      <http://www.w3.org/ns/shacl#>
+PREFIX oa:      <http://www.w3.org/ns/oa#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX fx:      <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:     <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:  <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+PREFIX cascade: <https://ns.cascadeprotocol.org/cascade#>
+
+# The patient references record.rq names no record from: a urn:uuid no entry of
+# the document has as its fullUrl, an absolute URL whose base it refuses, and a
+# reference of the form Patient/<id> made from an entry whose fullUrl is a
+# urn:uuid or to an entry held under one, which FHIR gives no meaning.
+
+CONSTRUCT {
+  [] a oa:Annotation ;
+    oa:hasTarget [
+      oa:hasSource bridge:thisRecord ;
+      oa:hasSelector [
+        a oa:FragmentSelector ;
+        dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+        rdf:value ?pointer
+      ]
+    ] ;
+    oa:hasBody ?gap ;
+    oa:motivatedBy oa:classifying ;
+    sh:value ?value .
+}
+WHERE {
+  FILTER NOT EXISTS {
+    bridge:thisDocument cascade:sourceFormatVersion ?stated .
+    FILTER (!STRSTARTS(?stated, "4.0."))
+  }
+  bridge:thisRecord bridge:selector ?recordSelector .
+  ?root a fx:root .
+  OPTIONAL { ?root xyz:fullUrl ?fullUrl }
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  { BIND ("" AS ?containedStep) }
+  UNION
+  {
+    ?top xyz:contained ?containedList .
+    ?containedList ?containedSlot ?contained .
+    ?contained xyz:resourceType ?containedType .
+    BIND (CONCAT("/contained/", STR(xsd:integer(STRAFTER(STR(?containedSlot), "#_")) - 1)) AS ?containedStep)
+  }
+  BIND (COALESCE(?contained, ?top) AS ?resource)
+  BIND (CONCAT(?topStep, ?containedStep) AS ?resourcePointer)
+  ?resource xyz:resourceType ?type .
+  FILTER (?type IN ("AllergyIntolerance", "Condition", "Immunization", "Procedure", "Patient",
+                    "MedicationRequest", "MedicationStatement", "Observation"))
+  FILTER (?type != "Observation" || EXISTS {
+    { ?lab fhirr4:labResultAt ?observationPointer }
+    UNION { ?variantRow fhirr4:variantAt ?observationPointer }
+    UNION { ?interpretationRow fhirr4:interpretationAt ?observationPointer }
+    FILTER (?observationPointer = CONCAT(?recordSelector, ?resourcePointer))
+  })
+  ?resource ?member ?reference .
+  FILTER (?member IN (xyz:patient, xyz:subject))
+  ?reference xyz:reference ?value .
+
+  BIND (REPLACE(?value, "/_history/[A-Za-z0-9.-]{1,64}$", "") AS ?bare)
+  BIND (IF(REGEX(?bare, "^[A-Za-z][A-Za-z0-9+.-]*://[^/]+(/.*)?/Patient/[A-Za-z0-9.-]{1,64}$"),
+           REPLACE(?bare, "/+Patient/[A-Za-z0-9.-]{1,64}$", ""), 1/0) AS ?base)
+  BIND (REPLACE(?base, "^[^:]+://(\\[[^\\]]*\\]|[^/:]*)(:([0-9]*))?(/.*)?$", "$3") AS ?port)
+  BIND (REGEX(?base, "^[A-Za-z][A-Za-z0-9+.-]*://([A-Za-z0-9._~!$&'()*+,;=-]+|\\[[0-9A-Fa-f:.]+\\])(:[0-9]*)?(/[A-Za-z0-9._~!$&'()*+,;=:@-]*)*$")
+        && !REGEX(?base, "/\\.\\.?(/|$)")
+        && (!REGEX(?base, "^[^:]+://\\[") || REGEX(REPLACE(REPLACE(?base, "^[^:]+://\\[([^\\]]*)\\].*$", "$1"),
+                                                          ":((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])$", ":0:0"),
+                                                  "^(([0-9A-Fa-f]{1,4}:){7}[0-9A-Fa-f]{1,4}|([0-9A-Fa-f]{1,4}:){1,7}:|([0-9A-Fa-f]{1,4}:){1,6}:[0-9A-Fa-f]{1,4}|([0-9A-Fa-f]{1,4}:){1,5}(:[0-9A-Fa-f]{1,4}){1,2}|([0-9A-Fa-f]{1,4}:){1,4}(:[0-9A-Fa-f]{1,4}){1,3}|([0-9A-Fa-f]{1,4}:){1,3}(:[0-9A-Fa-f]{1,4}){1,4}|([0-9A-Fa-f]{1,4}:){1,2}(:[0-9A-Fa-f]{1,4}){1,5}|[0-9A-Fa-f]{1,4}:(:[0-9A-Fa-f]{1,4}){1,6}|:((:[0-9A-Fa-f]{1,4}){1,7}|:))$"))
+        && STRLEN(REPLACE(?port, "^0+", "")) <= 5
+        && (?port = "" || xsd:integer(?port) <= 65535) AS ?baseAccepted)
+  BIND (REGEX(?bare, "^Patient/[A-Za-z0-9.-]{1,64}$") AS ?relative)
+  BIND (?relative && (STRSTARTS(COALESCE(?fullUrl, ""), "urn:uuid:") || EXISTS {
+          ?urnPatient fhirr4:resourceType "Patient" ;
+            fhirr4:resourceId ?urnPatientId ;
+            fhirr4:fullUrl ?urnPatientUrl .
+          FILTER (STRSTARTS(?urnPatientUrl, "urn:uuid:") && ?urnPatientId = STRAFTER(?bare, "Patient/"))
+        }) AS ?relativeUndefined)
+  BIND (IF(STRSTARTS(?value, "urn:uuid:"),
+           IF(EXISTS { ?held fhirr4:fullUrl ?value }, 1/0, fhirr4:referenceNotHeld),
+           IF(?relativeUndefined, fhirr4:referenceRelativeUndefined,
+              IF(BOUND(?base) && !COALESCE(?baseAccepted, false), fhirr4:referenceBaseRefused, 1/0))) AS ?gap)
+  FILTER (BOUND(?gap))
+  BIND (CONCAT(?resourcePointer, "/", STRAFTER(STR(?member), "http://sparql.xyz/facade-x/data/"), "/reference") AS ?pointer)
+}

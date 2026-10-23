@@ -2,33 +2,33 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:d90d0bce0494f0e9ea0be99805e71e25 a oa:FragmentSelector ;
+_:c04ddad20405aea3ad16d04e30b1be99 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/entry/0" ;
-	oa:refinedBy _:def651b0d2eb86c091b7c526e208a269 .
-_:f63ab7f0bfe946027fdee2eb6fb1c4cf oa:hasSource <../in/bundle-repeated-condition-id.json> .
-_:def651b0d2eb86c091b7c526e208a269 rdf:value "/resource/id" ;
+	rdf:value "/entry/0" .
+_:b217b496d9729a1a172bc14987ee502a oa:hasSource <../in/bundle-repeated-condition-id.json> .
+_:c04ddad20405aea3ad16d04e30b1be99 oa:refinedBy _:acdc8fb93e56542b45a019ddb21b61a3 .
+_:acdc8fb93e56542b45a019ddb21b61a3 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	a oa:FragmentSelector .
-_:f63ab7f0bfe946027fdee2eb6fb1c4cf oa:hasSelector _:d90d0bce0494f0e9ea0be99805e71e25 .
-_:d202d6f3f9417d76316159b94db92d01 oa:hasTarget _:f63ab7f0bfe946027fdee2eb6fb1c4cf ;
+	rdf:value "/resource/id" .
+_:b217b496d9729a1a172bc14987ee502a oa:hasSelector _:c04ddad20405aea3ad16d04e30b1be99 .
+_:efc4bf7121227817434f0e81e6776903 oa:hasTarget _:b217b496d9729a1a172bc14987ee502a ;
 	sh:resultSeverity sh:Info ;
-	sh:value "cond-htn-1" ;
-	oa:motivatedBy oa:classifying ;
+	a oa:Annotation ;
 	oa:hasBody fhirr4:resourceIdRepeated ;
-	a oa:Annotation .
-_:e4c1eabc7a2780d31251f2f7c2b111b7 a oa:FragmentSelector ;
+	oa:motivatedBy oa:classifying ;
+	sh:value "cond-htn-1" .
+_:e65a0a36db6ba91e084cfcaeb77374f9 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/entry/1" ;
-	oa:refinedBy _:a955c59a518c6dbfee2c8e4eb81df44d .
-_:bcc6a1425ed5d9fad9cbd8df941aefeb oa:hasSource <../in/bundle-repeated-condition-id.json> .
-_:a955c59a518c6dbfee2c8e4eb81df44d rdf:value "/resource/id" ;
+	rdf:value "/entry/1" .
+_:bbd5a579731fd40f48dfa4f24ab499f4 oa:hasSource <../in/bundle-repeated-condition-id.json> .
+_:e65a0a36db6ba91e084cfcaeb77374f9 oa:refinedBy _:d98153f7d8f950d5cd42c60c85e2527c .
+_:d98153f7d8f950d5cd42c60c85e2527c a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	a oa:FragmentSelector .
-_:bcc6a1425ed5d9fad9cbd8df941aefeb oa:hasSelector _:e4c1eabc7a2780d31251f2f7c2b111b7 .
-_:a6923ad76a23f0a8d8b978b5d4b95a2 oa:hasTarget _:bcc6a1425ed5d9fad9cbd8df941aefeb ;
+	rdf:value "/resource/id" .
+_:bbd5a579731fd40f48dfa4f24ab499f4 oa:hasSelector _:e65a0a36db6ba91e084cfcaeb77374f9 .
+_:d3fd5fe514c477998ab5873094349eea oa:hasTarget _:bbd5a579731fd40f48dfa4f24ab499f4 ;
 	sh:resultSeverity sh:Info ;
-	sh:value "cond-htn-1" ;
-	oa:motivatedBy oa:classifying ;
+	a oa:Annotation ;
 	oa:hasBody fhirr4:resourceIdRepeated ;
-	a oa:Annotation .
+	oa:motivatedBy oa:classifying ;
+	sh:value "cond-htn-1" .

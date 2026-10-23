@@ -2,28 +2,28 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:fbec39a6909847a6c0ac1b425aff341a a oa:FragmentSelector ;
+_:d5b48be1578f517e3937af2fb3a4ace7 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:b24ca700ac15e232ffeaa91fac39398 a oa:Annotation ;
-	oa:hasTarget _:de8b889d033e45921ef2acf7beeaf64 .
-_:de8b889d033e45921ef2acf7beeaf64 oa:hasSource <../in/medication-no-id-note-only.json> ;
-	oa:hasSelector _:fbec39a6909847a6c0ac1b425aff341a .
-_:b24ca700ac15e232ffeaa91fac39398 oa:hasBody <https://datatracker.ietf.org/doc/html/draft-wright-json-schema-validation-01#section-6.28> ;
+_:ee1adc00ed90c6f56ce826045b75994b a oa:Annotation ;
+	oa:hasTarget _:d355ee26b088f90a76d2cd6030777785 .
+_:d355ee26b088f90a76d2cd6030777785 oa:hasSource <../in/medication-no-id-note-only.json> ;
+	oa:hasSelector _:d5b48be1578f517e3937af2fb3a4ace7 .
+_:ee1adc00ed90c6f56ce826045b75994b oa:hasBody <https://datatracker.ietf.org/doc/html/draft-wright-json-schema-validation-01#section-6.28> ;
 	oa:motivatedBy oa:classifying ;
 	sh:resultSeverity sh:Violation .
-_:c4b632b340ed825bdb5b922e4d0bf84a a oa:FragmentSelector ;
+_:f74d3e294c8665345ecccbcaf7c19077 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "" ;
-	oa:refinedBy _:cba73ff4698142bb489d674959541299 .
-_:aa0e1dbc595d695578b5ad7ab9924761 oa:hasSource <../in/medication-no-id-note-only.json> .
-_:cba73ff4698142bb489d674959541299 rdf:value "/note/0/text" ;
+	rdf:value "" .
+_:c0103058094818d132e3680e3a1df32a oa:hasSource <../in/medication-no-id-note-only.json> .
+_:f74d3e294c8665345ecccbcaf7c19077 oa:refinedBy _:d64afe5db0f2577464f21149d41028f9 .
+_:d64afe5db0f2577464f21149d41028f9 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	a oa:FragmentSelector .
-_:aa0e1dbc595d695578b5ad7ab9924761 oa:hasSelector _:c4b632b340ed825bdb5b922e4d0bf84a .
-_:b03a2231dba39b26465411b934d233aa oa:hasTarget _:aa0e1dbc595d695578b5ad7ab9924761 ;
+	rdf:value "/note/0/text" .
+_:c0103058094818d132e3680e3a1df32a oa:hasSelector _:f74d3e294c8665345ecccbcaf7c19077 .
+_:bd3233d906f4f552047150cffd48a110 oa:hasTarget _:c0103058094818d132e3680e3a1df32a ;
 	sh:resultSeverity sh:Info ;
-	sh:value "Patient reports taking an over-the-counter antihistamine most evenings." ;
-	oa:motivatedBy oa:classifying ;
+	a oa:Annotation ;
 	oa:hasBody fhirr4:medicationNote ;
-	a oa:Annotation .
+	oa:motivatedBy oa:classifying ;
+	sh:value "Patient reports taking an over-the-counter antihistamine most evenings." .

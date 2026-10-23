@@ -1,46 +1,49 @@
-@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
-@prefix prov:     <http://www.w3.org/ns/prov#> .
-@prefix pav:      <http://purl.org/pav/> .
-@prefix bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
-@prefix rec:      <https://ns.cascadeprotocol.org/records/v1-draft#> .
-@prefix health:   <https://ns.cascadeprotocol.org/health/v1#> .
-@prefix clinical: <https://ns.cascadeprotocol.org/clinical/v1#> .
-@prefix cascade:  <https://ns.cascadeprotocol.org/core/v1#> .
-@prefix foaf:     <http://xmlns.com/foaf/0.1/> .
-
-<urn:uuid:70edb436-5e30-8d0a-93a7-fa39d1ef17bd>
-  a health:AllergyRecord .
-
-<ni:///sha-256;RT2g0igsNZ3BQj8ePexYURStm6we5kXdSUphPeptYck>
-  prov:specializationOf <urn:uuid:70edb436-5e30-8d0a-93a7-fa39d1ef17bd> ;
-  clinical:criticality "high" ;
-  health:allergen "Sulfamethoxazole" ;
-  health:allergenCode <http://www.nlm.nih.gov/research/umls/rxnorm/10180> ;
-  rec:patient <urn:uuid:24c23e99-ff68-841f-a7a4-ebe3bd997ada> .
-
-[] bridge:arrivedAs <ni:///sha-256;RT2g0igsNZ3BQj8ePexYURStm6we5kXdSUphPeptYck> ;
-  bridge:selector "" ;
-  prov:wasDerivedFrom <ni:///sha-256;7js6ZA191y2-TPAE-5TK2OxCuBag_r6JLg7qycoA0zM> ;
-  prov:wasGeneratedBy _:import .
-
-<ni:///sha-256;7js6ZA191y2-TPAE-5TK2OxCuBag_r6JLg7qycoA0zM>
-  a prov:Entity ;
-  bridge:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
-  pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
-  prov:qualifiedAttribution
-    [ prov:agent [ rdfs:label "Meridian Health System" ] ; prov:hadRole rec:author ] ,
-    [ prov:agent [ rdfs:label "Apple Health" ] ; prov:hadRole rec:transmitter ] ;
-  bridge:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
-  bridge:authenticatedAsProxy false ;
-  bridge:sourceFormatVersion "4.0.1" .
-
-_:import
-  a prov:Activity ;
-  prov:used <ni:///sha-256;7js6ZA191y2-TPAE-5TK2OxCuBag_r6JLg7qycoA0zM> ;
-  rdfs:label "Apple Health export" ;
-  prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime ;
-  prov:qualifiedAssociation [
-    prov:hadPlan [ a prov:Plan ; rdfs:label "fhir-r4" ; pav:version "0.1.0" ] ;
-    prov:agent [ ]
-  ] .
+@prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix pav: <http://purl.org/pav/> .
+<ni:///sha-256;U5kimcZZBPXd-lMebtWa3j3ovXAr1ulPcSmeCcswmVo> cascade:allergen "Sulfamethoxazole" ;
+	cascade:allergyCriticality "high" ;
+	cascade:allergenCode <https://ns.cascadeprotocol.org/codes/rxnorm/10180> .
+_:cc40a464a1ed9bf9db986921d3025638 bridge:arrivedAs <ni:///sha-256;U5kimcZZBPXd-lMebtWa3j3ovXAr1ulPcSmeCcswmVo> .
+<ni:///sha-256;U5kimcZZBPXd-lMebtWa3j3ovXAr1ulPcSmeCcswmVo> cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> ;
+	prov:specializationOf <urn:uuid:0c7fcd2a-a963-8703-baa7-46303ca80e86> .
+<urn:uuid:0c7fcd2a-a963-8703-baa7-46303ca80e86> a cascade:AllergyOrIntolerance .
+_:cc40a464a1ed9bf9db986921d3025638 oa:hasSelector _:a919c2bbcb140f2c37b1d065fedcc415 ;
+	oa:hasSource <ni:///sha-256;7js6ZA191y2-TPAE-5TK2OxCuBag_r6JLg7qycoA0zM> ;
+	prov:wasDerivedFrom <ni:///sha-256;7js6ZA191y2-TPAE-5TK2OxCuBag_r6JLg7qycoA0zM> ;
+	prov:wasGeneratedBy _:7d680646e63cffc2c411c743de4442a3 .
+_:a919c2bbcb140f2c37b1d065fedcc415 a oa:FragmentSelector ;
+	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "" .
+<ni:///sha-256;7js6ZA191y2-TPAE-5TK2OxCuBag_r6JLg7qycoA0zM> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
+	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
+_:79be0f1a05e8a463d446938e1ec4dc88 prov:agent _:e5f4fdf0c6e6b9973b58b672cdc9c49c .
+_:e5f4fdf0c6e6b9973b58b672cdc9c49c <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:79be0f1a05e8a463d446938e1ec4dc88 prov:hadRole cascade:AuthorRole .
+<ni:///sha-256;7js6ZA191y2-TPAE-5TK2OxCuBag_r6JLg7qycoA0zM> prov:qualifiedAttribution _:79be0f1a05e8a463d446938e1ec4dc88 .
+_:6a7e7ed64ae8589d3f94f82a5355cb7a prov:agent _:b5fab6c6385b1c952a706f86e1c080c1 .
+_:b5fab6c6385b1c952a706f86e1c080c1 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
+_:6a7e7ed64ae8589d3f94f82a5355cb7a prov:hadRole cascade:TransmitterRole .
+<ni:///sha-256;7js6ZA191y2-TPAE-5TK2OxCuBag_r6JLg7qycoA0zM> prov:qualifiedAttribution _:6a7e7ed64ae8589d3f94f82a5355cb7a ;
+	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
+	cascade:authenticatedAsProxy false ;
+	cascade:sourceFormatVersion "4.0.1" .
+_:7d680646e63cffc2c411c743de4442a3 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
+	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
+<ni:///sha-256;7js6ZA191y2-TPAE-5TK2OxCuBag_r6JLg7qycoA0zM> a prov:Entity .
+_:7d680646e63cffc2c411c743de4442a3 a prov:Activity ;
+	prov:used <ni:///sha-256;7js6ZA191y2-TPAE-5TK2OxCuBag_r6JLg7qycoA0zM> ;
+	prov:qualifiedAssociation _:445ee82b6bdfe2f5d34f04334778f86a .
+_:445ee82b6bdfe2f5d34f04334778f86a prov:hadPlan _:e7fcc7bbb7368c9b100505546a4bc533 .
+_:e7fcc7bbb7368c9b100505546a4bc533 a prov:Plan ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "fhir-r4" ;
+	pav:version "0.1.0" .
+_:445ee82b6bdfe2f5d34f04334778f86a prov:agent _:db3a3a44008007d9af8f59acb197014c .
+_:db3a3a44008007d9af8f59acb197014c a prov:SoftwareAgent ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Cascade Bridge for Rust" ;
+	pav:version "0.1.0" .

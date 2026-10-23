@@ -1,54 +1,57 @@
-@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
-@prefix prov:     <http://www.w3.org/ns/prov#> .
-@prefix pav:      <http://purl.org/pav/> .
-@prefix bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
-@prefix rec:      <https://ns.cascadeprotocol.org/records/v1-draft#> .
-@prefix health:   <https://ns.cascadeprotocol.org/health/v1#> .
-@prefix clinical: <https://ns.cascadeprotocol.org/clinical/v1#> .
-@prefix cascade:  <https://ns.cascadeprotocol.org/core/v1#> .
-@prefix foaf:     <http://xmlns.com/foaf/0.1/> .
-
-<urn:uuid:5a112a50-ab2d-8d61-9ebd-1bb232087b84>
-  a health:ConditionRecord ;
-  health:sourceRecordId "cond-bronch-2" ;
-  rec:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Condition/cond-bronch-2> .
-
-<ni:///sha-256;eS7kFNp-ydbqkoYYofGY0NfxbOcI11Ep5Z3D81ZeSyQ>
-  prov:specializationOf <urn:uuid:5a112a50-ab2d-8d61-9ebd-1bb232087b84> ;
-  clinical:abatementDate "2026-02-24"^^xsd:date ;
-  clinical:category "problem-list-item" ;
-  clinical:verificationStatus "confirmed" ;
-  health:conditionName "Acute bronchitis" ;
-  health:icd10Code <http://hl7.org/fhir/sid/icd-10-cm/J20.9> ;
-  health:notes "Resolved after three weeks." ;
-  health:onsetDate "2026-02-03"^^xsd:date ;
-  health:snomedCode <http://snomed.info/id/10509002> ;
-  health:status "resolved" ;
-  rec:patient <urn:uuid:24c23e99-ff68-841f-a7a4-ebe3bd997ada> .
-
-[] bridge:arrivedAs <ni:///sha-256;eS7kFNp-ydbqkoYYofGY0NfxbOcI11Ep5Z3D81ZeSyQ> ;
-  bridge:selector "" ;
-  prov:wasDerivedFrom <ni:///sha-256;ROjIUupU-t-oD5JBYkdVvTw5hWH4PKYgbPAyV1Pdyh4> ;
-  prov:wasGeneratedBy _:import .
-
-<ni:///sha-256;ROjIUupU-t-oD5JBYkdVvTw5hWH4PKYgbPAyV1Pdyh4>
-  a prov:Entity ;
-  bridge:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
-  pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
-  prov:qualifiedAttribution
-    [ prov:agent [ rdfs:label "Meridian Health System" ] ; prov:hadRole rec:author ] ,
-    [ prov:agent [ rdfs:label "Apple Health" ] ; prov:hadRole rec:transmitter ] ;
-  bridge:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
-  bridge:authenticatedAsProxy false ;
-  bridge:sourceFormatVersion "4.0.1" .
-
-_:import
-  a prov:Activity ;
-  prov:used <ni:///sha-256;ROjIUupU-t-oD5JBYkdVvTw5hWH4PKYgbPAyV1Pdyh4> ;
-  rdfs:label "Apple Health export" ;
-  prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime ;
-  prov:qualifiedAssociation [
-    prov:hadPlan [ a prov:Plan ; rdfs:label "fhir-r4" ; pav:version "0.1.0" ] ;
-    prov:agent [ ]
-  ] .
+@prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix pav: <http://purl.org/pav/> .
+<ni:///sha-256;CRiiHe8IJpwLBUgkWsUHEjy5lB89aiFJrXUMhRKCzwg> cascade:clinicalStatus "resolved" ;
+	cascade:abatementDate "2026-02-24"^^xsd:date ;
+	cascade:onsetDate "2026-02-03"^^xsd:date ;
+	cascade:conditionCategory "problem-list-item" ;
+	cascade:notes "Resolved after three weeks." ;
+	cascade:verificationStatus "confirmed" ;
+	cascade:conditionName "Acute bronchitis" ;
+	cascade:snomedCode <http://snomed.info/id/10509002> ;
+	cascade:icd10Code <https://ns.cascadeprotocol.org/codes/icd10cm/J20.9> .
+_:8db03b2c87554b27ce55436eb8901039 bridge:arrivedAs <ni:///sha-256;CRiiHe8IJpwLBUgkWsUHEjy5lB89aiFJrXUMhRKCzwg> .
+<ni:///sha-256;CRiiHe8IJpwLBUgkWsUHEjy5lB89aiFJrXUMhRKCzwg> cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> ;
+	prov:specializationOf <urn:uuid:37a1c655-1b6a-8648-b9ea-b13f5dfeac1f> .
+<urn:uuid:37a1c655-1b6a-8648-b9ea-b13f5dfeac1f> cascade:sourceRecordId "cond-bronch-2" ;
+	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Condition/cond-bronch-2> ;
+	a cascade:ProblemOrDiagnosis .
+_:8db03b2c87554b27ce55436eb8901039 oa:hasSelector _:3f72e16083e24dacb501673503aa6637 ;
+	oa:hasSource <ni:///sha-256;ROjIUupU-t-oD5JBYkdVvTw5hWH4PKYgbPAyV1Pdyh4> ;
+	prov:wasDerivedFrom <ni:///sha-256;ROjIUupU-t-oD5JBYkdVvTw5hWH4PKYgbPAyV1Pdyh4> ;
+	prov:wasGeneratedBy _:f1ab8b5659c1a348678eb6e0136500c1 .
+_:3f72e16083e24dacb501673503aa6637 a oa:FragmentSelector ;
+	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "" .
+<ni:///sha-256;ROjIUupU-t-oD5JBYkdVvTw5hWH4PKYgbPAyV1Pdyh4> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
+	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
+_:b6f32a2d1b1e3478b61318dabb404a27 prov:agent _:5fc4b6ce98879e758b4d307276c8fc2 .
+_:5fc4b6ce98879e758b4d307276c8fc2 <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:b6f32a2d1b1e3478b61318dabb404a27 prov:hadRole cascade:AuthorRole .
+<ni:///sha-256;ROjIUupU-t-oD5JBYkdVvTw5hWH4PKYgbPAyV1Pdyh4> prov:qualifiedAttribution _:b6f32a2d1b1e3478b61318dabb404a27 .
+_:bbe153de05ee71a0a089cb4d10d67247 prov:agent _:742fb0375a6627874bd1e69310356f63 .
+_:742fb0375a6627874bd1e69310356f63 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
+_:bbe153de05ee71a0a089cb4d10d67247 prov:hadRole cascade:TransmitterRole .
+<ni:///sha-256;ROjIUupU-t-oD5JBYkdVvTw5hWH4PKYgbPAyV1Pdyh4> prov:qualifiedAttribution _:bbe153de05ee71a0a089cb4d10d67247 ;
+	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
+	cascade:authenticatedAsProxy false ;
+	cascade:sourceFormatVersion "4.0.1" .
+_:f1ab8b5659c1a348678eb6e0136500c1 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
+	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
+<ni:///sha-256;ROjIUupU-t-oD5JBYkdVvTw5hWH4PKYgbPAyV1Pdyh4> a prov:Entity .
+_:f1ab8b5659c1a348678eb6e0136500c1 a prov:Activity ;
+	prov:used <ni:///sha-256;ROjIUupU-t-oD5JBYkdVvTw5hWH4PKYgbPAyV1Pdyh4> ;
+	prov:qualifiedAssociation _:55a893d0f0fc66595f9be34cd518e4a8 .
+_:55a893d0f0fc66595f9be34cd518e4a8 prov:hadPlan _:82470258ec9f5689242abae8c97e02a .
+_:82470258ec9f5689242abae8c97e02a a prov:Plan ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "fhir-r4" ;
+	pav:version "0.1.0" .
+_:55a893d0f0fc66595f9be34cd518e4a8 prov:agent _:dc24c71fe59c640ca4394056dcf525f3 .
+_:dc24c71fe59c640ca4394056dcf525f3 a prov:SoftwareAgent ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Cascade Bridge for Rust" ;
+	pav:version "0.1.0" .

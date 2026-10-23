@@ -3,8 +3,7 @@ PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
 PREFIX fx:       <http://sparql.xyz/facade-x/ns/>
 PREFIX xyz:      <http://sparql.xyz/facade-x/data/>
 PREFIX bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#>
-PREFIX clinical: <https://ns.cascadeprotocol.org/clinical/v1#>
-PREFIX rec:      <https://ns.cascadeprotocol.org/records/v1-draft#>
+PREFIX cascade:  <https://ns.cascadeprotocol.org/cascade#>
 PREFIX skos:    <http://www.w3.org/2004/02/skos/core#>
 PREFIX void:     <http://rdfs.org/ns/void#>
 PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
@@ -29,18 +28,19 @@ PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # date, and is not carried.
 
 CONSTRUCT {
-  ?version clinical:clinicalIntent ?intent ;
-    clinical:drugName ?drugName ;
+  ?version cascade:prescribedOrReported ?intent ;
+    cascade:drugName ?drugName ;
     ?codeProperty ?codeIri ;
-    rec:selectedCode ?selectedCode ;
-    clinical:status ?status ;
-    clinical:startDate ?startDate ;
-    clinical:endDate ?endDate ;
-    clinical:dosage ?dosage .
+    cascade:userSelectedCode ?selectedCode ;
+    cascade:workflowStatus ?status ;
+    cascade:medicationUseStartDate ?startDate ;
+    cascade:prescriptionWrittenDate ?writtenDate ;
+    cascade:medicationUseEndDate ?endDate ;
+    cascade:dosage ?dosage .
 }
 WHERE {
   FILTER NOT EXISTS {
-    bridge:thisDocument bridge:sourceFormatVersion ?stated .
+    bridge:thisDocument cascade:sourceFormatVersion ?stated .
     FILTER (!STRSTARTS(?stated, "4.0."))
   }
   bridge:thisRecord bridge:selector ?recordSelector .
@@ -120,13 +120,14 @@ WHERE {
     }
     FILTER (!BOUND(?codePointer) || ?codePointer = ?medicationPointer)
     VALUES (?codedSystem ?codeProperty) {
-      ("http://www.nlm.nih.gov/research/umls/rxnorm" clinical:rxNormCode)
-      ("http://hl7.org/fhir/sid/ndc" rec:ndcCode)
+      ("http://www.nlm.nih.gov/research/umls/rxnorm" cascade:rxNormCode)
+      ("http://hl7.org/fhir/sid/ndc" cascade:ndcCode)
     }
     ?codeSystem skos:inScheme fhirr4:codeSystems ;
-      skos:notation ?codedSystem ;
+      cascade:codingSystemUri ?codedSystemUri ;
       void:uriSpace ?stem .
-    BIND (IF(?codeProperty = clinical:rxNormCode, ?codedValue,
+    FILTER (STR(?codedSystemUri) = ?codedSystem)
+    BIND (IF(?codeProperty = cascade:rxNormCode, ?codedValue,
              IF(REGEX(?codedValue, "^[0-9]{11}$"), ?codedValue,
                IF(REGEX(?codedValue, "^[0-9]{5}-[0-9]{4}-[0-9]{2}$"), REPLACE(?codedValue, "-", ""),
                  IF(REGEX(?codedValue, "^[0-9]{4}-[0-9]{4}-[0-9]{2}$"), CONCAT("0", REPLACE(?codedValue, "-", "")),
@@ -154,9 +155,11 @@ WHERE {
   OPTIONAL { ?resource xyz:effectiveDateTime ?effective }
   OPTIONAL { ?resource xyz:effectivePeriod ?startPeriod . ?startPeriod xyz:start ?periodStart }
   OPTIONAL { ?resource xyz:authoredOn ?authored }
-  BIND (COALESCE(?effective, ?periodStart, ?authored) AS ?started)
+  BIND (COALESCE(?effective, ?periodStart) AS ?started)
   BIND (IF(REGEX(?started, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"), STRDT(?started, xsd:date),
            IF(REGEX(?started, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T"), STRDT(?started, xsd:dateTime), 1/0)) AS ?startDate)
+  BIND (IF(REGEX(?authored, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"), STRDT(?authored, xsd:date),
+           IF(REGEX(?authored, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T"), STRDT(?authored, xsd:dateTime), 1/0)) AS ?writtenDate)
 
   OPTIONAL { ?resource xyz:effectivePeriod ?endPeriod . ?endPeriod xyz:end ?ended }
   BIND (IF(REGEX(?ended, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"), STRDT(?ended, xsd:date),

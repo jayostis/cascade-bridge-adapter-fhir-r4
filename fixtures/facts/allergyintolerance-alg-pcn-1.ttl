@@ -3,18 +3,18 @@
 @prefix prov:   <http://www.w3.org/ns/prov#> .
 @prefix pav:    <http://purl.org/pav/> .
 @prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
-@prefix rec:    <https://ns.cascadeprotocol.org/records/v1-draft#> .
+@prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
 
 bridge:thisDocument
-  bridge:serverBaseUrl "https://FHIR.Meridian.example/api/FHIR/R4/" ;
+  cascade:serverBaseUrl "https://FHIR.Meridian.example/api/FHIR/R4/" ;
   pav:retrievedFrom <https://FHIR.Meridian.example/api/FHIR/R4/AllergyIntolerance/alg-pcn-1> ;
   pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
   prov:qualifiedAttribution
-    [ prov:agent [ rdfs:label "Meridian Health System" ] ; prov:hadRole rec:author ] ,
-    [ prov:agent [ rdfs:label "Apple Health" ] ; prov:hadRole rec:transmitter ] ;
-  bridge:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
-  bridge:authenticatedAsProxy false ;
-  bridge:sourceFormatVersion "4.0.1" .
+    [ prov:agent [ rdfs:label "Meridian Health System" ] ; prov:hadRole cascade:AuthorRole ] ,
+    [ prov:agent [ rdfs:label "Apple Health" ] ; prov:hadRole cascade:TransmitterRole ] ;
+  cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
+  cascade:authenticatedAsProxy false ;
+  cascade:sourceFormatVersion "4.0.1" .
 
 bridge:thisImport
   rdfs:label "Apple Health export" ;

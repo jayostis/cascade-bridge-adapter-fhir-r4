@@ -15,6 +15,8 @@
     <#condition-every-mapped-element>
     <#condition-with-id-meta-fetch-a>
     <#condition-with-id-meta-fetch-b>
+    <#condition-patient-reference-default-port>
+    <#condition-patient-reference-userinfo>
     <#condition-no-id-structured-hypertension>
     <#condition-no-id-structured-diabetes>
     <#condition-no-id-narrative-diabetes>
@@ -27,10 +29,13 @@
     <#procedure-no-id-colonoscopy>
     <#procedure-no-id-echocardiogram>
     <#procedure-with-contained-condition>
+    <#procedure-contained-empty-version-id>
     <#patient-with-id>
     <#patient-no-id>
     <#bundle-two-identical-id-less-allergies>
     <#bundle-urn-uuid-full-urls>
+    <#bundle-patient-reference-urn-not-held>
+    <#bundle-patient-reference-relative-to-urn>
     <#bundle-repeated-condition-id>
     <#encounter-with-id>
     <#lab-glucose-fasting>
@@ -58,6 +63,7 @@
     <#Bundle-bundle-oncology-diagnostic>
     <#bundle-genomics-variants>
     <#bundle-genomics-interpretations>
+    <#bundle-interpretation-relative-reference-to-urn>
     <#martin-okafor-harbourline-panel-2022>
     <#martin-okafor-st-columba-exome-2024>
     <#condition-no-id-differs-only-in-narrative>
@@ -187,6 +193,32 @@
   mf:result [
     bridge:expectedGraph <expected/condition-with-id-meta-fetch-b.ttl> ;
     bridge:expectedFindings <findings/condition-with-id-meta-fetch-b.ttl>
+  ] .
+
+<#condition-patient-reference-default-port> a bridge:IsomorphicConversionTest ;
+  mf:name "condition-patient-reference-default-port" ;
+  rdfs:comment "A patient referenced by an absolute URL on the document's own server, its host in another case and https's default port written: it names the patient a reference relative to that server names." ;
+  mf:action [
+    bridge:input <in/condition-patient-reference-default-port.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/condition-cond-htn-1.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/condition-patient-reference-default-port.ttl> ;
+    bridge:expectedFindings <findings/condition-patient-reference-default-port.ttl>
+  ] .
+
+<#condition-patient-reference-userinfo> a bridge:IsomorphicConversionTest ;
+  mf:name "condition-patient-reference-userinfo" ;
+  rdfs:comment "A patient referenced by an absolute URL whose base carries userinfo: the reference names no patient, and a finding says so." ;
+  mf:action [
+    bridge:input <in/condition-patient-reference-userinfo.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/condition-cond-htn-1.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/condition-patient-reference-userinfo.ttl> ;
+    bridge:expectedFindings <findings/condition-patient-reference-userinfo.ttl>
   ] .
 
 <#condition-no-id-structured-hypertension> a bridge:IsomorphicConversionTest ;
@@ -333,6 +365,19 @@
     bridge:expectedFindings <findings/procedure-with-contained-condition.ttl>
   ] .
 
+<#procedure-contained-empty-version-id> a bridge:IsomorphicConversionTest ;
+  mf:name "procedure-contained-empty-version-id" ;
+  rdfs:comment "A contained Condition whose container states an empty meta.versionId beside its meta.lastUpdated: the empty version counts as none, so the contained record is named from the lastUpdated." ;
+  mf:action [
+    bridge:input <in/procedure-contained-empty-version-id.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/procedure-proc-echo-1.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/procedure-contained-empty-version-id.ttl> ;
+    bridge:expectedFindings <findings/procedure-contained-empty-version-id.ttl>
+  ] .
+
 <#patient-with-id> a bridge:IsomorphicConversionTest ;
   mf:name "patient-with-id" ;
   mf:action [
@@ -379,6 +424,32 @@
   mf:result [
     bridge:expectedGraph <expected/bundle-urn-uuid-full-urls.ttl> ;
     bridge:expectedFindings <findings/bundle-urn-uuid-full-urls.ttl>
+  ] .
+
+<#bundle-patient-reference-urn-not-held> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-patient-reference-urn-not-held" ;
+  rdfs:comment "A Condition whose subject is a urn:uuid no entry of the Bundle has as its fullUrl: the reference names no patient, and a finding says so." ;
+  mf:action [
+    bridge:input <in/bundle-patient-reference-urn-not-held.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-patient-reference-urn-not-held.ttl> ;
+    bridge:expectedFindings <findings/bundle-patient-reference-urn-not-held.ttl>
+  ] .
+
+<#bundle-patient-reference-relative-to-urn> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-patient-reference-relative-to-urn" ;
+  rdfs:comment "A Patient held under a urn:uuid fullUrl, and two Conditions referencing Patient/<id>: one from an entry whose fullUrl is a urn:uuid, one to the Patient held under a urn:uuid. FHIR gives a [type]/[id] no meaning there, so neither names a patient, and each carries a finding." ;
+  mf:action [
+    bridge:input <in/bundle-patient-reference-relative-to-urn.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-patient-reference-relative-to-urn.ttl> ;
+    bridge:expectedFindings <findings/bundle-patient-reference-relative-to-urn.ttl>
   ] .
 
 <#bundle-repeated-condition-id> a bridge:IsomorphicConversionTest ;
@@ -483,6 +554,19 @@
   mf:result [
     bridge:expectedGraph <expected/bundle-genomics-interpretations.ttl> ;
     bridge:expectedFindings <findings/bundle-genomics-interpretations.ttl>
+  ] .
+
+<#bundle-interpretation-relative-reference-to-urn> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-interpretation-relative-reference-to-urn" ;
+  rdfs:comment "A variant held under a urn:uuid fullUrl, and two interpretations derived from Observation/<id>: one from an entry whose fullUrl is a urn:uuid, one to the variant held under a urn:uuid. FHIR gives a [type]/[id] no meaning there, so neither links to the variant, and each carries a finding." ;
+  mf:action [
+    bridge:input <in/bundle-interpretation-relative-reference-to-urn.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-interpretation-relative-reference-to-urn.ttl> ;
+    bridge:expectedFindings <findings/bundle-interpretation-relative-reference-to-urn.ttl>
   ] .
 
 <#martin-okafor-harbourline-panel-2022> a bridge:IsomorphicConversionTest ;

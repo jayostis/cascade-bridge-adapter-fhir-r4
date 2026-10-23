@@ -2,18 +2,18 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:ec56290baa1f9b439b3fe2607d7829f6 a oa:FragmentSelector ;
+_:ecf259e6bc6ffb25a3e96695ce4fd0fc a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "" ;
-	oa:refinedBy _:d32dfca027d16afd0e26df029d33a4e9 .
-_:f4da38bacf93d1d8ec844774b2d2d0a0 oa:hasSource <../in/medication-statement-every-mapped-element.json> .
-_:d32dfca027d16afd0e26df029d33a4e9 rdf:value "/note/0/text" ;
+	rdf:value "" .
+_:a331a051cab395087deb4c33b53e1357 oa:hasSource <../in/medication-statement-every-mapped-element.json> .
+_:ecf259e6bc6ffb25a3e96695ce4fd0fc oa:refinedBy _:f60dc0be4281b79dea265fc01df72cfe .
+_:f60dc0be4281b79dea265fc01df72cfe a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	a oa:FragmentSelector .
-_:f4da38bacf93d1d8ec844774b2d2d0a0 oa:hasSelector _:ec56290baa1f9b439b3fe2607d7829f6 .
-_:d17c0de3f016829501c79bb133e7e7af oa:hasTarget _:f4da38bacf93d1d8ec844774b2d2d0a0 ;
+	rdf:value "/note/0/text" .
+_:a331a051cab395087deb4c33b53e1357 oa:hasSelector _:ecf259e6bc6ffb25a3e96695ce4fd0fc .
+_:ebf0d0610e734306731b5e9b3e522f58 oa:hasTarget _:a331a051cab395087deb4c33b53e1357 ;
 	sh:resultSeverity sh:Info ;
-	sh:value "Stopped once the sprain healed." ;
-	oa:motivatedBy oa:classifying ;
+	a oa:Annotation ;
 	oa:hasBody fhirr4:medicationNote ;
-	a oa:Annotation .
+	oa:motivatedBy oa:classifying ;
+	sh:value "Stopped once the sprain healed." .

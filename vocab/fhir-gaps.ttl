@@ -59,6 +59,24 @@ fhirr4:referenceWithoutServer a skos:Concept ;
   skos:broader bridge:carriedWithLoss ;
   sh:resultSeverity sh:Warning .
 
+fhirr4:referenceNotHeld a skos:Concept ;
+  skos:prefLabel "A resource references its patient by a urn:uuid no entry of its document has as its fullUrl, so the reference names no record and nothing carries it."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:carriedWithLoss ;
+  sh:resultSeverity sh:Warning .
+
+fhirr4:referenceBaseRefused a skos:Concept ;
+  skos:prefLabel "A resource references its patient by an absolute URL whose server base is not a plain scheme, host, port and path, as one holding userinfo, a query, a fragment, a percent-encoding, a dot segment, a space or a control character, or a port that is not a number up to 65535, so the reference names no record and nothing carries it."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:carriedWithLoss ;
+  sh:resultSeverity sh:Warning .
+
+fhirr4:referenceRelativeUndefined a skos:Concept ;
+  skos:prefLabel "A resource references its patient as Patient/<id> from an entry whose fullUrl is a urn:uuid, or to an entry held under a urn:uuid, which FHIR gives no meaning, so the reference names no record and nothing carries it."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:carriedWithLoss ;
+  sh:resultSeverity sh:Warning .
+
 fhirr4:observationNotLabResult a skos:Concept ;
   skos:prefLabel "An Observation is not a laboratory result, by its category or, where it has none, by its code, or it is a panel of other results, and nothing in it is carried."@en ;
   skos:inScheme fhirr4:gaps ;

@@ -1,59 +1,62 @@
-@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
-@prefix prov:     <http://www.w3.org/ns/prov#> .
-@prefix pav:      <http://purl.org/pav/> .
-@prefix bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
-@prefix rec:      <https://ns.cascadeprotocol.org/records/v1-draft#> .
-@prefix health:   <https://ns.cascadeprotocol.org/health/v1#> .
-@prefix clinical: <https://ns.cascadeprotocol.org/clinical/v1#> .
-@prefix cascade:  <https://ns.cascadeprotocol.org/core/v1#> .
-@prefix foaf:     <http://xmlns.com/foaf/0.1/> .
-
-<urn:uuid:a71f6337-42ec-802b-b7f4-cac47e59a3c7>
-  a health:AllergyRecord ;
-  health:sourceRecordId "alg-codeine-2" ;
-  rec:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/AllergyIntolerance/alg-codeine-2> .
-
-<ni:///sha-256;OXIcbCcnI-od4Tc5LaN2khMaNvijMq7yfnvXEG4T88o>
-  prov:specializationOf <urn:uuid:a71f6337-42ec-802b-b7f4-cac47e59a3c7> ;
-  clinical:allergyType "intolerance" ;
-  clinical:criticality "low" ;
-  clinical:status "active" ;
-  clinical:verificationStatus "confirmed" ;
-  health:allergen "Codeine" ;
-  health:allergenCode <http://www.nlm.nih.gov/research/umls/rxnorm/2670> ;
-  health:allergyCategory "medication" ;
-  health:allergySeverity "mild" ;
-  health:manifestationCode <http://snomed.info/id/422587007> ;
-  health:notes "Nausea within an hour of each dose." ;
-  health:onsetDate "2019-03-14"^^xsd:date ;
-  health:reaction "Nausea" ;
-  rec:patient <urn:uuid:24c23e99-ff68-841f-a7a4-ebe3bd997ada> .
-
-[] bridge:arrivedAs <ni:///sha-256;OXIcbCcnI-od4Tc5LaN2khMaNvijMq7yfnvXEG4T88o> ;
-  pav:version "2" ;
-  pav:lastUpdateOn "2026-04-08T13:05:00Z"^^xsd:dateTime ;
-  bridge:selector "" ;
-  prov:wasDerivedFrom <ni:///sha-256;KLly4mX62LlsEmvV_5iguX1Wx9JWKzObJJJXAfAyKpE> ;
-  prov:wasGeneratedBy _:import .
-
-<ni:///sha-256;KLly4mX62LlsEmvV_5iguX1Wx9JWKzObJJJXAfAyKpE>
-  a prov:Entity ;
-  bridge:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
-  pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
-  prov:qualifiedAttribution
-    [ prov:agent [ rdfs:label "Meridian Health System" ] ; prov:hadRole rec:author ] ,
-    [ prov:agent [ rdfs:label "Apple Health" ] ; prov:hadRole rec:transmitter ] ;
-  bridge:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
-  bridge:authenticatedAsProxy false ;
-  bridge:sourceFormatVersion "4.0.1" .
-
-_:import
-  a prov:Activity ;
-  prov:used <ni:///sha-256;KLly4mX62LlsEmvV_5iguX1Wx9JWKzObJJJXAfAyKpE> ;
-  rdfs:label "Apple Health export" ;
-  prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime ;
-  prov:qualifiedAssociation [
-    prov:hadPlan [ a prov:Plan ; rdfs:label "fhir-r4" ; pav:version "0.1.0" ] ;
-    prov:agent [ ]
-  ] .
+@prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix pav: <http://purl.org/pav/> .
+<ni:///sha-256;y9BV3hgUUV01DuiyCHN6DLAHJsOwunIJTfE_0Gjflsg> cascade:allergen "Codeine" ;
+	cascade:reactionManifestationText "Nausea" ;
+	cascade:onsetDate "2019-03-14"^^xsd:date ;
+	cascade:allergyCriticality "low" ;
+	cascade:notes "Nausea within an hour of each dose." ;
+	cascade:allergenCode <https://ns.cascadeprotocol.org/codes/rxnorm/2670> ;
+	cascade:verificationStatus "confirmed" ;
+	cascade:reactionManifestationCode <http://snomed.info/id/422587007> ;
+	cascade:allergySeverity "mild" ;
+	cascade:allergyCategory "medication" ;
+	cascade:allergyType "intolerance" ;
+	cascade:clinicalStatus "active" .
+_:c48369e62b1f587940790939db3583a9 pav:lastUpdateOn "2026-04-08T13:05:00Z"^^xsd:dateTime ;
+	pav:version "2" ;
+	bridge:arrivedAs <ni:///sha-256;y9BV3hgUUV01DuiyCHN6DLAHJsOwunIJTfE_0Gjflsg> .
+<ni:///sha-256;y9BV3hgUUV01DuiyCHN6DLAHJsOwunIJTfE_0Gjflsg> cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> ;
+	prov:specializationOf <urn:uuid:0ca3ee6b-a53e-8b1d-b8e7-8e38b82a7b59> .
+<urn:uuid:0ca3ee6b-a53e-8b1d-b8e7-8e38b82a7b59> cascade:sourceRecordId "alg-codeine-2" ;
+	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/AllergyIntolerance/alg-codeine-2> ;
+	a cascade:AllergyOrIntolerance .
+_:c48369e62b1f587940790939db3583a9 oa:hasSelector _:4f4873f2b8bde36807100b0e8bd82272 ;
+	oa:hasSource <ni:///sha-256;KLly4mX62LlsEmvV_5iguX1Wx9JWKzObJJJXAfAyKpE> ;
+	prov:wasDerivedFrom <ni:///sha-256;KLly4mX62LlsEmvV_5iguX1Wx9JWKzObJJJXAfAyKpE> ;
+	prov:wasGeneratedBy _:44f0224a69eb113632708a34624f0f5e .
+_:4f4873f2b8bde36807100b0e8bd82272 a oa:FragmentSelector ;
+	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "" .
+<ni:///sha-256;KLly4mX62LlsEmvV_5iguX1Wx9JWKzObJJJXAfAyKpE> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
+	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
+_:2cf788feb99a9c29d2ec530b8548242d prov:agent _:a8d8e9515b0c62f2c5abfbe008487f24 .
+_:a8d8e9515b0c62f2c5abfbe008487f24 <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:2cf788feb99a9c29d2ec530b8548242d prov:hadRole cascade:AuthorRole .
+<ni:///sha-256;KLly4mX62LlsEmvV_5iguX1Wx9JWKzObJJJXAfAyKpE> prov:qualifiedAttribution _:2cf788feb99a9c29d2ec530b8548242d .
+_:5a3d6be1b6a0988bc2da7f836c926a68 prov:agent _:95ecac260e0051515454ac07430dd0ab .
+_:95ecac260e0051515454ac07430dd0ab <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
+_:5a3d6be1b6a0988bc2da7f836c926a68 prov:hadRole cascade:TransmitterRole .
+<ni:///sha-256;KLly4mX62LlsEmvV_5iguX1Wx9JWKzObJJJXAfAyKpE> prov:qualifiedAttribution _:5a3d6be1b6a0988bc2da7f836c926a68 ;
+	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
+	cascade:authenticatedAsProxy false ;
+	cascade:sourceFormatVersion "4.0.1" .
+_:44f0224a69eb113632708a34624f0f5e <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
+	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
+<ni:///sha-256;KLly4mX62LlsEmvV_5iguX1Wx9JWKzObJJJXAfAyKpE> a prov:Entity .
+_:44f0224a69eb113632708a34624f0f5e a prov:Activity ;
+	prov:used <ni:///sha-256;KLly4mX62LlsEmvV_5iguX1Wx9JWKzObJJJXAfAyKpE> ;
+	prov:qualifiedAssociation _:3dcfed1ae6f6a4ec5215a598e3ff4149 .
+_:3dcfed1ae6f6a4ec5215a598e3ff4149 prov:hadPlan _:d9d9b8b4fdd727b483a90fe97e5d2a16 .
+_:d9d9b8b4fdd727b483a90fe97e5d2a16 a prov:Plan ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "fhir-r4" ;
+	pav:version "0.1.0" .
+_:3dcfed1ae6f6a4ec5215a598e3ff4149 prov:agent _:68323457df7382df3ffde320099a6abd .
+_:68323457df7382df3ffde320099a6abd a prov:SoftwareAgent ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Cascade Bridge for Rust" ;
+	pav:version "0.1.0" .

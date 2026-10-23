@@ -3,11 +3,12 @@
 @prefix prov:   <http://www.w3.org/ns/prov#> .
 @prefix pav:    <http://purl.org/pav/> .
 @prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
 
 bridge:thisDocument
-  bridge:serverBaseUrl "http://example.org/fhir" ;
+  cascade:serverBaseUrl "http://example.org/fhir" ;
   pav:retrievedOn "2026-10-13T09:00:00Z"^^xsd:dateTime ;
-  bridge:sourceFormatVersion "4.0.1" .
+  cascade:sourceFormatVersion "4.0.1" .
 
 bridge:thisImport
   rdfs:label "Example server export" ;
