@@ -3,13 +3,13 @@
 @prefix pav:    <http://purl.org/pav/> .
 @prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
-@prefix rec:    <https://ns.cascadeprotocol.org/records/v1-draft#> .
+@prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
 
 bridge:thisDocument
   pav:retrievedOn "2024-03-22T09:00:00Z"^^xsd:dateTime ;
   prov:qualifiedAttribution
-    [ prov:agent [ rdfs:label "St Columba's Hospital" ] ; prov:hadRole rec:author ] ;
-  bridge:sourceFormatVersion "4.0.1" .
+    [ prov:agent [ rdfs:label "St Columba's Hospital" ] ; prov:hadRole cascade:AuthorRole ] ;
+  cascade:sourceFormatVersion "4.0.1" .
 
 bridge:thisImport
   rdfs:label "St Columba's Hospital FHIR export" ;

@@ -7,6 +7,7 @@ PREFIX fx:      <http://sparql.xyz/facade-x/ns/>
 PREFIX xyz:     <http://sparql.xyz/facade-x/data/>
 PREFIX bridge:  <https://ns.cascadeprotocol.org/bridge/v1-draft#>
 PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+PREFIX cascade: <https://ns.cascadeprotocol.org/cascade#>
 
 CONSTRUCT {
   [] a oa:Annotation ;
@@ -24,10 +25,10 @@ CONSTRUCT {
 }
 WHERE {
   FILTER NOT EXISTS {
-    bridge:thisDocument bridge:sourceFormatVersion ?stated .
+    bridge:thisDocument cascade:sourceFormatVersion ?stated .
     FILTER (!STRSTARTS(?stated, "4.0."))
   }
-  FILTER NOT EXISTS { bridge:thisDocument bridge:serverBaseUrl ?server }
+  FILTER NOT EXISTS { bridge:thisDocument cascade:serverBaseUrl ?server }
   bridge:thisRecord bridge:selector ?recordSelector .
   ?root a fx:root .
   { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }

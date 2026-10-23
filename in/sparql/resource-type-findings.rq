@@ -7,6 +7,7 @@ PREFIX fx:      <http://sparql.xyz/facade-x/ns/>
 PREFIX xyz:     <http://sparql.xyz/facade-x/data/>
 PREFIX bridge:  <https://ns.cascadeprotocol.org/bridge/v1-draft#>
 PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+PREFIX cascade: <https://ns.cascadeprotocol.org/cascade#>
 
 # An Observation is reported by observation-findings.rq. A Medication is read
 # through the medication whose reference resolves to it, as medication-table.rq
@@ -28,7 +29,7 @@ CONSTRUCT {
 }
 WHERE {
   FILTER NOT EXISTS {
-    bridge:thisDocument bridge:sourceFormatVersion ?stated .
+    bridge:thisDocument cascade:sourceFormatVersion ?stated .
     FILTER (!STRSTARTS(?stated, "4.0."))
   }
   bridge:thisRecord bridge:selector ?recordSelector .

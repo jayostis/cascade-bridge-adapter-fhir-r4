@@ -2,10 +2,11 @@ PREFIX rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
 PREFIX fx:       <http://sparql.xyz/facade-x/ns/>
 PREFIX xyz:      <http://sparql.xyz/facade-x/data/>
+PREFIX skos:     <http://www.w3.org/2004/02/skos/core#>
+PREFIX void:     <http://rdfs.org/ns/void#>
 PREFIX bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#>
-PREFIX cascade:  <https://ns.cascadeprotocol.org/core/v1#>
-PREFIX health:   <https://ns.cascadeprotocol.org/health/v1#>
-PREFIX clinical: <https://ns.cascadeprotocol.org/clinical/v1#>
+PREFIX cascade:  <https://ns.cascadeprotocol.org/cascade#>
+PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 PREFIX foaf:     <http://xmlns.com/foaf/0.1/>
 
 # A date FHIR writes with less than a day's precision fits no Cascade date, and
@@ -16,7 +17,7 @@ CONSTRUCT {
 }
 WHERE {
   FILTER NOT EXISTS {
-    bridge:thisDocument bridge:sourceFormatVersion ?stated .
+    bridge:thisDocument cascade:sourceFormatVersion ?stated .
     FILTER (!STRSTARTS(?stated, "4.0."))
   }
   bridge:thisRecord bridge:selector ?recordSelector .
@@ -38,7 +39,7 @@ WHERE {
 
   {
     ?resource xyz:code ?concept . ?concept xyz:text ?o .
-    BIND (clinical:procedureName AS ?p)
+    BIND (cascade:procedureName AS ?p)
   }
   UNION
   {
@@ -49,34 +50,37 @@ WHERE {
       ?codings ?earlierSlot ?earlier . ?earlier xyz:display ?earlierDisplay .
       FILTER (xsd:integer(STRAFTER(STR(?earlierSlot), "#_")) < xsd:integer(STRAFTER(STR(?codingSlot), "#_")))
     }
-    BIND (clinical:procedureName AS ?p)
+    BIND (cascade:procedureName AS ?p)
   }
   UNION
   {
     ?resource xyz:code ?coded . ?coded xyz:coding ?codings . ?codings ?codingSlot ?coding .
     ?coding xyz:system "http://snomed.info/sct" ;
       xyz:code ?code .
-    BIND (clinical:snomedCode AS ?p)
-    BIND (?code AS ?o)
+    ?codeSystem skos:inScheme fhirr4:codeSystems ;
+      cascade:codingSystemUri "http://snomed.info/sct"^^xsd:anyURI ;
+      void:uriSpace ?stem .
+    BIND (cascade:snomedCode AS ?p)
+    BIND (IRI(CONCAT(?stem, ENCODE_FOR_URI(?code))) AS ?o)
   }
   UNION
   {
     ?resource xyz:code ?coded . ?coded xyz:coding ?codings . ?codings ?codingSlot ?coding .
     ?coding xyz:system "http://www.ama-assn.org/go/cpt" ;
       xyz:code ?code .
-    BIND (clinical:cptCode AS ?p)
+    BIND (cascade:cptCode AS ?p)
     BIND (?code AS ?o)
   }
   UNION
   {
     ?resource xyz:performedDateTime ?when .
-    BIND (clinical:procedureDate AS ?p)
+    BIND (cascade:procedureDate AS ?p)
     BIND (IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"), STRDT(?when, xsd:date),
              IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T"), STRDT(?when, xsd:dateTime), 1/0)) AS ?o)
   }
   UNION
   {
     ?resource xyz:status ?o .
-    BIND (clinical:status AS ?p)
+    BIND (cascade:workflowStatus AS ?p)
   }
 }

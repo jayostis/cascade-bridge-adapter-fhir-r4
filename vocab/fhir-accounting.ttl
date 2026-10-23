@@ -1,5 +1,6 @@
 @prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
 @prefix fhirr4: <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#> .
+@prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/abatementDateTime" ;
@@ -958,7 +959,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/intent" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A request is a prescription whatever its intent: its clinical:clinicalIntent is stated from the resource type." .
+  bridge:because "A request is a prescription whatever its intent: its cascade:prescribedOrReported is stated from the resource type." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/interpretation" ;
@@ -1855,7 +1856,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/intent" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A request is a prescription whatever its intent: its clinical:clinicalIntent is stated from the resource type." .
+  bridge:because "A request is a prescription whatever its intent: its cascade:prescribedOrReported is stated from the resource type." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/interpretation" ;
@@ -3155,7 +3156,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/intent" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A request is a prescription whatever its intent: its clinical:clinicalIntent is stated from the resource type." .
+  bridge:because "A request is a prescription whatever its intent: its cascade:prescribedOrReported is stated from the resource type." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/interpretation" ;
@@ -4048,7 +4049,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/intent" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A request is a prescription whatever its intent: its clinical:clinicalIntent is stated from the resource type." .
+  bridge:because "A request is a prescription whatever its intent: its cascade:prescribedOrReported is stated from the resource type." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/interpretation" ;

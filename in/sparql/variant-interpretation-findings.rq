@@ -8,6 +8,7 @@ PREFIX fx:      <http://sparql.xyz/facade-x/ns/>
 PREFIX xyz:     <http://sparql.xyz/facade-x/data/>
 PREFIX bridge:  <https://ns.cascadeprotocol.org/bridge/v1-draft#>
 PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+PREFIX cascade: <https://ns.cascadeprotocol.org/cascade#>
 
 # What variant-interpretation.rq leaves behind: a classification that is none of
 # the five ACMG/AMP answers, or one of several different answers; and a
@@ -30,7 +31,7 @@ CONSTRUCT {
 }
 WHERE {
   FILTER NOT EXISTS {
-    bridge:thisDocument bridge:sourceFormatVersion ?stated .
+    bridge:thisDocument cascade:sourceFormatVersion ?stated .
     FILTER (!STRSTARTS(?stated, "4.0."))
   }
   bridge:thisRecord bridge:selector ?recordSelector .
@@ -127,7 +128,7 @@ WHERE {
              (COUNT(DISTINCT ?otherTarget) AS ?otherTargets)
       WHERE {
         bridge:thisDocument bridge:sha256 ?document .
-        OPTIONAL { bridge:thisDocument bridge:serverBaseUrl ?server }
+        OPTIONAL { bridge:thisDocument cascade:serverBaseUrl ?server }
         ?resource xyz:derivedFrom ?derivedFrom .
         ?derivedFrom ?derivedSlot ?derivedItem .
         ?derivedItem xyz:reference ?reference .

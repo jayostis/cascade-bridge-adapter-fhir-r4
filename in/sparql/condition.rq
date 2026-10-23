@@ -3,9 +3,7 @@ PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
 PREFIX fx:       <http://sparql.xyz/facade-x/ns/>
 PREFIX xyz:      <http://sparql.xyz/facade-x/data/>
 PREFIX bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#>
-PREFIX cascade:  <https://ns.cascadeprotocol.org/core/v1#>
-PREFIX health:   <https://ns.cascadeprotocol.org/health/v1#>
-PREFIX clinical: <https://ns.cascadeprotocol.org/clinical/v1#>
+PREFIX cascade:  <https://ns.cascadeprotocol.org/cascade#>
 PREFIX foaf:     <http://xmlns.com/foaf/0.1/>
 PREFIX skos:     <http://www.w3.org/2004/02/skos/core#>
 PREFIX void:     <http://rdfs.org/ns/void#>
@@ -19,7 +17,7 @@ CONSTRUCT {
 }
 WHERE {
   FILTER NOT EXISTS {
-    bridge:thisDocument bridge:sourceFormatVersion ?stated .
+    bridge:thisDocument cascade:sourceFormatVersion ?stated .
     FILTER (!STRSTARTS(?stated, "4.0."))
   }
   bridge:thisRecord bridge:selector ?recordSelector .
@@ -41,7 +39,7 @@ WHERE {
 
   {
     ?resource xyz:code ?concept . ?concept xyz:text ?o .
-    BIND (health:conditionName AS ?p)
+    BIND (cascade:conditionName AS ?p)
   }
   UNION
   {
@@ -52,7 +50,7 @@ WHERE {
       ?codings ?earlierSlot ?earlier . ?earlier xyz:display ?earlierDisplay .
       FILTER (xsd:integer(STRAFTER(STR(?earlierSlot), "#_")) < xsd:integer(STRAFTER(STR(?codingSlot), "#_")))
     }
-    BIND (health:conditionName AS ?p)
+    BIND (cascade:conditionName AS ?p)
   }
   UNION
   {
@@ -60,9 +58,9 @@ WHERE {
     ?coding xyz:system "http://snomed.info/sct" ;
       xyz:code ?code .
     ?codeSystem skos:inScheme fhirr4:codeSystems ;
-      skos:notation "http://snomed.info/sct" ;
+      cascade:codingSystemUri "http://snomed.info/sct"^^xsd:anyURI ;
       void:uriSpace ?stem .
-    BIND (health:snomedCode AS ?p)
+    BIND (cascade:snomedCode AS ?p)
     BIND (IRI(CONCAT(?stem, ENCODE_FOR_URI(?code))) AS ?o)
   }
   UNION
@@ -71,9 +69,9 @@ WHERE {
     ?coding xyz:system "http://hl7.org/fhir/sid/icd-10-cm" ;
       xyz:code ?code .
     ?codeSystem skos:inScheme fhirr4:codeSystems ;
-      skos:notation "http://hl7.org/fhir/sid/icd-10-cm" ;
+      cascade:codingSystemUri "http://hl7.org/fhir/sid/icd-10-cm"^^xsd:anyURI ;
       void:uriSpace ?stem .
-    BIND (health:icd10Code AS ?p)
+    BIND (cascade:icd10Code AS ?p)
     BIND (IRI(CONCAT(?stem, ENCODE_FOR_URI(?code))) AS ?o)
   }
   UNION
@@ -81,7 +79,7 @@ WHERE {
     ?resource xyz:clinicalStatus ?coded . ?coded xyz:coding ?codings . ?codings ?codingSlot ?coding .
     ?coding xyz:system "http://terminology.hl7.org/CodeSystem/condition-clinical" ;
       xyz:code ?code .
-    BIND (health:status AS ?p)
+    BIND (cascade:clinicalStatus AS ?p)
     BIND (?code AS ?o)
   }
   UNION
@@ -89,7 +87,7 @@ WHERE {
     ?resource xyz:verificationStatus ?coded . ?coded xyz:coding ?codings . ?codings ?codingSlot ?coding .
     ?coding xyz:system "http://terminology.hl7.org/CodeSystem/condition-ver-status" ;
       xyz:code ?code .
-    BIND (clinical:verificationStatus AS ?p)
+    BIND (cascade:verificationStatus AS ?p)
     BIND (?code AS ?o)
   }
   UNION
@@ -98,25 +96,25 @@ WHERE {
     ?category xyz:coding ?codings . ?codings ?codingSlot ?coding .
     ?coding xyz:system "http://terminology.hl7.org/CodeSystem/condition-category" ;
       xyz:code ?o .
-    BIND (clinical:category AS ?p)
+    BIND (cascade:conditionCategory AS ?p)
   }
   UNION
   {
     ?resource xyz:onsetDateTime ?when .
-    BIND (health:onsetDate AS ?p)
+    BIND (cascade:onsetDate AS ?p)
     BIND (IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"), STRDT(?when, xsd:date),
              IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T"), STRDT(?when, xsd:dateTime), 1/0)) AS ?o)
   }
   UNION
   {
     ?resource xyz:abatementDateTime ?when .
-    BIND (clinical:abatementDate AS ?p)
+    BIND (cascade:abatementDate AS ?p)
     BIND (IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"), STRDT(?when, xsd:date),
              IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T"), STRDT(?when, xsd:dateTime), 1/0)) AS ?o)
   }
   UNION
   {
     ?resource xyz:note ?notes . ?notes ?noteSlot ?note . ?note xyz:text ?o .
-    BIND (health:notes AS ?p)
+    BIND (cascade:notes AS ?p)
   }
 }

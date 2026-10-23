@@ -3,8 +3,7 @@ PREFIX skos:     <http://www.w3.org/2004/02/skos/core#>
 PREFIX fx:       <http://sparql.xyz/facade-x/ns/>
 PREFIX xyz:      <http://sparql.xyz/facade-x/data/>
 PREFIX bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#>
-PREFIX genomics: <https://ns.cascadeprotocol.org/genomics/v1#>
-PREFIX clinical: <https://ns.cascadeprotocol.org/clinical/v1#>
+PREFIX cascade:  <https://ns.cascadeprotocol.org/cascade#>
 PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 
 # Which Observation is a diagnostic implication is
@@ -25,14 +24,14 @@ PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # reference to a contained resource, are not read.
 
 CONSTRUCT {
-  ?version genomics:acmgClassification ?classification ;
-    genomics:variantInterpreted ?variantRecord ;
-    genomics:interpretedDate ?interpretedDate ;
-    clinical:status ?status .
+  ?version cascade:acmgClassification ?classification ;
+    cascade:variantInterpreted ?variantRecord ;
+    cascade:interpretedDate ?interpretedDate ;
+    cascade:workflowStatus ?status .
 }
 WHERE {
   FILTER NOT EXISTS {
-    bridge:thisDocument bridge:sourceFormatVersion ?stated .
+    bridge:thisDocument cascade:sourceFormatVersion ?stated .
     FILTER (!STRSTARTS(?stated, "4.0."))
   }
   bridge:thisRecord bridge:selector ?recordSelector .
@@ -95,7 +94,7 @@ WHERE {
              (MIN(?variantInput) AS ?soleInput)
       WHERE {
         bridge:thisDocument bridge:sha256 ?document .
-        OPTIONAL { bridge:thisDocument bridge:serverBaseUrl ?server }
+        OPTIONAL { bridge:thisDocument cascade:serverBaseUrl ?server }
         ?resource xyz:derivedFrom ?derivedFrom .
         ?derivedFrom ?derivedSlot ?derivedItem .
         ?derivedItem xyz:reference ?reference .
@@ -117,36 +116,44 @@ WHERE {
                 ?heldVariant fhirr4:variantAt ?heldPointer .
                 FILTER (?heldPointer = ?heldSelector || ?heldPointer = CONCAT(?heldSelector, "/resource"))
               } AS ?heldIsVariant)
-        BIND (IF(BOUND(?heldId),
-                 IF(BOUND(?server) && NOT EXISTS {
-                      ?sameId fhirr4:resourceType ?heldType ;
-                        fhirr4:resourceId ?heldId ;
-                        fhirr4:heldAt ?sameIdSelector .
-                      FILTER (?sameIdSelector != ?heldSelector)
-                    }, CONCAT(?server, "|", ?heldType, "|", ?heldId), CONCAT(?document, "|", ?heldSelector)),
-                 IF(?ambiguous, CONCAT(?document, "|", ?heldSelector), ?reference)) AS ?heldInput)
+        BIND (IF(BOUND(?heldId) && BOUND(?server) && NOT EXISTS {
+                   ?sameId fhirr4:resourceType ?heldType ;
+                     fhirr4:resourceId ?heldId ;
+                     fhirr4:heldAt ?sameIdSelector .
+                   FILTER (?sameIdSelector != ?heldSelector)
+                 },
+                 CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|https://ns.cascadeprotocol.org/cascade#RecordFromServerNamingRule",
+                        "|", REPLACE(REPLACE(?server, "%", "%25"), "\\|", "%7C"),
+                        "|", REPLACE(REPLACE(?heldType, "%", "%25"), "\\|", "%7C"),
+                        "|", REPLACE(REPLACE(?heldId, "%", "%25"), "\\|", "%7C")),
+                 CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|https://ns.cascadeprotocol.org/cascade#RecordFromDocumentNamingRule",
+                        "|", REPLACE(REPLACE(?document, "%", "%25"), "\\|", "%7C"),
+                        "|", REPLACE(REPLACE(?heldSelector, "%", "%25"), "\\|", "%7C"))) AS ?heldInput)
 
         BIND (REPLACE(?reference, "/_history/[A-Za-z0-9.-]{1,64}$", "") AS ?bare)
         BIND (REGEX(?bare, "^Observation/[A-Za-z0-9.-]{1,64}$") AS ?isRelative)
         BIND (REGEX(?bare, "^[A-Za-z][A-Za-z0-9+.-]*://[^/]+(/.*)?/Observation/[A-Za-z0-9.-]{1,64}$") AS ?isAbsolute)
-        BIND (IF(?isRelative,
-                 CONCAT(?server, "|Observation|", STRAFTER(?bare, "Observation/")),
+        BIND (IF(?isRelative, ?server,
                  IF(?isAbsolute,
                     CONCAT(LCASE(REPLACE(?bare, "^([^:]+://[^/]+).*$", "$1")),
-                           REPLACE(REPLACE(?bare, "^[^:]+://[^/]+", ""), "/+Observation/[^/]+$", ""),
-                           "|Observation|", REPLACE(?bare, "^.*/Observation/", "")),
-                    1/0)) AS ?referenceInput)
+                           REPLACE(REPLACE(?bare, "^[^:]+://[^/]+", ""), "/+Observation/[^/]+$", "")),
+                    1/0)) AS ?referenceServer)
+        BIND (REPLACE(?bare, "^.*Observation/", "") AS ?referenceId)
+        BIND (CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|https://ns.cascadeprotocol.org/cascade#RecordFromServerNamingRule",
+                     "|", REPLACE(REPLACE(?referenceServer, "%", "%25"), "\\|", "%7C"),
+                     "|", REPLACE(REPLACE("Observation", "%", "%25"), "\\|", "%7C"),
+                     "|", REPLACE(REPLACE(?referenceId, "%", "%25"), "\\|", "%7C")) AS ?referenceInput)
         BIND (BOUND(?referenceInput) && EXISTS {
                 ?known fhirr4:resourceType "Observation" ;
                   fhirr4:resourceId ?knownId ;
                   fhirr4:heldAt ?knownSelector .
-                FILTER (BOUND(?server) && ?referenceInput = CONCAT(?server, "|Observation|", ?knownId))
+                FILTER (BOUND(?server) && ?referenceServer = ?server && ?referenceId = ?knownId)
               } AS ?inDocument)
         BIND (?inDocument && EXISTS {
                 ?known fhirr4:resourceType "Observation" ;
                   fhirr4:resourceId ?knownId ;
                   fhirr4:heldAt ?knownSelector .
-                FILTER (?referenceInput = CONCAT(?server, "|Observation|", ?knownId))
+                FILTER (?referenceServer = ?server && ?referenceId = ?knownId)
                 ?knownVariant fhirr4:variantAt ?knownPointer .
                 FILTER (?knownPointer = ?knownSelector || ?knownPointer = CONCAT(?knownSelector, "/resource"))
               } AS ?knownIsVariant)
@@ -161,12 +168,11 @@ WHERE {
       GROUP BY ?resource
     }
     FILTER (?variantTargets = 1 && ?otherTargets = 0)
-    BIND (SHA256(CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|", ?soleInput)) AS ?variantHash)
-    BIND (REPLACE(REPLACE(REPLACE(REPLACE(SUBSTR(?variantHash, 17, 1),
-            "[048c]", "8"), "[159d]", "9"), "[26ae]", "a"), "[37bf]", "b") AS ?variantVariant)
-    BIND (IRI(CONCAT("urn:uuid:", SUBSTR(?variantHash, 1, 8), "-", SUBSTR(?variantHash, 9, 4), "-8",
-                     SUBSTR(?variantHash, 14, 3), "-", ?variantVariant, SUBSTR(?variantHash, 18, 3), "-",
-                     SUBSTR(?variantHash, 21, 12))) AS ?variantRecord)
+    BIND (SHA256(IF(STRSTARTS(?soleInput, "urn:uuid:"), 1/0, ?soleInput)) AS ?variantHash)
+    BIND (REPLACE(REPLACE(REPLACE(REPLACE(SUBSTR(?variantHash, 17, 1), "[048c]", "8"), "[159d]", "9"), "[26ae]", "a"), "[37bf]", "b")
+          AS ?variantVariant)
+    BIND (IRI(CONCAT("urn:uuid:", SUBSTR(?variantHash, 1, 8), "-", SUBSTR(?variantHash, 9, 4), "-8", SUBSTR(?variantHash, 14, 3), "-",
+                     ?variantVariant, SUBSTR(?variantHash, 18, 3), "-", SUBSTR(?variantHash, 21, 12))) AS ?variantRecord)
   }
 
   OPTIONAL { ?resource xyz:status ?status }
