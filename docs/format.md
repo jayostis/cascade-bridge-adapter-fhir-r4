@@ -73,8 +73,10 @@ category makes them.
   `urn:uuid:` fullUrl, by `Observation/<id>` on a known server or by an absolute
   URL. The interpretation points to that variant's record, named as `cascade:patient`
   names a patient, so a record outside the document can be named. A `urn:uuid:`
-  the document does not hold, and an absolute URL whose base is not a plain
-  scheme, host, port and path, name no record. A reference to
+  the document does not hold, an absolute URL whose base is not a plain
+  scheme, host, port and path, and an `Observation/<id>` made from an entry whose
+  fullUrl is a `urn:uuid:` or to an entry held under one, which FHIR gives no
+  meaning, name no record. A reference to
   a record of the document must be to a variant. With no such reference (a
   `derivedFrom` with an identifier or a display and no reference is none), two,
   or another beside one, the interpretation is a record without the link, and a

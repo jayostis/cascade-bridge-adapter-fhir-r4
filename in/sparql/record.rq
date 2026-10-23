@@ -135,7 +135,9 @@ WHERE {
   # by type and id on the record's own server, or by type and id on the server
   # an absolute URL names, its scheme and host in lower case and its scheme's
   # default port dropped. A reference relative to a server names nothing where
-  # no server is known, a urn:uuid this document does not hold names nothing,
+  # no server is known, nor when it is made from an entry whose fullUrl is a
+  # urn:uuid or to an entry held under one, which FHIR gives no meaning; a
+  # urn:uuid this document does not hold names nothing,
   # and neither does an absolute URL whose base is not a plain scheme, host,
   # port and path: patient-reference-findings.rq reports those.
   OPTIONAL {
@@ -166,11 +168,21 @@ WHERE {
   BIND (REPLACE(?patientBase, "^[^:]+://(\\[[^\\]]*\\]|[^/:]*)(:([0-9]*))?(/.*)?$", "$3") AS ?patientPort)
   BIND (REGEX(?patientBase, "^[A-Za-z][A-Za-z0-9+.-]*://([A-Za-z0-9._~!$&'()*+,;=-]+|\\[[0-9A-Fa-f:.]+\\])(:[0-9]*)?(/[A-Za-z0-9._~!$&'()*+,;=:@-]*)*$")
         && !REGEX(?patientBase, "/\\.\\.?(/|$)")
+        && (!REGEX(?patientBase, "^[^:]+://\\[") || REGEX(REPLACE(REPLACE(?patientBase, "^[^:]+://\\[([^\\]]*)\\].*$", "$1"),
+                                                          ":((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])$", ":0:0"),
+                                                  "^(([0-9A-Fa-f]{1,4}:){7}[0-9A-Fa-f]{1,4}|([0-9A-Fa-f]{1,4}:){1,7}:|([0-9A-Fa-f]{1,4}:){1,6}:[0-9A-Fa-f]{1,4}|([0-9A-Fa-f]{1,4}:){1,5}(:[0-9A-Fa-f]{1,4}){1,2}|([0-9A-Fa-f]{1,4}:){1,4}(:[0-9A-Fa-f]{1,4}){1,3}|([0-9A-Fa-f]{1,4}:){1,3}(:[0-9A-Fa-f]{1,4}){1,4}|([0-9A-Fa-f]{1,4}:){1,2}(:[0-9A-Fa-f]{1,4}){1,5}|[0-9A-Fa-f]{1,4}:(:[0-9A-Fa-f]{1,4}){1,6}|:((:[0-9A-Fa-f]{1,4}){1,7}|:))$"))
         && STRLEN(REPLACE(?patientPort, "^0+", "")) <= 5
         && (?patientPort = "" || xsd:integer(?patientPort) <= 65535) AS ?patientBaseAccepted)
   BIND (LCASE(STRBEFORE(?patientBase, "://")) AS ?patientScheme)
   BIND (IF(?patientPort = "", "", STR(xsd:integer(?patientPort))) AS ?patientPortNumber)
-  BIND (IF(REGEX(?referenceWithoutVersion, "^Patient/[A-Za-z0-9.-]{1,64}$"), ?server,
+  BIND (REGEX(?referenceWithoutVersion, "^Patient/[A-Za-z0-9.-]{1,64}$") AS ?patientRelative)
+  BIND (?patientRelative && (STRSTARTS(COALESCE(?fullUrl, ""), "urn:uuid:") || EXISTS {
+          ?urnPatient fhirr4:resourceType "Patient" ;
+            fhirr4:resourceId ?urnPatientId ;
+            fhirr4:fullUrl ?urnPatientUrl .
+          FILTER (STRSTARTS(?urnPatientUrl, "urn:uuid:") && ?urnPatientId = STRAFTER(?referenceWithoutVersion, "Patient/"))
+        }) AS ?patientRelativeUndefined)
+  BIND (IF(?patientRelative, IF(?patientRelativeUndefined, 1/0, ?server),
         IF(?patientBaseAccepted,
            CONCAT(?patientScheme, "://", LCASE(REPLACE(?patientBase, "^[^:]+://(\\[[^\\]]*\\]|[^/:]*).*$", "$1")),
                   IF(?patientPortNumber = "" || (?patientScheme = "https" && ?patientPortNumber = "443")

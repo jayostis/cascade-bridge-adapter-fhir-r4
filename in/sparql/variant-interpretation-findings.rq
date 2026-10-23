@@ -14,6 +14,8 @@ PREFIX cascade: <https://ns.cascadeprotocol.org/cascade#>
 # the five ACMG/AMP answers, or one of several different answers; and a
 # derivedFrom that does not name exactly one variant record and nothing else
 # that is not one, each of its references, or the code where it has none.
+# A reference of the form Observation/<id> made from an entry whose fullUrl is
+# a urn:uuid, or to an entry held under one, names none.
 
 CONSTRUCT {
   [] a oa:Annotation ;
@@ -158,6 +160,9 @@ WHERE {
         BIND (REPLACE(?base, "^[^:]+://(\\[[^\\]]*\\]|[^/:]*)(:([0-9]*))?(/.*)?$", "$3") AS ?port)
         BIND (REGEX(?base, "^[A-Za-z][A-Za-z0-9+.-]*://([A-Za-z0-9._~!$&'()*+,;=-]+|\\[[0-9A-Fa-f:.]+\\])(:[0-9]*)?(/[A-Za-z0-9._~!$&'()*+,;=:@-]*)*$")
               && !REGEX(?base, "/\\.\\.?(/|$)")
+        && (!REGEX(?base, "^[^:]+://\\[") || REGEX(REPLACE(REPLACE(?base, "^[^:]+://\\[([^\\]]*)\\].*$", "$1"),
+                                                          ":((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])$", ":0:0"),
+                                                  "^(([0-9A-Fa-f]{1,4}:){7}[0-9A-Fa-f]{1,4}|([0-9A-Fa-f]{1,4}:){1,7}:|([0-9A-Fa-f]{1,4}:){1,6}:[0-9A-Fa-f]{1,4}|([0-9A-Fa-f]{1,4}:){1,5}(:[0-9A-Fa-f]{1,4}){1,2}|([0-9A-Fa-f]{1,4}:){1,4}(:[0-9A-Fa-f]{1,4}){1,3}|([0-9A-Fa-f]{1,4}:){1,3}(:[0-9A-Fa-f]{1,4}){1,4}|([0-9A-Fa-f]{1,4}:){1,2}(:[0-9A-Fa-f]{1,4}){1,5}|[0-9A-Fa-f]{1,4}:(:[0-9A-Fa-f]{1,4}){1,6}|:((:[0-9A-Fa-f]{1,4}){1,7}|:))$"))
               && STRLEN(REPLACE(?port, "^0+", "")) <= 5
               && (?port = "" || xsd:integer(?port) <= 65535) AS ?baseAccepted)
         BIND (LCASE(STRBEFORE(?base, "://")) AS ?scheme)
@@ -186,9 +191,23 @@ WHERE {
                 FILTER (?knownPointer = ?knownSelector || ?knownPointer = CONCAT(?knownSelector, "/resource"))
               } AS ?knownIsVariant)
 
+        BIND (?isRelative && (EXISTS {
+                ?entryRoot xyz:fullUrl ?entryUrl .
+                FILTER (STRSTARTS(?entryUrl, "urn:uuid:"))
+                { ?entryRoot xyz:resource ?entryTop } UNION { ?entryRoot xyz:resourceType ?entryTopType . BIND (?entryRoot AS ?entryTop) }
+                { ?entryTop xyz:resourceType ?entryMemberType . BIND (?entryTop AS ?entryMember) }
+                UNION { ?entryTop xyz:contained ?entryList . ?entryList ?entrySlot ?entryMember }
+                FILTER (?entryMember = ?resource)
+              } || EXISTS {
+                ?urnKnown fhirr4:resourceType "Observation" ;
+                  fhirr4:resourceId ?urnKnownId ;
+                  fhirr4:fullUrl ?urnKnownUrl .
+                FILTER (STRSTARTS(?urnKnownUrl, "urn:uuid:") && ?urnKnownId = STRAFTER(?bare, "Observation/"))
+              }) AS ?relativeUndefined)
         BIND (IF(?isUrn,
                  IF(BOUND(?heldSelector) && !?ambiguous && ?heldIsVariant, ?heldInput, 1/0),
-                 IF(BOUND(?referenceInput) && (!?inDocument || ?knownIsVariant), ?referenceInput, 1/0)) AS ?variantInput)
+                 IF(?relativeUndefined, 1/0,
+                    IF(BOUND(?referenceInput) && (!?inDocument || ?knownIsVariant), ?referenceInput, 1/0))) AS ?variantInput)
         BIND (IF(!BOUND(?variantInput) && (?isUrn || ?isRelative || ?isAbsolute), ?reference, 1/0) AS ?otherTarget)
       }
       GROUP BY ?resource
