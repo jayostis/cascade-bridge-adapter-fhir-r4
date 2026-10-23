@@ -12,7 +12,7 @@ PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 
 # A record is named by one of cascade-vocabulary's naming rules, each hashed text
 # written exactly as the rule's body in
-# https://github.com/jayostis/cascade-vocabulary/tree/main/tests/vectors/naming
+# https://github.com/jayostis/cascade-vocabulary/tree/alpha/naming/tests/vectors/naming
 # writes it: RecordFromServerNamingRule, RecordFromDocumentNamingRule or
 # ContainedRecordNamingRule. Each name picks its rule's text with IF and hashes
 # once: a rule body in a UNION branch would not see the bindings outside it.
@@ -49,11 +49,12 @@ WHERE {
   { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
   UNION
   { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  OPTIONAL { ?root xyz:fullUrl ?fullUrl }
   OPTIONAL { ?top xyz:id ?topId }
-  OPTIONAL { ?top xyz:meta ?topMeta . ?topMeta xyz:versionId ?topVersionId }
+  OPTIONAL { ?top xyz:meta ?topMeta . ?topMeta xyz:versionId ?topVersionId . FILTER (STR(?topVersionId) != "") }
   OPTIONAL { ?top xyz:meta ?topUpdatedMeta . ?topUpdatedMeta xyz:lastUpdated ?topUpdated }
 
-  BIND (BOUND(?topId) && BOUND(?server) && NOT EXISTS {
+  BIND (BOUND(?topId) && BOUND(?server) && !STRSTARTS(COALESCE(?fullUrl, ""), "urn:uuid:") && NOT EXISTS {
           ?sameId fhirr4:resourceType ?topType ;
             fhirr4:resourceId ?topId ;
             fhirr4:heldAt ?sameIdSelector .
@@ -132,9 +133,11 @@ WHERE {
   # The patient a version is about, named as its target is named: a Patient
   # this document holds under the reference's urn:uuid as that record is named,
   # by type and id on the record's own server, or by type and id on the server
-  # an absolute URL names, its scheme and host in lower case. A reference
-  # relative to a server names nothing where no server is known, and a
-  # urn:uuid this document does not hold names nothing.
+  # an absolute URL names, its scheme and host in lower case and its scheme's
+  # default port dropped. A reference relative to a server names nothing where
+  # no server is known, a urn:uuid this document does not hold names nothing,
+  # and neither does an absolute URL whose base is not a plain scheme, host,
+  # port and path: patient-reference-findings.rq reports those.
   OPTIONAL {
     ?resource ?patientMember ?patientReference .
     FILTER (?patientMember IN (xyz:patient, xyz:subject))
@@ -145,36 +148,34 @@ WHERE {
       SELECT ?key (COUNT(DISTINCT ?keySelector) AS ?heldAtKey) (SAMPLE(?keyNamed) AS ?namedAtKey)
       WHERE {
         bridge:thisDocument bridge:sha256 ?keyDocument .
-        OPTIONAL { bridge:thisDocument cascade:serverBaseUrl ?keyServer }
         ?held fhirr4:heldAt ?keySelector ;
           fhirr4:resourceType "Patient" ;
           fhirr4:fullUrl ?key .
         FILTER (STRSTARTS(?key, "urn:uuid:"))
-        OPTIONAL { ?held fhirr4:resourceId ?keyId }
-        BIND (BOUND(?keyId) && BOUND(?keyServer) && NOT EXISTS {
-                ?sameKeyId fhirr4:resourceType "Patient" ;
-                  fhirr4:resourceId ?keyId ;
-                  fhirr4:heldAt ?sameKeyIdSelector .
-                FILTER (?sameKeyIdSelector != ?keySelector)
-              } AS ?keyFromServer)
-        BIND (IF(?keyFromServer,
-                 CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|https://ns.cascadeprotocol.org/cascade#RecordFromServerNamingRule",
-                        "|", REPLACE(REPLACE(?keyServer, "%", "%25"), "\\|", "%7C"),
-                        "|", REPLACE(REPLACE("Patient", "%", "%25"), "\\|", "%7C"),
-                        "|", REPLACE(REPLACE(?keyId, "%", "%25"), "\\|", "%7C")),
-                 CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|https://ns.cascadeprotocol.org/cascade#RecordFromDocumentNamingRule",
-                        "|", REPLACE(REPLACE(?keyDocument, "%", "%25"), "\\|", "%7C"),
-                        "|", REPLACE(REPLACE(?keySelector, "%", "%25"), "\\|", "%7C"))) AS ?keyNamed)
+        BIND (CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|https://ns.cascadeprotocol.org/cascade#RecordFromDocumentNamingRule",
+                     "|", REPLACE(REPLACE(?keyDocument, "%", "%25"), "\\|", "%7C"),
+                     "|", REPLACE(REPLACE(?keySelector, "%", "%25"), "\\|", "%7C")) AS ?keyNamed)
       }
       GROUP BY ?key
     }
     FILTER (?key = ?reference)
   }
   BIND (REPLACE(?reference, "/_history/[A-Za-z0-9.-]{1,64}$", "") AS ?referenceWithoutVersion)
+  BIND (IF(REGEX(?referenceWithoutVersion, "^[A-Za-z][A-Za-z0-9+.-]*://[^/]+(/.*)?/Patient/[A-Za-z0-9.-]{1,64}$"),
+           REPLACE(?referenceWithoutVersion, "/+Patient/[A-Za-z0-9.-]{1,64}$", ""), 1/0) AS ?patientBase)
+  BIND (REPLACE(?patientBase, "^[^:]+://(\\[[^\\]]*\\]|[^/:]*)(:([0-9]*))?(/.*)?$", "$3") AS ?patientPort)
+  BIND (REGEX(?patientBase, "^[A-Za-z][A-Za-z0-9+.-]*://([A-Za-z0-9._~!$&'()*+,;=-]+|\\[[0-9A-Fa-f:.]+\\])(:[0-9]*)?(/[A-Za-z0-9._~!$&'()*+,;=:@-]*)*$")
+        && !REGEX(?patientBase, "/\\.\\.?(/|$)")
+        && STRLEN(REPLACE(?patientPort, "^0+", "")) <= 5
+        && (?patientPort = "" || xsd:integer(?patientPort) <= 65535) AS ?patientBaseAccepted)
+  BIND (LCASE(STRBEFORE(?patientBase, "://")) AS ?patientScheme)
+  BIND (IF(?patientPort = "", "", STR(xsd:integer(?patientPort))) AS ?patientPortNumber)
   BIND (IF(REGEX(?referenceWithoutVersion, "^Patient/[A-Za-z0-9.-]{1,64}$"), ?server,
-        IF(REGEX(?referenceWithoutVersion, "^[A-Za-z][A-Za-z0-9+.-]*://[^/]+(/.*)?/Patient/[A-Za-z0-9.-]{1,64}$"),
-           CONCAT(LCASE(REPLACE(?referenceWithoutVersion, "^([^:]+://[^/]+).*$", "$1")),
-                  REPLACE(REPLACE(?referenceWithoutVersion, "^[^:]+://[^/]+", ""), "/+Patient/[^/]+$", "")),
+        IF(?patientBaseAccepted,
+           CONCAT(?patientScheme, "://", LCASE(REPLACE(?patientBase, "^[^:]+://(\\[[^\\]]*\\]|[^/:]*).*$", "$1")),
+                  IF(?patientPortNumber = "" || (?patientScheme = "https" && ?patientPortNumber = "443")
+                     || (?patientScheme = "http" && ?patientPortNumber = "80"), "", CONCAT(":", ?patientPortNumber)),
+                  REPLACE(?patientBase, "^[^:]+://(\\[[^\\]]*\\]|[^/:]*)(:[0-9]*)?", "")),
            1/0)) AS ?patientServer)
   BIND (REPLACE(?referenceWithoutVersion, "^.*Patient/", "") AS ?patientId)
   BIND (IF(BOUND(?heldAtKey), IF(?heldAtKey = 1, ?namedAtKey, 1/0),

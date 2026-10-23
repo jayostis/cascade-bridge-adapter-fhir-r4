@@ -16,7 +16,9 @@ PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # has less than a day's precision.
 #
 # The variant is the record of the one Observation derivedFrom names, named as
-# record.rq names a record from the reference, in this document or not. A
+# record.rq names a record from the reference, in this document or not; a
+# urn:uuid this document does not hold, and an absolute URL whose base
+# record.rq refuses, name none. A
 # reference to a record of this document must be to a variant; the
 # interpretation is a record without a link, and variant-interpretation-
 # findings.rq reports it, where derivedFrom names no variant, more than one, or
@@ -104,7 +106,6 @@ WHERE {
             fhirr4:heldAt ?heldSelector ;
             fhirr4:resourceType ?heldType .
           FILTER (STRSTARTS(?reference, "urn:uuid:"))
-          OPTIONAL { ?held fhirr4:resourceId ?heldId }
         }
         BIND (STRSTARTS(?reference, "urn:uuid:") AS ?isUrn)
         BIND (BOUND(?heldSelector) && EXISTS {
@@ -116,27 +117,27 @@ WHERE {
                 ?heldVariant fhirr4:variantAt ?heldPointer .
                 FILTER (?heldPointer = ?heldSelector || ?heldPointer = CONCAT(?heldSelector, "/resource"))
               } AS ?heldIsVariant)
-        BIND (IF(BOUND(?heldId) && BOUND(?server) && NOT EXISTS {
-                   ?sameId fhirr4:resourceType ?heldType ;
-                     fhirr4:resourceId ?heldId ;
-                     fhirr4:heldAt ?sameIdSelector .
-                   FILTER (?sameIdSelector != ?heldSelector)
-                 },
-                 CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|https://ns.cascadeprotocol.org/cascade#RecordFromServerNamingRule",
-                        "|", REPLACE(REPLACE(?server, "%", "%25"), "\\|", "%7C"),
-                        "|", REPLACE(REPLACE(?heldType, "%", "%25"), "\\|", "%7C"),
-                        "|", REPLACE(REPLACE(?heldId, "%", "%25"), "\\|", "%7C")),
-                 CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|https://ns.cascadeprotocol.org/cascade#RecordFromDocumentNamingRule",
-                        "|", REPLACE(REPLACE(?document, "%", "%25"), "\\|", "%7C"),
-                        "|", REPLACE(REPLACE(?heldSelector, "%", "%25"), "\\|", "%7C"))) AS ?heldInput)
+        BIND (CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|https://ns.cascadeprotocol.org/cascade#RecordFromDocumentNamingRule",
+                     "|", REPLACE(REPLACE(?document, "%", "%25"), "\\|", "%7C"),
+                     "|", REPLACE(REPLACE(?heldSelector, "%", "%25"), "\\|", "%7C")) AS ?heldInput)
 
         BIND (REPLACE(?reference, "/_history/[A-Za-z0-9.-]{1,64}$", "") AS ?bare)
         BIND (REGEX(?bare, "^Observation/[A-Za-z0-9.-]{1,64}$") AS ?isRelative)
         BIND (REGEX(?bare, "^[A-Za-z][A-Za-z0-9+.-]*://[^/]+(/.*)?/Observation/[A-Za-z0-9.-]{1,64}$") AS ?isAbsolute)
+        BIND (IF(?isAbsolute, REPLACE(?bare, "/+Observation/[A-Za-z0-9.-]{1,64}$", ""), 1/0) AS ?base)
+        BIND (REPLACE(?base, "^[^:]+://(\\[[^\\]]*\\]|[^/:]*)(:([0-9]*))?(/.*)?$", "$3") AS ?port)
+        BIND (REGEX(?base, "^[A-Za-z][A-Za-z0-9+.-]*://([A-Za-z0-9._~!$&'()*+,;=-]+|\\[[0-9A-Fa-f:.]+\\])(:[0-9]*)?(/[A-Za-z0-9._~!$&'()*+,;=:@-]*)*$")
+              && !REGEX(?base, "/\\.\\.?(/|$)")
+              && STRLEN(REPLACE(?port, "^0+", "")) <= 5
+              && (?port = "" || xsd:integer(?port) <= 65535) AS ?baseAccepted)
+        BIND (LCASE(STRBEFORE(?base, "://")) AS ?scheme)
+        BIND (IF(?port = "", "", STR(xsd:integer(?port))) AS ?portNumber)
         BIND (IF(?isRelative, ?server,
-                 IF(?isAbsolute,
-                    CONCAT(LCASE(REPLACE(?bare, "^([^:]+://[^/]+).*$", "$1")),
-                           REPLACE(REPLACE(?bare, "^[^:]+://[^/]+", ""), "/+Observation/[^/]+$", "")),
+                 IF(?baseAccepted,
+                    CONCAT(?scheme, "://", LCASE(REPLACE(?base, "^[^:]+://(\\[[^\\]]*\\]|[^/:]*).*$", "$1")),
+                           IF(?portNumber = "" || (?scheme = "https" && ?portNumber = "443")
+                              || (?scheme = "http" && ?portNumber = "80"), "", CONCAT(":", ?portNumber)),
+                           REPLACE(?base, "^[^:]+://(\\[[^\\]]*\\]|[^/:]*)(:[0-9]*)?", "")),
                     1/0)) AS ?referenceServer)
         BIND (REPLACE(?bare, "^.*Observation/", "") AS ?referenceId)
         BIND (CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|https://ns.cascadeprotocol.org/cascade#RecordFromServerNamingRule",
@@ -159,8 +160,7 @@ WHERE {
               } AS ?knownIsVariant)
 
         BIND (IF(?isUrn,
-                 IF(!BOUND(?heldSelector), ?reference,
-                    IF(!?ambiguous && ?heldIsVariant, ?heldInput, 1/0)),
+                 IF(BOUND(?heldSelector) && !?ambiguous && ?heldIsVariant, ?heldInput, 1/0),
                  IF(BOUND(?referenceInput) && (!?inDocument || ?knownIsVariant), ?referenceInput, 1/0)) AS ?variantInput)
         BIND (IF(!BOUND(?variantInput) && (?isUrn || ?isRelative || ?isAbsolute), ?reference, 1/0) AS ?otherTarget)
         FILTER (BOUND(?variantInput) || BOUND(?otherTarget))
@@ -168,7 +168,7 @@ WHERE {
       GROUP BY ?resource
     }
     FILTER (?variantTargets = 1 && ?otherTargets = 0)
-    BIND (SHA256(IF(STRSTARTS(?soleInput, "urn:uuid:"), 1/0, ?soleInput)) AS ?variantHash)
+    BIND (SHA256(?soleInput) AS ?variantHash)
     BIND (REPLACE(REPLACE(REPLACE(REPLACE(SUBSTR(?variantHash, 17, 1), "[048c]", "8"), "[159d]", "9"), "[26ae]", "a"), "[37bf]", "b")
           AS ?variantVariant)
     BIND (IRI(CONCAT("urn:uuid:", SUBSTR(?variantHash, 1, 8), "-", SUBSTR(?variantHash, 9, 4), "-8", SUBSTR(?variantHash, 14, 3), "-",

@@ -72,7 +72,9 @@ category makes them.
 - **Its variant** is the one `Observation` its `derivedFrom` names, by a
   `urn:uuid:` fullUrl, by `Observation/<id>` on a known server or by an absolute
   URL. The interpretation points to that variant's record, named as `cascade:patient`
-  names a patient, so a record outside the document can be named. A reference to
+  names a patient, so a record outside the document can be named. A `urn:uuid:`
+  the document does not hold, and an absolute URL whose base is not a plain
+  scheme, host, port and path, name no record. A reference to
   a record of the document must be to a variant. With no such reference (a
   `derivedFrom` with an identifier or a display and no reference is none), two,
   or another beside one, the interpretation is a record without the link, and a

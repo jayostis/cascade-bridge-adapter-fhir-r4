@@ -154,6 +154,9 @@
           "@id": "in/sparql/reference-without-server-findings.rq"
         },
         {
+          "@id": "in/sparql/patient-reference-findings.rq"
+        },
+        {
           "@id": "in/sparql/recorded-date-findings.rq"
         },
         {
@@ -282,6 +285,9 @@
         },
         {
           "@id": "in/sparql/reference-without-server-findings.rq"
+        },
+        {
+          "@id": "in/sparql/patient-reference-findings.rq"
         },
         {
           "@id": "vocab/fhir-gaps.ttl"
@@ -570,6 +576,9 @@
         },
         {
           "@id": "fixtures/CLAUDE.md"
+        },
+        {
+          "@id": "in/CLAUDE.md"
         },
         {
           "@id": "schema/CLAUDE.md"
@@ -1111,8 +1120,8 @@
       "@type": "File",
       "name": "Mapping: records, versions and arrivals",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "11294",
-      "sha256": "da5e40dcd65aa09cfee02b961d5d906f316f7ed0b3d8ed7b8cedacbca9489221",
+      "contentSize": "11723",
+      "sha256": "bd77955400b8618dad892aa2fc8f7ab8b6455ab1f773b4f03b4b7d91577a6a24",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1219,8 +1228,8 @@
       "@type": "File",
       "name": "Mapping: a variant interpretation's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "9457",
-      "sha256": "f9fc3d594ca47020d04f9b1ba267013f515405d32484eaa3fcad68a6ccd07095",
+      "contentSize": "9620",
+      "sha256": "f57eb85af4276349e741f849be708ab784366425ffd01dfceaa44b253a47da8f",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1339,8 +1348,8 @@
       "@type": "File",
       "name": "Findings: what a variant interpretation's mapping leaves behind",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "9930",
-      "sha256": "627b61963b537979dc1dea2cdac1a6325a13c183825d7c8be9160f566f9b7c2c",
+      "contentSize": "10270",
+      "sha256": "fdd26531265eb119e6c5cbceccf95f70b9d166c4e3d09eed53fedcbefba0d7af",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1351,8 +1360,8 @@
       "@type": "File",
       "name": "FHIR R4 JSON source accounting",
       "encodingFormat": "text/turtle",
-      "contentSize": "195106",
-      "sha256": "745143028a67f128cdcc49bb268ba1823dcdfdc27d5e422ba6d0cd14c8e00249",
+      "contentSize": "195154",
+      "sha256": "e97a18bcde1895fce0f65449247980834c6df6479a21fd3fdf2c8aa684688ddd",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1371,12 +1380,24 @@
       "description": "A finding for each patient or subject reference of a mapped resource written relative to a server, in a document supplied no cascade:serverBaseUrl: it names no record, and record.rq writes no link for it."
     },
     {
+      "@id": "in/sparql/patient-reference-findings.rq",
+      "@type": "File",
+      "name": "Findings: a patient reference that names no record",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "3541",
+      "sha256": "f5bec5017f4329919ba6bd6d4010453a6892442da39e0397eae7267001803678",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A finding for each patient or subject reference of a mapped resource that record.rq names no record from: a urn:uuid no entry of the document has as its fullUrl (fhirr4:referenceNotHeld), and an absolute URL whose server base is not a plain scheme, host, port and path (fhirr4:referenceBaseRefused)."
+    },
+    {
       "@id": "vocab/fhir-gaps.ttl",
       "@type": "File",
       "name": "FHIR R4 JSON gaps",
       "encodingFormat": "text/turtle",
-      "contentSize": "10134",
-      "sha256": "5ea0d272a90d362d88f17b43baadc0d65802b25655375a15243e35c6f1ac0165",
+      "contentSize": "10955",
+      "sha256": "bab0556b00247dd3b474824c5e23b2908e20e423f795ace1581d0968ca340ba4",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1402,8 +1423,8 @@
       "@type": "File",
       "name": "FHIR R4 code systems",
       "encodingFormat": "text/turtle",
-      "contentSize": "2692",
-      "sha256": "8db89297447d966d3bfd95e7b464e93a450814157fb31976bfa254f60f1f4770",
+      "contentSize": "2590",
+      "sha256": "eb86173a224e401a9ca438995b427a84c06d4db319a42b782cdbefe7ab284a71",
       "isBasedOn": [
         {
           "@id": "https://terminology.hl7.org/SNOMEDCT.html"
@@ -4811,8 +4832,8 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "What a record is, the two envelopes, JSON as FHIR writes it, the schema, the versions in and out of scope, and what is known about the committed inputs. Read from hl7.org/fhir/R4/ on 2026-09-27.",
-      "contentSize": "12151",
-      "sha256": "74e34c54c4dda57a35bfb3fe07bbc7451b0f876051c08d7c1dface41630c78cd"
+      "contentSize": "12288",
+      "sha256": "e099743b2751042402b52a6ae073e82e2d09aad1984c043f429329bd99d2eaa6"
     },
     {
       "@id": "fixtures/CLAUDE.md",
@@ -4822,7 +4843,17 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "How the fixtures are treated: every byte is recorded, an input is copied or authored here and never edited, and the check on copied inputs that the specification's lint cannot run."
+      "description": "How the fixtures are treated: every byte is recorded, an input is copied or authored here and never edited, an expected graph or findings file is the Bridge's output committed unedited, and the checks the specification's lint cannot run: copied inputs against conformance, and each expected version's name against the hash of its own triples."
+    },
+    {
+      "@id": "in/CLAUDE.md",
+      "@type": "File",
+      "name": "Agent context for the mapping directory",
+      "encodingFormat": "text/markdown",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "That a name's text is the vocabulary's naming rule body, copied, and the check that every rule body in in/sparql/ is still the body of cascade-vocabulary's tests/vectors/naming/, which the specification's lint cannot run."
     },
     {
       "@id": "schema/CLAUDE.md",
