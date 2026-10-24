@@ -1020,10 +1020,15 @@
         "File"
       ],
       "name": "cascade-vocabulary",
-      "license": {
-        "@id": "https://spdx.org/licenses/Apache-2.0"
-      },
-      "description": "The repository the adapter's vocabularies are read from, at the version a run picks; the paths in bridge:vocabularyFile are read there. A web-based data entity, referenced and not committed: the RO-Crate 1.2 validator reads every SoftwareSourceCode as a script that must be a File in hasPart."
+      "license": [
+        {
+          "@id": "https://spdx.org/licenses/Apache-2.0"
+        },
+        {
+          "@id": "https://spdx.org/licenses/CC-BY-4.0"
+        }
+      ],
+      "description": "The repository the adapter's vocabularies are read from, at the version a run picks; the paths in bridge:vocabularyFile are read there, and each of those ontology files is licensed Apache-2.0 AND CC-BY-4.0. A web-based data entity, referenced and not committed: the RO-Crate 1.2 validator reads every SoftwareSourceCode as a script that must be a File in hasPart."
     },
     {
       "@id": "https://ns.cascadeprotocol.org/cascade#",
@@ -1138,8 +1143,8 @@
       "@type": "File",
       "name": "Mapping: records, versions and arrivals",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "13062",
-      "sha256": "b058a312a3d7636271235f3b1295a42daea9cfe3357cc26cf1b2ba5ebbce5cc3",
+      "contentSize": "13054",
+      "sha256": "718589cd2578fe41d264fb32373a57f3b97a082c35d62be1b506d270286e3c6a",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1414,8 +1419,8 @@
       "@type": "File",
       "name": "FHIR R4 JSON gaps",
       "encodingFormat": "text/turtle",
-      "contentSize": "11351",
-      "sha256": "9ce2ddd5912ed7e9c5cbce856145a33abfb538436edfb5f21dc01d3528999da3",
+      "contentSize": "11401",
+      "sha256": "5d6bd281e70f5d5e86cd243b67a067b8cb5addc0b26d34dc104941bf53f92fba",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1441,8 +1446,8 @@
       "@type": "File",
       "name": "FHIR R4 code systems",
       "encodingFormat": "text/turtle",
-      "contentSize": "2590",
-      "sha256": "eb86173a224e401a9ca438995b427a84c06d4db319a42b782cdbefe7ab284a71",
+      "contentSize": "2692",
+      "sha256": "8db89297447d966d3bfd95e7b464e93a450814157fb31976bfa254f60f1f4770",
       "isBasedOn": [
         {
           "@id": "https://terminology.hl7.org/SNOMEDCT.html"
@@ -1467,12 +1472,12 @@
       "contentSize": "1353",
       "sha256": "05b4ac8dfe28e2d74a6fac725f06bb2a6aa58a06ab20dbc6a291a3d79e3030a3",
       "isBasedOn": {
-        "@id": "https://github.com/jayostis/cascade-vocabulary/blob/34c2fb085f44c4271b5c9c68b6ecd2f23bc2eb48/ontologies/records/v1-draft/records.ttl"
+        "@id": "https://github.com/jayostis/cascade-vocabulary/blob/c0da7d2c4eda3249bfac9730a6e0ddaf1193f0d5/ontologies/cascade.ttl"
       },
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The bridge:table variant-interpretation.rq and its findings query read to map the LOINC answer of a diagnostic implication's classification (53037-8) to the Cascade term: one skos:Concept per answer, its skos:notation the code in the form a lookup key takes, its skos:exactMatch the genomics: individual. The five rows are transcribed from the skos:exactMatch triples of the isBasedOn file, which a mapping cannot read: a Bridge loads only an adapter's own tables. Read on 2026-10-13. No entry of the source accounting looks a value up in it: the path holds every other component's codes, so the findings query reports a classification no concept maps."
+      "description": "The bridge:table variant-interpretation.rq and its findings query read to map the LOINC answer of a diagnostic implication's classification (53037-8) to the Cascade term: one skos:Concept per answer, its skos:notation the code in the form a lookup key takes, its skos:exactMatch the cascade: individual. The five rows are transcribed from the skos:exactMatch triples of the isBasedOn file, which a mapping cannot read: a Bridge loads only an adapter's own tables. Read on 2026-10-13. No entry of the source accounting looks a value up in it: the path holds every other component's codes, so the findings query reports a classification no concept maps."
     },
     {
       "@id": "fixtures/in/allergy-with-id.json",
@@ -4939,9 +4944,9 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "What a record is, the two envelopes, JSON as FHIR writes it, the schema, the versions in and out of scope, and what is known about the committed inputs. Read from hl7.org/fhir/R4/ on 2026-09-27.",
-      "contentSize": "12424",
-      "sha256": "bf20c4c64eca3f45a8b84ec84320c992456120b62a816653fb0f6e3acf4b567a"
+      "description": "What a record is, the two envelopes, how a record is named, JSON as FHIR writes it, the schema, the versions in and out of scope, and what is known about the committed inputs. Read from hl7.org/fhir/R4/ on 2026-09-27.",
+      "contentSize": "14986",
+      "sha256": "39b4877fd500f3624b1cc4b4eeec2d5f020cf9c6c903658ec0b16162d4451271"
     },
     {
       "@id": "fixtures/CLAUDE.md",
@@ -5012,6 +5017,16 @@
         "@id": "https://www.apache.org/licenses/LICENSE-2.0"
       },
       "description": "The licence of the adapter package and of the conformance fixtures. The text is at the sameAs URL and in LICENSE."
+    },
+    {
+      "@id": "https://spdx.org/licenses/CC-BY-4.0",
+      "@type": "CreativeWork",
+      "name": "Creative Commons Attribution 4.0 International",
+      "identifier": "CC-BY-4.0",
+      "sameAs": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "description": "The licence cascade-vocabulary gives its ontology files beside Apache-2.0."
     },
     {
       "@id": "https://spdx.org/licenses/CC0-1.0",
