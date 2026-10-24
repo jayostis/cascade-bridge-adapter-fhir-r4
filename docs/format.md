@@ -32,6 +32,8 @@ export holds one resource per file, so a reference there points outside it.
 Every RxNorm and NDC coding of the drug is carried, and the first of them
 `medicationCodeableConcept` marks `userSelected` is the medication's selected
 code. A `userSelected` on a referenced `Medication`'s coding is not read.
+A request's `authoredOn` is the day the prescription was written, never the
+start of use, which only `effective[x]` gives.
 
 A resource's `id` is the server's logical id, unique for its type on that
 server. It is optional: a resource written by a client, or assembled into an
@@ -54,13 +56,13 @@ require as `laboratory`. The profiles of a haplotype, a genotype, a therapeutic
 implication and a molecular biomarker are not mapped, and stay what their
 category makes them.
 
-- **A variant** is an `Observation` coded LOINC 69548-6, a `genomics:Variant`.
+- **A variant** is an `Observation` coded LOINC 69548-6, a `cascade:GeneticVariantFinding`.
   Its value is one of Present, Absent, No call and Indeterminate (LL1971-2), or
   none. Present, or none, makes the record. Any other value makes neither a
   record nor a lab result, and a finding: a variant record says the person has
   the variant, and the vocabulary has no term for its absence.
 - **A diagnostic implication** is an `Observation` coded `diagnostic-implication`
-  in the IG's `tbd-codes-cs`, a `genomics:VariantInterpretation`. Its
+  in the IG's `tbd-codes-cs`, a `cascade:VariantInterpretation`. Its
   classification is component 53037-8, a LOINC answer
   [mapped to the five ACMG/AMP classifications](../vocab/fhir-acmg-classifications.ttl):
   any other answer, text alone, or two different answers state none. Its date is
@@ -69,8 +71,12 @@ category makes them.
   day's precision is none.
 - **Its variant** is the one `Observation` its `derivedFrom` names, by a
   `urn:uuid:` fullUrl, by `Observation/<id>` on a known server or by an absolute
-  URL. The interpretation points to that variant's record, named as `rec:patient`
-  names a patient, so a record outside the document can be named. A reference to
+  URL. The interpretation points to that variant's record, named as `cascade:patient`
+  names a patient, so a record outside the document can be named. A `urn:uuid:`
+  the document does not hold, an absolute URL whose base is not a plain
+  scheme, host, port and path, and an `Observation/<id>` made from an entry whose
+  fullUrl is a `urn:uuid:` or to an entry held under one, which FHIR gives no
+  meaning, name no record. A reference to
   a record of the document must be to a variant. With no such reference (a
   `derivedFrom` with an identifier or a display and no reference is none), two,
   or another beside one, the interpretation is a record without the link, and a
@@ -83,9 +89,9 @@ different values state none, and a finding.
 
 | component | carried as | rule |
 |---|---|---|
-| 48004-6, c.HGVS | `genomics:hgvsCDot` | the `code` of a coding under `http://varnomen.hgvs.org`, in the normal form below |
-| 81252-9, discrete variant | `genomics:clinvarVariationId` | the digits, with no leading zero, of a code under `http://www.ncbi.nlm.nih.gov/clinvar`: `VCV000090011` is 90011; an RCV or SCV accession is no variation's ID; a code of another system (dbSNP) is not carried |
-| 48018-6, gene studied | `genomics:geneSymbol` | the `display` of a coding under `http://www.genenames.org/geneId`, the IG's system, or `http://www.genenames.org`, which the IG's examples write; a display with no code is the symbol, a code with no display is not |
+| 48004-6, c.HGVS | `cascade:hgvsCodingDnaExpression` | the `code` of a coding under `http://varnomen.hgvs.org`, in the normal form below |
+| 81252-9, discrete variant | `cascade:clinvarVariationId` | the digits, with no leading zero, of a code under `http://www.ncbi.nlm.nih.gov/clinvar`: `VCV000090011` is 90011; an RCV or SCV accession is no variation's ID; a code of another system (dbSNP) is not carried |
+| 48018-6, gene studied | `cascade:geneSymbol` | the `display` of a coding under `http://www.genenames.org/geneId`, the IG's system, or `http://www.genenames.org`, which the IG's examples write; a display with no code is the symbol, a code with no display is not |
 
 An HGVS expression is written in more than one form, and the vocabulary's shape
 takes one: the reference sequence with its version, a colon and `c.`, then the
@@ -113,6 +119,43 @@ has no server address yet. A reference elsewhere in the Bundle may name an
 entry by that `urn:uuid:`. The record is the entry, not the resource inside
 it, so the `fullUrl` stays with the resource it names.
 
+## Names
+
+A record's name is one of cascade-vocabulary's naming rules, each the body of
+its `tests/vectors/naming/<rule>.rq` there, copied into
+[`in/sparql/record.rq`](../in/sparql/record.rq) and hashed once for the rule
+picked. The rules and why they are what they are are
+[cascade-vocabulary's naming note](https://github.com/jayostis/cascade-vocabulary/blob/alpha/naming/decisions/naming.md).
+
+| a resource | its rule | its inputs, after the rule |
+|---|---|---|
+| a top-level resource that the server rule applies to | `RecordFromServerNamingRule` | the server's base URL, the resource type, the `id` |
+| any other top-level resource | `RecordFromDocumentNamingRule` | the document's `ni:` name, the record's selector |
+| a `contained` resource with an `id` | `ContainedRecordNamingRule` | its container's name, the container's `meta.versionId` or else its `meta.lastUpdated` or else `""`, the `id` |
+| a `contained` resource with no `id` | `RecordFromDocumentNamingRule` | the document's `ni:` name, the resource's pointer |
+
+**The server rule applies** to a top-level resource where the document states
+`cascade:serverBaseUrl`, the resource has an `id`, its entry's `fullUrl`, if
+any, is not a `urn:uuid:`, and no other top-level resource of its type in the document
+has that `id`. Its `cascade:sourceUrl` is the base URL, the type and the `id`.
+
+**The document names the rest.** A `urn:uuid:` `fullUrl` is a generator's,
+unique within its Bundle only, and the server rule never uses it as identity
+across documents; a document with no base URL has no server to name. A top-level
+resource whose type and `id` another top-level resource of the document shares is named by
+its position: one name for both would fuse two resources the source gave one
+`id`. Each top-level resource sharing an `id`, or a `urn:uuid:` `fullUrl`, with another is a finding,
+`fhirr4:resourceIdRepeated`. A reference to a shared `id` names no record, since
+the document names both. A record named by the document carries no
+`cascade:sourceUrl`: its name is not its id's.
+
+**A contained resource** is named within its container, by the container's name
+and source version, so that a renumbered `contained` list does not make one
+resource a revision of another. With no `id` it has nothing to be named by but
+its position, and the document names it. It carries `cascade:sourceUrl` only
+where its container is named by the server: the container's address, `#` and
+its `id`.
+
 ## JSON as FHIR writes it
 
 - **A primitive's id and extensions sit beside it** in a member named with a
@@ -135,9 +178,10 @@ is no simple formula for determining the correct IRI stem from a
 Coding.system" ([RDF](https://hl7.org/fhir/R5/rdf.html#iri-stem), read on
 2026-10-10). A code's IRI is the stem
 [`vocab/fhir-code-systems.ttl`](../vocab/fhir-code-systems.ttl) gives its
-`Coding.system`, then the code percent-encoded. The stem is
-cascade-vocabulary's `void:uriSpace`, and HL7 Terminology's where it registers
-one, and is never the `Coding.system` URI: SNOMED CT's `http://snomed.info/sct`
+`Coding.system`, which the row holds as `cascade:codingSystemUri`, then the code
+percent-encoded. The stem is cascade-vocabulary's `void:uriSpace`, as its
+[code IRIs ruling](https://github.com/jayostis/cascade-vocabulary/blob/main/decisions/code-iris.md)
+gives it, and is never the `Coding.system` URI: SNOMED CT's `http://snomed.info/sct`
 names the code system, and its concepts are under `http://snomed.info/id/`.
 
 An NDC is the exception to "then the code": FHIR's NDC code is "the 10 digit NDC
@@ -149,6 +193,8 @@ with its hyphens removed; 4-4-2, 5-3-2 and 5-4-1 with a `0` added to the
 segment short of a digit (the labeler, the product, the package). Ten digits
 with no hyphens cannot be told apart, and neither can any other value: it is
 no code, and a finding.
+
+An `Immunization`'s `vaccineCode` is written as every CVX coding it carries, one `cascade:vaccineCode` each.
 
 ## The schema
 

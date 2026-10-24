@@ -2,18 +2,18 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:ac6c067f2e60df3ccc07ad1256c78422 a oa:FragmentSelector ;
+_:e24b9df35c51071fa5962cc5d2339fe9 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "" ;
-	oa:refinedBy _:f1b4e67a55417b9762c9c9b1b0f1127e .
-_:e4ba6be8374bbdd139d40714125601b2 oa:hasSource <../in/allergy-no-id-penicillin-compact.json> .
-_:f1b4e67a55417b9762c9c9b1b0f1127e rdf:value "/patient/reference" ;
+	rdf:value "" .
+_:f4d2f06749d3ff7f11ccd042371ce70b oa:hasSource <../in/allergy-no-id-penicillin-compact.json> .
+_:e24b9df35c51071fa5962cc5d2339fe9 oa:refinedBy _:e7e6aca71a142e2c962d696008c20477 .
+_:e7e6aca71a142e2c962d696008c20477 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	a oa:FragmentSelector .
-_:e4ba6be8374bbdd139d40714125601b2 oa:hasSelector _:ac6c067f2e60df3ccc07ad1256c78422 .
-_:d7c3b811bb3d356f31acd21268781ba5 oa:hasTarget _:e4ba6be8374bbdd139d40714125601b2 ;
+	rdf:value "/patient/reference" .
+_:f4d2f06749d3ff7f11ccd042371ce70b oa:hasSelector _:e24b9df35c51071fa5962cc5d2339fe9 .
+_:dcf9c44f753ffc5aefb2ed2f2376b13f oa:hasTarget _:f4d2f06749d3ff7f11ccd042371ce70b ;
 	sh:resultSeverity sh:Warning ;
-	sh:value "Patient/pat-conformance-1" ;
-	oa:motivatedBy oa:classifying ;
+	a oa:Annotation ;
 	oa:hasBody fhirr4:referenceWithoutServer ;
-	a oa:Annotation .
+	oa:motivatedBy oa:classifying ;
+	sh:value "Patient/pat-conformance-1" .

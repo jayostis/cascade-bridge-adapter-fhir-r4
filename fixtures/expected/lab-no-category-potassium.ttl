@@ -1,48 +1,52 @@
-@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
-@prefix prov:     <http://www.w3.org/ns/prov#> .
-@prefix pav:      <http://purl.org/pav/> .
-@prefix bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
-@prefix rec:      <https://ns.cascadeprotocol.org/records/v1-draft#> .
-@prefix health:   <https://ns.cascadeprotocol.org/health/v1#> .
-@prefix clinical: <https://ns.cascadeprotocol.org/clinical/v1#> .
-@prefix cascade:  <https://ns.cascadeprotocol.org/core/v1#> .
-
-<urn:uuid:e46d215d-50ab-8fe6-9404-fa4a1f1a5ba4>
-  a health:LabResultRecord .
-
-<ni:///sha-256;178GwLrCf-bfgLIMZkTH7Y1BpxR51xYIHt-64D4ZBQk>
-  prov:specializationOf <urn:uuid:e46d215d-50ab-8fe6-9404-fa4a1f1a5ba4> ;
-  health:testName "Potassium [Moles/volume] in Serum or Plasma" ;
-  health:testCode <http://loinc.org/rdf/2823-3> ;
-  health:resultValue "4.1" ;
-  health:resultUnit "mmol/L" ;
-  health:performedDate "2026-05-04T09:00:00Z"^^xsd:dateTime ;
-  clinical:status "final" ;
-  rec:patient <urn:uuid:24c23e99-ff68-841f-a7a4-ebe3bd997ada> .
-
-[] bridge:arrivedAs <ni:///sha-256;178GwLrCf-bfgLIMZkTH7Y1BpxR51xYIHt-64D4ZBQk> ;
-  bridge:selector "" ;
-  prov:wasDerivedFrom <ni:///sha-256;CKNU5R7YE4YVD-qyLkqhx2y7Q2t9P47Cq5S6Jy5Wx2w> ;
-  prov:wasGeneratedBy _:import .
-
-<ni:///sha-256;CKNU5R7YE4YVD-qyLkqhx2y7Q2t9P47Cq5S6Jy5Wx2w>
-  a prov:Entity ;
-  bridge:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
-  pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
-  prov:qualifiedAttribution
-    [ prov:agent [ rdfs:label "Meridian Health System" ] ; prov:hadRole rec:author ] ,
-    [ prov:agent [ rdfs:label "Apple Health" ] ; prov:hadRole rec:transmitter ] ;
-  bridge:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
-  bridge:authenticatedAsProxy false ;
-  bridge:sourceFormatVersion "4.0.1" .
-
-_:import
-  a prov:Activity ;
-  prov:used <ni:///sha-256;CKNU5R7YE4YVD-qyLkqhx2y7Q2t9P47Cq5S6Jy5Wx2w> ;
-  rdfs:label "Apple Health export" ;
-  prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime ;
-  prov:qualifiedAssociation [
-    prov:hadPlan [ a prov:Plan ; rdfs:label "fhir-r4" ; pav:version "0.1.0" ] ;
-    prov:agent [ ]
-  ] .
+@prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix pav: <http://purl.org/pav/> .
+<ni:///sha-256;XpE4PVwMeLmtIMGcUUqFv48D-0n_zuYcoI02IAuYXhs> cascade:workflowStatus "final" ;
+	cascade:resultClinicallyRelevantTime "2026-05-04T09:00:00Z"^^xsd:dateTime ;
+	cascade:resultUnit "mmol/L" ;
+	cascade:resultValue "4.1" ;
+	cascade:testCode <http://loinc.org/rdf/2823-3> ;
+	cascade:testName "Potassium [Moles/volume] in Serum or Plasma" .
+_:405d2a986bd0d3f74c1e8970959706e2 bridge:arrivedAs <ni:///sha-256;XpE4PVwMeLmtIMGcUUqFv48D-0n_zuYcoI02IAuYXhs> .
+<ni:///sha-256;XpE4PVwMeLmtIMGcUUqFv48D-0n_zuYcoI02IAuYXhs> cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> ;
+	prov:specializationOf <urn:uuid:f540c438-5328-8893-b575-e6d5c536f758> .
+<urn:uuid:f540c438-5328-8893-b575-e6d5c536f758> a cascade:LaboratoryTestResult .
+_:405d2a986bd0d3f74c1e8970959706e2 oa:hasSelector _:81b54e2c6b243da9114cfacc1a421eb6 ;
+	oa:hasSource <ni:///sha-256;CKNU5R7YE4YVD-qyLkqhx2y7Q2t9P47Cq5S6Jy5Wx2w> ;
+	prov:wasDerivedFrom <ni:///sha-256;CKNU5R7YE4YVD-qyLkqhx2y7Q2t9P47Cq5S6Jy5Wx2w> ;
+	prov:wasGeneratedBy _:925af6c26f40e7c70bc29aa4baf604dc .
+_:81b54e2c6b243da9114cfacc1a421eb6 a oa:FragmentSelector ;
+	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "" .
+<ni:///sha-256;CKNU5R7YE4YVD-qyLkqhx2y7Q2t9P47Cq5S6Jy5Wx2w> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
+	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
+_:e42bef072209b77c9624e14dac514a75 prov:agent _:c9926ca44705f9d742a1b9a7a46b8ad6 .
+_:c9926ca44705f9d742a1b9a7a46b8ad6 <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:e42bef072209b77c9624e14dac514a75 prov:hadRole cascade:AuthorRole .
+<ni:///sha-256;CKNU5R7YE4YVD-qyLkqhx2y7Q2t9P47Cq5S6Jy5Wx2w> prov:qualifiedAttribution _:e42bef072209b77c9624e14dac514a75 .
+_:f64d1e6b40808b6e30ee2a663e2b7b06 prov:agent _:dfd1164a5eef596e2eb0c334a69eb1c2 .
+_:dfd1164a5eef596e2eb0c334a69eb1c2 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
+_:f64d1e6b40808b6e30ee2a663e2b7b06 prov:hadRole cascade:TransmitterRole .
+<ni:///sha-256;CKNU5R7YE4YVD-qyLkqhx2y7Q2t9P47Cq5S6Jy5Wx2w> prov:qualifiedAttribution _:f64d1e6b40808b6e30ee2a663e2b7b06 ;
+	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
+	cascade:authenticatedAsProxy false ;
+	cascade:sourceFormatVersion "4.0.1" .
+_:925af6c26f40e7c70bc29aa4baf604dc <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
+	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
+<ni:///sha-256;CKNU5R7YE4YVD-qyLkqhx2y7Q2t9P47Cq5S6Jy5Wx2w> a prov:Entity .
+_:925af6c26f40e7c70bc29aa4baf604dc a prov:Activity ;
+	prov:used <ni:///sha-256;CKNU5R7YE4YVD-qyLkqhx2y7Q2t9P47Cq5S6Jy5Wx2w> ;
+	prov:qualifiedAssociation _:c6e9a12dd52a13eb5453694536c576b1 .
+_:c6e9a12dd52a13eb5453694536c576b1 prov:hadPlan _:3ca3a37f54315b62d5613b2fd59b1d47 .
+_:3ca3a37f54315b62d5613b2fd59b1d47 a prov:Plan ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "fhir-r4" ;
+	pav:version "0.1.0" .
+_:c6e9a12dd52a13eb5453694536c576b1 prov:agent _:13c8116b7878ea5c11638ec5087dea73 .
+_:13c8116b7878ea5c11638ec5087dea73 a prov:SoftwareAgent ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Cascade Bridge for Rust" ;
+	pav:version "0.1.0" .

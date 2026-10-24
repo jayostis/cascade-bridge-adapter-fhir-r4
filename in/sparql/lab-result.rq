@@ -3,8 +3,7 @@ PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
 PREFIX fx:       <http://sparql.xyz/facade-x/ns/>
 PREFIX xyz:      <http://sparql.xyz/facade-x/data/>
 PREFIX bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#>
-PREFIX health:   <https://ns.cascadeprotocol.org/health/v1#>
-PREFIX clinical: <https://ns.cascadeprotocol.org/clinical/v1#>
+PREFIX cascade:  <https://ns.cascadeprotocol.org/cascade#>
 PREFIX skos:     <http://www.w3.org/2004/02/skos/core#>
 PREFIX void:     <http://rdfs.org/ns/void#>
 PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
@@ -24,19 +23,19 @@ PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # precision fits no Cascade date, and is not carried.
 
 CONSTRUCT {
-  ?version health:testName ?testName ;
-    health:testCode ?testCode ;
-    health:resultValue ?resultValue ;
-    health:resultUnit ?resultUnit ;
-    health:referenceRange ?referenceRange ;
-    health:interpretation ?interpretation ;
-    health:performedDate ?performedDate ;
-    health:notes ?note ;
-    clinical:status ?status .
+  ?version cascade:testName ?testName ;
+    cascade:testCode ?testCode ;
+    cascade:resultValue ?resultValue ;
+    cascade:resultUnit ?resultUnit ;
+    cascade:referenceRange ?referenceRange ;
+    cascade:resultInterpretation ?interpretation ;
+    cascade:resultClinicallyRelevantTime ?performedDate ;
+    cascade:notes ?note ;
+    cascade:workflowStatus ?status .
 }
 WHERE {
   FILTER NOT EXISTS {
-    bridge:thisDocument bridge:sourceFormatVersion ?stated .
+    bridge:thisDocument cascade:sourceFormatVersion ?stated .
     FILTER (!STRSTARTS(?stated, "4.0."))
   }
   bridge:thisRecord bridge:selector ?recordSelector .
@@ -78,7 +77,7 @@ WHERE {
     ?codedCoding xyz:system "http://loinc.org" ;
       xyz:code ?loinc .
     ?codeSystem skos:inScheme fhirr4:codeSystems ;
-      skos:notation "http://loinc.org" ;
+      cascade:codingSystemUri "http://loinc.org"^^xsd:anyURI ;
       void:uriSpace ?stem .
   }
   BIND (IRI(CONCAT(?stem, ENCODE_FOR_URI(?loinc))) AS ?testCode)

@@ -1,47 +1,50 @@
-@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
-@prefix prov:     <http://www.w3.org/ns/prov#> .
-@prefix pav:      <http://purl.org/pav/> .
-@prefix bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
-@prefix rec:      <https://ns.cascadeprotocol.org/records/v1-draft#> .
-@prefix health:   <https://ns.cascadeprotocol.org/health/v1#> .
-@prefix clinical: <https://ns.cascadeprotocol.org/clinical/v1#> .
-@prefix cascade:  <https://ns.cascadeprotocol.org/core/v1#> .
-@prefix foaf:     <http://xmlns.com/foaf/0.1/> .
-
-<urn:uuid:b66823a3-edbe-83df-b1ed-bba3d0aa826a>
-  a clinical:Procedure .
-
-<ni:///sha-256;jZNgawQ1qEKwIG_P4AxIVcFe5fq-9eTQoMsL9jdo41g>
-  prov:specializationOf <urn:uuid:b66823a3-edbe-83df-b1ed-bba3d0aa826a> ;
-  clinical:procedureDate "2025-03-22"^^xsd:date ;
-  clinical:procedureName "Echocardiography" ;
-  clinical:snomedCode "40701008" ;
-  clinical:status "completed" ;
-  rec:patient <urn:uuid:24c23e99-ff68-841f-a7a4-ebe3bd997ada> .
-
-[] bridge:arrivedAs <ni:///sha-256;jZNgawQ1qEKwIG_P4AxIVcFe5fq-9eTQoMsL9jdo41g> ;
-  bridge:selector "" ;
-  prov:wasDerivedFrom <ni:///sha-256;fP7-nmZmuPjbS4FZkOnNG9_xR6Z3AuBPoeCynNGNoh8> ;
-  prov:wasGeneratedBy _:import .
-
-<ni:///sha-256;fP7-nmZmuPjbS4FZkOnNG9_xR6Z3AuBPoeCynNGNoh8>
-  a prov:Entity ;
-  bridge:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
-  pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
-  prov:qualifiedAttribution
-    [ prov:agent [ rdfs:label "Meridian Health System" ] ; prov:hadRole rec:author ] ,
-    [ prov:agent [ rdfs:label "Apple Health" ] ; prov:hadRole rec:transmitter ] ;
-  bridge:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
-  bridge:authenticatedAsProxy false ;
-  bridge:sourceFormatVersion "4.0.1" .
-
-_:import
-  a prov:Activity ;
-  prov:used <ni:///sha-256;fP7-nmZmuPjbS4FZkOnNG9_xR6Z3AuBPoeCynNGNoh8> ;
-  rdfs:label "Apple Health export" ;
-  prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime ;
-  prov:qualifiedAssociation [
-    prov:hadPlan [ a prov:Plan ; rdfs:label "fhir-r4" ; pav:version "0.1.0" ] ;
-    prov:agent [ ]
-  ] .
+@prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix pav: <http://purl.org/pav/> .
+<ni:///sha-256;kjwZi7OAAlDWHYskCgWtOgJ5MU_JmKk_ky0wmhhb5pE> cascade:procedureDate "2025-03-22"^^xsd:date ;
+	cascade:procedureName "Echocardiography" ;
+	cascade:snomedCode <http://snomed.info/id/40701008> ;
+	cascade:workflowStatus "completed" .
+_:31f0e45719079cfb9697fa22da5e1e19 bridge:arrivedAs <ni:///sha-256;kjwZi7OAAlDWHYskCgWtOgJ5MU_JmKk_ky0wmhhb5pE> .
+<ni:///sha-256;kjwZi7OAAlDWHYskCgWtOgJ5MU_JmKk_ky0wmhhb5pE> cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> ;
+	prov:specializationOf <urn:uuid:68588854-ae5f-8fad-9f57-ccea46d71910> .
+<urn:uuid:68588854-ae5f-8fad-9f57-ccea46d71910> a cascade:MedicalProcedure .
+_:31f0e45719079cfb9697fa22da5e1e19 oa:hasSelector _:8ae9536794a771e0569dcdf0d6395cef ;
+	oa:hasSource <ni:///sha-256;fP7-nmZmuPjbS4FZkOnNG9_xR6Z3AuBPoeCynNGNoh8> ;
+	prov:wasDerivedFrom <ni:///sha-256;fP7-nmZmuPjbS4FZkOnNG9_xR6Z3AuBPoeCynNGNoh8> ;
+	prov:wasGeneratedBy _:abd973ea2507fb6e7096675049a19202 .
+_:8ae9536794a771e0569dcdf0d6395cef a oa:FragmentSelector ;
+	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "" .
+<ni:///sha-256;fP7-nmZmuPjbS4FZkOnNG9_xR6Z3AuBPoeCynNGNoh8> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
+	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
+_:2b20b3192d1841d68c6ad5b36c34ce76 prov:agent _:738b218562ef4536dc9d7e0bd6582570 .
+_:738b218562ef4536dc9d7e0bd6582570 <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:2b20b3192d1841d68c6ad5b36c34ce76 prov:hadRole cascade:AuthorRole .
+<ni:///sha-256;fP7-nmZmuPjbS4FZkOnNG9_xR6Z3AuBPoeCynNGNoh8> prov:qualifiedAttribution _:2b20b3192d1841d68c6ad5b36c34ce76 .
+_:5b77cd0d79e206191063c179b9a3465c prov:agent _:aad6d23cfc2d8e711403f6c337ebf1bf .
+_:aad6d23cfc2d8e711403f6c337ebf1bf <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
+_:5b77cd0d79e206191063c179b9a3465c prov:hadRole cascade:TransmitterRole .
+<ni:///sha-256;fP7-nmZmuPjbS4FZkOnNG9_xR6Z3AuBPoeCynNGNoh8> prov:qualifiedAttribution _:5b77cd0d79e206191063c179b9a3465c ;
+	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
+	cascade:authenticatedAsProxy false ;
+	cascade:sourceFormatVersion "4.0.1" .
+_:abd973ea2507fb6e7096675049a19202 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
+	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
+<ni:///sha-256;fP7-nmZmuPjbS4FZkOnNG9_xR6Z3AuBPoeCynNGNoh8> a prov:Entity .
+_:abd973ea2507fb6e7096675049a19202 a prov:Activity ;
+	prov:used <ni:///sha-256;fP7-nmZmuPjbS4FZkOnNG9_xR6Z3AuBPoeCynNGNoh8> ;
+	prov:qualifiedAssociation _:efde09d2c2f3a63554f770b65b187c5b .
+_:efde09d2c2f3a63554f770b65b187c5b prov:hadPlan _:9fa429c5cd0071f404f804ead14fa76e .
+_:9fa429c5cd0071f404f804ead14fa76e a prov:Plan ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "fhir-r4" ;
+	pav:version "0.1.0" .
+_:efde09d2c2f3a63554f770b65b187c5b prov:agent _:fdd0c19b2c1091b1856c5711f17c2255 .
+_:fdd0c19b2c1091b1856c5711f17c2255 a prov:SoftwareAgent ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Cascade Bridge for Rust" ;
+	pav:version "0.1.0" .

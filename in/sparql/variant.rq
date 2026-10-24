@@ -2,8 +2,7 @@ PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
 PREFIX fx:       <http://sparql.xyz/facade-x/ns/>
 PREFIX xyz:      <http://sparql.xyz/facade-x/data/>
 PREFIX bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#>
-PREFIX genomics: <https://ns.cascadeprotocol.org/genomics/v1#>
-PREFIX clinical: <https://ns.cascadeprotocol.org/clinical/v1#>
+PREFIX cascade:  <https://ns.cascadeprotocol.org/cascade#>
 PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 
 # Which Observation is a variant is variant-table.rq's to say. A value is
@@ -23,14 +22,14 @@ PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # a gene studied coding under either system URI HGNC is written with.
 
 CONSTRUCT {
-  ?version genomics:hgvsCDot ?hgvsCDot ;
-    genomics:clinvarVariationId ?clinvarVariationId ;
-    genomics:geneSymbol ?geneSymbol ;
-    clinical:status ?status .
+  ?version cascade:hgvsCodingDnaExpression ?hgvsCDot ;
+    cascade:clinvarVariationId ?clinvarVariationId ;
+    cascade:geneSymbol ?geneSymbol ;
+    cascade:workflowStatus ?status .
 }
 WHERE {
   FILTER NOT EXISTS {
-    bridge:thisDocument bridge:sourceFormatVersion ?stated .
+    bridge:thisDocument cascade:sourceFormatVersion ?stated .
     FILTER (!STRSTARTS(?stated, "4.0."))
   }
   bridge:thisRecord bridge:selector ?recordSelector .

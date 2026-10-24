@@ -1,45 +1,49 @@
-@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
-@prefix prov:     <http://www.w3.org/ns/prov#> .
-@prefix pav:      <http://purl.org/pav/> .
-@prefix bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
-@prefix rec:      <https://ns.cascadeprotocol.org/records/v1-draft#> .
-@prefix health:   <https://ns.cascadeprotocol.org/health/v1#> .
-@prefix clinical: <https://ns.cascadeprotocol.org/clinical/v1#> .
-@prefix cascade:  <https://ns.cascadeprotocol.org/core/v1#> .
-@prefix foaf:     <http://xmlns.com/foaf/0.1/> .
-
-<urn:uuid:2e0821df-41c1-89ae-906a-cc97a755afd0>
-  a cascade:PatientProfile .
-
-<ni:///sha-256;Z7xuKHOu2UbA4O0cw0GVQRnA66NUeFei0x-Kg280YI8>
-  prov:specializationOf <urn:uuid:2e0821df-41c1-89ae-906a-cc97a755afd0> ;
-  foaf:familyName "Okonkwo" ;
-  foaf:givenName "Ngozi" ;
-  cascade:dateOfBirth "1972-11-08"^^xsd:date .
-
-[] bridge:arrivedAs <ni:///sha-256;Z7xuKHOu2UbA4O0cw0GVQRnA66NUeFei0x-Kg280YI8> ;
-  bridge:selector "" ;
-  prov:wasDerivedFrom <ni:///sha-256;tQEgRR1IboQ_nxkbdyRRxput_fuyr7mKpVli4o00_-s> ;
-  prov:wasGeneratedBy _:import .
-
-<ni:///sha-256;tQEgRR1IboQ_nxkbdyRRxput_fuyr7mKpVli4o00_-s>
-  a prov:Entity ;
-  bridge:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
-  pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
-  prov:qualifiedAttribution
-    [ prov:agent [ rdfs:label "Meridian Health System" ] ; prov:hadRole rec:author ] ,
-    [ prov:agent [ rdfs:label "Apple Health" ] ; prov:hadRole rec:transmitter ] ;
-  bridge:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
-  bridge:authenticatedAsProxy false ;
-  bridge:sourceFormatVersion "4.0.1" .
-
-_:import
-  a prov:Activity ;
-  prov:used <ni:///sha-256;tQEgRR1IboQ_nxkbdyRRxput_fuyr7mKpVli4o00_-s> ;
-  rdfs:label "Apple Health export" ;
-  prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime ;
-  prov:qualifiedAssociation [
-    prov:hadPlan [ a prov:Plan ; rdfs:label "fhir-r4" ; pav:version "0.1.0" ] ;
-    prov:agent [ ]
-  ] .
+@prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix pav: <http://purl.org/pav/> .
+<ni:///sha-256;AnAvs0rTYHOWwiWO28TejJ0yb_GijsumkNy7mTVrfyg> foaf:familyName "Okonkwo" ;
+	foaf:givenName "Ngozi" ;
+	cascade:dateOfBirth "1972-11-08"^^xsd:date .
+_:79f029c1208bbf0b360e09e2364002b8 bridge:arrivedAs <ni:///sha-256;AnAvs0rTYHOWwiWO28TejJ0yb_GijsumkNy7mTVrfyg> .
+<ni:///sha-256;AnAvs0rTYHOWwiWO28TejJ0yb_GijsumkNy7mTVrfyg> prov:specializationOf <urn:uuid:77540d7b-cf43-85f1-b6d4-65121aaf654f> .
+<urn:uuid:77540d7b-cf43-85f1-b6d4-65121aaf654f> a cascade:PatientProfile .
+_:79f029c1208bbf0b360e09e2364002b8 oa:hasSelector _:a6f89f8f490d86c1b0c1562f6e703c91 ;
+	oa:hasSource <ni:///sha-256;tQEgRR1IboQ_nxkbdyRRxput_fuyr7mKpVli4o00_-s> ;
+	prov:wasDerivedFrom <ni:///sha-256;tQEgRR1IboQ_nxkbdyRRxput_fuyr7mKpVli4o00_-s> ;
+	prov:wasGeneratedBy _:518825e0c895128f84d3735b9f00dbdd .
+_:a6f89f8f490d86c1b0c1562f6e703c91 a oa:FragmentSelector ;
+	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "" .
+<ni:///sha-256;tQEgRR1IboQ_nxkbdyRRxput_fuyr7mKpVli4o00_-s> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
+	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
+_:49053064482226e38e6278f89044189b prov:agent _:beca84a24f08983801914bc91aeb9c0b .
+_:beca84a24f08983801914bc91aeb9c0b <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:49053064482226e38e6278f89044189b prov:hadRole cascade:AuthorRole .
+<ni:///sha-256;tQEgRR1IboQ_nxkbdyRRxput_fuyr7mKpVli4o00_-s> prov:qualifiedAttribution _:49053064482226e38e6278f89044189b .
+_:72297140ee4b484645442db63a15b67d prov:agent _:b97908ee0c87cae3fe232d3aad6c322a .
+_:b97908ee0c87cae3fe232d3aad6c322a <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
+_:72297140ee4b484645442db63a15b67d prov:hadRole cascade:TransmitterRole .
+<ni:///sha-256;tQEgRR1IboQ_nxkbdyRRxput_fuyr7mKpVli4o00_-s> prov:qualifiedAttribution _:72297140ee4b484645442db63a15b67d ;
+	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
+	cascade:authenticatedAsProxy false ;
+	cascade:sourceFormatVersion "4.0.1" .
+_:518825e0c895128f84d3735b9f00dbdd <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
+	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
+<ni:///sha-256;tQEgRR1IboQ_nxkbdyRRxput_fuyr7mKpVli4o00_-s> a prov:Entity .
+_:518825e0c895128f84d3735b9f00dbdd a prov:Activity ;
+	prov:used <ni:///sha-256;tQEgRR1IboQ_nxkbdyRRxput_fuyr7mKpVli4o00_-s> ;
+	prov:qualifiedAssociation _:f105afc467f7f5ac5f66112ec982ad92 .
+_:f105afc467f7f5ac5f66112ec982ad92 prov:hadPlan _:62e94dabcef387cf25e611c2bbcf77be .
+_:62e94dabcef387cf25e611c2bbcf77be a prov:Plan ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "fhir-r4" ;
+	pav:version "0.1.0" .
+_:f105afc467f7f5ac5f66112ec982ad92 prov:agent _:351f55be408a3dd8d1e70e86730c561b .
+_:351f55be408a3dd8d1e70e86730c561b a prov:SoftwareAgent ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Cascade Bridge for Rust" ;
+	pav:version "0.1.0" .

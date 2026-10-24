@@ -2,18 +2,18 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:c9065d55da1d80f2f449f95ffbbfc6d8 a oa:FragmentSelector ;
+_:c4ae87d1a06d11fd1e9b75c6aa1619b9 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "" ;
-	oa:refinedBy _:acc49de2c58f722082a99720a5446899 .
-_:c27932433767899aaaaa92372ea6e25c oa:hasSource <../in/vital-no-category-heart-rate.json> .
-_:acc49de2c58f722082a99720a5446899 rdf:value "/code/coding/0/code" ;
+	rdf:value "" .
+_:c0a2d949da7d59acab728577e0126d60 oa:hasSource <../in/vital-no-category-heart-rate.json> .
+_:c4ae87d1a06d11fd1e9b75c6aa1619b9 oa:refinedBy _:be678dc59837bd70458bdf6772f908c3 .
+_:be678dc59837bd70458bdf6772f908c3 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	a oa:FragmentSelector .
-_:c27932433767899aaaaa92372ea6e25c oa:hasSelector _:c9065d55da1d80f2f449f95ffbbfc6d8 .
-_:b6698eb7deadca1f79f189596c54dab7 oa:hasTarget _:c27932433767899aaaaa92372ea6e25c ;
+	rdf:value "/code/coding/0/code" .
+_:c0a2d949da7d59acab728577e0126d60 oa:hasSelector _:c4ae87d1a06d11fd1e9b75c6aa1619b9 .
+_:eaffef89017e14f0d0b040aeb9ffe177 oa:hasTarget _:c0a2d949da7d59acab728577e0126d60 ;
 	sh:resultSeverity sh:Warning ;
-	sh:value "8867-4" ;
-	oa:motivatedBy oa:classifying ;
+	a oa:Annotation ;
 	oa:hasBody fhirr4:observationNotLabResult ;
-	a oa:Annotation .
+	oa:motivatedBy oa:classifying ;
+	sh:value "8867-4" .

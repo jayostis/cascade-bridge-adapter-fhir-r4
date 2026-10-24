@@ -2,10 +2,11 @@ PREFIX rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
 PREFIX fx:       <http://sparql.xyz/facade-x/ns/>
 PREFIX xyz:      <http://sparql.xyz/facade-x/data/>
+PREFIX skos:     <http://www.w3.org/2004/02/skos/core#>
+PREFIX void:     <http://rdfs.org/ns/void#>
 PREFIX bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#>
-PREFIX cascade:  <https://ns.cascadeprotocol.org/core/v1#>
-PREFIX health:   <https://ns.cascadeprotocol.org/health/v1#>
-PREFIX clinical: <https://ns.cascadeprotocol.org/clinical/v1#>
+PREFIX cascade:  <https://ns.cascadeprotocol.org/cascade#>
+PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 PREFIX foaf:     <http://xmlns.com/foaf/0.1/>
 
 # A date FHIR writes with less than a day's precision fits no Cascade date, and
@@ -16,7 +17,7 @@ CONSTRUCT {
 }
 WHERE {
   FILTER NOT EXISTS {
-    bridge:thisDocument bridge:sourceFormatVersion ?stated .
+    bridge:thisDocument cascade:sourceFormatVersion ?stated .
     FILTER (!STRSTARTS(?stated, "4.0."))
   }
   bridge:thisRecord bridge:selector ?recordSelector .
@@ -38,7 +39,7 @@ WHERE {
 
   {
     ?resource xyz:vaccineCode ?concept . ?concept xyz:text ?o .
-    BIND (health:vaccineName AS ?p)
+    BIND (cascade:vaccineName AS ?p)
   }
   UNION
   {
@@ -49,44 +50,47 @@ WHERE {
       ?codings ?earlierSlot ?earlier . ?earlier xyz:display ?earlierDisplay .
       FILTER (xsd:integer(STRAFTER(STR(?earlierSlot), "#_")) < xsd:integer(STRAFTER(STR(?codingSlot), "#_")))
     }
-    BIND (health:vaccineName AS ?p)
+    BIND (cascade:vaccineName AS ?p)
   }
   UNION
   {
     ?resource xyz:vaccineCode ?coded . ?coded xyz:coding ?codings . ?codings ?codingSlot ?coding .
     ?coding xyz:system "http://hl7.org/fhir/sid/cvx" ;
       xyz:code ?code .
-    BIND (health:vaccineCode AS ?p)
-    BIND (?code AS ?o)
+    ?codeSystem skos:inScheme fhirr4:codeSystems ;
+      cascade:codingSystemUri "http://hl7.org/fhir/sid/cvx"^^xsd:anyURI ;
+      void:uriSpace ?stem .
+    BIND (cascade:vaccineCode AS ?p)
+    BIND (IRI(CONCAT(?stem, ENCODE_FOR_URI(REPLACE(?code, "^\\s+|\\s+$", "")))) AS ?o)
   }
   UNION
   {
     ?resource xyz:occurrenceDateTime ?when .
-    BIND (health:administrationDate AS ?p)
+    BIND (cascade:vaccinationOccurrenceTime AS ?p)
     BIND (IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"), STRDT(?when, xsd:date),
              IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T"), STRDT(?when, xsd:dateTime), 1/0)) AS ?o)
   }
   UNION
   {
     ?resource xyz:status ?o .
-    BIND (health:status AS ?p)
+    BIND (cascade:workflowStatus AS ?p)
   }
   UNION
   {
     ?resource xyz:lotNumber ?o .
-    BIND (health:lotNumber AS ?p)
+    BIND (cascade:lotNumber AS ?p)
   }
   UNION
   {
     ?resource xyz:doseQuantity ?dose . ?dose xyz:value ?amount .
     OPTIONAL { ?dose xyz:unit ?unit }
-    BIND (health:doseQuantity AS ?p)
+    BIND (cascade:doseQuantity AS ?p)
     BIND (IF(BOUND(?unit), CONCAT(?amount, " ", ?unit), ?amount) AS ?o)
   }
   UNION
   {
     ?resource xyz:route ?concept . ?concept xyz:text ?o .
-    BIND (health:route AS ?p)
+    BIND (cascade:routeOfAdministration AS ?p)
   }
   UNION
   {
@@ -97,12 +101,12 @@ WHERE {
       ?codings ?earlierSlot ?earlier . ?earlier xyz:display ?earlierDisplay .
       FILTER (xsd:integer(STRAFTER(STR(?earlierSlot), "#_")) < xsd:integer(STRAFTER(STR(?codingSlot), "#_")))
     }
-    BIND (health:route AS ?p)
+    BIND (cascade:routeOfAdministration AS ?p)
   }
   UNION
   {
     ?resource xyz:site ?concept . ?concept xyz:text ?o .
-    BIND (health:site AS ?p)
+    BIND (cascade:administrationSite AS ?p)
   }
   UNION
   {
@@ -113,11 +117,11 @@ WHERE {
       ?codings ?earlierSlot ?earlier . ?earlier xyz:display ?earlierDisplay .
       FILTER (xsd:integer(STRAFTER(STR(?earlierSlot), "#_")) < xsd:integer(STRAFTER(STR(?codingSlot), "#_")))
     }
-    BIND (health:site AS ?p)
+    BIND (cascade:administrationSite AS ?p)
   }
   UNION
   {
     ?resource xyz:note ?notes . ?notes ?noteSlot ?note . ?note xyz:text ?o .
-    BIND (health:notes AS ?p)
+    BIND (cascade:notes AS ?p)
   }
 }

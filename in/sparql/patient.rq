@@ -3,9 +3,7 @@ PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
 PREFIX fx:       <http://sparql.xyz/facade-x/ns/>
 PREFIX xyz:      <http://sparql.xyz/facade-x/data/>
 PREFIX bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#>
-PREFIX cascade:  <https://ns.cascadeprotocol.org/core/v1#>
-PREFIX health:   <https://ns.cascadeprotocol.org/health/v1#>
-PREFIX clinical: <https://ns.cascadeprotocol.org/clinical/v1#>
+PREFIX cascade:  <https://ns.cascadeprotocol.org/cascade#>
 PREFIX foaf:     <http://xmlns.com/foaf/0.1/>
 
 # Only the first name a Patient states is carried: the vocabulary holds one.
@@ -17,7 +15,7 @@ CONSTRUCT {
 }
 WHERE {
   FILTER NOT EXISTS {
-    bridge:thisDocument bridge:sourceFormatVersion ?stated .
+    bridge:thisDocument cascade:sourceFormatVersion ?stated .
     FILTER (!STRSTARTS(?stated, "4.0."))
   }
   bridge:thisRecord bridge:selector ?recordSelector .

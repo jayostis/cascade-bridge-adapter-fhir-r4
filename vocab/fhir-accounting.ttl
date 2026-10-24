@@ -1,5 +1,6 @@
 @prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
 @prefix fhirr4: <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#> .
+@prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/abatementDateTime" ;
@@ -948,17 +949,17 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/identifier" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A record is named from its id, its urn:uuid fullUrl or its place in the document, never from an identifier a system gives it." .
+  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/identifier/value" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A record is named from its id, its urn:uuid fullUrl or its place in the document, never from an identifier a system gives it." .
+  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/intent" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A request is a prescription whatever its intent: its clinical:clinicalIntent is stated from the resource type." .
+  bridge:because "A request is a prescription whatever its intent: its cascade:prescribedOrReported is stated from the resource type." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/interpretation" ;
@@ -1845,17 +1846,17 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/identifier" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A record is named from its id, its urn:uuid fullUrl or its place in the document, never from an identifier a system gives it." .
+  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/identifier/value" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A record is named from its id, its urn:uuid fullUrl or its place in the document, never from an identifier a system gives it." .
+  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/intent" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A request is a prescription whatever its intent: its clinical:clinicalIntent is stated from the resource type." .
+  bridge:because "A request is a prescription whatever its intent: its cascade:prescribedOrReported is stated from the resource type." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/interpretation" ;
@@ -3145,17 +3146,17 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/identifier" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A record is named from its id, its urn:uuid fullUrl or its place in the document, never from an identifier a system gives it." .
+  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/identifier/value" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A record is named from its id, its urn:uuid fullUrl or its place in the document, never from an identifier a system gives it." .
+  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/intent" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A request is a prescription whatever its intent: its clinical:clinicalIntent is stated from the resource type." .
+  bridge:because "A request is a prescription whatever its intent: its cascade:prescribedOrReported is stated from the resource type." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/interpretation" ;
@@ -4038,17 +4039,17 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/identifier" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A record is named from its id, its urn:uuid fullUrl or its place in the document, never from an identifier a system gives it." .
+  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/identifier/value" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A record is named from its id, its urn:uuid fullUrl or its place in the document, never from an identifier a system gives it." .
+  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/intent" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A request is a prescription whatever its intent: its clinical:clinicalIntent is stated from the resource type." .
+  bridge:because "A request is a prescription whatever its intent: its cascade:prescribedOrReported is stated from the resource type." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/interpretation" ;

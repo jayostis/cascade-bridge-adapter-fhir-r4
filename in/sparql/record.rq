@@ -1,42 +1,47 @@
+PREFIX rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
+PREFIX dcterms:  <http://purl.org/dc/terms/>
 PREFIX prov:     <http://www.w3.org/ns/prov#>
 PREFIX pav:      <http://purl.org/pav/>
+PREFIX oa:       <http://www.w3.org/ns/oa#>
 PREFIX fx:       <http://sparql.xyz/facade-x/ns/>
 PREFIX xyz:      <http://sparql.xyz/facade-x/data/>
 PREFIX bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#>
-PREFIX rec:      <https://ns.cascadeprotocol.org/records/v1-draft#>
-PREFIX cascade:  <https://ns.cascadeprotocol.org/core/v1#>
-PREFIX health:   <https://ns.cascadeprotocol.org/health/v1#>
-PREFIX clinical: <https://ns.cascadeprotocol.org/clinical/v1#>
-PREFIX genomics: <https://ns.cascadeprotocol.org/genomics/v1#>
-PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+PREFIX cascade:  <https://ns.cascadeprotocol.org/cascade#>
+PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 
-# Names are the naming convention of
-# https://github.com/jayostis/cascade-bridge-spec/blob/main/engine/sparql.md#naming-a-record,
-# computed as that repository's fixtures/naming/name.rq computes them. A version
-# is written as an IRI of its resource's pointer, which each type's mapping
-# computes alike, so the content it writes lands on the same version.
+# A record is named by one of cascade-vocabulary's naming rules, each hashed text
+# written exactly as the rule's body in
+# https://github.com/jayostis/cascade-vocabulary/tree/main/tests/vectors/naming
+# writes it: RecordFromServerNamingRule, RecordFromDocumentNamingRule or
+# ContainedRecordNamingRule. Each name picks its rule's text with IF and hashes
+# once: a rule body in a UNION branch would not see the bindings outside it.
 #
-# A nested group cannot see variables bound outside it, so a group binds a
-# step of the pointer and the pointer is joined up after it.
+# A version is written as an IRI of its resource's pointer, which each type's
+# mapping computes alike, so the content it writes lands on the same version.
+# A nested group cannot see variables bound outside it, so a group binds a step
+# of the pointer and the pointer is joined up after it.
 
 CONSTRUCT {
   ?record a ?class ;
-    rec:sourceUrl ?sourceUrl ;
+    cascade:sourceUrl ?sourceUrl ;
     ?sourceIdPredicate ?resourceId .
   ?version prov:specializationOf ?record ;
-    rec:patient ?patient .
+    cascade:patient ?patient .
   [] bridge:arrivedAs ?version ;
     pav:version ?versionId ;
     pav:lastUpdateOn ?lastUpdated ;
-    bridge:selector ?containedSelector .
+    oa:hasSelector ?containedSelectorNode .
+  ?containedSelectorNode a oa:FragmentSelector ;
+    dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+    rdf:value ?containedSelector .
 }
 WHERE {
   bridge:thisRecord bridge:selector ?recordSelector .
   bridge:thisDocument bridge:sha256 ?document .
-  OPTIONAL { bridge:thisDocument bridge:serverBaseUrl ?server }
+  OPTIONAL { bridge:thisDocument cascade:serverBaseUrl ?server }
   FILTER NOT EXISTS {
-    bridge:thisDocument bridge:sourceFormatVersion ?stated .
+    bridge:thisDocument cascade:sourceFormatVersion ?stated .
     FILTER (!STRSTARTS(?stated, "4.0."))
   }
 
@@ -44,31 +49,31 @@ WHERE {
   { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
   UNION
   { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
-  OPTIONAL { ?top xyz:id ?topId }
   OPTIONAL { ?root xyz:fullUrl ?fullUrl }
+  OPTIONAL { ?top xyz:id ?topId }
+  OPTIONAL { ?top xyz:meta ?topMeta . ?topMeta xyz:versionId ?topVersionId . FILTER (STR(?topVersionId) != "") }
+  OPTIONAL { ?top xyz:meta ?topUpdatedMeta . ?topUpdatedMeta xyz:lastUpdated ?topUpdated }
 
-  BIND (BOUND(?topId) && NOT EXISTS {
+  BIND (BOUND(?topId) && BOUND(?server) && !STRSTARTS(COALESCE(?fullUrl, ""), "urn:uuid:") && NOT EXISTS {
           ?sameId fhirr4:resourceType ?topType ;
             fhirr4:resourceId ?topId ;
             fhirr4:heldAt ?sameIdSelector .
           FILTER (?sameIdSelector != ?recordSelector)
-        } AS ?idUnique)
-  BIND (BOUND(?fullUrl) && STRSTARTS(?fullUrl, "urn:uuid:") && NOT EXISTS {
-          ?sameUrl fhirr4:fullUrl ?fullUrl ;
-            fhirr4:heldAt ?sameUrlSelector .
-          FILTER (?sameUrlSelector != ?recordSelector)
-        } AS ?urnUnique)
-  BIND (IF(BOUND(?topId),
-           IF(?idUnique && BOUND(?server), CONCAT(?server, "|", ?topType, "|", ?topId), CONCAT(?document, "|", ?recordSelector)),
-           IF(?urnUnique, ?fullUrl, CONCAT(?document, "|", ?recordSelector))) AS ?topInput)
-  BIND (IF(BOUND(?topId),
-           IF(?idUnique && BOUND(?server), CONCAT(?server, "/", ?topType, "/", ?topId), 1/0),
-           IF(?urnUnique, ?fullUrl, 1/0)) AS ?topAddress)
-  BIND (SHA256(CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|", ?topInput)) AS ?topHash)
-  BIND (REPLACE(REPLACE(REPLACE(REPLACE(SUBSTR(?topHash, 17, 1),
-          "[048c]", "8"), "[159d]", "9"), "[26ae]", "a"), "[37bf]", "b") AS ?topVariant)
-  BIND (CONCAT("urn:uuid:", SUBSTR(?topHash, 1, 8), "-", SUBSTR(?topHash, 9, 4), "-8", SUBSTR(?topHash, 14, 3),
-               "-", ?topVariant, SUBSTR(?topHash, 18, 3), "-", SUBSTR(?topHash, 21, 12)) AS ?topName)
+        } AS ?fromServer)
+  BIND (IF(?fromServer,
+           CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|https://ns.cascadeprotocol.org/cascade#RecordFromServerNamingRule",
+                  "|", REPLACE(REPLACE(?server, "%", "%25"), "\\|", "%7C"),
+                  "|", REPLACE(REPLACE(?topType, "%", "%25"), "\\|", "%7C"),
+                  "|", REPLACE(REPLACE(?topId, "%", "%25"), "\\|", "%7C")),
+           CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|https://ns.cascadeprotocol.org/cascade#RecordFromDocumentNamingRule",
+                  "|", REPLACE(REPLACE(?document, "%", "%25"), "\\|", "%7C"),
+                  "|", REPLACE(REPLACE(?recordSelector, "%", "%25"), "\\|", "%7C"))) AS ?topNamed)
+  BIND (IF(?fromServer, CONCAT(?server, "/", ?topType, "/", ?topId), 1/0) AS ?topAddress)
+  BIND (SHA256(?topNamed) AS ?topHash)
+  BIND (REPLACE(REPLACE(REPLACE(REPLACE(SUBSTR(?topHash, 17, 1), "[048c]", "8"), "[159d]", "9"), "[26ae]", "a"), "[37bf]", "b")
+        AS ?topVariant)
+  BIND (CONCAT("urn:uuid:", SUBSTR(?topHash, 1, 8), "-", SUBSTR(?topHash, 9, 4), "-8", SUBSTR(?topHash, 14, 3), "-", ?topVariant,
+               SUBSTR(?topHash, 18, 3), "-", SUBSTR(?topHash, 21, 12)) AS ?topName)
 
   { BIND ("" AS ?containedStep) }
   UNION
@@ -83,44 +88,58 @@ WHERE {
 
   ?resource xyz:resourceType ?resourceType .
   VALUES (?resourceType ?class ?sourceIdPredicate) {
-    ("AllergyIntolerance"  health:AllergyRecord      health:sourceRecordId)
-    ("Condition"           health:ConditionRecord    health:sourceRecordId)
-    ("Immunization"        health:ImmunizationRecord health:sourceRecordId)
-    ("Procedure"           clinical:Procedure        clinical:sourceRecordId)
-    ("Patient"             cascade:PatientProfile    cascade:sourceRecordId)
-    ("MedicationRequest"   clinical:Medication       clinical:sourceRecordId)
-    ("MedicationStatement" clinical:Medication       clinical:sourceRecordId)
-    ("Observation"         health:LabResultRecord    health:sourceRecordId)
-    ("Observation"         genomics:Variant          UNDEF)
-    ("Observation"         genomics:VariantInterpretation UNDEF)
+    ("AllergyIntolerance"  cascade:AllergyOrIntolerance            cascade:sourceRecordId)
+    ("Condition"           cascade:ProblemOrDiagnosis              cascade:sourceRecordId)
+    ("Immunization"        cascade:Vaccination                     cascade:sourceRecordId)
+    ("Procedure"           cascade:MedicalProcedure                cascade:sourceRecordId)
+    ("Patient"             cascade:PatientProfile                  cascade:sourceRecordId)
+    ("MedicationRequest"   cascade:PrescribedOrReportedMedication  cascade:sourceRecordId)
+    ("MedicationStatement" cascade:PrescribedOrReportedMedication  cascade:sourceRecordId)
+    ("Observation"         cascade:LaboratoryTestResult            cascade:sourceRecordId)
+    ("Observation"         cascade:GeneticVariantFinding           UNDEF)
+    ("Observation"         cascade:VariantInterpretation           UNDEF)
   }
   FILTER (?resourceType != "Observation"
-          || (?class = health:LabResultRecord && EXISTS { ?lab fhirr4:labResultAt ?resourcePointer })
-          || (?class = genomics:Variant && EXISTS { ?variantRow fhirr4:variantAt ?resourcePointer })
-          || (?class = genomics:VariantInterpretation && EXISTS { ?interpretationRow fhirr4:interpretationAt ?resourcePointer }))
+          || (?class = cascade:LaboratoryTestResult && EXISTS { ?lab fhirr4:labResultAt ?resourcePointer })
+          || (?class = cascade:GeneticVariantFinding && EXISTS { ?variantRow fhirr4:variantAt ?resourcePointer })
+          || (?class = cascade:VariantInterpretation && EXISTS { ?interpretationRow fhirr4:interpretationAt ?resourcePointer }))
   OPTIONAL { ?resource xyz:id ?resourceId }
 
   BIND (IF(BOUND(?contained),
-           IF(BOUND(?resourceId), CONCAT(?topName, "|", ?resourceId), CONCAT(?document, "|", ?resourcePointer)),
-           ?topInput) AS ?input)
-  BIND (SHA256(CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|", ?input)) AS ?hash)
-  BIND (REPLACE(REPLACE(REPLACE(REPLACE(SUBSTR(?hash, 17, 1),
-          "[048c]", "8"), "[159d]", "9"), "[26ae]", "a"), "[37bf]", "b") AS ?variant)
-  BIND (IRI(CONCAT("urn:uuid:", SUBSTR(?hash, 1, 8), "-", SUBSTR(?hash, 9, 4), "-8", SUBSTR(?hash, 14, 3),
-                   "-", ?variant, SUBSTR(?hash, 18, 3), "-", SUBSTR(?hash, 21, 12))) AS ?record)
+           IF(BOUND(?resourceId),
+              CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|https://ns.cascadeprotocol.org/cascade#ContainedRecordNamingRule",
+                     "|", REPLACE(REPLACE(?topName, "%", "%25"), "\\|", "%7C"),
+                     "|", REPLACE(REPLACE(COALESCE(?topVersionId, ?topUpdated, ""), "%", "%25"), "\\|", "%7C"),
+                     "|", REPLACE(REPLACE(?resourceId, "%", "%25"), "\\|", "%7C")),
+              CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|https://ns.cascadeprotocol.org/cascade#RecordFromDocumentNamingRule",
+                     "|", REPLACE(REPLACE(?document, "%", "%25"), "\\|", "%7C"),
+                     "|", REPLACE(REPLACE(?resourcePointer, "%", "%25"), "\\|", "%7C"))),
+           ?topNamed) AS ?named)
+  BIND (SHA256(?named) AS ?hash)
+  BIND (REPLACE(REPLACE(REPLACE(REPLACE(SUBSTR(?hash, 17, 1), "[048c]", "8"), "[159d]", "9"), "[26ae]", "a"), "[37bf]", "b")
+        AS ?variant)
+  BIND (IRI(CONCAT("urn:uuid:", SUBSTR(?hash, 1, 8), "-", SUBSTR(?hash, 9, 4), "-8", SUBSTR(?hash, 14, 3), "-", ?variant,
+                   SUBSTR(?hash, 18, 3), "-", SUBSTR(?hash, 21, 12))) AS ?record)
   BIND (IRI(CONCAT("urn:cascade:version-at:", SHA256(?resourcePointer))) AS ?version)
   BIND (IF(BOUND(?contained), IF(BOUND(?resourceId), IRI(CONCAT(?topAddress, "#", ?resourceId)), 1/0),
            IRI(?topAddress)) AS ?sourceUrl)
   BIND (IF(BOUND(?contained), ?resourcePointer, 1/0) AS ?containedSelector)
+  BIND (IF(BOUND(?contained), BNODE(), 1/0) AS ?containedSelectorNode)
 
   OPTIONAL { ?resource xyz:meta ?meta . ?meta xyz:versionId ?versionId }
   OPTIONAL { ?resource xyz:meta ?updatedMeta . ?updatedMeta xyz:lastUpdated ?updated }
   BIND (STRDT(?updated, xsd:dateTime) AS ?lastUpdated)
 
-  # The patient a version is about, named as its target is named, in this
-  # document or not: by a urn:uuid, by type and id on the record's own server,
-  # or by an absolute URL, whose base is normalised as a server's is. A
-  # reference relative to a server names nothing where no server is known.
+  # The patient a version is about, named as its target is named: a Patient
+  # this document holds under the reference's urn:uuid as that record is named,
+  # by type and id on the record's own server, or by type and id on the server
+  # an absolute URL names, its scheme and host in lower case and its scheme's
+  # default port dropped. A reference relative to a server names nothing where
+  # no server is known, nor when it is made from an entry whose fullUrl is a
+  # urn:uuid or to an entry held under one, which FHIR gives no meaning; a
+  # urn:uuid this document does not hold names nothing,
+  # and neither does an absolute URL whose base is not a plain scheme, host,
+  # port and path: patient-reference-findings.rq reports those.
   OPTIONAL {
     ?resource ?patientMember ?patientReference .
     FILTER (?patientMember IN (xyz:patient, xyz:subject))
@@ -128,49 +147,57 @@ WHERE {
   }
   OPTIONAL {
     {
-      SELECT ?key (COUNT(DISTINCT ?keySelector) AS ?heldAtKey) (SAMPLE(?keyInput) AS ?inputAtKey)
+      SELECT ?key (COUNT(DISTINCT ?keySelector) AS ?heldAtKey) (SAMPLE(?keyNamed) AS ?namedAtKey)
       WHERE {
         bridge:thisDocument bridge:sha256 ?keyDocument .
-        OPTIONAL { bridge:thisDocument bridge:serverBaseUrl ?keyServer }
         ?held fhirr4:heldAt ?keySelector ;
           fhirr4:resourceType "Patient" ;
           fhirr4:fullUrl ?key .
         FILTER (STRSTARTS(?key, "urn:uuid:"))
-        OPTIONAL { ?held fhirr4:resourceId ?keyId }
-        BIND (BOUND(?keyId) && NOT EXISTS {
-                ?sameKeyId fhirr4:resourceType "Patient" ;
-                  fhirr4:resourceId ?keyId ;
-                  fhirr4:heldAt ?sameKeyIdSelector .
-                FILTER (?sameKeyIdSelector != ?keySelector)
-              } AS ?keyIdUnique)
-        BIND (NOT EXISTS {
-                ?sameKeyUrl fhirr4:fullUrl ?key ;
-                  fhirr4:heldAt ?sameKeyUrlSelector .
-                FILTER (?sameKeyUrlSelector != ?keySelector)
-              } AS ?keyUrnUnique)
-        BIND (IF(BOUND(?keyId),
-                 IF(?keyIdUnique && BOUND(?keyServer), CONCAT(?keyServer, "|Patient|", ?keyId),
-                    CONCAT(?keyDocument, "|", ?keySelector)),
-                 IF(?keyUrnUnique, ?key, CONCAT(?keyDocument, "|", ?keySelector))) AS ?keyInput)
+        BIND (CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|https://ns.cascadeprotocol.org/cascade#RecordFromDocumentNamingRule",
+                     "|", REPLACE(REPLACE(?keyDocument, "%", "%25"), "\\|", "%7C"),
+                     "|", REPLACE(REPLACE(?keySelector, "%", "%25"), "\\|", "%7C")) AS ?keyNamed)
       }
       GROUP BY ?key
     }
     FILTER (?key = ?reference)
   }
   BIND (REPLACE(?reference, "/_history/[A-Za-z0-9.-]{1,64}$", "") AS ?referenceWithoutVersion)
-  BIND (IF(BOUND(?heldAtKey), IF(?heldAtKey = 1, ?inputAtKey, 1/0),
-        IF(STRSTARTS(?reference, "urn:uuid:"), ?reference,
-        IF(REGEX(?referenceWithoutVersion, "^Patient/[A-Za-z0-9.-]{1,64}$"),
-           CONCAT(?server, "|Patient|", STRAFTER(?referenceWithoutVersion, "Patient/")),
-        IF(REGEX(?referenceWithoutVersion, "^[A-Za-z][A-Za-z0-9+.-]*://[^/]+(/.*)?/Patient/[A-Za-z0-9.-]{1,64}$"),
-           CONCAT(LCASE(REPLACE(?referenceWithoutVersion, "^([^:]+://[^/]+).*$", "$1")),
-                  REPLACE(REPLACE(?referenceWithoutVersion, "^[^:]+://[^/]+", ""), "/+Patient/[^/]+$", ""),
-                  "|Patient|", REPLACE(?referenceWithoutVersion, "^.*/Patient/", "")),
-           1/0)))) AS ?patientInput)
-  BIND (SHA256(CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|", ?patientInput)) AS ?patientHash)
-  BIND (REPLACE(REPLACE(REPLACE(REPLACE(SUBSTR(?patientHash, 17, 1),
-          "[048c]", "8"), "[159d]", "9"), "[26ae]", "a"), "[37bf]", "b") AS ?patientVariant)
-  BIND (IRI(CONCAT("urn:uuid:", SUBSTR(?patientHash, 1, 8), "-", SUBSTR(?patientHash, 9, 4), "-8",
-                   SUBSTR(?patientHash, 14, 3), "-", ?patientVariant, SUBSTR(?patientHash, 18, 3), "-",
-                   SUBSTR(?patientHash, 21, 12))) AS ?patient)
+  BIND (IF(REGEX(?referenceWithoutVersion, "^[A-Za-z][A-Za-z0-9+.-]*://[^/]+(/.*)?/Patient/[A-Za-z0-9.-]{1,64}$"),
+           REPLACE(?referenceWithoutVersion, "/+Patient/[A-Za-z0-9.-]{1,64}$", ""), 1/0) AS ?patientBase)
+  BIND (REPLACE(?patientBase, "^[^:]+://(\\[[^\\]]*\\]|[^/:]*)(:([0-9]*))?(/.*)?$", "$3") AS ?patientPort)
+  BIND (REGEX(?patientBase, "^[A-Za-z][A-Za-z0-9+.-]*://([A-Za-z0-9._~!$&'()*+,;=-]+|\\[[0-9A-Fa-f:.]+\\])(:[0-9]*)?(/[A-Za-z0-9._~!$&'()*+,;=:@-]*)*$")
+        && !REGEX(?patientBase, "/\\.\\.?(/|$)")
+        && (!REGEX(?patientBase, "^[^:]+://\\[") || REGEX(REPLACE(REPLACE(?patientBase, "^[^:]+://\\[([^\\]]*)\\].*$", "$1"),
+                                                          ":((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])$", ":0:0"),
+                                                  "^(([0-9A-Fa-f]{1,4}:){7}[0-9A-Fa-f]{1,4}|([0-9A-Fa-f]{1,4}:){1,7}:|([0-9A-Fa-f]{1,4}:){1,6}:[0-9A-Fa-f]{1,4}|([0-9A-Fa-f]{1,4}:){1,5}(:[0-9A-Fa-f]{1,4}){1,2}|([0-9A-Fa-f]{1,4}:){1,4}(:[0-9A-Fa-f]{1,4}){1,3}|([0-9A-Fa-f]{1,4}:){1,3}(:[0-9A-Fa-f]{1,4}){1,4}|([0-9A-Fa-f]{1,4}:){1,2}(:[0-9A-Fa-f]{1,4}){1,5}|[0-9A-Fa-f]{1,4}:(:[0-9A-Fa-f]{1,4}){1,6}|:((:[0-9A-Fa-f]{1,4}){1,7}|:))$"))
+        && STRLEN(REPLACE(?patientPort, "^0+", "")) <= 5
+        && (?patientPort = "" || xsd:integer(?patientPort) <= 65535) AS ?patientBaseAccepted)
+  BIND (LCASE(STRBEFORE(?patientBase, "://")) AS ?patientScheme)
+  BIND (IF(?patientPort = "", "", STR(xsd:integer(?patientPort))) AS ?patientPortNumber)
+  BIND (REGEX(?referenceWithoutVersion, "^Patient/[A-Za-z0-9.-]{1,64}$") AS ?patientRelative)
+  BIND (?patientRelative && (STRSTARTS(COALESCE(?fullUrl, ""), "urn:uuid:") || EXISTS {
+          ?urnPatient fhirr4:resourceType "Patient" ;
+            fhirr4:resourceId ?urnPatientId ;
+            fhirr4:fullUrl ?urnPatientUrl .
+          FILTER (STRSTARTS(?urnPatientUrl, "urn:uuid:") && ?urnPatientId = STRAFTER(?referenceWithoutVersion, "Patient/"))
+        }) AS ?patientRelativeUndefined)
+  BIND (IF(?patientRelative, IF(?patientRelativeUndefined, 1/0, ?server),
+        IF(?patientBaseAccepted,
+           CONCAT(?patientScheme, "://", LCASE(REPLACE(?patientBase, "^[^:]+://(\\[[^\\]]*\\]|[^/:]*).*$", "$1")),
+                  IF(?patientPortNumber = "" || (?patientScheme = "https" && ?patientPortNumber = "443")
+                     || (?patientScheme = "http" && ?patientPortNumber = "80"), "", CONCAT(":", ?patientPortNumber)),
+                  REPLACE(?patientBase, "^[^:]+://(\\[[^\\]]*\\]|[^/:]*)(:[0-9]*)?", "")),
+           1/0)) AS ?patientServer)
+  BIND (REPLACE(?referenceWithoutVersion, "^.*Patient/", "") AS ?patientId)
+  BIND (IF(BOUND(?heldAtKey), IF(?heldAtKey = 1, ?namedAtKey, 1/0),
+           CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|https://ns.cascadeprotocol.org/cascade#RecordFromServerNamingRule",
+                  "|", REPLACE(REPLACE(?patientServer, "%", "%25"), "\\|", "%7C"),
+                  "|", REPLACE(REPLACE("Patient", "%", "%25"), "\\|", "%7C"),
+                  "|", REPLACE(REPLACE(?patientId, "%", "%25"), "\\|", "%7C"))) AS ?patientNamed)
+  BIND (SHA256(?patientNamed) AS ?patientHash)
+  BIND (REPLACE(REPLACE(REPLACE(REPLACE(SUBSTR(?patientHash, 17, 1), "[048c]", "8"), "[159d]", "9"), "[26ae]", "a"), "[37bf]", "b")
+        AS ?patientVariant)
+  BIND (IRI(CONCAT("urn:uuid:", SUBSTR(?patientHash, 1, 8), "-", SUBSTR(?patientHash, 9, 4), "-8", SUBSTR(?patientHash, 14, 3), "-",
+                   ?patientVariant, SUBSTR(?patientHash, 18, 3), "-", SUBSTR(?patientHash, 21, 12))) AS ?patient)
 }

@@ -1,52 +1,56 @@
-@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
-@prefix prov:     <http://www.w3.org/ns/prov#> .
-@prefix pav:      <http://purl.org/pav/> .
-@prefix bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
-@prefix rec:      <https://ns.cascadeprotocol.org/records/v1-draft#> .
-@prefix health:   <https://ns.cascadeprotocol.org/health/v1#> .
-@prefix clinical: <https://ns.cascadeprotocol.org/clinical/v1#> .
-@prefix cascade:  <https://ns.cascadeprotocol.org/core/v1#> .
-
-<urn:uuid:ee8bbf4a-5169-861e-aa55-07f139d352fa>
-  a clinical:Medication ;
-  clinical:sourceRecordId "medst-ibuprofen-1" ;
-  rec:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/MedicationStatement/medst-ibuprofen-1> .
-
-<ni:///sha-256;DKAejKOzXsed87en7fcLFYSs0S2hCKZ9xComS-7s4UU>
-  prov:specializationOf <urn:uuid:ee8bbf4a-5169-861e-aa55-07f139d352fa> ;
-  clinical:clinicalIntent "reportedUse" ;
-  clinical:drugName "ibuprofen 600 MG Oral Tablet" ;
-  clinical:rxNormCode <http://www.nlm.nih.gov/research/umls/rxnorm/197806> ;
-  clinical:status "completed" ;
-  clinical:startDate "2026-01-10"^^xsd:date ;
-  clinical:endDate "2026-01-24"^^xsd:date ;
-  clinical:dosage "600 mg by mouth every 8 hours as needed for pain." ;
-  rec:patient <urn:uuid:24c23e99-ff68-841f-a7a4-ebe3bd997ada> .
-
-[] bridge:arrivedAs <ni:///sha-256;DKAejKOzXsed87en7fcLFYSs0S2hCKZ9xComS-7s4UU> ;
-  bridge:selector "" ;
-  prov:wasDerivedFrom <ni:///sha-256;OV_7fAF5tDwubnpXf9aSSZnLPeFhBrXteh22594a3BI> ;
-  prov:wasGeneratedBy _:import .
-
-<ni:///sha-256;OV_7fAF5tDwubnpXf9aSSZnLPeFhBrXteh22594a3BI>
-  a prov:Entity ;
-  bridge:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
-  pav:retrievedFrom <https://FHIR.Meridian.example/api/FHIR/R4/MedicationStatement/medst-ibuprofen-1> ;
-  pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
-  prov:qualifiedAttribution
-    [ prov:agent [ rdfs:label "Meridian Health System" ] ; prov:hadRole rec:author ] ,
-    [ prov:agent [ rdfs:label "Apple Health" ] ; prov:hadRole rec:transmitter ] ;
-  bridge:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
-  bridge:authenticatedAsProxy false ;
-  bridge:sourceFormatVersion "4.0.1" .
-
-_:import
-  a prov:Activity ;
-  prov:used <ni:///sha-256;OV_7fAF5tDwubnpXf9aSSZnLPeFhBrXteh22594a3BI> ;
-  rdfs:label "Apple Health export" ;
-  prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime ;
-  prov:qualifiedAssociation [
-    prov:hadPlan [ a prov:Plan ; rdfs:label "fhir-r4" ; pav:version "0.1.0" ] ;
-    prov:agent [ ]
-  ] .
+@prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix pav: <http://purl.org/pav/> .
+<ni:///sha-256;nceCh6D5Ll3qa3VhDiDGH-p1FhJhMykV3weqymIoB-Y> cascade:prescribedOrReported "reportedUse" ;
+	cascade:drugName "ibuprofen 600 MG Oral Tablet" ;
+	cascade:rxNormCode <https://ns.cascadeprotocol.org/codes/rxnorm/197806> ;
+	cascade:workflowStatus "completed" ;
+	cascade:medicationUseStartDate "2026-01-10"^^xsd:date ;
+	cascade:medicationUseEndDate "2026-01-24"^^xsd:date ;
+	cascade:dosage "600 mg by mouth every 8 hours as needed for pain." .
+_:c6a193f3c07c6befcb1cde6ea4b43a9f bridge:arrivedAs <ni:///sha-256;nceCh6D5Ll3qa3VhDiDGH-p1FhJhMykV3weqymIoB-Y> .
+<ni:///sha-256;nceCh6D5Ll3qa3VhDiDGH-p1FhJhMykV3weqymIoB-Y> cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> ;
+	prov:specializationOf <urn:uuid:1f887932-37fa-8aa7-8516-1991ba5e841e> .
+<urn:uuid:1f887932-37fa-8aa7-8516-1991ba5e841e> cascade:sourceRecordId "medst-ibuprofen-1" ;
+	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/MedicationStatement/medst-ibuprofen-1> ;
+	a cascade:PrescribedOrReportedMedication .
+_:c6a193f3c07c6befcb1cde6ea4b43a9f oa:hasSelector _:f66a347752faed16cf5218909c8d99fd ;
+	oa:hasSource <ni:///sha-256;OV_7fAF5tDwubnpXf9aSSZnLPeFhBrXteh22594a3BI> ;
+	prov:wasDerivedFrom <ni:///sha-256;OV_7fAF5tDwubnpXf9aSSZnLPeFhBrXteh22594a3BI> ;
+	prov:wasGeneratedBy _:9a936e97da681b7762eae5c1018f429b .
+_:f66a347752faed16cf5218909c8d99fd a oa:FragmentSelector ;
+	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "" .
+<ni:///sha-256;OV_7fAF5tDwubnpXf9aSSZnLPeFhBrXteh22594a3BI> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
+	pav:retrievedFrom <https://FHIR.Meridian.example/api/FHIR/R4/MedicationStatement/medst-ibuprofen-1> ;
+	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
+_:beb52d7dae6ebbe67c378402e5b93112 prov:agent _:10c51592e701a820a6bf10d97ee31650 .
+_:10c51592e701a820a6bf10d97ee31650 <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:beb52d7dae6ebbe67c378402e5b93112 prov:hadRole cascade:AuthorRole .
+<ni:///sha-256;OV_7fAF5tDwubnpXf9aSSZnLPeFhBrXteh22594a3BI> prov:qualifiedAttribution _:beb52d7dae6ebbe67c378402e5b93112 .
+_:f2c97b2b42a2468e7d0bb942194b0456 prov:agent _:9ebc0b9bf2d1c8eb8fc26eb46e8471b5 .
+_:9ebc0b9bf2d1c8eb8fc26eb46e8471b5 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
+_:f2c97b2b42a2468e7d0bb942194b0456 prov:hadRole cascade:TransmitterRole .
+<ni:///sha-256;OV_7fAF5tDwubnpXf9aSSZnLPeFhBrXteh22594a3BI> prov:qualifiedAttribution _:f2c97b2b42a2468e7d0bb942194b0456 ;
+	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
+	cascade:authenticatedAsProxy false ;
+	cascade:sourceFormatVersion "4.0.1" .
+_:9a936e97da681b7762eae5c1018f429b <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
+	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
+<ni:///sha-256;OV_7fAF5tDwubnpXf9aSSZnLPeFhBrXteh22594a3BI> a prov:Entity .
+_:9a936e97da681b7762eae5c1018f429b a prov:Activity ;
+	prov:used <ni:///sha-256;OV_7fAF5tDwubnpXf9aSSZnLPeFhBrXteh22594a3BI> ;
+	prov:qualifiedAssociation _:9af437c889da2b97cd6d0c16268e5a00 .
+_:9af437c889da2b97cd6d0c16268e5a00 prov:hadPlan _:f70c975c9db7b7f7876aafa74dd479e6 .
+_:f70c975c9db7b7f7876aafa74dd479e6 a prov:Plan ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "fhir-r4" ;
+	pav:version "0.1.0" .
+_:9af437c889da2b97cd6d0c16268e5a00 prov:agent _:e4c7cf7d2fb51e1af69415d060b72924 .
+_:e4c7cf7d2fb51e1af69415d060b72924 a prov:SoftwareAgent ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Cascade Bridge for Rust" ;
+	pav:version "0.1.0" .

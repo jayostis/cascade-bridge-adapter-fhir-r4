@@ -1,50 +1,54 @@
-@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
-@prefix prov:     <http://www.w3.org/ns/prov#> .
-@prefix pav:      <http://purl.org/pav/> .
-@prefix bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
-@prefix rec:      <https://ns.cascadeprotocol.org/records/v1-draft#> .
-@prefix health:   <https://ns.cascadeprotocol.org/health/v1#> .
-@prefix clinical: <https://ns.cascadeprotocol.org/clinical/v1#> .
-@prefix cascade:  <https://ns.cascadeprotocol.org/core/v1#> .
-
-<urn:uuid:3743b08a-d026-8c6b-85fa-d427844b46d6>
-  a clinical:Medication ;
-  clinical:sourceRecordId "medrx-metformin-3" ;
-  rec:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/MedicationRequest/medrx-metformin-3> .
-
-<ni:///sha-256;ApCscqUt4qhoOpigwjdrf9rf3KMgMIhYslGBn0mWwGQ>
-  prov:specializationOf <urn:uuid:3743b08a-d026-8c6b-85fa-d427844b46d6> ;
-  clinical:clinicalIntent "prescribed" ;
-  clinical:drugName "Metformin 500 mg tablet" ;
-  clinical:rxNormCode <http://www.nlm.nih.gov/research/umls/rxnorm/861007> ;
-  rec:ndcCode <https://ns.cascadeprotocol.org/codes/ndc11/00093104801> ;
-  clinical:status "active" ;
-  clinical:startDate "2026-02-18"^^xsd:date ;
-  rec:patient <urn:uuid:24c23e99-ff68-841f-a7a4-ebe3bd997ada> .
-
-[] bridge:arrivedAs <ni:///sha-256;ApCscqUt4qhoOpigwjdrf9rf3KMgMIhYslGBn0mWwGQ> ;
-  bridge:selector "/entry/1" ;
-  prov:wasDerivedFrom <ni:///sha-256;EecD2on0y2LdT4yIJmZbjv5rPnDtZPRdusuIvhT6etI> ;
-  prov:wasGeneratedBy _:import .
-
-<ni:///sha-256;EecD2on0y2LdT4yIJmZbjv5rPnDtZPRdusuIvhT6etI>
-  a prov:Entity ;
-  bridge:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
-  pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
-  prov:qualifiedAttribution
-    [ prov:agent [ rdfs:label "Meridian Health System" ] ; prov:hadRole rec:author ] ,
-    [ prov:agent [ rdfs:label "Apple Health" ] ; prov:hadRole rec:transmitter ] ;
-  bridge:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
-  bridge:authenticatedAsProxy false ;
-  bridge:sourceFormatVersion "4.0.1" .
-
-_:import
-  a prov:Activity ;
-  prov:used <ni:///sha-256;EecD2on0y2LdT4yIJmZbjv5rPnDtZPRdusuIvhT6etI> ;
-  rdfs:label "Apple Health export" ;
-  prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime ;
-  prov:qualifiedAssociation [
-    prov:hadPlan [ a prov:Plan ; rdfs:label "fhir-r4" ; pav:version "0.1.0" ] ;
-    prov:agent [ ]
-  ] .
+@prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix pav: <http://purl.org/pav/> .
+<ni:///sha-256;mUjRK5Vz7YcTJ2kPeEZW_qEQU_IqK_XdCOt2vm6AgXM> cascade:prescribedOrReported "prescribed" ;
+	cascade:drugName "Metformin 500 mg tablet" ;
+	cascade:rxNormCode <https://ns.cascadeprotocol.org/codes/rxnorm/861007> ;
+	cascade:workflowStatus "active" ;
+	cascade:prescriptionWrittenDate "2026-02-18"^^xsd:date ;
+	cascade:ndcCode <https://ns.cascadeprotocol.org/codes/ndc11/00093104801> .
+_:777f784ee8ee2b6c48866afabdaa0889 bridge:arrivedAs <ni:///sha-256;mUjRK5Vz7YcTJ2kPeEZW_qEQU_IqK_XdCOt2vm6AgXM> .
+<ni:///sha-256;mUjRK5Vz7YcTJ2kPeEZW_qEQU_IqK_XdCOt2vm6AgXM> cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> ;
+	prov:specializationOf <urn:uuid:8ceac133-4c7f-8cb5-9dc3-e8ef5092a65d> .
+<urn:uuid:8ceac133-4c7f-8cb5-9dc3-e8ef5092a65d> cascade:sourceRecordId "medrx-metformin-3" ;
+	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/MedicationRequest/medrx-metformin-3> ;
+	a cascade:PrescribedOrReportedMedication .
+_:777f784ee8ee2b6c48866afabdaa0889 oa:hasSelector _:6b43ca5caea31d5ac01f21db5b7f1373 ;
+	oa:hasSource <ni:///sha-256;EecD2on0y2LdT4yIJmZbjv5rPnDtZPRdusuIvhT6etI> ;
+	prov:wasDerivedFrom <ni:///sha-256;EecD2on0y2LdT4yIJmZbjv5rPnDtZPRdusuIvhT6etI> ;
+	prov:wasGeneratedBy _:12dca0c769bd83a90fd46f1f3c7b4b31 .
+_:6b43ca5caea31d5ac01f21db5b7f1373 a oa:FragmentSelector ;
+	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/entry/1" .
+<ni:///sha-256;EecD2on0y2LdT4yIJmZbjv5rPnDtZPRdusuIvhT6etI> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
+	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
+_:51bc002b8491d1acc87ea1564c7409ef prov:agent _:c10e0df16989ee32589f3357b2a2c669 .
+_:c10e0df16989ee32589f3357b2a2c669 <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:51bc002b8491d1acc87ea1564c7409ef prov:hadRole cascade:AuthorRole .
+<ni:///sha-256;EecD2on0y2LdT4yIJmZbjv5rPnDtZPRdusuIvhT6etI> prov:qualifiedAttribution _:51bc002b8491d1acc87ea1564c7409ef .
+_:3d3d5d346b3bcbb85fc95a47c09e8cb3 prov:agent _:35333378c110261c5a74480650e222d2 .
+_:35333378c110261c5a74480650e222d2 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
+_:3d3d5d346b3bcbb85fc95a47c09e8cb3 prov:hadRole cascade:TransmitterRole .
+<ni:///sha-256;EecD2on0y2LdT4yIJmZbjv5rPnDtZPRdusuIvhT6etI> prov:qualifiedAttribution _:3d3d5d346b3bcbb85fc95a47c09e8cb3 ;
+	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
+	cascade:authenticatedAsProxy false ;
+	cascade:sourceFormatVersion "4.0.1" .
+_:12dca0c769bd83a90fd46f1f3c7b4b31 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
+	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
+<ni:///sha-256;EecD2on0y2LdT4yIJmZbjv5rPnDtZPRdusuIvhT6etI> a prov:Entity .
+_:12dca0c769bd83a90fd46f1f3c7b4b31 a prov:Activity ;
+	prov:used <ni:///sha-256;EecD2on0y2LdT4yIJmZbjv5rPnDtZPRdusuIvhT6etI> ;
+	prov:qualifiedAssociation _:9ad545493ae10dfcadf657e0c5f83882 .
+_:9ad545493ae10dfcadf657e0c5f83882 prov:hadPlan _:c550123905b4b700b5d2e54e7ed52503 .
+_:c550123905b4b700b5d2e54e7ed52503 a prov:Plan ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "fhir-r4" ;
+	pav:version "0.1.0" .
+_:9ad545493ae10dfcadf657e0c5f83882 prov:agent _:ed45d6b3866c59db5a409a6a141c8b39 .
+_:ed45d6b3866c59db5a409a6a141c8b39 a prov:SoftwareAgent ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Cascade Bridge for Rust" ;
+	pav:version "0.1.0" .

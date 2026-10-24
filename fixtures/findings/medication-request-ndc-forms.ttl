@@ -2,18 +2,18 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:fca0216b07341eb3faf64f5421f63cec a oa:FragmentSelector ;
+_:a4388c92b4964318a67ff74f8c662020 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "" ;
-	oa:refinedBy _:e8f99e22cbc65b881aef5b30810e739c .
-_:cd23041125c35c53cc2ebc0bb18f9de2 oa:hasSource <../in/medication-request-ndc-forms.json> .
-_:e8f99e22cbc65b881aef5b30810e739c rdf:value "/medicationCodeableConcept/coding/5/code" ;
+	rdf:value "" .
+_:b9eb78a6352d841e069d391c61be012c oa:hasSource <../in/medication-request-ndc-forms.json> .
+_:a4388c92b4964318a67ff74f8c662020 oa:refinedBy _:c65b73da8e7c09ac6073d2e258d316 .
+_:c65b73da8e7c09ac6073d2e258d316 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	a oa:FragmentSelector .
-_:cd23041125c35c53cc2ebc0bb18f9de2 oa:hasSelector _:fca0216b07341eb3faf64f5421f63cec .
-_:f70e33ce3d9a104c830dcb59f7ba8ced oa:hasTarget _:cd23041125c35c53cc2ebc0bb18f9de2 ;
+	rdf:value "/medicationCodeableConcept/coding/5/code" .
+_:b9eb78a6352d841e069d391c61be012c oa:hasSelector _:a4388c92b4964318a67ff74f8c662020 .
+_:fa3852f64a89d3a3bfc6a4bc367163c5 oa:hasTarget _:b9eb78a6352d841e069d391c61be012c ;
 	sh:resultSeverity sh:Info ;
-	sh:value "0069153066" ;
-	oa:motivatedBy oa:classifying ;
+	a oa:Annotation ;
 	oa:hasBody fhirr4:ndcNotNormalised ;
-	a oa:Annotation .
+	oa:motivatedBy oa:classifying ;
+	sh:value "0069153066" .

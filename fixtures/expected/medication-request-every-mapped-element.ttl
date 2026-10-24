@@ -1,53 +1,57 @@
-@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
-@prefix prov:     <http://www.w3.org/ns/prov#> .
-@prefix pav:      <http://purl.org/pav/> .
-@prefix bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
-@prefix rec:      <https://ns.cascadeprotocol.org/records/v1-draft#> .
-@prefix health:   <https://ns.cascadeprotocol.org/health/v1#> .
-@prefix clinical: <https://ns.cascadeprotocol.org/clinical/v1#> .
-@prefix cascade:  <https://ns.cascadeprotocol.org/core/v1#> .
-
-<urn:uuid:959184eb-c278-8f7d-ae13-dcb74f3a4bb7>
-  a clinical:Medication ;
-  clinical:sourceRecordId "medrx-atorvastatin-1" ;
-  rec:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/MedicationRequest/medrx-atorvastatin-1> .
-
-<ni:///sha-256;_8mhCa2qc0u3eT1SvTaosCHdIhni8y49bjAoww5jtgY>
-  prov:specializationOf <urn:uuid:959184eb-c278-8f7d-ae13-dcb74f3a4bb7> ;
-  clinical:clinicalIntent "prescribed" ;
-  clinical:drugName "Atorvastatin 10 mg tablet" ;
-  clinical:rxNormCode <http://www.nlm.nih.gov/research/umls/rxnorm/617312> ;
-  clinical:status "active" ;
-  clinical:startDate "2026-03-02"^^xsd:date ;
-  clinical:dosage "Take 1 tablet by mouth at bedtime." ;
-  rec:patient <urn:uuid:24c23e99-ff68-841f-a7a4-ebe3bd997ada> .
-
-[] bridge:arrivedAs <ni:///sha-256;_8mhCa2qc0u3eT1SvTaosCHdIhni8y49bjAoww5jtgY> ;
-  pav:version "2" ;
-  pav:lastUpdateOn "2026-03-02T09:15:00Z"^^xsd:dateTime ;
-  bridge:selector "" ;
-  prov:wasDerivedFrom <ni:///sha-256;7bBazRJX5AEBT89SGpRxHvZ20pzhKXPs8CexzvUAWg8> ;
-  prov:wasGeneratedBy _:import .
-
-<ni:///sha-256;7bBazRJX5AEBT89SGpRxHvZ20pzhKXPs8CexzvUAWg8>
-  a prov:Entity ;
-  bridge:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
-  pav:retrievedFrom <https://FHIR.Meridian.example/api/FHIR/R4/MedicationRequest/medrx-atorvastatin-1> ;
-  pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
-  prov:qualifiedAttribution
-    [ prov:agent [ rdfs:label "Meridian Health System" ] ; prov:hadRole rec:author ] ,
-    [ prov:agent [ rdfs:label "Apple Health" ] ; prov:hadRole rec:transmitter ] ;
-  bridge:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
-  bridge:authenticatedAsProxy false ;
-  bridge:sourceFormatVersion "4.0.1" .
-
-_:import
-  a prov:Activity ;
-  prov:used <ni:///sha-256;7bBazRJX5AEBT89SGpRxHvZ20pzhKXPs8CexzvUAWg8> ;
-  rdfs:label "Apple Health export" ;
-  prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime ;
-  prov:qualifiedAssociation [
-    prov:hadPlan [ a prov:Plan ; rdfs:label "fhir-r4" ; pav:version "0.1.0" ] ;
-    prov:agent [ ]
-  ] .
+@prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix pav: <http://purl.org/pav/> .
+<ni:///sha-256;Ze52sR7KwL76tcaHLED3oaVrxNyu1vc9QUDrubgI47E> cascade:prescribedOrReported "prescribed" ;
+	cascade:drugName "Atorvastatin 10 mg tablet" ;
+	cascade:rxNormCode <https://ns.cascadeprotocol.org/codes/rxnorm/617312> ;
+	cascade:workflowStatus "active" ;
+	cascade:prescriptionWrittenDate "2026-03-02"^^xsd:date ;
+	cascade:dosage "Take 1 tablet by mouth at bedtime." .
+_:4bae4c38d5736b1d72c90711ab73204 pav:lastUpdateOn "2026-03-02T09:15:00Z"^^xsd:dateTime ;
+	pav:version "2" ;
+	bridge:arrivedAs <ni:///sha-256;Ze52sR7KwL76tcaHLED3oaVrxNyu1vc9QUDrubgI47E> .
+<ni:///sha-256;Ze52sR7KwL76tcaHLED3oaVrxNyu1vc9QUDrubgI47E> cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> ;
+	prov:specializationOf <urn:uuid:e10d33f4-5d5b-889d-8c36-c05a9850a9e8> .
+<urn:uuid:e10d33f4-5d5b-889d-8c36-c05a9850a9e8> cascade:sourceRecordId "medrx-atorvastatin-1" ;
+	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/MedicationRequest/medrx-atorvastatin-1> ;
+	a cascade:PrescribedOrReportedMedication .
+_:4bae4c38d5736b1d72c90711ab73204 oa:hasSelector _:6d6f5ea2e59423cea494b1080a1f4f8b ;
+	oa:hasSource <ni:///sha-256;7bBazRJX5AEBT89SGpRxHvZ20pzhKXPs8CexzvUAWg8> ;
+	prov:wasDerivedFrom <ni:///sha-256;7bBazRJX5AEBT89SGpRxHvZ20pzhKXPs8CexzvUAWg8> ;
+	prov:wasGeneratedBy _:fcb3e046b697cdaa2cfb977db368d22a .
+_:6d6f5ea2e59423cea494b1080a1f4f8b a oa:FragmentSelector ;
+	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "" .
+<ni:///sha-256;7bBazRJX5AEBT89SGpRxHvZ20pzhKXPs8CexzvUAWg8> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
+	pav:retrievedFrom <https://FHIR.Meridian.example/api/FHIR/R4/MedicationRequest/medrx-atorvastatin-1> ;
+	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
+_:e77d368659ab67ee9766cfac1fb2d003 prov:agent _:b4814a7f245bad42b82337a0d92ff929 .
+_:b4814a7f245bad42b82337a0d92ff929 <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:e77d368659ab67ee9766cfac1fb2d003 prov:hadRole cascade:AuthorRole .
+<ni:///sha-256;7bBazRJX5AEBT89SGpRxHvZ20pzhKXPs8CexzvUAWg8> prov:qualifiedAttribution _:e77d368659ab67ee9766cfac1fb2d003 .
+_:21073e43314a991ebb9235a27f40e56 prov:agent _:571d7b81ad746543bff715122cd4dca7 .
+_:571d7b81ad746543bff715122cd4dca7 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
+_:21073e43314a991ebb9235a27f40e56 prov:hadRole cascade:TransmitterRole .
+<ni:///sha-256;7bBazRJX5AEBT89SGpRxHvZ20pzhKXPs8CexzvUAWg8> prov:qualifiedAttribution _:21073e43314a991ebb9235a27f40e56 ;
+	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
+	cascade:authenticatedAsProxy false ;
+	cascade:sourceFormatVersion "4.0.1" .
+_:fcb3e046b697cdaa2cfb977db368d22a <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
+	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
+<ni:///sha-256;7bBazRJX5AEBT89SGpRxHvZ20pzhKXPs8CexzvUAWg8> a prov:Entity .
+_:fcb3e046b697cdaa2cfb977db368d22a a prov:Activity ;
+	prov:used <ni:///sha-256;7bBazRJX5AEBT89SGpRxHvZ20pzhKXPs8CexzvUAWg8> ;
+	prov:qualifiedAssociation _:c74da2e46be9d08808e97b5c81949a1 .
+_:c74da2e46be9d08808e97b5c81949a1 prov:hadPlan _:fb0278cd045982596b2135cedca2c355 .
+_:fb0278cd045982596b2135cedca2c355 a prov:Plan ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "fhir-r4" ;
+	pav:version "0.1.0" .
+_:c74da2e46be9d08808e97b5c81949a1 prov:agent _:d02a0687b2191c99d562594912283165 .
+_:d02a0687b2191c99d562594912283165 a prov:SoftwareAgent ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Cascade Bridge for Rust" ;
+	pav:version "0.1.0" .

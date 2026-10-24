@@ -1,50 +1,53 @@
-@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
-@prefix prov:     <http://www.w3.org/ns/prov#> .
-@prefix pav:      <http://purl.org/pav/> .
-@prefix bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
-@prefix rec:      <https://ns.cascadeprotocol.org/records/v1-draft#> .
-@prefix health:   <https://ns.cascadeprotocol.org/health/v1#> .
-@prefix clinical: <https://ns.cascadeprotocol.org/clinical/v1#> .
-@prefix cascade:  <https://ns.cascadeprotocol.org/core/v1#> .
-@prefix foaf:     <http://xmlns.com/foaf/0.1/> .
-
-<urn:uuid:4ab8301b-9152-8878-8677-232edaedcd1e>
-  a clinical:Procedure ;
-  clinical:sourceRecordId "proc-colonoscopy-1" ;
-  rec:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Procedure/proc-colonoscopy-1> .
-
-<ni:///sha-256;Pi1M8qD-OrppWcObZv9gC1rGYLJnJZZJgkOAZSdJSuk>
-  prov:specializationOf <urn:uuid:4ab8301b-9152-8878-8677-232edaedcd1e> ;
-  clinical:procedureDate "2025-02-18"^^xsd:date ;
-  clinical:procedureName "Colonoscopy" ;
-  clinical:snomedCode "73761001" ;
-  clinical:status "completed" ;
-  rec:patient <urn:uuid:24c23e99-ff68-841f-a7a4-ebe3bd997ada> .
-
-[] bridge:arrivedAs <ni:///sha-256;Pi1M8qD-OrppWcObZv9gC1rGYLJnJZZJgkOAZSdJSuk> ;
-  bridge:selector "" ;
-  prov:wasDerivedFrom <ni:///sha-256;pqjpVVKXNo3lwzArdD8c_lPezKykpYEqlnJEUmo7A6Y> ;
-  prov:wasGeneratedBy _:import .
-
-<ni:///sha-256;pqjpVVKXNo3lwzArdD8c_lPezKykpYEqlnJEUmo7A6Y>
-  a prov:Entity ;
-  bridge:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
-  pav:retrievedFrom <https://FHIR.Meridian.example/api/FHIR/R4/Procedure/proc-colonoscopy-1> ;
-  pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
-  prov:qualifiedAttribution
-    [ prov:agent [ rdfs:label "Meridian Health System" ] ; prov:hadRole rec:author ] ,
-    [ prov:agent [ rdfs:label "Apple Health" ] ; prov:hadRole rec:transmitter ] ;
-  bridge:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
-  bridge:authenticatedAsProxy false ;
-  bridge:sourceFormatVersion "4.0.1" .
-
-_:import
-  a prov:Activity ;
-  prov:used <ni:///sha-256;pqjpVVKXNo3lwzArdD8c_lPezKykpYEqlnJEUmo7A6Y> ;
-  rdfs:label "Apple Health export" ;
-  prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime ;
-  prov:qualifiedAssociation [
-    prov:hadPlan [ a prov:Plan ; rdfs:label "fhir-r4" ; pav:version "0.1.0" ] ;
-    prov:agent [ ]
-  ] .
+@prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix pav: <http://purl.org/pav/> .
+<ni:///sha-256;wleAN-6BqXT0JTbiiQUUQhHyF1Q7FROa5Dpp7CcYlRc> cascade:procedureDate "2025-02-18"^^xsd:date ;
+	cascade:procedureName "Colonoscopy" ;
+	cascade:snomedCode <http://snomed.info/id/73761001> ;
+	cascade:workflowStatus "completed" .
+_:4ac4605fe139b064729a96e6e82cd81e bridge:arrivedAs <ni:///sha-256;wleAN-6BqXT0JTbiiQUUQhHyF1Q7FROa5Dpp7CcYlRc> .
+<ni:///sha-256;wleAN-6BqXT0JTbiiQUUQhHyF1Q7FROa5Dpp7CcYlRc> cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> ;
+	prov:specializationOf <urn:uuid:c6f34248-0b58-8e8a-8e52-f426d1a8be5c> .
+<urn:uuid:c6f34248-0b58-8e8a-8e52-f426d1a8be5c> cascade:sourceRecordId "proc-colonoscopy-1" ;
+	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Procedure/proc-colonoscopy-1> ;
+	a cascade:MedicalProcedure .
+_:4ac4605fe139b064729a96e6e82cd81e oa:hasSelector _:ebaf94236d6a09780dd2703c8edac0d5 ;
+	oa:hasSource <ni:///sha-256;pqjpVVKXNo3lwzArdD8c_lPezKykpYEqlnJEUmo7A6Y> ;
+	prov:wasDerivedFrom <ni:///sha-256;pqjpVVKXNo3lwzArdD8c_lPezKykpYEqlnJEUmo7A6Y> ;
+	prov:wasGeneratedBy _:98a2447c476fc2c7ce790efe720414b .
+_:ebaf94236d6a09780dd2703c8edac0d5 a oa:FragmentSelector ;
+	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "" .
+<ni:///sha-256;pqjpVVKXNo3lwzArdD8c_lPezKykpYEqlnJEUmo7A6Y> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
+	pav:retrievedFrom <https://FHIR.Meridian.example/api/FHIR/R4/Procedure/proc-colonoscopy-1> ;
+	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
+_:f98d922cc2ddee49206455229331e7f5 prov:agent _:dbbaf99aeb52c1d1e36172f68a2c6c49 .
+_:dbbaf99aeb52c1d1e36172f68a2c6c49 <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:f98d922cc2ddee49206455229331e7f5 prov:hadRole cascade:AuthorRole .
+<ni:///sha-256;pqjpVVKXNo3lwzArdD8c_lPezKykpYEqlnJEUmo7A6Y> prov:qualifiedAttribution _:f98d922cc2ddee49206455229331e7f5 .
+_:4ab9ddffcf1b2d86d28d03b7e9923e3a prov:agent _:50a0b7a34b6497bc1318f68373b1c32d .
+_:50a0b7a34b6497bc1318f68373b1c32d <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
+_:4ab9ddffcf1b2d86d28d03b7e9923e3a prov:hadRole cascade:TransmitterRole .
+<ni:///sha-256;pqjpVVKXNo3lwzArdD8c_lPezKykpYEqlnJEUmo7A6Y> prov:qualifiedAttribution _:4ab9ddffcf1b2d86d28d03b7e9923e3a ;
+	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
+	cascade:authenticatedAsProxy false ;
+	cascade:sourceFormatVersion "4.0.1" .
+_:98a2447c476fc2c7ce790efe720414b <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
+	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
+<ni:///sha-256;pqjpVVKXNo3lwzArdD8c_lPezKykpYEqlnJEUmo7A6Y> a prov:Entity .
+_:98a2447c476fc2c7ce790efe720414b a prov:Activity ;
+	prov:used <ni:///sha-256;pqjpVVKXNo3lwzArdD8c_lPezKykpYEqlnJEUmo7A6Y> ;
+	prov:qualifiedAssociation _:ec5b7a5d84913a61bd5c1cd22626fca2 .
+_:ec5b7a5d84913a61bd5c1cd22626fca2 prov:hadPlan _:f9b1f0dae52e049b0981c279aa4740ff .
+_:f9b1f0dae52e049b0981c279aa4740ff a prov:Plan ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "fhir-r4" ;
+	pav:version "0.1.0" .
+_:ec5b7a5d84913a61bd5c1cd22626fca2 prov:agent _:54a273c7c181d58fa4f607f9ef61ef6a .
+_:54a273c7c181d58fa4f607f9ef61ef6a a prov:SoftwareAgent ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Cascade Bridge for Rust" ;
+	pav:version "0.1.0" .
