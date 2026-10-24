@@ -34,6 +34,10 @@
     <#patient-no-id>
     <#bundle-two-identical-id-less-allergies>
     <#bundle-urn-uuid-full-urls>
+    <#bundle-document-custodian-and-authors>
+    <#documentreference-contained-custodian>
+    <#bundle-document-without-custodian>
+    <#document-and-contained-custodian-name-one-organization>
     <#bundle-patient-reference-urn-not-held>
     <#bundle-patient-reference-relative-to-urn>
     <#bundle-repeated-condition-id>
@@ -425,6 +429,60 @@
     bridge:expectedGraph <expected/bundle-urn-uuid-full-urls.ttl> ;
     bridge:expectedFindings <findings/bundle-urn-uuid-full-urls.ttl>
   ] .
+
+<#bundle-document-custodian-and-authors> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-document-custodian-and-authors" ;
+  mf:action [
+    bridge:input <in/bundle-document-custodian-and-authors.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/no-server.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-document-custodian-and-authors.ttl> ;
+    bridge:expectedFindings <findings/bundle-document-custodian-and-authors.ttl>
+  ] .
+
+<#documentreference-contained-custodian> a bridge:IsomorphicConversionTest ;
+  mf:name "documentreference-contained-custodian" ;
+  mf:action [
+    bridge:input <in/documentreference-contained-custodian.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/no-server.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/documentreference-contained-custodian.ttl> ;
+    bridge:expectedFindings <findings/documentreference-contained-custodian.ttl>
+  ] .
+
+<#bundle-document-without-custodian> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-document-without-custodian" ;
+  mf:action [
+    bridge:input <in/bundle-document-without-custodian.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/no-server.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-document-without-custodian.ttl> ;
+    bridge:expectedFindings <findings/bundle-document-without-custodian.ttl>
+  ] .
+
+<#document-and-contained-custodian-name-one-organization> a bridge:IdentityRelationTest ;
+  mf:name "document-and-contained-custodian-name-one-organization" ;
+  rdfs:comment "A document Bundle's custodian entry and a DocumentReference's contained custodian holding one NPI name one organization record." ;
+  mf:action [
+    bridge:conversion [
+      bridge:input <in/bundle-document-custodian-and-authors.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+      bridge:facts <facts/no-server.ttl> ;
+      bridge:selector "/entry/2"
+    ] , [
+      bridge:input <in/documentreference-contained-custodian.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/no-server.ttl> ;
+      bridge:selector "/contained/0"
+    ]
+  ] ;
+  mf:result [ bridge:sameRecord true ] .
 
 <#bundle-patient-reference-urn-not-held> a bridge:IsomorphicConversionTest ;
   mf:name "bundle-patient-reference-urn-not-held" ;

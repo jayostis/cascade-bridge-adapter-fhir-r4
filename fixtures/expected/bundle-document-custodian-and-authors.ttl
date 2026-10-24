@@ -1,0 +1,94 @@
+@prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix pav: <http://purl.org/pav/> .
+<ni:///sha-256;GW22mNc158bgayF-vby1RAHNYBCedHA6EapoS2zEUUk> foaf:familyName "Okonkwo" ;
+	foaf:givenName "Ada" ;
+	cascade:dateOfBirth "1979-06-02"^^xsd:date .
+<urn:uuid:3173c54d-45f7-8efa-b86a-257bf6d7c409> a cascade:PatientProfile .
+<ni:///sha-256;GW22mNc158bgayF-vby1RAHNYBCedHA6EapoS2zEUUk> prov:specializationOf <urn:uuid:3173c54d-45f7-8efa-b86a-257bf6d7c409> .
+_:aef42775418ce411f597f803a53b07f3 bridge:arrivedAs <ni:///sha-256;GW22mNc158bgayF-vby1RAHNYBCedHA6EapoS2zEUUk> ;
+	oa:hasSelector _:fdb8c95ad8c56c502cc3d6459f1a45f0 ;
+	oa:hasSource <ni:///sha-256;ubvi-LvrcaMOPm5w_3Y3lRXvqiFFnDGrqXr0rJxAD84> ;
+	prov:wasDerivedFrom <ni:///sha-256;ubvi-LvrcaMOPm5w_3Y3lRXvqiFFnDGrqXr0rJxAD84> ;
+	prov:wasGeneratedBy _:a46bcd6ba5fac03ee5c230ef643da48d .
+_:fdb8c95ad8c56c502cc3d6459f1a45f0 a oa:FragmentSelector ;
+	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/entry/1" .
+<urn:uuid:b272d9d2-08db-8fd9-9d33-eca1e48c75ba> a cascade:Organization .
+<ni:///sha-256;ubvi-LvrcaMOPm5w_3Y3lRXvqiFFnDGrqXr0rJxAD84> prov:qualifiedAttribution _:f07715bbda985c5d6674158658a5657d .
+_:f07715bbda985c5d6674158658a5657d prov:agent <urn:uuid:b272d9d2-08db-8fd9-9d33-eca1e48c75ba> ;
+	prov:hadRole cascade:CustodianRole .
+<ni:///sha-256;S8Fa_wp_GgEILd_ckcSEmNQGJppHNzHqA8Z2Zl-7TFk> prov:specializationOf <urn:uuid:b272d9d2-08db-8fd9-9d33-eca1e48c75ba> .
+_:ef4765fd6de0de4fb73beb7382491d8b bridge:arrivedAs <ni:///sha-256;S8Fa_wp_GgEILd_ckcSEmNQGJppHNzHqA8Z2Zl-7TFk> .
+<ni:///sha-256;S8Fa_wp_GgEILd_ckcSEmNQGJppHNzHqA8Z2Zl-7TFk> foaf:name "Kestrel Harbor Hospital" ;
+	org:identifier "1234567893"^^<http://hl7.org/fhir/sid/us-npi> , "KH"^^<https://kestrel.example/organization-ids> ;
+	cascade:organizationAddress "1200 Harbor Way\nBuilding C\nKestrel Harbor\nWA\n98000\nUS" .
+_:ef4765fd6de0de4fb73beb7382491d8b oa:hasSelector _:af4450fb510be8cc39f149a5950f2c1b ;
+	oa:hasSource <ni:///sha-256;ubvi-LvrcaMOPm5w_3Y3lRXvqiFFnDGrqXr0rJxAD84> ;
+	prov:wasDerivedFrom <ni:///sha-256;ubvi-LvrcaMOPm5w_3Y3lRXvqiFFnDGrqXr0rJxAD84> ;
+	prov:wasGeneratedBy _:a46bcd6ba5fac03ee5c230ef643da48d .
+_:af4450fb510be8cc39f149a5950f2c1b a oa:FragmentSelector ;
+	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/entry/2" .
+<urn:uuid:5f0b3af1-bc5d-84fc-a2fc-3551a9d2d8dc> a cascade:Organization .
+<ni:///sha-256;ubvi-LvrcaMOPm5w_3Y3lRXvqiFFnDGrqXr0rJxAD84> prov:qualifiedAttribution _:ffb93fcc3d30ccb81c785c715a79aeb5 .
+_:ffb93fcc3d30ccb81c785c715a79aeb5 prov:agent <urn:uuid:5f0b3af1-bc5d-84fc-a2fc-3551a9d2d8dc> ;
+	prov:hadRole cascade:AuthorRole .
+<ni:///sha-256;_eEf45YnUxPjgcCW0ZsmMJ0oNtrKjACrO38c9PWvZ1g> prov:specializationOf <urn:uuid:5f0b3af1-bc5d-84fc-a2fc-3551a9d2d8dc> .
+_:f5bf72fb3a62dec3d3c15d2b1fba0b25 bridge:arrivedAs <ni:///sha-256;_eEf45YnUxPjgcCW0ZsmMJ0oNtrKjACrO38c9PWvZ1g> .
+<ni:///sha-256;_eEf45YnUxPjgcCW0ZsmMJ0oNtrKjACrO38c9PWvZ1g> foaf:name "Fernhill Family Clinic" ;
+	org:identifier "CLINIC-7"^^<urn:oid:2.16.840.1.113883.19.5.2> ;
+	cascade:organizationAddress "14 Fern Hill Road, Kestrel Harbor, WA 98001" .
+_:f5bf72fb3a62dec3d3c15d2b1fba0b25 oa:hasSelector _:f221d09c286debb4c6ce67edc69e2921 ;
+	oa:hasSource <ni:///sha-256;ubvi-LvrcaMOPm5w_3Y3lRXvqiFFnDGrqXr0rJxAD84> ;
+	prov:wasDerivedFrom <ni:///sha-256;ubvi-LvrcaMOPm5w_3Y3lRXvqiFFnDGrqXr0rJxAD84> ;
+	prov:wasGeneratedBy _:a46bcd6ba5fac03ee5c230ef643da48d .
+_:f221d09c286debb4c6ce67edc69e2921 a oa:FragmentSelector ;
+	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/entry/3" .
+<ni:///sha-256;De4Ynmr0M0t5ZDKyh4BjHOKHgb9DlmvK67P4D8Pxz0U> cascade:conditionName "Hypertension" ;
+	cascade:snomedCode <http://snomed.info/id/38341003> .
+<urn:uuid:5e9f0df4-1242-8e0a-8d58-103be139bd7a> a cascade:ProblemOrDiagnosis .
+<ni:///sha-256;De4Ynmr0M0t5ZDKyh4BjHOKHgb9DlmvK67P4D8Pxz0U> prov:specializationOf <urn:uuid:5e9f0df4-1242-8e0a-8d58-103be139bd7a> ;
+	cascade:patient <urn:uuid:3173c54d-45f7-8efa-b86a-257bf6d7c409> .
+_:c179a6b81dd61368f48529ba4d37b591 bridge:arrivedAs <ni:///sha-256;De4Ynmr0M0t5ZDKyh4BjHOKHgb9DlmvK67P4D8Pxz0U> ;
+	oa:hasSelector _:296396a11fed669a4e85d868880ae824 ;
+	oa:hasSource <ni:///sha-256;ubvi-LvrcaMOPm5w_3Y3lRXvqiFFnDGrqXr0rJxAD84> ;
+	prov:wasDerivedFrom <ni:///sha-256;ubvi-LvrcaMOPm5w_3Y3lRXvqiFFnDGrqXr0rJxAD84> ;
+	prov:wasGeneratedBy _:a46bcd6ba5fac03ee5c230ef643da48d .
+_:296396a11fed669a4e85d868880ae824 a oa:FragmentSelector ;
+	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/entry/6" .
+<ni:///sha-256;ubvi-LvrcaMOPm5w_3Y3lRXvqiFFnDGrqXr0rJxAD84> pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
+_:17add8525c7ccd876496a55b50126f99 prov:agent _:f4bbb4b3c9c2e1d659cb2d673ea62930 .
+_:f4bbb4b3c9c2e1d659cb2d673ea62930 <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:17add8525c7ccd876496a55b50126f99 prov:hadRole cascade:AuthorRole .
+<ni:///sha-256;ubvi-LvrcaMOPm5w_3Y3lRXvqiFFnDGrqXr0rJxAD84> prov:qualifiedAttribution _:17add8525c7ccd876496a55b50126f99 .
+_:a5646d1fb55d1d7c9bf237bfc1c7134d prov:agent _:c28643e3242d8d097462e480e587c2a8 .
+_:c28643e3242d8d097462e480e587c2a8 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
+_:a5646d1fb55d1d7c9bf237bfc1c7134d prov:hadRole cascade:TransmitterRole .
+<ni:///sha-256;ubvi-LvrcaMOPm5w_3Y3lRXvqiFFnDGrqXr0rJxAD84> prov:qualifiedAttribution _:a5646d1fb55d1d7c9bf237bfc1c7134d ;
+	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
+	cascade:authenticatedAsProxy false ;
+	cascade:sourceFormatVersion "4.0.1" .
+_:a46bcd6ba5fac03ee5c230ef643da48d <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
+	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
+<ni:///sha-256;ubvi-LvrcaMOPm5w_3Y3lRXvqiFFnDGrqXr0rJxAD84> a prov:Entity .
+_:a46bcd6ba5fac03ee5c230ef643da48d a prov:Activity ;
+	prov:used <ni:///sha-256;ubvi-LvrcaMOPm5w_3Y3lRXvqiFFnDGrqXr0rJxAD84> ;
+	prov:qualifiedAssociation _:e4de85cf6f803b4f15296b7be420193b .
+_:e4de85cf6f803b4f15296b7be420193b prov:hadPlan _:5f1d57e24c28f895810b47e0c0c4519d .
+_:5f1d57e24c28f895810b47e0c0c4519d a prov:Plan ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "fhir-r4" ;
+	pav:version "0.1.0" .
+_:e4de85cf6f803b4f15296b7be420193b prov:agent _:63766b5c214e254173afa6d38b60d2e7 .
+_:63766b5c214e254173afa6d38b60d2e7 a prov:SoftwareAgent ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Cascade Bridge for Rust" ;
+	pav:version "0.1.0" .

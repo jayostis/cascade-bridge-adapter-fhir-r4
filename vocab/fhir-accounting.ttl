@@ -949,12 +949,12 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/identifier" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it." .
+  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it; an Organization a document names is named by its NPI or OID identifier, and carries each." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/identifier/value" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it." .
+  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it; an Organization a document names is named by its NPI or OID identifier, and carries each." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/intent" ;
@@ -1846,12 +1846,12 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/identifier" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it." .
+  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it; an Organization a document names is named by its NPI or OID identifier, and carries each." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/identifier/value" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it." .
+  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it; an Organization a document names is named by its NPI or OID identifier, and carries each." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/intent" ;
@@ -3146,12 +3146,12 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/identifier" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it." .
+  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it; an Organization a document names is named by its NPI or OID identifier, and carries each." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/identifier/value" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it." .
+  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it; an Organization a document names is named by its NPI or OID identifier, and carries each." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/intent" ;
@@ -4039,12 +4039,12 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/identifier" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it." .
+  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it; an Organization a document names is named by its NPI or OID identifier, and carries each." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/identifier/value" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it." .
+  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it; an Organization a document names is named by its NPI or OID identifier, and carries each." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/intent" ;
@@ -4898,3 +4898,150 @@
   bridge:sourcePath "/resource/contained/issue/severity" ;
   bridge:verdict bridge:ignored ;
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/custodian" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/custodian/reference" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/author" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/author/reference" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/date" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/title" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/type/coding" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/type/coding/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/type/coding/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/content" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/content/attachment" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/content/attachment/contentType" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/content/attachment/title" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/subject/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/custodian" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/custodian/reference" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/author" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/author/reference" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/date" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/title" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/type/coding" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/type/coding/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/type/coding/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/content" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/content/attachment" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/content/attachment/contentType" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/content/attachment/title" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/subject/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/identifier/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it; an Organization a document names is named by its NPI or OID identifier, and carries each." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/identifier/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it; an Organization a document names is named by its NPI or OID identifier, and carries each." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/identifier/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it; an Organization a document names is named by its NPI or OID identifier, and carries each." .

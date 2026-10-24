@@ -17,6 +17,20 @@ implication; a resource of any other type, and any other `Observation`, yields
 a finding and no record. A `Medication` is read
 through the medication that references it, and is no record of its own.
 
+An `Organization` is a record where a document names it: the `custodian` or
+an `author` of a `Composition` or a `DocumentReference` references it, as a
+contained resource or another entry of its Bundle, and that reference resolves
+as a medication's does. It is named by the vocabulary's
+`OrganizationNamingRule` from its first `identifier` whose `system` is the
+NPI's (`http://hl7.org/fhir/sid/us-npi`) or an OID (`urn:oid:`), its system and
+value as written, never by its `id`, which only its document gives it; one with
+neither is no record, and a document with no custodian names no organization in
+its place. Its version carries its `name`, each identifier, typed by its system
+where it has one, and each address, its `text` or else its first four `line`s,
+city, state, postal code and country, one to a line. The document names it in
+`cascade:CustodianRole` or `cascade:AuthorRole`. The `Composition` and the
+`DocumentReference` are no records.
+
 An `Observation`'s `category` says what kind it is, from
 [observation-category](https://hl7.org/fhir/R4/codesystem-observation-category.html):
 `laboratory`, `vital-signs`, `social-history` and others. It is optional, so a

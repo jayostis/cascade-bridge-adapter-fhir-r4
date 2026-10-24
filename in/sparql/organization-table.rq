@@ -1,0 +1,78 @@
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX fx:      <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:     <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:  <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX cascade: <https://ns.cascadeprotocol.org/cascade#>
+PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+
+# An Organization is a record only where a document names it: a Composition's or
+# a DocumentReference's custodian, or one of its authors. A query runs over one
+# record, so the Organization's record learns here that a reference names it,
+# by the keys medication-table.rq resolves a Medication by: a contained
+# Organization by "#" and its id within the resource holding it, an entry by
+# its fullUrl, or by type and id, within the document. A reference to a version
+# of an Organization names the Organization, and it resolves where exactly one
+# Organization holds its key in its scope. A reference is a row whether it
+# resolves or not.
+
+CONSTRUCT {
+  ?keyRow fhirr4:organizationAt ?pointer ;
+    fhirr4:organizationKey ?key ;
+    fhirr4:organizationScope ?scope .
+  ?referenceRow fhirr4:organizationReferenceFrom ?pointer ;
+    fhirr4:organizationReferenceTo ?target ;
+    fhirr4:organizationScope ?referenceScope ;
+    fhirr4:organizationRole ?role .
+}
+WHERE {
+  bridge:thisRecord bridge:selector ?recordSelector .
+  ?root a fx:root .
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  { BIND ("" AS ?containedStep) }
+  UNION
+  {
+    ?top xyz:contained ?containedList .
+    ?containedList ?containedSlot ?contained .
+    ?contained xyz:resourceType ?containedType .
+    BIND (CONCAT("/contained/", STR(xsd:integer(STRAFTER(STR(?containedSlot), "#_")) - 1)) AS ?containedStep)
+  }
+  BIND (COALESCE(?contained, ?top) AS ?resource)
+  BIND (CONCAT(?recordSelector, ?topStep, ?containedStep) AS ?pointer)
+  {
+    ?resource xyz:resourceType "Organization" ;
+      xyz:id ?id .
+  }
+  UNION
+  {
+    ?resource xyz:resourceType "Organization" .
+    ?root xyz:fullUrl ?fullUrl .
+  }
+  UNION
+  {
+    ?resource xyz:resourceType ?referrerType ;
+      xyz:custodian ?reference .
+    ?reference xyz:reference ?written .
+    FILTER (?referrerType IN ("Composition", "DocumentReference"))
+    BIND (cascade:CustodianRole AS ?role)
+  }
+  UNION
+  {
+    ?resource xyz:resourceType ?referrerType ;
+      xyz:author ?authors .
+    ?authors ?authorSlot ?reference .
+    ?reference xyz:reference ?written .
+    FILTER (?referrerType IN ("Composition", "DocumentReference"))
+    BIND (cascade:AuthorRole AS ?role)
+  }
+  FILTER (!BOUND(?fullUrl) || !BOUND(?contained))
+  BIND (CONCAT(?recordSelector, ?topStep) AS ?container)
+  BIND (IF(BOUND(?id), IF(BOUND(?contained), CONCAT("#", ?id), CONCAT("Organization/", ?id)), ?fullUrl) AS ?key)
+  BIND (IF(BOUND(?key), IF(BOUND(?contained), ?container, ""), 1/0) AS ?scope)
+  BIND (REPLACE(?written, "/_history/[A-Za-z0-9.-]{1,64}$", "") AS ?target)
+  BIND (IF(STRSTARTS(?target, "#"), ?container, "") AS ?referenceScope)
+  BIND (IF(BOUND(?key), BNODE(), 1/0) AS ?keyRow)
+  BIND (IF(BOUND(?target), BNODE(), 1/0) AS ?referenceRow)
+}
