@@ -11,8 +11,9 @@ PREFIX bridge:  <https://ns.cascadeprotocol.org/bridge/v1-draft#>
 PREFIX cascade: <https://ns.cascadeprotocol.org/cascade#>
 PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 
-# An Organization a document names as its custodian or an author, as
-# organization-table.rq resolves the reference, is a record named by
+# An Organization a document names as its custodian or an author, or as the
+# performer of a Diagnostic Implication, as organization-table.rq resolves the
+# reference, is a record named by
 # cascade-vocabulary's OrganizationNamingRule from the identifier the table
 # picks for it, never by its id, which only the document gives it. One with no
 # such identifier is no record, and the document names nothing in its place.
@@ -20,7 +21,8 @@ PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # Two Organizations of one document can name one record. Its one version is read
 # from the one a custodian names, else from the first in the document, as the
 # C-CDA adapter reads it from its custodian before its authors; the document
-# names the record once in each role, from the first Organization named in it.
+# names the record once in each role, from the first Organization named in it,
+# and a performer names it in none.
 #
 # Its version carries its name, every identifier with a value, typed by its
 # system where it states one, a system urn:oid: and the NPI's OID as the NPI's
@@ -72,8 +74,8 @@ WHERE {
     SELECT ?input1 ?input2 (MIN(?ranked) AS ?firstNamed) WHERE {
       ?reference fhirr4:organizationReferenceFrom ?from ;
         fhirr4:organizationReferenceTo ?key ;
-        fhirr4:organizationScope ?scope ;
-        fhirr4:organizationRole ?referenceRole .
+        fhirr4:organizationScope ?scope .
+      OPTIONAL { ?reference fhirr4:organizationRole ?referenceRole }
       ?held fhirr4:organizationAt ?heldPointer ;
         fhirr4:organizationKey ?key ;
         fhirr4:organizationScope ?scope .
@@ -87,7 +89,8 @@ WHERE {
         fhirr4:organizationIdentifierSystem ?input1 ;
         fhirr4:organizationIdentifierValue ?input2 ;
         fhirr4:organizationPlace ?heldPlace .
-      BIND (CONCAT(IF(?referenceRole = cascade:CustodianRole, "0", "1"), ?heldPlace, " ", ?heldPointer) AS ?ranked)
+      BIND (CONCAT(IF(COALESCE(?referenceRole = cascade:CustodianRole, false), "0", "1"), ?heldPlace, " ", ?heldPointer)
+            AS ?ranked)
     } GROUP BY ?input1 ?input2
   }
   FILTER EXISTS {

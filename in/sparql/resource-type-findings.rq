@@ -12,9 +12,9 @@ PREFIX cascade: <https://ns.cascadeprotocol.org/cascade#>
 # An Observation is reported by observation-findings.rq. A Medication is read
 # through the medication whose reference resolves to it, as medication-table.rq
 # says, so only one no reference resolves to is reported; an Organization is
-# read where a document's custodian or author resolves to it, as
-# organization-table.rq says, and has an identifier organization.rq names it by,
-# so only another is reported.
+# read where a document's custodian or author, or a Diagnostic Implication's
+# performer, resolves to it, as organization-table.rq says, and has an
+# identifier organization.rq names it by, so only another is reported.
 
 CONSTRUCT {
   [] a oa:Annotation ;

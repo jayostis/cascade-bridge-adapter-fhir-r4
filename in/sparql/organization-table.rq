@@ -8,7 +8,9 @@ PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 
 # An Organization is a record only where a document names it: the custodian or
 # an author of a document's Composition, the first entry of a Bundle, as FHIR
-# requires of a document Bundle, or a Composition standing alone. A query runs
+# requires of a document Bundle, or a Composition standing alone; or a performer
+# of a Diagnostic Implication, which variant-interpretation.rq attributes the
+# interpretation to, and whose reference row has no role. A query runs
 # over one record, so the Organization's record learns here that a reference
 # names it, by the keys medication-table.rq resolves a Medication by: a
 # contained Organization by "#" and its id within the resource holding it, an
@@ -81,6 +83,18 @@ WHERE {
     ?authors ?authorSlot ?reference .
     ?reference xyz:reference ?written .
     BIND (cascade:AuthorRole AS ?role)
+  }
+  UNION
+  {
+    ?resource xyz:resourceType "Observation" ;
+      xyz:performer ?performers .
+    FILTER EXISTS {
+      ?resource xyz:code ?concept . ?concept xyz:coding ?codings . ?codings ?codingSlot ?coding .
+      ?coding xyz:system "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs" ;
+        xyz:code "diagnostic-implication" .
+    }
+    ?performers ?performerSlot ?reference .
+    ?reference xyz:reference ?written .
   }
   UNION
   {

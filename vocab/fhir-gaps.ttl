@@ -207,6 +207,12 @@ fhirr4:interpretationVariantLink a skos:Concept ;
   skos:broader bridge:carriedWithLoss ;
   sh:resultSeverity sh:Warning .
 
+fhirr4:interpretationPerformer a skos:Concept ;
+  skos:prefLabel "A diagnostic implication's performers name more than one organization record, so it is attributed to no lab."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:carriedWithLoss ;
+  sh:resultSeverity sh:Warning .
+
 fhirr4:variantComponentNotCarried a skos:Concept ;
   skos:prefLabel "A variant or a diagnostic implication carries components no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence."@en ;
   skos:inScheme fhirr4:gaps ;

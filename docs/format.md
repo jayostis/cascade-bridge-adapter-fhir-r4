@@ -44,7 +44,9 @@ the document names the record once in each role. Its version carries its
 its URI, and each address, its `text` or else its first four `line`s, city,
 state, postal code and country, one to a line. The document names it in
 `cascade:CustodianRole` or `cascade:AuthorRole`. The `Composition` and the
-`DocumentReference` are no records.
+`DocumentReference` are no records. An `Organization` a diagnostic
+implication's `performer` references, resolved and named alike, is a record
+too, and the document names it in no role.
 
 An `Observation`'s `category` says what kind it is, from
 [observation-category](https://hl7.org/fhir/R4/codesystem-observation-category.html):
@@ -111,6 +113,11 @@ category makes them.
   or another beside one, the interpretation is a record without the link, and a
   finding. A reference to a contained resource, or to a resource that is not an
   `Observation`, is not read, and leaves a link to one variant intact.
+- **Its lab** is the organization record of the `Organization` its `performer`
+  names, written as the version's `prov:wasAttributedTo`. A performer that is no
+  `Organization` of the document, or one with no identifier to name it by, is not
+  read; performers naming two organization records name none, and a finding for
+  each performer.
 
 The three elements of a variant are read from its components, by the code of the
 component, and each is carried only where the variant states it once; two
