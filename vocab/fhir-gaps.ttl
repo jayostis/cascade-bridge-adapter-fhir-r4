@@ -34,7 +34,7 @@ fhirr4:resourceTypeNotMapped a skos:Concept ;
   sh:resultSeverity sh:Warning .
 
 fhirr4:resourceIdRepeated a skos:Concept ;
-  skos:prefLabel "A resource shares its type and id, or its urn:uuid fullUrl, with another resource of its document, so neither names its record."@en ;
+  skos:prefLabel "A resource shares its type and id, or its urn:uuid fullUrl, with another resource of its document: a reference to the shared id names nothing, and the document names the record."@en ;
   skos:inScheme fhirr4:gaps ;
   skos:broader bridge:idRepeated .
 

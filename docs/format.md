@@ -119,6 +119,43 @@ has no server address yet. A reference elsewhere in the Bundle may name an
 entry by that `urn:uuid:`. The record is the entry, not the resource inside
 it, so the `fullUrl` stays with the resource it names.
 
+## Names
+
+A record's name is one of cascade-vocabulary's naming rules, each the body of
+its `tests/vectors/naming/<rule>.rq` there, copied into
+[`in/sparql/record.rq`](../in/sparql/record.rq) and hashed once for the rule
+picked. The rules and why they are what they are are
+[cascade-vocabulary's naming note](https://github.com/jayostis/cascade-vocabulary/blob/alpha/naming/decisions/naming.md).
+
+| a resource | its rule | its inputs, after the rule |
+|---|---|---|
+| a top-level resource that the server rule applies to | `RecordFromServerNamingRule` | the server's base URL, the resource type, the `id` |
+| any other top-level resource | `RecordFromDocumentNamingRule` | the document's `ni:` name, the record's selector |
+| a `contained` resource with an `id` | `ContainedRecordNamingRule` | its container's name, the container's `meta.versionId` or else its `meta.lastUpdated` or else `""`, the `id` |
+| a `contained` resource with no `id` | `RecordFromDocumentNamingRule` | the document's `ni:` name, the resource's pointer |
+
+**The server rule applies** to a top-level resource where the document states
+`cascade:serverBaseUrl`, the resource has an `id`, its entry's `fullUrl`, if
+any, is not a `urn:uuid:`, and no other resource of its type in the document
+has that `id`. Its `cascade:sourceUrl` is the base URL, the type and the `id`.
+
+**The document names the rest.** A `urn:uuid:` `fullUrl` is a generator's,
+unique within its Bundle only, and the server rule never uses it as identity
+across documents; a document with no base URL has no server to name. A
+resource whose type and `id` another resource of the document shares is named by
+its position: one name for both would fuse two resources the source gave one
+`id`. Each resource sharing an `id`, or a `urn:uuid:` `fullUrl`, with another is a finding,
+`fhirr4:resourceIdRepeated`. A reference to a shared `id` names no record, since
+the document names both. A record named by the document carries no
+`cascade:sourceUrl`: its name is not its id's.
+
+**A contained resource** is named within its container, by the container's name
+and source version, so that a renumbered `contained` list does not make one
+resource a revision of another. With no `id` it has nothing to be named by but
+its position, and the document names it. It carries `cascade:sourceUrl` only
+where its container is named by the server: the container's address, `#` and
+its `id`.
+
 ## JSON as FHIR writes it
 
 - **A primitive's id and extensions sit beside it** in a member named with a
@@ -156,6 +193,8 @@ with its hyphens removed; 4-4-2, 5-3-2 and 5-4-1 with a `0` added to the
 segment short of a digit (the labeler, the product, the package). Ten digits
 with no hyphens cannot be told apart, and neither can any other value: it is
 no code, and a finding.
+
+An `Immunization`'s `vaccineCode` is written as every CVX coding it carries, one `cascade:vaccineCode` each.
 
 ## The schema
 
