@@ -49,6 +49,10 @@
     <#lab-every-mapped-element>
     <#lab-no-category-potassium>
     <#lab-troponin-below-detection>
+    <#lab-titre-ratio>
+    <#lab-urine-leukocytes-range>
+    <#lab-hepatitis-b-surface-antigen-coded>
+    <#lab-leukocytes-exponent-and-ranges>
     <#vital-heartrate-with-id>
     <#vital-no-category-heart-rate>
     <#medication-with-id>
@@ -998,6 +1002,58 @@
   mf:result [
     bridge:expectedGraph <expected/lab-troponin-below-detection.ttl> ;
     bridge:expectedFindings <findings/lab-troponin-below-detection.ttl>
+  ] .
+
+<#lab-titre-ratio> a bridge:IsomorphicConversionTest ;
+  mf:name "lab-titre-ratio" ;
+  rdfs:comment "A laboratory Observation whose value is a titre: a ratio, its numerator and denominator each a quantity with no unit." ;
+  mf:action [
+    bridge:input <in/lab-titre-ratio.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/lab-titre-ratio.ttl> ;
+    bridge:expectedFindings <findings/lab-titre-ratio.ttl>
+  ] .
+
+<#lab-urine-leukocytes-range> a bridge:IsomorphicConversionTest ;
+  mf:name "lab-urine-leukocytes-range" ;
+  rdfs:comment "A laboratory Observation whose value is a range: two bounds, each a quantity with its UCUM unit and its display." ;
+  mf:action [
+    bridge:input <in/lab-urine-leukocytes-range.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/lab-urine-leukocytes-range.ttl> ;
+    bridge:expectedFindings <findings/lab-urine-leukocytes-range.ttl>
+  ] .
+
+<#lab-hepatitis-b-surface-antigen-coded> a bridge:IsomorphicConversionTest ;
+  mf:name "lab-hepatitis-b-surface-antigen-coded" ;
+  rdfs:comment "A laboratory Observation whose value is coded: the LOINC answer as a code IRI and its text as the value's text; the local code is a finding." ;
+  mf:action [
+    bridge:input <in/lab-hepatitis-b-surface-antigen-coded.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/lab-hepatitis-b-surface-antigen-coded.ttl> ;
+    bridge:expectedFindings <findings/lab-hepatitis-b-surface-antigen-coded.ttl>
+  ] .
+
+<#lab-leukocytes-exponent-and-ranges> a bridge:IsomorphicConversionTest ;
+  mf:name "lab-leukocytes-exponent-and-ranges" ;
+  rdfs:comment "A laboratory Observation whose number is written with an exponent: its decimal value is the number written out and its written value is as sent; the reference range typed is the one marked normal, its high bound alone, since its low bound carries a comparator, which is a finding, as is the first range's unit outside UCUM and each value of the second range." ;
+  mf:action [
+    bridge:input <in/lab-leukocytes-exponent-and-ranges.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/lab-leukocytes-exponent-and-ranges.ttl> ;
+    bridge:expectedFindings <findings/lab-leukocytes-exponent-and-ranges.ttl>
   ] .
 
 <#vital-heartrate-with-id> a bridge:IsomorphicConversionTest ;

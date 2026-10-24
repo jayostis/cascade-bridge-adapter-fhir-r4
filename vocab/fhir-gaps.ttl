@@ -137,6 +137,22 @@ fhirr4:labResultInterpretationRepeated a skos:Concept ;
   skos:broader bridge:carriedWithLoss ;
   sh:resultSeverity sh:Warning .
 
+fhirr4:labResultUnitCodeOutsideUcum a skos:Concept ;
+  skos:prefLabel "A number of a lab result carries a unit code in a system other than UCUM, which is not carried as a UCUM unit; its unit text is."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:carriedWithLoss .
+
+fhirr4:labResultBoundWithComparator a skos:Concept ;
+  skos:prefLabel "A bound of a lab result's reference range or range value carries a comparator, which FHIR's SimpleQuantity forbids (sqty-1), and the bound is not carried as a number."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:carriedWithLoss ;
+  sh:resultSeverity sh:Warning .
+
+fhirr4:labResultValueCode a skos:Concept ;
+  skos:prefLabel "A lab result's coded value carries a code in a system other than SNOMED CT or LOINC, which is not carried as a code; its text is."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:carriedWithLoss .
+
 fhirr4:variantNotPresent a skos:Concept ;
   skos:prefLabel "A genetic variant assessment states a value other than Present, and a variant record says the person has the variant, so the assessment is no record."@en ;
   skos:inScheme fhirr4:gaps ;

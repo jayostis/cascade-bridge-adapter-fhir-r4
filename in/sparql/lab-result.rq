@@ -10,23 +10,27 @@ PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 
 # Which Observation is a lab result is lab-result-table.rq's to say.
 #
-# A value is written as the source wrote it, a number included, so that two
-# sources stating one value state one literal, and a comparator stays in front
-# of its number: "<0.01" is not a measured 0.01. A reference range is written
-# as cascade-cli writes one where the source gives no text for it, and a range
+# A value is of one of five kinds: a valueQuantity or a valueInteger is a
+# quantity, a valueRatio a ratio, a valueRange a range, each number a node
+# lab-result-quantities.rq writes; a valueCodeableConcept is coded, its codes
+# in SNOMED CT and LOINC as IRIs and its text or first display as the value's
+# text; a valueString is text. A reference range's text is written as
+# cascade-cli writes one where the source gives no text for it, and a range
 # with one bound as that bound and its comparator, a FHIR range's bounds being
-# inclusive. A lab result states one reference range and one interpretation,
-# the first of each, but every LOINC code its concept carries: the vocabulary
-# takes one test code per coding, and a result shares any of them with the
-# same result elsewhere. The time a result was issued is not when it was
-# performed, and is not carried. A date FHIR writes with less than a day's
-# precision fits no Cascade date, and is not carried.
+# inclusive; its typed bounds are lab-result-quantities.rq's. A lab result
+# states one reference range text and one interpretation, the first of each,
+# but every LOINC code its concept carries: the vocabulary takes one test code
+# per coding, and a result shares any of them with the same result elsewhere.
+# The time a result was issued is not when it was performed, and is not
+# carried. A date FHIR writes with less than a day's precision fits no Cascade
+# date, and is not carried.
 
 CONSTRUCT {
   ?version cascade:testName ?testName ;
     cascade:testCode ?testCode ;
+    cascade:resultValueKind ?valueKind ;
     cascade:resultValue ?resultValue ;
-    cascade:resultUnit ?resultUnit ;
+    cascade:resultCode ?resultCode ;
     cascade:referenceRange ?referenceRange ;
     cascade:resultInterpretation ?interpretation ;
     cascade:resultClinicallyRelevantTime ?performedDate ;
@@ -82,10 +86,10 @@ WHERE {
   }
   BIND (IRI(CONCAT(?stem, ENCODE_FOR_URI(?loinc))) AS ?testCode)
 
-  OPTIONAL { ?resource xyz:valueQuantity ?quantity . ?quantity xyz:value ?quantityValue }
-  OPTIONAL { ?resource xyz:valueQuantity ?unitQuantity . ?unitQuantity xyz:unit ?quantityUnit }
-  OPTIONAL { ?resource xyz:valueQuantity ?codeQuantity . ?codeQuantity xyz:code ?quantityCode }
-  OPTIONAL { ?resource xyz:valueQuantity ?comparedQuantity . ?comparedQuantity xyz:comparator ?comparator }
+  OPTIONAL { ?resource xyz:valueQuantity ?quantity }
+  OPTIONAL { ?resource xyz:valueRatio ?ratio }
+  OPTIONAL { ?resource xyz:valueRange ?valueRange }
+  OPTIONAL { ?resource xyz:valueCodeableConcept ?codedValue }
   OPTIONAL { ?resource xyz:valueString ?valueString }
   OPTIONAL { ?resource xyz:valueInteger ?valueInteger }
   OPTIONAL { ?resource xyz:valueCodeableConcept ?valueConcept . ?valueConcept xyz:text ?valueText }
@@ -99,8 +103,24 @@ WHERE {
       FILTER (xsd:integer(STRAFTER(STR(?earlierValueSlot), "#_")) < xsd:integer(STRAFTER(STR(?valueSlot), "#_")))
     }
   }
-  BIND (COALESCE(CONCAT(COALESCE(?comparator, ""), ?quantityValue), ?valueString, ?valueInteger, ?valueText, ?valueDisplay) AS ?resultValue)
-  BIND (IF(BOUND(?quantityValue), COALESCE(?quantityUnit, ?quantityCode), 1/0) AS ?resultUnit)
+  OPTIONAL {
+    ?resource xyz:valueCodeableConcept ?answerConcept .
+    ?answerConcept xyz:coding ?answerCodings .
+    ?answerCodings ?answerSlot ?answerCoding .
+    ?answerCoding xyz:system ?answerSystem ;
+      xyz:code ?answer .
+    VALUES ?answerScheme { fhirr4:codeSystemSnomedCt fhirr4:codeSystemLoinc }
+    ?answerScheme cascade:codingSystemUri ?answerSystemUri ;
+      void:uriSpace ?answerStem .
+    FILTER (?answerSystem = STR(?answerSystemUri))
+  }
+  BIND (IRI(CONCAT(?answerStem, ENCODE_FOR_URI(?answer))) AS ?resultCode)
+  BIND (COALESCE(?valueString, ?valueText, ?valueDisplay) AS ?resultValue)
+  BIND (IF(BOUND(?quantity) || BOUND(?valueInteger), cascade:QuantityResultValue,
+        IF(BOUND(?ratio), cascade:RatioResultValue,
+        IF(BOUND(?valueRange), cascade:RangeResultValue,
+        IF(BOUND(?codedValue), cascade:CodedResultValue,
+        IF(BOUND(?valueString), cascade:TextResultValue, 1/0))))) AS ?valueKind)
 
   OPTIONAL { ?resource xyz:referenceRange ?ranges . ?ranges rdf:_1 ?range . ?range xyz:text ?rangeText }
   OPTIONAL {

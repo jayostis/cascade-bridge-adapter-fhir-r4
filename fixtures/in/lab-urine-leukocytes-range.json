@@ -1,0 +1,43 @@
+{
+  "resourceType": "Observation",
+  "id": "obs-urine-wbc-1",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "5821-4",
+        "display": "Leukocytes [#/area] in Urine sediment by Microscopy high power field"
+      }
+    ],
+    "text": "WBC, urine sediment"
+  },
+  "subject": {
+    "reference": "Patient/pat-conformance-1"
+  },
+  "effectiveDateTime": "2026-08-03T09:20:00Z",
+  "valueRange": {
+    "low": {
+      "value": 0,
+      "unit": "/HPF",
+      "system": "http://unitsofmeasure.org",
+      "code": "/[HPF]"
+    },
+    "high": {
+      "value": 5,
+      "unit": "/HPF",
+      "system": "http://unitsofmeasure.org",
+      "code": "/[HPF]"
+    }
+  }
+}

@@ -6,26 +6,31 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;mO8PADPxeRbVs_BDKLXAF_Zff_BuuhNdiBsY07_dxc0> cascade:workflowStatus "final" ;
-	cascade:notes "Drawn two hours after the onset of chest pain; repeat at three hours." ;
-	cascade:resultClinicallyRelevantTime "2026-05-02T07:40:00-04:00"^^xsd:dateTime ;
-	cascade:resultInterpretation "N" ;
-	cascade:referenceRange "<=0.04 ng/mL" ;
-	cascade:resultUnit "ng/mL" ;
-	cascade:resultValue "<0.01" ;
+<ni:///sha-256;6YWufk0ilDEF9Mvt8mwIEJQqhCv6WujDS2Ecs0J6fkk> cascade:resultQuantity <ni:///sha-256;6YWufk0ilDEF9Mvt8mwIEJQqhCv6WujDS2Ecs0J6fkk#value> .
+<ni:///sha-256;6YWufk0ilDEF9Mvt8mwIEJQqhCv6WujDS2Ecs0J6fkk#value> cascade:decimalValue 0.01 ;
+	cascade:writtenValue "0.01" ;
+	cascade:quantityComparator "<" ;
+	cascade:ucumUnit "ng/mL" ;
+	cascade:unitText "ng/mL" .
+<ni:///sha-256;6YWufk0ilDEF9Mvt8mwIEJQqhCv6WujDS2Ecs0J6fkk> cascade:testName "Troponin I, high sensitivity" ;
 	cascade:testCode <http://loinc.org/rdf/89579-7> ;
-	cascade:testName "Troponin I, high sensitivity" .
-_:8ce3d17b0124cb48e8339c92aa4720cf bridge:arrivedAs <ni:///sha-256;mO8PADPxeRbVs_BDKLXAF_Zff_BuuhNdiBsY07_dxc0> .
-<ni:///sha-256;mO8PADPxeRbVs_BDKLXAF_Zff_BuuhNdiBsY07_dxc0> cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> ;
-	prov:specializationOf <urn:uuid:7496cdcc-036a-860e-b00b-de7e3c0449ff> .
-<urn:uuid:7496cdcc-036a-860e-b00b-de7e3c0449ff> cascade:sourceRecordId "obs-troponin-1" ;
+	cascade:resultValueKind cascade:QuantityResultValue ;
+	cascade:referenceRange "<=0.04 ng/mL" ;
+	cascade:resultInterpretation "N" ;
+	cascade:resultClinicallyRelevantTime "2026-05-02T07:40:00-04:00"^^xsd:dateTime ;
+	cascade:notes "Drawn two hours after the onset of chest pain; repeat at three hours." ;
+	cascade:workflowStatus "final" .
+<urn:uuid:7496cdcc-036a-860e-b00b-de7e3c0449ff> a cascade:LaboratoryTestResult ;
 	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Observation/obs-troponin-1> ;
-	a cascade:LaboratoryTestResult .
-_:8ce3d17b0124cb48e8339c92aa4720cf oa:hasSelector _:c8f4450d57f70ef78d6b2e648cce4534 ;
+	cascade:sourceRecordId "obs-troponin-1" .
+<ni:///sha-256;6YWufk0ilDEF9Mvt8mwIEJQqhCv6WujDS2Ecs0J6fkk> prov:specializationOf <urn:uuid:7496cdcc-036a-860e-b00b-de7e3c0449ff> ;
+	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
+_:91532036911d5521bf53801094b77fd7 bridge:arrivedAs <ni:///sha-256;6YWufk0ilDEF9Mvt8mwIEJQqhCv6WujDS2Ecs0J6fkk> ;
+	oa:hasSelector _:7175fa56e7fdf35f029005221bbc9d79 ;
 	oa:hasSource <ni:///sha-256;TufVXTORD_tmyRjnFVMGgeVTE_NZq6T0ydG2BJpskxk> ;
 	prov:wasDerivedFrom <ni:///sha-256;TufVXTORD_tmyRjnFVMGgeVTE_NZq6T0ydG2BJpskxk> ;
 	prov:wasGeneratedBy _:81e277385fa7f254bb25854d47b29fd6 .
-_:c8f4450d57f70ef78d6b2e648cce4534 a oa:FragmentSelector ;
+_:7175fa56e7fdf35f029005221bbc9d79 a oa:FragmentSelector ;
 	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;TufVXTORD_tmyRjnFVMGgeVTE_NZq6T0ydG2BJpskxk> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;

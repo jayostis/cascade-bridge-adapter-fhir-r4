@@ -1229,13 +1229,17 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/referenceRange/high/code" ;
-  bridge:verdict bridge:redundantWith ;
-  bridge:sameFactAs "/contained/referenceRange/high/unit" .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultUnitCodeOutsideUcum .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/referenceRange/high/comparator" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "FHIR's SimpleQuantity forbids a comparator on a bound (sqty-1): a bound carrying one is not carried as a number, and lab-result-findings.rq reports it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/referenceRange/high/system" ;
-  bridge:verdict bridge:redundantWith ;
-  bridge:sameFactAs "/contained/referenceRange/high/unit" .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/referenceRange/high/unit" ;
@@ -1243,7 +1247,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/referenceRange/high/value" ;
-  bridge:verdict bridge:carried .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultBoundWithComparator .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/referenceRange/low" ;
@@ -1251,26 +1256,46 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/referenceRange/low/code" ;
-  bridge:verdict bridge:redundantWith ;
-  bridge:sameFactAs "/contained/referenceRange/high/unit" .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultUnitCodeOutsideUcum .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/referenceRange/low/comparator" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "FHIR's SimpleQuantity forbids a comparator on a bound (sqty-1): a bound carrying one is not carried as a number, and lab-result-findings.rq reports it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/referenceRange/low/system" ;
-  bridge:verdict bridge:redundantWith ;
-  bridge:sameFactAs "/contained/referenceRange/high/unit" .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/referenceRange/low/unit" ;
-  bridge:verdict bridge:redundantWith ;
-  bridge:sameFactAs "/contained/referenceRange/high/unit" .
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/referenceRange/low/value" ;
-  bridge:verdict bridge:carried .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultBoundWithComparator .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/referenceRange/text" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/referenceRange/type" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/referenceRange/type/coding" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/referenceRange/type/coding/code" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/referenceRange/type/coding/system" ;
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/requester" ;
@@ -1436,7 +1461,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/valueCodeableConcept/coding/code" ;
-  bridge:verdict bridge:consumed .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultValueCode .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/valueCodeableConcept/coding/display" ;
@@ -1461,8 +1487,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/valueQuantity/code" ;
-  bridge:verdict bridge:redundantWith ;
-  bridge:sameFactAs "/contained/valueQuantity/unit" .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultUnitCodeOutsideUcum .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/valueQuantity/comparator" ;
@@ -1478,6 +1504,74 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/valueQuantity/value" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/valueRange" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/valueRange/high" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/valueRange/high/code" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultUnitCodeOutsideUcum .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/valueRange/high/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/valueRange/high/unit" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/valueRange/high/value" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultBoundWithComparator .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/valueRange/low" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/valueRange/low/code" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultUnitCodeOutsideUcum .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/valueRange/low/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/valueRange/low/unit" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/valueRange/low/value" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultBoundWithComparator .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/valueRatio" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/valueRatio/denominator" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/valueRatio/denominator/value" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/valueRatio/numerator" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/valueRatio/numerator/value" ;
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
@@ -2125,13 +2219,17 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/referenceRange/high/code" ;
-  bridge:verdict bridge:redundantWith ;
-  bridge:sameFactAs "/referenceRange/high/unit" .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultUnitCodeOutsideUcum .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/referenceRange/high/comparator" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "FHIR's SimpleQuantity forbids a comparator on a bound (sqty-1): a bound carrying one is not carried as a number, and lab-result-findings.rq reports it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/referenceRange/high/system" ;
-  bridge:verdict bridge:redundantWith ;
-  bridge:sameFactAs "/referenceRange/high/unit" .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/referenceRange/high/unit" ;
@@ -2139,7 +2237,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/referenceRange/high/value" ;
-  bridge:verdict bridge:carried .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultBoundWithComparator .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/referenceRange/low" ;
@@ -2147,26 +2246,46 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/referenceRange/low/code" ;
-  bridge:verdict bridge:redundantWith ;
-  bridge:sameFactAs "/referenceRange/high/unit" .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultUnitCodeOutsideUcum .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/referenceRange/low/comparator" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "FHIR's SimpleQuantity forbids a comparator on a bound (sqty-1): a bound carrying one is not carried as a number, and lab-result-findings.rq reports it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/referenceRange/low/system" ;
-  bridge:verdict bridge:redundantWith ;
-  bridge:sameFactAs "/referenceRange/high/unit" .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/referenceRange/low/unit" ;
-  bridge:verdict bridge:redundantWith ;
-  bridge:sameFactAs "/referenceRange/high/unit" .
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/referenceRange/low/value" ;
-  bridge:verdict bridge:carried .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultBoundWithComparator .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/referenceRange/text" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/referenceRange/type" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/referenceRange/type/coding" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/referenceRange/type/coding/code" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/referenceRange/type/coding/system" ;
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/request" ;
@@ -3424,13 +3543,17 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/referenceRange/high/code" ;
-  bridge:verdict bridge:redundantWith ;
-  bridge:sameFactAs "/resource/contained/referenceRange/high/unit" .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultUnitCodeOutsideUcum .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/referenceRange/high/comparator" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "FHIR's SimpleQuantity forbids a comparator on a bound (sqty-1): a bound carrying one is not carried as a number, and lab-result-findings.rq reports it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/referenceRange/high/system" ;
-  bridge:verdict bridge:redundantWith ;
-  bridge:sameFactAs "/resource/contained/referenceRange/high/unit" .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/referenceRange/high/unit" ;
@@ -3438,7 +3561,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/referenceRange/high/value" ;
-  bridge:verdict bridge:carried .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultBoundWithComparator .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/referenceRange/low" ;
@@ -3446,26 +3570,46 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/referenceRange/low/code" ;
-  bridge:verdict bridge:redundantWith ;
-  bridge:sameFactAs "/resource/contained/referenceRange/high/unit" .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultUnitCodeOutsideUcum .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/referenceRange/low/comparator" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "FHIR's SimpleQuantity forbids a comparator on a bound (sqty-1): a bound carrying one is not carried as a number, and lab-result-findings.rq reports it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/referenceRange/low/system" ;
-  bridge:verdict bridge:redundantWith ;
-  bridge:sameFactAs "/resource/contained/referenceRange/high/unit" .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/referenceRange/low/unit" ;
-  bridge:verdict bridge:redundantWith ;
-  bridge:sameFactAs "/resource/contained/referenceRange/high/unit" .
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/referenceRange/low/value" ;
-  bridge:verdict bridge:carried .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultBoundWithComparator .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/referenceRange/text" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/referenceRange/type" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/referenceRange/type/coding" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/referenceRange/type/coding/code" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/referenceRange/type/coding/system" ;
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/requester" ;
@@ -3631,7 +3775,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/valueCodeableConcept/coding/code" ;
-  bridge:verdict bridge:consumed .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultValueCode .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/valueCodeableConcept/coding/display" ;
@@ -3656,8 +3801,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/valueQuantity/code" ;
-  bridge:verdict bridge:redundantWith ;
-  bridge:sameFactAs "/resource/contained/valueQuantity/unit" .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultUnitCodeOutsideUcum .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/valueQuantity/comparator" ;
@@ -3673,6 +3818,74 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/valueQuantity/value" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/valueRange" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/valueRange/high" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/valueRange/high/code" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultUnitCodeOutsideUcum .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/valueRange/high/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/valueRange/high/unit" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/valueRange/high/value" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultBoundWithComparator .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/valueRange/low" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/valueRange/low/code" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultUnitCodeOutsideUcum .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/valueRange/low/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/valueRange/low/unit" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/valueRange/low/value" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultBoundWithComparator .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/valueRatio" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/valueRatio/denominator" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/valueRatio/denominator/value" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/valueRatio/numerator" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/valueRatio/numerator/value" ;
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
@@ -4316,13 +4529,17 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/referenceRange/high/code" ;
-  bridge:verdict bridge:redundantWith ;
-  bridge:sameFactAs "/resource/referenceRange/high/unit" .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultUnitCodeOutsideUcum .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/referenceRange/high/comparator" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "FHIR's SimpleQuantity forbids a comparator on a bound (sqty-1): a bound carrying one is not carried as a number, and lab-result-findings.rq reports it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/referenceRange/high/system" ;
-  bridge:verdict bridge:redundantWith ;
-  bridge:sameFactAs "/resource/referenceRange/high/unit" .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/referenceRange/high/unit" ;
@@ -4330,7 +4547,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/referenceRange/high/value" ;
-  bridge:verdict bridge:carried .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultBoundWithComparator .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/referenceRange/low" ;
@@ -4338,26 +4556,46 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/referenceRange/low/code" ;
-  bridge:verdict bridge:redundantWith ;
-  bridge:sameFactAs "/resource/referenceRange/high/unit" .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultUnitCodeOutsideUcum .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/referenceRange/low/comparator" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "FHIR's SimpleQuantity forbids a comparator on a bound (sqty-1): a bound carrying one is not carried as a number, and lab-result-findings.rq reports it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/referenceRange/low/system" ;
-  bridge:verdict bridge:redundantWith ;
-  bridge:sameFactAs "/resource/referenceRange/high/unit" .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/referenceRange/low/unit" ;
-  bridge:verdict bridge:redundantWith ;
-  bridge:sameFactAs "/resource/referenceRange/high/unit" .
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/referenceRange/low/value" ;
-  bridge:verdict bridge:carried .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultBoundWithComparator .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/referenceRange/text" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/referenceRange/type" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/referenceRange/type/coding" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/referenceRange/type/coding/code" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/referenceRange/type/coding/system" ;
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/requester" ;
@@ -4523,7 +4761,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/valueCodeableConcept/coding/code" ;
-  bridge:verdict bridge:consumed .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultValueCode .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/valueCodeableConcept/coding/display" ;
@@ -4548,8 +4787,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/valueQuantity/code" ;
-  bridge:verdict bridge:redundantWith ;
-  bridge:sameFactAs "/resource/valueQuantity/unit" .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultUnitCodeOutsideUcum .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/valueQuantity/comparator" ;
@@ -4565,6 +4804,74 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/valueQuantity/value" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/valueRange" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/valueRange/high" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/valueRange/high/code" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultUnitCodeOutsideUcum .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/valueRange/high/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/valueRange/high/unit" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/valueRange/high/value" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultBoundWithComparator .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/valueRange/low" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/valueRange/low/code" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultUnitCodeOutsideUcum .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/valueRange/low/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/valueRange/low/unit" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/valueRange/low/value" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultBoundWithComparator .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/valueRatio" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/valueRatio/denominator" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/valueRatio/denominator/value" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/valueRatio/numerator" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/valueRatio/numerator/value" ;
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
@@ -4741,7 +5048,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/valueCodeableConcept/coding/code" ;
-  bridge:verdict bridge:consumed .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultValueCode .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/valueCodeableConcept/coding/display" ;
@@ -4766,8 +5074,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/valueQuantity/code" ;
-  bridge:verdict bridge:redundantWith ;
-  bridge:sameFactAs "/valueQuantity/unit" .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultUnitCodeOutsideUcum .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/valueQuantity/comparator" ;
@@ -4783,6 +5091,74 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/valueQuantity/value" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/valueRange" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/valueRange/high" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/valueRange/high/code" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultUnitCodeOutsideUcum .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/valueRange/high/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/valueRange/high/unit" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/valueRange/high/value" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultBoundWithComparator .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/valueRange/low" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/valueRange/low/code" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultUnitCodeOutsideUcum .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/valueRange/low/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/valueRange/low/unit" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/valueRange/low/value" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultBoundWithComparator .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/valueRatio" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/valueRatio/denominator" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/valueRatio/denominator/value" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/valueRatio/numerator" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/valueRatio/numerator/value" ;
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;

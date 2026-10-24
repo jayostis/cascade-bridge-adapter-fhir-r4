@@ -140,6 +140,9 @@
           "@id": "in/sparql/lab-result.rq"
         },
         {
+          "@id": "in/sparql/lab-result-quantities.rq"
+        },
+        {
           "@id": "in/sparql/variant.rq"
         },
         {
@@ -255,6 +258,9 @@
         },
         {
           "@id": "in/sparql/lab-result.rq"
+        },
+        {
+          "@id": "in/sparql/lab-result-quantities.rq"
         },
         {
           "@id": "in/sparql/variant.rq"
@@ -474,6 +480,18 @@
         },
         {
           "@id": "fixtures/in/lab-troponin-below-detection.json"
+        },
+        {
+          "@id": "fixtures/in/lab-leukocytes-exponent-and-ranges.json"
+        },
+        {
+          "@id": "fixtures/in/lab-hepatitis-b-surface-antigen-coded.json"
+        },
+        {
+          "@id": "fixtures/in/lab-urine-leukocytes-range.json"
+        },
+        {
+          "@id": "fixtures/in/lab-titre-ratio.json"
         },
         {
           "@id": "fixtures/in/medication-request-two-rxnorm-codes.json"
@@ -887,7 +905,31 @@
           "@id": "fixtures/expected/lab-troponin-below-detection.ttl"
         },
         {
+          "@id": "fixtures/expected/lab-leukocytes-exponent-and-ranges.ttl"
+        },
+        {
+          "@id": "fixtures/expected/lab-hepatitis-b-surface-antigen-coded.ttl"
+        },
+        {
+          "@id": "fixtures/expected/lab-urine-leukocytes-range.ttl"
+        },
+        {
+          "@id": "fixtures/expected/lab-titre-ratio.ttl"
+        },
+        {
           "@id": "fixtures/findings/lab-troponin-below-detection.ttl"
+        },
+        {
+          "@id": "fixtures/findings/lab-leukocytes-exponent-and-ranges.ttl"
+        },
+        {
+          "@id": "fixtures/findings/lab-hepatitis-b-surface-antigen-coded.ttl"
+        },
+        {
+          "@id": "fixtures/findings/lab-urine-leukocytes-range.ttl"
+        },
+        {
+          "@id": "fixtures/findings/lab-titre-ratio.ttl"
         },
         {
           "@id": "fixtures/expected/medication-request-two-rxnorm-codes.ttl"
@@ -1326,12 +1368,24 @@
       "@type": "File",
       "name": "Mapping: a lab result's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "7136",
-      "sha256": "c26ecd661e4ace390a01bb6709a551438d2516490df698f3ad56f7bc51376ab6",
+      "contentSize": "7899",
+      "sha256": "d7b87abaadf02d34b17e993211272fd0442cd11c82c9f2c3cfe5a0bccfeb842b",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "What a lab result says, written on the version record.rq names: test name and LOINC codes, value as the source wrote it with its comparator and its unit, the first reference range, the first interpretation, performed time, notes and status."
+      "description": "What a lab result says, written on the version record.rq names: test name and LOINC codes, the kind of its value (quantity, ratio, range, coded or text), a coded value's SNOMED CT and LOINC codes and its text, a text value, the first reference range as text, the first interpretation, performed time, notes and status; its numbers are lab-result-quantities.rq's."
+    },
+    {
+      "@id": "in/sparql/lab-result-quantities.rq",
+      "@type": "File",
+      "name": "Mapping: the numbers of a lab result's version",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "6178",
+      "sha256": "37e37520b614653d7b2fdf0c531de4316cddceb4b6a4538c7873fcdd7eb612c5",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "Each number a lab result states, as a cascade:Quantity node of the version record.rq names, <version>#<role>: a valueQuantity's or valueInteger's value, a valueRatio's numerator and denominator, a valueRange's low and high, and the low and high of the one reference range whose type is normal, or of the only one; each with its number as written and as a canonical xsd:decimal, its comparator if one of FHIR R4's four, its unit's display, and its unit's code where its system is UCUM. A bound carrying a comparator is not written."
     },
     {
       "@id": "in/sparql/variant.rq",
@@ -1446,8 +1500,8 @@
       "@type": "File",
       "name": "Findings: what a lab result's mapping leaves behind",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "4056",
-      "sha256": "08996d71d3f40b41cf7c9c5d4cad4c783c4957ba12d085fb6e1e9db8f9a54950",
+      "contentSize": "6181",
+      "sha256": "ec6c73a30a389fc612616dc2c3531e339a8529ee68baff138c6092092357a854",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1482,8 +1536,8 @@
       "@type": "File",
       "name": "FHIR R4 JSON source accounting",
       "encodingFormat": "text/turtle",
-      "contentSize": "202338",
-      "sha256": "f3e5814be7b4c4da08e2c88b32539844c0bdff83a92c9952944a36acba37cac8",
+      "contentSize": "214882",
+      "sha256": "d723d0eed5d5ab41f838b206579baae9390827b969b63a6ff96ee011cf48b95b",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1518,8 +1572,8 @@
       "@type": "File",
       "name": "FHIR R4 JSON gaps",
       "encodingFormat": "text/turtle",
-      "contentSize": "11818",
-      "sha256": "01cda73bba69a90b462d2386570cf3ad53ef920b45f0952c1e0b4e95d188787a",
+      "contentSize": "12711",
+      "sha256": "4391d8c135a08468611004da3e21b8965c39524e277b27273d0eee60ecb6a214",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2336,6 +2390,58 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "A laboratory Observation of high-sensitivity troponin I (LOINC 89579-7 and a local code), id obs-troponin-1, whose valueQuantity is 0.01 ng/mL with the comparator <, performed over an effectivePeriod with a start and an end, with two interpretations, a first reference range with only a high bound and a second with a high bound and text, and a note. Authored here on 2026-10-06, for a case the conformance corpus does not hold: a value that is a bound rather than a measurement, a one-sided range, and the elements a lab result carries only once or not at all."
+    },
+    {
+      "@id": "fixtures/in/lab-titre-ratio.json",
+      "@type": "File",
+      "name": "Laboratory Observation whose value is a titre",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "714",
+      "sha256": "9323ec3288da08d5f85c489de2facfb03b7c01e9d6abc32698b9e1b91c524594",
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A laboratory Observation of an antinuclear antibody titre (LOINC 5048-4), id obs-ana-titre-1, whose valueRatio is 1:64 with no unit. Authored here on 2026-10-24, for a case the conformance corpus does not hold: a value that is a ratio."
+    },
+    {
+      "@id": "fixtures/in/lab-urine-leukocytes-range.json",
+      "@type": "File",
+      "name": "Laboratory Observation whose value is a range",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "911",
+      "sha256": "a1431a3998fc09dfc2fe99028ae0ba82463b4a73799109261292457c97c6d7d0",
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A laboratory Observation of leukocytes in urine sediment (LOINC 5821-4), id obs-urine-wbc-1, whose valueRange is 0 to 5 in UCUM /[HPF], displayed /HPF. Authored here on 2026-10-24, for a case the conformance corpus does not hold: a value that is a range."
+    },
+    {
+      "@id": "fixtures/in/lab-hepatitis-b-surface-antigen-coded.json",
+      "@type": "File",
+      "name": "Laboratory Observation whose value is coded",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "928",
+      "sha256": "2a8b534ff30b4bec85936669326267bab579709070934b07518248ad621d4616",
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A laboratory Observation of hepatitis B surface antigen (LOINC 5196-1), id obs-hbsag-1, whose valueCodeableConcept holds the LOINC answer LA6577-6, Negative, a local code, and the text Negative. Authored here on 2026-10-24, for a case the conformance corpus does not hold: a coded value with a code outside SNOMED CT and LOINC."
+    },
+    {
+      "@id": "fixtures/in/lab-leukocytes-exponent-and-ranges.json",
+      "@type": "File",
+      "name": "Laboratory Observation with an exponent and two typed reference ranges",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "1833",
+      "sha256": "7cd0ba9fd9c6346175c0a54b2e51d9f3c2940b6c1528ccf0a4393b29e530781e",
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A laboratory Observation of a leukocyte count (LOINC 6690-2), id obs-wbc-exponent-1, whose valueQuantity is written 6.20E3 in UCUM /uL, displayed cells/uL, with a first reference range of type treatment, its high bound's unit in a local system, and a second of type normal whose low bound carries the comparator >= and whose high bound is written 1.10e4. Authored here on 2026-10-24, for a case the conformance corpus does not hold: an exponent, the normal range among two, a unit outside UCUM and a comparator on a bound."
     },
     {
       "@id": "fixtures/in/medication-request-two-rxnorm-codes.json",
@@ -3579,8 +3685,8 @@
       "@type": "File",
       "name": "Expected graph for lab-glucose-fasting",
       "encodingFormat": "text/turtle",
-      "contentSize": "3765",
-      "sha256": "9d029affd58a531d0c8453bdb78c17d49d6c81c6ea51a7f534572052e7c0b5a3",
+      "contentSize": "4071",
+      "sha256": "065b3005de7951d62144700bee343029ccd4dbcf116475afd9c79d9cab6ebb74",
       "about": {
         "@id": "fixtures/in/lab-glucose-fasting.json"
       },
@@ -3611,8 +3717,8 @@
       "@type": "File",
       "name": "Expected graph for lab-every-mapped-element",
       "encodingFormat": "text/turtle",
-      "contentSize": "3901",
-      "sha256": "9e64e9175113d7b62844591ef39ea56e216993a135162ac8772216beead0435e",
+      "contentSize": "4887",
+      "sha256": "f7f4357b7172684c14c536a20247cb7befb2ece3ad5418425f286170a4fdec61",
       "about": {
         "@id": "fixtures/in/lab-every-mapped-element.json"
       },
@@ -3643,8 +3749,8 @@
       "@type": "File",
       "name": "Expected graph for lab-no-category-potassium",
       "encodingFormat": "text/turtle",
-      "contentSize": "3561",
-      "sha256": "576c1dba38d0753cf9e55f09a3e8526623740d430945704a77bc9abcb4639e41",
+      "contentSize": "3825",
+      "sha256": "f7353cb56df89a7af0dee878d8667376dab7055c4f2c3c9de42f8421aad3ba27",
       "about": {
         "@id": "fixtures/in/lab-no-category-potassium.json"
       },
@@ -3995,12 +4101,76 @@
       "@type": "File",
       "name": "Expected graph for lab-troponin-below-detection",
       "encodingFormat": "text/turtle",
-      "contentSize": "3851",
-      "sha256": "80bdff91bb7a66a2244ad9243a27e020919d3bba5153f62d509e1a3f4d2dbb86",
+      "contentSize": "4177",
+      "sha256": "d0ac1e5de8a913a01d27406c66eb0058a743b04a390ecc65026f50f1812abe52",
       "about": {
         "@id": "fixtures/in/lab-troponin-below-detection.json"
       },
       "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/lab-titre-ratio.ttl",
+      "@type": "File",
+      "name": "Expected graph for lab-titre-ratio",
+      "encodingFormat": "text/turtle",
+      "contentSize": "4226",
+      "sha256": "af8153c7defa794e5925c4c66056d10874611b125871ce6e5b4875ed2d26ecba",
+      "about": {
+        "@id": "fixtures/in/lab-titre-ratio.json"
+      },
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/lab-urine-leukocytes-range.ttl",
+      "@type": "File",
+      "name": "Expected graph for lab-urine-leukocytes-range",
+      "encodingFormat": "text/turtle",
+      "contentSize": "4333",
+      "sha256": "a591221928bd080a3f67e0b030720d3e721d7fb61a752936ce2942116269f754",
+      "about": {
+        "@id": "fixtures/in/lab-urine-leukocytes-range.json"
+      },
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/lab-hepatitis-b-surface-antigen-coded.ttl",
+      "@type": "File",
+      "name": "Expected graph for lab-hepatitis-b-surface-antigen-coded",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3720",
+      "sha256": "4e041e0ba16d3a8fdf0af010485b846cf27722590b534c071ba8eb3000665ca1",
+      "about": {
+        "@id": "fixtures/in/lab-hepatitis-b-surface-antigen-coded.json"
+      },
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/lab-leukocytes-exponent-and-ranges.ttl",
+      "@type": "File",
+      "name": "Expected graph for lab-leukocytes-exponent-and-ranges",
+      "encodingFormat": "text/turtle",
+      "contentSize": "4391",
+      "sha256": "32ea42315154d251144e902350ab8fc2b9702068f3871952d785b48f7309bf3e",
+      "about": {
+        "@id": "fixtures/in/lab-leukocytes-exponent-and-ranges.json"
+      },
+      "dateCreated": "2026-10-24",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -4017,6 +4187,70 @@
         "@id": "fixtures/in/lab-troponin-below-detection.json"
       },
       "dateCreated": "2026-10-06",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/lab-titre-ratio.ttl",
+      "@type": "File",
+      "name": "Expected findings for lab-titre-ratio",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/lab-titre-ratio.json"
+      },
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/lab-urine-leukocytes-range.ttl",
+      "@type": "File",
+      "name": "Expected findings for lab-urine-leukocytes-range",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/lab-urine-leukocytes-range.json"
+      },
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/lab-hepatitis-b-surface-antigen-coded.ttl",
+      "@type": "File",
+      "name": "Expected findings for lab-hepatitis-b-surface-antigen-coded",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1069",
+      "sha256": "52df226e83b153a78f98fb37b97c473ab83617cd5a305c9d1a6d03259f1d18db",
+      "about": {
+        "@id": "fixtures/in/lab-hepatitis-b-surface-antigen-coded.json"
+      },
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/lab-leukocytes-exponent-and-ranges.ttl",
+      "@type": "File",
+      "name": "Expected findings for lab-leukocytes-exponent-and-ranges",
+      "encodingFormat": "text/turtle",
+      "contentSize": "4802",
+      "sha256": "b787381c218c366ebbc0829550e942dfdd7118fdf1a1c3788b76547b75e9cc93",
+      "about": {
+        "@id": "fixtures/in/lab-leukocytes-exponent-and-ranges.json"
+      },
+      "dateCreated": "2026-10-24",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -4171,8 +4405,8 @@
       "@type": "File",
       "name": "Expected graph for Bundle-bundle-cgexample",
       "encodingFormat": "text/turtle",
-      "contentSize": "14490",
-      "sha256": "62e117705561e5d8bc2a90b5ca98d25db3b19cb17562c5a30e230b11a3bdd3ed",
+      "contentSize": "14389",
+      "sha256": "a6ebe91c5670c1ad402daa9bd4af44fa82fa68bd8b00c3119718418d3d82bf02",
       "about": {
         "@id": "fixtures/in/Bundle-bundle-cgexample.input.json"
       },
@@ -4203,8 +4437,8 @@
       "@type": "File",
       "name": "Expected graph for Bundle-bundle-oncology-diagnostic",
       "encodingFormat": "text/turtle",
-      "contentSize": "6769",
-      "sha256": "47df3f2fc130187a8f43798cfdc344da85a6244b61f0e1934c1be56bf32204ce",
+      "contentSize": "7043",
+      "sha256": "6fa607829bfab14e81c6d9579802c8cd9b400676e8bdefbbf49a4a2cce1deeee",
       "about": {
         "@id": "fixtures/in/Bundle-bundle-oncology-diagnostic.input.json"
       },
@@ -4235,8 +4469,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-genomics-interpretations",
       "encodingFormat": "text/turtle",
-      "contentSize": "15656",
-      "sha256": "9db95661bf0211b134311588de9ecc7f9a8c994a94dc149a9572c74abb6cbbda",
+      "contentSize": "15640",
+      "sha256": "3d808294e3335bd7760b850235bfc5dd1f86667f4c582f3200a3a6cb75405f3b",
       "about": {
         "@id": "fixtures/in/bundle-genomics-interpretations.json"
       },
@@ -4331,8 +4565,8 @@
       "@type": "File",
       "name": "Expected findings for Bundle-bundle-cgexample",
       "encodingFormat": "text/turtle",
-      "contentSize": "24707",
-      "sha256": "73d5b9f68ac6f46f687d6e96ec56726990c89c88fe675caa070190602bf6b7e3",
+      "contentSize": "26431",
+      "sha256": "8c51029be13cf1cd947812b2caefe8ba584cebc8488f14279371a0658baf30e8",
       "about": {
         "@id": "fixtures/in/Bundle-bundle-cgexample.input.json"
       },
@@ -4835,8 +5069,8 @@
       "@type": "File",
       "name": "View: lab results",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "1399",
-      "sha256": "963fbd7febced7fe927e97d287a67b9f05cf1a13a58b4763fbaf4bdc9d4b7e22",
+      "contentSize": "1727",
+      "sha256": "c9519c1fe168d4f78d1c45ed18d48cc4f2465a9e37c0911e5fc34ff25802011b",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -5048,8 +5282,8 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "contentSize": "58103",
-      "sha256": "ff4167bc017ec7a6eeb7e46133f1e72107377b6ac95f6e1bd0a4e9eee3db876f"
+      "contentSize": "60890",
+      "sha256": "c4b1949990dddc59787910fa44b64c420a168ff66f42db098a404816bf06a757"
     },
     {
       "@id": "fixtures/facts/meridian.ttl",

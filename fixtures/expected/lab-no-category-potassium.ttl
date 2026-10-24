@@ -6,21 +6,24 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;XpE4PVwMeLmtIMGcUUqFv48D-0n_zuYcoI02IAuYXhs> cascade:workflowStatus "final" ;
-	cascade:resultClinicallyRelevantTime "2026-05-04T09:00:00Z"^^xsd:dateTime ;
-	cascade:resultUnit "mmol/L" ;
-	cascade:resultValue "4.1" ;
+<ni:///sha-256;FVifmue-Uik2I7KX-hUNwJlNj4KxxSVByFcfZqvm9jQ> cascade:resultQuantity <ni:///sha-256;FVifmue-Uik2I7KX-hUNwJlNj4KxxSVByFcfZqvm9jQ#value> .
+<ni:///sha-256;FVifmue-Uik2I7KX-hUNwJlNj4KxxSVByFcfZqvm9jQ#value> cascade:decimalValue 4.1 ;
+	cascade:writtenValue "4.1" ;
+	cascade:unitText "mmol/L" .
+<ni:///sha-256;FVifmue-Uik2I7KX-hUNwJlNj4KxxSVByFcfZqvm9jQ> cascade:testName "Potassium [Moles/volume] in Serum or Plasma" ;
 	cascade:testCode <http://loinc.org/rdf/2823-3> ;
-	cascade:testName "Potassium [Moles/volume] in Serum or Plasma" .
-_:405d2a986bd0d3f74c1e8970959706e2 bridge:arrivedAs <ni:///sha-256;XpE4PVwMeLmtIMGcUUqFv48D-0n_zuYcoI02IAuYXhs> .
-<ni:///sha-256;XpE4PVwMeLmtIMGcUUqFv48D-0n_zuYcoI02IAuYXhs> cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> ;
-	prov:specializationOf <urn:uuid:f540c438-5328-8893-b575-e6d5c536f758> .
+	cascade:resultValueKind cascade:QuantityResultValue ;
+	cascade:resultClinicallyRelevantTime "2026-05-04T09:00:00Z"^^xsd:dateTime ;
+	cascade:workflowStatus "final" .
 <urn:uuid:f540c438-5328-8893-b575-e6d5c536f758> a cascade:LaboratoryTestResult .
-_:405d2a986bd0d3f74c1e8970959706e2 oa:hasSelector _:81b54e2c6b243da9114cfacc1a421eb6 ;
+<ni:///sha-256;FVifmue-Uik2I7KX-hUNwJlNj4KxxSVByFcfZqvm9jQ> prov:specializationOf <urn:uuid:f540c438-5328-8893-b575-e6d5c536f758> ;
+	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
+_:dc5d3d2acde3410952df26df0c80e7ec bridge:arrivedAs <ni:///sha-256;FVifmue-Uik2I7KX-hUNwJlNj4KxxSVByFcfZqvm9jQ> ;
+	oa:hasSelector _:6732f552548de55b88fc1f3213a02b3c ;
 	oa:hasSource <ni:///sha-256;CKNU5R7YE4YVD-qyLkqhx2y7Q2t9P47Cq5S6Jy5Wx2w> ;
 	prov:wasDerivedFrom <ni:///sha-256;CKNU5R7YE4YVD-qyLkqhx2y7Q2t9P47Cq5S6Jy5Wx2w> ;
 	prov:wasGeneratedBy _:925af6c26f40e7c70bc29aa4baf604dc .
-_:81b54e2c6b243da9114cfacc1a421eb6 a oa:FragmentSelector ;
+_:6732f552548de55b88fc1f3213a02b3c a oa:FragmentSelector ;
 	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;CKNU5R7YE4YVD-qyLkqhx2y7Q2t9P47Cq5S6Jy5Wx2w> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;

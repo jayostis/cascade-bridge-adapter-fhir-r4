@@ -1,0 +1,43 @@
+{
+  "resourceType": "Observation",
+  "id": "obs-hbsag-1",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "5196-1",
+        "display": "Hepatitis B virus surface Ag [Presence] in Serum or Plasma by Immunoassay"
+      }
+    ],
+    "text": "Hepatitis B surface antigen"
+  },
+  "subject": {
+    "reference": "Patient/pat-conformance-1"
+  },
+  "effectiveDateTime": "2026-08-03T09:25:00Z",
+  "valueCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "LA6577-6",
+        "display": "Negative"
+      },
+      {
+        "system": "http://lab.meridian.example/answers",
+        "code": "NEG"
+      }
+    ],
+    "text": "Negative"
+  }
+}
