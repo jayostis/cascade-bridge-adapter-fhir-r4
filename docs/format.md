@@ -136,15 +136,15 @@ picked. The rules and why they are what they are are
 
 **The server rule applies** to a top-level resource where the document states
 `cascade:serverBaseUrl`, the resource has an `id`, its entry's `fullUrl`, if
-any, is not a `urn:uuid:`, and no other resource of its type in the document
+any, is not a `urn:uuid:`, and no other top-level resource of its type in the document
 has that `id`. Its `cascade:sourceUrl` is the base URL, the type and the `id`.
 
 **The document names the rest.** A `urn:uuid:` `fullUrl` is a generator's,
 unique within its Bundle only, and the server rule never uses it as identity
-across documents; a document with no base URL has no server to name. A
-resource whose type and `id` another resource of the document shares is named by
+across documents; a document with no base URL has no server to name. A top-level
+resource whose type and `id` another top-level resource of the document shares is named by
 its position: one name for both would fuse two resources the source gave one
-`id`. Each resource sharing an `id`, or a `urn:uuid:` `fullUrl`, with another is a finding,
+`id`. Each top-level resource sharing an `id`, or a `urn:uuid:` `fullUrl`, with another is a finding,
 `fhirr4:resourceIdRepeated`. A reference to a shared `id` names no record, since
 the document names both. A record named by the document carries no
 `cascade:sourceUrl`: its name is not its id's.
