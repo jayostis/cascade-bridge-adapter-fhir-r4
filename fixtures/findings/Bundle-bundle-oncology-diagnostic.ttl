@@ -2,166 +2,181 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:fb74264c82da0f7d5bec226a7d375ebb a oa:FragmentSelector ;
+_:f206c5bd0979397badc1112ebb5f9cc2 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/0" .
-_:a78b1a836d23af32dc753196e02245b2 a oa:FragmentSelector ;
+_:b643b26105c3b881088aef7e91084b3f a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/text/div" .
-_:fb74264c82da0f7d5bec226a7d375ebb oa:refinedBy _:a78b1a836d23af32dc753196e02245b2 .
-_:c9796b4844e31471cc7a8e0c92a8feed a oa:Annotation ;
-	oa:hasTarget _:dde62a5ac92076c3bdb4caac0f9146a4 .
-_:dde62a5ac92076c3bdb4caac0f9146a4 oa:hasSource <../in/Bundle-bundle-oncology-diagnostic.input.json> ;
-	oa:hasSelector _:fb74264c82da0f7d5bec226a7d375ebb .
-_:c9796b4844e31471cc7a8e0c92a8feed oa:hasBody fhirr4:narrative ;
+_:f206c5bd0979397badc1112ebb5f9cc2 oa:refinedBy _:b643b26105c3b881088aef7e91084b3f .
+_:c42a1cbe30e9448577692e0b21434f5a a oa:Annotation ;
+	oa:hasTarget _:ed41d243aa323280d354a088bb25a94f .
+_:ed41d243aa323280d354a088bb25a94f oa:hasSource <../in/Bundle-bundle-oncology-diagnostic.input.json> ;
+	oa:hasSelector _:f206c5bd0979397badc1112ebb5f9cc2 .
+_:c42a1cbe30e9448577692e0b21434f5a oa:hasBody fhirr4:narrative ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "/resource/text/div" ;
 	sh:resultSeverity sh:Info .
-_:c760948688b99bb15fce5f49ceecd5e2 a oa:FragmentSelector ;
+_:dcaa96716c419111b296ab4249db9adb a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/0" .
-_:db9091a173f600a5e37374675f20121e a oa:FragmentSelector ;
+_:ae15f359d1612f4e621c40c43af8c6ca a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/gender" .
-_:c760948688b99bb15fce5f49ceecd5e2 oa:refinedBy _:db9091a173f600a5e37374675f20121e .
-_:d0a73cd42f3cd294deef78900e698ff a oa:Annotation ;
-	oa:hasTarget _:a55449c8a9a7dec74551da879cad0c3e .
-_:a55449c8a9a7dec74551da879cad0c3e oa:hasSource <../in/Bundle-bundle-oncology-diagnostic.input.json> ;
-	oa:hasSelector _:c760948688b99bb15fce5f49ceecd5e2 .
-_:d0a73cd42f3cd294deef78900e698ff oa:hasBody fhirr4:patientGender ;
+_:dcaa96716c419111b296ab4249db9adb oa:refinedBy _:ae15f359d1612f4e621c40c43af8c6ca .
+_:d00e615d0627e2ed97f203a3584d3e33 a oa:Annotation ;
+	oa:hasTarget _:e20e8a5e78d2cea2d89274d6acd814c3 .
+_:e20e8a5e78d2cea2d89274d6acd814c3 oa:hasSource <../in/Bundle-bundle-oncology-diagnostic.input.json> ;
+	oa:hasSelector _:dcaa96716c419111b296ab4249db9adb .
+_:d00e615d0627e2ed97f203a3584d3e33 oa:hasBody fhirr4:patientGender ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "/resource/gender" ;
 	sh:resultSeverity sh:Info .
-_:e4ee700d0e86fb507733e783129c86f4 a oa:FragmentSelector ;
+_:d8e333964e3d6032c0933c3a1e78947b a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/1" .
-_:f54f045d2c354d7bf923f84e2d22d694 a oa:FragmentSelector ;
+_:fe361bd7bdd2dbd043ea000b23556cc6 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/text/div" .
-_:e4ee700d0e86fb507733e783129c86f4 oa:refinedBy _:f54f045d2c354d7bf923f84e2d22d694 .
-_:eacae8558be724c8b48c2fe47fdc9f59 a oa:Annotation ;
-	oa:hasTarget _:e4730cc400f741c0ba5daf0b239d88b8 .
-_:e4730cc400f741c0ba5daf0b239d88b8 oa:hasSource <../in/Bundle-bundle-oncology-diagnostic.input.json> ;
-	oa:hasSelector _:e4ee700d0e86fb507733e783129c86f4 .
-_:eacae8558be724c8b48c2fe47fdc9f59 oa:hasBody fhirr4:narrative ;
+_:d8e333964e3d6032c0933c3a1e78947b oa:refinedBy _:fe361bd7bdd2dbd043ea000b23556cc6 .
+_:ae5f753ad88c6660fb7fa306fb4a9b59 a oa:Annotation ;
+	oa:hasTarget _:ff301500339af0c3688a480925ab39b6 .
+_:ff301500339af0c3688a480925ab39b6 oa:hasSource <../in/Bundle-bundle-oncology-diagnostic.input.json> ;
+	oa:hasSelector _:d8e333964e3d6032c0933c3a1e78947b .
+_:ae5f753ad88c6660fb7fa306fb4a9b59 oa:hasBody fhirr4:narrative ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "/resource/text/div" ;
 	sh:resultSeverity sh:Info .
-_:cfb378bd63d63b271445111c17b8a7c9 a oa:FragmentSelector ;
+_:c97a0c311d1cf2cc93c6c3dd7f85d97e a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/1" .
-_:ea77345d6cdd708588bfe76705effe9b oa:hasSource <../in/Bundle-bundle-oncology-diagnostic.input.json> .
-_:cfb378bd63d63b271445111c17b8a7c9 oa:refinedBy _:adc1f5c2c8864f29eed2735735a8b3b0 .
-_:adc1f5c2c8864f29eed2735735a8b3b0 a oa:FragmentSelector ;
+_:f899eb2ce30c4ee7fedf1abdf144381e oa:hasSource <../in/Bundle-bundle-oncology-diagnostic.input.json> .
+_:c97a0c311d1cf2cc93c6c3dd7f85d97e oa:refinedBy _:c7f30e62b7cdef1b4afc5317a9520560 .
+_:c7f30e62b7cdef1b4afc5317a9520560 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/resourceType" .
-_:ea77345d6cdd708588bfe76705effe9b oa:hasSelector _:cfb378bd63d63b271445111c17b8a7c9 .
-_:b3b194008de2e7d2f5333b854dbc5e43 oa:hasTarget _:ea77345d6cdd708588bfe76705effe9b ;
+_:f899eb2ce30c4ee7fedf1abdf144381e oa:hasSelector _:c97a0c311d1cf2cc93c6c3dd7f85d97e .
+_:c45c061a01a44a5c81ab24d5659b2dff oa:hasTarget _:f899eb2ce30c4ee7fedf1abdf144381e ;
 	sh:resultSeverity sh:Warning ;
 	a oa:Annotation ;
 	oa:hasBody fhirr4:resourceTypeNotMapped ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "Practitioner" .
-_:c23f474ddeb769383f5ffe4df2ba4eaf a oa:FragmentSelector ;
+_:c89f04b721434b92fcde1fe5e0e3b1b7 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/2" .
-_:f73aad6401b82196b38e84fe59c187f9 a oa:FragmentSelector ;
+_:c2d70709109fbfbfc4783edf29ef07be a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/text/div" .
-_:c23f474ddeb769383f5ffe4df2ba4eaf oa:refinedBy _:f73aad6401b82196b38e84fe59c187f9 .
-_:e30bf8435413beba5cae872ca1cd8f8 a oa:Annotation ;
-	oa:hasTarget _:b8e4baf7ff7a4bbad69252452818fe47 .
-_:b8e4baf7ff7a4bbad69252452818fe47 oa:hasSource <../in/Bundle-bundle-oncology-diagnostic.input.json> ;
-	oa:hasSelector _:c23f474ddeb769383f5ffe4df2ba4eaf .
-_:e30bf8435413beba5cae872ca1cd8f8 oa:hasBody fhirr4:narrative ;
+_:c89f04b721434b92fcde1fe5e0e3b1b7 oa:refinedBy _:c2d70709109fbfbfc4783edf29ef07be .
+_:f75a269f950f6d341893befd5099371a a oa:Annotation ;
+	oa:hasTarget _:e8a061f1adb5de342a40780f674b10fe .
+_:e8a061f1adb5de342a40780f674b10fe oa:hasSource <../in/Bundle-bundle-oncology-diagnostic.input.json> ;
+	oa:hasSelector _:c89f04b721434b92fcde1fe5e0e3b1b7 .
+_:f75a269f950f6d341893befd5099371a oa:hasBody fhirr4:narrative ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "/resource/text/div" ;
 	sh:resultSeverity sh:Info .
-_:f5d109ce9713e7b0523f7fdc75eb9dae a oa:FragmentSelector ;
+_:f25116bd2315bca2cab24373f48daa24 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/2" .
-_:f6fd7a25168c1ba8d2f30c2ddb47500d oa:hasSource <../in/Bundle-bundle-oncology-diagnostic.input.json> .
-_:f5d109ce9713e7b0523f7fdc75eb9dae oa:refinedBy _:b84aa50031a9c508a8c1be629399fdb3 .
-_:b84aa50031a9c508a8c1be629399fdb3 a oa:FragmentSelector ;
+_:a3a0e4bbfc43ef2ab0e17b8cedf42d92 oa:hasSource <../in/Bundle-bundle-oncology-diagnostic.input.json> .
+_:f25116bd2315bca2cab24373f48daa24 oa:refinedBy _:ae9ecf8e79adf6be20e45df6c1fe4320 .
+_:ae9ecf8e79adf6be20e45df6c1fe4320 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/resourceType" .
-_:f6fd7a25168c1ba8d2f30c2ddb47500d oa:hasSelector _:f5d109ce9713e7b0523f7fdc75eb9dae .
-_:d345e73f1611e8d8da17554e5f8dcd92 oa:hasTarget _:f6fd7a25168c1ba8d2f30c2ddb47500d ;
+_:a3a0e4bbfc43ef2ab0e17b8cedf42d92 oa:hasSelector _:f25116bd2315bca2cab24373f48daa24 .
+_:b85d0cc8876a2d961a29594879a36120 oa:hasTarget _:a3a0e4bbfc43ef2ab0e17b8cedf42d92 ;
 	sh:resultSeverity sh:Warning ;
 	a oa:Annotation ;
 	oa:hasBody fhirr4:resourceTypeNotMapped ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "Specimen" .
-_:e79b5787ab10706b50517e9f0c32fec2 a oa:FragmentSelector ;
+_:f7d79e63ffc9f789207a0c4546cb4d2a a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/3" .
-_:e407c97a9e268b23d785fedd6b69b1e2 a oa:FragmentSelector ;
+_:c449abe364a53528428ff2de2348a0ac a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/text/div" .
-_:e79b5787ab10706b50517e9f0c32fec2 oa:refinedBy _:e407c97a9e268b23d785fedd6b69b1e2 .
-_:a74a336178b466da5ea78c6bc8432bb a oa:Annotation ;
-	oa:hasTarget _:ce2a884ebac7c9ac96784377851a3788 .
-_:ce2a884ebac7c9ac96784377851a3788 oa:hasSource <../in/Bundle-bundle-oncology-diagnostic.input.json> ;
-	oa:hasSelector _:e79b5787ab10706b50517e9f0c32fec2 .
-_:a74a336178b466da5ea78c6bc8432bb oa:hasBody fhirr4:narrative ;
+_:f7d79e63ffc9f789207a0c4546cb4d2a oa:refinedBy _:c449abe364a53528428ff2de2348a0ac .
+_:dc0c6dc72ff206f3d3e4a070b8165a31 a oa:Annotation ;
+	oa:hasTarget _:c0035d9f3f3d225d61b8f923f96ca8c2 .
+_:c0035d9f3f3d225d61b8f923f96ca8c2 oa:hasSource <../in/Bundle-bundle-oncology-diagnostic.input.json> ;
+	oa:hasSelector _:f7d79e63ffc9f789207a0c4546cb4d2a .
+_:dc0c6dc72ff206f3d3e4a070b8165a31 oa:hasBody fhirr4:narrative ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "/resource/text/div" ;
 	sh:resultSeverity sh:Info .
-_:b0070481d04bcfc67afe0de6d9f38775 a oa:FragmentSelector ;
+_:a521241fe9cab55f3b376c83f83cb43d a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/4" .
-_:f6f6d744256cabb57d0d3cf6d38250b9 a oa:FragmentSelector ;
+_:e1865d0351ebfd0c98f5acbd590b74b7 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/text/div" .
-_:b0070481d04bcfc67afe0de6d9f38775 oa:refinedBy _:f6f6d744256cabb57d0d3cf6d38250b9 .
-_:d652a327b39365d8cc8a924ee5069a16 a oa:Annotation ;
-	oa:hasTarget _:aa87b174cc729ed149c7a55f811e081c .
-_:aa87b174cc729ed149c7a55f811e081c oa:hasSource <../in/Bundle-bundle-oncology-diagnostic.input.json> ;
-	oa:hasSelector _:b0070481d04bcfc67afe0de6d9f38775 .
-_:d652a327b39365d8cc8a924ee5069a16 oa:hasBody fhirr4:narrative ;
+_:a521241fe9cab55f3b376c83f83cb43d oa:refinedBy _:e1865d0351ebfd0c98f5acbd590b74b7 .
+_:bf161fb0051f8cc067003180e38a947b a oa:Annotation ;
+	oa:hasTarget _:c34962fab266a81b08726b62bbfbd0f8 .
+_:c34962fab266a81b08726b62bbfbd0f8 oa:hasSource <../in/Bundle-bundle-oncology-diagnostic.input.json> ;
+	oa:hasSelector _:a521241fe9cab55f3b376c83f83cb43d .
+_:bf161fb0051f8cc067003180e38a947b oa:hasBody fhirr4:narrative ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "/resource/text/div" ;
 	sh:resultSeverity sh:Info .
-_:a0c4a4756ab46d04fc80c51889f9daed a oa:FragmentSelector ;
+_:e552fb76dd18aeebbcbfaa35d261541e a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/5" .
-_:c5944e360e97caa86da45680d340d679 a oa:FragmentSelector ;
+_:a5b0dd8c224aff4510ae1e7157f6a20a a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/text/div" .
-_:a0c4a4756ab46d04fc80c51889f9daed oa:refinedBy _:c5944e360e97caa86da45680d340d679 .
-_:b2971fc719b71f35ce134e6ee287f746 a oa:Annotation ;
-	oa:hasTarget _:b08f231053977f897346f7dd57a71ac6 .
-_:b08f231053977f897346f7dd57a71ac6 oa:hasSource <../in/Bundle-bundle-oncology-diagnostic.input.json> ;
-	oa:hasSelector _:a0c4a4756ab46d04fc80c51889f9daed .
-_:b2971fc719b71f35ce134e6ee287f746 oa:hasBody fhirr4:narrative ;
+_:e552fb76dd18aeebbcbfaa35d261541e oa:refinedBy _:a5b0dd8c224aff4510ae1e7157f6a20a .
+_:ed48e6de5bbdf51653c7014258df0d62 a oa:Annotation ;
+	oa:hasTarget _:cb8c3d8afe699f64d77ac540a7a8913 .
+_:cb8c3d8afe699f64d77ac540a7a8913 oa:hasSource <../in/Bundle-bundle-oncology-diagnostic.input.json> ;
+	oa:hasSelector _:e552fb76dd18aeebbcbfaa35d261541e .
+_:ed48e6de5bbdf51653c7014258df0d62 oa:hasBody fhirr4:narrative ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "/resource/text/div" ;
 	sh:resultSeverity sh:Info .
-_:ef29b423edc4b20c4128b16fd4541091 a oa:FragmentSelector ;
+_:a49f3a69c24b8750eb42697a1c3519ef a oa:FragmentSelector ;
+	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/entry/5" .
+_:b68bba61eab7daeeb771637bc9c38957 oa:hasSource <../in/Bundle-bundle-oncology-diagnostic.input.json> .
+_:a49f3a69c24b8750eb42697a1c3519ef oa:refinedBy _:f5e69c632ac1dbbb1a000877e57d3d7 .
+_:f5e69c632ac1dbbb1a000877e57d3d7 a oa:FragmentSelector ;
+	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/resource/performer/0/reference" .
+_:b68bba61eab7daeeb771637bc9c38957 oa:hasSelector _:a49f3a69c24b8750eb42697a1c3519ef .
+_:e91ea4b43aedadc79739a1e11ea68084 oa:hasTarget _:b68bba61eab7daeeb771637bc9c38957 ;
+	sh:resultSeverity sh:Warning ;
+	a oa:Annotation ;
+	oa:hasBody fhirr4:interpretationPerformer ;
+	oa:motivatedBy oa:classifying ;
+	sh:value "urn:uuid:a48256f8-db37-44e0-a0f6-d7af16c7c9ef" .
+_:c0035aaf26b79180ef8f1dddc023f41b a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/6" .
-_:bded47362e5d2829235c7a5fbb1ccb42 a oa:FragmentSelector ;
+_:a94a491185747a822af16943d6558171 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/text/div" .
-_:ef29b423edc4b20c4128b16fd4541091 oa:refinedBy _:bded47362e5d2829235c7a5fbb1ccb42 .
-_:e1d61e89a2ac760c21d38d2ed01b2676 a oa:Annotation ;
-	oa:hasTarget _:b8c1b981e33005358bfc3952065ec51d .
-_:b8c1b981e33005358bfc3952065ec51d oa:hasSource <../in/Bundle-bundle-oncology-diagnostic.input.json> ;
-	oa:hasSelector _:ef29b423edc4b20c4128b16fd4541091 .
-_:e1d61e89a2ac760c21d38d2ed01b2676 oa:hasBody fhirr4:narrative ;
+_:c0035aaf26b79180ef8f1dddc023f41b oa:refinedBy _:a94a491185747a822af16943d6558171 .
+_:b6fd3884c95c6527083d69b7e73c0e96 a oa:Annotation ;
+	oa:hasTarget _:b322f798a40ef75e6c1d0c38920c460e .
+_:b322f798a40ef75e6c1d0c38920c460e oa:hasSource <../in/Bundle-bundle-oncology-diagnostic.input.json> ;
+	oa:hasSelector _:c0035aaf26b79180ef8f1dddc023f41b .
+_:b6fd3884c95c6527083d69b7e73c0e96 oa:hasBody fhirr4:narrative ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "/resource/text/div" ;
 	sh:resultSeverity sh:Info .
-_:daf351ea19575b1abe6ab35f94a5e0c1 a oa:FragmentSelector ;
+_:ba2008700086bbabb6fc68345f6bd79 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/6" .
-_:d1b6b9e3a37df5f7d82df62ce2bb63b7 oa:hasSource <../in/Bundle-bundle-oncology-diagnostic.input.json> .
-_:daf351ea19575b1abe6ab35f94a5e0c1 oa:refinedBy _:cd10aca0b35003db3bec7e9bb2f38f11 .
-_:cd10aca0b35003db3bec7e9bb2f38f11 a oa:FragmentSelector ;
+_:fbf202a3269d9fe417ba0730ee91f70e oa:hasSource <../in/Bundle-bundle-oncology-diagnostic.input.json> .
+_:ba2008700086bbabb6fc68345f6bd79 oa:refinedBy _:df99fb236a6a5ac7e60e98fc0d38b344 .
+_:df99fb236a6a5ac7e60e98fc0d38b344 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/resourceType" .
-_:d1b6b9e3a37df5f7d82df62ce2bb63b7 oa:hasSelector _:daf351ea19575b1abe6ab35f94a5e0c1 .
-_:f74d87162fc6e68edce29c7dfbb20790 oa:hasTarget _:d1b6b9e3a37df5f7d82df62ce2bb63b7 ;
+_:fbf202a3269d9fe417ba0730ee91f70e oa:hasSelector _:ba2008700086bbabb6fc68345f6bd79 .
+_:f426aec4450b6dfb3c19424589a6d481 oa:hasTarget _:fbf202a3269d9fe417ba0730ee91f70e ;
 	sh:resultSeverity sh:Warning ;
 	a oa:Annotation ;
 	oa:hasBody fhirr4:resourceTypeNotMapped ;

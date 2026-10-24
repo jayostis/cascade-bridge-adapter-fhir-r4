@@ -15,9 +15,10 @@ PREFIX cascade: <https://ns.cascadeprotocol.org/cascade#>
 # derivedFrom that does not name exactly one variant record and nothing else
 # that is not one, each of its references, or the code where it has none.
 # A reference of the form Observation/<id> made from an entry whose fullUrl is
-# a urn:uuid, or to an entry held under one, names none. And performers naming
-# more than one organization record, as variant-interpretation.rq resolves
-# them, each performer's reference.
+# a urn:uuid, or to an entry held under one, names none. And performers that
+# leave the interpretation with no lab, as variant-interpretation.rq resolves
+# them: naming no organization record, or more than one, each performer's
+# reference.
 
 CONSTRUCT {
   [] a oa:Annotation ;
@@ -226,26 +227,29 @@ WHERE {
     {
       SELECT ?resourcePointer (COUNT(DISTINCT ?labNamed) AS ?labs)
       WHERE {
-        ?performed fhirr4:organizationReferenceFrom ?resourcePointer ;
-          fhirr4:organizationReferenceTo ?labKey ;
-          fhirr4:organizationScope ?labScope .
-        ?labHeld fhirr4:organizationAt ?labPointer ;
-          fhirr4:organizationKey ?labKey ;
-          fhirr4:organizationScope ?labScope .
-        FILTER NOT EXISTS {
-          ?labRival fhirr4:organizationAt ?labRivalPointer ;
+        ?labInterpretation fhirr4:interpretationAt ?resourcePointer .
+        OPTIONAL {
+          ?performed fhirr4:organizationReferenceFrom ?resourcePointer ;
+            fhirr4:organizationReferenceTo ?labKey ;
+            fhirr4:organizationScope ?labScope .
+          ?labHeld fhirr4:organizationAt ?labPointer ;
             fhirr4:organizationKey ?labKey ;
             fhirr4:organizationScope ?labScope .
-          FILTER (?labRivalPointer != ?labPointer)
+          FILTER NOT EXISTS {
+            ?labRival fhirr4:organizationAt ?labRivalPointer ;
+              fhirr4:organizationKey ?labKey ;
+              fhirr4:organizationScope ?labScope .
+            FILTER (?labRivalPointer != ?labPointer)
+          }
+          ?labRow fhirr4:organizationAt ?labPointer ;
+            fhirr4:organizationIdentifierSystem ?labSystem ;
+            fhirr4:organizationIdentifierValue ?labValue .
+          BIND (CONCAT(?labSystem, " ", ?labValue) AS ?labNamed)
         }
-        ?labRow fhirr4:organizationAt ?labPointer ;
-          fhirr4:organizationIdentifierSystem ?labSystem ;
-          fhirr4:organizationIdentifierValue ?labValue .
-        BIND (CONCAT(?labSystem, " ", ?labValue) AS ?labNamed)
       }
       GROUP BY ?resourcePointer
     }
-    FILTER (?labs > 1)
+    FILTER (?labs != 1)
     ?resource xyz:performer ?performers .
     ?performers ?performerSlot ?performer .
     ?performer xyz:reference ?value .

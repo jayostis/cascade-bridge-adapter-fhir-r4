@@ -116,8 +116,8 @@ category makes them.
 - **Its lab** is the organization record of the `Organization` its `performer`
   names, written as the version's `prov:wasAttributedTo`. A performer that is no
   `Organization` of the document, or one with no identifier to name it by, is not
-  read; performers naming two organization records name none, and a finding for
-  each performer.
+  read. Performers that name no organization record, or two, name none, and
+  each performer is a finding: a lab is never lost silently.
 
 The three elements of a variant are read from its components, by the code of the
 component, and each is carried only where the variant states it once; two

@@ -1,0 +1,77 @@
+{
+  "resourceType": "Bundle",
+  "type": "document",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:6e1a3b5c-7d9f-4a2b-8c4d-6e8f0a2b4c01",
+      "resource": {
+        "resourceType": "Composition",
+        "status": "final",
+        "type": { "coding": [{ "system": "http://loinc.org", "code": "51969-4" }] },
+        "subject": { "reference": "urn:uuid:6e1a3b5c-7d9f-4a2b-8c4d-6e8f0a2b4c02" },
+        "date": "2024-03-21",
+        "author": [{ "reference": "urn:uuid:6e1a3b5c-7d9f-4a2b-8c4d-6e8f0a2b4c03" }],
+        "title": "Genetic analysis report",
+        "custodian": { "reference": "urn:uuid:6e1a3b5c-7d9f-4a2b-8c4d-6e8f0a2b4c03" }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:6e1a3b5c-7d9f-4a2b-8c4d-6e8f0a2b4c02",
+      "resource": {
+        "resourceType": "Patient",
+        "name": [{ "family": "Okonkwo", "given": ["Ada"] }],
+        "gender": "female",
+        "birthDate": "1979-06-02"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:6e1a3b5c-7d9f-4a2b-8c4d-6e8f0a2b4c03",
+      "resource": {
+        "resourceType": "Organization",
+        "identifier": [{ "system": "http://hl7.org/fhir/sid/us-npi", "value": "1234567893" }],
+        "name": "Kestrel Genomics Laboratory"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:6e1a3b5c-7d9f-4a2b-8c4d-6e8f0a2b4c04",
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "code": { "coding": [{ "system": "http://loinc.org", "code": "69548-6", "display": "Genetic variant assessment" }] },
+        "subject": { "reference": "urn:uuid:6e1a3b5c-7d9f-4a2b-8c4d-6e8f0a2b4c02" },
+        "valueCodeableConcept": { "coding": [{ "system": "http://loinc.org", "code": "LA9633-4", "display": "Present" }] },
+        "component": [
+          {
+            "code": { "coding": [{ "system": "http://loinc.org", "code": "48004-6" }] },
+            "valueCodeableConcept": { "coding": [{ "system": "http://varnomen.hgvs.org", "code": "NM_000249.4:c.2042C>T" }] }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:6e1a3b5c-7d9f-4a2b-8c4d-6e8f0a2b4c05",
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs",
+              "code": "diagnostic-implication",
+              "display": "Diagnostic Implication"
+            }
+          ]
+        },
+        "subject": { "reference": "urn:uuid:6e1a3b5c-7d9f-4a2b-8c4d-6e8f0a2b4c02" },
+        "performer": [{ "reference": "urn:uuid:6e1a3b5c-7d9f-4a2b-8c4d-6e8f0a2b4c03" }],
+        "derivedFrom": [{ "reference": "urn:uuid:6e1a3b5c-7d9f-4a2b-8c4d-6e8f0a2b4c04" }],
+        "component": [
+          {
+            "code": { "coding": [{ "system": "http://loinc.org", "code": "53037-8" }] },
+            "valueCodeableConcept": { "coding": [{ "system": "http://loinc.org", "code": "LA26332-9", "display": "Likely pathogenic" }] }
+          }
+        ]
+      }
+    }
+  ]
+}
