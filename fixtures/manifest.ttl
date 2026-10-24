@@ -34,6 +34,13 @@
     <#patient-no-id>
     <#bundle-two-identical-id-less-allergies>
     <#bundle-urn-uuid-full-urls>
+    <#bundle-document-custodian-and-authors>
+    <#documentreference-contained-custodian>
+    <#bundle-document-without-custodian>
+    <#bundle-document-organizations-one-npi>
+    <#composition-contained-custodian>
+    <#npi-and-its-oid-name-one-organization>
+    <#ids-in-two-orders-name-one-organization>
     <#bundle-patient-reference-urn-not-held>
     <#bundle-patient-reference-relative-to-urn>
     <#bundle-repeated-condition-id>
@@ -424,6 +431,106 @@
   mf:result [
     bridge:expectedGraph <expected/bundle-urn-uuid-full-urls.ttl> ;
     bridge:expectedFindings <findings/bundle-urn-uuid-full-urls.ttl>
+  ] .
+
+<#bundle-document-custodian-and-authors> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-document-custodian-and-authors" ;
+  rdfs:comment "The custodian's NPI names its organization record, the name the C-CDA adapter's organizations-root-and-extension gives a custodian with that NPI: cascade-vocabulary's organization-from-npi naming vector." ;
+  mf:action [
+    bridge:input <in/bundle-document-custodian-and-authors.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/no-server.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-document-custodian-and-authors.ttl> ;
+    bridge:expectedFindings <findings/bundle-document-custodian-and-authors.ttl>
+  ] .
+
+<#documentreference-contained-custodian> a bridge:IsomorphicConversionTest ;
+  mf:name "documentreference-contained-custodian" ;
+  rdfs:comment "A DocumentReference's custodian keeps the document it describes, not the file read: it names no organization, and its contained Organization is a resource of a type not mapped." ;
+  mf:action [
+    bridge:input <in/documentreference-contained-custodian.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/no-server.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/documentreference-contained-custodian.ttl> ;
+    bridge:expectedFindings <findings/documentreference-contained-custodian.ttl>
+  ] .
+
+<#bundle-document-without-custodian> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-document-without-custodian" ;
+  mf:action [
+    bridge:input <in/bundle-document-without-custodian.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/no-server.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-document-without-custodian.ttl> ;
+    bridge:expectedFindings <findings/bundle-document-without-custodian.ttl>
+  ] .
+
+<#npi-and-its-oid-name-one-organization> a bridge:IdentityRelationTest ;
+  mf:name "npi-and-its-oid-name-one-organization" ;
+  rdfs:comment "Two documents' custodians, one naming its NPI by the NPI's URI and one by its OID, name one organization record." ;
+  mf:action [
+    bridge:conversion [
+      bridge:input <in/bundle-document-custodian-and-authors.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+      bridge:facts <facts/no-server.ttl> ;
+      bridge:selector "/entry/2"
+    ] , [
+      bridge:input <in/bundle-document-organizations-one-npi.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+      bridge:facts <facts/no-server.ttl> ;
+      bridge:selector "/entry/2"
+    ]
+  ] ;
+  mf:result [ bridge:sameRecord true ] .
+
+<#ids-in-two-orders-name-one-organization> a bridge:IdentityRelationTest ;
+  mf:name "ids-in-two-orders-name-one-organization" ;
+  rdfs:comment "An author entry of a document Bundle and a standalone Composition's contained custodian, listing one organization's identifiers in two orders, name one organization record." ;
+  mf:action [
+    bridge:conversion [
+      bridge:input <in/bundle-document-organizations-one-npi.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+      bridge:facts <facts/no-server.ttl> ;
+      bridge:selector "/entry/5"
+    ] , [
+      bridge:input <in/composition-contained-custodian.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/no-server.ttl> ;
+      bridge:selector "/contained/0"
+    ]
+  ] ;
+  mf:result [ bridge:sameRecord true ] .
+
+<#bundle-document-organizations-one-npi> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-document-organizations-one-npi" ;
+  rdfs:comment "A custodian naming its NPI by the NPI's OID and two authors naming it by its URI: one organization record, one version read from the custodian, and one attribution in each role; and an author listing an OID-typed identifier before a urn:ietf:rfc:3986 one, named by the latter." ;
+  mf:action [
+    bridge:input <in/bundle-document-organizations-one-npi.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/no-server.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-document-organizations-one-npi.ttl> ;
+    bridge:expectedFindings <findings/bundle-document-organizations-one-npi.ttl>
+  ] .
+
+<#composition-contained-custodian> a bridge:IsomorphicConversionTest ;
+  mf:name "composition-contained-custodian" ;
+  rdfs:comment "A Composition standing alone whose contained Organization is its custodian and its author: one record, attributed once in each role." ;
+  mf:action [
+    bridge:input <in/composition-contained-custodian.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/no-server.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/composition-contained-custodian.ttl> ;
+    bridge:expectedFindings <findings/composition-contained-custodian.ttl>
   ] .
 
 <#bundle-patient-reference-urn-not-held> a bridge:IsomorphicConversionTest ;

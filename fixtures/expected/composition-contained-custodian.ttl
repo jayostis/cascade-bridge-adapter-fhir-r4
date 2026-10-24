@@ -1,0 +1,54 @@
+@prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix pav: <http://purl.org/pav/> .
+<urn:uuid:5769da63-d46b-8c66-b381-d00b2f7ccadb> a cascade:Organization .
+<ni:///sha-256;J0KAt2vmrBGmnDugst3fRbHvnxghRxi1SNX1UXDFoAE> prov:qualifiedAttribution _:b383f825314ad0ed5a97fc351e2b75d7 .
+_:b383f825314ad0ed5a97fc351e2b75d7 prov:agent <urn:uuid:5769da63-d46b-8c66-b381-d00b2f7ccadb> ;
+	prov:hadRole cascade:AuthorRole .
+<ni:///sha-256;J0KAt2vmrBGmnDugst3fRbHvnxghRxi1SNX1UXDFoAE> prov:qualifiedAttribution _:daf749519bb74bc2bb0a529a0b613a8d .
+_:daf749519bb74bc2bb0a529a0b613a8d prov:agent <urn:uuid:5769da63-d46b-8c66-b381-d00b2f7ccadb> ;
+	prov:hadRole cascade:CustodianRole .
+<ni:///sha-256;ZKCRlsdZDF_dd5vAgYobQgb7Vn2gCC-1NQyFyiGx59M> prov:specializationOf <urn:uuid:5769da63-d46b-8c66-b381-d00b2f7ccadb> .
+_:6b2bff5f0c950eafe1a141087e1964b6 bridge:arrivedAs <ni:///sha-256;ZKCRlsdZDF_dd5vAgYobQgb7Vn2gCC-1NQyFyiGx59M> ;
+	oa:hasSelector _:b0a8d258c8014f68a56bd9675fe590e6 .
+_:b0a8d258c8014f68a56bd9675fe590e6 a oa:FragmentSelector ;
+	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/contained/0" .
+<ni:///sha-256;ZKCRlsdZDF_dd5vAgYobQgb7Vn2gCC-1NQyFyiGx59M> foaf:name "Riverside Community Hospital" ;
+	org:identifier "RCH-1"^^<urn:oid:2.16.840.1.113883.19.5.99999.5> , "urn:oid:2.16.840.1.113883.19.5.99999.3"^^<urn:ietf:rfc:3986> .
+_:6b2bff5f0c950eafe1a141087e1964b6 oa:hasSource <ni:///sha-256;J0KAt2vmrBGmnDugst3fRbHvnxghRxi1SNX1UXDFoAE> ;
+	prov:wasDerivedFrom <ni:///sha-256;J0KAt2vmrBGmnDugst3fRbHvnxghRxi1SNX1UXDFoAE> ;
+	prov:wasGeneratedBy _:d4571d07b6f37bcb5405cc57f4885ec3 .
+<ni:///sha-256;J0KAt2vmrBGmnDugst3fRbHvnxghRxi1SNX1UXDFoAE> pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
+_:dc4a2723a15d1aa02beb97f8704e83e7 prov:agent _:b7a6a36536d96cf585770d3814d9b00c .
+_:b7a6a36536d96cf585770d3814d9b00c <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:dc4a2723a15d1aa02beb97f8704e83e7 prov:hadRole cascade:AuthorRole .
+<ni:///sha-256;J0KAt2vmrBGmnDugst3fRbHvnxghRxi1SNX1UXDFoAE> prov:qualifiedAttribution _:dc4a2723a15d1aa02beb97f8704e83e7 .
+_:5e93cff515f04a18a1f85a0977fcfdd5 prov:agent _:cf3d8a9631fdcba41a86dd99ae22b99d .
+_:cf3d8a9631fdcba41a86dd99ae22b99d <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
+_:5e93cff515f04a18a1f85a0977fcfdd5 prov:hadRole cascade:TransmitterRole .
+<ni:///sha-256;J0KAt2vmrBGmnDugst3fRbHvnxghRxi1SNX1UXDFoAE> prov:qualifiedAttribution _:5e93cff515f04a18a1f85a0977fcfdd5 ;
+	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
+	cascade:authenticatedAsProxy false ;
+	cascade:sourceFormatVersion "4.0.1" .
+_:d4571d07b6f37bcb5405cc57f4885ec3 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
+	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
+<ni:///sha-256;J0KAt2vmrBGmnDugst3fRbHvnxghRxi1SNX1UXDFoAE> a prov:Entity .
+_:d4571d07b6f37bcb5405cc57f4885ec3 a prov:Activity ;
+	prov:used <ni:///sha-256;J0KAt2vmrBGmnDugst3fRbHvnxghRxi1SNX1UXDFoAE> ;
+	prov:qualifiedAssociation _:bb1a4b7445d2f4e808fc17b9c6715cf9 .
+_:bb1a4b7445d2f4e808fc17b9c6715cf9 prov:hadPlan _:42bfdc2a1523e7eb5ba3705465d45fac .
+_:42bfdc2a1523e7eb5ba3705465d45fac a prov:Plan ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "fhir-r4" ;
+	pav:version "0.1.0" .
+_:bb1a4b7445d2f4e808fc17b9c6715cf9 prov:agent _:5448ffca7b8d1cd133381260022d8e54 .
+_:5448ffca7b8d1cd133381260022d8e54 a prov:SoftwareAgent ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Cascade Bridge for Rust" ;
+	pav:version "0.1.0" .

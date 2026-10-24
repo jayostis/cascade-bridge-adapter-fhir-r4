@@ -1,0 +1,42 @@
+{
+  "resourceType": "Composition",
+  "status": "final",
+  "contained": [
+    {
+      "resourceType": "Organization",
+      "id": "keeper",
+      "identifier": [
+        {
+          "system": "urn:ietf:rfc:3986",
+          "value": "urn:oid:2.16.840.1.113883.19.5.99999.3"
+        },
+        {
+          "system": "urn:oid:2.16.840.1.113883.19.5.99999.5",
+          "value": "RCH-1"
+        }
+      ],
+      "name": "Riverside Community Hospital"
+    }
+  ],
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "60591-5"
+      }
+    ]
+  },
+  "subject": {
+    "display": "Ada Okonkwo"
+  },
+  "date": "2026-09-04",
+  "author": [
+    {
+      "reference": "#keeper"
+    }
+  ],
+  "title": "Patient summary",
+  "custodian": {
+    "reference": "#keeper"
+  }
+}

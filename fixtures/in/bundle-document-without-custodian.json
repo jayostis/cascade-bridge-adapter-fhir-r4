@@ -1,0 +1,109 @@
+{
+  "resourceType": "Bundle",
+  "type": "document",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:9f8e7d6c-5b4a-4c3d-8e2f-1a0b9c8d7e6f",
+      "resource": {
+        "resourceType": "Composition",
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "60591-5"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:7d1f0c2a-4b6e-4f3a-9c8d-1e2f3a4b5c6d"
+        },
+        "date": "2026-09-01",
+        "author": [
+          {
+            "reference": "urn:uuid:3a9b8c7d-6e5f-4a1b-9c2d-8e7f6a5b4c3d"
+          }
+        ],
+        "title": "Patient summary"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:7d1f0c2a-4b6e-4f3a-9c8d-1e2f3a4b5c6d",
+      "resource": {
+        "resourceType": "Patient",
+        "name": [
+          {
+            "family": "Okonkwo",
+            "given": [
+              "Ada"
+            ]
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1979-06-02"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:4c5d6e7f-8a9b-4c0d-9e1f-2a3b4c5d6e7f",
+      "resource": {
+        "resourceType": "Organization",
+        "identifier": [
+          {
+            "system": "https://kestrel.example/organization-ids",
+            "value": "KH"
+          },
+          {
+            "system": "http://hl7.org/fhir/sid/us-npi",
+            "value": "1234567893"
+          }
+        ],
+        "name": "Kestrel Harbor Hospital",
+        "address": [
+          {
+            "line": [
+              "1200 Harbor Way",
+              "Building C"
+            ],
+            "city": "Kestrel Harbor",
+            "state": "WA",
+            "postalCode": "98000",
+            "country": "US"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:3a9b8c7d-6e5f-4a1b-9c2d-8e7f6a5b4c3d",
+      "resource": {
+        "resourceType": "Practitioner",
+        "name": [
+          {
+            "family": "Lindqvist",
+            "given": [
+              "Maya"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:0e4c8b6a-2d1f-4a3b-8c5d-6e7f8a9b0c1d",
+      "resource": {
+        "resourceType": "Condition",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "38341003",
+              "display": "Hypertensive disorder"
+            }
+          ],
+          "text": "Hypertension"
+        },
+        "subject": {
+          "reference": "urn:uuid:7d1f0c2a-4b6e-4f3a-9c8d-1e2f3a4b5c6d"
+        }
+      }
+    }
+  ]
+}

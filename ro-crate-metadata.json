@@ -106,6 +106,9 @@
         },
         {
           "@id": "in/sparql/medication-table.rq"
+        },
+        {
+          "@id": "in/sparql/organization-table.rq"
         }
       ],
       "bridge:mapping": [
@@ -129,6 +132,9 @@
         },
         {
           "@id": "in/sparql/medication.rq"
+        },
+        {
+          "@id": "in/sparql/organization.rq"
         },
         {
           "@id": "in/sparql/lab-result.rq"
@@ -221,6 +227,9 @@
           "@id": "in/sparql/medication-table.rq"
         },
         {
+          "@id": "in/sparql/organization-table.rq"
+        },
+        {
           "@id": "in/sparql/record.rq"
         },
         {
@@ -240,6 +249,9 @@
         },
         {
           "@id": "in/sparql/medication.rq"
+        },
+        {
+          "@id": "in/sparql/organization.rq"
         },
         {
           "@id": "in/sparql/lab-result.rq"
@@ -402,6 +414,21 @@
         },
         {
           "@id": "fixtures/in/bundle-urn-uuid-full-urls.json"
+        },
+        {
+          "@id": "fixtures/in/bundle-document-without-custodian.json"
+        },
+        {
+          "@id": "fixtures/in/composition-contained-custodian.json"
+        },
+        {
+          "@id": "fixtures/in/bundle-document-organizations-one-npi.json"
+        },
+        {
+          "@id": "fixtures/in/documentreference-contained-custodian.json"
+        },
+        {
+          "@id": "fixtures/in/bundle-document-custodian-and-authors.json"
         },
         {
           "@id": "fixtures/in/bundle-patient-reference-urn-not-held.json"
@@ -639,6 +666,36 @@
         },
         {
           "@id": "fixtures/findings/bundle-urn-uuid-full-urls.ttl"
+        },
+        {
+          "@id": "fixtures/expected/bundle-document-without-custodian.ttl"
+        },
+        {
+          "@id": "fixtures/expected/composition-contained-custodian.ttl"
+        },
+        {
+          "@id": "fixtures/expected/bundle-document-organizations-one-npi.ttl"
+        },
+        {
+          "@id": "fixtures/findings/bundle-document-without-custodian.ttl"
+        },
+        {
+          "@id": "fixtures/findings/composition-contained-custodian.ttl"
+        },
+        {
+          "@id": "fixtures/findings/bundle-document-organizations-one-npi.ttl"
+        },
+        {
+          "@id": "fixtures/expected/documentreference-contained-custodian.ttl"
+        },
+        {
+          "@id": "fixtures/findings/documentreference-contained-custodian.ttl"
+        },
+        {
+          "@id": "fixtures/expected/bundle-document-custodian-and-authors.ttl"
+        },
+        {
+          "@id": "fixtures/findings/bundle-document-custodian-and-authors.ttl"
         },
         {
           "@id": "fixtures/expected/bundle-patient-reference-urn-not-held.ttl"
@@ -1139,6 +1196,18 @@
       "description": "A bridge:documentTableQuery: a row for each key a Medication of a record can be referenced by, within the scope it holds there, with the Medication's name and a row for each of its codings, its system and code as written, and a row for each medication's reference, the key it names and that key's scope, a version stripped; medication.rq, medication-findings.rq and resource-type-findings.rq each resolve a reference by joining them, to the one Medication holding its key in its scope."
     },
     {
+      "@id": "in/sparql/organization-table.rq",
+      "@type": "File",
+      "name": "Document table: Organizations, the document references naming them, and their keys",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "6244",
+      "sha256": "82a0737d017838820f017941816fa7033c59d91dc59618b4e616119b579153d8",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A bridge:documentTableQuery: a row for each key an Organization of a record can be referenced by, within the scope it holds there; a row for each custodian and author reference of the document's Composition, the first entry of a Bundle or one standing alone, the key it names, that key's scope and the role, a version stripped; and a row for each Organization with an identifier it can be named by, that identifier, picked as cascade-vocabulary's decisions/naming.md says, and its place in the document. organization.rq and resource-type-findings.rq resolve a reference by joining them, to the one Organization holding its key in its scope."
+    },
+    {
       "@id": "in/sparql/record.rq",
       "@type": "File",
       "name": "Mapping: records, versions and arrivals",
@@ -1223,6 +1292,18 @@
       "description": "What a medication says, written on the version record.rq names: its intent, prescribed for a request and reportedUse for a statement; the drug's name and RxNorm code, from its concept or from the Medication its reference resolves to in the document, else the reference's display; status, start and end dates of use, the day a request was written, never a start, and the first dosage's text."
     },
     {
+      "@id": "in/sparql/organization.rq",
+      "@type": "File",
+      "name": "Mapping: an Organization a document names",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "8915",
+      "sha256": "797c247e25aff0fab94d9e43bac353f91744d02a7c9fc063c224db08c68beecb",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "An Organization the document's Composition names as custodian or author, as a record named by cascade:OrganizationNamingRule from the identifier organization-table.rq picks, with one version of each record, from the Organization a custodian names, else the first in the document, carrying its name, identifiers and addresses, and the document's prov:qualifiedAttribution naming it once in each role, cascade:CustodianRole or cascade:AuthorRole."
+    },
+    {
       "@id": "in/sparql/lab-result.rq",
       "@type": "File",
       "name": "Mapping: a lab result's version",
@@ -1263,8 +1344,8 @@
       "@type": "File",
       "name": "Findings: a resource of a type this release does not map",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "2813",
-      "sha256": "3ecc43fd6f841c52bd89918d765f310842ba47f04096e17cedb275c15c79646c",
+      "contentSize": "3850",
+      "sha256": "325d6f7bf5e342c60ff188186f64802a4a616607f0539450a79197435edd1961",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1383,8 +1464,8 @@
       "@type": "File",
       "name": "FHIR R4 JSON source accounting",
       "encodingFormat": "text/turtle",
-      "contentSize": "195154",
-      "sha256": "e97a18bcde1895fce0f65449247980834c6df6479a21fd3fdf2c8aa684688ddd",
+      "contentSize": "202778",
+      "sha256": "6f19ef3eaf3a9df20b1bc816df308c0152ff40fd26674fc904e4dd4ac5f2d60b",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1974,6 +2055,71 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "A collection Bundle of a Patient and an AllergyIntolerance, neither with an id, each entry with a urn:uuid fullUrl; the allergy references the patient by that urn. Authored here on 2026-09-27, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/bundle-document-custodian-and-authors.json",
+      "@type": "File",
+      "name": "Document Bundle naming a custodian and two author organizations",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "3787",
+      "sha256": "b9bbe2f8bbeb71a30e3e6e70ff76379515efaa21459c31aba97af4ac9c400fce",
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A document Bundle whose Composition names an Organization holding an NPI as its custodian, and as its authors a Practitioner, an Organization holding an OID identifier and an address with text, and an Organization holding neither an NPI nor an OID identifier; each entry with a urn:uuid fullUrl. Authored here on 2026-10-24, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/documentreference-contained-custodian.json",
+      "@type": "File",
+      "name": "DocumentReference whose custodian is contained",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "975",
+      "sha256": "897785c9128534421a2d4fb386a125c53a0474f6ed0bc4988f76b9af8cfe2fe0",
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A DocumentReference whose custodian is an Organization it contains, holding the NPI the custodian of bundle-document-custodian-and-authors holds: a DocumentReference's custodian keeps the document it describes, so it names no organization. Authored here on 2026-10-24, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/bundle-document-without-custodian.json",
+      "@type": "File",
+      "name": "Document Bundle naming no custodian",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "2585",
+      "sha256": "5ce3a9d5d26d06139da02934d8ce8e45d232def0055aa711e38021cef3d86b2b",
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A document Bundle whose Composition names no custodian and a Practitioner as its only author, beside an Organization holding an NPI that nothing references. Authored here on 2026-10-24, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/bundle-document-organizations-one-npi.json",
+      "@type": "File",
+      "name": "Document Bundle naming one NPI's organization three times",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "3096",
+      "sha256": "9daf41c8f00daf0f3383b9bda310d20ba9d7c1e42a9e4a7e7b84daf3629e9235",
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A document Bundle whose Composition names as its custodian an Organization holding an NPI under the NPI's OID system, and as its authors two Organizations holding that NPI under its URI and an Organization listing an OID-typed identifier before a urn:ietf:rfc:3986 one; each entry with a urn:uuid fullUrl. Authored here on 2026-10-24, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/composition-contained-custodian.json",
+      "@type": "File",
+      "name": "Composition alone whose custodian and author is contained",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "789",
+      "sha256": "274280b76be6ac11a69c3ba0b2dddf45b1ef9f18214718b548d5f55170c5a001",
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Composition standing alone whose custodian and only author is an Organization it contains, listing the two identifiers of bundle-document-organizations-one-npi's last author in the other order. Authored here on 2026-10-24, for a case the conformance corpus does not hold."
     },
     {
       "@id": "fixtures/in/bundle-patient-reference-urn-not-held.json",
@@ -2675,6 +2821,166 @@
         "@id": "fixtures/in/bundle-urn-uuid-full-urls.json"
       },
       "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/bundle-document-custodian-and-authors.ttl",
+      "@type": "File",
+      "name": "Expected graph for bundle-document-custodian-and-authors",
+      "encodingFormat": "text/turtle",
+      "contentSize": "6849",
+      "sha256": "b6286dfca14d81ce514f8c77d9a229a78bd925cd10b21ac0017320dab0393fd6",
+      "about": {
+        "@id": "fixtures/in/bundle-document-custodian-and-authors.json"
+      },
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/findings/bundle-document-custodian-and-authors.ttl",
+      "@type": "File",
+      "name": "Expected findings for bundle-document-custodian-and-authors",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3630",
+      "sha256": "f0699724d9f6ce65933146734a27a314eb7da194dcee3af0d16e8922b2d81d9b",
+      "about": {
+        "@id": "fixtures/in/bundle-document-custodian-and-authors.json"
+      },
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/documentreference-contained-custodian.ttl",
+      "@type": "File",
+      "name": "Expected graph for documentreference-contained-custodian",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2154",
+      "sha256": "1650e455f7ff72a2cde2faf0b3a44489a23b4cb797762fa06226c6384ca187ec",
+      "about": {
+        "@id": "fixtures/in/documentreference-contained-custodian.json"
+      },
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/findings/documentreference-contained-custodian.ttl",
+      "@type": "File",
+      "name": "Expected findings for documentreference-contained-custodian",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2054",
+      "sha256": "92cbf3f8e4a746828f4766bce3ca07d3176d102ce76c7052111f93caad9e184d",
+      "about": {
+        "@id": "fixtures/in/documentreference-contained-custodian.json"
+      },
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/bundle-document-without-custodian.ttl",
+      "@type": "File",
+      "name": "Expected graph for bundle-document-without-custodian",
+      "encodingFormat": "text/turtle",
+      "contentSize": "4207",
+      "sha256": "8051ad668919f5894367b49abee478415cdd297fe2ee0ede84744f4f4dc8876e",
+      "about": {
+        "@id": "fixtures/in/bundle-document-without-custodian.json"
+      },
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/bundle-document-organizations-one-npi.ttl",
+      "@type": "File",
+      "name": "Expected graph for bundle-document-organizations-one-npi",
+      "encodingFormat": "text/turtle",
+      "contentSize": "6118",
+      "sha256": "da4c15f74e426f7d94c09a4af8b4d1241ef020f1382f6d3ea0faa9f631088894",
+      "about": {
+        "@id": "fixtures/in/bundle-document-organizations-one-npi.json"
+      },
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/composition-contained-custodian.ttl",
+      "@type": "File",
+      "name": "Expected graph for composition-contained-custodian",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3917",
+      "sha256": "b31aa94baacf01d27c964992b2d75195c40613fda5f9a27eb6f106bc3f6b765e",
+      "about": {
+        "@id": "fixtures/in/composition-contained-custodian.json"
+      },
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/findings/bundle-document-without-custodian.ttl",
+      "@type": "File",
+      "name": "Expected findings for bundle-document-without-custodian",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3617",
+      "sha256": "114e8e788595c9ea2f857a543803684d62c3d243d33d77405bcd1cd32bad3895",
+      "about": {
+        "@id": "fixtures/in/bundle-document-without-custodian.json"
+      },
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/bundle-document-organizations-one-npi.ttl",
+      "@type": "File",
+      "name": "Expected findings for bundle-document-organizations-one-npi",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1921",
+      "sha256": "21e521e957e263d5cef024fa9013a512a6a4db063b8382d33907895a5a676ae2",
+      "about": {
+        "@id": "fixtures/in/bundle-document-organizations-one-npi.json"
+      },
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/composition-contained-custodian.ttl",
+      "@type": "File",
+      "name": "Expected findings for composition-contained-custodian",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1055",
+      "sha256": "f88128c984f9a9614c8808250083fc9243a145250e508ff004d57d27d707ddbf",
+      "about": {
+        "@id": "fixtures/in/composition-contained-custodian.json"
+      },
+      "dateCreated": "2026-10-24",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -4634,8 +4940,8 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "contentSize": "50564",
-      "sha256": "5ebc2a2cb3284838d6dad2a21622f8e074f115d42aaf73ef96cc87cd72e231be"
+      "contentSize": "55841",
+      "sha256": "ee976fd22598acac5ea087715b7bebf4b22aa673ad465a182e048a7b405b184c"
     },
     {
       "@id": "fixtures/facts/meridian.ttl",
@@ -4945,8 +5251,8 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "What a record is, the two envelopes, how a record is named, JSON as FHIR writes it, the schema, the versions in and out of scope, and what is known about the committed inputs. Read from hl7.org/fhir/R4/ on 2026-09-27.",
-      "contentSize": "14986",
-      "sha256": "39b4877fd500f3624b1cc4b4eeec2d5f020cf9c6c903658ec0b16162d4451271"
+      "contentSize": "17050",
+      "sha256": "4712a16ac71bcfbc05f809540d2e4c066427f6b013032a2d66fdd1b0295b726c"
     },
     {
       "@id": "fixtures/CLAUDE.md",

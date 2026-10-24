@@ -11,7 +11,10 @@ PREFIX cascade: <https://ns.cascadeprotocol.org/cascade#>
 
 # An Observation is reported by observation-findings.rq. A Medication is read
 # through the medication whose reference resolves to it, as medication-table.rq
-# says, so only one no reference resolves to is reported.
+# says, so only one no reference resolves to is reported; an Organization is
+# read where a document's custodian or author resolves to it, as
+# organization-table.rq says, and has an identifier organization.rq names it by,
+# so only another is reported.
 
 CONSTRUCT {
   [] a oa:Annotation ;
@@ -64,6 +67,23 @@ WHERE {
         fhirr4:medicationScope ?scope .
       FILTER (?rivalPointer != ?medicationPointer)
     }
+  })
+  FILTER (?value != "Organization" || NOT EXISTS {
+    ?organizationReference fhirr4:organizationReferenceFrom ?organizationFrom ;
+      fhirr4:organizationReferenceTo ?organizationKey ;
+      fhirr4:organizationScope ?organizationScope .
+    ?heldOrganization fhirr4:organizationAt ?medicationPointer ;
+      fhirr4:organizationKey ?organizationKey ;
+      fhirr4:organizationScope ?organizationScope .
+    FILTER NOT EXISTS {
+      ?rivalOrganization fhirr4:organizationAt ?rivalOrganizationPointer ;
+        fhirr4:organizationKey ?organizationKey ;
+        fhirr4:organizationScope ?organizationScope .
+      FILTER (?rivalOrganizationPointer != ?medicationPointer)
+    }
+  } || NOT EXISTS {
+    ?namedOrganization fhirr4:organizationAt ?medicationPointer ;
+      fhirr4:organizationIdentifierSystem ?organizationIdentifierSystem .
   })
   BIND (CONCAT(?resourcePointer, "/resourceType") AS ?pointer)
 }
