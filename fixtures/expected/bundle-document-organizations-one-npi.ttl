@@ -1,0 +1,83 @@
+@prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix pav: <http://purl.org/pav/> .
+<ni:///sha-256;SBV9LxsXAU2v6DghHPBTQGGV-t96EC1B9i6qp_cWjEs> foaf:familyName "Okonkwo" ;
+	foaf:givenName "Ada" ;
+	cascade:dateOfBirth "1979-06-02"^^xsd:date .
+<urn:uuid:b9291ae4-afb9-88cb-8079-18a0dce626a2> a cascade:PatientProfile .
+<ni:///sha-256;SBV9LxsXAU2v6DghHPBTQGGV-t96EC1B9i6qp_cWjEs> prov:specializationOf <urn:uuid:b9291ae4-afb9-88cb-8079-18a0dce626a2> .
+_:eaa907b96da7544246fc18502ff0319c bridge:arrivedAs <ni:///sha-256;SBV9LxsXAU2v6DghHPBTQGGV-t96EC1B9i6qp_cWjEs> ;
+	oa:hasSelector _:f9c502ee614f588e70bae2ffeb704a06 ;
+	oa:hasSource <ni:///sha-256;na9ByPANrw8zg7m9oxDSC6nXweQqnkp-e4Ta82KekjU> ;
+	prov:wasDerivedFrom <ni:///sha-256;na9ByPANrw8zg7m9oxDSC6nXweQqnkp-e4Ta82KekjU> ;
+	prov:wasGeneratedBy _:749e36e25bfe703774ec7f9d544edd2e .
+_:f9c502ee614f588e70bae2ffeb704a06 a oa:FragmentSelector ;
+	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/entry/1" .
+<urn:uuid:b272d9d2-08db-8fd9-9d33-eca1e48c75ba> a cascade:Organization .
+<ni:///sha-256;na9ByPANrw8zg7m9oxDSC6nXweQqnkp-e4Ta82KekjU> prov:qualifiedAttribution _:b8d0c38bdff5b9916fd7018a6f07ae0d .
+_:b8d0c38bdff5b9916fd7018a6f07ae0d prov:agent <urn:uuid:b272d9d2-08db-8fd9-9d33-eca1e48c75ba> ;
+	prov:hadRole cascade:CustodianRole .
+<ni:///sha-256;VngbwigCMkGdPCNTniVcVY_lGy6sn7H9kQ4HLTPAqps> prov:specializationOf <urn:uuid:b272d9d2-08db-8fd9-9d33-eca1e48c75ba> .
+_:721ae7bb55d04225d45acb3dce3f3444 bridge:arrivedAs <ni:///sha-256;VngbwigCMkGdPCNTniVcVY_lGy6sn7H9kQ4HLTPAqps> .
+<ni:///sha-256;VngbwigCMkGdPCNTniVcVY_lGy6sn7H9kQ4HLTPAqps> foaf:name "Kestrel Harbor Hospital" ;
+	org:identifier "1234567893"^^<http://hl7.org/fhir/sid/us-npi> , "KH"^^<https://kestrel.example/organization-ids> ;
+	cascade:organizationAddress "1200 Harbor Way, Kestrel Harbor, WA 98000" .
+_:721ae7bb55d04225d45acb3dce3f3444 oa:hasSelector _:f374171579d39d0a28830696987cb981 ;
+	oa:hasSource <ni:///sha-256;na9ByPANrw8zg7m9oxDSC6nXweQqnkp-e4Ta82KekjU> ;
+	prov:wasDerivedFrom <ni:///sha-256;na9ByPANrw8zg7m9oxDSC6nXweQqnkp-e4Ta82KekjU> ;
+	prov:wasGeneratedBy _:749e36e25bfe703774ec7f9d544edd2e .
+_:f374171579d39d0a28830696987cb981 a oa:FragmentSelector ;
+	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/entry/2" .
+<ni:///sha-256;na9ByPANrw8zg7m9oxDSC6nXweQqnkp-e4Ta82KekjU> prov:qualifiedAttribution _:eec6f02f00c5a27d238971837f68b1e .
+_:eec6f02f00c5a27d238971837f68b1e prov:agent <urn:uuid:b272d9d2-08db-8fd9-9d33-eca1e48c75ba> ;
+	prov:hadRole cascade:AuthorRole .
+<urn:uuid:5769da63-d46b-8c66-b381-d00b2f7ccadb> a cascade:Organization .
+<ni:///sha-256;na9ByPANrw8zg7m9oxDSC6nXweQqnkp-e4Ta82KekjU> prov:qualifiedAttribution _:e5fd2d86ba6f5984e36a9e51cc2438bf .
+_:e5fd2d86ba6f5984e36a9e51cc2438bf prov:agent <urn:uuid:5769da63-d46b-8c66-b381-d00b2f7ccadb> ;
+	prov:hadRole cascade:AuthorRole .
+<ni:///sha-256;ZKCRlsdZDF_dd5vAgYobQgb7Vn2gCC-1NQyFyiGx59M> prov:specializationOf <urn:uuid:5769da63-d46b-8c66-b381-d00b2f7ccadb> .
+_:8ebaf10056c69916292f3ca12176f2d5 bridge:arrivedAs <ni:///sha-256;ZKCRlsdZDF_dd5vAgYobQgb7Vn2gCC-1NQyFyiGx59M> .
+<ni:///sha-256;ZKCRlsdZDF_dd5vAgYobQgb7Vn2gCC-1NQyFyiGx59M> foaf:name "Riverside Community Hospital" ;
+	org:identifier "urn:oid:2.16.840.1.113883.19.5.99999.3"^^<urn:ietf:rfc:3986> , "RCH-1"^^<urn:oid:2.16.840.1.113883.19.5.99999.5> .
+_:8ebaf10056c69916292f3ca12176f2d5 oa:hasSelector _:c65ef8ec7e5fb2d55293789a7fd64857 ;
+	oa:hasSource <ni:///sha-256;na9ByPANrw8zg7m9oxDSC6nXweQqnkp-e4Ta82KekjU> ;
+	prov:wasDerivedFrom <ni:///sha-256;na9ByPANrw8zg7m9oxDSC6nXweQqnkp-e4Ta82KekjU> ;
+	prov:wasGeneratedBy _:749e36e25bfe703774ec7f9d544edd2e .
+_:c65ef8ec7e5fb2d55293789a7fd64857 a oa:FragmentSelector ;
+	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/entry/5" .
+<ni:///sha-256;na9ByPANrw8zg7m9oxDSC6nXweQqnkp-e4Ta82KekjU> pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
+_:6c69d1f902b05cf7ac45e34584def085 prov:agent _:3d163190fed03d2c4c0a846d7412b6de .
+_:3d163190fed03d2c4c0a846d7412b6de <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:6c69d1f902b05cf7ac45e34584def085 prov:hadRole cascade:AuthorRole .
+<ni:///sha-256;na9ByPANrw8zg7m9oxDSC6nXweQqnkp-e4Ta82KekjU> prov:qualifiedAttribution _:6c69d1f902b05cf7ac45e34584def085 .
+_:b2358abeb3cf1e8b15929a0a9f8de314 prov:agent _:fae7159ee41d0d9122480ad037805987 .
+_:fae7159ee41d0d9122480ad037805987 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
+_:b2358abeb3cf1e8b15929a0a9f8de314 prov:hadRole cascade:TransmitterRole .
+<ni:///sha-256;na9ByPANrw8zg7m9oxDSC6nXweQqnkp-e4Ta82KekjU> prov:qualifiedAttribution _:b2358abeb3cf1e8b15929a0a9f8de314 ;
+	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
+	cascade:authenticatedAsProxy false ;
+	cascade:sourceFormatVersion "4.0.1" .
+_:749e36e25bfe703774ec7f9d544edd2e <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
+	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
+<ni:///sha-256;na9ByPANrw8zg7m9oxDSC6nXweQqnkp-e4Ta82KekjU> a prov:Entity .
+_:749e36e25bfe703774ec7f9d544edd2e a prov:Activity ;
+	prov:used <ni:///sha-256;na9ByPANrw8zg7m9oxDSC6nXweQqnkp-e4Ta82KekjU> ;
+	prov:qualifiedAssociation _:e9c51aafbe83afb9b13f37eb859b6e74 .
+_:e9c51aafbe83afb9b13f37eb859b6e74 prov:hadPlan _:67109413f7ed19799e94dc83c23704e7 .
+_:67109413f7ed19799e94dc83c23704e7 a prov:Plan ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "fhir-r4" ;
+	pav:version "0.1.0" .
+_:e9c51aafbe83afb9b13f37eb859b6e74 prov:agent _:7af50948aea3aed30890085efb656259 .
+_:7af50948aea3aed30890085efb656259 a prov:SoftwareAgent ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Cascade Bridge for Rust" ;
+	pav:version "0.1.0" .

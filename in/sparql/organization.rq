@@ -13,14 +13,18 @@ PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 
 # An Organization a document names as its custodian or an author, as
 # organization-table.rq resolves the reference, is a record named by
-# cascade-vocabulary's OrganizationNamingRule from its first identifier whose
-# system is the NPI's or an OID, its system and value as written; never by its
-# id, which only the document gives it. One with no such identifier is no record,
-# and the document names nothing in its place. The document names the record in
-# each role a reference gives it.
+# cascade-vocabulary's OrganizationNamingRule from the identifier the table
+# picks for it, never by its id, which only the document gives it. One with no
+# such identifier is no record, and the document names nothing in its place.
+#
+# Two Organizations of one document can name one record. Its one version is read
+# from the one a custodian names, else from the first in the document, as the
+# C-CDA adapter reads it from its custodian before its authors; the document
+# names the record once in each role, from the first Organization named in it.
 #
 # Its version carries its name, every identifier with a value, typed by its
-# system where it states one, and each address: its text, or else its first four
+# system where it states one, a system urn:oid: and the NPI's OID as the NPI's
+# URI, as the table names it, and each address: its text, or else its first four
 # lines, then city, state, postal code and country, one to a line.
 
 CONSTRUCT {
@@ -61,39 +65,45 @@ WHERE {
   BIND (COALESCE(?contained, ?top) AS ?resource)
   ?resource xyz:resourceType "Organization" .
   BIND (CONCAT(?recordSelector, ?topStep, ?containedStep) AS ?pointer)
+  ?named fhirr4:organizationAt ?pointer ;
+    fhirr4:organizationIdentifierSystem ?input1 ;
+    fhirr4:organizationIdentifierValue ?input2 .
   {
-    SELECT DISTINCT ?pointer WHERE {
+    SELECT ?input1 ?input2 (MIN(?ranked) AS ?firstNamed) WHERE {
       ?reference fhirr4:organizationReferenceFrom ?from ;
         fhirr4:organizationReferenceTo ?key ;
-        fhirr4:organizationScope ?scope .
-      ?held fhirr4:organizationAt ?pointer ;
+        fhirr4:organizationScope ?scope ;
+        fhirr4:organizationRole ?referenceRole .
+      ?held fhirr4:organizationAt ?heldPointer ;
         fhirr4:organizationKey ?key ;
         fhirr4:organizationScope ?scope .
       FILTER NOT EXISTS {
         ?rival fhirr4:organizationAt ?rivalPointer ;
           fhirr4:organizationKey ?key ;
           fhirr4:organizationScope ?scope .
-        FILTER (?rivalPointer != ?pointer)
+        FILTER (?rivalPointer != ?heldPointer)
       }
+      ?heldNamed fhirr4:organizationAt ?heldPointer ;
+        fhirr4:organizationIdentifierSystem ?input1 ;
+        fhirr4:organizationIdentifierValue ?input2 ;
+        fhirr4:organizationPlace ?heldPlace .
+      BIND (CONCAT(IF(?referenceRole = cascade:CustodianRole, "0", "1"), ?heldPlace, " ", ?heldPointer) AS ?ranked)
+    } GROUP BY ?input1 ?input2
+  }
+  FILTER EXISTS {
+    ?pointerReference fhirr4:organizationReferenceFrom ?pointerFrom ;
+      fhirr4:organizationReferenceTo ?pointerKey ;
+      fhirr4:organizationScope ?pointerScope .
+    ?pointerHeld fhirr4:organizationAt ?pointer ;
+      fhirr4:organizationKey ?pointerKey ;
+      fhirr4:organizationScope ?pointerScope .
+    FILTER NOT EXISTS {
+      ?pointerRival fhirr4:organizationAt ?pointerRivalAt ;
+        fhirr4:organizationKey ?pointerKey ;
+        fhirr4:organizationScope ?pointerScope .
+      FILTER (?pointerRivalAt != ?pointer)
     }
   }
-  {
-    SELECT ?resource (MIN(?ranked) AS ?first) WHERE {
-      ?resource xyz:resourceType "Organization" ;
-        xyz:identifier ?identifiers .
-      ?identifiers ?identifierSlot ?named .
-      ?named xyz:system ?namingSystem ;
-        xyz:value ?namingValue .
-      FILTER (STRLEN(?namingValue) > 0
-              && (?namingSystem = "http://hl7.org/fhir/sid/us-npi" || STRSTARTS(?namingSystem, "urn:oid:")))
-      BIND (STRAFTER(STR(?identifierSlot), "#_") AS ?at)
-      BIND (CONCAT(SUBSTR("0000000000", STRLEN(?at) + 1), ?at,
-                   "|", REPLACE(REPLACE(?namingSystem, "%", "%25"), "\\|", "%7C"),
-                   "|", REPLACE(REPLACE(?namingValue, "%", "%25"), "\\|", "%7C")) AS ?ranked)
-    } GROUP BY ?resource
-  }
-  BIND (REPLACE(REPLACE(STRBEFORE(STRAFTER(?first, "|"), "|"), "%7C", "|"), "%25", "%") AS ?input1)
-  BIND (REPLACE(REPLACE(STRAFTER(STRAFTER(?first, "|"), "|"), "%7C", "|"), "%25", "%") AS ?input2)
   BIND (SHA256(CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|https://ns.cascadeprotocol.org/cascade#OrganizationNamingRule",
                        "|", REPLACE(REPLACE(?input1, "%", "%25"), "\\|", "%7C"),
                        "|", REPLACE(REPLACE(?input2, "%", "%25"), "\\|", "%7C"),
@@ -102,25 +112,31 @@ WHERE {
         AS ?variant)
   BIND (IRI(CONCAT("urn:uuid:", SUBSTR(?hash, 1, 8), "-", SUBSTR(?hash, 9, 4), "-8", SUBSTR(?hash, 14, 3), "-", ?variant,
                    SUBSTR(?hash, 18, 3), "-", SUBSTR(?hash, 21, 12))) AS ?organization)
+  BIND (STRAFTER(?firstNamed, " ") = ?pointer AS ?givesVersion)
   BIND (IRI(CONCAT("urn:cascade:version-at:", SHA256(?pointer))) AS ?resourceVersion)
 
   {
     {
-      SELECT DISTINCT ?pointer ?role WHERE {
+      SELECT ?input1 ?input2 ?role (MIN(?placed) AS ?firstInRole) WHERE {
         ?reference fhirr4:organizationReferenceFrom ?from ;
           fhirr4:organizationReferenceTo ?key ;
           fhirr4:organizationScope ?scope ;
           fhirr4:organizationRole ?role .
-        ?held fhirr4:organizationAt ?pointer ;
+        ?held fhirr4:organizationAt ?heldPointer ;
           fhirr4:organizationKey ?key ;
           fhirr4:organizationScope ?scope .
         FILTER NOT EXISTS {
           ?rival fhirr4:organizationAt ?rivalPointer ;
             fhirr4:organizationKey ?key ;
             fhirr4:organizationScope ?scope .
-          FILTER (?rivalPointer != ?pointer)
+          FILTER (?rivalPointer != ?heldPointer)
         }
-      }
+        ?heldNamed fhirr4:organizationAt ?heldPointer ;
+          fhirr4:organizationIdentifierSystem ?input1 ;
+          fhirr4:organizationIdentifierValue ?input2 ;
+          fhirr4:organizationPlace ?heldPlace .
+        BIND (CONCAT(?heldPlace, " ", ?heldPointer) AS ?placed)
+      } GROUP BY ?input1 ?input2 ?role
     }
     BIND ("attribution" AS ?branch)
   }
@@ -140,7 +156,9 @@ WHERE {
     ?identifierNode xyz:value ?identifierValue .
     FILTER (STRLEN(?identifierValue) > 0)
     OPTIONAL { ?identifierNode xyz:system ?identifierSystem }
-    BIND (IF(BOUND(?identifierSystem), STRDT(?identifierValue, IRI(?identifierSystem)), ?identifierValue) AS ?identifier)
+    BIND (IF(?identifierSystem = "urn:oid:2.16.840.1.113883.4.6", "http://hl7.org/fhir/sid/us-npi", ?identifierSystem)
+          AS ?identifierType)
+    BIND (IF(BOUND(?identifierSystem), STRDT(?identifierValue, IRI(?identifierType)), ?identifierValue) AS ?identifier)
   }
   UNION
   {
@@ -161,10 +179,10 @@ WHERE {
     BIND (IF(BOUND(?text) && STRLEN(?text) > 0, ?text, SUBSTR(?joined, 2)) AS ?address)
     FILTER (STRLEN(?address) > 0)
   }
-  BIND (IF(?branch = "attribution", ?document, 1/0) AS ?attributing)
-  BIND (IF(?branch = "attribution", BNODE(), 1/0) AS ?attribution)
-  BIND (IF(COALESCE(?branch, "") != "attribution", ?resourceVersion, 1/0) AS ?version)
-  BIND (IF(?branch = "arrival", BNODE(), 1/0) AS ?arrival)
-  BIND (IF(?branch = "arrival" && BOUND(?contained), BNODE(), 1/0) AS ?selectorNode)
+  BIND (IF(?branch = "attribution" && STRAFTER(?firstInRole, " ") = ?pointer, ?document, 1/0) AS ?attributing)
+  BIND (IF(BOUND(?attributing), BNODE(), 1/0) AS ?attribution)
+  BIND (IF(?givesVersion && COALESCE(?branch, "") != "attribution", ?resourceVersion, 1/0) AS ?version)
+  BIND (IF(?givesVersion && ?branch = "arrival", BNODE(), 1/0) AS ?arrival)
+  BIND (IF(BOUND(?arrival) && BOUND(?contained), BNODE(), 1/0) AS ?selectorNode)
   BIND (IF(BOUND(?selectorNode), ?pointer, 1/0) AS ?selector)
 }

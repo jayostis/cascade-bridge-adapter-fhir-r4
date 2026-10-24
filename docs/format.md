@@ -18,16 +18,31 @@ a finding and no record. A `Medication` is read
 through the medication that references it, and is no record of its own.
 
 An `Organization` is a record where a document names it: the `custodian` or
-an `author` of a `Composition` or a `DocumentReference` references it, as a
-contained resource or another entry of its Bundle, and that reference resolves
-as a medication's does. It is named by the vocabulary's
-`OrganizationNamingRule` from its first `identifier` whose `system` is the
-NPI's (`http://hl7.org/fhir/sid/us-npi`) or an OID (`urn:oid:`), its system and
-value as written, never by its `id`, which only its document gives it; one with
-neither is no record, and a document with no custodian names no organization in
-its place. Its version carries its `name`, each identifier, typed by its system
-where it has one, and each address, its `text` or else its first four `line`s,
-city, state, postal code and country, one to a line. The document names it in
+an `author` of the document's `Composition` references it, as a contained
+resource or another entry of its Bundle, and that reference resolves as a
+medication's does. The document's `Composition` is one standing alone or the
+first entry of a Bundle, which FHIR requires of a document Bundle
+([bdl-11](https://hl7.org/fhir/R4/bundle.html#invs)); a Bundle's own `type` is
+in no record's dataset, since each entry is lifted alone, so a Bundle of
+another type whose first entry is a `Composition` reads as a document too. A
+`DocumentReference`'s custodian and authors are those of the document it
+describes, not of the file read, so they name no organization. It is named by
+the vocabulary's `OrganizationNamingRule` from one `identifier`, as the
+vocabulary's `decisions/naming.md` maps and picks it, never by its `id`, which
+only its document gives it: a `system` `urn:oid:2.16.840.1.113883.4.6` is the
+NPI's URI, `http://hl7.org/fhir/sid/us-npi`, as FHIR's
+[identifier registry](https://hl7.org/fhir/R4/identifier-registry.html) gives
+it; of the identifiers that are an NPI, or whose `system` is an OID or a UUID
+(`urn:oid:`, `urn:uuid:`), or `urn:ietf:rfc:3986` with such a value, the NPI,
+else the least by code point of system, then value, whatever order they are
+listed in, so the C-CDA adapter names one NPI's organization alike. One with
+none is no record, and a document with no custodian names no organization in
+its place. Two `Organization`s of one document naming one record give it one
+version, from the one the custodian names, else the first in the document, and
+the document names the record once in each role. Its version carries its
+`name`, each identifier, typed by its system where it has one, the NPI's OID as
+its URI, and each address, its `text` or else its first four `line`s, city,
+state, postal code and country, one to a line. The document names it in
 `cascade:CustodianRole` or `cascade:AuthorRole`. The `Composition` and the
 `DocumentReference` are no records.
 

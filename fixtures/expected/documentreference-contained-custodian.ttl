@@ -1,29 +1,8 @@
-@prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix org: <http://www.w3.org/ns/org#> .
-@prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<urn:uuid:b272d9d2-08db-8fd9-9d33-eca1e48c75ba> a cascade:Organization .
-<ni:///sha-256;iXeFyRKFNEIaLU-zhqElxToEdPbtC8SYj3a5r4z-L-A> prov:qualifiedAttribution _:fb0760fd01f86a639a5025981740aaec .
-_:fb0760fd01f86a639a5025981740aaec prov:agent <urn:uuid:b272d9d2-08db-8fd9-9d33-eca1e48c75ba> ;
-	prov:hadRole cascade:CustodianRole .
-<ni:///sha-256;S8Fa_wp_GgEILd_ckcSEmNQGJppHNzHqA8Z2Zl-7TFk> prov:specializationOf <urn:uuid:b272d9d2-08db-8fd9-9d33-eca1e48c75ba> .
-_:2d6ba1922217693772493240509844ab bridge:arrivedAs <ni:///sha-256;S8Fa_wp_GgEILd_ckcSEmNQGJppHNzHqA8Z2Zl-7TFk> ;
-	oa:hasSelector _:c5abb36521b48b2e3608bf506986ef21 .
-_:c5abb36521b48b2e3608bf506986ef21 a oa:FragmentSelector ;
-	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/contained/0" .
-<ni:///sha-256;S8Fa_wp_GgEILd_ckcSEmNQGJppHNzHqA8Z2Zl-7TFk> foaf:name "Kestrel Harbor Hospital" ;
-	org:identifier "1234567893"^^<http://hl7.org/fhir/sid/us-npi> , "KH"^^<https://kestrel.example/organization-ids> ;
-	cascade:organizationAddress "1200 Harbor Way\nBuilding C\nKestrel Harbor\nWA\n98000\nUS" .
-_:2d6ba1922217693772493240509844ab oa:hasSource <ni:///sha-256;iXeFyRKFNEIaLU-zhqElxToEdPbtC8SYj3a5r4z-L-A> ;
-	prov:wasDerivedFrom <ni:///sha-256;iXeFyRKFNEIaLU-zhqElxToEdPbtC8SYj3a5r4z-L-A> ;
-	prov:wasGeneratedBy _:79e783b2646934a9405d30b2c4db408c .
 <ni:///sha-256;iXeFyRKFNEIaLU-zhqElxToEdPbtC8SYj3a5r4z-L-A> pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
 _:433206e3e640e8b6f94410873b69fc97 prov:agent _:b070c78fba5387b556527a504aff604f .
 _:b070c78fba5387b556527a504aff604f <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .

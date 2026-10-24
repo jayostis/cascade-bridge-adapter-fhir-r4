@@ -82,12 +82,8 @@ WHERE {
       FILTER (?rivalOrganizationPointer != ?medicationPointer)
     }
   } || NOT EXISTS {
-    ?resource xyz:identifier ?organizationIdentifiers .
-    ?organizationIdentifiers ?organizationIdentifierSlot ?organizationIdentifier .
-    ?organizationIdentifier xyz:system ?organizationSystem ;
-      xyz:value ?organizationValue .
-    FILTER (STRLEN(?organizationValue) > 0
-            && (?organizationSystem = "http://hl7.org/fhir/sid/us-npi" || STRSTARTS(?organizationSystem, "urn:oid:")))
+    ?namedOrganization fhirr4:organizationAt ?medicationPointer ;
+      fhirr4:organizationIdentifierSystem ?organizationIdentifierSystem .
   })
   BIND (CONCAT(?resourcePointer, "/resourceType") AS ?pointer)
 }

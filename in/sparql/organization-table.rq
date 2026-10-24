@@ -6,15 +6,28 @@ PREFIX bridge:  <https://ns.cascadeprotocol.org/bridge/v1-draft#>
 PREFIX cascade: <https://ns.cascadeprotocol.org/cascade#>
 PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 
-# An Organization is a record only where a document names it: a Composition's or
-# a DocumentReference's custodian, or one of its authors. A query runs over one
-# record, so the Organization's record learns here that a reference names it,
-# by the keys medication-table.rq resolves a Medication by: a contained
-# Organization by "#" and its id within the resource holding it, an entry by
-# its fullUrl, or by type and id, within the document. A reference to a version
-# of an Organization names the Organization, and it resolves where exactly one
-# Organization holds its key in its scope. A reference is a row whether it
-# resolves or not.
+# An Organization is a record only where a document names it: the custodian or
+# an author of a document's Composition, the first entry of a Bundle, as FHIR
+# requires of a document Bundle, or a Composition standing alone. A query runs
+# over one record, so the Organization's record learns here that a reference
+# names it, by the keys medication-table.rq resolves a Medication by: a
+# contained Organization by "#" and its id within the resource holding it, an
+# entry by its fullUrl, or by type and id, within the document. A reference to
+# a version of an Organization names the Organization, and it resolves where
+# exactly one Organization holds its key in its scope. A reference is a row
+# whether it resolves or not.
+#
+# Each Organization with an identifier organization.rq can name it by is a row
+# too, with that identifier and its place in the document, so two Organizations
+# naming one record can tell which of them gives its version. The identifier is
+# picked as cascade-vocabulary's decisions/naming.md says: a system urn:oid: and
+# the NPI's OID is the NPI's URI, as FHIR's identifier registry gives it; of the
+# identifiers that are an NPI, or whose system is an OID or a UUID, or a URI
+# that is one, the NPI, else the least by code point of system, then value, so
+# the order they are listed in never changes it. It is ranked by 0 for an NPI and
+# 1 for any other, its system, a space, which no system it keeps holds, and its
+# value. A place is the entry's position, then the contained resource's, 0 for
+# none, each padded to ten digits.
 
 CONSTRUCT {
   ?keyRow fhirr4:organizationAt ?pointer ;
@@ -24,6 +37,10 @@ CONSTRUCT {
     fhirr4:organizationReferenceTo ?target ;
     fhirr4:organizationScope ?referenceScope ;
     fhirr4:organizationRole ?role .
+  ?namedRow fhirr4:organizationAt ?pointer ;
+    fhirr4:organizationIdentifierSystem ?identifierSystem ;
+    fhirr4:organizationIdentifierValue ?identifierValue ;
+    fhirr4:organizationPlace ?place .
 }
 WHERE {
   bridge:thisRecord bridge:selector ?recordSelector .
@@ -52,27 +69,56 @@ WHERE {
   }
   UNION
   {
-    ?resource xyz:resourceType ?referrerType ;
+    ?resource xyz:resourceType "Composition" ;
       xyz:custodian ?reference .
     ?reference xyz:reference ?written .
-    FILTER (?referrerType IN ("Composition", "DocumentReference"))
     BIND (cascade:CustodianRole AS ?role)
   }
   UNION
   {
-    ?resource xyz:resourceType ?referrerType ;
+    ?resource xyz:resourceType "Composition" ;
       xyz:author ?authors .
     ?authors ?authorSlot ?reference .
     ?reference xyz:reference ?written .
-    FILTER (?referrerType IN ("Composition", "DocumentReference"))
     BIND (cascade:AuthorRole AS ?role)
   }
+  UNION
+  {
+    ?resource xyz:resourceType "Organization" .
+    {
+      SELECT ?resource (MIN(?identifierKey) AS ?chosen) WHERE {
+        ?resource xyz:resourceType "Organization" ;
+          xyz:identifier ?identifiers .
+        ?identifiers ?identifierSlot ?identifier .
+        ?identifier xyz:system ?writtenSystem ;
+          xyz:value ?writtenValue .
+        BIND (IF(?writtenSystem = "urn:oid:2.16.840.1.113883.4.6", "http://hl7.org/fhir/sid/us-npi", ?writtenSystem)
+              AS ?keptSystem)
+        FILTER (isLiteral(?writtenValue) && STRLEN(?writtenValue) > 0
+                && (?keptSystem = "http://hl7.org/fhir/sid/us-npi"
+                    || REGEX(?keptSystem, "^urn:oid:[0-2](\\.(0|[1-9][0-9]*))+$")
+                    || REGEX(?keptSystem, "^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$")
+                    || (?keptSystem = "urn:ietf:rfc:3986" && ?writtenValue != "urn:oid:2.16.840.1.113883.4.6"
+                        && REGEX(?writtenValue, "^urn:(oid:[0-2](\\.(0|[1-9][0-9]*))+|uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$"))))
+        BIND (CONCAT(IF(?keptSystem = "http://hl7.org/fhir/sid/us-npi", "0", "1"), ?keptSystem, " ", ?writtenValue)
+              AS ?identifierKey)
+      } GROUP BY ?resource
+    }
+    BIND (STRBEFORE(SUBSTR(?chosen, 2), " ") AS ?identifierSystem)
+    BIND (STRAFTER(SUBSTR(?chosen, 2), " ") AS ?identifierValue)
+  }
   FILTER (!BOUND(?fullUrl) || !BOUND(?contained))
+  FILTER (!BOUND(?role) || (!BOUND(?contained) && (?topStep = "" || ?recordSelector = "/entry/0")))
   BIND (CONCAT(?recordSelector, ?topStep) AS ?container)
   BIND (IF(BOUND(?id), IF(BOUND(?contained), CONCAT("#", ?id), CONCAT("Organization/", ?id)), ?fullUrl) AS ?key)
   BIND (IF(BOUND(?key), IF(BOUND(?contained), ?container, ""), 1/0) AS ?scope)
   BIND (REPLACE(?written, "/_history/[A-Za-z0-9.-]{1,64}$", "") AS ?target)
   BIND (IF(STRSTARTS(?target, "#"), ?container, "") AS ?referenceScope)
+  BIND (STRAFTER(?recordSelector, "/entry/") AS ?entryAt)
+  BIND (IF(BOUND(?contained), STRAFTER(STR(?containedSlot), "#_"), "0") AS ?containedAt)
+  BIND (IF(BOUND(?identifierSystem), CONCAT(SUBSTR("0000000000", STRLEN(?entryAt) + 1), ?entryAt,
+                                             SUBSTR("0000000000", STRLEN(?containedAt) + 1), ?containedAt), 1/0) AS ?place)
   BIND (IF(BOUND(?key), BNODE(), 1/0) AS ?keyRow)
   BIND (IF(BOUND(?target), BNODE(), 1/0) AS ?referenceRow)
+  BIND (IF(BOUND(?place), BNODE(), 1/0) AS ?namedRow)
 }
