@@ -1134,13 +1134,12 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/performer" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "Who performed an observation: no Cascade predicate carries it." .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/performer/reference" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "Who performed an observation: no Cascade predicate carries it." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:interpretationPerformer .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/period" ;
@@ -2031,13 +2030,12 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/performer" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "Who performed an observation: no Cascade predicate carries it." .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/performer/reference" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "Who performed an observation: no Cascade predicate carries it." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:interpretationPerformer .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/period" ;
@@ -3331,13 +3329,12 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/performer" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "Who performed an observation: no Cascade predicate carries it." .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/performer/reference" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "Who performed an observation: no Cascade predicate carries it." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:interpretationPerformer .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/period" ;
@@ -4224,13 +4221,12 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/performer" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "Who performed an observation: no Cascade predicate carries it." .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/performer/reference" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "Who performed an observation: no Cascade predicate carries it." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:interpretationPerformer .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/period" ;

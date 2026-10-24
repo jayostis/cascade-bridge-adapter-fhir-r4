@@ -1,5 +1,6 @@
 PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
 PREFIX skos:     <http://www.w3.org/2004/02/skos/core#>
+PREFIX prov:     <http://www.w3.org/ns/prov#>
 PREFIX fx:       <http://sparql.xyz/facade-x/ns/>
 PREFIX xyz:      <http://sparql.xyz/facade-x/data/>
 PREFIX bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#>
@@ -26,12 +27,20 @@ PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # findings.rq reports it, where derivedFrom names no variant, more than one, or
 # anything else beside one. A reference that is not to an Observation, and a
 # reference to a contained resource, are not read.
+#
+# The lab is the organization record of the one Organization its performer
+# names, as organization-table.rq resolves the reference and organization.rq
+# names the record; a performer that is no Organization of the document, or one
+# with no identifier to name it by, is not read, and where performers name no
+# record, or more than one, the interpretation is attributed to none, which
+# variant-interpretation-findings.rq reports.
 
 CONSTRUCT {
   ?version cascade:acmgClassification ?classification ;
     cascade:variantInterpreted ?variantRecord ;
     cascade:interpretedDate ?interpretedDate ;
-    cascade:workflowStatus ?status .
+    cascade:workflowStatus ?status ;
+    prov:wasAttributedTo ?lab .
 }
 WHERE {
   FILTER NOT EXISTS {
@@ -192,6 +201,40 @@ WHERE {
           AS ?variantVariant)
     BIND (IRI(CONCAT("urn:uuid:", SUBSTR(?variantHash, 1, 8), "-", SUBSTR(?variantHash, 9, 4), "-8", SUBSTR(?variantHash, 14, 3), "-",
                      ?variantVariant, SUBSTR(?variantHash, 18, 3), "-", SUBSTR(?variantHash, 21, 12))) AS ?variantRecord)
+  }
+
+  OPTIONAL {
+    {
+      SELECT ?resourcePointer (COUNT(DISTINCT ?labInput) AS ?labs) (MIN(?labInput) AS ?soleLab)
+      WHERE {
+        ?performed fhirr4:organizationReferenceFrom ?resourcePointer ;
+          fhirr4:organizationReferenceTo ?labKey ;
+          fhirr4:organizationScope ?labScope .
+        ?labHeld fhirr4:organizationAt ?labPointer ;
+          fhirr4:organizationKey ?labKey ;
+          fhirr4:organizationScope ?labScope .
+        FILTER NOT EXISTS {
+          ?labRival fhirr4:organizationAt ?labRivalPointer ;
+            fhirr4:organizationKey ?labKey ;
+            fhirr4:organizationScope ?labScope .
+          FILTER (?labRivalPointer != ?labPointer)
+        }
+        ?labNamed fhirr4:organizationAt ?labPointer ;
+          fhirr4:organizationIdentifierSystem ?labSystem ;
+          fhirr4:organizationIdentifierValue ?labValue .
+        BIND (CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|https://ns.cascadeprotocol.org/cascade#OrganizationNamingRule",
+                     "|", REPLACE(REPLACE(?labSystem, "%", "%25"), "\\|", "%7C"),
+                     "|", REPLACE(REPLACE(?labValue, "%", "%25"), "\\|", "%7C"),
+                     COALESCE(CONCAT("|", REPLACE(REPLACE(?noThirdInput, "%", "%25"), "\\|", "%7C")), "")) AS ?labInput)
+      }
+      GROUP BY ?resourcePointer
+    }
+    FILTER (?labs = 1)
+    BIND (SHA256(?soleLab) AS ?labHash)
+    BIND (REPLACE(REPLACE(REPLACE(REPLACE(SUBSTR(?labHash, 17, 1), "[048c]", "8"), "[159d]", "9"), "[26ae]", "a"), "[37bf]", "b")
+          AS ?labVariant)
+    BIND (IRI(CONCAT("urn:uuid:", SUBSTR(?labHash, 1, 8), "-", SUBSTR(?labHash, 9, 4), "-8", SUBSTR(?labHash, 14, 3), "-",
+                     ?labVariant, SUBSTR(?labHash, 18, 3), "-", SUBSTR(?labHash, 21, 12))) AS ?lab)
   }
 
   OPTIONAL { ?resource xyz:status ?status }

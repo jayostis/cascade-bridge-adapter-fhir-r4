@@ -512,10 +512,16 @@
           "@id": "fixtures/in/bundle-interpretation-relative-reference-to-urn.json"
         },
         {
-          "@id": "fixtures/in/martin-okafor-harbourline-panel-2022.json"
+          "@id": "fixtures/in/bundle-interpretation-performers.json"
         },
         {
-          "@id": "fixtures/in/martin-okafor-st-columba-exome-2024.json"
+          "@id": "fixtures/in/bundle-interpretation-performer-is-custodian.json"
+        },
+        {
+          "@id": "fixtures/in/martin-okafor-harbourline-panel-2022-with-lab.json"
+        },
+        {
+          "@id": "fixtures/in/martin-okafor-st-columba-exome-2024-with-lab.json"
         },
         {
           "@id": "bench/manifest.json"
@@ -926,10 +932,10 @@
           "@id": "fixtures/expected/bundle-genomics-interpretations.ttl"
         },
         {
-          "@id": "fixtures/expected/martin-okafor-harbourline-panel-2022.ttl"
+          "@id": "fixtures/expected/martin-okafor-harbourline-panel-2022-with-lab.ttl"
         },
         {
-          "@id": "fixtures/expected/martin-okafor-st-columba-exome-2024.ttl"
+          "@id": "fixtures/expected/martin-okafor-st-columba-exome-2024-with-lab.ttl"
         },
         {
           "@id": "fixtures/findings/bundle-medication-repeated-id.ttl"
@@ -959,13 +965,25 @@
           "@id": "fixtures/expected/bundle-interpretation-relative-reference-to-urn.ttl"
         },
         {
+          "@id": "fixtures/expected/bundle-interpretation-performers.ttl"
+        },
+        {
+          "@id": "fixtures/expected/bundle-interpretation-performer-is-custodian.ttl"
+        },
+        {
           "@id": "fixtures/findings/bundle-interpretation-relative-reference-to-urn.ttl"
         },
         {
-          "@id": "fixtures/findings/martin-okafor-harbourline-panel-2022.ttl"
+          "@id": "fixtures/findings/bundle-interpretation-performers.ttl"
         },
         {
-          "@id": "fixtures/findings/martin-okafor-st-columba-exome-2024.ttl"
+          "@id": "fixtures/findings/bundle-interpretation-performer-is-custodian.ttl"
+        },
+        {
+          "@id": "fixtures/findings/martin-okafor-harbourline-panel-2022-with-lab.ttl"
+        },
+        {
+          "@id": "fixtures/findings/martin-okafor-st-columba-exome-2024-with-lab.ttl"
         },
         {
           "@id": "fixtures/expected/patient-no-id.ttl"
@@ -1200,12 +1218,12 @@
       "@type": "File",
       "name": "Document table: Organizations, the document references naming them, and their keys",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "6244",
-      "sha256": "82a0737d017838820f017941816fa7033c59d91dc59618b4e616119b579153d8",
+      "contentSize": "6839",
+      "sha256": "22a26435f91eff4227c6dca8eb07246546093cf8dd000eace7e465899063593d",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "A bridge:documentTableQuery: a row for each key an Organization of a record can be referenced by, within the scope it holds there; a row for each custodian and author reference of the document's Composition, the first entry of a Bundle or one standing alone, the key it names, that key's scope and the role, a version stripped; and a row for each Organization with an identifier it can be named by, that identifier, picked as cascade-vocabulary's decisions/naming.md says, and its place in the document. organization.rq and resource-type-findings.rq resolve a reference by joining them, to the one Organization holding its key in its scope."
+      "description": "A bridge:documentTableQuery: a row for each key an Organization of a record can be referenced by, within the scope it holds there; a row for each custodian and author reference of the document's Composition, the first entry of a Bundle or one standing alone, the key it names, that key's scope and the role, and for each performer reference of a Diagnostic Implication, with no role, a version stripped; and a row for each Organization with an identifier it can be named by, that identifier, picked as cascade-vocabulary's decisions/naming.md says, and its place in the document. organization.rq and resource-type-findings.rq resolve a reference by joining them, to the one Organization holding its key in its scope."
     },
     {
       "@id": "in/sparql/record.rq",
@@ -1296,12 +1314,12 @@
       "@type": "File",
       "name": "Mapping: an Organization a document names",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "8915",
-      "sha256": "797c247e25aff0fab94d9e43bac353f91744d02a7c9fc063c224db08c68beecb",
+      "contentSize": "9051",
+      "sha256": "217fb1220fda1dce763cd538cebc1c85fa4be1be2e4ea9f052be98d7fe47f2ea",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "An Organization the document's Composition names as custodian or author, as a record named by cascade:OrganizationNamingRule from the identifier organization-table.rq picks, with one version of each record, from the Organization a custodian names, else the first in the document, carrying its name, identifiers and addresses, and the document's prov:qualifiedAttribution naming it once in each role, cascade:CustodianRole or cascade:AuthorRole."
+      "description": "An Organization the document's Composition names as custodian or author, or a Diagnostic Implication names as its performer, as a record named by cascade:OrganizationNamingRule from the identifier organization-table.rq picks, with one version of each record, from the Organization a custodian names, else the first in the document, carrying its name, identifiers and addresses, and the document's prov:qualifiedAttribution naming it once in each role, cascade:CustodianRole or cascade:AuthorRole."
     },
     {
       "@id": "in/sparql/lab-result.rq",
@@ -1332,20 +1350,20 @@
       "@type": "File",
       "name": "Mapping: a variant interpretation's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "11411",
-      "sha256": "bcc10837de3e95a56bb5b1918c159e1a2bcf3bf2a10f6ab1f281aa9c119a6bd5",
+      "contentSize": "13678",
+      "sha256": "100959601e029e6c141f1842c024424fa52ceb4266edb70611528884f67eda93",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "What a diagnostic implication says, written on the version record.rq names: the ACMG/AMP classification its classification component's LOINC answer maps to through vocab/fhir-acmg-classifications.ttl, the record of the one variant its derivedFrom names, the day it was issued or else took effect, and the status."
+      "description": "What a diagnostic implication says, written on the version record.rq names: the ACMG/AMP classification its classification component's LOINC answer maps to through vocab/fhir-acmg-classifications.ttl, the record of the one variant its derivedFrom names, the day it was issued or else took effect, the status, and prov:wasAttributedTo the organization record of the one Organization its performers name, as organization-table.rq resolves them and organization.rq names it."
     },
     {
       "@id": "in/sparql/resource-type-findings.rq",
       "@type": "File",
       "name": "Findings: a resource of a type this release does not map",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "3850",
-      "sha256": "325d6f7bf5e342c60ff188186f64802a4a616607f0539450a79197435edd1961",
+      "contentSize": "3892",
+      "sha256": "b9265701fe4aa87f92d22e944736e94410d49b417b2f7744324946d43c34da72",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1452,20 +1470,20 @@
       "@type": "File",
       "name": "Findings: what a variant interpretation's mapping leaves behind",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "12045",
-      "sha256": "ea0b2fd675d73599cb2d7bf4c9ca9b5c22d9b6bf82cca7dbd0705a2c18780c67",
+      "contentSize": "13610",
+      "sha256": "461dbff6aedd669bf4142716f7eb13f71a2b8471f9c1e2dc54b869cc398dbb44",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "Reports, for an Observation variant-interpretation-table.rq calls a diagnostic implication, fhirr4:interpretationClassification for a classification that is none of the five ACMG/AMP answers or one of several, and fhirr4:interpretationVariantLink for each derivedFrom reference, or for the code where there is none (a derivedFrom with no reference is none), when derivedFrom does not name exactly one variant record and nothing else."
+      "description": "Reports, for an Observation variant-interpretation-table.rq calls a diagnostic implication, fhirr4:interpretationClassification for a classification that is none of the five ACMG/AMP answers or one of several, and fhirr4:interpretationVariantLink for each derivedFrom reference, or for the code where there is none (a derivedFrom with no reference is none), when derivedFrom does not name exactly one variant record and nothing else; and fhirr4:interpretationPerformer for each performer reference when its performers name no organization record, or more than one."
     },
     {
       "@id": "vocab/fhir-accounting.ttl",
       "@type": "File",
       "name": "FHIR R4 JSON source accounting",
       "encodingFormat": "text/turtle",
-      "contentSize": "202778",
-      "sha256": "6f19ef3eaf3a9df20b1bc816df308c0152ff40fd26674fc904e4dd4ac5f2d60b",
+      "contentSize": "202338",
+      "sha256": "f3e5814be7b4c4da08e2c88b32539844c0bdff83a92c9952944a36acba37cac8",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1500,8 +1518,8 @@
       "@type": "File",
       "name": "FHIR R4 JSON gaps",
       "encodingFormat": "text/turtle",
-      "contentSize": "11401",
-      "sha256": "5d6bd281e70f5d5e86cd243b67a067b8cb5addc0b26d34dc104941bf53f92fba",
+      "contentSize": "11818",
+      "sha256": "01cda73bba69a90b462d2386570cf3ad53ef920b45f0952c1e0b4e95d188787a",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2482,30 +2500,56 @@
       "description": "A collection Bundle of a variant with id v1 and a urn:uuid fullUrl, an interpretation with a urn:uuid fullUrl derived from Observation/v1, and an interpretation with a RESTful fullUrl derived from Observation/v1. Authored here on 2026-10-23, for a case the conformance corpus does not hold."
     },
     {
-      "@id": "fixtures/in/martin-okafor-harbourline-panel-2022.json",
+      "@id": "fixtures/in/bundle-interpretation-performers.json",
+      "@type": "File",
+      "name": "Bundle of Diagnostic Implications whose performers name one lab, and two",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "3311",
+      "sha256": "e0bac0a4f570d54609df3cf769727f647b6fa505b179d6054d5932065476026b",
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A collection Bundle, each resource named by a urn:uuid fullUrl and none with an id, of a variant, two Diagnostic Implications derived from it and two Organizations, Lab A and Lab B, each with one identifier under the HL7 example OID 2.16.840.1.113883.19.5: one implication's performers a resource the Bundle does not hold and Lab A, the other's Lab A and Lab B. Authored here on 2026-10-24, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/bundle-interpretation-performer-is-custodian.json",
+      "@type": "File",
+      "name": "Document Bundle whose custodian is the lab a Diagnostic Implication's performer names",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "2996",
+      "sha256": "c59b8f1d12a90ea0d2f27ece71f2ebd84ef55da4929e8dbac199a95c7900aa55",
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A document Bundle, each resource named by a urn:uuid fullUrl and none with an id, of a Composition, a Patient, an Organization with an NPI that is the Composition's custodian and author, a variant, and a Diagnostic Implication derived from it whose one performer is that Organization. Authored here on 2026-10-24, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/martin-okafor-harbourline-panel-2022-with-lab.json",
       "@type": "File",
       "name": "Martin Okafor's hereditary cancer panel report, Harbourline Genetics, 2022-06-14",
       "encodingFormat": "application/fhir+json",
-      "contentSize": "11214",
-      "sha256": "5bfa27dde974ce16762015541b4781020e4c00d3b9c84d76c19adb3e01123e30",
-      "dateCreated": "2026-10-13",
+      "contentSize": "11761",
+      "sha256": "3e8c8a30f1d48a2e8443e0b0f6a5da1ce70f8739b86c7408364f2ecf364a1ade",
+      "dateCreated": "2026-10-24",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "A collection Bundle, each resource named by a urn:uuid fullUrl and none with an id, of a Patient (Martin Okafor, born 1979-02-08), the DiagnosticReport 51969-4 issued 2022-06-14, three Variants and a Diagnostic Implication derived from each: V1, MLH1 NM_000249.3(MLH1):c.2042C>T written with its gene, no ClinVar ID, Uncertain significance; V2, MSH6 NM_000179.3:c.2633T>C of ClinVar variation 8931, Benign; V5, MLH1 NM_001258271.2:c.1111A>T of variation 405389, on a transcript no submitter used and not in the variation's ClinVar name, no ClinVar ID, Uncertain significance. The variations and what ClinVar says of them are real (variant_summary and hgvs4variation of 2026-10); the person, the lab, the dates and the identifiers are invented. Authored here on 2026-10-13, for a case the conformance corpus does not hold."
+      "description": "A collection Bundle, each resource named by a urn:uuid fullUrl and none with an id, of a Patient (Martin Okafor, born 1979-02-08), the DiagnosticReport 51969-4 issued 2022-06-14, three Variants and a Diagnostic Implication derived from each: V1, MLH1 NM_000249.3(MLH1):c.2042C>T written with its gene, no ClinVar ID, Uncertain significance; V2, MSH6 NM_000179.3:c.2633T>C of ClinVar variation 8931, Benign; V5, MLH1 NM_001258271.2:c.1111A>T of variation 405389, on a transcript no submitter used and not in the variation's ClinVar name, no ClinVar ID, Uncertain significance; each Diagnostic Implication's performer the lab, an Organization entry last in the Bundle, Harbourline Genetics, by its CLIA number 99D0022061 (system urn:oid:2.16.840.1.113883.4.7). The variations and what ClinVar says of them are real (variant_summary and hgvs4variation of 2026-10); the person, the lab, the dates and the identifiers are invented. Authored here on 2026-10-13 and replaced on 2026-10-24, for a case the conformance corpus does not hold."
     },
     {
-      "@id": "fixtures/in/martin-okafor-st-columba-exome-2024.json",
+      "@id": "fixtures/in/martin-okafor-st-columba-exome-2024-with-lab.json",
       "@type": "File",
       "name": "Martin Okafor's exome and health record, St Columba's Hospital, 2024-03-21",
       "encodingFormat": "application/fhir+json",
-      "contentSize": "14582",
-      "sha256": "68f4f74325dc0b76d8d76984fb8a2e83e1b05b8d44affa4ac25285800adbfa40",
-      "dateCreated": "2026-10-13",
+      "contentSize": "15130",
+      "sha256": "8bd078fea90619a693628ea5c0a30598385df154875e3ce69a34dd10a6dbc83d",
+      "dateCreated": "2026-10-24",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "A collection Bundle, each resource named by a urn:uuid fullUrl and none with an id, of the same Patient, the DiagnosticReport 51969-4 issued 2024-03-21, three Variants and a Diagnostic Implication derived from each, and his conditions, each with a clinicalStatus of active, medications and a procedure: V1', MLH1 NM_000249.4:c.2042C>T of ClinVar variation 90011, Likely pathogenic; V2', the ID and expression of V2, Benign; V4, BRCA2 NM_000059.4:c.7865A>G of variation 91496, a gene outside MLH1, MSH2, MSH6, PMS2 and EPCAM, no ClinVar ID, Uncertain significance. The variations and what ClinVar says of them are real (variant_summary and hgvs4variation of 2026-10); the person, the hospital, the dates and the identifiers are invented. Authored here on 2026-10-13, for a case the conformance corpus does not hold."
+      "description": "A collection Bundle, each resource named by a urn:uuid fullUrl and none with an id, of the same Patient, the DiagnosticReport 51969-4 issued 2024-03-21, three Variants and a Diagnostic Implication derived from each, and his conditions, each with a clinicalStatus of active, medications and a procedure: V1', MLH1 NM_000249.4:c.2042C>T of ClinVar variation 90011, Likely pathogenic; V2', the ID and expression of V2, Benign; V4, BRCA2 NM_000059.4:c.7865A>G of variation 91496, a gene outside MLH1, MSH2, MSH6, PMS2 and EPCAM, no ClinVar ID, Uncertain significance; each Diagnostic Implication's performer the lab, an Organization entry last in the Bundle, St Columba's Hospital, by its CLIA number 99D0024032 (system urn:oid:2.16.840.1.113883.4.7). The variations and what ClinVar says of them are real (variant_summary and hgvs4variation of 2026-10); the person, the hospital, the dates and the identifiers are invented. Authored here on 2026-10-13 and replaced on 2026-10-24, for a case the conformance corpus does not hold."
     },
     {
       "@id": "bench/manifest.json",
@@ -4203,32 +4247,32 @@
       "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
-      "@id": "fixtures/expected/martin-okafor-harbourline-panel-2022.ttl",
+      "@id": "fixtures/expected/martin-okafor-harbourline-panel-2022-with-lab.ttl",
       "@type": "File",
-      "name": "Expected graph for martin-okafor-harbourline-panel-2022",
+      "name": "Expected graph for martin-okafor-harbourline-panel-2022-with-lab",
       "encodingFormat": "text/turtle",
-      "contentSize": "9295",
-      "sha256": "0e2d9fe98b2776534b4889f197ea702ddcf3b673f604101bf8e59812f6844909",
+      "contentSize": "10438",
+      "sha256": "f77adb0fe79888fdf3447632d38f416045e237e6ec55fe9d891a9b588565b293",
       "about": {
-        "@id": "fixtures/in/martin-okafor-harbourline-panel-2022.json"
+        "@id": "fixtures/in/martin-okafor-harbourline-panel-2022-with-lab.json"
       },
-      "dateCreated": "2026-10-13",
+      "dateCreated": "2026-10-24",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
-      "@id": "fixtures/expected/martin-okafor-st-columba-exome-2024.ttl",
+      "@id": "fixtures/expected/martin-okafor-st-columba-exome-2024-with-lab.ttl",
       "@type": "File",
-      "name": "Expected graph for martin-okafor-st-columba-exome-2024",
+      "name": "Expected graph for martin-okafor-st-columba-exome-2024-with-lab",
       "encodingFormat": "text/turtle",
-      "contentSize": "15026",
-      "sha256": "eb6c604f7a57ea3897945ba18e929c070c9154b3a14173cd6dc550aeed4364e8",
+      "contentSize": "16011",
+      "sha256": "29be5cd772be8dbca045cea418d296597ba4f03a45f1cf60acacbcc60c2e1a26",
       "about": {
-        "@id": "fixtures/in/martin-okafor-st-columba-exome-2024.json"
+        "@id": "fixtures/in/martin-okafor-st-columba-exome-2024-with-lab.json"
       },
-      "dateCreated": "2026-10-13",
+      "dateCreated": "2026-10-24",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -4287,8 +4331,8 @@
       "@type": "File",
       "name": "Expected findings for Bundle-bundle-cgexample",
       "encodingFormat": "text/turtle",
-      "contentSize": "22953",
-      "sha256": "1f13ad9b4c69e96c8f534a74d14446adc942e0505c0e53f9b04ea8815b0ad2db",
+      "contentSize": "24707",
+      "sha256": "73d5b9f68ac6f46f687d6e96ec56726990c89c88fe675caa070190602bf6b7e3",
       "about": {
         "@id": "fixtures/in/Bundle-bundle-cgexample.input.json"
       },
@@ -4319,8 +4363,8 @@
       "@type": "File",
       "name": "Expected findings for Bundle-bundle-oncology-diagnostic",
       "encodingFormat": "text/turtle",
-      "contentSize": "9551",
-      "sha256": "58e091509a3516cf84db804f49cb7ee6df50322bcf5ba7e68c877c2d2031dc89",
+      "contentSize": "10452",
+      "sha256": "39903927d3fa9305da637105efe7189f3683a6c6f1073b3ec4a489070825df3f",
       "about": {
         "@id": "fixtures/in/Bundle-bundle-oncology-diagnostic.input.json"
       },
@@ -4379,6 +4423,38 @@
       "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
+      "@id": "fixtures/expected/bundle-interpretation-performers.ttl",
+      "@type": "File",
+      "name": "Expected graph for bundle-interpretation-performers",
+      "encodingFormat": "text/turtle",
+      "contentSize": "7218",
+      "sha256": "27e6f5de69e9da60efebffca2983583f750aa8d70078aad5a63e552b918422bb",
+      "about": {
+        "@id": "fixtures/in/bundle-interpretation-performers.json"
+      },
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/bundle-interpretation-performer-is-custodian.ttl",
+      "@type": "File",
+      "name": "Expected graph for bundle-interpretation-performer-is-custodian",
+      "encodingFormat": "text/turtle",
+      "contentSize": "6878",
+      "sha256": "4191a9a7a164f236f1868174de116cd93eec12f910628ad692e84f79a99befe7",
+      "about": {
+        "@id": "fixtures/in/bundle-interpretation-performer-is-custodian.json"
+      },
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
       "@id": "fixtures/findings/bundle-interpretation-relative-reference-to-urn.ttl",
       "@type": "File",
       "name": "Expected findings for bundle-interpretation-relative-reference-to-urn",
@@ -4395,32 +4471,64 @@
       "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
     },
     {
-      "@id": "fixtures/findings/martin-okafor-harbourline-panel-2022.ttl",
+      "@id": "fixtures/findings/bundle-interpretation-performers.ttl",
       "@type": "File",
-      "name": "Expected findings for martin-okafor-harbourline-panel-2022",
+      "name": "Expected findings for bundle-interpretation-performers",
       "encodingFormat": "text/turtle",
-      "contentSize": "1986",
-      "sha256": "e3c5ce4f626d568e3b07e12cbc7de9c79241d76c376662fae10426af6bb19616",
+      "contentSize": "2146",
+      "sha256": "bfb11baf9d74ea4623947d553a932263d3f80b165add9a992cb7c0dc60407528",
       "about": {
-        "@id": "fixtures/in/martin-okafor-harbourline-panel-2022.json"
+        "@id": "fixtures/in/bundle-interpretation-performers.json"
       },
-      "dateCreated": "2026-10-13",
+      "dateCreated": "2026-10-24",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
     },
     {
-      "@id": "fixtures/findings/martin-okafor-st-columba-exome-2024.ttl",
+      "@id": "fixtures/findings/bundle-interpretation-performer-is-custodian.ttl",
       "@type": "File",
-      "name": "Expected findings for martin-okafor-st-columba-exome-2024",
+      "name": "Expected findings for bundle-interpretation-performer-is-custodian",
       "encodingFormat": "text/turtle",
-      "contentSize": "1081",
-      "sha256": "8b7aafb63c4e66fb6f8cb257afce8e43be200969dc4c72e743a99950280693ab",
+      "contentSize": "1935",
+      "sha256": "37183b50f5cb42717406ba2da8bab951f6a8f35faead27854b15a9c1ec71cde1",
       "about": {
-        "@id": "fixtures/in/martin-okafor-st-columba-exome-2024.json"
+        "@id": "fixtures/in/bundle-interpretation-performer-is-custodian.json"
       },
-      "dateCreated": "2026-10-13",
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/martin-okafor-harbourline-panel-2022-with-lab.ttl",
+      "@type": "File",
+      "name": "Expected findings for martin-okafor-harbourline-panel-2022-with-lab",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2004",
+      "sha256": "dd869e5987e213cfd677b2f24b22b86778b97bb300b18954fa24690578ba9b8b",
+      "about": {
+        "@id": "fixtures/in/martin-okafor-harbourline-panel-2022-with-lab.json"
+      },
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/martin-okafor-st-columba-exome-2024-with-lab.ttl",
+      "@type": "File",
+      "name": "Expected findings for martin-okafor-st-columba-exome-2024-with-lab",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1090",
+      "sha256": "3a0dd08688d9292a0695f93c601fd9cfb8321de03da261e76c975dfd8b4b1f02",
+      "about": {
+        "@id": "fixtures/in/martin-okafor-st-columba-exome-2024-with-lab.json"
+      },
+      "dateCreated": "2026-10-24",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -4940,8 +5048,8 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "contentSize": "55841",
-      "sha256": "ee976fd22598acac5ea087715b7bebf4b22aa673ad465a182e048a7b405b184c"
+      "contentSize": "58103",
+      "sha256": "ff4167bc017ec7a6eeb7e46133f1e72107377b6ac95f6e1bd0a4e9eee3db876f"
     },
     {
       "@id": "fixtures/facts/meridian.ttl",
@@ -5251,8 +5359,8 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "What a record is, the two envelopes, how a record is named, JSON as FHIR writes it, the schema, the versions in and out of scope, and what is known about the committed inputs. Read from hl7.org/fhir/R4/ on 2026-09-27.",
-      "contentSize": "17050",
-      "sha256": "4712a16ac71bcfbc05f809540d2e4c066427f6b013032a2d66fdd1b0295b726c"
+      "contentSize": "17579",
+      "sha256": "26ee134c806eae5cd0ed53a576f6d3be2adadf7cb32f3be7b854d57dd3de677f"
     },
     {
       "@id": "fixtures/CLAUDE.md",

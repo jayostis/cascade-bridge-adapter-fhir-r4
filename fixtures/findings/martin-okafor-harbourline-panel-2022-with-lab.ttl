@@ -2,31 +2,31 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:ae292e12af3e7c3492c2beab389be5dd a oa:FragmentSelector ;
+_:d1feb2d440b86944eaa73beeb57c5790 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/1" .
-_:be0632d4783b88decaddaf787c4b80cb oa:hasSource <../in/martin-okafor-harbourline-panel-2022.json> .
-_:ae292e12af3e7c3492c2beab389be5dd oa:refinedBy _:e86f6f270fbba0ddee2a8bc3fa3b702f .
-_:e86f6f270fbba0ddee2a8bc3fa3b702f a oa:FragmentSelector ;
+_:d062fc6bcddf975d9dfd2fa11ee0177e oa:hasSource <../in/martin-okafor-harbourline-panel-2022-with-lab.json> .
+_:d1feb2d440b86944eaa73beeb57c5790 oa:refinedBy _:c6730f56bb77b4295e0d26e89f99c06a .
+_:c6730f56bb77b4295e0d26e89f99c06a a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/resourceType" .
-_:be0632d4783b88decaddaf787c4b80cb oa:hasSelector _:ae292e12af3e7c3492c2beab389be5dd .
-_:bc3c07d708704e639aec232ed34012fa oa:hasTarget _:be0632d4783b88decaddaf787c4b80cb ;
+_:d062fc6bcddf975d9dfd2fa11ee0177e oa:hasSelector _:d1feb2d440b86944eaa73beeb57c5790 .
+_:fcabdc54d7dbba1062e1de917c861505 oa:hasTarget _:d062fc6bcddf975d9dfd2fa11ee0177e ;
 	sh:resultSeverity sh:Warning ;
 	a oa:Annotation ;
 	oa:hasBody fhirr4:resourceTypeNotMapped ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "DiagnosticReport" .
-_:eb03ec0fb4a1a272bb9dd2e62d16a540 a oa:FragmentSelector ;
+_:a98dc8043fdba5bf52fa8298d36b6fb3 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/2" .
-_:cb136f224ec90278fdb0db4b806167d2 oa:hasSource <../in/martin-okafor-harbourline-panel-2022.json> .
-_:eb03ec0fb4a1a272bb9dd2e62d16a540 oa:refinedBy _:cde9e0ab2fc97da79e1efaf02c61a8a8 .
-_:cde9e0ab2fc97da79e1efaf02c61a8a8 a oa:FragmentSelector ;
+_:c071d0e1b24af5cbbd1672c5293a494e oa:hasSource <../in/martin-okafor-harbourline-panel-2022-with-lab.json> .
+_:a98dc8043fdba5bf52fa8298d36b6fb3 oa:refinedBy _:d3d5d484eb6421cc0cc2379b6045e0c5 .
+_:d3d5d484eb6421cc0cc2379b6045e0c5 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/component/0/valueCodeableConcept/coding/0/code" .
-_:cb136f224ec90278fdb0db4b806167d2 oa:hasSelector _:eb03ec0fb4a1a272bb9dd2e62d16a540 .
-_:ebb13eadf788bcbe5afb60a44b82fadc oa:hasTarget _:cb136f224ec90278fdb0db4b806167d2 ;
+_:c071d0e1b24af5cbbd1672c5293a494e oa:hasSelector _:a98dc8043fdba5bf52fa8298d36b6fb3 .
+_:c7ad9845bbd93dc55035f9a5fe561927 oa:hasTarget _:c071d0e1b24af5cbbd1672c5293a494e ;
 	sh:resultSeverity sh:Info ;
 	a oa:Annotation ;
 	oa:hasBody fhirr4:variantHgvsGeneOrProtein ;

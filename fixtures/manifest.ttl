@@ -71,8 +71,10 @@
     <#bundle-genomics-variants>
     <#bundle-genomics-interpretations>
     <#bundle-interpretation-relative-reference-to-urn>
-    <#martin-okafor-harbourline-panel-2022>
-    <#martin-okafor-st-columba-exome-2024>
+    <#bundle-interpretation-performers>
+    <#bundle-interpretation-performer-is-custodian>
+    <#martin-okafor-harbourline-panel-2022-with-lab>
+    <#martin-okafor-st-columba-exome-2024-with-lab>
     <#condition-no-id-differs-only-in-narrative>
     <#condition-no-id-different-structured-content>
     <#allergy-no-id-different-allergen>
@@ -600,7 +602,7 @@
 
 <#Bundle-bundle-cgexample> a bridge:IsomorphicConversionTest ;
   mf:name "Bundle-bundle-cgexample" ;
-  rdfs:comment "The Genomics Reporting IG's own example: a Variant and the Pathogenic Diagnostic Implication derived from it by a relative reference are a variant and an interpretation record, a complex variant is a variant without components, and the haplotype, genotype and therapeutic implications stay lab results." ;
+  rdfs:comment "The Genomics Reporting IG's own example: a Variant and the Pathogenic Diagnostic Implication derived from it by a relative reference are a variant and an interpretation record, a complex variant is a variant without components, the haplotype, genotype and therapeutic implications stay lab results, and the performer of each Diagnostic Implication read, ExampleLab, has no identifier, so none is attributed to a lab and each performer reference is a finding." ;
   mf:action [
     bridge:input <in/Bundle-bundle-cgexample.input.json> ;
     bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
@@ -626,7 +628,7 @@
 
 <#Bundle-bundle-oncology-diagnostic> a bridge:IsomorphicConversionTest ;
   mf:name "Bundle-bundle-oncology-diagnostic" ;
-  rdfs:comment "A Variant with a ClinVar ID and a gene and only a genomic HGVS expression, and a Diagnostic Implication derived from it by a urn:uuid fullUrl, dated by its effective time alone." ;
+  rdfs:comment "A Variant with a ClinVar ID and a gene and only a genomic HGVS expression, and a Diagnostic Implication derived from it by a urn:uuid fullUrl, dated by its effective time alone; its performer is a Practitioner, so it is attributed to no lab and the reference is a finding." ;
   mf:action [
     bridge:input <in/Bundle-bundle-oncology-diagnostic.input.json> ;
     bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
@@ -676,30 +678,56 @@
     bridge:expectedFindings <findings/bundle-interpretation-relative-reference-to-urn.ttl>
   ] .
 
-<#martin-okafor-harbourline-panel-2022> a bridge:IsomorphicConversionTest ;
-  mf:name "martin-okafor-harbourline-panel-2022" ;
-  rdfs:comment "Martin Okafor's hereditary cancer panel report of 2022-06-14: three variants and an interpretation of each, the first variant written with its gene in parentheses, which the normal form leaves out." ;
+<#bundle-interpretation-performers> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-interpretation-performers" ;
+  rdfs:comment "Two Diagnostic Implications and their performers: one names a resource the document does not hold and Lab A, and is attributed to Lab A's organization record; one names Lab A and Lab B, two records, so it is attributed to neither and each performer's reference is a finding. Each lab a performer names is an organization record." ;
   mf:action [
-    bridge:input <in/martin-okafor-harbourline-panel-2022.json> ;
+    bridge:input <in/bundle-interpretation-performers.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/no-server.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-interpretation-performers.ttl> ;
+    bridge:expectedFindings <findings/bundle-interpretation-performers.ttl>
+  ] .
+
+<#bundle-interpretation-performer-is-custodian> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-interpretation-performer-is-custodian" ;
+  rdfs:comment "A document whose custodian, also its author, is the Organization a Diagnostic Implication's performer names: one organization record, one version, named in each role, and the interpretation attributed to it." ;
+  mf:action [
+    bridge:input <in/bundle-interpretation-performer-is-custodian.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/no-server.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-interpretation-performer-is-custodian.ttl> ;
+    bridge:expectedFindings <findings/bundle-interpretation-performer-is-custodian.ttl>
+  ] .
+
+<#martin-okafor-harbourline-panel-2022-with-lab> a bridge:IsomorphicConversionTest ;
+  mf:name "martin-okafor-harbourline-panel-2022-with-lab" ;
+  rdfs:comment "Martin Okafor's hereditary cancer panel report of 2022-06-14: three variants and an interpretation of each, the first variant written with its gene in parentheses, which the normal form leaves out; each interpretation is attributed to Harbourline Genetics' organization record, the Organization its performer names." ;
+  mf:action [
+    bridge:input <in/martin-okafor-harbourline-panel-2022-with-lab.json> ;
     bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
     bridge:facts <facts/martin-okafor-harbourline.ttl>
   ] ;
   mf:result [
-    bridge:expectedGraph <expected/martin-okafor-harbourline-panel-2022.ttl> ;
-    bridge:expectedFindings <findings/martin-okafor-harbourline-panel-2022.ttl>
+    bridge:expectedGraph <expected/martin-okafor-harbourline-panel-2022-with-lab.ttl> ;
+    bridge:expectedFindings <findings/martin-okafor-harbourline-panel-2022-with-lab.ttl>
   ] .
 
-<#martin-okafor-st-columba-exome-2024> a bridge:IsomorphicConversionTest ;
-  mf:name "martin-okafor-st-columba-exome-2024" ;
-  rdfs:comment "Martin Okafor's exome of 2024-03-21 with his conditions, medications and a procedure: three variants and an interpretation of each." ;
+<#martin-okafor-st-columba-exome-2024-with-lab> a bridge:IsomorphicConversionTest ;
+  mf:name "martin-okafor-st-columba-exome-2024-with-lab" ;
+  rdfs:comment "Martin Okafor's exome of 2024-03-21 with his conditions, medications and a procedure: three variants and an interpretation of each, each attributed to St Columba's Hospital's organization record, the Organization its performer names." ;
   mf:action [
-    bridge:input <in/martin-okafor-st-columba-exome-2024.json> ;
+    bridge:input <in/martin-okafor-st-columba-exome-2024-with-lab.json> ;
     bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
     bridge:facts <facts/martin-okafor-st-columba.ttl>
   ] ;
   mf:result [
-    bridge:expectedGraph <expected/martin-okafor-st-columba-exome-2024.ttl> ;
-    bridge:expectedFindings <findings/martin-okafor-st-columba-exome-2024.ttl>
+    bridge:expectedGraph <expected/martin-okafor-st-columba-exome-2024-with-lab.ttl> ;
+    bridge:expectedFindings <findings/martin-okafor-st-columba-exome-2024-with-lab.ttl>
   ] .
 
 <#condition-no-id-differs-only-in-narrative> a bridge:IdentityRelationTest ;
