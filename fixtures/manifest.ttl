@@ -83,6 +83,7 @@
     <#lab-performer-absolute-url>
     <#lab-performer-versioned-reference>
     <#bundle-pull-organization-id-repeated>
+    <#bundle-pull-id-shared-across-types>
     <#bundle-pull-performer-held-under-urn-uuid>
     <#lab-performer-differs-names-one-record>
     <#Bundle-bundle-cgexample>
@@ -1550,4 +1551,17 @@
   mf:result [
     bridge:expectedGraph <expected/condition-onset-to-the-minute.ttl> ;
     bridge:expectedFindings <findings/condition-onset-to-the-minute.ttl>
+  ] .
+
+<#bundle-pull-id-shared-across-types> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-pull-id-shared-across-types" ;
+  rdfs:comment "A Condition, an AllergyIntolerance and another Condition holding the ids x, x and X: no id is repeated within a type, so each is named from the server and none carries a finding of a repeated id." ;
+  mf:action [
+    bridge:input <in/bundle-pull-id-shared-across-types.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/example-pull.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-pull-id-shared-across-types.ttl> ;
+    bridge:expectedFindings <findings/bundle-pull-id-shared-across-types.ttl>
   ] .
