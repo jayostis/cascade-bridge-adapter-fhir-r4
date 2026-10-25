@@ -137,6 +137,9 @@
           "@id": "in/sparql/organization.rq"
         },
         {
+          "@id": "in/sparql/organization-from-server.rq"
+        },
+        {
           "@id": "in/sparql/lab-result.rq"
         },
         {
@@ -147,6 +150,9 @@
         },
         {
           "@id": "in/sparql/lab-result-identifiers.rq"
+        },
+        {
+          "@id": "in/sparql/lab-result-performer.rq"
         },
         {
           "@id": "in/sparql/variant.rq"
@@ -269,6 +275,9 @@
           "@id": "in/sparql/organization.rq"
         },
         {
+          "@id": "in/sparql/organization-from-server.rq"
+        },
+        {
           "@id": "in/sparql/lab-result.rq"
         },
         {
@@ -279,6 +288,9 @@
         },
         {
           "@id": "in/sparql/lab-result-identifiers.rq"
+        },
+        {
+          "@id": "in/sparql/lab-result-performer.rq"
         },
         {
           "@id": "in/sparql/variant.rq"
@@ -558,6 +570,30 @@
         },
         {
           "@id": "fixtures/in/bundle-pull-searchset-outcome.json"
+        },
+        {
+          "@id": "fixtures/in/bundle-pull-organization.json"
+        },
+        {
+          "@id": "fixtures/in/lab-performed-by-an-organization.json"
+        },
+        {
+          "@id": "fixtures/in/lab-performed-by-two-organizations.json"
+        },
+        {
+          "@id": "fixtures/in/lab-performer-absolute-url.json"
+        },
+        {
+          "@id": "fixtures/in/lab-performer-versioned-reference.json"
+        },
+        {
+          "@id": "fixtures/in/bundle-pull-organization-id-repeated.json"
+        },
+        {
+          "@id": "fixtures/in/bundle-pull-performer-held-under-urn-uuid.json"
+        },
+        {
+          "@id": "fixtures/in/lab-potassium-performed-elsewhere.json"
         },
         {
           "@id": "fixtures/in/Bundle-bundle-cgexample.input.json"
@@ -1055,6 +1091,27 @@
           "@id": "fixtures/expected/bundle-pull-searchset-outcome.ttl"
         },
         {
+          "@id": "fixtures/expected/bundle-pull-organization.ttl"
+        },
+        {
+          "@id": "fixtures/expected/lab-performed-by-an-organization.ttl"
+        },
+        {
+          "@id": "fixtures/expected/lab-performed-by-two-organizations.ttl"
+        },
+        {
+          "@id": "fixtures/expected/lab-performer-absolute-url.ttl"
+        },
+        {
+          "@id": "fixtures/expected/lab-performer-versioned-reference.ttl"
+        },
+        {
+          "@id": "fixtures/expected/bundle-pull-organization-id-repeated.ttl"
+        },
+        {
+          "@id": "fixtures/expected/bundle-pull-performer-held-under-urn-uuid.ttl"
+        },
+        {
           "@id": "fixtures/expected/Bundle-bundle-cgexample.ttl"
         },
         {
@@ -1083,6 +1140,27 @@
         },
         {
           "@id": "fixtures/findings/bundle-pull-searchset-outcome.ttl"
+        },
+        {
+          "@id": "fixtures/findings/bundle-pull-organization.ttl"
+        },
+        {
+          "@id": "fixtures/findings/lab-performed-by-an-organization.ttl"
+        },
+        {
+          "@id": "fixtures/findings/lab-performed-by-two-organizations.ttl"
+        },
+        {
+          "@id": "fixtures/findings/lab-performer-absolute-url.ttl"
+        },
+        {
+          "@id": "fixtures/findings/lab-performer-versioned-reference.ttl"
+        },
+        {
+          "@id": "fixtures/findings/bundle-pull-organization-id-repeated.ttl"
+        },
+        {
+          "@id": "fixtures/findings/bundle-pull-performer-held-under-urn-uuid.ttl"
         },
         {
           "@id": "fixtures/findings/Bundle-bundle-cgexample.ttl"
@@ -1356,12 +1434,12 @@
       "@type": "File",
       "name": "Document table: Organizations, the document references naming them, and their keys",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "9141",
-      "sha256": "be92a89d243cc4abfd94c0193dbc6d726252a0d280b594581660797763a642f7",
+      "contentSize": "10147",
+      "sha256": "1f2dd2ac6cd1fa2f927f082885e43c7915cd6db6323deab03e3fc16a38795411",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "A bridge:documentTableQuery: a row for each key an Organization of a record can be referenced by, within the scope it holds there; a row for each custodian and author reference of the document's Composition, the first entry of a Bundle or one standing alone, the key it names, that key's scope and the role, and for each performer reference of a Diagnostic Implication, with no role, a version stripped; and a row for each Organization with an identifier it can be named by, that identifier, picked as cascade-vocabulary's decisions/naming.md says, and its place in the document. And a row for each name, identifier and address an Organization's version would carry, which organization-findings.rq compares. organization.rq and resource-type-findings.rq resolve a reference by joining them, to the one Organization holding its key in its scope."
+      "description": "A bridge:documentTableQuery: a row for each key an Organization of a record can be referenced by, within the scope it holds there; a row for each custodian and author reference of the document's Composition, the first entry of a Bundle or one standing alone, the key it names, that key's scope and the role, and for each performer reference of a Diagnostic Implication, with no role, a version stripped; and a row for each Organization from a server, one at the top of an entry with an id and a fullUrl that is no urn:uuid where the server is known, with its id, and for each other Organization with an identifier it can be named by, that identifier, picked as cascade-vocabulary's decisions/naming.md says, and its place in the document. And a row for each name, identifier and address an Organization's version would carry, which organization-findings.rq compares. organization.rq and resource-type-findings.rq resolve a reference by joining them, to the one Organization holding its key in its scope."
     },
     {
       "@id": "in/sparql/record.rq",
@@ -1452,12 +1530,24 @@
       "@type": "File",
       "name": "Mapping: an Organization a document names",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "9051",
-      "sha256": "217fb1220fda1dce763cd538cebc1c85fa4be1be2e4ea9f052be98d7fe47f2ea",
+      "contentSize": "9117",
+      "sha256": "aee3e835bb1f2e479b4bc1d3fd2401a3961bcb2bbe8dd07c4ed19790b621bfa1",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "An Organization the document's Composition names as custodian or author, or a Diagnostic Implication names as its performer, as a record named by cascade:OrganizationNamingRule from the identifier organization-table.rq picks, with one version of each record, from the Organization a custodian names, else the first in the document, carrying its name, identifiers and addresses, and the document's prov:qualifiedAttribution naming it once in each role, cascade:CustodianRole or cascade:AuthorRole."
+    },
+    {
+      "@id": "in/sparql/organization-from-server.rq",
+      "@type": "File",
+      "name": "Mapping: an Organization from a server",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "6704",
+      "sha256": "0a976962fd5bc091ee7ed4852f4f25c634ab5d8c0171fd112bf1161924babd4f",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "An Organization at the top of an entry of a document whose server is known, with an id and a fullUrl that is no urn:uuid, as a record named by cascade:OrganizationNamingRule from the server and its id, unless another entry holds an Organization with that id; its version carries its name, identifiers and addresses as organization.rq writes them, its arrival its version id and change time, the record its cascade:sourceUrl and cascade:sourceRecordId as record.rq writes them, and the document's prov:qualifiedAttribution names it once in each role a Composition gives it."
     },
     {
       "@id": "in/sparql/lab-result.rq",
@@ -1508,6 +1598,18 @@
       "description": "Each identifier with a value of a lab result, as a dct:identifier of the version record.rq names: its value typed by its system, a system urn:oid: and the NPI's OID as the NPI's URI, or a plain string where it states no system."
     },
     {
+      "@id": "in/sparql/lab-result-performer.rq",
+      "@type": "File",
+      "name": "Mapping: the organization a lab result from a server names as its performer",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "4630",
+      "sha256": "71d06ae63160f3e764a2622a1a4a30e7a621773e200d372b37c9262dbe77356c",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A lab result from a server whose performers name exactly one Organization, by Organization/<id> or the server's base and that, as prov:wasAttributedTo of its version: the record cascade:OrganizationNamingRule names from the server and the id, whether or not the document holds it; none from an entry whose fullUrl is a urn:uuid, or for an Organization held under one or under an id two entries hold."
+    },
+    {
       "@id": "in/sparql/variant.rq",
       "@type": "File",
       "name": "Mapping: a variant's version",
@@ -1524,20 +1626,20 @@
       "@type": "File",
       "name": "Mapping: a variant interpretation's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "13876",
-      "sha256": "d018fd524d179e9edb3139fbbb7cc18f2f192449642b9136e2e1cd07aa359845",
+      "contentSize": "14242",
+      "sha256": "4106d3130e85fb1adb29442c316430c02d1fc49592f4c427767801d587232794",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "What a diagnostic implication says, written on the version record.rq names: the ACMG/AMP classification its classification component's LOINC answer maps to through vocab/fhir-acmg-classifications.ttl, the record of the one variant its derivedFrom names, the day it was issued or else took effect, the status, and prov:wasAttributedTo the organization record of the one Organization its performers name, as organization-table.rq resolves them and organization.rq names it."
+      "description": "What a diagnostic implication says, written on the version record.rq names: the ACMG/AMP classification its classification component's LOINC answer maps to through vocab/fhir-acmg-classifications.ttl, the record of the one variant its derivedFrom names, the day it was issued or else took effect, the status, and prov:wasAttributedTo the organization record of the one Organization its performers name, as organization-table.rq resolves them and organization.rq, or organization-from-server.rq for an Organization from a server, names it."
     },
     {
       "@id": "in/sparql/resource-type-findings.rq",
       "@type": "File",
       "name": "Findings: a resource of a type this release does not map",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "3892",
-      "sha256": "b9265701fe4aa87f92d22e944736e94410d49b417b2f7744324946d43c34da72",
+      "contentSize": "4067",
+      "sha256": "81a8a9a5b03fd843c79013224449e47523550f57be0d6f8550c7ee2737117b80",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1560,12 +1662,12 @@
       "@type": "File",
       "name": "Findings: an id the document repeats",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "2346",
-      "sha256": "ca4f88772e913369dfe65d5626c9172e8476d716bfdf8b0f408866485109a848",
+      "contentSize": "2583",
+      "sha256": "dcba16f673d654371b1db3c858f0aa0ec7f7f5b735777c02550037a6e9936ae3",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "A finding for each record whose resource's type and id, or whose urn:uuid fullUrl, another record of the document holds too, so record.rq names it from the document and its selector."
+      "description": "A finding for each record whose resource's type and id, or whose urn:uuid fullUrl, another record of the document holds too, so record.rq names it from the document and its selector; an Organization from a server among them is no record."
     },
     {
       "@id": "in/sparql/recorded-date-findings.rq",
@@ -1620,12 +1722,12 @@
       "@type": "File",
       "name": "Findings: what a lab result's mapping leaves behind",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "7740",
-      "sha256": "736c4d37849f2aee2d01371e84d84e9cbc686b415fdd23af34f7155093c86d08",
+      "contentSize": "9028",
+      "sha256": "37e80fd0312b47746136f5eef2438231a7b38966bae312825496ad060ac5b5dd",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "Reports, for an Observation lab-result-table.rq calls a lab result, fhirr4:labResultPeriodEnd for the end of its effectivePeriod, fhirr4:labResultCode for each code outside LOINC, and fhirr4:labResultRangeRepeated and fhirr4:labResultInterpretationRepeated for each value of a reference range or an interpretation after the first, at paths the source accounting carries for the other kinds or where they hold one value."
+      "description": "Reports, for an Observation lab-result-table.rq calls a lab result, fhirr4:labResultPeriodEnd for the end of its effectivePeriod, fhirr4:labResultCode for each code outside LOINC, and fhirr4:labResultRangeRepeated and fhirr4:labResultInterpretationRepeated for each value of a reference range or an interpretation after the first, fhirr4:performerCarriedOnlyAsOneOrganizationRecord for each performer reference of a result from a server whose performers name more than one Organization, at paths the source accounting carries for the other kinds or where they hold one value."
     },
     {
       "@id": "in/sparql/absent-reason-findings.rq",
@@ -1656,20 +1758,20 @@
       "@type": "File",
       "name": "Findings: what a variant interpretation's mapping leaves behind",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "13610",
-      "sha256": "461dbff6aedd669bf4142716f7eb13f71a2b8471f9c1e2dc54b869cc398dbb44",
+      "contentSize": "13860",
+      "sha256": "e94e5c7816ad14f4514bbc83ce2871683c540514939b7e42507a512871894acb",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "Reports, for an Observation variant-interpretation-table.rq calls a diagnostic implication, fhirr4:interpretationClassification for a classification that is none of the five ACMG/AMP answers or one of several, and fhirr4:interpretationVariantLink for each derivedFrom reference, or for the code where there is none (a derivedFrom with no reference is none), when derivedFrom does not name exactly one variant record and nothing else; and fhirr4:interpretationPerformer for each performer reference when its performers name no organization record, or more than one."
+      "description": "Reports, for an Observation variant-interpretation-table.rq calls a diagnostic implication, fhirr4:interpretationClassification for a classification that is none of the five ACMG/AMP answers or one of several, and fhirr4:interpretationVariantLink for each derivedFrom reference, or for the code where there is none (a derivedFrom with no reference is none), when derivedFrom does not name exactly one variant record and nothing else; and fhirr4:performerCarriedOnlyAsOneOrganizationRecord for each performer reference when its performers name no organization record, or more than one."
     },
     {
       "@id": "vocab/fhir-accounting.ttl",
       "@type": "File",
       "name": "FHIR R4 JSON source accounting",
       "encodingFormat": "text/turtle",
-      "contentSize": "230801",
-      "sha256": "f071b19a7adfc2be042220bedf0039e05eb205da50cc062f71776514bfa09478",
+      "contentSize": "230881",
+      "sha256": "5ffd3a12a689252bd3834482c5f0b8158e742925ff28a17465f994322cc02add",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1716,8 +1818,8 @@
       "@type": "File",
       "name": "FHIR R4 JSON gaps",
       "encodingFormat": "text/turtle",
-      "contentSize": "15026",
-      "sha256": "ed939b72a3f55f121894a2b222261b34f08865524f05cb82ca60d6efeba5537f",
+      "contentSize": "15254",
+      "sha256": "bfebccd57248767475cb161040e99cd798cc7ac99998dccc168454743a8b9e90",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2768,6 +2870,110 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "A searchset Bundle: a Condition (id cond-1) and an AllergyIntolerance (id alg-1), each an entry of search.mode match, and an OperationOutcome of search.mode outcome. Authored here on 2026-10-16, for a case the conformance corpus does not hold: an entry a search adds beside its matches, which a runtime drops but which the adapter reads."
+    },
+    {
+      "@id": "fixtures/in/bundle-pull-organization.json",
+      "@type": "File",
+      "name": "Collection Bundle of a pull holding one Organization",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "922",
+      "sha256": "bc3e650f33175aa5ee49d8501f889623dafb7f97d4d90c8b664514e2a1d75c42",
+      "dateCreated": "2026-10-25",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A collection Bundle as a pull saves one: an Organization (id org-lab-1, versionId 3) with the NPI by its OID, a second identifier and an address, under its server's fullUrl. Authored here on 2026-10-25, for a case the conformance corpus does not hold: an Organization read from a server, or a lab result from a server naming its performer."
+    },
+    {
+      "@id": "fixtures/in/lab-performed-by-an-organization.json",
+      "@type": "File",
+      "name": "Potassium result whose performers are a Practitioner and an Organization",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "845",
+      "sha256": "823494094ee244774e40ae53f319b5d9bbf363fbe30d50213f3ae84538d3d2f0",
+      "dateCreated": "2026-10-25",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A potassium result (id obs-potassium-1) whose performers are Practitioner/pr-1 and Organization/org-lab-1. Authored here on 2026-10-25, for a case the conformance corpus does not hold: an Organization read from a server, or a lab result from a server naming its performer."
+    },
+    {
+      "@id": "fixtures/in/lab-performed-by-two-organizations.json",
+      "@type": "File",
+      "name": "Potassium result whose performers name two Organizations",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "850",
+      "sha256": "103cd84674e84f79116aecaed3f7b305ea0841c3f51c197cc1ddece79d56b432",
+      "dateCreated": "2026-10-25",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A potassium result (id obs-potassium-2) whose performers are Organization/org-lab-1 and Organization/org-lab-2. Authored here on 2026-10-25, for a case the conformance corpus does not hold: an Organization read from a server, or a lab result from a server naming its performer."
+    },
+    {
+      "@id": "fixtures/in/lab-performer-absolute-url.json",
+      "@type": "File",
+      "name": "Potassium result naming its performing Organization by the server's absolute URL",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "821",
+      "sha256": "15f439cc28ee8f3baf8caa32530edf6a578a737f727250704aa9bbafa7447f64",
+      "dateCreated": "2026-10-25",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A potassium result (id obs-potassium-3) whose one performer is https://fhir.example.org/r4/Organization/org-lab-1. Authored here on 2026-10-25, for a case the conformance corpus does not hold: an Organization read from a server, or a lab result from a server naming its performer."
+    },
+    {
+      "@id": "fixtures/in/lab-performer-versioned-reference.json",
+      "@type": "File",
+      "name": "Potassium result naming a version of its performing Organization",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "804",
+      "sha256": "7604e574411d9ca216a75e8fd608fbdcf46b671ddee42a4ff7a743cb79186303",
+      "dateCreated": "2026-10-25",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A potassium result (id obs-potassium-4) whose one performer is Organization/org-lab-1/_history/2. Authored here on 2026-10-25, for a case the conformance corpus does not hold: an Organization read from a server, or a lab result from a server naming its performer."
+    },
+    {
+      "@id": "fixtures/in/bundle-pull-organization-id-repeated.json",
+      "@type": "File",
+      "name": "Collection Bundle of two Organizations sharing an id, and a result naming it",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "1636",
+      "sha256": "8d702ca990b8bf5c45f79dc9e74c1b4eff4d081930b6dc0feeb256faec23e622",
+      "dateCreated": "2026-10-25",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A collection Bundle: two Organizations with the id org-twice, and a potassium result (id obs-potassium-5) whose one performer is Organization/org-twice. Authored here on 2026-10-25, for a case the conformance corpus does not hold: an Organization read from a server, or a lab result from a server naming its performer."
+    },
+    {
+      "@id": "fixtures/in/bundle-pull-performer-held-under-urn-uuid.json",
+      "@type": "File",
+      "name": "Collection Bundle of an Organization under a urn:uuid fullUrl, and a result naming its id",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "1427",
+      "sha256": "b955522bf0cb2e2c76780d1251352658d9d6e8aeeafb871055d2fa31e564de31",
+      "dateCreated": "2026-10-25",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A collection Bundle: an Organization (id org-lab-1) under a urn:uuid fullUrl, and a potassium result (id obs-potassium-6) whose one performer is Organization/org-lab-1. Authored here on 2026-10-25, for a case the conformance corpus does not hold: an Organization read from a server, or a lab result from a server naming its performer."
+    },
+    {
+      "@id": "fixtures/in/lab-potassium-performed-elsewhere.json",
+      "@type": "File",
+      "name": "Potassium result naming another performing Organization",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "793",
+      "sha256": "6b3c0a289899bda36275be1c4647a05cc0b9679a33fcbbc29b096f2237ccb5eb",
+      "dateCreated": "2026-10-25",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The potassium result of lab-performed-by-an-organization.json (id obs-potassium-1) as a single resource, its one performer Organization/org-lab-2. Authored here on 2026-10-25, for a case the conformance corpus does not hold: a lab result whose performing organization differs between two pulls."
     },
     {
       "@id": "fixtures/in/Bundle-bundle-cgexample.input.json",
@@ -4905,12 +5111,124 @@
       "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
+      "@id": "fixtures/expected/bundle-pull-organization.ttl",
+      "@type": "File",
+      "name": "Expected graph for bundle-pull-organization",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2895",
+      "sha256": "92e8ca9473600a648678e89956bb57713e175c976b15bfe09c081ffedeb9f6a0",
+      "about": {
+        "@id": "fixtures/in/bundle-pull-organization.json"
+      },
+      "dateCreated": "2026-10-25",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/lab-performed-by-an-organization.ttl",
+      "@type": "File",
+      "name": "Expected graph for lab-performed-by-an-organization",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3178",
+      "sha256": "106a92ecf50e7523d5056ccc5fcba83d671ed2533f0c815126ddea5b35774ef8",
+      "about": {
+        "@id": "fixtures/in/lab-performed-by-an-organization.json"
+      },
+      "dateCreated": "2026-10-25",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/lab-performed-by-two-organizations.ttl",
+      "@type": "File",
+      "name": "Expected graph for lab-performed-by-two-organizations",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3108",
+      "sha256": "21af586195820870299696b21c17be59aa3545a821a091a5fd12392ef03ae399",
+      "about": {
+        "@id": "fixtures/in/lab-performed-by-two-organizations.json"
+      },
+      "dateCreated": "2026-10-25",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/lab-performer-absolute-url.ttl",
+      "@type": "File",
+      "name": "Expected graph for lab-performer-absolute-url",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3174",
+      "sha256": "f6f7b52fe6498b85e6cb9de3b38bc590b43434baa1e190e04860157d35d3e407",
+      "about": {
+        "@id": "fixtures/in/lab-performer-absolute-url.json"
+      },
+      "dateCreated": "2026-10-25",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/lab-performer-versioned-reference.ttl",
+      "@type": "File",
+      "name": "Expected graph for lab-performer-versioned-reference",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3180",
+      "sha256": "f58043d9036069c5393672a428f08e5151f5fa239c02edb8f137e098c30e6e1a",
+      "about": {
+        "@id": "fixtures/in/lab-performer-versioned-reference.json"
+      },
+      "dateCreated": "2026-10-25",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/bundle-pull-organization-id-repeated.ttl",
+      "@type": "File",
+      "name": "Expected graph for bundle-pull-organization-id-repeated",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3116",
+      "sha256": "ca006344c1622516124e92b0bc44ebe7851d87ac33e1201d166b89447956245a",
+      "about": {
+        "@id": "fixtures/in/bundle-pull-organization-id-repeated.json"
+      },
+      "dateCreated": "2026-10-25",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/bundle-pull-performer-held-under-urn-uuid.ttl",
+      "@type": "File",
+      "name": "Expected graph for bundle-pull-performer-held-under-urn-uuid",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3115",
+      "sha256": "01b4f5d3b0e6efcd2506069687a5d9fc11db6c32d41c6817194847c3d1c9a526",
+      "about": {
+        "@id": "fixtures/in/bundle-pull-performer-held-under-urn-uuid.json"
+      },
+      "dateCreated": "2026-10-25",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
       "@id": "fixtures/expected/Bundle-bundle-cgexample.ttl",
       "@type": "File",
       "name": "Expected graph for Bundle-bundle-cgexample",
       "encodingFormat": "text/turtle",
-      "contentSize": "14678",
-      "sha256": "a90a1ab35f4e4c23b2362b895b931f2461330ae080debd39fb048fae15b39734",
+      "contentSize": "16178",
+      "sha256": "27ac2e2ca33d7756e5a0ca7830983ec6c22178992aef043a49c51dc8e6d15e88",
       "about": {
         "@id": "fixtures/in/Bundle-bundle-cgexample.input.json"
       },
@@ -5065,12 +5383,124 @@
       "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
     },
     {
+      "@id": "fixtures/findings/bundle-pull-organization.ttl",
+      "@type": "File",
+      "name": "Expected findings for bundle-pull-organization",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/bundle-pull-organization.json"
+      },
+      "dateCreated": "2026-10-25",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/lab-performed-by-an-organization.ttl",
+      "@type": "File",
+      "name": "Expected findings for lab-performed-by-an-organization",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/lab-performed-by-an-organization.json"
+      },
+      "dateCreated": "2026-10-25",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/lab-performed-by-two-organizations.ttl",
+      "@type": "File",
+      "name": "Expected findings for lab-performed-by-two-organizations",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2110",
+      "sha256": "670e43d107a35ea0bbad9c5a72c14af16211caef6f4723e7230014f497bcaf1d",
+      "about": {
+        "@id": "fixtures/in/lab-performed-by-two-organizations.json"
+      },
+      "dateCreated": "2026-10-25",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/lab-performer-absolute-url.ttl",
+      "@type": "File",
+      "name": "Expected findings for lab-performer-absolute-url",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/lab-performer-absolute-url.json"
+      },
+      "dateCreated": "2026-10-25",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/lab-performer-versioned-reference.ttl",
+      "@type": "File",
+      "name": "Expected findings for lab-performer-versioned-reference",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/lab-performer-versioned-reference.json"
+      },
+      "dateCreated": "2026-10-25",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/bundle-pull-organization-id-repeated.ttl",
+      "@type": "File",
+      "name": "Expected findings for bundle-pull-organization-id-repeated",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1895",
+      "sha256": "8ec7303f940821a10b53bd1833946246c910548751d4bd6effead5705901ed7d",
+      "about": {
+        "@id": "fixtures/in/bundle-pull-organization-id-repeated.json"
+      },
+      "dateCreated": "2026-10-25",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/bundle-pull-performer-held-under-urn-uuid.ttl",
+      "@type": "File",
+      "name": "Expected findings for bundle-pull-performer-held-under-urn-uuid",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1080",
+      "sha256": "89982dbb2cdf7549eabc64a6e10e3ab4d9f07c9879aba23422b380d31f488dcc",
+      "about": {
+        "@id": "fixtures/in/bundle-pull-performer-held-under-urn-uuid.json"
+      },
+      "dateCreated": "2026-10-25",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
       "@id": "fixtures/findings/Bundle-bundle-cgexample.ttl",
       "@type": "File",
       "name": "Expected findings for Bundle-bundle-cgexample",
       "encodingFormat": "text/turtle",
-      "contentSize": "26431",
-      "sha256": "8c51029be13cf1cd947812b2caefe8ba584cebc8488f14279371a0658baf30e8",
+      "contentSize": "23835",
+      "sha256": "b753c5d2067174537f181940b56308740088dba893bbadc16a721eda4571d1c3",
       "about": {
         "@id": "fixtures/in/Bundle-bundle-cgexample.input.json"
       },
@@ -5101,8 +5531,8 @@
       "@type": "File",
       "name": "Expected findings for Bundle-bundle-oncology-diagnostic",
       "encodingFormat": "text/turtle",
-      "contentSize": "10452",
-      "sha256": "39903927d3fa9305da637105efe7189f3683a6c6f1073b3ec4a489070825df3f",
+      "contentSize": "10465",
+      "sha256": "e522a4912245b3ed2d9cecc7a0dc89db3c718de2adc0e4dfc11aa9f837047870",
       "about": {
         "@id": "fixtures/in/Bundle-bundle-oncology-diagnostic.input.json"
       },
@@ -5213,8 +5643,8 @@
       "@type": "File",
       "name": "Expected findings for bundle-interpretation-performers",
       "encodingFormat": "text/turtle",
-      "contentSize": "2146",
-      "sha256": "bfb11baf9d74ea4623947d553a932263d3f80b165add9a992cb7c0dc60407528",
+      "contentSize": "2186",
+      "sha256": "85a478bc0b6d43d45a14f91e73d554722ecca37e51251170175c1629482c5348",
       "about": {
         "@id": "fixtures/in/bundle-interpretation-performers.json"
       },
@@ -5786,8 +6216,8 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "contentSize": "66863",
-      "sha256": "3563c6efdb2026d98778f031722a56cdcfd0e77cf727c1428c355ab6f9653d7c"
+      "contentSize": "72670",
+      "sha256": "e716835b6afa9b2ae429ae0b89702f13ccdf84b996a6571c2bf70c8400004977"
     },
     {
       "@id": "fixtures/facts/meridian.ttl",
@@ -6097,8 +6527,8 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "What a record is, the two envelopes, how a record is named, JSON as FHIR writes it, the schema, the versions in and out of scope, and what is known about the committed inputs. Read from hl7.org/fhir/R4/ on 2026-09-27.",
-      "contentSize": "19677",
-      "sha256": "c4bb70b1272c11204d168abca153ecaee36a745baa18b7d790e57a100091a306"
+      "contentSize": "21123",
+      "sha256": "d38451e9e0a2bee421c4d7f4a11e323e4c2819c273a464e4ad6d770ed7a404b0"
     },
     {
       "@id": "fixtures/CLAUDE.md",

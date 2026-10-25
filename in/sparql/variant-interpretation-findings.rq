@@ -241,9 +241,17 @@ WHERE {
               fhirr4:organizationScope ?labScope .
             FILTER (?labRivalPointer != ?labPointer)
           }
-          ?labRow fhirr4:organizationAt ?labPointer ;
-            fhirr4:organizationIdentifierSystem ?labSystem ;
-            fhirr4:organizationIdentifierValue ?labValue .
+          {
+            ?labRow fhirr4:organizationAt ?labPointer ;
+              fhirr4:organizationIdentifierSystem ?labSystem ;
+              fhirr4:organizationIdentifierValue ?labValue .
+          }
+          UNION
+          {
+            ?labRow fhirr4:organizationAt ?labPointer ;
+              fhirr4:organizationIdOnServer ?labValue .
+            BIND ("Organization" AS ?labSystem)
+          }
           BIND (CONCAT(?labSystem, " ", ?labValue) AS ?labNamed)
         }
       }
@@ -254,7 +262,7 @@ WHERE {
     ?performers ?performerSlot ?performer .
     ?performer xyz:reference ?value .
     BIND (CONCAT("/performer/", STR(xsd:integer(STRAFTER(STR(?performerSlot), "#_")) - 1), "/reference") AS ?step)
-    BIND (fhirr4:interpretationPerformer AS ?gap)
+    BIND (fhirr4:performerCarriedOnlyAsOneOrganizationRecord AS ?gap)
   }
   BIND (CONCAT(?topStep, ?containedStep, ?step) AS ?pointer)
 }

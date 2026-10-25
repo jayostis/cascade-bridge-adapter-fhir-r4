@@ -15,7 +15,9 @@ PREFIX cascade: <https://ns.cascadeprotocol.org/cascade#>
 # of a reference range or an interpretation after the first, a number's unit
 # code in a system other than UCUM, a comparator on a bound, a number
 # lab-result-quantities.rq refuses for its form, its size or its comparator,
-# and a coded value's code in a system other than SNOMED CT or LOINC.
+# a coded value's code in a system other than SNOMED CT or LOINC, and, from a
+# server, each performer's reference where performers name more than one
+# Organization, as lab-result-performer.rq reads them.
 
 CONSTRUCT {
   [] a oa:Annotation ;
@@ -183,6 +185,29 @@ WHERE {
     BIND (CONCAT("/valueCodeableConcept/coding/", STR(xsd:integer(STRAFTER(STR(?answerSlot), "#_")) - 1), "/code")
           AS ?step)
     BIND (fhirr4:labResultValueCode AS ?gap)
+  }
+  UNION
+  {
+    {
+      SELECT ?resource (COUNT(DISTINCT ?performerId) AS ?organizations) WHERE {
+        bridge:thisDocument cascade:serverBaseUrl ?performerServer .
+        ?resource xyz:resourceType "Observation" ;
+          xyz:performer ?countedPerformers .
+        ?countedPerformers ?countedSlot ?countedPerformer .
+        ?countedPerformer xyz:reference ?written .
+        BIND (REPLACE(?written, "/_history/[A-Za-z0-9.-]{1,64}$", "") AS ?unversioned)
+        BIND (IF(STRSTARTS(?unversioned, CONCAT(?performerServer, "/")), STRAFTER(?unversioned, CONCAT(?performerServer, "/")),
+                 ?unversioned) AS ?relative)
+        FILTER (REGEX(?relative, "^Organization/[A-Za-z0-9.-]{1,64}$"))
+        BIND (STRAFTER(?relative, "Organization/") AS ?performerId)
+      } GROUP BY ?resource
+    }
+    FILTER (?organizations > 1)
+    ?resource xyz:performer ?performers .
+    ?performers ?performerSlot ?performer .
+    ?performer xyz:reference ?value .
+    BIND (CONCAT("/performer/", STR(xsd:integer(STRAFTER(STR(?performerSlot), "#_")) - 1), "/reference") AS ?step)
+    BIND (fhirr4:performerCarriedOnlyAsOneOrganizationRecord AS ?gap)
   }
   BIND (CONCAT(?topStep, ?containedStep, ?step) AS ?pointer)
 }
