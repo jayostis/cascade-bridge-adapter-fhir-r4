@@ -509,10 +509,16 @@
           "@id": "fixtures/in/lab-value-absent-for-reason.json"
         },
         {
+          "@id": "fixtures/in/lab-value-absent-reason-text-only.json"
+        },
+        {
           "@id": "fixtures/in/patient-birth-year-and-month.json"
         },
         {
           "@id": "fixtures/in/condition-onset-year-abatement-month.json"
+        },
+        {
+          "@id": "fixtures/in/condition-onset-to-the-minute.json"
         },
         {
           "@id": "fixtures/in/lab-leukocytes-exponent-and-ranges.json"
@@ -950,10 +956,16 @@
           "@id": "fixtures/expected/lab-value-absent-for-reason.ttl"
         },
         {
+          "@id": "fixtures/expected/lab-value-absent-reason-text-only.ttl"
+        },
+        {
           "@id": "fixtures/expected/patient-birth-year-and-month.ttl"
         },
         {
           "@id": "fixtures/expected/condition-onset-year-abatement-month.ttl"
+        },
+        {
+          "@id": "fixtures/expected/condition-onset-to-the-minute.ttl"
         },
         {
           "@id": "fixtures/expected/lab-leukocytes-exponent-and-ranges.ttl"
@@ -983,10 +995,16 @@
           "@id": "fixtures/findings/lab-value-absent-for-reason.ttl"
         },
         {
+          "@id": "fixtures/findings/lab-value-absent-reason-text-only.ttl"
+        },
+        {
           "@id": "fixtures/findings/patient-birth-year-and-month.ttl"
         },
         {
           "@id": "fixtures/findings/condition-onset-year-abatement-month.ttl"
+        },
+        {
+          "@id": "fixtures/findings/condition-onset-to-the-minute.ttl"
         },
         {
           "@id": "fixtures/findings/lab-leukocytes-exponent-and-ranges.ttl"
@@ -1356,8 +1374,8 @@
       "@type": "File",
       "name": "Mapping: an AllergyIntolerance's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "5603",
-      "sha256": "90685e31ecc9ff47fa4c836da72d0adddff2461af3d542db258371f02b7c6bcb",
+      "contentSize": "6378",
+      "sha256": "19513097bf61aceaa34397fad7f703f00838ab996c1e2e1312dea47be135afcf",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1368,8 +1386,8 @@
       "@type": "File",
       "name": "Mapping: a Condition's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "4970",
-      "sha256": "64e8461dcc450d9ccdd4ffd8da1778e2b627496c95fc3bee7806d360236c05aa",
+      "contentSize": "6061",
+      "sha256": "fb43a58a34ba55e04d303813646a012adcb8e72b801fc5b6edae99ac92c9e5be",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1380,8 +1398,8 @@
       "@type": "File",
       "name": "Mapping: an Immunization's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "4825",
-      "sha256": "18b63de1ffa63f95f1cf8c49bc5bbde0c3a895c8b97e9ac7231146649acacac7",
+      "contentSize": "5600",
+      "sha256": "dc5166bded9685127520b3e4947090bcc3cf76edc823d08a8adc6b3a27e77cd3",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1392,8 +1410,8 @@
       "@type": "File",
       "name": "Mapping: a Procedure's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "3413",
-      "sha256": "c67e645d23c9e05a9293b14909b939d57c9dc54b9f4a82031d62896f99a60568",
+      "contentSize": "4188",
+      "sha256": "814ebed8675244ec464a7524f3c2808364506331fca68103bc1a044ec401a9d8",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1416,8 +1434,8 @@
       "@type": "File",
       "name": "Mapping: a MedicationRequest's or MedicationStatement's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "8883",
-      "sha256": "08b520993e875d9dbb12144b65a7db807cca31ba0a2d90e970e2118836d0c6b0",
+      "contentSize": "11004",
+      "sha256": "33ea6823d6664b601a8e0a0c4a0551b8c28872b1b3022af27a041cc3a7c85432",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1440,8 +1458,8 @@
       "@type": "File",
       "name": "Mapping: a lab result's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "12199",
-      "sha256": "82265947651d1fd5d0fb6d901ddd5ab05106e7eca0f9d4108dbb3ef21ec0c779",
+      "contentSize": "13089",
+      "sha256": "a9e569a46920e2de117ef3ff1c23a3f36ca2ccee05bb31b7382cc37cfe4662d8",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1500,8 +1518,8 @@
       "@type": "File",
       "name": "Mapping: a variant interpretation's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "13678",
-      "sha256": "100959601e029e6c141f1842c024424fa52ceb4266edb70611528884f67eda93",
+      "contentSize": "13876",
+      "sha256": "d018fd524d179e9edb3139fbbb7cc18f2f192449642b9136e2e1cd07aa359845",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1608,8 +1626,8 @@
       "@type": "File",
       "name": "Findings: a reason a value is absent that is not carried",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "4231",
-      "sha256": "65feb9b94431b75a64338af8e84da43635159cd8d051e33f99a0adac6e557d3b",
+      "contentSize": "4539",
+      "sha256": "dc2795b9d35f95eba2afd487b5203f00ab2862c26b81b1c9e4e9f2fcc720142a",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1644,8 +1662,8 @@
       "@type": "File",
       "name": "FHIR R4 JSON source accounting",
       "encodingFormat": "text/turtle",
-      "contentSize": "233561",
-      "sha256": "2c93967e852eddb6863549a794f8f32ea4887a778fc0705ea53206430f10a114",
+      "contentSize": "233269",
+      "sha256": "58e6a97c585b2efb98516bcfc3b3959b027cdb3b8cf2323fb2b65ebde86dacf2",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1680,8 +1698,8 @@
       "@type": "File",
       "name": "FHIR R4 JSON gaps",
       "encodingFormat": "text/turtle",
-      "contentSize": "14135",
-      "sha256": "165c70f5da1738face1fa80040a1b93f23f31916a932b4140f94410b40288dda",
+      "contentSize": "14149",
+      "sha256": "497ad5ae59aea00e99efb0cb8243165042e26ee050dbcafd5637e76da3edace8",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2539,6 +2557,19 @@
       "description": "A laboratory Observation of serum potassium (LOINC 2823-3), id obs-potassium-absent-1, with no value and a dataAbsentReason coded as data-absent-reason error, v3-NullFlavor OTH and a laboratory's own code HEMOLYZED, with the text Specimen haemolysed. Authored here on 2026-10-24, for a case the conformance corpus does not hold."
     },
     {
+      "@id": "fixtures/in/lab-value-absent-reason-text-only.json",
+      "@type": "File",
+      "name": "Laboratory Observation whose absent value gives its reason as text alone",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "672",
+      "sha256": "75c181e5e7f2b433a24b66c02a0305a38e92d4ae327dc9e2909ee4513c659004",
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A laboratory Observation of serum potassium (LOINC 2823-3), id obs-potassium-absent-text-1, with no value and a dataAbsentReason of the text Specimen haemolysed and no coding. Authored here on 2026-10-24, for a case the conformance corpus does not hold."
+    },
+    {
       "@id": "fixtures/in/patient-birth-year-and-month.json",
       "@type": "File",
       "name": "Patient with a birth date to the month",
@@ -2563,6 +2594,19 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "A resolved Condition of unspecified asthma (ICD-10-CM J45.909), id cond-asthma-partial-1, whose onsetDateTime is 2019 and abatementDateTime 2020-03, the year and year-and-month forms FHIR's dateTime allows. Authored here on 2026-10-24, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/condition-onset-to-the-minute.json",
+      "@type": "File",
+      "name": "Condition with an onset to the minute",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "612",
+      "sha256": "49b05e23099a2a77e9f0b8dfd0c303a7c2d43b02f9a109707b4d366b2e14a6c7",
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A resolved Condition of unspecified asthma (ICD-10-CM J45.909), id cond-asthma-minute-1, whose onsetDateTime is 2023-05-31T14:00-05:00, to the minute as C-CDA on FHIR writes a time, and abatementDateTime 2023-06-02T09:30:15-05:00. Authored here on 2026-10-24, for a case the conformance corpus does not hold."
     },
     {
       "@id": "fixtures/in/lab-titre-ratio.json",
@@ -4347,6 +4391,22 @@
       "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
+      "@id": "fixtures/expected/lab-value-absent-reason-text-only.ttl",
+      "@type": "File",
+      "name": "Expected graph for lab-value-absent-reason-text-only",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3633",
+      "sha256": "6f18453104a6f5bdc939a9e166fcce0feaed131ee4b5424920ce5608a37fc6fb",
+      "about": {
+        "@id": "fixtures/in/lab-value-absent-reason-text-only.json"
+      },
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
       "@id": "fixtures/expected/patient-birth-year-and-month.ttl",
       "@type": "File",
       "name": "Expected graph for patient-birth-year-and-month",
@@ -4371,6 +4431,22 @@
       "sha256": "295958a45a7d9d7e1fd759e0867c657b95ed3638ab7af3c4abf68a7230cf31e5",
       "about": {
         "@id": "fixtures/in/condition-onset-year-abatement-month.json"
+      },
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/condition-onset-to-the-minute.ttl",
+      "@type": "File",
+      "name": "Expected graph for condition-onset-to-the-minute",
+      "encodingFormat": "text/turtle",
+      "contentSize": "4035",
+      "sha256": "24f4d64d9c6d7dd811e874fe549463c0a0206e05b2ef367f3e6d044c2e2816c4",
+      "about": {
+        "@id": "fixtures/in/condition-onset-to-the-minute.json"
       },
       "dateCreated": "2026-10-24",
       "license": {
@@ -4523,6 +4599,22 @@
       "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
     },
     {
+      "@id": "fixtures/findings/lab-value-absent-reason-text-only.ttl",
+      "@type": "File",
+      "name": "Expected findings for lab-value-absent-reason-text-only",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1072",
+      "sha256": "d7afc0d7ac5fa73ac08513432920521aae471ddcdd164cf4e336e992fcc62db6",
+      "about": {
+        "@id": "fixtures/in/lab-value-absent-reason-text-only.json"
+      },
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
       "@id": "fixtures/findings/patient-birth-year-and-month.ttl",
       "@type": "File",
       "name": "Expected findings for patient-birth-year-and-month",
@@ -4547,6 +4639,22 @@
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "about": {
         "@id": "fixtures/in/condition-onset-year-abatement-month.json"
+      },
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/condition-onset-to-the-minute.ttl",
+      "@type": "File",
+      "name": "Expected findings for condition-onset-to-the-minute",
+      "encodingFormat": "text/turtle",
+      "contentSize": "760",
+      "sha256": "9a8c8de65286586af7789911dfbc17735e3738632f179edd1533fa012d46a6f7",
+      "about": {
+        "@id": "fixtures/in/condition-onset-to-the-minute.json"
       },
       "dateCreated": "2026-10-24",
       "license": {
@@ -4847,8 +4955,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-genomics-interpretations",
       "encodingFormat": "text/turtle",
-      "contentSize": "15640",
-      "sha256": "3d808294e3335bd7760b850235bfc5dd1f86667f4c582f3200a3a6cb75405f3b",
+      "contentSize": "15676",
+      "sha256": "d4ab0fdf7d0293184696edacd302498a47fefe7e38c5b09c74863a509be36026",
       "about": {
         "@id": "fixtures/in/bundle-genomics-interpretations.json"
       },
