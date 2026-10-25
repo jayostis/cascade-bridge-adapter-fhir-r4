@@ -10,7 +10,10 @@ PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # lab result is a business identifier of its version: its value typed by its
 # system where it states one, a system urn:oid: and the NPI's OID as the NPI's
 # URI, as organization.rq types an organization's, and a plain string where it
-# states none. A system that is no IRI gives none.
+# states none. A urn:uuid: system, and a urn:uuid: value of the system
+# urn:ietf:rfc:3986, are in lower case, as result-identifiers.rq in the C-CDA
+# adapter writes a UUID root, so one UUID is one identifier from either. A
+# system that is no IRI gives none.
 
 CONSTRUCT {
   ?version dct:identifier ?identifier .
@@ -44,7 +47,10 @@ WHERE {
   ?identifierNode xyz:value ?identifierValue .
   FILTER (STRLEN(?identifierValue) > 0)
   OPTIONAL { ?identifierNode xyz:system ?identifierSystem }
-  BIND (IF(?identifierSystem = "urn:oid:2.16.840.1.113883.4.6", "http://hl7.org/fhir/sid/us-npi", ?identifierSystem)
+  BIND (IF(?identifierSystem = "urn:oid:2.16.840.1.113883.4.6", "http://hl7.org/fhir/sid/us-npi",
+           IF(REGEX(?identifierSystem, "^urn:uuid:", "i"), LCASE(?identifierSystem), ?identifierSystem))
         AS ?identifierType)
-  BIND (IF(BOUND(?identifierSystem), STRDT(?identifierValue, IRI(?identifierType)), ?identifierValue) AS ?identifier)
+  BIND (IF(?identifierSystem = "urn:ietf:rfc:3986" && REGEX(?identifierValue, "^urn:uuid:", "i"),
+           LCASE(?identifierValue), ?identifierValue) AS ?identifierText)
+  BIND (IF(BOUND(?identifierSystem), STRDT(?identifierText, IRI(?identifierType)), ?identifierValue) AS ?identifier)
 }

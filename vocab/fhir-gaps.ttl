@@ -241,7 +241,7 @@ fhirr4:variantComponentNotCarried a skos:Concept ;
   skos:broader bridge:carriedWithLoss .
 
 fhirr4:identifierCarriedForLabResultsAndOrganizationsOnly a skos:Concept ;
-  skos:prefLabel "A resource's business identifiers are carried for a lab result, which the matcher compares within one organization, and for an Organization a document names, which is named by one; any other record's are not, since nothing reads them."@en ;
+  skos:prefLabel "A resource's business identifiers are carried for a lab result, which the matcher compares within one organization, and for an Organization a document names, which is named by one; any other record's are not, since nothing reads them. An identifier's assigner (Identifier.assigner) is not read: the organization a lab result's identifier belongs to is the one its document names as custodian or author."@en ;
   skos:inScheme fhirr4:gaps ;
   skos:broader bridge:carriedWithLoss .
 

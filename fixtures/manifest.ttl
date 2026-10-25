@@ -1073,7 +1073,7 @@
 
 <#lab-potassium-identifiers> a bridge:IsomorphicConversionTest ;
   mf:name "lab-potassium-identifiers" ;
-  rdfs:comment "A lab result's identifiers: each with a value is a business identifier of its version, typed by its system where it states one and a plain string where it states none; the one with no value is not written." ;
+  rdfs:comment "A lab result's identifiers: each with a value is a business identifier of its version, typed by its system where it states one and a plain string where it states none, a urn:uuid: value in lower case; the one with no value is not written." ;
   mf:action [
     bridge:input <in/lab-potassium-identifiers.json> ;
     bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
