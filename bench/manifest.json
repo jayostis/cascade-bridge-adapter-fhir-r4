@@ -1,6 +1,28 @@
 {
   "inputs": [
     {
+      "id": "fhir-r4-lab-pull-3000",
+      "path": "bench/lab-pull-3000.json.gz",
+      "sha256": "69b4daac45fd32449b8c290be9a7551566b537a6171218e8125169e94ca5882b",
+      "bytes": 2760035,
+      "envelope": "ro-crate-metadata.json#envelope-bundle",
+      "measures": [
+        "convert",
+        "memory.grow",
+        "wasm-memory",
+        "rss",
+        "query-time",
+        "query-rows",
+        "records",
+        "triples",
+        "findings",
+        "fallbacks",
+        "output-bytes"
+      ],
+      "onPullRequests": true,
+      "timeoutSeconds": 120
+    },
+    {
       "id": "fhir-r4-synthea-10y-trimmed",
       "path": "bench/syn-c521b4f4b8f5b303.json.gz",
       "sha256": "2703dc1e7e920fa1e45d16c58f8338ef13b3cc1916ee40ffa461112d54dce5de",
