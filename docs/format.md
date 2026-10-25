@@ -50,6 +50,24 @@ line. The document names it in
 implication's `performer` references, resolved and named alike, is a record
 too, and the document names it in no role.
 
+An `Organization` from a server, one an entry of a document whose server is
+known holds at its top, with an `id` and a `fullUrl` that is no `urn:uuid:`, as
+a record from a server is told apart (see Names), is a record whatever names it,
+as a pull holds one: named by the vocabulary's `OrganizationNamingRule` from the
+server and its `id`, its version carrying what any organization's does, its
+arrival its `meta.versionId` and `meta.lastUpdated`. A document naming it as
+custodian or author names that record. Two entries holding an `Organization`
+with one `id` are no record, and each a finding. A lab result from a server is
+attributed to the one `Organization` its `performer`s name, by
+`Organization/<id>` or the server's base followed by that, as the version's
+`prov:wasAttributedTo`: that organization's record from the server, whether or
+not the document holds it, so a pull fetching it later joins it by name. A
+reference made from an entry whose `fullUrl` is a `urn:uuid:`, or to an
+`Organization` held under one, names none; performers naming two
+`Organization`s name none, and each performer is a finding; a performer of
+another type is not read. The performing organization is on the version, so a
+pull naming another leaves the record's name as it was.
+
 An `Observation`'s `category` says what kind it is, from
 [observation-category](https://hl7.org/fhir/R4/codesystem-observation-category.html):
 `laboratory`, `vital-signs`, `social-history` and others. It is optional, so a
@@ -118,8 +136,8 @@ category makes them.
   `Observation`, is not read, and leaves a link to one variant intact.
 - **Its lab** is the organization record of the `Organization` its `performer`
   names, written as the version's `prov:wasAttributedTo`. A performer that is no
-  `Organization` of the document, or one with no identifier to name it by, is not
-  read. Performers that name no organization record, or two, name none, and
+  `Organization` of the document, or one with no identifier to name it by and not
+  from a server, is not read. Performers that name no organization record, or two, name none, and
   each performer is a finding: a lab is never lost silently.
 
 The three elements of a variant are read from its components, by the code of the

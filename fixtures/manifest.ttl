@@ -77,6 +77,8 @@
     <#bundle-medication-repeated-id>
     <#bundle-pull-collection-versions>
     <#bundle-pull-searchset-outcome>
+    <#bundle-pull-organizations>
+    <#lab-performer-differs-names-one-record>
     <#Bundle-bundle-cgexample>
     <#Bundle-bundle-compound-heterozygote>
     <#Bundle-bundle-oncology-diagnostic>
@@ -1297,6 +1299,36 @@
     bridge:expectedGraph <expected/bundle-pull-searchset-outcome.ttl> ;
     bridge:expectedFindings <findings/bundle-pull-searchset-outcome.ttl>
   ] .
+
+<#bundle-pull-organizations> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-pull-organizations" ;
+  rdfs:comment "A pull holding an Organization, an organization record named by its server and id whose version carries its name, its identifiers, the NPI's OID as the NPI's URI, and its address; a lab result whose performers are a Practitioner and that Organization, attributed to its record; a lab result whose performers name two Organizations, one by the server's absolute URL, attributed to none and a finding on each performer; and two Organizations sharing one id, no record and a finding on each." ;
+  mf:action [
+    bridge:input <in/bundle-pull-organizations.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/example-pull.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-pull-organizations.ttl> ;
+    bridge:expectedFindings <findings/bundle-pull-organizations.ttl>
+  ] .
+
+<#lab-performer-differs-names-one-record> a bridge:IdentityRelationTest ;
+  mf:name "lab-performer-differs-names-one-record" ;
+  rdfs:comment "One lab result from one server, pulled once naming one performing Organization and once another, is one record: the organization it names is on its version." ;
+  mf:action [
+    bridge:conversion [
+      bridge:input <in/bundle-pull-organizations.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+      bridge:facts <facts/example-pull.ttl> ;
+      bridge:selector "/entry/1"
+    ] , [
+      bridge:input <in/lab-potassium-performed-elsewhere.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/example-pull.ttl>
+    ]
+  ] ;
+  mf:result [ bridge:sameRecord true ] .
 
 <#lab-same-day-same-code-different-value> a bridge:IdentityRelationTest ;
   mf:name "lab-same-day-same-code-different-value" ;

@@ -1,0 +1,144 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "https://fhir.example.org/r4/Organization/org-lab-1",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-lab-1",
+        "meta": {
+          "versionId": "3",
+          "lastUpdated": "2026-09-30T08:00:00Z"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "1234567893"
+          },
+          {
+            "system": "https://fhir.example.org/r4/organization-codes",
+            "value": "LAB-1"
+          }
+        ],
+        "name": "Example Reference Laboratory",
+        "address": [
+          {
+            "line": ["12 Harbour Road", "Suite 4"],
+            "city": "Bellingham",
+            "state": "WA",
+            "postalCode": "98225"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/r4/Observation/obs-potassium-1",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-potassium-1",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2823-3",
+              "display": "Potassium [Moles/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Potassium"
+        },
+        "subject": {
+          "reference": "Patient/pat-1"
+        },
+        "effectiveDateTime": "2026-09-29T07:30:00Z",
+        "performer": [
+          {
+            "reference": "Practitioner/pr-1"
+          },
+          {
+            "reference": "Organization/org-lab-1"
+          }
+        ],
+        "valueQuantity": {
+          "value": 4.1,
+          "unit": "mmol/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "mmol/L"
+        }
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/r4/Observation/obs-glucose-1",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-glucose-1",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2339-0",
+              "display": "Glucose [Mass/volume] in Blood"
+            }
+          ],
+          "text": "Glucose"
+        },
+        "subject": {
+          "reference": "Patient/pat-1"
+        },
+        "effectiveDateTime": "2026-09-29T07:30:00Z",
+        "performer": [
+          {
+            "reference": "Organization/org-lab-1"
+          },
+          {
+            "reference": "https://fhir.example.org/r4/Organization/org-lab-2"
+          }
+        ],
+        "valueQuantity": {
+          "value": 95,
+          "unit": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "mg/dL"
+        }
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/r4/Organization/org-twice",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-twice",
+        "name": "Example Clinic"
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/r4/Organization/org-twice",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-twice",
+        "name": "Example Clinic North"
+      }
+    }
+  ]
+}
