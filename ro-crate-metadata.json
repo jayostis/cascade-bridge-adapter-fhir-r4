@@ -194,6 +194,9 @@
         },
         {
           "@id": "in/sparql/variant-interpretation-findings.rq"
+        },
+        {
+          "@id": "in/sparql/organization-findings.rq"
         }
       ],
       "bridge:table": [
@@ -315,6 +318,9 @@
         },
         {
           "@id": "in/sparql/variant-interpretation-findings.rq"
+        },
+        {
+          "@id": "in/sparql/organization-findings.rq"
         },
         {
           "@id": "vocab/fhir-accounting.ttl"
@@ -1350,12 +1356,12 @@
       "@type": "File",
       "name": "Document table: Organizations, the document references naming them, and their keys",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "6839",
-      "sha256": "22a26435f91eff4227c6dca8eb07246546093cf8dd000eace7e465899063593d",
+      "contentSize": "9141",
+      "sha256": "be92a89d243cc4abfd94c0193dbc6d726252a0d280b594581660797763a642f7",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "A bridge:documentTableQuery: a row for each key an Organization of a record can be referenced by, within the scope it holds there; a row for each custodian and author reference of the document's Composition, the first entry of a Bundle or one standing alone, the key it names, that key's scope and the role, and for each performer reference of a Diagnostic Implication, with no role, a version stripped; and a row for each Organization with an identifier it can be named by, that identifier, picked as cascade-vocabulary's decisions/naming.md says, and its place in the document. organization.rq and resource-type-findings.rq resolve a reference by joining them, to the one Organization holding its key in its scope."
+      "description": "A bridge:documentTableQuery: a row for each key an Organization of a record can be referenced by, within the scope it holds there; a row for each custodian and author reference of the document's Composition, the first entry of a Bundle or one standing alone, the key it names, that key's scope and the role, and for each performer reference of a Diagnostic Implication, with no role, a version stripped; and a row for each Organization with an identifier it can be named by, that identifier, picked as cascade-vocabulary's decisions/naming.md says, and its place in the document. And a row for each name, identifier and address an Organization's version would carry, which organization-findings.rq compares. organization.rq and resource-type-findings.rq resolve a reference by joining them, to the one Organization holding its key in its scope."
     },
     {
       "@id": "in/sparql/record.rq",
@@ -1662,12 +1668,24 @@
       "@type": "File",
       "name": "FHIR R4 JSON source accounting",
       "encodingFormat": "text/turtle",
-      "contentSize": "233269",
-      "sha256": "58e6a97c585b2efb98516bcfc3b3959b027cdb3b8cf2323fb2b65ebde86dacf2",
+      "contentSize": "230801",
+      "sha256": "f071b19a7adfc2be042220bedf0039e05eb205da50cc062f71776514bfa09478",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "The file the crate names as bridge:sourceAccounting: one bridge:PathEntry for each path a mapping in in/sparql/ reads and each path the judged inputs carry, written as JSON Pointer reference tokens from the record, at every place a resource stands in one: the record under the resource envelope, /resource under the Bundle envelope, and /contained under either; each with its verdict against in/sparql/."
+    },
+    {
+      "@id": "in/sparql/organization-findings.rq",
+      "@type": "File",
+      "name": "Findings: an Organization whose record another Organization gives the version of",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "4326",
+      "sha256": "cd02b1007de0e30393f069dccec1406612e5f391c2ef4bdc88b9de36a1e90b12",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "Reports fhirr4:duplicateOrganizationNotCarried for an Organization organization.rq makes a record whose version another Organization of the document gives, as organization.rq picks it, when it holds a name, an identifier or an address that version lacks, as organization-table.rq lists them. Its value is the identifier the record is named by, typed by its system."
     },
     {
       "@id": "in/sparql/reference-without-server-findings.rq",
@@ -1698,8 +1716,8 @@
       "@type": "File",
       "name": "FHIR R4 JSON gaps",
       "encodingFormat": "text/turtle",
-      "contentSize": "14149",
-      "sha256": "497ad5ae59aea00e99efb0cb8243165042e26ee050dbcafd5637e76da3edace8",
+      "contentSize": "15026",
+      "sha256": "ed939b72a3f55f121894a2b222261b34f08865524f05cb82ca60d6efeba5537f",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2296,15 +2314,15 @@
     {
       "@id": "fixtures/in/bundle-document-organizations-one-npi.json",
       "@type": "File",
-      "name": "Document Bundle naming one NPI's organization three times",
+      "name": "Document Bundle naming one NPI's organization four times",
       "encodingFormat": "application/fhir+json",
-      "contentSize": "3096",
-      "sha256": "9daf41c8f00daf0f3383b9bda310d20ba9d7c1e42a9e4a7e7b84daf3629e9235",
+      "contentSize": "3532",
+      "sha256": "78dedfa1853294b96aff3654900f56eaf8acd03d310458179c5a2cf52a13e9b6",
       "dateCreated": "2026-10-24",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "A document Bundle whose Composition names as its custodian an Organization holding an NPI under the NPI's OID system, and as its authors two Organizations holding that NPI under its URI and an Organization listing an OID-typed identifier before a urn:ietf:rfc:3986 one; each entry with a urn:uuid fullUrl. Authored here on 2026-10-24, for a case the conformance corpus does not hold."
+      "description": "A document Bundle whose Composition names as its custodian an Organization holding an NPI under the NPI's OID system, and as its authors two Organizations holding that NPI under its URI with other names, an Organization listing an OID-typed identifier before a urn:ietf:rfc:3986 one, and an Organization holding that NPI and the custodian's name and nothing else; each entry with a urn:uuid fullUrl. Authored here on 2026-10-24, for a case the conformance corpus does not hold."
     },
     {
       "@id": "fixtures/in/composition-contained-custodian.json",
@@ -3291,8 +3309,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-document-organizations-one-npi",
       "encodingFormat": "text/turtle",
-      "contentSize": "6118",
-      "sha256": "da4c15f74e426f7d94c09a4af8b4d1241ef020f1382f6d3ea0faa9f631088894",
+      "contentSize": "6151",
+      "sha256": "ca519897b12a3db30bcd82ad5d123b5740cecbfc6388381f0102ad0628d252be",
       "about": {
         "@id": "fixtures/in/bundle-document-organizations-one-npi.json"
       },
@@ -3339,8 +3357,8 @@
       "@type": "File",
       "name": "Expected findings for bundle-document-organizations-one-npi",
       "encodingFormat": "text/turtle",
-      "contentSize": "1921",
-      "sha256": "21e521e957e263d5cef024fa9013a512a6a4db063b8382d33907895a5a676ae2",
+      "contentSize": "3685",
+      "sha256": "906d87fdc2fd0f83a868313c88d02e22bd9862bcb7b5f38b35ac3444e1351349",
       "about": {
         "@id": "fixtures/in/bundle-document-organizations-one-npi.json"
       },
@@ -5768,8 +5786,8 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "contentSize": "66726",
-      "sha256": "725e05394d1704d1754a7c2105e083745c0ad2ed2070afe01258df3ac81beef6"
+      "contentSize": "66863",
+      "sha256": "3563c6efdb2026d98778f031722a56cdcfd0e77cf727c1428c355ab6f9653d7c"
     },
     {
       "@id": "fixtures/facts/meridian.ttl",
@@ -6079,8 +6097,8 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "What a record is, the two envelopes, how a record is named, JSON as FHIR writes it, the schema, the versions in and out of scope, and what is known about the committed inputs. Read from hl7.org/fhir/R4/ on 2026-09-27.",
-      "contentSize": "19572",
-      "sha256": "b141d7a8216cad08ad8ce48161413009e6d4ad5ecbca9d0da136510f0db3c1e5"
+      "contentSize": "19677",
+      "sha256": "c4bb70b1272c11204d168abca153ecaee36a745baa18b7d790e57a100091a306"
     },
     {
       "@id": "fixtures/CLAUDE.md",

@@ -523,7 +523,7 @@
 
 <#bundle-document-organizations-one-npi> a bridge:IsomorphicConversionTest ;
   mf:name "bundle-document-organizations-one-npi" ;
-  rdfs:comment "A custodian naming its NPI by the NPI's OID and two authors naming it by its URI: one organization record, one version read from the custodian, and one attribution in each role; and an author listing an OID-typed identifier before a urn:ietf:rfc:3986 one, named by the latter." ;
+  rdfs:comment "A custodian naming its NPI by the NPI's OID and two authors naming it by its URI: one organization record, one version read from the custodian, a finding for each of the two authors whose Organization holds a name that version lacks, and none for a third holding nothing it lacks, and one attribution in each role; and an author listing an OID-typed identifier before a urn:ietf:rfc:3986 one, named by the latter." ;
   mf:action [
     bridge:input <in/bundle-document-organizations-one-npi.json> ;
     bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;

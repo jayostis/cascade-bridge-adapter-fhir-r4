@@ -30,6 +30,12 @@ PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # 1 for any other, its system, a space, which no system it keeps holds, and its
 # value. A place is the entry's position, then the contained resource's, 0 for
 # none, each padded to ten digits.
+#
+# What each Organization's version would carry is a row an item at a time,
+# "name", "identifier" or "address", a space, and what organization.rq writes:
+# an identifier as its type, a space and its value, so organization-findings.rq
+# can tell whether an Organization whose record another gives the version of
+# holds anything that version lacks.
 
 CONSTRUCT {
   ?keyRow fhirr4:organizationAt ?pointer ;
@@ -43,6 +49,8 @@ CONSTRUCT {
     fhirr4:organizationIdentifierSystem ?identifierSystem ;
     fhirr4:organizationIdentifierValue ?identifierValue ;
     fhirr4:organizationPlace ?place .
+  ?contentRow fhirr4:organizationAt ?pointer ;
+    fhirr4:organizationContent ?item .
 }
 WHERE {
   bridge:thisRecord bridge:selector ?recordSelector .
@@ -121,6 +129,45 @@ WHERE {
     BIND (STRBEFORE(SUBSTR(?chosen, 2), " ") AS ?identifierSystem)
     BIND (STRAFTER(SUBSTR(?chosen, 2), " ") AS ?identifierValue)
   }
+  UNION
+  {
+    ?resource xyz:resourceType "Organization" ;
+      xyz:name ?name .
+    FILTER (isLiteral(?name) && STRLEN(?name) > 0)
+    BIND (CONCAT("name ", ?name) AS ?item)
+  }
+  UNION
+  {
+    ?resource xyz:resourceType "Organization" ;
+      xyz:identifier ?identifierList .
+    ?identifierList ?identifierAt ?identifierNode .
+    ?identifierNode xyz:value ?heldValue .
+    FILTER (STRLEN(?heldValue) > 0)
+    OPTIONAL { ?identifierNode xyz:system ?heldSystem }
+    BIND (IF(?heldSystem = "urn:oid:2.16.840.1.113883.4.6", "http://hl7.org/fhir/sid/us-npi", ?heldSystem) AS ?heldType)
+    BIND (CONCAT("identifier ", COALESCE(?heldType, ""), " ", ?heldValue) AS ?item)
+  }
+  UNION
+  {
+    ?resource xyz:resourceType "Organization" ;
+      xyz:address ?addresses .
+    ?addresses ?addressAt ?postal .
+    OPTIONAL { ?postal xyz:text ?text }
+    OPTIONAL { ?postal xyz:line ?lines . ?lines rdf:_1 ?line1 }
+    OPTIONAL { ?postal xyz:line ?lines . ?lines rdf:_2 ?line2 }
+    OPTIONAL { ?postal xyz:line ?lines . ?lines rdf:_3 ?line3 }
+    OPTIONAL { ?postal xyz:line ?lines . ?lines rdf:_4 ?line4 }
+    OPTIONAL { ?postal xyz:city ?city }
+    OPTIONAL { ?postal xyz:state ?state }
+    OPTIONAL { ?postal xyz:postalCode ?postalCode }
+    OPTIONAL { ?postal xyz:country ?country }
+    BIND (CONCAT(COALESCE(CONCAT("\n", ?line1), ""), COALESCE(CONCAT("\n", ?line2), ""), COALESCE(CONCAT("\n", ?line3), ""),
+                 COALESCE(CONCAT("\n", ?line4), ""), COALESCE(CONCAT("\n", ?city), ""), COALESCE(CONCAT("\n", ?state), ""),
+                 COALESCE(CONCAT("\n", ?postalCode), ""), COALESCE(CONCAT("\n", ?country), "")) AS ?joined)
+    BIND (IF(BOUND(?text) && STRLEN(?text) > 0, ?text, SUBSTR(?joined, 2)) AS ?address)
+    FILTER (STRLEN(?address) > 0)
+    BIND (CONCAT("address ", ?address) AS ?item)
+  }
   FILTER (!BOUND(?fullUrl) || !BOUND(?contained))
   FILTER (!BOUND(?role) || (!BOUND(?contained) && (?topStep = "" || ?recordSelector = "/entry/0")))
   BIND (CONCAT(?recordSelector, ?topStep) AS ?container)
@@ -135,4 +182,5 @@ WHERE {
   BIND (IF(BOUND(?key), BNODE(), 1/0) AS ?keyRow)
   BIND (IF(BOUND(?target), BNODE(), 1/0) AS ?referenceRow)
   BIND (IF(BOUND(?place), BNODE(), 1/0) AS ?namedRow)
+  BIND (IF(BOUND(?item), BNODE(), 1/0) AS ?contentRow)
 }

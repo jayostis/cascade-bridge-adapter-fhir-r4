@@ -1,0 +1,106 @@
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX sh:      <http://www.w3.org/ns/shacl#>
+PREFIX oa:      <http://www.w3.org/ns/oa#>
+PREFIX fx:      <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:     <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:  <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX cascade: <https://ns.cascadeprotocol.org/cascade#>
+PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+
+# An Organization the document names, which organization.rq makes a record,
+# whose record's version another Organization of the document gives, and which
+# holds a name, an identifier or an address that version does not carry, as
+# organization-table.rq lists them. The Organization giving the version is
+# picked as organization.rq picks it; the value is the identifier the record is
+# named by, typed by its system.
+
+CONSTRUCT {
+  [] a oa:Annotation ;
+    oa:hasTarget [
+      oa:hasSource bridge:thisRecord ;
+      oa:hasSelector [
+        a oa:FragmentSelector ;
+        dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+        rdf:value ?at
+      ]
+    ] ;
+    oa:hasBody fhirr4:duplicateOrganizationNotCarried ;
+    oa:motivatedBy oa:classifying ;
+    sh:value ?identifier .
+}
+WHERE {
+  FILTER NOT EXISTS {
+    bridge:thisDocument cascade:sourceFormatVersion ?stated .
+    FILTER (!STRSTARTS(?stated, "4.0."))
+  }
+  bridge:thisRecord bridge:selector ?recordSelector .
+  ?root a fx:root .
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  { BIND ("" AS ?containedStep) }
+  UNION
+  {
+    ?top xyz:contained ?containedList .
+    ?containedList ?containedSlot ?contained .
+    ?contained xyz:resourceType ?containedType .
+    BIND (CONCAT("/contained/", STR(xsd:integer(STRAFTER(STR(?containedSlot), "#_")) - 1)) AS ?containedStep)
+  }
+  BIND (COALESCE(?contained, ?top) AS ?resource)
+  ?resource xyz:resourceType "Organization" .
+  BIND (CONCAT(?recordSelector, ?topStep, ?containedStep) AS ?pointer)
+  ?named fhirr4:organizationAt ?pointer ;
+    fhirr4:organizationIdentifierSystem ?input1 ;
+    fhirr4:organizationIdentifierValue ?input2 .
+  FILTER EXISTS {
+    ?pointerReference fhirr4:organizationReferenceFrom ?pointerFrom ;
+      fhirr4:organizationReferenceTo ?pointerKey ;
+      fhirr4:organizationScope ?pointerScope .
+    ?pointerHeld fhirr4:organizationAt ?pointer ;
+      fhirr4:organizationKey ?pointerKey ;
+      fhirr4:organizationScope ?pointerScope .
+    FILTER NOT EXISTS {
+      ?pointerRival fhirr4:organizationAt ?pointerRivalAt ;
+        fhirr4:organizationKey ?pointerKey ;
+        fhirr4:organizationScope ?pointerScope .
+      FILTER (?pointerRivalAt != ?pointer)
+    }
+  }
+  {
+    SELECT ?input1 ?input2 (MIN(?ranked) AS ?firstNamed) WHERE {
+      ?reference fhirr4:organizationReferenceFrom ?from ;
+        fhirr4:organizationReferenceTo ?key ;
+        fhirr4:organizationScope ?scope .
+      OPTIONAL { ?reference fhirr4:organizationRole ?referenceRole }
+      ?held fhirr4:organizationAt ?heldPointer ;
+        fhirr4:organizationKey ?key ;
+        fhirr4:organizationScope ?scope .
+      FILTER NOT EXISTS {
+        ?rival fhirr4:organizationAt ?rivalPointer ;
+          fhirr4:organizationKey ?key ;
+          fhirr4:organizationScope ?scope .
+        FILTER (?rivalPointer != ?heldPointer)
+      }
+      ?heldNamed fhirr4:organizationAt ?heldPointer ;
+        fhirr4:organizationIdentifierSystem ?input1 ;
+        fhirr4:organizationIdentifierValue ?input2 ;
+        fhirr4:organizationPlace ?heldPlace .
+      BIND (CONCAT(IF(COALESCE(?referenceRole = cascade:CustodianRole, false), "0", "1"), ?heldPlace, " ", ?heldPointer)
+            AS ?ranked)
+    } GROUP BY ?input1 ?input2
+  }
+  BIND (STRAFTER(?firstNamed, " ") AS ?kept)
+  FILTER (?kept != ?pointer)
+  FILTER EXISTS {
+    ?heldItem fhirr4:organizationAt ?pointer ;
+      fhirr4:organizationContent ?item .
+    FILTER NOT EXISTS {
+      ?carried fhirr4:organizationAt ?kept ;
+        fhirr4:organizationContent ?item .
+    }
+  }
+  BIND (CONCAT(?topStep, ?containedStep) AS ?at)
+  BIND (STRDT(?input2, IRI(?input1)) AS ?identifier)
+}

@@ -39,10 +39,12 @@ listed in, so the C-CDA adapter names one NPI's organization alike. One with
 none is no record, and a document with no custodian names no organization in
 its place. Two `Organization`s of one document naming one record give it one
 version, from the one the custodian names, else the first in the document, and
-the document names the record once in each role. Its version carries its
-`name`, each identifier, typed by its system where it has one, the NPI's OID as
-its URI, and each address, its `text` or else its first four `line`s, city,
-state, postal code and country, one to a line. The document names it in
+the document names the record once in each role; each other is a finding,
+`fhirr4:duplicateOrganizationNotCarried`, since its content reaches no
+version. Its version carries its `name`, each identifier, typed by its system
+where it has one, the NPI's OID as its URI, and each address, its `text` or
+else its first four `line`s, city, state, postal code and country, one to a
+line. The document names it in
 `cascade:CustodianRole` or `cascade:AuthorRole`. The `Composition` and the
 `DocumentReference` are no records. An `Organization` a diagnostic
 implication's `performer` references, resolved and named alike, is a record

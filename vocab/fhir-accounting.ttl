@@ -8,48 +8,48 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/address" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/address/city" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/address/country" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/address/line" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/address/postalCode" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/address/state" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/address/text" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/address/type" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+  bridge:because "An address's type and use, which say only what kind of address it is and what it is for." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/address/use" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+  bridge:because "An address's type and use, which say only what kind of address it is and what it is for." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/alias" ;
@@ -313,48 +313,48 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/address" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/address/city" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/address/country" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/address/line" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/address/postalCode" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/address/state" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/address/text" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/address/type" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+  bridge:because "An address's type and use, which say only what kind of address it is and what it is for." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/address/use" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+  bridge:because "An address's type and use, which say only what kind of address it is and what it is for." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/alias" ;
@@ -1085,7 +1085,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/name" ;
-  bridge:verdict bridge:consumed .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:duplicateOrganizationNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/name/family" ;
@@ -2080,7 +2081,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/name" ;
-  bridge:verdict bridge:consumed .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:duplicateOrganizationNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/name/family" ;
@@ -2327,48 +2329,48 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/address" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/address/city" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/address/country" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/address/line" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/address/postalCode" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/address/state" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/address/text" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/address/type" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+  bridge:because "An address's type and use, which say only what kind of address it is and what it is for." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/address/use" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+  bridge:because "An address's type and use, which say only what kind of address it is and what it is for." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/alias" ;
@@ -2632,48 +2634,48 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/address" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/address/city" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/address/country" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/address/line" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/address/postalCode" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/address/state" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/address/text" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/address/type" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+  bridge:because "An address's type and use, which say only what kind of address it is and what it is for." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/address/use" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "No Cascade predicate carries an address. It stands on resources of types this release does not map, and a patient's is not carried." .
+  bridge:because "An address's type and use, which say only what kind of address it is and what it is for." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/alias" ;
@@ -3404,7 +3406,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/name" ;
-  bridge:verdict bridge:consumed .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:duplicateOrganizationNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/name/family" ;
@@ -4395,7 +4398,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/name" ;
-  bridge:verdict bridge:consumed .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:duplicateOrganizationNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/name/family" ;
