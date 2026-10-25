@@ -5437,3 +5437,587 @@
   bridge:sourcePath "/contained/identifier/system" ;
   bridge:verdict bridge:ignored ;
   bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it; an Organization a document names is named by its NPI or OID identifier, and carries each." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dataAbsentReason" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dataAbsentReason/coding" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dataAbsentReason/coding/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dataAbsentReason/coding/code" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dataAbsentReason/coding/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A reason a value is absent is carried as its code's IRI, which its CodeSystem names; the display is that system's text for it." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/dataAbsentReason/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A reason a value is absent is carried as its code's IRI; no Cascade predicate carries a reason's own words." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_birthDate" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_birthDate/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_birthDate/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_birthDate/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_onsetDateTime" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_onsetDateTime/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_onsetDateTime/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_onsetDateTime/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_abatementDateTime" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_abatementDateTime/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_abatementDateTime/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_abatementDateTime/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_occurrenceDateTime" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_occurrenceDateTime/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_occurrenceDateTime/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_occurrenceDateTime/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_performedDateTime" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_performedDateTime/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_performedDateTime/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_performedDateTime/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_effectiveDateTime" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_effectiveDateTime/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_effectiveDateTime/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_effectiveDateTime/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_authoredOn" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_authoredOn/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_authoredOn/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_authoredOn/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dataAbsentReason" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dataAbsentReason/coding" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dataAbsentReason/coding/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dataAbsentReason/coding/code" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dataAbsentReason/coding/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A reason a value is absent is carried as its code's IRI, which its CodeSystem names; the display is that system's text for it." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/dataAbsentReason/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A reason a value is absent is carried as its code's IRI; no Cascade predicate carries a reason's own words." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_birthDate" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_birthDate/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_birthDate/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_birthDate/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_onsetDateTime" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_onsetDateTime/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_onsetDateTime/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_onsetDateTime/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_abatementDateTime" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_abatementDateTime/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_abatementDateTime/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_abatementDateTime/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_occurrenceDateTime" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_occurrenceDateTime/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_occurrenceDateTime/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_occurrenceDateTime/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_performedDateTime" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_performedDateTime/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_performedDateTime/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_performedDateTime/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_effectiveDateTime" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_effectiveDateTime/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_effectiveDateTime/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_effectiveDateTime/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_authoredOn" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_authoredOn/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_authoredOn/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_authoredOn/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dataAbsentReason" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dataAbsentReason/coding" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dataAbsentReason/coding/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dataAbsentReason/coding/code" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dataAbsentReason/coding/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A reason a value is absent is carried as its code's IRI, which its CodeSystem names; the display is that system's text for it." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/dataAbsentReason/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A reason a value is absent is carried as its code's IRI; no Cascade predicate carries a reason's own words." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_birthDate" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_birthDate/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_birthDate/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_birthDate/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_onsetDateTime" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_onsetDateTime/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_onsetDateTime/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_onsetDateTime/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_abatementDateTime" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_abatementDateTime/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_abatementDateTime/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_abatementDateTime/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_occurrenceDateTime" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_occurrenceDateTime/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_occurrenceDateTime/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_occurrenceDateTime/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_performedDateTime" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_performedDateTime/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_performedDateTime/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_performedDateTime/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_effectiveDateTime" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_effectiveDateTime/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_effectiveDateTime/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_effectiveDateTime/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_authoredOn" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_authoredOn/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_authoredOn/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_authoredOn/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dataAbsentReason" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dataAbsentReason/coding" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dataAbsentReason/coding/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dataAbsentReason/coding/code" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dataAbsentReason/coding/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A reason a value is absent is carried as its code's IRI, which its CodeSystem names; the display is that system's text for it." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/dataAbsentReason/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A reason a value is absent is carried as its code's IRI; no Cascade predicate carries a reason's own words." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_birthDate" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_birthDate/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_birthDate/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_birthDate/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_onsetDateTime" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_onsetDateTime/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_onsetDateTime/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_onsetDateTime/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_abatementDateTime" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_abatementDateTime/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_abatementDateTime/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_abatementDateTime/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_occurrenceDateTime" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_occurrenceDateTime/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_occurrenceDateTime/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_occurrenceDateTime/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_performedDateTime" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_performedDateTime/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_performedDateTime/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_performedDateTime/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_effectiveDateTime" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_effectiveDateTime/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_effectiveDateTime/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_effectiveDateTime/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_authoredOn" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_authoredOn/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_authoredOn/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_authoredOn/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .

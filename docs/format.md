@@ -207,6 +207,31 @@ its `id`.
   FHIR `decimal`, so the number's text is the value.
 - The media type is `application/fhir+json`.
 
+## Dates, and values absent for a reason
+
+As cascade-vocabulary's
+[ruling on partial dates and absent reasons](https://github.com/jayostis/cascade-vocabulary/blob/main/decisions/partial-dates-and-absent-reasons.md)
+says, read on 2026-10-24:
+
+- **A date is typed by the precision FHIR wrote it to.** A `date` or `dateTime`
+  is "YYYY, YYYY-MM, or YYYY-MM-DD", or a time ([datatypes](https://hl7.org/fhir/R4/datatypes.html)):
+  `2019` is an `xsd:gYear`, `2019-03` an `xsd:gYearMonth`, a day an `xsd:date`
+  and a time an `xsd:dateTime`, as FHIR's own RDF types them. Nothing is padded.
+- **A lab result's `dataAbsentReason`** stands for its value, which obs-6 says
+  it has none of ([Observation](https://hl7.org/fhir/R4/observation-definitions.html)),
+  and is a `cascade:ValueAbsentForReason` node of the version naming
+  `cascade:resultValueKind`. Each coding in FHIR's
+  [data absent reasons](https://terminology.hl7.org/CodeSystem-data-absent-reason.html)
+  or [v3 NullFlavor](https://terminology.hl7.org/CodeSystem-v3-NullFlavor.html)
+  is carried as its code's IRI, a code the CodeSystem defines only; any other
+  coding is not carried, and is a finding.
+- **The [data-absent-reason extension](https://hl7.org/fhir/R4/extension-data-absent-reason.html)**
+  on the `_` member of a date the adapter maps (`_birthDate`, `_onsetDateTime`,
+  `_abatementDateTime`, `_occurrenceDateTime`, `_performedDateTime`,
+  `_effectiveDateTime`, `_authoredOn`), where the date itself is absent, is such
+  a node naming the date's property; a code its CodeSystem does not define is a
+  finding.
+
 ## Codes
 
 A `Coding.system` is not the namespace of its codes' IRIs: FHIR R5 says "there

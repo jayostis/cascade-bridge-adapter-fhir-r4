@@ -1,0 +1,89 @@
+PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
+PREFIX fx:       <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:      <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX cascade:  <https://ns.cascadeprotocol.org/cascade#>
+PREFIX skos:     <http://www.w3.org/2004/02/skos/core#>
+PREFIX void:     <http://rdfs.org/ns/void#>
+PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+
+# A value FHIR says is absent, and why, as a cascade:ValueAbsentForReason node
+# of the version, <version>#absent- and the local name of the property the
+# value would have filled. A lab result's dataAbsentReason stands for its
+# value, of whatever kind, so it names cascade:resultValueKind; obs-6 lets it
+# stand only where the result has no value. The data-absent-reason extension
+# on a mapped date's _element stands for that date, where the date itself is
+# absent. Each reason is the code's IRI in FHIR's data absent reasons or in v3
+# NullFlavor, as the source gave it, never mapped from one into the other, and
+# only a code its CodeSystem defines: a coding of another system, or a code its
+# system does not define, is not carried, and absent-reason-findings.rq
+# reports it.
+
+CONSTRUCT {
+  ?version cascade:valueAbsentForReason ?node .
+  ?node cascade:absentValueProperty ?property ;
+    cascade:absentReasonCode ?reason .
+}
+WHERE {
+  FILTER NOT EXISTS {
+    bridge:thisDocument cascade:sourceFormatVersion ?stated .
+    FILTER (!STRSTARTS(?stated, "4.0."))
+  }
+  bridge:thisRecord bridge:selector ?recordSelector .
+  ?root a fx:root .
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  { BIND ("" AS ?containedStep) }
+  UNION
+  {
+    ?top xyz:contained ?containedList .
+    ?containedList ?containedSlot ?contained .
+    ?contained xyz:resourceType ?containedType .
+    BIND (CONCAT("/contained/", STR(xsd:integer(STRAFTER(STR(?containedSlot), "#_")) - 1)) AS ?containedStep)
+  }
+  BIND (COALESCE(?contained, ?top) AS ?resource)
+  ?resource xyz:resourceType ?type .
+  BIND (CONCAT(?recordSelector, ?topStep, ?containedStep) AS ?resourcePointer)
+  BIND (IRI(CONCAT("urn:cascade:version-at:", SHA256(?resourcePointer))) AS ?version)
+  {
+    ?lab fhirr4:labResultAt ?resourcePointer .
+    ?resource xyz:dataAbsentReason ?concept . ?concept xyz:coding ?codings . ?codings ?codingSlot ?coding .
+    ?coding xyz:system ?system ; xyz:code ?code .
+    FILTER NOT EXISTS {
+      ?resource ?valueKey ?value .
+      FILTER (?valueKey IN (xyz:valueQuantity, xyz:valueRatio, xyz:valueRange, xyz:valueCodeableConcept, xyz:valueString,
+                            xyz:valueInteger, xyz:valueBoolean, xyz:valueTime, xyz:valueDateTime, xyz:valuePeriod,
+                            xyz:valueSampledData))
+    }
+    BIND (cascade:resultValueKind AS ?property)
+  }
+  UNION
+  {
+    VALUES (?type ?absentKey ?property ?valueKey ?otherKey) {
+      ("Patient"             xyz:_birthDate          cascade:dateOfBirth                  xyz:birthDate          UNDEF)
+      ("AllergyIntolerance"  xyz:_onsetDateTime      cascade:onsetDate                    xyz:onsetDateTime      UNDEF)
+      ("Condition"           xyz:_onsetDateTime      cascade:onsetDate                    xyz:onsetDateTime      UNDEF)
+      ("Condition"           xyz:_abatementDateTime  cascade:abatementDate                xyz:abatementDateTime  UNDEF)
+      ("Immunization"        xyz:_occurrenceDateTime cascade:vaccinationOccurrenceTime    xyz:occurrenceDateTime UNDEF)
+      ("Procedure"           xyz:_performedDateTime  cascade:procedureDate                xyz:performedDateTime  UNDEF)
+      ("Observation"         xyz:_effectiveDateTime  cascade:resultClinicallyRelevantTime xyz:effectiveDateTime  xyz:effectivePeriod)
+      ("MedicationStatement" xyz:_effectiveDateTime  cascade:medicationUseStartDate       xyz:effectiveDateTime  xyz:effectivePeriod)
+      ("MedicationRequest"   xyz:_authoredOn         cascade:prescriptionWrittenDate      xyz:authoredOn         UNDEF)
+    }
+    ?resource ?absentKey ?element .
+    ?element xyz:extension ?extensions . ?extensions ?extensionSlot ?extension .
+    ?extension xyz:url "http://hl7.org/fhir/StructureDefinition/data-absent-reason" ; xyz:valueCode ?code .
+    FILTER (?type != "Observation" || EXISTS { ?lab fhirr4:labResultAt ?resourcePointer })
+    FILTER NOT EXISTS { ?resource ?valueKey ?value }
+    FILTER (!BOUND(?otherKey) || NOT EXISTS { ?resource ?otherKey ?other })
+    BIND ("http://terminology.hl7.org/CodeSystem/data-absent-reason" AS ?system)
+  }
+  ?codeSystem skos:inScheme fhirr4:codeSystems ;
+    cascade:codingSystemUri ?systemUri ;
+    void:uriSpace ?stem .
+  FILTER (STR(?systemUri) = ?system)
+  BIND (IRI(CONCAT(?stem, ENCODE_FOR_URI(?code))) AS ?reason)
+  ?reason skos:inScheme fhirr4:absentReasonCodes .
+  BIND (IRI(CONCAT(STR(?version), "#absent-", STRAFTER(STR(?property), "#"))) AS ?node)
+}

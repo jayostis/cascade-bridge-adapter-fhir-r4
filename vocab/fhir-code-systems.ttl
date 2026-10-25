@@ -49,3 +49,54 @@ fhirr4:codeSystemCvx a skos:Concept ;
   cascade:codingSystemUri "http://hl7.org/fhir/sid/cvx"^^xsd:anyURI ;
   void:uriSpace "https://ns.cascadeprotocol.org/codes/cvx/" ;
   dct:source <https://github.com/jayostis/cascade-vocabulary/blob/main/decisions/code-iris.md> .
+
+fhirr4:codeSystemDataAbsentReason a skos:Concept ;
+  skos:inScheme fhirr4:codeSystems ;
+  skos:prefLabel "FHIR data absent reason"@en ;
+  cascade:codingSystemUri "http://terminology.hl7.org/CodeSystem/data-absent-reason"^^xsd:anyURI ;
+  void:uriSpace "https://ns.cascadeprotocol.org/codes/data-absent-reason/" ;
+  dct:source <https://terminology.hl7.org/CodeSystem-data-absent-reason.html> , <https://github.com/jayostis/cascade-vocabulary/blob/main/decisions/partial-dates-and-absent-reasons.md> .
+
+fhirr4:codeSystemNullFlavor a skos:Concept ;
+  skos:inScheme fhirr4:codeSystems ;
+  skos:prefLabel "HL7 v3 NullFlavor"@en ;
+  cascade:codingSystemUri "http://terminology.hl7.org/CodeSystem/v3-NullFlavor"^^xsd:anyURI ;
+  void:uriSpace "https://ns.cascadeprotocol.org/codes/nullflavor/" ;
+  dct:source <https://terminology.hl7.org/CodeSystem-v3-NullFlavor.html> , <https://github.com/jayostis/cascade-vocabulary/blob/main/decisions/partial-dates-and-absent-reasons.md> .
+
+fhirr4:absentReasonCodes a skos:ConceptScheme ;
+  skos:prefLabel "The codes a reason a value is absent may be: those HL7 Terminology's data-absent-reason and v3-NullFlavor CodeSystems define, which the vocabulary's shapes list"@en ;
+  dct:source <https://terminology.hl7.org/CodeSystem-data-absent-reason.json> , <https://terminology.hl7.org/CodeSystem-v3-NullFlavor.json> .
+
+<https://ns.cascadeprotocol.org/codes/data-absent-reason/unknown> skos:inScheme fhirr4:absentReasonCodes .
+<https://ns.cascadeprotocol.org/codes/data-absent-reason/asked-unknown> skos:inScheme fhirr4:absentReasonCodes .
+<https://ns.cascadeprotocol.org/codes/data-absent-reason/temp-unknown> skos:inScheme fhirr4:absentReasonCodes .
+<https://ns.cascadeprotocol.org/codes/data-absent-reason/not-asked> skos:inScheme fhirr4:absentReasonCodes .
+<https://ns.cascadeprotocol.org/codes/data-absent-reason/asked-declined> skos:inScheme fhirr4:absentReasonCodes .
+<https://ns.cascadeprotocol.org/codes/data-absent-reason/masked> skos:inScheme fhirr4:absentReasonCodes .
+<https://ns.cascadeprotocol.org/codes/data-absent-reason/not-applicable> skos:inScheme fhirr4:absentReasonCodes .
+<https://ns.cascadeprotocol.org/codes/data-absent-reason/unsupported> skos:inScheme fhirr4:absentReasonCodes .
+<https://ns.cascadeprotocol.org/codes/data-absent-reason/as-text> skos:inScheme fhirr4:absentReasonCodes .
+<https://ns.cascadeprotocol.org/codes/data-absent-reason/error> skos:inScheme fhirr4:absentReasonCodes .
+<https://ns.cascadeprotocol.org/codes/data-absent-reason/not-a-number> skos:inScheme fhirr4:absentReasonCodes .
+<https://ns.cascadeprotocol.org/codes/data-absent-reason/negative-infinity> skos:inScheme fhirr4:absentReasonCodes .
+<https://ns.cascadeprotocol.org/codes/data-absent-reason/positive-infinity> skos:inScheme fhirr4:absentReasonCodes .
+<https://ns.cascadeprotocol.org/codes/data-absent-reason/not-performed> skos:inScheme fhirr4:absentReasonCodes .
+<https://ns.cascadeprotocol.org/codes/data-absent-reason/not-permitted> skos:inScheme fhirr4:absentReasonCodes .
+<https://ns.cascadeprotocol.org/codes/nullflavor/NI> skos:inScheme fhirr4:absentReasonCodes .
+<https://ns.cascadeprotocol.org/codes/nullflavor/NP> skos:inScheme fhirr4:absentReasonCodes .
+<https://ns.cascadeprotocol.org/codes/nullflavor/NAV> skos:inScheme fhirr4:absentReasonCodes .
+<https://ns.cascadeprotocol.org/codes/nullflavor/DER> skos:inScheme fhirr4:absentReasonCodes .
+<https://ns.cascadeprotocol.org/codes/nullflavor/OTH> skos:inScheme fhirr4:absentReasonCodes .
+<https://ns.cascadeprotocol.org/codes/nullflavor/UNC> skos:inScheme fhirr4:absentReasonCodes .
+<https://ns.cascadeprotocol.org/codes/nullflavor/INV> skos:inScheme fhirr4:absentReasonCodes .
+<https://ns.cascadeprotocol.org/codes/nullflavor/MSK> skos:inScheme fhirr4:absentReasonCodes .
+<https://ns.cascadeprotocol.org/codes/nullflavor/NA> skos:inScheme fhirr4:absentReasonCodes .
+<https://ns.cascadeprotocol.org/codes/nullflavor/UNK> skos:inScheme fhirr4:absentReasonCodes .
+<https://ns.cascadeprotocol.org/codes/nullflavor/NINF> skos:inScheme fhirr4:absentReasonCodes .
+<https://ns.cascadeprotocol.org/codes/nullflavor/PINF> skos:inScheme fhirr4:absentReasonCodes .
+<https://ns.cascadeprotocol.org/codes/nullflavor/ASKU> skos:inScheme fhirr4:absentReasonCodes .
+<https://ns.cascadeprotocol.org/codes/nullflavor/NASK> skos:inScheme fhirr4:absentReasonCodes .
+<https://ns.cascadeprotocol.org/codes/nullflavor/NAVU> skos:inScheme fhirr4:absentReasonCodes .
+<https://ns.cascadeprotocol.org/codes/nullflavor/QS> skos:inScheme fhirr4:absentReasonCodes .
+<https://ns.cascadeprotocol.org/codes/nullflavor/TRC> skos:inScheme fhirr4:absentReasonCodes .
