@@ -54,6 +54,7 @@
     <#lab-urine-leukocytes-range>
     <#lab-hepatitis-b-surface-antigen-coded>
     <#lab-leukocytes-exponent-and-ranges>
+    <#lab-potassium-identifiers>
     <#vital-heartrate-with-id>
     <#vital-no-category-heart-rate>
     <#medication-with-id>
@@ -1068,6 +1069,19 @@
   mf:result [
     bridge:expectedGraph <expected/lab-leukocytes-exponent-and-ranges.ttl> ;
     bridge:expectedFindings <findings/lab-leukocytes-exponent-and-ranges.ttl>
+  ] .
+
+<#lab-potassium-identifiers> a bridge:IsomorphicConversionTest ;
+  mf:name "lab-potassium-identifiers" ;
+  rdfs:comment "A lab result's identifiers: each with a value is a business identifier of its version, typed by its system where it states one and a plain string where it states none; the one with no value is not written." ;
+  mf:action [
+    bridge:input <in/lab-potassium-identifiers.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/lab-potassium-identifiers.ttl> ;
+    bridge:expectedFindings <findings/lab-potassium-identifiers.ttl>
   ] .
 
 <#vital-heartrate-with-id> a bridge:IsomorphicConversionTest ;

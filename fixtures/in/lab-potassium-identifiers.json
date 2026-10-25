@@ -1,0 +1,52 @@
+{
+  "resourceType": "Observation",
+  "id": "obs-potassium-identifiers-1",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "urn:oid:2.16.840.1.113883.19.5.99999.2",
+      "value": "K-20260804-1"
+    },
+    {
+      "system": "https://lab.example.org/observations",
+      "value": "ACC-88213"
+    },
+    {
+      "value": "LOCAL-4471"
+    },
+    {
+      "system": "urn:oid:2.16.840.1.113883.19.5.99999.3"
+    }
+  ],
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "2823-3",
+        "display": "Potassium [Moles/volume] in Serum or Plasma"
+      }
+    ],
+    "text": "Potassium"
+  },
+  "subject": {
+    "reference": "Patient/pat-conformance-1"
+  },
+  "effectiveDateTime": "2026-08-04T08:15:00Z",
+  "valueQuantity": {
+    "value": 4.1,
+    "unit": "mmol/L",
+    "system": "http://unitsofmeasure.org",
+    "code": "mmol/L"
+  }
+}

@@ -240,6 +240,11 @@ fhirr4:variantComponentNotCarried a skos:Concept ;
   skos:inScheme fhirr4:gaps ;
   skos:broader bridge:carriedWithLoss .
 
+fhirr4:identifierCarriedForLabResultsAndOrganizationsOnly a skos:Concept ;
+  skos:prefLabel "A resource's business identifiers are carried for a lab result, which the matcher compares within one organization, and for an Organization a document names, which is named by one; any other record's are not, since nothing reads them."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:carriedWithLoss .
+
 fhirr4:issuedNotCarried a skos:Concept ;
   skos:prefLabel "A result carries the time it was issued, which is not when it was performed, and only a diagnostic implication's is carried, as its date."@en ;
   skos:inScheme fhirr4:gaps ;
