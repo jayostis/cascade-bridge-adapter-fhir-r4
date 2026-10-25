@@ -10,20 +10,20 @@
 <ni:///sha-256;tepmIYNEuwpqqKnEKzxLXk-d7JOZx2eddMMfQflhOmE> foaf:familyName "Okafor" ;
 	foaf:givenName "Martin" ;
 	cascade:dateOfBirth "1979-02-08"^^xsd:date .
-_:9b4fb62f81dd2e54fbb59efa84faf270 bridge:arrivedAs <ni:///sha-256;tepmIYNEuwpqqKnEKzxLXk-d7JOZx2eddMMfQflhOmE> .
-<ni:///sha-256;tepmIYNEuwpqqKnEKzxLXk-d7JOZx2eddMMfQflhOmE> prov:specializationOf <urn:uuid:17821d46-976b-8f24-8990-524c118d7160> .
 <urn:uuid:17821d46-976b-8f24-8990-524c118d7160> a cascade:PatientProfile .
-_:9b4fb62f81dd2e54fbb59efa84faf270 oa:hasSelector _:1f33ff62f2557b00f5007b8f0f805c3e ;
+<ni:///sha-256;tepmIYNEuwpqqKnEKzxLXk-d7JOZx2eddMMfQflhOmE> prov:specializationOf <urn:uuid:17821d46-976b-8f24-8990-524c118d7160> .
+_:9b4fb62f81dd2e54fbb59efa84faf270 bridge:arrivedAs <ni:///sha-256;tepmIYNEuwpqqKnEKzxLXk-d7JOZx2eddMMfQflhOmE> ;
+	oa:hasSelector _:1f33ff62f2557b00f5007b8f0f805c3e ;
 	oa:hasSource <ni:///sha-256;EHEEuwO8uUs_nijTU9VlSikqlK644Yc3bjRkFotgN9E> ;
 	prov:wasDerivedFrom <ni:///sha-256;EHEEuwO8uUs_nijTU9VlSikqlK644Yc3bjRkFotgN9E> ;
 	prov:wasGeneratedBy _:3903ee1f1d2a0f7c9342d1d3fb9ee27f .
 _:1f33ff62f2557b00f5007b8f0f805c3e a oa:FragmentSelector ;
 	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/0" .
-_:36b5b583547839a3aa2d981cb865e986 bridge:arrivedAs <ni:///sha-256;-PbUBaRdRMQ869bWvkmqV9dPVrOS3QQ5HuCMSg8kvcg> .
-<ni:///sha-256;-PbUBaRdRMQ869bWvkmqV9dPVrOS3QQ5HuCMSg8kvcg> cascade:patient <urn:uuid:17821d46-976b-8f24-8990-524c118d7160> ;
-	prov:specializationOf <urn:uuid:ce379cd5-db82-88df-98f8-ea7d9bfa81b1> .
 <urn:uuid:ce379cd5-db82-88df-98f8-ea7d9bfa81b1> a cascade:GeneticVariantFinding .
+<ni:///sha-256;-PbUBaRdRMQ869bWvkmqV9dPVrOS3QQ5HuCMSg8kvcg> prov:specializationOf <urn:uuid:ce379cd5-db82-88df-98f8-ea7d9bfa81b1> ;
+	cascade:patient <urn:uuid:17821d46-976b-8f24-8990-524c118d7160> .
+_:36b5b583547839a3aa2d981cb865e986 bridge:arrivedAs <ni:///sha-256;-PbUBaRdRMQ869bWvkmqV9dPVrOS3QQ5HuCMSg8kvcg> .
 <ni:///sha-256;-PbUBaRdRMQ869bWvkmqV9dPVrOS3QQ5HuCMSg8kvcg> cascade:hgvsCodingDnaExpression "NM_000249.4:c.2042C>T" ;
 	cascade:workflowStatus "final" .
 _:36b5b583547839a3aa2d981cb865e986 oa:hasSelector _:56a5e1736f23251076e2a9cb76045466 ;
@@ -33,10 +33,10 @@ _:36b5b583547839a3aa2d981cb865e986 oa:hasSelector _:56a5e1736f23251076e2a9cb7604
 _:56a5e1736f23251076e2a9cb76045466 a oa:FragmentSelector ;
 	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/1" .
-_:d9850e933b7003fea3527fa9c73c4ce0 bridge:arrivedAs <ni:///sha-256;h2B9ENCqlLTUeBecqKNP00_cHsE27jiSa-RGrZ0u3uc> .
-<ni:///sha-256;h2B9ENCqlLTUeBecqKNP00_cHsE27jiSa-RGrZ0u3uc> cascade:patient <urn:uuid:17821d46-976b-8f24-8990-524c118d7160> ;
-	prov:specializationOf <urn:uuid:b206d729-b832-897b-8880-1e9774f36d5d> .
 <urn:uuid:b206d729-b832-897b-8880-1e9774f36d5d> a cascade:GeneticVariantFinding .
+<ni:///sha-256;h2B9ENCqlLTUeBecqKNP00_cHsE27jiSa-RGrZ0u3uc> prov:specializationOf <urn:uuid:b206d729-b832-897b-8880-1e9774f36d5d> ;
+	cascade:patient <urn:uuid:17821d46-976b-8f24-8990-524c118d7160> .
+_:d9850e933b7003fea3527fa9c73c4ce0 bridge:arrivedAs <ni:///sha-256;h2B9ENCqlLTUeBecqKNP00_cHsE27jiSa-RGrZ0u3uc> .
 <ni:///sha-256;h2B9ENCqlLTUeBecqKNP00_cHsE27jiSa-RGrZ0u3uc> cascade:hgvsCodingDnaExpression "NM_000251.3:c.965G>A" ;
 	cascade:workflowStatus "final" .
 _:d9850e933b7003fea3527fa9c73c4ce0 oa:hasSelector _:2b77268c3be7689acb4e2ab2eba15986 ;
@@ -46,25 +46,26 @@ _:d9850e933b7003fea3527fa9c73c4ce0 oa:hasSelector _:2b77268c3be7689acb4e2ab2eba1
 _:2b77268c3be7689acb4e2ab2eba15986 a oa:FragmentSelector ;
 	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/2" .
-<ni:///sha-256;0sY_lzmUF8PEcaQhsnVFKlVEglwKVEL-QZX9P30JreY> cascade:workflowStatus "final" ;
-	cascade:resultValue "CYP2C9 *2/*5" ;
+<ni:///sha-256;ZzY80v7PC8t7M3OhMsjfnm1mAaQJjQmQXRyKDCM6chw> cascade:testName "Genotype display name" ;
 	cascade:testCode <http://loinc.org/rdf/84413-4> ;
-	cascade:testName "Genotype display name" .
-_:bcb2493a8c89d65dd5fe3edeca8ab888 bridge:arrivedAs <ni:///sha-256;0sY_lzmUF8PEcaQhsnVFKlVEglwKVEL-QZX9P30JreY> .
-<ni:///sha-256;0sY_lzmUF8PEcaQhsnVFKlVEglwKVEL-QZX9P30JreY> cascade:patient <urn:uuid:17821d46-976b-8f24-8990-524c118d7160> ;
-	prov:specializationOf <urn:uuid:5c2ad37c-2f16-8df7-aedb-3c8134e0c9f4> .
+	cascade:resultValueKind cascade:CodedResultValue ;
+	cascade:resultValue "CYP2C9 *2/*5" ;
+	cascade:workflowStatus "final" .
 <urn:uuid:5c2ad37c-2f16-8df7-aedb-3c8134e0c9f4> a cascade:LaboratoryTestResult .
-_:bcb2493a8c89d65dd5fe3edeca8ab888 oa:hasSelector _:b678595ef05885159a745f309d829a2e ;
+<ni:///sha-256;ZzY80v7PC8t7M3OhMsjfnm1mAaQJjQmQXRyKDCM6chw> prov:specializationOf <urn:uuid:5c2ad37c-2f16-8df7-aedb-3c8134e0c9f4> ;
+	cascade:patient <urn:uuid:17821d46-976b-8f24-8990-524c118d7160> .
+_:3585aabba341ff21308463379e531816 bridge:arrivedAs <ni:///sha-256;ZzY80v7PC8t7M3OhMsjfnm1mAaQJjQmQXRyKDCM6chw> ;
+	oa:hasSelector _:b805ae9476b566ec3ec4097ced265e9d ;
 	oa:hasSource <ni:///sha-256;EHEEuwO8uUs_nijTU9VlSikqlK644Yc3bjRkFotgN9E> ;
 	prov:wasDerivedFrom <ni:///sha-256;EHEEuwO8uUs_nijTU9VlSikqlK644Yc3bjRkFotgN9E> ;
 	prov:wasGeneratedBy _:3903ee1f1d2a0f7c9342d1d3fb9ee27f .
-_:b678595ef05885159a745f309d829a2e a oa:FragmentSelector ;
+_:b805ae9476b566ec3ec4097ced265e9d a oa:FragmentSelector ;
 	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/3" .
-_:e5554687dcdbff011e178bbcec0da737 bridge:arrivedAs <ni:///sha-256;hbkrVWTzpy0otf5pXpLx503AHNnGw1z70Os4eM8SBKU> .
-<ni:///sha-256;hbkrVWTzpy0otf5pXpLx503AHNnGw1z70Os4eM8SBKU> cascade:patient <urn:uuid:17821d46-976b-8f24-8990-524c118d7160> ;
-	prov:specializationOf <urn:uuid:2a5973fc-9ded-8822-a4c9-a3116423061e> .
 <urn:uuid:2a5973fc-9ded-8822-a4c9-a3116423061e> a cascade:VariantInterpretation .
+<ni:///sha-256;hbkrVWTzpy0otf5pXpLx503AHNnGw1z70Os4eM8SBKU> prov:specializationOf <urn:uuid:2a5973fc-9ded-8822-a4c9-a3116423061e> ;
+	cascade:patient <urn:uuid:17821d46-976b-8f24-8990-524c118d7160> .
+_:e5554687dcdbff011e178bbcec0da737 bridge:arrivedAs <ni:///sha-256;hbkrVWTzpy0otf5pXpLx503AHNnGw1z70Os4eM8SBKU> .
 <ni:///sha-256;hbkrVWTzpy0otf5pXpLx503AHNnGw1z70Os4eM8SBKU> cascade:acmgClassification cascade:Pathogenic ;
 	cascade:variantInterpreted <urn:uuid:ce379cd5-db82-88df-98f8-ea7d9bfa81b1> ;
 	cascade:interpretedDate "2024-03-21"^^xsd:date ;
@@ -76,10 +77,10 @@ _:e5554687dcdbff011e178bbcec0da737 oa:hasSelector _:41558ae48c143a6a1e51970fe116
 _:41558ae48c143a6a1e51970fe116f016 a oa:FragmentSelector ;
 	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/4" .
-_:6867a75a59f56c604c7d2b91bfa2d25d bridge:arrivedAs <ni:///sha-256;BBabKeZd0z0zQ1KONxzQcO17sprUn6TDX-u3qTJeDxM> .
-<ni:///sha-256;BBabKeZd0z0zQ1KONxzQcO17sprUn6TDX-u3qTJeDxM> cascade:patient <urn:uuid:17821d46-976b-8f24-8990-524c118d7160> ;
-	prov:specializationOf <urn:uuid:79639b3d-2272-8502-ae07-932dfc8cce2e> .
 <urn:uuid:79639b3d-2272-8502-ae07-932dfc8cce2e> a cascade:VariantInterpretation .
+<ni:///sha-256;BBabKeZd0z0zQ1KONxzQcO17sprUn6TDX-u3qTJeDxM> prov:specializationOf <urn:uuid:79639b3d-2272-8502-ae07-932dfc8cce2e> ;
+	cascade:patient <urn:uuid:17821d46-976b-8f24-8990-524c118d7160> .
+_:6867a75a59f56c604c7d2b91bfa2d25d bridge:arrivedAs <ni:///sha-256;BBabKeZd0z0zQ1KONxzQcO17sprUn6TDX-u3qTJeDxM> .
 <ni:///sha-256;BBabKeZd0z0zQ1KONxzQcO17sprUn6TDX-u3qTJeDxM> cascade:variantInterpreted <urn:uuid:ce379cd5-db82-88df-98f8-ea7d9bfa81b1> ;
 	cascade:interpretedDate "2019-03-05"^^xsd:date ;
 	cascade:workflowStatus "final" .
@@ -90,10 +91,10 @@ _:6867a75a59f56c604c7d2b91bfa2d25d oa:hasSelector _:bd6366217cdc4c91b901045b4985
 _:bd6366217cdc4c91b901045b4985fc48 a oa:FragmentSelector ;
 	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/5" .
-_:b868f996380a26e8540f357b6f284933 bridge:arrivedAs <ni:///sha-256;nNudWm37jUVCgdELULjlR6XUvSZ__4NzihRo7hLNIqw> .
-<ni:///sha-256;nNudWm37jUVCgdELULjlR6XUvSZ__4NzihRo7hLNIqw> cascade:patient <urn:uuid:17821d46-976b-8f24-8990-524c118d7160> ;
-	prov:specializationOf <urn:uuid:edf7c8b6-e693-876f-b56e-b7e7cd7e8c12> .
 <urn:uuid:edf7c8b6-e693-876f-b56e-b7e7cd7e8c12> a cascade:VariantInterpretation .
+<ni:///sha-256;nNudWm37jUVCgdELULjlR6XUvSZ__4NzihRo7hLNIqw> prov:specializationOf <urn:uuid:edf7c8b6-e693-876f-b56e-b7e7cd7e8c12> ;
+	cascade:patient <urn:uuid:17821d46-976b-8f24-8990-524c118d7160> .
+_:b868f996380a26e8540f357b6f284933 bridge:arrivedAs <ni:///sha-256;nNudWm37jUVCgdELULjlR6XUvSZ__4NzihRo7hLNIqw> .
 <ni:///sha-256;nNudWm37jUVCgdELULjlR6XUvSZ__4NzihRo7hLNIqw> cascade:acmgClassification cascade:UncertainSignificance ;
 	cascade:interpretedDate "2019-03-05"^^xsd:date ;
 	cascade:workflowStatus "final" .
@@ -104,10 +105,10 @@ _:b868f996380a26e8540f357b6f284933 oa:hasSelector _:932bf72799c1a983127ee7206b16
 _:932bf72799c1a983127ee7206b166f26 a oa:FragmentSelector ;
 	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/6" .
-_:374600af6de1c385df7cc748bb799423 bridge:arrivedAs <ni:///sha-256;k8QUV8HHWJto1DzFNVyOZrewE238AbdEJVeHPuAfLhA> .
-<ni:///sha-256;k8QUV8HHWJto1DzFNVyOZrewE238AbdEJVeHPuAfLhA> cascade:patient <urn:uuid:17821d46-976b-8f24-8990-524c118d7160> ;
-	prov:specializationOf <urn:uuid:07152db6-c655-8535-9b52-fec40e9a7394> .
 <urn:uuid:07152db6-c655-8535-9b52-fec40e9a7394> a cascade:VariantInterpretation .
+<ni:///sha-256;k8QUV8HHWJto1DzFNVyOZrewE238AbdEJVeHPuAfLhA> prov:specializationOf <urn:uuid:07152db6-c655-8535-9b52-fec40e9a7394> ;
+	cascade:patient <urn:uuid:17821d46-976b-8f24-8990-524c118d7160> .
+_:374600af6de1c385df7cc748bb799423 bridge:arrivedAs <ni:///sha-256;k8QUV8HHWJto1DzFNVyOZrewE238AbdEJVeHPuAfLhA> .
 <ni:///sha-256;k8QUV8HHWJto1DzFNVyOZrewE238AbdEJVeHPuAfLhA> cascade:acmgClassification cascade:Benign ;
 	cascade:workflowStatus "final" .
 _:374600af6de1c385df7cc748bb799423 oa:hasSelector _:3830458166e358b94cfcfa770027d5d8 ;
@@ -117,10 +118,10 @@ _:374600af6de1c385df7cc748bb799423 oa:hasSelector _:3830458166e358b94cfcfa770027
 _:3830458166e358b94cfcfa770027d5d8 a oa:FragmentSelector ;
 	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/7" .
-_:2b9719a813b74f1b7805c483961bef30 bridge:arrivedAs <ni:///sha-256;xnRn3kPvvyXefJhmlJnyMcPNYnafmSt2RijrtalYzpQ> .
-<ni:///sha-256;xnRn3kPvvyXefJhmlJnyMcPNYnafmSt2RijrtalYzpQ> cascade:patient <urn:uuid:17821d46-976b-8f24-8990-524c118d7160> ;
-	prov:specializationOf <urn:uuid:1a527db5-155f-81ab-a01a-7e0a3bfcbd5a> .
 <urn:uuid:1a527db5-155f-81ab-a01a-7e0a3bfcbd5a> a cascade:VariantInterpretation .
+<ni:///sha-256;xnRn3kPvvyXefJhmlJnyMcPNYnafmSt2RijrtalYzpQ> prov:specializationOf <urn:uuid:1a527db5-155f-81ab-a01a-7e0a3bfcbd5a> ;
+	cascade:patient <urn:uuid:17821d46-976b-8f24-8990-524c118d7160> .
+_:2b9719a813b74f1b7805c483961bef30 bridge:arrivedAs <ni:///sha-256;xnRn3kPvvyXefJhmlJnyMcPNYnafmSt2RijrtalYzpQ> .
 <ni:///sha-256;xnRn3kPvvyXefJhmlJnyMcPNYnafmSt2RijrtalYzpQ> cascade:acmgClassification cascade:LikelyPathogenic ;
 	cascade:workflowStatus "final" .
 _:2b9719a813b74f1b7805c483961bef30 oa:hasSelector _:860123a3b25172279ccff5177d89ff33 ;
@@ -130,10 +131,10 @@ _:2b9719a813b74f1b7805c483961bef30 oa:hasSelector _:860123a3b25172279ccff5177d89
 _:860123a3b25172279ccff5177d89ff33 a oa:FragmentSelector ;
 	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/8" .
-_:63e7988cfc8fd9f1143ecb9914328485 bridge:arrivedAs <ni:///sha-256;Z9gkv8cxOXgLwgOBV2aQaIf5kBy8YHVVNSzKDjr7rxo> .
-<ni:///sha-256;Z9gkv8cxOXgLwgOBV2aQaIf5kBy8YHVVNSzKDjr7rxo> cascade:patient <urn:uuid:17821d46-976b-8f24-8990-524c118d7160> ;
-	prov:specializationOf <urn:uuid:fc87a802-29c4-8a00-a458-ab2b1753de7e> .
 <urn:uuid:fc87a802-29c4-8a00-a458-ab2b1753de7e> a cascade:VariantInterpretation .
+<ni:///sha-256;Z9gkv8cxOXgLwgOBV2aQaIf5kBy8YHVVNSzKDjr7rxo> prov:specializationOf <urn:uuid:fc87a802-29c4-8a00-a458-ab2b1753de7e> ;
+	cascade:patient <urn:uuid:17821d46-976b-8f24-8990-524c118d7160> .
+_:63e7988cfc8fd9f1143ecb9914328485 bridge:arrivedAs <ni:///sha-256;Z9gkv8cxOXgLwgOBV2aQaIf5kBy8YHVVNSzKDjr7rxo> .
 <ni:///sha-256;Z9gkv8cxOXgLwgOBV2aQaIf5kBy8YHVVNSzKDjr7rxo> cascade:acmgClassification cascade:LikelyBenign ;
 	cascade:interpretedDate "2024-05-02"^^xsd:date ;
 	cascade:workflowStatus "final" .
@@ -144,10 +145,10 @@ _:63e7988cfc8fd9f1143ecb9914328485 oa:hasSelector _:828a49c4d9d47ae19e6c6625012a
 _:828a49c4d9d47ae19e6c6625012ab74c a oa:FragmentSelector ;
 	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/9" .
-_:14e2c699984865c490b1b5fe8c2ad589 bridge:arrivedAs <ni:///sha-256;uoFvi6IaAUKG1evlGLq7pVCk33zaSMshwgtLcynla1A> .
-<ni:///sha-256;uoFvi6IaAUKG1evlGLq7pVCk33zaSMshwgtLcynla1A> cascade:patient <urn:uuid:17821d46-976b-8f24-8990-524c118d7160> ;
-	prov:specializationOf <urn:uuid:9eed0c7c-d80d-882e-bc6d-8bff02d72c38> .
 <urn:uuid:9eed0c7c-d80d-882e-bc6d-8bff02d72c38> a cascade:VariantInterpretation .
+<ni:///sha-256;uoFvi6IaAUKG1evlGLq7pVCk33zaSMshwgtLcynla1A> prov:specializationOf <urn:uuid:9eed0c7c-d80d-882e-bc6d-8bff02d72c38> ;
+	cascade:patient <urn:uuid:17821d46-976b-8f24-8990-524c118d7160> .
+_:14e2c699984865c490b1b5fe8c2ad589 bridge:arrivedAs <ni:///sha-256;uoFvi6IaAUKG1evlGLq7pVCk33zaSMshwgtLcynla1A> .
 <ni:///sha-256;uoFvi6IaAUKG1evlGLq7pVCk33zaSMshwgtLcynla1A> cascade:variantInterpreted <urn:uuid:b206d729-b832-897b-8880-1e9774f36d5d> ;
 	cascade:workflowStatus "final" .
 _:14e2c699984865c490b1b5fe8c2ad589 oa:hasSelector _:74fb17e4f4a760403d766177f7319a49 ;
@@ -157,10 +158,10 @@ _:14e2c699984865c490b1b5fe8c2ad589 oa:hasSelector _:74fb17e4f4a760403d766177f731
 _:74fb17e4f4a760403d766177f7319a49 a oa:FragmentSelector ;
 	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/10" .
-_:73d75a087a09f87e1ed1d371d4378c80 bridge:arrivedAs <ni:///sha-256;fT7DfYkMUq7LFVJr8AhAvbjh8s2wScBWpb14BlrMNAc> .
-<ni:///sha-256;fT7DfYkMUq7LFVJr8AhAvbjh8s2wScBWpb14BlrMNAc> cascade:patient <urn:uuid:17821d46-976b-8f24-8990-524c118d7160> ;
-	prov:specializationOf <urn:uuid:4e668f3f-0f6a-8523-97d7-cf17d884029e> .
 <urn:uuid:4e668f3f-0f6a-8523-97d7-cf17d884029e> a cascade:VariantInterpretation .
+<ni:///sha-256;fT7DfYkMUq7LFVJr8AhAvbjh8s2wScBWpb14BlrMNAc> prov:specializationOf <urn:uuid:4e668f3f-0f6a-8523-97d7-cf17d884029e> ;
+	cascade:patient <urn:uuid:17821d46-976b-8f24-8990-524c118d7160> .
+_:73d75a087a09f87e1ed1d371d4378c80 bridge:arrivedAs <ni:///sha-256;fT7DfYkMUq7LFVJr8AhAvbjh8s2wScBWpb14BlrMNAc> .
 <ni:///sha-256;fT7DfYkMUq7LFVJr8AhAvbjh8s2wScBWpb14BlrMNAc> cascade:acmgClassification cascade:Benign ;
 	cascade:variantInterpreted <urn:uuid:ce379cd5-db82-88df-98f8-ea7d9bfa81b1> ;
 	cascade:workflowStatus "final" .
@@ -171,10 +172,10 @@ _:73d75a087a09f87e1ed1d371d4378c80 oa:hasSelector _:7073c34ae511372a81bb50c94a1b
 _:7073c34ae511372a81bb50c94a1b19b2 a oa:FragmentSelector ;
 	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/11" .
-_:9327cb80222cd5ebbe3a34411e5e2196 bridge:arrivedAs <ni:///sha-256;Ivke4SwTUOjQWztmyq8UY5jGqgY7ke-qvjscdWzXCsU> .
-<ni:///sha-256;Ivke4SwTUOjQWztmyq8UY5jGqgY7ke-qvjscdWzXCsU> cascade:patient <urn:uuid:17821d46-976b-8f24-8990-524c118d7160> ;
-	prov:specializationOf <urn:uuid:35b75121-ad2b-8a2f-b21d-5f8c9f96c236> .
 <urn:uuid:35b75121-ad2b-8a2f-b21d-5f8c9f96c236> a cascade:VariantInterpretation .
+<ni:///sha-256;Ivke4SwTUOjQWztmyq8UY5jGqgY7ke-qvjscdWzXCsU> prov:specializationOf <urn:uuid:35b75121-ad2b-8a2f-b21d-5f8c9f96c236> ;
+	cascade:patient <urn:uuid:17821d46-976b-8f24-8990-524c118d7160> .
+_:9327cb80222cd5ebbe3a34411e5e2196 bridge:arrivedAs <ni:///sha-256;Ivke4SwTUOjQWztmyq8UY5jGqgY7ke-qvjscdWzXCsU> .
 <ni:///sha-256;Ivke4SwTUOjQWztmyq8UY5jGqgY7ke-qvjscdWzXCsU> cascade:acmgClassification cascade:Benign ;
 	cascade:workflowStatus "final" .
 _:9327cb80222cd5ebbe3a34411e5e2196 oa:hasSelector _:2df0a870e61c629ecdc3d6d70592d1a6 ;

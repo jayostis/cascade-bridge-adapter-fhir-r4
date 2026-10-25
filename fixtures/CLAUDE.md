@@ -42,8 +42,9 @@ version names by the check below.
   git -C ../../conformance show <commit>:fixtures/<folder>/X.json | cmp - in/X.json
   ```
 
-- Each expected version's `ni:` name is the hash of its own triples, its own
-  name written as `urn:cascade:this-version`, as sorted N-Triples lines
+- Each expected version's `ni:` name is the hash of its own triples and those
+  of its nested nodes (`<version>#value`), its own name written as
+  `urn:cascade:this-version`, as sorted N-Triples lines
   (cascade-vocabulary's `VersionNamingRule`). From this directory, with
   `pyoxigraph==0.5.11`, the version cascade-vocabulary's `requirements.txt` pins:
 
@@ -58,8 +59,10 @@ version names by the check below.
       triples = [quad.triple for quad in ox.parse(path=path, format=ox.RdfFormat.TURTLE)]
       arrived = {t.object for t in triples if t.predicate.value == "https://ns.cascadeprotocol.org/bridge/v1-draft#arrivedAs"}
       for version in {t.subject for t in triples if t.subject in arrived and t.subject.value.startswith("ni:///sha-256;")}:
-          lines = sorted({f"{ox.Triple(this, t.predicate, this if t.object == version else t.object)} .\n"
-                          for t in triples if t.subject == version})
+          inside = lambda term: isinstance(term, ox.NamedNode) and term.value.split("#")[0] == version.value
+          held = lambda term: ox.NamedNode(this.value + term.value[len(version.value):]) if inside(term) else term
+          lines = sorted({f"{ox.Triple(held(t.subject), t.predicate, held(t.object))} .\n"
+                          for t in triples if inside(t.subject)})
           name = "ni:///sha-256;" + base64.urlsafe_b64encode(hashlib.sha256("".join(lines).encode()).digest()).decode().rstrip("=")
           total += 1
           good += name == version.value

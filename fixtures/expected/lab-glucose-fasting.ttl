@@ -6,23 +6,27 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;z94-YaVLQu4xC4o0ayTbs-yJfSIeIE8AAHlYuC-fsQ8> cascade:workflowStatus "final" ;
-	cascade:resultClinicallyRelevantTime "2026-08-02T07:30:00Z"^^xsd:dateTime ;
-	cascade:resultUnit "mg/dL" ;
-	cascade:resultValue "95" ;
+<ni:///sha-256;IX-0RNuCJArTn9k1YzQjJ5-Ik8oVzMcJOJO4mfWW8LE> cascade:resultQuantity <ni:///sha-256;IX-0RNuCJArTn9k1YzQjJ5-Ik8oVzMcJOJO4mfWW8LE#value> .
+<ni:///sha-256;IX-0RNuCJArTn9k1YzQjJ5-Ik8oVzMcJOJO4mfWW8LE#value> cascade:decimalValue "95"^^xsd:decimal ;
+	cascade:writtenValue "95" ;
+	cascade:ucumUnit "mg/dL" ;
+	cascade:unitText "mg/dL" .
+<ni:///sha-256;IX-0RNuCJArTn9k1YzQjJ5-Ik8oVzMcJOJO4mfWW8LE> cascade:testName "Glucose" ;
 	cascade:testCode <http://loinc.org/rdf/2339-0> ;
-	cascade:testName "Glucose" .
-_:bf5d233e166c25ce8dd97c0ef42b0f28 bridge:arrivedAs <ni:///sha-256;z94-YaVLQu4xC4o0ayTbs-yJfSIeIE8AAHlYuC-fsQ8> .
-<ni:///sha-256;z94-YaVLQu4xC4o0ayTbs-yJfSIeIE8AAHlYuC-fsQ8> cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> ;
-	prov:specializationOf <urn:uuid:b0767641-8448-81a0-9753-f86ecfe0c5a3> .
-<urn:uuid:b0767641-8448-81a0-9753-f86ecfe0c5a3> cascade:sourceRecordId "obs-glucose-fasting" ;
+	cascade:resultValueKind cascade:QuantityResultValue ;
+	cascade:resultClinicallyRelevantTime "2026-08-02T07:30:00Z"^^xsd:dateTime ;
+	cascade:workflowStatus "final" .
+<urn:uuid:b0767641-8448-81a0-9753-f86ecfe0c5a3> a cascade:LaboratoryTestResult ;
 	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Observation/obs-glucose-fasting> ;
-	a cascade:LaboratoryTestResult .
-_:bf5d233e166c25ce8dd97c0ef42b0f28 oa:hasSelector _:e8358709b715290691844d3d9e39bfe7 ;
+	cascade:sourceRecordId "obs-glucose-fasting" .
+<ni:///sha-256;IX-0RNuCJArTn9k1YzQjJ5-Ik8oVzMcJOJO4mfWW8LE> prov:specializationOf <urn:uuid:b0767641-8448-81a0-9753-f86ecfe0c5a3> ;
+	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
+_:5a84c71c2fe9595ee454fccf317d7356 bridge:arrivedAs <ni:///sha-256;IX-0RNuCJArTn9k1YzQjJ5-Ik8oVzMcJOJO4mfWW8LE> ;
+	oa:hasSelector _:9d9cb9dacbf219ae3d56f6d4aff971a4 ;
 	oa:hasSource <ni:///sha-256;8Liz1eB3suFP3NLPg4Qk39pM5zjqmcwdU18dYCaM2Xw> ;
 	prov:wasDerivedFrom <ni:///sha-256;8Liz1eB3suFP3NLPg4Qk39pM5zjqmcwdU18dYCaM2Xw> ;
 	prov:wasGeneratedBy _:cbbcbdafc29df3bf95f5457245d28f26 .
-_:e8358709b715290691844d3d9e39bfe7 a oa:FragmentSelector ;
+_:9d9cb9dacbf219ae3d56f6d4aff971a4 a oa:FragmentSelector ;
 	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;8Liz1eB3suFP3NLPg4Qk39pM5zjqmcwdU18dYCaM2Xw> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;

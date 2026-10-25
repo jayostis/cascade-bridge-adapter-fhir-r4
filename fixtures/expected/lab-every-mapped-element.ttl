@@ -6,27 +6,41 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;7pCbAIgO8v6lsbFjGVAKRi-fSmMB3z69c-DFvQ2C6tQ> cascade:workflowStatus "final" ;
-	cascade:resultClinicallyRelevantTime "2026-04-14T08:05:00-04:00"^^xsd:dateTime ;
-	cascade:resultInterpretation "H" ;
-	cascade:referenceRange "4.0-5.6 %" ;
-	cascade:resultUnit "%" ;
-	cascade:resultValue "6.80" ;
+<ni:///sha-256;AowI7htM2cyR45TBWOe94miyLB9F2bRXuXqBuYJVvbc> cascade:resultQuantity <ni:///sha-256;AowI7htM2cyR45TBWOe94miyLB9F2bRXuXqBuYJVvbc#value> .
+<ni:///sha-256;AowI7htM2cyR45TBWOe94miyLB9F2bRXuXqBuYJVvbc#value> cascade:decimalValue 6.8 ;
+	cascade:writtenValue "6.80" ;
+	cascade:ucumUnit "%" ;
+	cascade:unitText "%" .
+<ni:///sha-256;AowI7htM2cyR45TBWOe94miyLB9F2bRXuXqBuYJVvbc> cascade:referenceRangeHigh <ni:///sha-256;AowI7htM2cyR45TBWOe94miyLB9F2bRXuXqBuYJVvbc#reference-high> .
+<ni:///sha-256;AowI7htM2cyR45TBWOe94miyLB9F2bRXuXqBuYJVvbc#reference-high> cascade:decimalValue 5.6 ;
+	cascade:writtenValue "5.6" ;
+	cascade:ucumUnit "%" ;
+	cascade:unitText "%" .
+<ni:///sha-256;AowI7htM2cyR45TBWOe94miyLB9F2bRXuXqBuYJVvbc> cascade:referenceRangeLow <ni:///sha-256;AowI7htM2cyR45TBWOe94miyLB9F2bRXuXqBuYJVvbc#reference-low> .
+<ni:///sha-256;AowI7htM2cyR45TBWOe94miyLB9F2bRXuXqBuYJVvbc#reference-low> cascade:decimalValue "4"^^xsd:decimal ;
+	cascade:writtenValue "4.0" ;
+	cascade:ucumUnit "%" ;
+	cascade:unitText "%" .
+<ni:///sha-256;AowI7htM2cyR45TBWOe94miyLB9F2bRXuXqBuYJVvbc> cascade:testName "Hemoglobin A1c" ;
 	cascade:testCode <http://loinc.org/rdf/4548-4> ;
-	cascade:testName "Hemoglobin A1c" .
-_:533ce9305af32960ce21e85ae7ac32aa pav:lastUpdateOn "2026-04-14T16:20:00Z"^^xsd:dateTime ;
-	pav:version "1" ;
-	bridge:arrivedAs <ni:///sha-256;7pCbAIgO8v6lsbFjGVAKRi-fSmMB3z69c-DFvQ2C6tQ> .
-<ni:///sha-256;7pCbAIgO8v6lsbFjGVAKRi-fSmMB3z69c-DFvQ2C6tQ> cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> ;
-	prov:specializationOf <urn:uuid:9181429b-6975-8fe8-a541-14e29ada1965> .
-<urn:uuid:9181429b-6975-8fe8-a541-14e29ada1965> cascade:sourceRecordId "obs-hba1c-1" ;
+	cascade:resultValueKind cascade:QuantityResultValue ;
+	cascade:referenceRange "4.0-5.6 %" ;
+	cascade:resultInterpretation "H" ;
+	cascade:resultClinicallyRelevantTime "2026-04-14T08:05:00-04:00"^^xsd:dateTime ;
+	cascade:workflowStatus "final" .
+<urn:uuid:9181429b-6975-8fe8-a541-14e29ada1965> a cascade:LaboratoryTestResult ;
 	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Observation/obs-hba1c-1> ;
-	a cascade:LaboratoryTestResult .
-_:533ce9305af32960ce21e85ae7ac32aa oa:hasSelector _:55c934a89bdfee248c0642ab9427b102 ;
+	cascade:sourceRecordId "obs-hba1c-1" .
+<ni:///sha-256;AowI7htM2cyR45TBWOe94miyLB9F2bRXuXqBuYJVvbc> prov:specializationOf <urn:uuid:9181429b-6975-8fe8-a541-14e29ada1965> ;
+	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
+_:1c4ded729c20dd61a29233d75afaeef7 bridge:arrivedAs <ni:///sha-256;AowI7htM2cyR45TBWOe94miyLB9F2bRXuXqBuYJVvbc> ;
+	pav:version "1" ;
+	pav:lastUpdateOn "2026-04-14T16:20:00Z"^^xsd:dateTime ;
+	oa:hasSelector _:4dc88d8fcd60a2731b27c773a3b01018 ;
 	oa:hasSource <ni:///sha-256;9W07ztb_zb6361553k2dQl3ZQM6J7X9sNyPy-QOJsfI> ;
 	prov:wasDerivedFrom <ni:///sha-256;9W07ztb_zb6361553k2dQl3ZQM6J7X9sNyPy-QOJsfI> ;
 	prov:wasGeneratedBy _:a57634f8513c6e24062fbc3d1da12794 .
-_:55c934a89bdfee248c0642ab9427b102 a oa:FragmentSelector ;
+_:4dc88d8fcd60a2731b27c773a3b01018 a oa:FragmentSelector ;
 	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;9W07ztb_zb6361553k2dQl3ZQM6J7X9sNyPy-QOJsfI> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;

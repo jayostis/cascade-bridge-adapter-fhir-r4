@@ -11,8 +11,11 @@ PREFIX cascade: <https://ns.cascadeprotocol.org/cascade#>
 
 # What lab-result.rq leaves behind at a path the source accounting carries for
 # another kind, or carries where it holds one value: the end of the period a
-# result was performed over, a code from a system other than LOINC, and each
-# value of a reference range or an interpretation after the first.
+# result was performed over, a code from a system other than LOINC, each value
+# of a reference range or an interpretation after the first, a number's unit
+# code in a system other than UCUM, a comparator on a bound, a number
+# lab-result-quantities.rq refuses for its form, its size or its comparator,
+# and a coded value's code in a system other than SNOMED CT or LOINC.
 
 CONSTRUCT {
   [] a oa:Annotation ;
@@ -102,6 +105,84 @@ WHERE {
     BIND (CONCAT("/interpretation/", STR(xsd:integer(STRAFTER(STR(?interpretationSlot), "#_")) - 1),
                  ?interpretationStep) AS ?step)
     BIND (fhirr4:labResultInterpretationRepeated AS ?gap)
+  }
+  UNION
+  {
+    {
+      ?resource xyz:valueQuantity ?quantity .
+      BIND ("/valueQuantity" AS ?place) BIND ("value" AS ?held)
+    }
+    UNION
+    {
+      ?resource ?valueMember ?valueNode . ?valueNode ?partMember ?quantity .
+      VALUES (?valueMember ?partMember ?place ?held) {
+        (xyz:valueRatio xyz:numerator "/valueRatio/numerator" "value")
+        (xyz:valueRatio xyz:denominator "/valueRatio/denominator" "value")
+        (xyz:valueRange xyz:low "/valueRange/low" "bound")
+        (xyz:valueRange xyz:high "/valueRange/high" "bound")
+      }
+    }
+    UNION
+    {
+      ?resource xyz:referenceRange ?quantityRanges . ?quantityRanges ?quantityRangeSlot ?quantityRange .
+      ?quantityRange ?boundSide ?quantity .
+      VALUES (?boundSide ?side) { (xyz:low "/low") (xyz:high "/high") }
+      BIND (CONCAT("/referenceRange/", STR(xsd:integer(STRAFTER(STR(?quantityRangeSlot), "#_")) - 1), ?side) AS ?place)
+      BIND ("bound" AS ?held)
+    }
+    {
+      ?quantity xyz:code ?value .
+      FILTER NOT EXISTS { ?quantity xyz:system "http://unitsofmeasure.org" }
+      BIND ("/code" AS ?suffix)
+      BIND (fhirr4:labResultUnitCodeOutsideUcum AS ?quantityGap)
+    }
+    UNION
+    {
+      ?quantity xyz:comparator ?value .
+      BIND ("/comparator" AS ?suffix)
+      BIND (fhirr4:labResultBoundWithComparator AS ?quantityGap)
+    }
+    UNION
+    {
+      ?quantity xyz:value ?value .
+      BIND ("/value" AS ?suffix)
+      BIND (fhirr4:labResultNumberRefused AS ?quantityGap)
+      BIND (STR(?value) AS ?number)
+      BIND (REPLACE(REPLACE(?number, "^[+-]", ""), "[eE].*$", "") AS ?mantissa)
+      BIND (IF(CONTAINS(?mantissa, "."), STRBEFORE(?mantissa, "."), ?mantissa) AS ?whole)
+      BIND (STRLEN(?whole) + IF(REGEX(?number, "[eE]"), xsd:integer(REPLACE(?number, "^[^eE]*[eE]", "")), 0) AS ?point)
+      FILTER (!REGEX(?number, "^[+-]?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE][+-]?[0-9]+)?$")
+              || COALESCE(?point + 20 < 0 || ?point - STRLEN(CONCAT(?whole, STRAFTER(?mantissa, "."))) > 20, true))
+    }
+    BIND (IF(?suffix != "/comparator" || ?held = "bound", ?quantityGap,
+             IF(?value IN ("<", "<=", ">=", ">"), 1/0, fhirr4:labResultNumberRefused)) AS ?gap)
+    FILTER (BOUND(?gap))
+    BIND (CONCAT(?place, ?suffix) AS ?step)
+  }
+  UNION
+  {
+    ?resource xyz:valueInteger ?value .
+    BIND ("/valueInteger" AS ?step)
+    BIND (fhirr4:labResultNumberRefused AS ?gap)
+    BIND (STR(?value) AS ?number)
+    BIND (REPLACE(REPLACE(?number, "^[+-]", ""), "[eE].*$", "") AS ?mantissa)
+    BIND (IF(CONTAINS(?mantissa, "."), STRBEFORE(?mantissa, "."), ?mantissa) AS ?whole)
+    BIND (STRLEN(?whole) + IF(REGEX(?number, "[eE]"), xsd:integer(REPLACE(?number, "^[^eE]*[eE]", "")), 0) AS ?point)
+    FILTER (!REGEX(?number, "^[+-]?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE][+-]?[0-9]+)?$")
+            || COALESCE(?point + 20 < 0 || ?point - STRLEN(CONCAT(?whole, STRAFTER(?mantissa, "."))) > 20, true))
+  }
+  UNION
+  {
+    ?resource xyz:valueCodeableConcept ?answerConcept . ?answerConcept xyz:coding ?answerCodings .
+    ?answerCodings ?answerSlot ?answerCoding .
+    ?answerCoding xyz:code ?value .
+    FILTER NOT EXISTS {
+      ?answerCoding xyz:system ?answerSystem .
+      FILTER (?answerSystem IN ("http://snomed.info/sct", "http://loinc.org"))
+    }
+    BIND (CONCAT("/valueCodeableConcept/coding/", STR(xsd:integer(STRAFTER(STR(?answerSlot), "#_")) - 1), "/code")
+          AS ?step)
+    BIND (fhirr4:labResultValueCode AS ?gap)
   }
   BIND (CONCAT(?topStep, ?containedStep, ?step) AS ?pointer)
 }

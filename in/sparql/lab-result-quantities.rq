@@ -1,0 +1,184 @@
+PREFIX rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
+PREFIX fx:       <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:      <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX cascade:  <https://ns.cascadeprotocol.org/cascade#>
+PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+
+# Each number a lab result states, as a cascade:Quantity node of its version
+# named by its role: the value of a valueQuantity or valueInteger, a
+# valueRatio's numerator and denominator, a valueRange's low and high, and the
+# low and high of its one typed reference range, the one whose type is normal
+# in referencerange-meaning, or its only one. The number is written twice: as
+# the lift wrote it, and as a canonical xsd:decimal, an exponent written out,
+# so that every Bridge names the version alike. A unit is a UCUM code only
+# where its system is UCUM's; the unit's display is its text. A comparator is
+# one of FHIR R4's four, and a bound carries none, as sqty-1 says. A number
+# refused, one not in FHIR's decimal form, beyond twenty digits either side of
+# the point, or carrying a comparator it may not, is no node, and nor is any
+# other number of its value or its reference range: the value is text
+# (lab-result.rq), a range's text keeps both bounds, and half a range would
+# say it is one-sided. lab-result-findings.rq reports each refused number.
+
+CONSTRUCT {
+  ?version ?link ?node .
+  ?node cascade:decimalValue ?decimal ;
+    cascade:writtenValue ?written ;
+    cascade:quantityComparator ?comparator ;
+    cascade:ucumUnit ?ucumUnit ;
+    cascade:unitText ?unitText .
+}
+WHERE {
+  FILTER NOT EXISTS {
+    bridge:thisDocument cascade:sourceFormatVersion ?stated .
+    FILTER (!STRSTARTS(?stated, "4.0."))
+  }
+  bridge:thisRecord bridge:selector ?recordSelector .
+  ?root a fx:root .
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  { BIND ("" AS ?containedStep) }
+  UNION
+  {
+    ?top xyz:contained ?containedList .
+    ?containedList ?containedSlot ?contained .
+    ?contained xyz:resourceType ?containedType .
+    BIND (CONCAT("/contained/", STR(xsd:integer(STRAFTER(STR(?containedSlot), "#_")) - 1)) AS ?containedStep)
+  }
+  BIND (COALESCE(?contained, ?top) AS ?resource)
+  ?resource xyz:resourceType "Observation" .
+  BIND (CONCAT(?recordSelector, ?topStep, ?containedStep) AS ?resourcePointer)
+  ?lab fhirr4:labResultAt ?resourcePointer .
+  BIND (IRI(CONCAT("urn:cascade:version-at:", SHA256(?resourcePointer))) AS ?version)
+
+  {
+    ?resource xyz:valueQuantity ?quantity . ?quantity xyz:value ?written .
+    BIND ("value" AS ?role) BIND (cascade:resultQuantity AS ?link) BIND (false AS ?bound)
+  }
+  UNION
+  {
+    ?resource xyz:valueInteger ?written .
+    BIND ("value" AS ?role) BIND (cascade:resultQuantity AS ?link) BIND (false AS ?bound)
+  }
+  UNION
+  {
+    ?resource xyz:valueRatio ?ratio . ?ratio ?part ?quantity . ?quantity xyz:value ?written .
+    VALUES (?part ?role ?link) {
+      (xyz:numerator "numerator" cascade:resultRatioNumerator)
+      (xyz:denominator "denominator" cascade:resultRatioDenominator)
+    }
+    BIND (false AS ?bound)
+  }
+  UNION
+  {
+    ?resource xyz:valueRange ?range . ?range ?part ?quantity . ?quantity xyz:value ?written .
+    VALUES (?part ?role ?link) {
+      (xyz:low "range-low" cascade:resultRangeLow)
+      (xyz:high "range-high" cascade:resultRangeHigh)
+    }
+    BIND (true AS ?bound)
+  }
+  UNION
+  {
+    ?resource xyz:referenceRange ?ranges . ?ranges ?rangeSlot ?range .
+    FILTER (STRSTARTS(STR(?rangeSlot), STR(rdf:_)))
+    BIND (EXISTS {
+      ?range xyz:type ?type . ?type xyz:coding ?typeCodings . ?typeCodings ?typeSlot ?typeCoding .
+      ?typeCoding xyz:system "http://terminology.hl7.org/CodeSystem/referencerange-meaning" ; xyz:code "normal" .
+    } AS ?normal)
+    FILTER NOT EXISTS {
+      ?ranges ?otherSlot ?other .
+      FILTER (STRSTARTS(STR(?otherSlot), STR(rdf:_)) && ?otherSlot != ?rangeSlot)
+      FILTER (!?normal || EXISTS {
+        ?other xyz:type ?otherType . ?otherType xyz:coding ?otherCodings . ?otherCodings ?otherCodingSlot ?otherCoding .
+        ?otherCoding xyz:system "http://terminology.hl7.org/CodeSystem/referencerange-meaning" ; xyz:code "normal" .
+      })
+    }
+    ?range ?part ?quantity . ?quantity xyz:value ?written .
+    VALUES (?part ?role ?link) {
+      (xyz:low "reference-low" cascade:referenceRangeLow)
+      (xyz:high "reference-high" cascade:referenceRangeHigh)
+    }
+    FILTER NOT EXISTS {
+      ?range ?siblingSide ?siblingQuantity . VALUES ?siblingSide { xyz:low xyz:high }
+      ?siblingQuantity xyz:value ?siblingWritten .
+      OPTIONAL { ?siblingQuantity xyz:comparator ?siblingComparator }
+      BIND (STR(?siblingWritten) AS ?siblingText)
+      BIND (REPLACE(REPLACE(?siblingText, "^[+-]", ""), "[eE].*$", "") AS ?siblingMantissa)
+      BIND (IF(CONTAINS(?siblingMantissa, "."), STRBEFORE(?siblingMantissa, "."), ?siblingMantissa) AS ?siblingWhole)
+      BIND (STRLEN(?siblingWhole)
+            + IF(REGEX(?siblingText, "[eE]"), xsd:integer(REPLACE(?siblingText, "^[^eE]*[eE]", "")), 0) AS ?siblingPoint)
+      FILTER (!REGEX(?siblingText, "^[+-]?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE][+-]?[0-9]+)?$")
+              || COALESCE(?siblingPoint + 20 < 0
+                          || ?siblingPoint - STRLEN(CONCAT(?siblingWhole, STRAFTER(?siblingMantissa, "."))) > 20, true)
+              || BOUND(?siblingComparator))
+    }
+    BIND (true AS ?bound)
+  }
+  FILTER (STRSTARTS(?role, "reference-") || NOT EXISTS {
+    {
+      ?resource xyz:valueQuantity ?refusedQuantity . ?refusedQuantity xyz:value ?refusedWritten .
+      OPTIONAL { ?refusedQuantity xyz:comparator ?refusedComparator }
+      BIND (false AS ?refusedBound)
+    }
+    UNION
+    {
+      ?resource xyz:valueInteger ?refusedWritten .
+      BIND (false AS ?refusedBound)
+    }
+    UNION
+    {
+      ?resource xyz:valueRatio ?refusedRatio . ?refusedRatio ?refusedPart ?refusedQuantity .
+      VALUES ?refusedPart { xyz:numerator xyz:denominator }
+      ?refusedQuantity xyz:value ?refusedWritten .
+      OPTIONAL { ?refusedQuantity xyz:comparator ?refusedComparator }
+      BIND (false AS ?refusedBound)
+    }
+    UNION
+    {
+      ?resource xyz:valueRange ?refusedRange . ?refusedRange ?refusedPart ?refusedQuantity .
+      VALUES ?refusedPart { xyz:low xyz:high }
+      ?refusedQuantity xyz:value ?refusedWritten .
+      OPTIONAL { ?refusedQuantity xyz:comparator ?refusedComparator }
+      BIND (true AS ?refusedBound)
+    }
+    BIND (STR(?refusedWritten) AS ?refusedText)
+    BIND (REPLACE(REPLACE(?refusedText, "^[+-]", ""), "[eE].*$", "") AS ?refusedMantissa)
+    BIND (IF(CONTAINS(?refusedMantissa, "."), STRBEFORE(?refusedMantissa, "."), ?refusedMantissa) AS ?refusedWhole)
+    BIND (STRLEN(?refusedWhole)
+          + IF(REGEX(?refusedText, "[eE]"), xsd:integer(REPLACE(?refusedText, "^[^eE]*[eE]", "")), 0) AS ?refusedPoint)
+    FILTER (!REGEX(?refusedText, "^[+-]?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE][+-]?[0-9]+)?$")
+            || COALESCE(?refusedPoint + 20 < 0
+                        || ?refusedPoint - STRLEN(CONCAT(?refusedWhole, STRAFTER(?refusedMantissa, "."))) > 20, true)
+            || (BOUND(?refusedComparator) && (?refusedBound || !(?refusedComparator IN ("<", "<=", ">=", ">")))))
+  })
+
+  OPTIONAL { ?quantity xyz:comparator ?statedComparator }
+  OPTIONAL { ?quantity xyz:unit ?unitText }
+  OPTIONAL { ?quantity xyz:system "http://unitsofmeasure.org" ; xyz:code ?ucumUnit }
+  FILTER (!BOUND(?statedComparator) || (!?bound && ?statedComparator IN ("<", "<=", ">=", ">")))
+  BIND (?statedComparator AS ?comparator)
+
+  FILTER (REGEX(?written, "^[+-]?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE][+-]?[0-9]+)?$"))
+  BIND (STRSTARTS(?written, "-") AS ?negative)
+  BIND (REPLACE(?written, "^[+-]", "") AS ?unsigned)
+  BIND (REPLACE(?unsigned, "[eE].*$", "") AS ?mantissa)
+  BIND (IF(REGEX(?unsigned, "[eE]"), xsd:integer(REPLACE(?unsigned, "^[^eE]*[eE]", "")), 0) AS ?exponent)
+  BIND (IF(CONTAINS(?mantissa, "."), STRBEFORE(?mantissa, "."), ?mantissa) AS ?whole)
+  BIND (CONCAT(?whole, STRAFTER(?mantissa, ".")) AS ?digits)
+  BIND (STRLEN(?whole) + ?exponent AS ?point)
+  BIND ("000000000000000000000000000000000000000000000000000000000000" AS ?zeros)
+  BIND (IF(?point + 20 < 0 || ?point - STRLEN(?digits) > 20, 1/0,
+           IF(?point <= 0, CONCAT("0.", SUBSTR(?zeros, 1, 0 - ?point), ?digits),
+              IF(?point >= STRLEN(?digits), CONCAT(?digits, SUBSTR(?zeros, 1, ?point - STRLEN(?digits))),
+                 CONCAT(SUBSTR(?digits, 1, ?point), ".", SUBSTR(?digits, ?point + 1))))) AS ?plain)
+  BIND (REPLACE(IF(CONTAINS(?plain, "."), STRBEFORE(?plain, "."), ?plain), "^0+", "") AS ?wholeDigits)
+  BIND (REPLACE(STRAFTER(?plain, "."), "0+$", "") AS ?fractionDigits)
+  BIND (CONCAT(IF(?wholeDigits = "", "0", ?wholeDigits), IF(?fractionDigits = "", "", CONCAT(".", ?fractionDigits)))
+        AS ?magnitude)
+  BIND (STRDT(CONCAT(IF(?negative && ?magnitude != "0", "-", ""), ?magnitude), xsd:decimal) AS ?decimal)
+  FILTER (BOUND(?decimal))
+  BIND (IRI(CONCAT(STR(?version), "#", ?role)) AS ?node)
+}
