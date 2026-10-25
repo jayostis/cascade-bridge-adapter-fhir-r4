@@ -146,6 +146,9 @@
           "@id": "in/sparql/absent-reasons.rq"
         },
         {
+          "@id": "in/sparql/lab-result-identifiers.rq"
+        },
+        {
           "@id": "in/sparql/variant.rq"
         },
         {
@@ -270,6 +273,9 @@
         },
         {
           "@id": "in/sparql/absent-reasons.rq"
+        },
+        {
+          "@id": "in/sparql/lab-result-identifiers.rq"
         },
         {
           "@id": "in/sparql/variant.rq"
@@ -510,6 +516,9 @@
         },
         {
           "@id": "fixtures/in/lab-leukocytes-exponent-and-ranges.json"
+        },
+        {
+          "@id": "fixtures/in/lab-potassium-identifiers.json"
         },
         {
           "@id": "fixtures/in/lab-hepatitis-b-surface-antigen-coded.json"
@@ -950,6 +959,9 @@
           "@id": "fixtures/expected/lab-leukocytes-exponent-and-ranges.ttl"
         },
         {
+          "@id": "fixtures/expected/lab-potassium-identifiers.ttl"
+        },
+        {
           "@id": "fixtures/expected/lab-hepatitis-b-surface-antigen-coded.ttl"
         },
         {
@@ -978,6 +990,9 @@
         },
         {
           "@id": "fixtures/findings/lab-leukocytes-exponent-and-ranges.ttl"
+        },
+        {
+          "@id": "fixtures/findings/lab-potassium-identifiers.ttl"
         },
         {
           "@id": "fixtures/findings/lab-hepatitis-b-surface-antigen-coded.ttl"
@@ -1457,6 +1472,18 @@
       "description": "A value FHIR says is absent, and why, as a cascade:ValueAbsentForReason node of the version record.rq names, <version>#absent-<property>: a lab result's dataAbsentReason for its value (cascade:resultValueKind), where it has none, and the data-absent-reason extension on a mapped date's _element, where the date is absent; each reason the code's IRI in FHIR's data absent reasons or v3 NullFlavor, only a code its CodeSystem defines."
     },
     {
+      "@id": "in/sparql/lab-result-identifiers.rq",
+      "@type": "File",
+      "name": "Mapping: the business identifiers of a lab result's version",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "2793",
+      "sha256": "edc26a94c15e18e869456cd62993e3251d3284adcefd488174ea263f992fd65c",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "Each identifier with a value of a lab result, as a dct:identifier of the version record.rq names: its value typed by its system, a system urn:oid: and the NPI's OID as the NPI's URI, or a plain string where it states no system."
+    },
+    {
       "@id": "in/sparql/variant.rq",
       "@type": "File",
       "name": "Mapping: a variant's version",
@@ -1617,8 +1644,8 @@
       "@type": "File",
       "name": "FHIR R4 JSON source accounting",
       "encodingFormat": "text/turtle",
-      "contentSize": "235310",
-      "sha256": "1c7cd7437f946b6d61e507639dc58a12988477bd632b23177612a2f69727f68c",
+      "contentSize": "233561",
+      "sha256": "2c93967e852eddb6863549a794f8f32ea4887a778fc0705ea53206430f10a114",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1653,8 +1680,8 @@
       "@type": "File",
       "name": "FHIR R4 JSON gaps",
       "encodingFormat": "text/turtle",
-      "contentSize": "13562",
-      "sha256": "cd1322adf8b3ec82af36e04fa82ba8d07279cbda8c6190e3290af062657f3f98",
+      "contentSize": "14135",
+      "sha256": "165c70f5da1738face1fa80040a1b93f23f31916a932b4140f94410b40288dda",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2588,6 +2615,19 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "A laboratory Observation of a leukocyte count (LOINC 6690-2), id obs-wbc-exponent-1, whose valueQuantity is written 6.20E3 in UCUM /uL, displayed cells/uL, with a first reference range of type treatment, its high bound's unit in a local system, and a second of type normal whose low bound carries the comparator >= and whose high bound is written 1.10e4. Authored here on 2026-10-24, for a case the conformance corpus does not hold: an exponent, the normal range among two, a unit outside UCUM and a comparator on a bound."
+    },
+    {
+      "@id": "fixtures/in/lab-potassium-identifiers.json",
+      "@type": "File",
+      "name": "Laboratory Observation with business identifiers",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "1207",
+      "sha256": "3ee909f505a67f3fab47908a16e434401a33c6cbfd2fc3dea54f2b6e07008ef0",
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A laboratory Observation of potassium (LOINC 2823-3), id obs-potassium-identifiers-1, carrying five identifiers: one whose system is urn:oid:2.16.840.1.113883.19.5.99999.2, one whose system is an https URL, one with a value and no system, one of the system urn:ietf:rfc:3986 whose value is a urn:uuid: in upper case, and one with a system and no value. Authored here on 2026-10-24, for a case the conformance corpus does not hold: a lab result's business identifiers."
     },
     {
       "@id": "fixtures/in/medication-request-two-rxnorm-codes.json",
@@ -4403,6 +4443,22 @@
       "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
+      "@id": "fixtures/expected/lab-potassium-identifiers.ttl",
+      "@type": "File",
+      "name": "Expected graph for lab-potassium-identifiers",
+      "encodingFormat": "text/turtle",
+      "contentSize": "4235",
+      "sha256": "31d9b7e682437add04db8129172b91093ecd1d85b754c4fbfb60a88f95b18ae3",
+      "about": {
+        "@id": "fixtures/in/lab-potassium-identifiers.json"
+      },
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
       "@id": "fixtures/findings/lab-troponin-below-detection.ttl",
       "@type": "File",
       "name": "Expected findings for lab-troponin-below-detection",
@@ -4555,6 +4611,22 @@
       "sha256": "b787381c218c366ebbc0829550e942dfdd7118fdf1a1c3788b76547b75e9cc93",
       "about": {
         "@id": "fixtures/in/lab-leukocytes-exponent-and-ranges.json"
+      },
+      "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/lab-potassium-identifiers.ttl",
+      "@type": "File",
+      "name": "Expected findings for lab-potassium-identifiers",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1010",
+      "sha256": "9ce38cf22d9264335ccf0ec86fdc75be3594c72e5ef268187bfc2205febd7515",
+      "about": {
+        "@id": "fixtures/in/lab-potassium-identifiers.json"
       },
       "dateCreated": "2026-10-24",
       "license": {

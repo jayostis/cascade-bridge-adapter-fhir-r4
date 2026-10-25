@@ -1,0 +1,56 @@
+PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
+PREFIX dct:      <http://purl.org/dc/terms/>
+PREFIX fx:       <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:      <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX cascade:  <https://ns.cascadeprotocol.org/cascade#>
+PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+
+# Each identifier with a value of an Observation lab-result-table.rq makes a
+# lab result is a business identifier of its version: its value typed by its
+# system where it states one, a system urn:oid: and the NPI's OID as the NPI's
+# URI, as organization.rq types an organization's, and a plain string where it
+# states none. A urn:uuid: system, and a urn:uuid: value of the system
+# urn:ietf:rfc:3986, are in lower case, as result-identifiers.rq in the C-CDA
+# adapter writes a UUID root, so one UUID is one identifier from either. A
+# system that is no IRI gives none.
+
+CONSTRUCT {
+  ?version dct:identifier ?identifier .
+}
+WHERE {
+  FILTER NOT EXISTS {
+    bridge:thisDocument cascade:sourceFormatVersion ?stated .
+    FILTER (!STRSTARTS(?stated, "4.0."))
+  }
+  bridge:thisRecord bridge:selector ?recordSelector .
+  ?root a fx:root .
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  { BIND ("" AS ?containedStep) }
+  UNION
+  {
+    ?top xyz:contained ?containedList .
+    ?containedList ?containedSlot ?contained .
+    ?contained xyz:resourceType ?containedType .
+    BIND (CONCAT("/contained/", STR(xsd:integer(STRAFTER(STR(?containedSlot), "#_")) - 1)) AS ?containedStep)
+  }
+  BIND (COALESCE(?contained, ?top) AS ?resource)
+  ?resource xyz:resourceType "Observation" .
+  BIND (CONCAT(?recordSelector, ?topStep, ?containedStep) AS ?resourcePointer)
+  ?lab fhirr4:labResultAt ?resourcePointer .
+  BIND (IRI(CONCAT("urn:cascade:version-at:", SHA256(?resourcePointer))) AS ?version)
+
+  ?resource xyz:identifier ?identifierList .
+  ?identifierList ?identifierAt ?identifierNode .
+  ?identifierNode xyz:value ?identifierValue .
+  FILTER (STRLEN(?identifierValue) > 0)
+  OPTIONAL { ?identifierNode xyz:system ?identifierSystem }
+  BIND (IF(?identifierSystem = "urn:oid:2.16.840.1.113883.4.6", "http://hl7.org/fhir/sid/us-npi",
+           IF(REGEX(?identifierSystem, "^urn:uuid:", "i"), LCASE(?identifierSystem), ?identifierSystem))
+        AS ?identifierType)
+  BIND (IF(?identifierSystem = "urn:ietf:rfc:3986" && REGEX(?identifierValue, "^urn:uuid:", "i"),
+           LCASE(?identifierValue), ?identifierValue) AS ?identifierText)
+  BIND (IF(BOUND(?identifierSystem), STRDT(?identifierText, IRI(?identifierType)), ?identifierValue) AS ?identifier)
+}

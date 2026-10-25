@@ -948,13 +948,13 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/identifier" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it; an Organization a document names is named by its NPI or OID identifier, and carries each." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:identifierCarriedForLabResultsAndOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/identifier/value" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it; an Organization a document names is named by its NPI or OID identifier, and carries each." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:identifierCarriedForLabResultsAndOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/intent" ;
@@ -1943,13 +1943,13 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/identifier" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it; an Organization a document names is named by its NPI or OID identifier, and carries each." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:identifierCarriedForLabResultsAndOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/identifier/value" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it; an Organization a document names is named by its NPI or OID identifier, and carries each." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:identifierCarriedForLabResultsAndOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/intent" ;
@@ -3267,13 +3267,13 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/identifier" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it; an Organization a document names is named by its NPI or OID identifier, and carries each." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:identifierCarriedForLabResultsAndOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/identifier/value" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it; an Organization a document names is named by its NPI or OID identifier, and carries each." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:identifierCarriedForLabResultsAndOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/intent" ;
@@ -4258,13 +4258,13 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/identifier" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it; an Organization a document names is named by its NPI or OID identifier, and carries each." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:identifierCarriedForLabResultsAndOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/identifier/value" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it; an Organization a document names is named by its NPI or OID identifier, and carries each." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:identifierCarriedForLabResultsAndOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/intent" ;
@@ -5425,18 +5425,18 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/identifier/system" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it; an Organization a document names is named by its NPI or OID identifier, and carries each." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:identifierCarriedForLabResultsAndOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/identifier/system" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it; an Organization a document names is named by its NPI or OID identifier, and carries each." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:identifierCarriedForLabResultsAndOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/identifier/system" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A record is named from its server and its id, or from its document and its place in it, never from an identifier a system gives it; an Organization a document names is named by its NPI or OID identifier, and carries each." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:identifierCarriedForLabResultsAndOrganizationsOnly .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dataAbsentReason" ;
