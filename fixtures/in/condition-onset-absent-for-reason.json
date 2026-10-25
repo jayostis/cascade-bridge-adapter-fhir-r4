@@ -1,0 +1,33 @@
+{
+  "resourceType": "Condition",
+  "id": "cond-asthma-onset-unknown-1",
+  "code": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J45.909",
+        "display": "Unspecified asthma, uncomplicated"
+      }
+    ],
+    "text": "Asthma"
+  },
+  "subject": {
+    "reference": "Patient/pat-conformance-1"
+  },
+  "_onsetDateTime": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+        "valueCode": "asked-unknown"
+      }
+    ]
+  },
+  "_abatementDateTime": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+        "valueCode": "never-said"
+      }
+    ]
+  }
+}
