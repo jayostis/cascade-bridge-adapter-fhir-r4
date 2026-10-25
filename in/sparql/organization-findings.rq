@@ -10,10 +10,11 @@ PREFIX cascade: <https://ns.cascadeprotocol.org/cascade#>
 PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 
 # An Organization the document names, which organization.rq makes a record,
-# whose record's version another Organization of the document gives: its name,
-# identifiers and addresses are carried by no version. The Organization giving
-# the version is picked as organization.rq picks it; the value is the
-# identifier the two share.
+# whose record's version another Organization of the document gives, and which
+# holds a name, an identifier or an address that version does not carry, as
+# organization-table.rq lists them. The Organization giving the version is
+# picked as organization.rq picks it; the value is the identifier the record is
+# named by, typed by its system.
 
 CONSTRUCT {
   [] a oa:Annotation ;
@@ -27,7 +28,7 @@ CONSTRUCT {
     ] ;
     oa:hasBody fhirr4:duplicateOrganizationNotCarried ;
     oa:motivatedBy oa:classifying ;
-    sh:value ?input2 .
+    sh:value ?identifier .
 }
 WHERE {
   FILTER NOT EXISTS {
@@ -90,6 +91,16 @@ WHERE {
             AS ?ranked)
     } GROUP BY ?input1 ?input2
   }
-  FILTER (STRAFTER(?firstNamed, " ") != ?pointer)
+  BIND (STRAFTER(?firstNamed, " ") AS ?kept)
+  FILTER (?kept != ?pointer)
+  FILTER EXISTS {
+    ?heldItem fhirr4:organizationAt ?pointer ;
+      fhirr4:organizationContent ?item .
+    FILTER NOT EXISTS {
+      ?carried fhirr4:organizationAt ?kept ;
+        fhirr4:organizationContent ?item .
+    }
+  }
   BIND (CONCAT(?topStep, ?containedStep) AS ?at)
+  BIND (STRDT(?input2, IRI(?input1)) AS ?identifier)
 }

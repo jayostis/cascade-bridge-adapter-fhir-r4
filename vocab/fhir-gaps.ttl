@@ -261,6 +261,11 @@ fhirr4:absentReasonNotCarried a skos:Concept ;
   skos:broader bridge:carriedWithLoss .
 
 fhirr4:duplicateOrganizationNotCarried a skos:Concept ;
-  skos:prefLabel "Two Organizations of one document carry the identifier one organization record is named by, and the record's one version is read from the one a custodian names, else the first: the other's name, identifiers and addresses are not carried."@en ;
+  skos:prefLabel "Two Organizations of one document carry the identifier one organization record is named by, and the record's one version is read from the one a custodian names, else the first: a name, an identifier or an address only the other holds is not carried."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:carriedWithLoss .
+
+fhirr4:addressCarriedForOrganizationsOnly a skos:Concept ;
+  skos:prefLabel "An address is carried only for an Organization a document names, as its record's version's cascade:organizationAddress: any other resource's address, a patient's among them, is not, since no Cascade predicate carries it, and nor is an Organization's whose record another Organization of the document gives the version of."@en ;
   skos:inScheme fhirr4:gaps ;
   skos:broader bridge:carriedWithLoss .
