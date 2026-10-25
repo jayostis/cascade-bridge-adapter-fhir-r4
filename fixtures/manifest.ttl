@@ -49,6 +49,7 @@
     <#lab-every-mapped-element>
     <#lab-no-category-potassium>
     <#lab-troponin-below-detection>
+    <#lab-potassium-approximate>
     <#lab-titre-ratio>
     <#lab-urine-leukocytes-range>
     <#lab-hepatitis-b-surface-antigen-coded>
@@ -1004,6 +1005,19 @@
     bridge:expectedFindings <findings/lab-troponin-below-detection.ttl>
   ] .
 
+<#lab-potassium-approximate> a bridge:IsomorphicConversionTest ;
+  mf:name "lab-potassium-approximate" ;
+  rdfs:comment "A laboratory Observation whose value carries the comparator ~, outside FHIR R4's four: no number is typed, the value is text, ~4.1, its unit the unit's text, and the refused comparator is a finding." ;
+  mf:action [
+    bridge:input <in/lab-potassium-approximate.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/lab-potassium-approximate.ttl> ;
+    bridge:expectedFindings <findings/lab-potassium-approximate.ttl>
+  ] .
+
 <#lab-titre-ratio> a bridge:IsomorphicConversionTest ;
   mf:name "lab-titre-ratio" ;
   rdfs:comment "A laboratory Observation whose value is a titre: a ratio, its numerator and denominator each a quantity with no unit." ;
@@ -1045,7 +1059,7 @@
 
 <#lab-leukocytes-exponent-and-ranges> a bridge:IsomorphicConversionTest ;
   mf:name "lab-leukocytes-exponent-and-ranges" ;
-  rdfs:comment "A laboratory Observation whose number is written with an exponent: its decimal value is the number written out and its written value is as sent; the reference range typed is the one marked normal, its high bound alone, since its low bound carries a comparator, which is a finding, as is the first range's unit outside UCUM and each value of the second range." ;
+  rdfs:comment "A laboratory Observation whose number is written with an exponent: its decimal value is the number written out and its written value is as sent; of the reference range marked normal neither bound is typed, since its low bound carries a comparator, which is a finding, and half a range would read as one-sided; as is the first range's unit outside UCUM and each value of the second range." ;
   mf:action [
     bridge:input <in/lab-leukocytes-exponent-and-ranges.json> ;
     bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;

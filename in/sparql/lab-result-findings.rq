@@ -13,8 +13,9 @@ PREFIX cascade: <https://ns.cascadeprotocol.org/cascade#>
 # another kind, or carries where it holds one value: the end of the period a
 # result was performed over, a code from a system other than LOINC, each value
 # of a reference range or an interpretation after the first, a number's unit
-# code in a system other than UCUM, a comparator on a bound, and a coded
-# value's code in a system other than SNOMED CT or LOINC.
+# code in a system other than UCUM, a comparator on a bound, a number
+# lab-result-quantities.rq refuses for its form, its size or its comparator,
+# and a coded value's code in a system other than SNOMED CT or LOINC.
 
 CONSTRUCT {
   [] a oa:Annotation ;
@@ -133,16 +134,42 @@ WHERE {
       ?quantity xyz:code ?value .
       FILTER NOT EXISTS { ?quantity xyz:system "http://unitsofmeasure.org" }
       BIND ("/code" AS ?suffix)
-      BIND (fhirr4:labResultUnitCodeOutsideUcum AS ?gap)
+      BIND (fhirr4:labResultUnitCodeOutsideUcum AS ?quantityGap)
     }
     UNION
     {
       ?quantity xyz:comparator ?value .
       BIND ("/comparator" AS ?suffix)
-      BIND (fhirr4:labResultBoundWithComparator AS ?gap)
+      BIND (fhirr4:labResultBoundWithComparator AS ?quantityGap)
     }
-    FILTER (?gap != fhirr4:labResultBoundWithComparator || ?held = "bound")
+    UNION
+    {
+      ?quantity xyz:value ?value .
+      BIND ("/value" AS ?suffix)
+      BIND (fhirr4:labResultNumberRefused AS ?quantityGap)
+      BIND (STR(?value) AS ?number)
+      BIND (REPLACE(REPLACE(?number, "^[+-]", ""), "[eE].*$", "") AS ?mantissa)
+      BIND (IF(CONTAINS(?mantissa, "."), STRBEFORE(?mantissa, "."), ?mantissa) AS ?whole)
+      BIND (STRLEN(?whole) + IF(REGEX(?number, "[eE]"), xsd:integer(REPLACE(?number, "^[^eE]*[eE]", "")), 0) AS ?point)
+      FILTER (!REGEX(?number, "^[+-]?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE][+-]?[0-9]+)?$")
+              || COALESCE(?point + 20 < 0 || ?point - STRLEN(CONCAT(?whole, STRAFTER(?mantissa, "."))) > 20, true))
+    }
+    BIND (IF(?suffix != "/comparator" || ?held = "bound", ?quantityGap,
+             IF(?value IN ("<", "<=", ">=", ">"), 1/0, fhirr4:labResultNumberRefused)) AS ?gap)
+    FILTER (BOUND(?gap))
     BIND (CONCAT(?place, ?suffix) AS ?step)
+  }
+  UNION
+  {
+    ?resource xyz:valueInteger ?value .
+    BIND ("/valueInteger" AS ?step)
+    BIND (fhirr4:labResultNumberRefused AS ?gap)
+    BIND (STR(?value) AS ?number)
+    BIND (REPLACE(REPLACE(?number, "^[+-]", ""), "[eE].*$", "") AS ?mantissa)
+    BIND (IF(CONTAINS(?mantissa, "."), STRBEFORE(?mantissa, "."), ?mantissa) AS ?whole)
+    BIND (STRLEN(?whole) + IF(REGEX(?number, "[eE]"), xsd:integer(REPLACE(?number, "^[^eE]*[eE]", "")), 0) AS ?point)
+    FILTER (!REGEX(?number, "^[+-]?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE][+-]?[0-9]+)?$")
+            || COALESCE(?point + 20 < 0 || ?point - STRLEN(CONCAT(?whole, STRAFTER(?mantissa, "."))) > 20, true))
   }
   UNION
   {

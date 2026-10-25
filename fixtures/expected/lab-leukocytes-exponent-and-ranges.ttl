@@ -6,17 +6,12 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;I9K1Lpom1L4gNLRqYP3Zteqnp3aJlGjUzf321joBk6E> cascade:resultQuantity <ni:///sha-256;I9K1Lpom1L4gNLRqYP3Zteqnp3aJlGjUzf321joBk6E#value> .
-<ni:///sha-256;I9K1Lpom1L4gNLRqYP3Zteqnp3aJlGjUzf321joBk6E#value> cascade:decimalValue "6200"^^xsd:decimal ;
+<ni:///sha-256;imn1AEXpbr7BIASm2q7CexYlRGx5XN0BfOE5edRi9mo> cascade:resultQuantity <ni:///sha-256;imn1AEXpbr7BIASm2q7CexYlRGx5XN0BfOE5edRi9mo#value> .
+<ni:///sha-256;imn1AEXpbr7BIASm2q7CexYlRGx5XN0BfOE5edRi9mo#value> cascade:decimalValue "6200"^^xsd:decimal ;
 	cascade:writtenValue "6.20E3" ;
 	cascade:ucumUnit "/uL" ;
 	cascade:unitText "cells/uL" .
-<ni:///sha-256;I9K1Lpom1L4gNLRqYP3Zteqnp3aJlGjUzf321joBk6E> cascade:referenceRangeHigh <ni:///sha-256;I9K1Lpom1L4gNLRqYP3Zteqnp3aJlGjUzf321joBk6E#reference-high> .
-<ni:///sha-256;I9K1Lpom1L4gNLRqYP3Zteqnp3aJlGjUzf321joBk6E#reference-high> cascade:decimalValue "11000"^^xsd:decimal ;
-	cascade:writtenValue "1.10e4" ;
-	cascade:ucumUnit "/uL" ;
-	cascade:unitText "cells/uL" .
-<ni:///sha-256;I9K1Lpom1L4gNLRqYP3Zteqnp3aJlGjUzf321joBk6E> cascade:testName "WBC" ;
+<ni:///sha-256;imn1AEXpbr7BIASm2q7CexYlRGx5XN0BfOE5edRi9mo> cascade:testName "WBC" ;
 	cascade:testCode <http://loinc.org/rdf/6690-2> ;
 	cascade:resultValueKind cascade:QuantityResultValue ;
 	cascade:referenceRange "3000-12000 cells/uL" ;
@@ -25,14 +20,14 @@
 <urn:uuid:61db7ec2-b859-85d5-a83e-34d2b19a3248> a cascade:LaboratoryTestResult ;
 	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Observation/obs-wbc-exponent-1> ;
 	cascade:sourceRecordId "obs-wbc-exponent-1" .
-<ni:///sha-256;I9K1Lpom1L4gNLRqYP3Zteqnp3aJlGjUzf321joBk6E> prov:specializationOf <urn:uuid:61db7ec2-b859-85d5-a83e-34d2b19a3248> ;
+<ni:///sha-256;imn1AEXpbr7BIASm2q7CexYlRGx5XN0BfOE5edRi9mo> prov:specializationOf <urn:uuid:61db7ec2-b859-85d5-a83e-34d2b19a3248> ;
 	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
-_:8ff3e7d837c5ca024b483f31c190f59 bridge:arrivedAs <ni:///sha-256;I9K1Lpom1L4gNLRqYP3Zteqnp3aJlGjUzf321joBk6E> ;
-	oa:hasSelector _:728fbf818c07eb77f8b96598fe116d8 ;
+_:dcc3380f4545dbb77936ddad1bde7209 bridge:arrivedAs <ni:///sha-256;imn1AEXpbr7BIASm2q7CexYlRGx5XN0BfOE5edRi9mo> ;
+	oa:hasSelector _:15c8af2fd921971bd39ef94311367209 ;
 	oa:hasSource <ni:///sha-256;fNC6n9nGNGF1wKVLLlHZ88KUC2wVKMzwpDk7KeUweB4> ;
 	prov:wasDerivedFrom <ni:///sha-256;fNC6n9nGNGF1wKVLLlHZ88KUC2wVKMzwpDk7KeUweB4> ;
 	prov:wasGeneratedBy _:7f7befb07a5351cd13a79faa1e30cf90 .
-_:728fbf818c07eb77f8b96598fe116d8 a oa:FragmentSelector ;
+_:15c8af2fd921971bd39ef94311367209 a oa:FragmentSelector ;
 	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;fNC6n9nGNGF1wKVLLlHZ88KUC2wVKMzwpDk7KeUweB4> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;

@@ -14,8 +14,12 @@ PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # the lift wrote it, and as a canonical xsd:decimal, an exponent written out,
 # so that every Bridge names the version alike. A unit is a UCUM code only
 # where its system is UCUM's; the unit's display is its text. A comparator is
-# one of FHIR R4's four, and a bound carries none, as sqty-1 says: a bound with
-# one is not carried, and lab-result-findings.rq reports it.
+# one of FHIR R4's four, and a bound carries none, as sqty-1 says. A number
+# refused, one not in FHIR's decimal form, beyond twenty digits either side of
+# the point, or carrying a comparator it may not, is no node, and nor is any
+# other number of its value or its reference range: the value is text
+# (lab-result.rq), a range's text keeps both bounds, and half a range would
+# say it is one-sided. lab-result-findings.rq reports each refused number.
 
 CONSTRUCT {
   ?version ?link ?node .
@@ -97,8 +101,59 @@ WHERE {
       (xyz:low "reference-low" cascade:referenceRangeLow)
       (xyz:high "reference-high" cascade:referenceRangeHigh)
     }
+    FILTER NOT EXISTS {
+      ?range ?siblingSide ?siblingQuantity . VALUES ?siblingSide { xyz:low xyz:high }
+      ?siblingQuantity xyz:value ?siblingWritten .
+      OPTIONAL { ?siblingQuantity xyz:comparator ?siblingComparator }
+      BIND (STR(?siblingWritten) AS ?siblingText)
+      BIND (REPLACE(REPLACE(?siblingText, "^[+-]", ""), "[eE].*$", "") AS ?siblingMantissa)
+      BIND (IF(CONTAINS(?siblingMantissa, "."), STRBEFORE(?siblingMantissa, "."), ?siblingMantissa) AS ?siblingWhole)
+      BIND (STRLEN(?siblingWhole)
+            + IF(REGEX(?siblingText, "[eE]"), xsd:integer(REPLACE(?siblingText, "^[^eE]*[eE]", "")), 0) AS ?siblingPoint)
+      FILTER (!REGEX(?siblingText, "^[+-]?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE][+-]?[0-9]+)?$")
+              || COALESCE(?siblingPoint + 20 < 0
+                          || ?siblingPoint - STRLEN(CONCAT(?siblingWhole, STRAFTER(?siblingMantissa, "."))) > 20, true)
+              || BOUND(?siblingComparator))
+    }
     BIND (true AS ?bound)
   }
+  FILTER (STRSTARTS(?role, "reference-") || NOT EXISTS {
+    {
+      ?resource xyz:valueQuantity ?refusedQuantity . ?refusedQuantity xyz:value ?refusedWritten .
+      OPTIONAL { ?refusedQuantity xyz:comparator ?refusedComparator }
+      BIND (false AS ?refusedBound)
+    }
+    UNION
+    {
+      ?resource xyz:valueInteger ?refusedWritten .
+      BIND (false AS ?refusedBound)
+    }
+    UNION
+    {
+      ?resource xyz:valueRatio ?refusedRatio . ?refusedRatio ?refusedPart ?refusedQuantity .
+      VALUES ?refusedPart { xyz:numerator xyz:denominator }
+      ?refusedQuantity xyz:value ?refusedWritten .
+      OPTIONAL { ?refusedQuantity xyz:comparator ?refusedComparator }
+      BIND (false AS ?refusedBound)
+    }
+    UNION
+    {
+      ?resource xyz:valueRange ?refusedRange . ?refusedRange ?refusedPart ?refusedQuantity .
+      VALUES ?refusedPart { xyz:low xyz:high }
+      ?refusedQuantity xyz:value ?refusedWritten .
+      OPTIONAL { ?refusedQuantity xyz:comparator ?refusedComparator }
+      BIND (true AS ?refusedBound)
+    }
+    BIND (STR(?refusedWritten) AS ?refusedText)
+    BIND (REPLACE(REPLACE(?refusedText, "^[+-]", ""), "[eE].*$", "") AS ?refusedMantissa)
+    BIND (IF(CONTAINS(?refusedMantissa, "."), STRBEFORE(?refusedMantissa, "."), ?refusedMantissa) AS ?refusedWhole)
+    BIND (STRLEN(?refusedWhole)
+          + IF(REGEX(?refusedText, "[eE]"), xsd:integer(REPLACE(?refusedText, "^[^eE]*[eE]", "")), 0) AS ?refusedPoint)
+    FILTER (!REGEX(?refusedText, "^[+-]?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE][+-]?[0-9]+)?$")
+            || COALESCE(?refusedPoint + 20 < 0
+                        || ?refusedPoint - STRLEN(CONCAT(?refusedWhole, STRAFTER(?refusedMantissa, "."))) > 20, true)
+            || (BOUND(?refusedComparator) && (?refusedBound || !(?refusedComparator IN ("<", "<=", ">=", ">")))))
+  })
 
   OPTIONAL { ?quantity xyz:comparator ?statedComparator }
   OPTIONAL { ?quantity xyz:unit ?unitText }
