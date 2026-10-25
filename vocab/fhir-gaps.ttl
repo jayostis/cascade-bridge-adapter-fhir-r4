@@ -34,7 +34,7 @@ fhirr4:resourceTypeNotMapped a skos:Concept ;
   sh:resultSeverity sh:Warning .
 
 fhirr4:resourceIdRepeated a skos:Concept ;
-  skos:prefLabel "A resource shares its type and id, or its urn:uuid fullUrl, with another resource of its document: a reference to the shared id names nothing, and the document names the record."@en ;
+  skos:prefLabel "A resource shares its type and id, or its urn:uuid fullUrl, with another resource of its document: a reference to the shared id names nothing, and the document names the record, or, for an Organization from a server, nothing names one."@en ;
   skos:inScheme fhirr4:gaps ;
   skos:broader bridge:idRepeated .
 
@@ -229,8 +229,8 @@ fhirr4:interpretationVariantLink a skos:Concept ;
   skos:broader bridge:carriedWithLoss ;
   sh:resultSeverity sh:Warning .
 
-fhirr4:interpretationPerformer a skos:Concept ;
-  skos:prefLabel "A performer is carried only as a diagnostic implication's one organization record: an implication whose performers name no organization record, or more than one, is attributed to no lab, and any other observation's performer is not carried."@en ;
+fhirr4:performerCarriedOnlyAsOneOrganizationRecord a skos:Concept ;
+  skos:prefLabel "A performer is carried only as the one organization record it names: a diagnostic implication's, an Organization of its document, and a lab result's from a server, an Organization of that server by type and id; one whose performers name no organization record, or more than one, is attributed to none, and any other performer is not carried."@en ;
   skos:inScheme fhirr4:gaps ;
   skos:broader bridge:carriedWithLoss ;
   sh:resultSeverity sh:Warning .
@@ -241,7 +241,7 @@ fhirr4:variantComponentNotCarried a skos:Concept ;
   skos:broader bridge:carriedWithLoss .
 
 fhirr4:identifierCarriedForLabResultsAndOrganizationsOnly a skos:Concept ;
-  skos:prefLabel "A resource's business identifiers are carried for a lab result, which the matcher compares within one organization, and for an Organization a document names, which is named by one; any other record's are not, since nothing reads them. An identifier's assigner (Identifier.assigner) is not read: the organization a lab result's identifier belongs to is the one its document names as custodian or author."@en ;
+  skos:prefLabel "A resource's business identifiers are carried for a lab result, which the matcher compares within one organization, and for an Organization a document names, which is named by one, or one from a server, whose version states them; any other record's are not, since nothing reads them. An identifier's assigner (Identifier.assigner) is not read: the organization a lab result's identifier belongs to is the one its document names as custodian or author."@en ;
   skos:inScheme fhirr4:gaps ;
   skos:broader bridge:carriedWithLoss .
 

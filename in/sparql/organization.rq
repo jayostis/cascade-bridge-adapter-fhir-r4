@@ -16,7 +16,8 @@ PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # reference, is a record named by
 # cascade-vocabulary's OrganizationNamingRule from the identifier the table
 # picks for it, never by its id, which only the document gives it. One with no
-# such identifier is no record, and the document names nothing in its place.
+# such identifier is no record, and the document names nothing in its place. An
+# Organization from a server is organization-from-server.rq's.
 #
 # Two Organizations of one document can name one record. Its one version is read
 # from the one a custodian names, else from the first in the document, as the

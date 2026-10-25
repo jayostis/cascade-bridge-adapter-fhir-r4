@@ -77,6 +77,14 @@
     <#bundle-medication-repeated-id>
     <#bundle-pull-collection-versions>
     <#bundle-pull-searchset-outcome>
+    <#bundle-pull-organization>
+    <#lab-performed-by-an-organization>
+    <#lab-performed-by-two-organizations>
+    <#lab-performer-absolute-url>
+    <#lab-performer-versioned-reference>
+    <#bundle-pull-organization-id-repeated>
+    <#bundle-pull-performer-held-under-urn-uuid>
+    <#lab-performer-differs-names-one-record>
     <#Bundle-bundle-cgexample>
     <#Bundle-bundle-compound-heterozygote>
     <#Bundle-bundle-oncology-diagnostic>
@@ -614,7 +622,7 @@
 
 <#Bundle-bundle-cgexample> a bridge:IsomorphicConversionTest ;
   mf:name "Bundle-bundle-cgexample" ;
-  rdfs:comment "The Genomics Reporting IG's own example: a Variant and the Pathogenic Diagnostic Implication derived from it by a relative reference are a variant and an interpretation record, a complex variant is a variant without components, the haplotype, genotype and therapeutic implications stay lab results, and the performer of each Diagnostic Implication read, ExampleLab, has no identifier, so none is attributed to a lab and each performer reference is a finding." ;
+  rdfs:comment "The Genomics Reporting IG's own example: a Variant and the Pathogenic Diagnostic Implication derived from it by a relative reference are a variant and an interpretation record, a complex variant is a variant without components, the haplotype, genotype and therapeutic implications stay lab results, and ExampleLab, an Organization of the server the Bundle came from, is an organization record named by the server and its id, to which each Diagnostic Implication read and each lab result its performer names are attributed." ;
   mf:action [
     bridge:input <in/Bundle-bundle-cgexample.input.json> ;
     bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
@@ -1297,6 +1305,113 @@
     bridge:expectedGraph <expected/bundle-pull-searchset-outcome.ttl> ;
     bridge:expectedFindings <findings/bundle-pull-searchset-outcome.ttl>
   ] .
+
+<#bundle-pull-organization> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-pull-organization" ;
+  rdfs:comment "An Organization a pull holds is an organization record named by its server and id, stating its source address and id, whose version carries its name, its identifiers, the NPI's OID as the NPI's URI, and its address, and whose arrival carries its version and change time." ;
+  mf:action [
+    bridge:input <in/bundle-pull-organization.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/example-pull.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-pull-organization.ttl> ;
+    bridge:expectedFindings <findings/bundle-pull-organization.ttl>
+  ] .
+
+<#lab-performed-by-an-organization> a bridge:IsomorphicConversionTest ;
+  mf:name "lab-performed-by-an-organization" ;
+  rdfs:comment "A lab result from a server whose performers are a Practitioner and Organization/org-lab-1 is attributed to that Organization's record on the server, which the document does not hold; the Practitioner is not read." ;
+  mf:action [
+    bridge:input <in/lab-performed-by-an-organization.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/example-pull.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/lab-performed-by-an-organization.ttl> ;
+    bridge:expectedFindings <findings/lab-performed-by-an-organization.ttl>
+  ] .
+
+<#lab-performed-by-two-organizations> a bridge:IsomorphicConversionTest ;
+  mf:name "lab-performed-by-two-organizations" ;
+  rdfs:comment "A lab result whose performers name two Organizations is attributed to none, and each performer reference is a finding." ;
+  mf:action [
+    bridge:input <in/lab-performed-by-two-organizations.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/example-pull.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/lab-performed-by-two-organizations.ttl> ;
+    bridge:expectedFindings <findings/lab-performed-by-two-organizations.ttl>
+  ] .
+
+<#lab-performer-absolute-url> a bridge:IsomorphicConversionTest ;
+  mf:name "lab-performer-absolute-url" ;
+  rdfs:comment "A performer written as the server's base, /, and Organization/<id> names that Organization's record, as the relative form does." ;
+  mf:action [
+    bridge:input <in/lab-performer-absolute-url.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/example-pull.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/lab-performer-absolute-url.ttl> ;
+    bridge:expectedFindings <findings/lab-performer-absolute-url.ttl>
+  ] .
+
+<#lab-performer-versioned-reference> a bridge:IsomorphicConversionTest ;
+  mf:name "lab-performer-versioned-reference" ;
+  rdfs:comment "A performer naming a version of an Organization names the Organization's record: the /_history/ step is dropped." ;
+  mf:action [
+    bridge:input <in/lab-performer-versioned-reference.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/example-pull.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/lab-performer-versioned-reference.ttl> ;
+    bridge:expectedFindings <findings/lab-performer-versioned-reference.ttl>
+  ] .
+
+<#bundle-pull-organization-id-repeated> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-pull-organization-id-repeated" ;
+  rdfs:comment "Two Organizations of a pull sharing one id are no record and a finding each, and a lab result whose performer names that id is attributed to none." ;
+  mf:action [
+    bridge:input <in/bundle-pull-organization-id-repeated.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/example-pull.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-pull-organization-id-repeated.ttl> ;
+    bridge:expectedFindings <findings/bundle-pull-organization-id-repeated.ttl>
+  ] .
+
+<#bundle-pull-performer-held-under-urn-uuid> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-pull-performer-held-under-urn-uuid" ;
+  rdfs:comment "A performer Organization/<id> naming an Organization the document holds under a urn:uuid fullUrl, which FHIR gives no meaning, names no record." ;
+  mf:action [
+    bridge:input <in/bundle-pull-performer-held-under-urn-uuid.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/example-pull.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-pull-performer-held-under-urn-uuid.ttl> ;
+    bridge:expectedFindings <findings/bundle-pull-performer-held-under-urn-uuid.ttl>
+  ] .
+
+<#lab-performer-differs-names-one-record> a bridge:IdentityRelationTest ;
+  mf:name "lab-performer-differs-names-one-record" ;
+  rdfs:comment "One lab result from one server, pulled once naming one performing Organization and once another, is one record: the organization it names is on its version." ;
+  mf:action [
+    bridge:conversion [
+      bridge:input <in/lab-performed-by-an-organization.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/example-pull.ttl>
+    ] , [
+      bridge:input <in/lab-potassium-performed-elsewhere.json> ;
+      bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+      bridge:facts <facts/example-pull.ttl>
+    ]
+  ] ;
+  mf:result [ bridge:sameRecord true ] .
 
 <#lab-same-day-same-code-different-value> a bridge:IdentityRelationTest ;
   mf:name "lab-same-day-same-code-different-value" ;

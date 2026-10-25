@@ -1,0 +1,144 @@
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX pav:     <http://purl.org/pav/>
+PREFIX foaf:    <http://xmlns.com/foaf/0.1/>
+PREFIX org:     <http://www.w3.org/ns/org#>
+PREFIX fx:      <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:     <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:  <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX cascade: <https://ns.cascadeprotocol.org/cascade#>
+PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+
+# An Organization from a server, as organization-table.rq finds it, is a record
+# named by cascade-vocabulary's OrganizationNamingRule from its server and its
+# id, whatever names it, unless another entry of the document holds an
+# Organization with its id, which repeated-id-findings.rq reports and which is
+# then no record. Its version carries what organization.rq writes of one, and
+# its arrival the resource's version and change time, as record.rq writes them.
+# Like every record from a server, it states its address on the server and its
+# id, as record.rq writes them.
+# A document's Composition naming it as custodian or author names its record
+# once in each role.
+
+CONSTRUCT {
+  ?organization a cascade:Organization ;
+    cascade:sourceUrl ?sourceUrl ;
+    cascade:sourceRecordId ?input3 .
+  ?attributing prov:qualifiedAttribution ?attribution .
+  ?attribution prov:agent ?organization ;
+    prov:hadRole ?role .
+  ?version prov:specializationOf ?organization ;
+    foaf:name ?name ;
+    org:identifier ?identifier ;
+    cascade:organizationAddress ?address .
+  ?arrival bridge:arrivedAs ?version ;
+    pav:version ?versionId ;
+    pav:lastUpdateOn ?lastUpdated .
+}
+WHERE {
+  bridge:thisRecord bridge:selector ?recordSelector .
+  bridge:thisDocument bridge:sha256 ?sha256 ;
+    cascade:serverBaseUrl ?input1 .
+  FILTER NOT EXISTS {
+    bridge:thisDocument cascade:sourceFormatVersion ?stated .
+    FILTER (!STRSTARTS(?stated, "4.0."))
+  }
+  ?root a fx:root .
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?resource) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?resource . ?resource xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  BIND (CONCAT(?recordSelector, ?topStep) AS ?pointer)
+  ?fromServer fhirr4:organizationAt ?pointer ;
+    fhirr4:organizationIdOnServer ?input3 .
+  FILTER NOT EXISTS {
+    ?sameId fhirr4:resourceType "Organization" ;
+      fhirr4:resourceId ?input3 ;
+      fhirr4:heldAt ?sameIdSelector .
+    FILTER (?sameIdSelector != ?recordSelector)
+  }
+  BIND ("Organization" AS ?input2)
+  BIND (SHA256(CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|https://ns.cascadeprotocol.org/cascade#OrganizationNamingRule",
+                       "|", REPLACE(REPLACE(?input1, "%", "%25"), "\\|", "%7C"),
+                       "|", REPLACE(REPLACE(?input2, "%", "%25"), "\\|", "%7C"),
+                       COALESCE(CONCAT("|", REPLACE(REPLACE(?input3, "%", "%25"), "\\|", "%7C")), ""))) AS ?hash)
+  BIND (REPLACE(REPLACE(REPLACE(REPLACE(SUBSTR(?hash, 17, 1), "[048c]", "8"), "[159d]", "9"), "[26ae]", "a"), "[37bf]", "b")
+        AS ?variant)
+  BIND (IRI(CONCAT("urn:uuid:", SUBSTR(?hash, 1, 8), "-", SUBSTR(?hash, 9, 4), "-8", SUBSTR(?hash, 14, 3), "-", ?variant,
+                   SUBSTR(?hash, 18, 3), "-", SUBSTR(?hash, 21, 12))) AS ?organization)
+  BIND (IRI(CONCAT(?input1, "/Organization/", ?input3)) AS ?sourceUrl)
+  BIND (IRI(CONCAT("urn:cascade:version-at:", SHA256(?pointer))) AS ?resourceVersion)
+  OPTIONAL { ?resource xyz:meta ?meta . ?meta xyz:versionId ?writtenVersionId }
+  OPTIONAL { ?resource xyz:meta ?updatedMeta . ?updatedMeta xyz:lastUpdated ?updated }
+
+  {
+    {
+      SELECT ?roleAt ?role WHERE {
+        ?reference fhirr4:organizationReferenceFrom ?from ;
+          fhirr4:organizationReferenceTo ?key ;
+          fhirr4:organizationScope ?scope ;
+          fhirr4:organizationRole ?role .
+        ?held fhirr4:organizationAt ?roleAt ;
+          fhirr4:organizationKey ?key ;
+          fhirr4:organizationScope ?scope .
+        FILTER NOT EXISTS {
+          ?rival fhirr4:organizationAt ?rivalPointer ;
+            fhirr4:organizationKey ?key ;
+            fhirr4:organizationScope ?scope .
+          FILTER (?rivalPointer != ?roleAt)
+        }
+      } GROUP BY ?roleAt ?role
+    }
+    BIND ("attribution" AS ?branch)
+  }
+  UNION
+  {
+    BIND ("arrival" AS ?branch)
+  }
+  UNION
+  {
+    BIND ("record" AS ?branch)
+  }
+  UNION
+  {
+    ?resource xyz:name ?name .
+    FILTER (isLiteral(?name) && STRLEN(?name) > 0)
+  }
+  UNION
+  {
+    ?resource xyz:identifier ?identifierList .
+    ?identifierList ?identifierAt ?identifierNode .
+    ?identifierNode xyz:value ?identifierValue .
+    FILTER (STRLEN(?identifierValue) > 0)
+    OPTIONAL { ?identifierNode xyz:system ?identifierSystem }
+    BIND (IF(?identifierSystem = "urn:oid:2.16.840.1.113883.4.6", "http://hl7.org/fhir/sid/us-npi", ?identifierSystem)
+          AS ?identifierType)
+    BIND (IF(BOUND(?identifierSystem), STRDT(?identifierValue, IRI(?identifierType)), ?identifierValue) AS ?identifier)
+  }
+  UNION
+  {
+    ?resource xyz:address ?addresses .
+    ?addresses ?addressAt ?postal .
+    OPTIONAL { ?postal xyz:text ?text }
+    OPTIONAL { ?postal xyz:line ?lines . ?lines rdf:_1 ?line1 }
+    OPTIONAL { ?postal xyz:line ?lines . ?lines rdf:_2 ?line2 }
+    OPTIONAL { ?postal xyz:line ?lines . ?lines rdf:_3 ?line3 }
+    OPTIONAL { ?postal xyz:line ?lines . ?lines rdf:_4 ?line4 }
+    OPTIONAL { ?postal xyz:city ?city }
+    OPTIONAL { ?postal xyz:state ?state }
+    OPTIONAL { ?postal xyz:postalCode ?postalCode }
+    OPTIONAL { ?postal xyz:country ?country }
+    BIND (CONCAT(COALESCE(CONCAT("\n", ?line1), ""), COALESCE(CONCAT("\n", ?line2), ""), COALESCE(CONCAT("\n", ?line3), ""),
+                 COALESCE(CONCAT("\n", ?line4), ""), COALESCE(CONCAT("\n", ?city), ""), COALESCE(CONCAT("\n", ?state), ""),
+                 COALESCE(CONCAT("\n", ?postalCode), ""), COALESCE(CONCAT("\n", ?country), "")) AS ?joined)
+    BIND (IF(BOUND(?text) && STRLEN(?text) > 0, ?text, SUBSTR(?joined, 2)) AS ?address)
+    FILTER (STRLEN(?address) > 0)
+  }
+  FILTER (COALESCE(?branch, "") != "attribution" || ?roleAt = ?pointer)
+  BIND (IF(?branch = "attribution", IRI(?sha256), 1/0) AS ?attributing)
+  BIND (IF(BOUND(?attributing), BNODE(), 1/0) AS ?attribution)
+  BIND (IF(COALESCE(?branch, "") != "attribution" && COALESCE(?branch, "") != "record", ?resourceVersion, 1/0) AS ?version)
+  BIND (IF(?branch = "arrival", BNODE(), 1/0) AS ?arrival)
+  BIND (IF(BOUND(?arrival), ?writtenVersionId, 1/0) AS ?versionId)
+  BIND (IF(BOUND(?arrival), STRDT(?updated, xsd:dateTime), 1/0) AS ?lastUpdated)
+}

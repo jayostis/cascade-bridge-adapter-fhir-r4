@@ -34,10 +34,15 @@ WHERE {
   UNION
   { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
   FILTER (?topType IN ("AllergyIntolerance", "Condition", "Immunization", "Procedure", "Patient",
-                       "MedicationRequest", "MedicationStatement", "Observation"))
+                       "MedicationRequest", "MedicationStatement", "Observation", "Organization"))
   FILTER (?topType != "Observation" || EXISTS {
     ?lab fhirr4:labResultAt ?labPointer .
     FILTER (?labPointer = CONCAT(?recordSelector, ?topStep))
+  })
+  FILTER (?topType != "Organization" || EXISTS {
+    ?fromServer fhirr4:organizationIdOnServer ?serverId ;
+      fhirr4:organizationAt ?serverPointer .
+    FILTER (?serverPointer = CONCAT(?recordSelector, ?topStep))
   })
   { ?top xyz:id ?value . BIND ("id" AS ?held) }
   UNION

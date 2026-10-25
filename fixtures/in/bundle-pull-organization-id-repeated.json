@@ -1,0 +1,65 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "https://fhir.example.org/r4/Organization/org-twice",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-twice",
+        "name": "Example Clinic"
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/r4/Organization/org-twice",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-twice",
+        "name": "Example Clinic North"
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/r4/Observation/obs-potassium-5",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-potassium-5",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2823-3",
+              "display": "Potassium [Moles/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Potassium"
+        },
+        "subject": {
+          "reference": "Patient/pat-1"
+        },
+        "effectiveDateTime": "2026-09-29T07:30:00Z",
+        "performer": [
+          {
+            "reference": "Organization/org-twice"
+          }
+        ],
+        "valueQuantity": {
+          "value": 4.1,
+          "unit": "mmol/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "mmol/L"
+        }
+      }
+    }
+  ]
+}

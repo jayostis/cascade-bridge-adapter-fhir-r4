@@ -1,0 +1,45 @@
+@prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix pav: <http://purl.org/pav/> .
+<urn:uuid:240bcd6f-8199-80f4-82c3-97fc9e9d87be> a cascade:Organization ;
+	cascade:sourceUrl <https://fhir.example.org/r4/Organization/org-lab-1> ;
+	cascade:sourceRecordId "org-lab-1" .
+<ni:///sha-256;GVyeO5I3ekVh92eGsUFM_Tb0mxWLWasq0vB2-MNC_54> prov:specializationOf <urn:uuid:240bcd6f-8199-80f4-82c3-97fc9e9d87be> .
+_:d31f33d9955ab40868fb1520bd7c03a2 bridge:arrivedAs <ni:///sha-256;GVyeO5I3ekVh92eGsUFM_Tb0mxWLWasq0vB2-MNC_54> ;
+	pav:version "3" ;
+	pav:lastUpdateOn "2026-09-30T08:00:00Z"^^xsd:dateTime .
+<ni:///sha-256;GVyeO5I3ekVh92eGsUFM_Tb0mxWLWasq0vB2-MNC_54> foaf:name "Example Reference Laboratory" ;
+	org:identifier "LAB-1"^^<https://fhir.example.org/r4/organization-codes> , "1234567893"^^<http://hl7.org/fhir/sid/us-npi> ;
+	cascade:organizationAddress "12 Harbour Road\nSuite 4\nBellingham\nWA\n98225" .
+_:d31f33d9955ab40868fb1520bd7c03a2 oa:hasSelector _:8792dd8fb441f9b0aeaff398bd3e4759 ;
+	oa:hasSource <ni:///sha-256;vD5lDzMXWqXuSdhQH4iWI9r7f5fU2QyLZkUU4qHXXEI> ;
+	prov:wasDerivedFrom <ni:///sha-256;vD5lDzMXWqXuSdhQH4iWI9r7f5fU2QyLZkUU4qHXXEI> ;
+	prov:wasGeneratedBy _:5bebb7555dd43d068e40377b45b2b9ef .
+_:8792dd8fb441f9b0aeaff398bd3e4759 a oa:FragmentSelector ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/entry/0" .
+<ni:///sha-256;vD5lDzMXWqXuSdhQH4iWI9r7f5fU2QyLZkUU4qHXXEI> cascade:serverBaseUrl "https://fhir.example.org/r4" ;
+	pav:retrievedOn "2026-10-16T09:00:00Z"^^xsd:dateTime ;
+	cascade:sourceFormatVersion "4.0.1" .
+_:5bebb7555dd43d068e40377b45b2b9ef <http://www.w3.org/2000/01/rdf-schema#label> "Example hospital pull" ;
+	prov:startedAtTime "2026-10-16T09:00:04Z"^^xsd:dateTime .
+<ni:///sha-256;vD5lDzMXWqXuSdhQH4iWI9r7f5fU2QyLZkUU4qHXXEI> a prov:Entity .
+_:5bebb7555dd43d068e40377b45b2b9ef a prov:Activity ;
+	prov:used <ni:///sha-256;vD5lDzMXWqXuSdhQH4iWI9r7f5fU2QyLZkUU4qHXXEI> ;
+	prov:qualifiedAssociation _:8f998fdae6c1a1852a78650cae8a361 .
+_:8f998fdae6c1a1852a78650cae8a361 prov:hadPlan _:54d55d9328e1b9500d5b469fd7818037 .
+_:54d55d9328e1b9500d5b469fd7818037 a prov:Plan ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "fhir-r4" ;
+	pav:version "0.1.0" .
+_:8f998fdae6c1a1852a78650cae8a361 prov:agent _:18938cfe23c4340daed5f057efed912f .
+_:18938cfe23c4340daed5f057efed912f a prov:SoftwareAgent ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Cascade Bridge for Rust" ;
+	pav:version "0.1.0" .

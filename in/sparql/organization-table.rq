@@ -19,7 +19,13 @@ PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # exactly one Organization holds its key in its scope. A reference is a row
 # whether it resolves or not.
 #
-# Each Organization with an identifier organization.rq can name it by is a row
+# An Organization from a server, one standing at the top of an entry of a
+# document whose server is known, with an id and a fullUrl that is no urn:uuid,
+# as record.rq names a record from its server, is a record whatever names it:
+# organization-from-server.rq names it by its server and id. It is a row with
+# that id, and never a row of an identifier to name it by.
+#
+# Each other Organization with an identifier organization.rq can name it by is a row
 # too, with that identifier and its place in the document, so two Organizations
 # naming one record can tell which of them gives its version. The identifier is
 # picked as cascade-vocabulary's decisions/naming.md says: a system urn:oid: and
@@ -49,11 +55,14 @@ CONSTRUCT {
     fhirr4:organizationIdentifierSystem ?identifierSystem ;
     fhirr4:organizationIdentifierValue ?identifierValue ;
     fhirr4:organizationPlace ?place .
+  ?serverRow fhirr4:organizationAt ?pointer ;
+    fhirr4:organizationIdOnServer ?organizationId .
   ?contentRow fhirr4:organizationAt ?pointer ;
     fhirr4:organizationContent ?item .
 }
 WHERE {
   bridge:thisRecord bridge:selector ?recordSelector .
+  OPTIONAL { bridge:thisDocument cascade:serverBaseUrl ?server }
   ?root a fx:root .
   { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
   UNION
@@ -68,9 +77,16 @@ WHERE {
   }
   BIND (COALESCE(?contained, ?top) AS ?resource)
   BIND (CONCAT(?recordSelector, ?topStep, ?containedStep) AS ?pointer)
+  OPTIONAL { ?resource xyz:resourceType "Organization" ; xyz:id ?organizationId }
+  OPTIONAL { ?root xyz:fullUrl ?entryUrl }
   {
     ?resource xyz:resourceType "Organization" ;
       xyz:id ?id .
+  }
+  UNION
+  {
+    ?resource xyz:resourceType "Organization" .
+    BIND ("server" AS ?serverBranch)
   }
   UNION
   {
@@ -179,8 +195,11 @@ WHERE {
   BIND (IF(BOUND(?contained), STRAFTER(STR(?containedSlot), "#_"), "0") AS ?containedAt)
   BIND (IF(BOUND(?identifierSystem), CONCAT(SUBSTR("0000000000", STRLEN(?entryAt) + 1), ?entryAt,
                                              SUBSTR("0000000000", STRLEN(?containedAt) + 1), ?containedAt), 1/0) AS ?place)
+  BIND (BOUND(?server) && BOUND(?organizationId) && !BOUND(?contained) && !STRSTARTS(COALESCE(?entryUrl, ""), "urn:uuid:")
+        AS ?fromServer)
   BIND (IF(BOUND(?key), BNODE(), 1/0) AS ?keyRow)
   BIND (IF(BOUND(?target), BNODE(), 1/0) AS ?referenceRow)
-  BIND (IF(BOUND(?place), BNODE(), 1/0) AS ?namedRow)
+  BIND (IF(BOUND(?place) && !?fromServer, BNODE(), 1/0) AS ?namedRow)
+  BIND (IF(BOUND(?serverBranch) && ?fromServer, BNODE(), 1/0) AS ?serverRow)
   BIND (IF(BOUND(?item), BNODE(), 1/0) AS ?contentRow)
 }
