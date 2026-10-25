@@ -1,0 +1,39 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "https://fhir.example.org/r4/Organization/org-lab-1",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-lab-1",
+        "meta": {
+          "versionId": "3",
+          "lastUpdated": "2026-09-30T08:00:00Z"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "1234567893"
+          },
+          {
+            "system": "https://fhir.example.org/r4/organization-codes",
+            "value": "LAB-1"
+          }
+        ],
+        "name": "Example Reference Laboratory",
+        "address": [
+          {
+            "line": [
+              "12 Harbour Road",
+              "Suite 4"
+            ],
+            "city": "Bellingham",
+            "state": "WA",
+            "postalCode": "98225"
+          }
+        ]
+      }
+    }
+  ]
+}

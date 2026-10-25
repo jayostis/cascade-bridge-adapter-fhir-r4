@@ -20,7 +20,9 @@ _:950513eef5978d03015890273ab3e750 bridge:arrivedAs <ni:///sha-256;bQz-pMWUgpURx
 _:f99eacd15fa14f7c735e277099a2b00 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/1" .
-<urn:uuid:aa14ac09-843c-8ff4-8ea4-fb0df4295fff> a cascade:Organization .
+<urn:uuid:aa14ac09-843c-8ff4-8ea4-fb0df4295fff> a cascade:Organization ;
+	cascade:sourceUrl <http://example.org/fhir/Organization/ExampleLab> ;
+	cascade:sourceRecordId "ExampleLab" .
 <ni:///sha-256;cMgFVmt_915jU552MXZjoz54AGNtS5oPYzOR0zOV8nQ> prov:specializationOf <urn:uuid:aa14ac09-843c-8ff4-8ea4-fb0df4295fff> .
 _:ca6897ef3405f239be150f9aa74d0c15 bridge:arrivedAs <ni:///sha-256;cMgFVmt_915jU552MXZjoz54AGNtS5oPYzOR0zOV8nQ> .
 <ni:///sha-256;cMgFVmt_915jU552MXZjoz54AGNtS5oPYzOR0zOV8nQ> foaf:name "Some lab" .

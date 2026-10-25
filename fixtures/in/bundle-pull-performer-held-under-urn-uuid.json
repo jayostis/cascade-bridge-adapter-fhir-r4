@@ -1,0 +1,57 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:3c7e9a41-5b2d-4f86-9e1a-7d4c2b8f6a05",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-lab-1",
+        "name": "Example Reference Laboratory"
+      }
+    },
+    {
+      "fullUrl": "https://fhir.example.org/r4/Observation/obs-potassium-6",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "obs-potassium-6",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2823-3",
+              "display": "Potassium [Moles/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Potassium"
+        },
+        "subject": {
+          "reference": "Patient/pat-1"
+        },
+        "effectiveDateTime": "2026-09-29T07:30:00Z",
+        "performer": [
+          {
+            "reference": "Organization/org-lab-1"
+          }
+        ],
+        "valueQuantity": {
+          "value": 4.1,
+          "unit": "mmol/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "mmol/L"
+        }
+      }
+    }
+  ]
+}

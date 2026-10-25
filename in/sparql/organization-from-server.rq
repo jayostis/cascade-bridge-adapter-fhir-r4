@@ -16,11 +16,15 @@ PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # Organization with its id, which repeated-id-findings.rq reports and which is
 # then no record. Its version carries what organization.rq writes of one, and
 # its arrival the resource's version and change time, as record.rq writes them.
+# Like every record from a server, it states its address on the server and its
+# id, as record.rq writes them.
 # A document's Composition naming it as custodian or author names its record
 # once in each role.
 
 CONSTRUCT {
-  ?organization a cascade:Organization .
+  ?organization a cascade:Organization ;
+    cascade:sourceUrl ?sourceUrl ;
+    cascade:sourceRecordId ?input3 .
   ?attributing prov:qualifiedAttribution ?attribution .
   ?attribution prov:agent ?organization ;
     prov:hadRole ?role .
@@ -62,6 +66,7 @@ WHERE {
         AS ?variant)
   BIND (IRI(CONCAT("urn:uuid:", SUBSTR(?hash, 1, 8), "-", SUBSTR(?hash, 9, 4), "-8", SUBSTR(?hash, 14, 3), "-", ?variant,
                    SUBSTR(?hash, 18, 3), "-", SUBSTR(?hash, 21, 12))) AS ?organization)
+  BIND (IRI(CONCAT(?input1, "/Organization/", ?input3)) AS ?sourceUrl)
   BIND (IRI(CONCAT("urn:cascade:version-at:", SHA256(?pointer))) AS ?resourceVersion)
   OPTIONAL { ?resource xyz:meta ?meta . ?meta xyz:versionId ?writtenVersionId }
   OPTIONAL { ?resource xyz:meta ?updatedMeta . ?updatedMeta xyz:lastUpdated ?updated }

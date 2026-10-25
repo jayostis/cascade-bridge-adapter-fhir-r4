@@ -55,7 +55,9 @@ known holds at its top, with an `id` and a `fullUrl` that is no `urn:uuid:`, as
 a record from a server is told apart (see Names), is a record whatever names it,
 as a pull holds one: named by the vocabulary's `OrganizationNamingRule` from the
 server and its `id`, its version carrying what any organization's does, its
-arrival its `meta.versionId` and `meta.lastUpdated`. A document naming it as
+arrival its `meta.versionId` and `meta.lastUpdated`, and it states its
+`cascade:sourceUrl` and `cascade:sourceRecordId` as any record from a server
+does. A document naming it as
 custodian or author names that record. Two entries holding an `Organization`
 with one `id` are no record, and each a finding. A lab result from a server is
 attributed to the one `Organization` its `performer`s name, by
@@ -63,7 +65,8 @@ attributed to the one `Organization` its `performer`s name, by
 `prov:wasAttributedTo`: that organization's record from the server, whether or
 not the document holds it, so a pull fetching it later joins it by name. A
 reference made from an entry whose `fullUrl` is a `urn:uuid:`, or to an
-`Organization` held under one, names none; performers naming two
+`Organization` held under one, or to an `id` two entries hold an
+`Organization` under, names none; performers naming two
 `Organization`s name none, and each performer is a finding; a performer of
 another type is not read. The performing organization is on the version, so a
 pull naming another leaves the record's name as it was.

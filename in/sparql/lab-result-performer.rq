@@ -15,7 +15,8 @@ PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # A performer names one by a reference Organization/<id>, or the server's base,
 # "/" and that, a version's /_history/ dropped. As record.rq reads a reference
 # to a Patient, a reference made from an entry whose fullUrl is a urn:uuid, or
-# to an Organization held under one, names none. Performers that name more than
+# to an Organization held under one, names none, and so does one to an id two
+# entries hold an Organization under, which names no record. Performers that name more than
 # one Organization leave the result attributed to none, which
 # lab-result-findings.rq reports; a performer of another type is not read.
 
@@ -67,6 +68,15 @@ WHERE {
       fhirr4:resourceId ?input3 ;
       fhirr4:fullUrl ?urnOrganizationUrl .
     FILTER (STRSTARTS(?urnOrganizationUrl, "urn:uuid:"))
+  }
+  FILTER NOT EXISTS {
+    ?heldOnce fhirr4:resourceType "Organization" ;
+      fhirr4:resourceId ?input3 ;
+      fhirr4:heldAt ?onceAt .
+    ?heldTwice fhirr4:resourceType "Organization" ;
+      fhirr4:resourceId ?input3 ;
+      fhirr4:heldAt ?twiceAt .
+    FILTER (?onceAt != ?twiceAt)
   }
   BIND ("Organization" AS ?input2)
   BIND (SHA256(CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|https://ns.cascadeprotocol.org/cascade#OrganizationNamingRule",
