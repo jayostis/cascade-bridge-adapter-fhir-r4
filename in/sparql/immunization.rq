@@ -9,8 +9,8 @@ PREFIX cascade:  <https://ns.cascadeprotocol.org/cascade#>
 PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 PREFIX foaf:     <http://xmlns.com/foaf/0.1/>
 
-# A date FHIR writes with less than a day's precision fits no Cascade date, and
-# is not carried.
+# A date is typed by the precision FHIR wrote it to: a year is an xsd:gYear, a
+# year and month an xsd:gYearMonth, a day an xsd:date, a time an xsd:dateTime.
 
 CONSTRUCT {
   ?version ?p ?o .
@@ -67,8 +67,10 @@ WHERE {
   {
     ?resource xyz:occurrenceDateTime ?when .
     BIND (cascade:vaccinationOccurrenceTime AS ?p)
-    BIND (IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"), STRDT(?when, xsd:date),
-             IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T"), STRDT(?when, xsd:dateTime), 1/0)) AS ?o)
+    BIND (IF(REGEX(?when, "^[0-9]{4}$"), STRDT(?when, xsd:gYear),
+             IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}$"), STRDT(?when, xsd:gYearMonth),
+             IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"), STRDT(?when, xsd:date),
+             IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T"), STRDT(?when, xsd:dateTime), 1/0)))) AS ?o)
   }
   UNION
   {

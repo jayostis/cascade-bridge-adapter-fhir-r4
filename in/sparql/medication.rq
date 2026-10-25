@@ -24,8 +24,9 @@ PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # source marked userSelected is the selected code, the first such carried one.
 # Every other value is single, so each is bound beside the others rather than
 # in a branch of its own, and a medication stating nothing still states its
-# intent. A date FHIR writes with less than a day's precision fits no Cascade
-# date, and is not carried.
+# intent. A date is typed by the precision FHIR wrote it to: a year is an
+# xsd:gYear, a year and month an xsd:gYearMonth, a day an xsd:date, a time an
+# xsd:dateTime.
 
 CONSTRUCT {
   ?version cascade:prescribedOrReported ?intent ;
@@ -156,14 +157,20 @@ WHERE {
   OPTIONAL { ?resource xyz:effectivePeriod ?startPeriod . ?startPeriod xyz:start ?periodStart }
   OPTIONAL { ?resource xyz:authoredOn ?authored }
   BIND (COALESCE(?effective, ?periodStart) AS ?started)
-  BIND (IF(REGEX(?started, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"), STRDT(?started, xsd:date),
-           IF(REGEX(?started, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T"), STRDT(?started, xsd:dateTime), 1/0)) AS ?startDate)
-  BIND (IF(REGEX(?authored, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"), STRDT(?authored, xsd:date),
-           IF(REGEX(?authored, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T"), STRDT(?authored, xsd:dateTime), 1/0)) AS ?writtenDate)
+  BIND (IF(REGEX(?started, "^[0-9]{4}$"), STRDT(?started, xsd:gYear),
+           IF(REGEX(?started, "^[0-9]{4}-[0-9]{2}$"), STRDT(?started, xsd:gYearMonth),
+           IF(REGEX(?started, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"), STRDT(?started, xsd:date),
+           IF(REGEX(?started, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T"), STRDT(?started, xsd:dateTime), 1/0)))) AS ?startDate)
+  BIND (IF(REGEX(?authored, "^[0-9]{4}$"), STRDT(?authored, xsd:gYear),
+           IF(REGEX(?authored, "^[0-9]{4}-[0-9]{2}$"), STRDT(?authored, xsd:gYearMonth),
+           IF(REGEX(?authored, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"), STRDT(?authored, xsd:date),
+           IF(REGEX(?authored, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T"), STRDT(?authored, xsd:dateTime), 1/0)))) AS ?writtenDate)
 
   OPTIONAL { ?resource xyz:effectivePeriod ?endPeriod . ?endPeriod xyz:end ?ended }
-  BIND (IF(REGEX(?ended, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"), STRDT(?ended, xsd:date),
-           IF(REGEX(?ended, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T"), STRDT(?ended, xsd:dateTime), 1/0)) AS ?endDate)
+  BIND (IF(REGEX(?ended, "^[0-9]{4}$"), STRDT(?ended, xsd:gYear),
+           IF(REGEX(?ended, "^[0-9]{4}-[0-9]{2}$"), STRDT(?ended, xsd:gYearMonth),
+           IF(REGEX(?ended, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"), STRDT(?ended, xsd:date),
+           IF(REGEX(?ended, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T"), STRDT(?ended, xsd:dateTime), 1/0)))) AS ?endDate)
 
   OPTIONAL {
     ?resource ?dosageMember ?dosages .

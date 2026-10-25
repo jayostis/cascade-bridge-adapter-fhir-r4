@@ -25,8 +25,10 @@ PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # but every LOINC code its concept carries: the vocabulary takes one test code
 # per coding, and a result shares any of them with the same result elsewhere.
 # The time a result was issued is not when it was performed, and is not
-# carried. A date FHIR writes with less than a day's precision fits no Cascade
-# date, and is not carried.
+# carried. A date is typed by the precision FHIR wrote it to: a year is an
+# xsd:gYear, a year and month an xsd:gYearMonth, a day an xsd:date, a time an
+# xsd:dateTime. A value absent for a reason FHIR names is
+# absent-reasons.rq's.
 
 CONSTRUCT {
   ?version cascade:testName ?testName ;
@@ -217,8 +219,10 @@ WHERE {
   OPTIONAL { ?resource xyz:effectivePeriod ?period . ?period xyz:start ?periodStart }
   OPTIONAL { ?resource xyz:effectiveInstant ?instant }
   BIND (COALESCE(?effective, ?periodStart, ?instant) AS ?performed)
-  BIND (IF(REGEX(?performed, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"), STRDT(?performed, xsd:date),
-           IF(REGEX(?performed, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T"), STRDT(?performed, xsd:dateTime), 1/0)) AS ?performedDate)
+  BIND (IF(REGEX(?performed, "^[0-9]{4}$"), STRDT(?performed, xsd:gYear),
+           IF(REGEX(?performed, "^[0-9]{4}-[0-9]{2}$"), STRDT(?performed, xsd:gYearMonth),
+           IF(REGEX(?performed, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"), STRDT(?performed, xsd:date),
+           IF(REGEX(?performed, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T"), STRDT(?performed, xsd:dateTime), 1/0)))) AS ?performedDate)
 
   OPTIONAL { ?resource xyz:note ?notes . ?notes ?noteSlot ?noteItem . ?noteItem xyz:text ?note }
 
