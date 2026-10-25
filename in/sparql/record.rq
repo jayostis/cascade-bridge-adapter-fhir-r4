@@ -55,10 +55,10 @@ WHERE {
   OPTIONAL { ?top xyz:meta ?topUpdatedMeta . ?topUpdatedMeta xyz:lastUpdated ?topUpdated }
 
   BIND (BOUND(?topId) && BOUND(?server) && !STRSTARTS(COALESCE(?fullUrl, ""), "urn:uuid:") && NOT EXISTS {
-          ?sameId fhirr4:resourceType ?topType ;
-            fhirr4:resourceId ?topId ;
+          ?sameId fhirr4:resourceId ?sameIdValue ;
+            fhirr4:resourceType ?topType ;
             fhirr4:heldAt ?sameIdSelector .
-          FILTER (?sameIdSelector != ?recordSelector)
+          FILTER (?sameIdValue = ?topId && ?sameIdSelector != ?recordSelector)
         } AS ?fromServer)
   BIND (IF(?fromServer,
            CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|https://ns.cascadeprotocol.org/cascade#RecordFromServerNamingRule",

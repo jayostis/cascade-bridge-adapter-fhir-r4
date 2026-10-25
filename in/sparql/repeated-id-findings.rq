@@ -44,8 +44,8 @@ WHERE {
   { ?root xyz:fullUrl ?value . FILTER (STRSTARTS(?value, "urn:uuid:")) BIND ("fullUrl" AS ?held) }
   FILTER (IF(?held = "id",
              EXISTS {
-               ?sameId fhirr4:resourceType ?topType ;
-                 fhirr4:resourceId ?value ;
+               ?sameId fhirr4:resourceId ?value ;
+                 fhirr4:resourceType ?topType ;
                  fhirr4:heldAt ?sameIdSelector .
                FILTER (?sameIdSelector != ?recordSelector)
              },
