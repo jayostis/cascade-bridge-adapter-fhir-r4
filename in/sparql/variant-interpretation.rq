@@ -13,8 +13,8 @@ PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # The classification is the LOINC answer of the classification component, mapped
 # by vocab/fhir-acmg-classifications.ttl, and is carried only where the
 # interpretation states one classification. The day is that of the source's own
-# clock, as written: issued, else the effective time, and none where the time
-# has less than a day's precision.
+# clock, as written: issued, else the effective time; where it states no day,
+# its year or its month, typed by its precision as every date is.
 #
 # The variant is the record of the one Observation derivedFrom names, named as
 # record.rq names a record from the reference, in this document or not; a
@@ -96,8 +96,9 @@ WHERE {
   OPTIONAL { ?resource xyz:effectivePeriod ?period . ?period xyz:start ?periodStart }
   OPTIONAL { ?resource xyz:effectiveInstant ?instant }
   BIND (COALESCE(?issued, ?effective, ?periodStart, ?instant) AS ?interpreted)
-  BIND (IF(REGEX(?interpreted, "^[0-9]{4}-[0-9]{2}-[0-9]{2}(T|$)"),
-           STRDT(SUBSTR(?interpreted, 1, 10), xsd:date), 1/0) AS ?interpretedDate)
+  BIND (IF(REGEX(?interpreted, "^[0-9]{4}-[0-9]{2}-[0-9]{2}(T|$)"), STRDT(SUBSTR(?interpreted, 1, 10), xsd:date),
+           IF(REGEX(?interpreted, "^[0-9]{4}-[0-9]{2}$"), STRDT(?interpreted, xsd:gYearMonth),
+           IF(REGEX(?interpreted, "^[0-9]{4}$"), STRDT(?interpreted, xsd:gYear), 1/0))) AS ?interpretedDate)
 
   OPTIONAL {
     {

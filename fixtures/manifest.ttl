@@ -50,6 +50,12 @@
     <#lab-no-category-potassium>
     <#lab-troponin-below-detection>
     <#lab-potassium-approximate>
+    <#condition-onset-absent-for-reason>
+    <#lab-value-absent-for-reason>
+    <#patient-birth-year-and-month>
+    <#condition-onset-year-abatement-month>
+    <#condition-onset-to-the-minute>
+    <#lab-value-absent-reason-text-only>
     <#lab-titre-ratio>
     <#lab-urine-leukocytes-range>
     <#lab-hepatitis-b-surface-antigen-coded>
@@ -660,7 +666,7 @@
 
 <#bundle-genomics-interpretations> a bridge:IsomorphicConversionTest ;
   mf:name "bundle-genomics-interpretations" ;
-  rdfs:comment "Diagnostic Implications: a classification, a day written in the source's own offset, a link to the one variant, and each way an interpretation is a record without one of them: a text-only classification, two variants, a genotype, no derivedFrom, a derivedFrom with no reference, a variant outside the document, two different classifications; a variant beside a reference that is not read keeps its link." ;
+  rdfs:comment "Diagnostic Implications: a classification, a day written in the source's own offset, a date written to the year alone, an xsd:gYear, a link to the one variant, and each way an interpretation is a record without one of them: a text-only classification, two variants, a genotype, no derivedFrom, a derivedFrom with no reference, a variant outside the document, two different classifications; a variant beside a reference that is not read keeps its link." ;
   mf:action [
     bridge:input <in/bundle-genomics-interpretations.json> ;
     bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
@@ -1352,3 +1358,81 @@
     ]
   ] ;
   mf:result [ bridge:sameRecord false ] .
+
+<#condition-onset-year-abatement-month> a bridge:IsomorphicConversionTest ;
+  mf:name "condition-onset-year-abatement-month" ;
+  rdfs:comment "A Condition whose onset FHIR wrote to the year and its abatement to the month: each is typed by its precision, xsd:gYear and xsd:gYearMonth, never padded to a day." ;
+  mf:action [
+    bridge:input <in/condition-onset-year-abatement-month.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/condition-onset-year-abatement-month.ttl> ;
+    bridge:expectedFindings <findings/condition-onset-year-abatement-month.ttl>
+  ] .
+
+<#patient-birth-year-and-month> a bridge:IsomorphicConversionTest ;
+  mf:name "patient-birth-year-and-month" ;
+  rdfs:comment "A Patient whose birth date FHIR wrote to the month: an xsd:gYearMonth date of birth." ;
+  mf:action [
+    bridge:input <in/patient-birth-year-and-month.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/patient-birth-year-and-month.ttl> ;
+    bridge:expectedFindings <findings/patient-birth-year-and-month.ttl>
+  ] .
+
+<#lab-value-absent-for-reason> a bridge:IsomorphicConversionTest ;
+  mf:name "lab-value-absent-for-reason" ;
+  rdfs:comment "A laboratory Observation with no value and a dataAbsentReason of three codings: the data absent reason error and the NullFlavor OTH are carried, each as its code's IRI, on a node naming cascade:resultValueKind; the laboratory's own code is not, and is a finding." ;
+  mf:action [
+    bridge:input <in/lab-value-absent-for-reason.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/lab-value-absent-for-reason.ttl> ;
+    bridge:expectedFindings <findings/lab-value-absent-for-reason.ttl>
+  ] .
+
+<#condition-onset-absent-for-reason> a bridge:IsomorphicConversionTest ;
+  mf:name "condition-onset-absent-for-reason" ;
+  rdfs:comment "A Condition whose onset and abatement are absent, each with the data-absent-reason extension: the onset's asked-unknown is carried on a node naming cascade:onsetDate; the abatement's never-said is no code of the CodeSystem, is not carried, and is a finding." ;
+  mf:action [
+    bridge:input <in/condition-onset-absent-for-reason.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/condition-onset-absent-for-reason.ttl> ;
+    bridge:expectedFindings <findings/condition-onset-absent-for-reason.ttl>
+  ] .
+
+<#lab-value-absent-reason-text-only> a bridge:IsomorphicConversionTest ;
+  mf:name "lab-value-absent-reason-text-only" ;
+  rdfs:comment "A laboratory Observation with no value and a dataAbsentReason of text alone: no reason is carried, and the text is a finding." ;
+  mf:action [
+    bridge:input <in/lab-value-absent-reason-text-only.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/lab-value-absent-reason-text-only.ttl> ;
+    bridge:expectedFindings <findings/lab-value-absent-reason-text-only.ttl>
+  ] .
+
+<#condition-onset-to-the-minute> a bridge:IsomorphicConversionTest ;
+  mf:name "condition-onset-to-the-minute" ;
+  rdfs:comment "A Condition whose onset is written to the minute, as C-CDA on FHIR writes a time, and its abatement to the second: the onset is padded to the second beside a cascade:PaddedDateTime node keeping what was written; the abatement is as written." ;
+  mf:action [
+    bridge:input <in/condition-onset-to-the-minute.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/condition-onset-to-the-minute.ttl> ;
+    bridge:expectedFindings <findings/condition-onset-to-the-minute.ttl>
+  ] .

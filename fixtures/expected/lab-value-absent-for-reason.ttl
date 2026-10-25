@@ -1,0 +1,55 @@
+@prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix pav: <http://purl.org/pav/> .
+<ni:///sha-256;cTcaDSAs0EFolcjwjO3RIelB832FLnk6-nk0bXX0BIs> cascade:valueAbsentForReason <ni:///sha-256;cTcaDSAs0EFolcjwjO3RIelB832FLnk6-nk0bXX0BIs#absent-resultValueKind> .
+<ni:///sha-256;cTcaDSAs0EFolcjwjO3RIelB832FLnk6-nk0bXX0BIs#absent-resultValueKind> cascade:absentValueProperty cascade:resultValueKind ;
+	cascade:absentReasonCode <https://ns.cascadeprotocol.org/codes/nullflavor/OTH> , <https://ns.cascadeprotocol.org/codes/data-absent-reason/error> .
+<ni:///sha-256;cTcaDSAs0EFolcjwjO3RIelB832FLnk6-nk0bXX0BIs> cascade:testName "Potassium" ;
+	cascade:testCode <http://loinc.org/rdf/2823-3> ;
+	cascade:resultClinicallyRelevantTime "2026-08-04T08:15:00Z"^^xsd:dateTime ;
+	cascade:workflowStatus "final" .
+<urn:uuid:b313a403-6d77-8bff-805d-9854ec6968fa> a cascade:LaboratoryTestResult ;
+	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Observation/obs-potassium-absent-1> ;
+	cascade:sourceRecordId "obs-potassium-absent-1" .
+<ni:///sha-256;cTcaDSAs0EFolcjwjO3RIelB832FLnk6-nk0bXX0BIs> prov:specializationOf <urn:uuid:b313a403-6d77-8bff-805d-9854ec6968fa> ;
+	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
+_:b5716a10742f684d9d224f8c4a11cb12 bridge:arrivedAs <ni:///sha-256;cTcaDSAs0EFolcjwjO3RIelB832FLnk6-nk0bXX0BIs> ;
+	oa:hasSelector _:1e006b0330a55e4c0f1d2b14b25a8daa ;
+	oa:hasSource <ni:///sha-256;LTfCYf1CqWmRIZ5A5M3OqxqQfbWkhkZBpoKhFaxMMAI> ;
+	prov:wasDerivedFrom <ni:///sha-256;LTfCYf1CqWmRIZ5A5M3OqxqQfbWkhkZBpoKhFaxMMAI> ;
+	prov:wasGeneratedBy _:d24d20e761ee7840c10a0d4ba0a81d83 .
+_:1e006b0330a55e4c0f1d2b14b25a8daa a oa:FragmentSelector ;
+	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "" .
+<ni:///sha-256;LTfCYf1CqWmRIZ5A5M3OqxqQfbWkhkZBpoKhFaxMMAI> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
+	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
+_:7bf35382bf19b256d3e6baf1a37e9190 prov:agent _:157fef856ec24d355b5c5cb5fdafa0 .
+_:157fef856ec24d355b5c5cb5fdafa0 <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:7bf35382bf19b256d3e6baf1a37e9190 prov:hadRole cascade:AuthorRole .
+<ni:///sha-256;LTfCYf1CqWmRIZ5A5M3OqxqQfbWkhkZBpoKhFaxMMAI> prov:qualifiedAttribution _:7bf35382bf19b256d3e6baf1a37e9190 .
+_:b754f4af584af0245989d6a9423df321 prov:agent _:e125d6c45f10a44bf57b0d1331c01582 .
+_:e125d6c45f10a44bf57b0d1331c01582 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
+_:b754f4af584af0245989d6a9423df321 prov:hadRole cascade:TransmitterRole .
+<ni:///sha-256;LTfCYf1CqWmRIZ5A5M3OqxqQfbWkhkZBpoKhFaxMMAI> prov:qualifiedAttribution _:b754f4af584af0245989d6a9423df321 ;
+	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
+	cascade:authenticatedAsProxy false ;
+	cascade:sourceFormatVersion "4.0.1" .
+_:d24d20e761ee7840c10a0d4ba0a81d83 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
+	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
+<ni:///sha-256;LTfCYf1CqWmRIZ5A5M3OqxqQfbWkhkZBpoKhFaxMMAI> a prov:Entity .
+_:d24d20e761ee7840c10a0d4ba0a81d83 a prov:Activity ;
+	prov:used <ni:///sha-256;LTfCYf1CqWmRIZ5A5M3OqxqQfbWkhkZBpoKhFaxMMAI> ;
+	prov:qualifiedAssociation _:5e46a7c8086b3c2f73f7e7934992e4aa .
+_:5e46a7c8086b3c2f73f7e7934992e4aa prov:hadPlan _:88396e1244ddd3fd26e14969e8bd4564 .
+_:88396e1244ddd3fd26e14969e8bd4564 a prov:Plan ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "fhir-r4" ;
+	pav:version "0.1.0" .
+_:5e46a7c8086b3c2f73f7e7934992e4aa prov:agent _:4f655fa0fc897ba009f0aba007bfc068 .
+_:4f655fa0fc897ba009f0aba007bfc068 a prov:SoftwareAgent ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Cascade Bridge for Rust" ;
+	pav:version "0.1.0" .
