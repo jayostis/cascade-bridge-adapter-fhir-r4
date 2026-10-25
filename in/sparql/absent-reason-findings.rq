@@ -13,7 +13,8 @@ PREFIX void:    <http://rdfs.org/ns/void#>
 
 # Each reason a value is absent that absent-reasons.rq does not carry: a coding
 # of a lab result's dataAbsentReason in a system other than FHIR's data absent
-# reasons and v3 NullFlavor, or with a code its system does not define, and a
+# reasons and v3 NullFlavor, or with a code its system does not define, a lab
+# result's dataAbsentReason given as text alone, valued by its text, and a
 # data-absent-reason extension's code the CodeSystem does not define.
 
 CONSTRUCT {
@@ -58,6 +59,13 @@ WHERE {
     OPTIONAL { ?coding xyz:system ?system }
     OPTIONAL { ?coding xyz:code ?value }
     BIND (CONCAT("/dataAbsentReason/coding/", STR(xsd:integer(STRAFTER(STR(?codingSlot), "#_")) - 1)) AS ?tail)
+  }
+  UNION
+  {
+    ?lab fhirr4:labResultAt ?labPointer .
+    ?resource xyz:dataAbsentReason ?concept . ?concept xyz:text ?value .
+    FILTER NOT EXISTS { ?concept xyz:coding ?anyCoding }
+    BIND ("/dataAbsentReason/text" AS ?tail)
   }
   UNION
   {

@@ -5462,8 +5462,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dataAbsentReason/text" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A reason a value is absent is carried as its code's IRI; no Cascade predicate carries a reason's own words." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/_birthDate" ;
@@ -5608,8 +5608,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dataAbsentReason/text" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A reason a value is absent is carried as its code's IRI; no Cascade predicate carries a reason's own words." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/_birthDate" ;
@@ -5754,8 +5754,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dataAbsentReason/text" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A reason a value is absent is carried as its code's IRI; no Cascade predicate carries a reason's own words." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/_birthDate" ;
@@ -5900,8 +5900,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dataAbsentReason/text" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A reason a value is absent is carried as its code's IRI; no Cascade predicate carries a reason's own words." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/_birthDate" ;

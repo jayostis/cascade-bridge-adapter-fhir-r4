@@ -98,8 +98,9 @@ category makes them.
   [mapped to the five ACMG/AMP classifications](../vocab/fhir-acmg-classifications.ttl):
   any other answer, text alone, or two different answers state none. Its date is
   the day of `issued`, else of `effective[x]`, as the source wrote it in its own
-  offset, so `2024-03-21T23:30:00-07:00` is 2024-03-21; a time with less than a
-  day's precision is none.
+  offset, so `2024-03-21T23:30:00-07:00` is 2024-03-21; a date written to the
+  year or the month is that year or month, `xsd:gYear` or `xsd:gYearMonth`, as
+  every partial date is.
 - **Its variant** is the one `Observation` its `derivedFrom` names, by a
   `urn:uuid:` fullUrl, by `Observation/<id>` on a known server or by an absolute
   URL. The interpretation points to that variant's record, named as `cascade:patient`
@@ -216,7 +217,11 @@ says, read on 2026-10-24:
 - **A date is typed by the precision FHIR wrote it to.** A `date` or `dateTime`
   is "YYYY, YYYY-MM, or YYYY-MM-DD", or a time ([datatypes](https://hl7.org/fhir/R4/datatypes.html)):
   `2019` is an `xsd:gYear`, `2019-03` an `xsd:gYearMonth`, a day an `xsd:date`
-  and a time an `xsd:dateTime`, as FHIR's own RDF types them. Nothing is padded.
+  and a time an `xsd:dateTime`, as FHIR's own RDF types them. Nothing is padded
+  but a time written to the minute, `2023-05-31T14:00-05:00`, as C-CDA on FHIR
+  writes one though R4 asks for seconds: it is held padded to the second,
+  `2023-05-31T14:00:00-05:00`, beside a `cascade:PaddedDateTime` node
+  `<version>#padded-` and the property's local name keeping what was written.
 - **A lab result's `dataAbsentReason`** stands for its value, which obs-6 says
   it has none of ([Observation](https://hl7.org/fhir/R4/observation-definitions.html)),
   and is a `cascade:ValueAbsentForReason` node of the version naming
@@ -224,7 +229,7 @@ says, read on 2026-10-24:
   [data absent reasons](https://terminology.hl7.org/CodeSystem-data-absent-reason.html)
   or [v3 NullFlavor](https://terminology.hl7.org/CodeSystem-v3-NullFlavor.html)
   is carried as its code's IRI, a code the CodeSystem defines only; any other
-  coding is not carried, and is a finding.
+  coding is not carried, and is a finding, as is a reason given as text alone.
 - **The [data-absent-reason extension](https://hl7.org/fhir/R4/extension-data-absent-reason.html)**
   on the `_` member of a date the adapter maps (`_birthDate`, `_onsetDateTime`,
   `_abatementDateTime`, `_occurrenceDateTime`, `_performedDateTime`,
