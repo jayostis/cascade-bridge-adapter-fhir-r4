@@ -613,6 +613,14 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/deceasedBoolean" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/deceasedDateTime" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/contained/derivedFrom" ;
   bridge:verdict bridge:consumed .
 
@@ -914,8 +922,7 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/gender" ;
-  bridge:verdict bridge:noHome ;
-  bridge:namesGap fhirr4:patientGender .
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/generalPractitioner" ;
@@ -958,8 +965,7 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/intent" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A request is a prescription whatever its intent: its cascade:prescribedOrReported is stated from the resource type." .
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/interpretation" ;
@@ -1299,6 +1305,18 @@
   bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/reportedBoolean" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/reportedReference" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/reportedReference/reference" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/contained/requester" ;
   bridge:verdict bridge:ignored ;
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
@@ -1602,6 +1620,14 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/criticality" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/deceasedBoolean" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/deceasedDateTime" ;
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
@@ -1910,8 +1936,7 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/gender" ;
-  bridge:verdict bridge:noHome ;
-  bridge:namesGap fhirr4:patientGender .
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/generalPractitioner" ;
@@ -1954,8 +1979,7 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/intent" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A request is a prescription whatever its intent: its cascade:prescribedOrReported is stated from the resource type." .
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/interpretation" ;
@@ -2292,6 +2316,18 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/referenceRange/type/coding/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/reportedBoolean" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/reportedReference" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/reportedReference/reference" ;
   bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
@@ -2934,6 +2970,14 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/deceasedBoolean" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/deceasedDateTime" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/derivedFrom" ;
   bridge:verdict bridge:consumed .
 
@@ -3235,8 +3279,7 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/gender" ;
-  bridge:verdict bridge:noHome ;
-  bridge:namesGap fhirr4:patientGender .
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/generalPractitioner" ;
@@ -3279,8 +3322,7 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/intent" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A request is a prescription whatever its intent: its cascade:prescribedOrReported is stated from the resource type." .
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/interpretation" ;
@@ -3620,6 +3662,18 @@
   bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/reportedBoolean" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/reportedReference" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/reportedReference/reference" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/requester" ;
   bridge:verdict bridge:ignored ;
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
@@ -3926,6 +3980,14 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/deceasedBoolean" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/deceasedDateTime" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/derivedFrom" ;
   bridge:verdict bridge:consumed .
 
@@ -4227,8 +4289,7 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/gender" ;
-  bridge:verdict bridge:noHome ;
-  bridge:namesGap fhirr4:patientGender .
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/generalPractitioner" ;
@@ -4271,8 +4332,7 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/intent" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A request is a prescription whatever its intent: its cascade:prescribedOrReported is stated from the resource type." .
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/interpretation" ;
@@ -4609,6 +4669,18 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/referenceRange/type/coding/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/reportedBoolean" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/reportedReference" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/reportedReference/reference" ;
   bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
@@ -5487,6 +5559,23 @@
   bridge:namesGap fhirr4:absentReasonNotCarried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/_gender" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_gender/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_gender/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_gender/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/_onsetDateTime" ;
   bridge:verdict bridge:consumed .
 
@@ -5629,6 +5718,23 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/_birthDate/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_gender" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_gender/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_gender/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_gender/extension/valueCode" ;
   bridge:verdict bridge:carriedInPart ;
   bridge:namesGap fhirr4:absentReasonNotCarried .
 
@@ -5779,6 +5885,23 @@
   bridge:namesGap fhirr4:absentReasonNotCarried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_gender" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_gender/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_gender/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_gender/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/_onsetDateTime" ;
   bridge:verdict bridge:consumed .
 
@@ -5921,6 +6044,23 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/_birthDate/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_gender" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_gender/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_gender/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_gender/extension/valueCode" ;
   bridge:verdict bridge:carriedInPart ;
   bridge:namesGap fhirr4:absentReasonNotCarried .
 

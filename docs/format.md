@@ -87,7 +87,19 @@ Every RxNorm and NDC coding of the drug is carried, and the first of them
 `medicationCodeableConcept` marks `userSelected` is the medication's selected
 code. A `userSelected` on a referenced `Medication`'s coding is not read.
 A request's `authoredOn` is the day the prescription was written, never the
-start of use, which only `effective[x]` gives.
+start of use, which only `effective[x]` gives. A `MedicationStatement` is
+reported use. A `MedicationRequest` is too where its `reported[x]` says the
+source reported it rather than ordered it (`reportedBoolean` true, or a
+`reportedReference` to who reported it), and is otherwise prescribed; only a
+prescribed request's `intent`
+([medicationrequest-intent](https://hl7.org/fhir/R4/valueset-medicationrequest-intent.html),
+read on 2026-10-29) is carried, since a proposal or a plan is not an order.
+
+A `Patient`'s `gender` is carried as one of the four codes of
+[administrative-gender](https://hl7.org/fhir/R4/valueset-administrative-gender.html),
+read on 2026-10-29, and any other value is a finding. `deceasedBoolean` says
+whether the person died; a `deceasedDateTime` says that they died and when. A
+Patient with neither says nothing about death.
 
 A resource's `id` is the server's logical id, unique for its type on that
 server. It is optional: a resource written by a client, or assembled into an

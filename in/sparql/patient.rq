@@ -8,10 +8,20 @@ PREFIX foaf:     <http://xmlns.com/foaf/0.1/>
 
 # Only the first name a Patient states is carried: the vocabulary holds one.
 # A birth date is typed by the precision FHIR wrote it to: a year is an
-# xsd:gYear, a year and month an xsd:gYearMonth, a day an xsd:date.
+# xsd:gYear, a year and month an xsd:gYearMonth, a day an xsd:date. A gender is
+# carried only as one of the four codes its required binding allows; any other
+# is reported by patient-findings.rq. A death time says the person died, so it
+# states cascade:deceased true beside the date, typed as a birth date is or, a
+# time, as an xsd:dateTime; a time written to the minute, as C-CDA on FHIR
+# writes one, is padded to the second and keeps a cascade:PaddedDateTime node,
+# <version>#padded-dateOfDeath, holding what was written. A patient stating
+# neither deceased element states nothing about death, never that they live.
 
 CONSTRUCT {
   ?version ?p ?o .
+  ?version cascade:paddedDateTime ?paddedNode .
+  ?paddedNode cascade:paddedDateTimeProperty ?p ;
+    cascade:writtenDate ?writtenTime .
 }
 WHERE {
   FILTER NOT EXISTS {
@@ -57,4 +67,35 @@ WHERE {
              IF(REGEX(?birthDate, "^[0-9]{4}-[0-9]{2}$"), STRDT(?birthDate, xsd:gYearMonth),
              IF(REGEX(?birthDate, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"), STRDT(?birthDate, xsd:date), 1/0))) AS ?o)
   }
+  UNION
+  {
+    ?resource xyz:gender ?o .
+    FILTER (?o IN ("male", "female", "other", "unknown"))
+    BIND (cascade:administrativeGender AS ?p)
+  }
+  UNION
+  {
+    ?resource xyz:deceasedBoolean ?deceased .
+    FILTER (?deceased IN ("true", "false"))
+    BIND (cascade:deceased AS ?p)
+    BIND (STRDT(?deceased, xsd:boolean) AS ?o)
+  }
+  UNION
+  {
+    ?resource xyz:deceasedDateTime ?diedAt .
+    BIND (cascade:deceased AS ?p)
+    BIND (true AS ?o)
+  }
+  UNION
+  {
+    ?resource xyz:deceasedDateTime ?when .
+    BIND (cascade:dateOfDeath AS ?p)
+    BIND (IF(REGEX(?when, "^[0-9]{4}$"), STRDT(?when, xsd:gYear),
+             IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}$"), STRDT(?when, xsd:gYearMonth),
+             IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"), STRDT(?when, xsd:date),
+             IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(Z|[+-][0-9]{2}:[0-9]{2})?$"), STRDT(CONCAT(SUBSTR(?when, 1, 16), ":00", SUBSTR(?when, 17)), xsd:dateTime),
+             IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T"), STRDT(?when, xsd:dateTime), 1/0))))) AS ?o)
+    BIND (IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(Z|[+-][0-9]{2}:[0-9]{2})?$"), ?when, 1/0) AS ?writtenTime)
+  }
+  BIND (IF(BOUND(?writtenTime), IRI(CONCAT(STR(?version), "#padded-", STRAFTER(STR(?p), "#"))), 1/0) AS ?paddedNode)
 }

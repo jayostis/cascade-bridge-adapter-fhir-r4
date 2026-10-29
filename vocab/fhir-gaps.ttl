@@ -12,10 +12,11 @@ fhirr4:documentNotR4 a skos:Concept ;
   skos:broader bridge:valueNotMapped ;
   sh:resultSeverity sh:Warning .
 
-fhirr4:patientGender a skos:Concept ;
-  skos:prefLabel "A patient carries an administrative gender, and no Cascade predicate carries it."@en ;
+fhirr4:administrativeGenderNotMapped a skos:Concept ;
+  skos:prefLabel "A patient's gender is not one of the four codes of FHIR's administrative gender, which its binding requires, so no gender is carried."@en ;
   skos:inScheme fhirr4:gaps ;
-  skos:broader bridge:noPredicate .
+  skos:broader bridge:valueNotMapped ;
+  sh:resultSeverity sh:Warning .
 
 fhirr4:recordedDate a skos:Concept ;
   skos:prefLabel "An allergy or a condition carries the date it was first recorded, and no Cascade predicate carries it."@en ;

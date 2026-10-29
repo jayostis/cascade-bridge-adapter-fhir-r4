@@ -9,8 +9,11 @@ PREFIX void:     <http://rdfs.org/ns/void#>
 PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 
 # A prescription and an entry on a list of what the person takes are one kind,
-# told apart by their intent, which the resource type decides: a request is
-# prescribed whatever its intent element says.
+# told apart by cascade:prescribedOrReported. A MedicationStatement is reported
+# use, and so is a MedicationRequest whose reported[x] says it was reported
+# rather than ordered: reportedBoolean true, or any reportedReference. Any other
+# request is prescribed, and only a prescribed one states its intent, one of
+# R4's eight codes as FHIR writes it; a code outside them states none.
 #
 # A drug named by reference is read from the Medication the reference resolves
 # to in the document, as medication-table.rq says. One that resolves to no one
@@ -37,6 +40,7 @@ CONSTRUCT {
     ?codeProperty ?codeIri ;
     cascade:userSelectedCode ?selectedCode ;
     cascade:workflowStatus ?status ;
+    cascade:medicationRequestIntent ?requestIntent ;
     cascade:medicationUseStartDate ?startDate ;
     cascade:prescriptionWrittenDate ?writtenDate ;
     cascade:medicationUseEndDate ?endDate ;
@@ -74,7 +78,14 @@ WHERE {
   FILTER (?type IN ("MedicationRequest", "MedicationStatement"))
   BIND (CONCAT(?recordSelector, ?topStep, ?containedStep) AS ?resourcePointer)
   BIND (IRI(CONCAT("urn:cascade:version-at:", SHA256(?resourcePointer))) AS ?version)
-  BIND (IF(?type = "MedicationRequest", "prescribed", "reportedUse") AS ?intent)
+  OPTIONAL { ?resource xyz:reportedBoolean ?reportedBoolean }
+  OPTIONAL { ?resource xyz:reportedReference ?reportedReference }
+  BIND (IF(?type = "MedicationRequest" && COALESCE(?reportedBoolean, "") != "true" && !BOUND(?reportedReference),
+           "prescribed", "reportedUse") AS ?intent)
+  OPTIONAL { ?resource xyz:intent ?statedIntent }
+  BIND (IF(?intent = "prescribed" && ?statedIntent IN ("proposal", "plan", "order", "original-order", "reflex-order",
+                                                       "filler-order", "instance-order", "option"),
+           ?statedIntent, 1/0) AS ?requestIntent)
 
   OPTIONAL {
     ?reference fhirr4:medicationReferenceFrom ?resourcePointer ;
