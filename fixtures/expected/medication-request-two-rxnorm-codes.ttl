@@ -3,28 +3,30 @@
 @prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;AZ5ca7t_eyVJ9zEojXQrSigPgdKvlFLpmZL-R72TkEc> cascade:prescribedOrReported "prescribed" ;
+<ni:///sha-256;RKx3cl3mnswm0sYPfNFW7fbIcU3zjLw1GN8TByb-fes> cascade:prescribedOrReported "prescribed" ;
 	cascade:drugName "Amlodipine 5 mg tablet" ;
 	cascade:ndcCode <https://ns.cascadeprotocol.org/codes/ndc11/00069153066> ;
 	cascade:workflowStatus "active" ;
+	cascade:medicationRequestIntent "order" ;
 	cascade:prescriptionWrittenDate "2026-03-10"^^xsd:date ;
 	cascade:dosage "Take 5 mg by mouth once daily for two weeks" ;
 	cascade:rxNormCode <https://ns.cascadeprotocol.org/codes/rxnorm/212549> , <https://ns.cascadeprotocol.org/codes/rxnorm/197361> .
-_:1e18688ca69df1e11c4e8fffa57378c0 bridge:arrivedAs <ni:///sha-256;AZ5ca7t_eyVJ9zEojXQrSigPgdKvlFLpmZL-R72TkEc> .
-<ni:///sha-256;AZ5ca7t_eyVJ9zEojXQrSigPgdKvlFLpmZL-R72TkEc> cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> ;
-	prov:specializationOf <urn:uuid:c03a321f-11c9-877c-b099-97c607e4a74e> .
-<urn:uuid:c03a321f-11c9-877c-b099-97c607e4a74e> cascade:sourceRecordId "medrx-amlodipine-2" ;
+<urn:uuid:c03a321f-11c9-877c-b099-97c607e4a74e> a cascade:PrescribedOrReportedMedication ;
 	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/MedicationRequest/medrx-amlodipine-2> ;
-	a cascade:PrescribedOrReportedMedication .
-_:1e18688ca69df1e11c4e8fffa57378c0 oa:hasSelector _:c0810a4754eb28f3ea06ed9e803e4861 ;
+	cascade:sourceRecordId "medrx-amlodipine-2" .
+<ni:///sha-256;RKx3cl3mnswm0sYPfNFW7fbIcU3zjLw1GN8TByb-fes> prov:specializationOf <urn:uuid:c03a321f-11c9-877c-b099-97c607e4a74e> ;
+	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
+_:49bc9d06aa34904b35d409766e4fa9d0 bridge:arrivedAs <ni:///sha-256;RKx3cl3mnswm0sYPfNFW7fbIcU3zjLw1GN8TByb-fes> ;
+	oa:hasSelector _:fd6ea85ffd1b52069636be4d43920cd1 ;
 	oa:hasSource <ni:///sha-256;VEtONQnRpYfpn4Rp7ACtzas_jYXuhZFk7gZHXCbFP6U> ;
 	prov:wasDerivedFrom <ni:///sha-256;VEtONQnRpYfpn4Rp7ACtzas_jYXuhZFk7gZHXCbFP6U> ;
 	prov:wasGeneratedBy _:da2040eb9ead971f0f9c80d7b1286101 .
-_:c0810a4754eb28f3ea06ed9e803e4861 a oa:FragmentSelector ;
-	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+_:fd6ea85ffd1b52069636be4d43920cd1 a oa:FragmentSelector ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;VEtONQnRpYfpn4Rp7ACtzas_jYXuhZFk7gZHXCbFP6U> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
 	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .

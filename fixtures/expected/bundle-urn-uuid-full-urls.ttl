@@ -4,35 +4,37 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;dMiqbanIpgeOliVC6_wafEaZ610cdMzCBBsqvw148Gc> foaf:familyName "Rivera" ;
+<ni:///sha-256;Zv8_-UkNMHzeYMDTRIl-85L1_kMuEvInDIiYADV3RVU> foaf:familyName "Rivera" ;
 	foaf:givenName "Alex" ;
-	cascade:dateOfBirth "1985-03-15"^^xsd:date .
-_:36c85afb27ee7a9cdc5cf8e6dbf175e5 bridge:arrivedAs <ni:///sha-256;dMiqbanIpgeOliVC6_wafEaZ610cdMzCBBsqvw148Gc> .
-<ni:///sha-256;dMiqbanIpgeOliVC6_wafEaZ610cdMzCBBsqvw148Gc> prov:specializationOf <urn:uuid:d52a6ad7-5dc6-8b04-9a9e-5363329c2f63> .
+	cascade:dateOfBirth "1985-03-15"^^xsd:date ;
+	cascade:administrativeGender "female" .
 <urn:uuid:d52a6ad7-5dc6-8b04-9a9e-5363329c2f63> a cascade:PatientProfile .
-_:36c85afb27ee7a9cdc5cf8e6dbf175e5 oa:hasSelector _:45f8949d68b61c89ff7442bb87748f3d ;
+<ni:///sha-256;Zv8_-UkNMHzeYMDTRIl-85L1_kMuEvInDIiYADV3RVU> prov:specializationOf <urn:uuid:d52a6ad7-5dc6-8b04-9a9e-5363329c2f63> .
+_:277021c05298a14d0e1d27f93e2d0ac1 bridge:arrivedAs <ni:///sha-256;Zv8_-UkNMHzeYMDTRIl-85L1_kMuEvInDIiYADV3RVU> ;
+	oa:hasSelector _:acf2cccdeb8323b0e13acc3dbc2e6806 ;
 	oa:hasSource <ni:///sha-256;duROgppKlCYfEsw0U0Pi6jQoP3LZRe2nR1Aot57BZZc> ;
 	prov:wasDerivedFrom <ni:///sha-256;duROgppKlCYfEsw0U0Pi6jQoP3LZRe2nR1Aot57BZZc> ;
 	prov:wasGeneratedBy _:7f069aaf808c026004c679f4a87dcf9f .
-_:45f8949d68b61c89ff7442bb87748f3d a oa:FragmentSelector ;
-	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+_:acf2cccdeb8323b0e13acc3dbc2e6806 a oa:FragmentSelector ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/0" .
 <ni:///sha-256;LN3zaMFqHiNcof7F2T_2FVzW0VPTW87t_ljLdiL6UCM> cascade:allergen "Sulfamethoxazole" ;
-	cascade:allergyCriticality "low" ;
-	cascade:allergenCode <https://ns.cascadeprotocol.org/codes/rxnorm/10180> .
-_:93c0d088f153487965ce325f9bc6e16b bridge:arrivedAs <ni:///sha-256;LN3zaMFqHiNcof7F2T_2FVzW0VPTW87t_ljLdiL6UCM> .
-<ni:///sha-256;LN3zaMFqHiNcof7F2T_2FVzW0VPTW87t_ljLdiL6UCM> cascade:patient <urn:uuid:d52a6ad7-5dc6-8b04-9a9e-5363329c2f63> ;
-	prov:specializationOf <urn:uuid:b2e3a569-4329-8836-8926-2e4138c98184> .
+	cascade:allergenCode <https://ns.cascadeprotocol.org/codes/rxnorm/10180> ;
+	cascade:allergyCriticality "low" .
 <urn:uuid:b2e3a569-4329-8836-8926-2e4138c98184> a cascade:AllergyOrIntolerance .
-_:93c0d088f153487965ce325f9bc6e16b oa:hasSelector _:3e8c49938b8ec259a1583c25adec77d9 ;
+<ni:///sha-256;LN3zaMFqHiNcof7F2T_2FVzW0VPTW87t_ljLdiL6UCM> prov:specializationOf <urn:uuid:b2e3a569-4329-8836-8926-2e4138c98184> ;
+	cascade:patient <urn:uuid:d52a6ad7-5dc6-8b04-9a9e-5363329c2f63> .
+_:93c0d088f153487965ce325f9bc6e16b bridge:arrivedAs <ni:///sha-256;LN3zaMFqHiNcof7F2T_2FVzW0VPTW87t_ljLdiL6UCM> ;
+	oa:hasSelector _:3e8c49938b8ec259a1583c25adec77d9 ;
 	oa:hasSource <ni:///sha-256;duROgppKlCYfEsw0U0Pi6jQoP3LZRe2nR1Aot57BZZc> ;
 	prov:wasDerivedFrom <ni:///sha-256;duROgppKlCYfEsw0U0Pi6jQoP3LZRe2nR1Aot57BZZc> ;
 	prov:wasGeneratedBy _:7f069aaf808c026004c679f4a87dcf9f .
 _:3e8c49938b8ec259a1583c25adec77d9 a oa:FragmentSelector ;
-	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/1" .
 <ni:///sha-256;duROgppKlCYfEsw0U0Pi6jQoP3LZRe2nR1Aot57BZZc> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
 	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .

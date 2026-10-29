@@ -1,0 +1,59 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "https://fhir.meridian.example/api/FHIR/R4/MedicationRequest/medrx-reported-boolean-1",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "medrx-reported-boolean-1",
+        "status": "active",
+        "intent": "plan",
+        "reportedBoolean": true,
+        "medicationCodeableConcept": {
+          "text": "Simvastatin 40 mg tablet"
+        },
+        "subject": {
+          "reference": "Patient/pat-conformance-1"
+        },
+        "authoredOn": "2025-11-04"
+      }
+    },
+    {
+      "fullUrl": "https://fhir.meridian.example/api/FHIR/R4/MedicationRequest/medrx-reported-reference-1",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "medrx-reported-reference-1",
+        "status": "active",
+        "intent": "order",
+        "reportedReference": {
+          "reference": "Patient/pat-conformance-1"
+        },
+        "medicationCodeableConcept": {
+          "text": "Vitamin D3 1000 unit capsule"
+        },
+        "subject": {
+          "reference": "Patient/pat-conformance-1"
+        },
+        "authoredOn": "2025-11-04"
+      }
+    },
+    {
+      "fullUrl": "https://fhir.meridian.example/api/FHIR/R4/MedicationRequest/medrx-proposal-1",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "medrx-proposal-1",
+        "status": "draft",
+        "intent": "proposal",
+        "reportedBoolean": false,
+        "medicationCodeableConcept": {
+          "text": "Metformin 500 mg tablet"
+        },
+        "subject": {
+          "reference": "Patient/pat-conformance-1"
+        },
+        "authoredOn": "2025-11-04"
+      }
+    }
+  ]
+}

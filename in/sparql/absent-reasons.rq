@@ -12,8 +12,8 @@ PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # value would have filled. A lab result's dataAbsentReason stands for its
 # value, of whatever kind, so it names cascade:resultValueKind; obs-6 lets it
 # stand only where the result has no value. The data-absent-reason extension
-# on a mapped date's _element stands for that date, where the date itself is
-# absent. Each reason is the code's IRI in FHIR's data absent reasons or in v3
+# on a mapped date's or a gender's _element stands for that value, where the value
+# itself is absent. Each reason is the code's IRI in FHIR's data absent reasons or in v3
 # NullFlavor, as the source gave it, never mapped from one into the other, and
 # only a code its CodeSystem defines: a coding of another system, or a code its
 # system does not define, is not carried, and absent-reason-findings.rq
@@ -62,6 +62,7 @@ WHERE {
   {
     VALUES (?type ?absentKey ?property ?valueKey ?otherKey) {
       ("Patient"             xyz:_birthDate          cascade:dateOfBirth                  xyz:birthDate          UNDEF)
+      ("Patient"             xyz:_gender             cascade:administrativeGender         xyz:gender             UNDEF)
       ("AllergyIntolerance"  xyz:_onsetDateTime      cascade:onsetDate                    xyz:onsetDateTime      UNDEF)
       ("Condition"           xyz:_onsetDateTime      cascade:onsetDate                    xyz:onsetDateTime      UNDEF)
       ("Condition"           xyz:_abatementDateTime  cascade:abatementDate                xyz:abatementDateTime  UNDEF)

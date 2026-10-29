@@ -3,24 +3,26 @@
 @prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;nb86yDmiaFXlsdq46_pmIBsyRPucGSFy4w0zH8_8MeA> cascade:prescribedOrReported "prescribed" ;
+<ni:///sha-256;RMnc17mOcfCNaz-VQSD4H837mlvZQ7NSgNe800m108s> cascade:prescribedOrReported "prescribed" ;
 	cascade:workflowStatus "active" ;
+	cascade:medicationRequestIntent "order" ;
 	cascade:prescriptionWrittenDate "2026-01-22"^^xsd:date .
-_:bbff59f5b568d39f3d8532e45a212ba3 bridge:arrivedAs <ni:///sha-256;nb86yDmiaFXlsdq46_pmIBsyRPucGSFy4w0zH8_8MeA> .
-<ni:///sha-256;nb86yDmiaFXlsdq46_pmIBsyRPucGSFy4w0zH8_8MeA> cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> ;
-	prov:specializationOf <urn:uuid:6038b8ef-4292-86b0-b57f-acc29700b838> .
-<urn:uuid:6038b8ef-4292-86b0-b57f-acc29700b838> cascade:sourceRecordId "medrx-unclear-1" ;
+<urn:uuid:6038b8ef-4292-86b0-b57f-acc29700b838> a cascade:PrescribedOrReportedMedication ;
 	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/MedicationRequest/medrx-unclear-1> ;
-	a cascade:PrescribedOrReportedMedication .
-_:bbff59f5b568d39f3d8532e45a212ba3 oa:hasSelector _:256759053a2566564352e221f107e597 ;
+	cascade:sourceRecordId "medrx-unclear-1" .
+<ni:///sha-256;RMnc17mOcfCNaz-VQSD4H837mlvZQ7NSgNe800m108s> prov:specializationOf <urn:uuid:6038b8ef-4292-86b0-b57f-acc29700b838> ;
+	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
+_:5976ea6b4079206256749ae880e39211 bridge:arrivedAs <ni:///sha-256;RMnc17mOcfCNaz-VQSD4H837mlvZQ7NSgNe800m108s> ;
+	oa:hasSelector _:3a19a82ecea2bcc603154ad58797bcda ;
 	oa:hasSource <ni:///sha-256;CuF4DGqYn2c4XLCPGiBmwBUC-AjApTZBlmczy2Zsvjw> ;
 	prov:wasDerivedFrom <ni:///sha-256;CuF4DGqYn2c4XLCPGiBmwBUC-AjApTZBlmczy2Zsvjw> ;
 	prov:wasGeneratedBy _:56089068231888734db22e49829224f2 .
-_:256759053a2566564352e221f107e597 a oa:FragmentSelector ;
-	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+_:3a19a82ecea2bcc603154ad58797bcda a oa:FragmentSelector ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/2" .
 <ni:///sha-256;CuF4DGqYn2c4XLCPGiBmwBUC-AjApTZBlmczy2Zsvjw> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
 	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .

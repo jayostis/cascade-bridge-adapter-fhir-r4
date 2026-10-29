@@ -1,0 +1,53 @@
+@prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix pav: <http://purl.org/pav/> .
+<ni:///sha-256;IfwlQDL_1UNg72B_NBxNz6zm2Mm4Yej04d0RTSUFXKw> cascade:prescribedOrReported "prescribed" ;
+	cascade:drugName "Amlodipine 5 mg tablet" ;
+	cascade:workflowStatus "active" ;
+	cascade:prescriptionWrittenDate "2025-11-04"^^xsd:date .
+<urn:uuid:d953171b-114e-8883-a958-603dfd34a2ad> a cascade:PrescribedOrReportedMedication ;
+	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/MedicationRequest/medrx-intent-not-a-code-1> ;
+	cascade:sourceRecordId "medrx-intent-not-a-code-1" .
+<ni:///sha-256;IfwlQDL_1UNg72B_NBxNz6zm2Mm4Yej04d0RTSUFXKw> prov:specializationOf <urn:uuid:d953171b-114e-8883-a958-603dfd34a2ad> ;
+	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
+_:88f294881752faf6fe42741870bcb0e4 bridge:arrivedAs <ni:///sha-256;IfwlQDL_1UNg72B_NBxNz6zm2Mm4Yej04d0RTSUFXKw> ;
+	oa:hasSelector _:36b88867d1df1e6efba77526987e2d9f ;
+	oa:hasSource <ni:///sha-256;xkOSpLv7Ey1ccR1C4Oj9BLdT9J1Oqsv094F0kva_VgA> ;
+	prov:wasDerivedFrom <ni:///sha-256;xkOSpLv7Ey1ccR1C4Oj9BLdT9J1Oqsv094F0kva_VgA> ;
+	prov:wasGeneratedBy _:dc8c583eeb8b108fd2b7f83acdd3a810 .
+_:36b88867d1df1e6efba77526987e2d9f a oa:FragmentSelector ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "" .
+<ni:///sha-256;xkOSpLv7Ey1ccR1C4Oj9BLdT9J1Oqsv094F0kva_VgA> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
+	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
+_:b0acce57173ced4bcbed7513a66a77a4 prov:agent _:e78d20d9479e2c2dde44d46be31ee8d2 .
+_:e78d20d9479e2c2dde44d46be31ee8d2 <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:b0acce57173ced4bcbed7513a66a77a4 prov:hadRole cascade:AuthorRole .
+<ni:///sha-256;xkOSpLv7Ey1ccR1C4Oj9BLdT9J1Oqsv094F0kva_VgA> prov:qualifiedAttribution _:b0acce57173ced4bcbed7513a66a77a4 .
+_:4b078b05f1718c33ef4adeb051c9bedf prov:agent _:d76faf6096924e5c63010d8cbbe6cb82 .
+_:d76faf6096924e5c63010d8cbbe6cb82 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
+_:4b078b05f1718c33ef4adeb051c9bedf prov:hadRole cascade:TransmitterRole .
+<ni:///sha-256;xkOSpLv7Ey1ccR1C4Oj9BLdT9J1Oqsv094F0kva_VgA> prov:qualifiedAttribution _:4b078b05f1718c33ef4adeb051c9bedf ;
+	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
+	cascade:authenticatedAsProxy false ;
+	cascade:sourceFormatVersion "4.0.1" .
+_:dc8c583eeb8b108fd2b7f83acdd3a810 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
+	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
+<ni:///sha-256;xkOSpLv7Ey1ccR1C4Oj9BLdT9J1Oqsv094F0kva_VgA> a prov:Entity .
+_:dc8c583eeb8b108fd2b7f83acdd3a810 a prov:Activity ;
+	prov:used <ni:///sha-256;xkOSpLv7Ey1ccR1C4Oj9BLdT9J1Oqsv094F0kva_VgA> ;
+	prov:qualifiedAssociation _:f7cf2e0dc72696142b28b48f3dc8145c .
+_:f7cf2e0dc72696142b28b48f3dc8145c prov:hadPlan _:3cb237c229e8d78759e3fb280f983c53 .
+_:3cb237c229e8d78759e3fb280f983c53 a prov:Plan ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "fhir-r4" ;
+	pav:version "0.1.0" .
+_:f7cf2e0dc72696142b28b48f3dc8145c prov:agent _:fb93b3a0b7b6813a95a54e3ad82f5434 .
+_:fb93b3a0b7b6813a95a54e3ad82f5434 a prov:SoftwareAgent ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Cascade Bridge for Rust" ;
+	pav:version "0.1.0" .

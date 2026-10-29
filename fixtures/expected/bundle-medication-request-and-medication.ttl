@@ -3,26 +3,28 @@
 @prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;cs_vkTLHRTG5KxxoT6KYO4cYwt9zSqb6XJgHpWczcRM> cascade:prescribedOrReported "prescribed" ;
+<ni:///sha-256;FusGiUVAzlkUN8QgtiCX3ki853aNgxjB7undVNjPokc> cascade:prescribedOrReported "prescribed" ;
 	cascade:drugName "Metformin 500 mg tablet" ;
 	cascade:rxNormCode <https://ns.cascadeprotocol.org/codes/rxnorm/861007> ;
 	cascade:workflowStatus "active" ;
+	cascade:medicationRequestIntent "order" ;
 	cascade:prescriptionWrittenDate "2025-08-12"^^xsd:date .
-_:3f172742f32bd0f0c7f0afc4755bfbcb bridge:arrivedAs <ni:///sha-256;cs_vkTLHRTG5KxxoT6KYO4cYwt9zSqb6XJgHpWczcRM> .
-<ni:///sha-256;cs_vkTLHRTG5KxxoT6KYO4cYwt9zSqb6XJgHpWczcRM> cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> ;
-	prov:specializationOf <urn:uuid:d962c772-816b-8d2f-8fe8-62db56784911> .
-<urn:uuid:d962c772-816b-8d2f-8fe8-62db56784911> cascade:sourceRecordId "medrx-metformin-1" ;
+<urn:uuid:d962c772-816b-8d2f-8fe8-62db56784911> a cascade:PrescribedOrReportedMedication ;
 	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/MedicationRequest/medrx-metformin-1> ;
-	a cascade:PrescribedOrReportedMedication .
-_:3f172742f32bd0f0c7f0afc4755bfbcb oa:hasSelector _:4c1aa18431babbedb64c2b87703dc88b ;
+	cascade:sourceRecordId "medrx-metformin-1" .
+<ni:///sha-256;FusGiUVAzlkUN8QgtiCX3ki853aNgxjB7undVNjPokc> prov:specializationOf <urn:uuid:d962c772-816b-8d2f-8fe8-62db56784911> ;
+	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
+_:e227f6d7698710a778ec400b82814a1e bridge:arrivedAs <ni:///sha-256;FusGiUVAzlkUN8QgtiCX3ki853aNgxjB7undVNjPokc> ;
+	oa:hasSelector _:875bdef91d6c696044839c338946f721 ;
 	oa:hasSource <ni:///sha-256;pmOos1vWucfbHa9tG4xArOquICgZCtiLUMZRRPs6Sx0> ;
 	prov:wasDerivedFrom <ni:///sha-256;pmOos1vWucfbHa9tG4xArOquICgZCtiLUMZRRPs6Sx0> ;
 	prov:wasGeneratedBy _:930d64be3ec4c1fb08efa79e2263a388 .
-_:4c1aa18431babbedb64c2b87703dc88b a oa:FragmentSelector ;
-	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+_:875bdef91d6c696044839c338946f721 a oa:FragmentSelector ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/1" .
 <ni:///sha-256;pmOos1vWucfbHa9tG4xArOquICgZCtiLUMZRRPs6Sx0> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
 	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .

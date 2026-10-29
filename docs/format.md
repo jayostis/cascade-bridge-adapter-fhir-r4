@@ -87,7 +87,21 @@ Every RxNorm and NDC coding of the drug is carried, and the first of them
 `medicationCodeableConcept` marks `userSelected` is the medication's selected
 code. A `userSelected` on a referenced `Medication`'s coding is not read.
 A request's `authoredOn` is the day the prescription was written, never the
-start of use, which only `effective[x]` gives.
+start of use, which only `effective[x]` gives. A `MedicationStatement` is
+reported use. A `MedicationRequest` is too where its `reported[x]` says the
+source reported it rather than ordered it (`reportedBoolean` true, or a
+`reportedReference`, whose reference to who reported it is not carried), and is
+otherwise prescribed. Only a prescribed request carries its `intent`
+([medicationrequest-intent](https://hl7.org/fhir/R4/valueset-medicationrequest-intent.html),
+read on 2026-10-29), because a reported request's intent is not read. An intent
+outside R4's eight codes is not carried and is a finding,
+`fhirr4:medicationRequestIntentNotMapped`.
+
+A `Patient`'s `gender` is carried as one of the four codes of
+[administrative-gender](https://hl7.org/fhir/R4/valueset-administrative-gender.html),
+read on 2026-10-29, and any other value is a finding. `deceasedBoolean` says
+whether the person died; a `deceasedDateTime` says that they died and when. A
+Patient with neither says nothing about death.
 
 A resource's `id` is the server's logical id, unique for its type on that
 server. It is optional: a resource written by a client, or assembled into an
@@ -256,9 +270,9 @@ says, read on 2026-10-24:
 - **The [data-absent-reason extension](https://hl7.org/fhir/R4/extension-data-absent-reason.html)**
   on the `_` member of a date the adapter maps (`_birthDate`, `_onsetDateTime`,
   `_abatementDateTime`, `_occurrenceDateTime`, `_performedDateTime`,
-  `_effectiveDateTime`, `_authoredOn`), where the date itself is absent, is such
-  a node naming the date's property; a code its CodeSystem does not define is a
-  finding.
+  `_effectiveDateTime`, `_authoredOn`) or of a Patient's `_gender`, where the
+  value itself is absent, is such a node naming the value's property; a code its
+  CodeSystem does not define is a finding.
 
 ## Codes
 

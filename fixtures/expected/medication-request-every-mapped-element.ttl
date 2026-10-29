@@ -3,29 +3,31 @@
 @prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;Ze52sR7KwL76tcaHLED3oaVrxNyu1vc9QUDrubgI47E> cascade:prescribedOrReported "prescribed" ;
+<ni:///sha-256;28b0jRk7Wtte2ngpyT7ZT93rnhX8EEM09S0QnWhglNk> cascade:prescribedOrReported "prescribed" ;
 	cascade:drugName "Atorvastatin 10 mg tablet" ;
 	cascade:rxNormCode <https://ns.cascadeprotocol.org/codes/rxnorm/617312> ;
 	cascade:workflowStatus "active" ;
+	cascade:medicationRequestIntent "order" ;
 	cascade:prescriptionWrittenDate "2026-03-02"^^xsd:date ;
 	cascade:dosage "Take 1 tablet by mouth at bedtime." .
-_:4bae4c38d5736b1d72c90711ab73204 pav:lastUpdateOn "2026-03-02T09:15:00Z"^^xsd:dateTime ;
-	pav:version "2" ;
-	bridge:arrivedAs <ni:///sha-256;Ze52sR7KwL76tcaHLED3oaVrxNyu1vc9QUDrubgI47E> .
-<ni:///sha-256;Ze52sR7KwL76tcaHLED3oaVrxNyu1vc9QUDrubgI47E> cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> ;
-	prov:specializationOf <urn:uuid:e10d33f4-5d5b-889d-8c36-c05a9850a9e8> .
-<urn:uuid:e10d33f4-5d5b-889d-8c36-c05a9850a9e8> cascade:sourceRecordId "medrx-atorvastatin-1" ;
+<urn:uuid:e10d33f4-5d5b-889d-8c36-c05a9850a9e8> a cascade:PrescribedOrReportedMedication ;
 	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/MedicationRequest/medrx-atorvastatin-1> ;
-	a cascade:PrescribedOrReportedMedication .
-_:4bae4c38d5736b1d72c90711ab73204 oa:hasSelector _:6d6f5ea2e59423cea494b1080a1f4f8b ;
+	cascade:sourceRecordId "medrx-atorvastatin-1" .
+<ni:///sha-256;28b0jRk7Wtte2ngpyT7ZT93rnhX8EEM09S0QnWhglNk> prov:specializationOf <urn:uuid:e10d33f4-5d5b-889d-8c36-c05a9850a9e8> ;
+	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
+_:a395ffe0cb9661bb4bb5051776628981 bridge:arrivedAs <ni:///sha-256;28b0jRk7Wtte2ngpyT7ZT93rnhX8EEM09S0QnWhglNk> ;
+	pav:version "2" ;
+	pav:lastUpdateOn "2026-03-02T09:15:00Z"^^xsd:dateTime ;
+	oa:hasSelector _:9a8225f451aa49cdf7973b32a50c6653 ;
 	oa:hasSource <ni:///sha-256;7bBazRJX5AEBT89SGpRxHvZ20pzhKXPs8CexzvUAWg8> ;
 	prov:wasDerivedFrom <ni:///sha-256;7bBazRJX5AEBT89SGpRxHvZ20pzhKXPs8CexzvUAWg8> ;
 	prov:wasGeneratedBy _:fcb3e046b697cdaa2cfb977db368d22a .
-_:6d6f5ea2e59423cea494b1080a1f4f8b a oa:FragmentSelector ;
-	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+_:9a8225f451aa49cdf7973b32a50c6653 a oa:FragmentSelector ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;7bBazRJX5AEBT89SGpRxHvZ20pzhKXPs8CexzvUAWg8> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
 	pav:retrievedFrom <https://FHIR.Meridian.example/api/FHIR/R4/MedicationRequest/medrx-atorvastatin-1> ;
