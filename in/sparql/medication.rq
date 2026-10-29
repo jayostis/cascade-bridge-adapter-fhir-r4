@@ -26,16 +26,16 @@ PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # value, are no code, and medication-findings.rq reports them. The coding the
 # source marked userSelected is the selected code, the first such carried one.
 # Every other value is single, so each is bound beside the others rather than
-# in a branch of its own, and a medication stating nothing still states its
-# intent. A date is typed by the precision FHIR wrote it to: a year is an
-# xsd:gYear, a year and month an xsd:gYearMonth, a day an xsd:date, a time an
-# xsd:dateTime.
+# in a branch of its own, and a medication stating nothing still states whether
+# it was prescribed or reported. A date is typed by the precision FHIR wrote it
+# to: a year is an xsd:gYear, a year and month an xsd:gYearMonth, a day an
+# xsd:date, a time an xsd:dateTime.
 # A time written to the minute, as C-CDA on FHIR writes one, is padded to the
 # second and keeps a cascade:PaddedDateTime node, <version>#padded- and its
 # property's local name, holding what was written.
 
 CONSTRUCT {
-  ?version cascade:prescribedOrReported ?intent ;
+  ?version cascade:prescribedOrReported ?prescribedOrReported ;
     cascade:drugName ?drugName ;
     ?codeProperty ?codeIri ;
     cascade:userSelectedCode ?selectedCode ;
@@ -81,9 +81,9 @@ WHERE {
   OPTIONAL { ?resource xyz:reportedBoolean ?reportedBoolean }
   OPTIONAL { ?resource xyz:reportedReference ?reportedReference }
   BIND (IF(?type = "MedicationRequest" && COALESCE(?reportedBoolean, "") != "true" && !BOUND(?reportedReference),
-           "prescribed", "reportedUse") AS ?intent)
+           "prescribed", "reportedUse") AS ?prescribedOrReported)
   OPTIONAL { ?resource xyz:intent ?statedIntent }
-  BIND (IF(?intent = "prescribed" && ?statedIntent IN ("proposal", "plan", "order", "original-order", "reflex-order",
+  BIND (IF(?prescribedOrReported = "prescribed" && ?statedIntent IN ("proposal", "plan", "order", "original-order", "reflex-order",
                                                        "filler-order", "instance-order", "option"),
            ?statedIntent, 1/0) AS ?requestIntent)
 

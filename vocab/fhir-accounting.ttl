@@ -1314,7 +1314,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/reportedReference/reference" ;
-  bridge:verdict bridge:consumed .
+  bridge:verdict bridge:ignored ;
+  bridge:because "Who reported a request is not carried: only that a reportedReference is there, which makes the request reported use." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/requester" ;
@@ -2328,7 +2329,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/reportedReference/reference" ;
-  bridge:verdict bridge:consumed .
+  bridge:verdict bridge:ignored ;
+  bridge:because "Who reported a request is not carried: only that a reportedReference is there, which makes the request reported use." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/request" ;
@@ -3671,7 +3673,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/reportedReference/reference" ;
-  bridge:verdict bridge:consumed .
+  bridge:verdict bridge:ignored ;
+  bridge:because "Who reported a request is not carried: only that a reportedReference is there, which makes the request reported use." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/requester" ;
@@ -4681,7 +4684,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/reportedReference/reference" ;
-  bridge:verdict bridge:consumed .
+  bridge:verdict bridge:ignored ;
+  bridge:because "Who reported a request is not carried: only that a reportedReference is there, which makes the request reported use." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/requester" ;

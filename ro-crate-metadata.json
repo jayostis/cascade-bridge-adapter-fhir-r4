@@ -587,6 +587,9 @@
           "@id": "fixtures/in/medication-request-reported-and-proposal.json"
         },
         {
+          "@id": "fixtures/in/medication-request-intent-not-a-code.json"
+        },
+        {
           "@id": "fixtures/in/bundle-pull-collection-versions.json"
         },
         {
@@ -1127,6 +1130,9 @@
           "@id": "fixtures/expected/medication-request-reported-and-proposal.ttl"
         },
         {
+          "@id": "fixtures/expected/medication-request-intent-not-a-code.ttl"
+        },
+        {
           "@id": "fixtures/expected/bundle-pull-collection-versions.ttl"
         },
         {
@@ -1194,6 +1200,9 @@
         },
         {
           "@id": "fixtures/findings/medication-request-reported-and-proposal.ttl"
+        },
+        {
+          "@id": "fixtures/findings/medication-request-intent-not-a-code.ttl"
         },
         {
           "@id": "fixtures/findings/bundle-pull-collection-versions.ttl"
@@ -1574,19 +1583,19 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "What a Patient says, written on the version record.rq names: the first name it states, and its birth date."
+      "description": "What a Patient says, written on the version record.rq names: the first name it states, its birth date, its gender where it is one of the four codes of administrative-gender, and its death: cascade:deceased from deceasedBoolean, and a deceasedDateTime as the date of death with cascade:deceased true."
     },
     {
       "@id": "in/sparql/medication.rq",
       "@type": "File",
       "name": "Mapping: a MedicationRequest's or MedicationStatement's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "11850",
-      "sha256": "27f97e1ebf0c4ab7009411fe65a6f59a18e0fbe5aacd2cddcaf859beeec0a59e",
+      "contentSize": "11919",
+      "sha256": "941212ba5c8aded570df72e19ccb738b192010fee0f59cc6192ee3c1f8b6391c",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "What a medication says, written on the version record.rq names: its intent, prescribed for a request and reportedUse for a statement; the drug's name and RxNorm code, from its concept or from the Medication its reference resolves to in the document, else the reference's display; status, start and end dates of use, the day a request was written, never a start, and the first dosage's text."
+      "description": "What a medication says, written on the version record.rq names: whether it was prescribed or reported, prescribed for a request unless its reported[x] says it was reported, and reportedUse for a statement or such a request; a prescribed request's intent, where it is one of the eight codes of medicationrequest-intent (cascade:medicationRequestIntent); the drug's name and RxNorm code, from its concept or from the Medication its reference resolves to in the document, else the reference's display; status, start and end dates of use, the day a request was written, never a start, and the first dosage's text."
     },
     {
       "@id": "in/sparql/organization.rq",
@@ -1646,7 +1655,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "A value FHIR says is absent, and why, as a cascade:ValueAbsentForReason node of the version record.rq names, <version>#absent-<property>: a lab result's dataAbsentReason for its value (cascade:resultValueKind), where it has none, and the data-absent-reason extension on a mapped date's _element, where the date is absent; each reason the code's IRI in FHIR's data absent reasons or v3 NullFlavor, only a code its CodeSystem defines."
+      "description": "A value FHIR says is absent, and why, as a cascade:ValueAbsentForReason node of the version record.rq names, <version>#absent-<property>: a lab result's dataAbsentReason for its value (cascade:resultValueKind), where it has none, and the data-absent-reason extension on a mapped date's or a Patient's gender's _element, where the value is absent; each reason the code's IRI in FHIR's data absent reasons or v3 NullFlavor, only a code its CodeSystem defines."
     },
     {
       "@id": "in/sparql/lab-result-identifiers.rq",
@@ -1785,8 +1794,8 @@
       "@type": "File",
       "name": "Findings: what a medication's mapping leaves behind",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "5670",
-      "sha256": "48c230276888a7d9e67537879adaaa3e91dd83481b71a396d46351bf5e6bb5a1",
+      "contentSize": "6243",
+      "sha256": "3fd4ba564b3ac774ddb5b9bbe37a88997c14aaff05c9109d9515e35376653b32",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1845,8 +1854,8 @@
       "@type": "File",
       "name": "FHIR R4 JSON source accounting",
       "encodingFormat": "text/turtle",
-      "contentSize": "234467",
-      "sha256": "288c1a302715cd9ce33dab7e56a6925cbfaf831c34d81a820238ece7367ea8e0",
+      "contentSize": "235015",
+      "sha256": "fbc89c93446c438cf59c87f4a8721041370cea5cacdf06953a882749a205ab7b",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1893,8 +1902,8 @@
       "@type": "File",
       "name": "FHIR R4 JSON gaps",
       "encodingFormat": "text/turtle",
-      "contentSize": "15359",
-      "sha256": "d418cd8414f510c39475549df3a91f464824b2552dc202d24e62343a23743a98",
+      "contentSize": "15692",
+      "sha256": "9beb9b232c5bd8179b8d81df0e2fc1afaacfb41c3bd90ec351b4ea8c5b4fe4b3",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2973,6 +2982,19 @@
       "description": "A collection Bundle of three MedicationRequests for Patient/pat-conformance-1, each authored 2025-11-04 and naming its drug by text alone: medrx-reported-boolean-1 (simvastatin, intent plan, reportedBoolean true), medrx-reported-reference-1 (vitamin D3, intent order, reportedReference to the patient) and medrx-proposal-1 (metformin, status draft, intent proposal, reportedBoolean false). Authored here on 2026-10-29, for a case the conformance corpus does not hold: reported[x] and an intent other than order."
     },
     {
+      "@id": "fixtures/in/medication-request-intent-not-a-code.json",
+      "@type": "File",
+      "name": "MedicationRequest whose intent is not a code",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "292",
+      "sha256": "c64392a4bbfb132d5c711d42e0e8fd04b753f49d4eaacbf4f7817492f6bf5600",
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A MedicationRequest of amlodipine, id medrx-intent-not-a-code-1, whose intent is Order, which is none of the eight codes of FHIR's medicationrequest-intent as written. Authored here on 2026-10-29, for a case the conformance corpus does not hold: a prescribed request whose intent is outside its required binding."
+    },
+    {
       "@id": "fixtures/expected/patient-deceased-date.ttl",
       "@type": "File",
       "name": "Expected graph for patient-deceased-date",
@@ -3053,6 +3075,22 @@
       "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
+      "@id": "fixtures/expected/medication-request-intent-not-a-code.ttl",
+      "@type": "File",
+      "name": "Expected graph for medication-request-intent-not-a-code",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3635",
+      "sha256": "b4ee1f1be6100b66561dbcc5ab013bfccb99f35e3b90169373997574ea315041",
+      "about": {
+        "@id": "fixtures/in/medication-request-intent-not-a-code.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
       "@id": "fixtures/findings/patient-deceased-date.ttl",
       "@type": "File",
       "name": "Expected findings for patient-deceased-date",
@@ -3125,6 +3163,22 @@
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "about": {
         "@id": "fixtures/in/medication-request-reported-and-proposal.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/medication-request-intent-not-a-code.ttl",
+      "@type": "File",
+      "name": "Expected findings for medication-request-intent-not-a-code",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1059",
+      "sha256": "cceda64e525d801f969aeca2baaa7b7b11b5b45b2bdda47845358e24094ba917",
+      "about": {
+        "@id": "fixtures/in/medication-request-intent-not-a-code.json"
       },
       "dateCreated": "2026-10-29",
       "license": {
@@ -6574,8 +6628,8 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "contentSize": "76954",
-      "sha256": "ac3c051a4e50eaa1d4b9924874034a139ddc47200e9640a52173d4fb7065bb7a"
+      "contentSize": "77796",
+      "sha256": "d89a9435f622654cc5de43dc56e97eafef02fe3019afa07d7067f1bdb6e24ef5"
     },
     {
       "@id": "fixtures/facts/meridian.ttl",
@@ -6885,8 +6939,8 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "What a record is, the two envelopes, how a record is named, JSON as FHIR writes it, the schema, the versions in and out of scope, and what is known about the committed inputs. Read from hl7.org/fhir/R4/ on 2026-09-27.",
-      "contentSize": "21925",
-      "sha256": "75cba369acaf5e6e8701415a1ea268fe72ada0f6d7adb38ef285d9131bcc9c22"
+      "contentSize": "22102",
+      "sha256": "206e8ab28d24290827211a1016ef650f2d90b01c695473bcab8e60de348c2879"
     },
     {
       "@id": "fixtures/CLAUDE.md",
