@@ -80,6 +80,7 @@
     <#bundle-medication-versioned-reference>
     <#bundle-medication-repeated-id>
     <#medication-request-reported-and-proposal>
+    <#medication-request-intent-not-a-code>
     <#bundle-pull-collection-versions>
     <#bundle-pull-searchset-outcome>
     <#bundle-pull-organization>
@@ -1197,7 +1198,7 @@
 
 <#medication-no-id-bare> a bridge:IsomorphicConversionTest ;
   mf:name "medication-no-id-bare" ;
-  rdfs:comment "A MedicationStatement stating nothing: one medication stating only its intent." ;
+  rdfs:comment "A MedicationStatement stating nothing: one medication stating only whether it was prescribed or reported." ;
   mf:action [
     bridge:input <in/medication-no-id-bare.json> ;
     bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
@@ -1210,7 +1211,7 @@
 
 <#medication-no-id-note-only> a bridge:IsomorphicConversionTest ;
   mf:name "medication-no-id-note-only" ;
-  rdfs:comment "A MedicationStatement stating only a note: one medication stating only its intent, and the note a finding." ;
+  rdfs:comment "A MedicationStatement stating only a note: one medication stating only whether it was prescribed or reported, and the note a finding." ;
   mf:action [
     bridge:input <in/medication-no-id-note-only.json> ;
     bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
@@ -1310,6 +1311,19 @@
   mf:result [
     bridge:expectedGraph <expected/medication-request-reported-and-proposal.ttl> ;
     bridge:expectedFindings <findings/medication-request-reported-and-proposal.ttl>
+  ] .
+
+<#medication-request-intent-not-a-code> a bridge:IsomorphicConversionTest ;
+  mf:name "medication-request-intent-not-a-code" ;
+  rdfs:comment "A prescribed MedicationRequest whose intent is Order, none of the eight codes of FHIR's medicationrequest-intent as written: the version states no intent, and the value is a finding of fhirr4:medicationRequestIntentNotMapped." ;
+  mf:action [
+    bridge:input <in/medication-request-intent-not-a-code.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/medication-request-intent-not-a-code.ttl> ;
+    bridge:expectedFindings <findings/medication-request-intent-not-a-code.ttl>
   ] .
 
 <#medication-request-ndc-forms> a bridge:IsomorphicConversionTest ;

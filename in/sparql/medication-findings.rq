@@ -10,7 +10,8 @@ PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 PREFIX cascade: <https://ns.cascadeprotocol.org/cascade#>
 
 # What medication.rq leaves behind at a path the source accounting carries for
-# another kind, or carries where it holds one value: a reference that resolves
+# another kind, or carries where it holds one value: a prescribed request's
+# intent outside the eight codes of FHIR's medicationrequest-intent, a reference that resolves
 # to no one Medication, a note, every code in a system other than RxNorm or
 # NDC and every NDC that medication.rq makes no 11-digit code of, whether the
 # medication's own or the referenced Medication's, and every dosage text but
@@ -59,6 +60,17 @@ WHERE {
     ?reference xyz:reference ?value .
     BIND ("/medicationReference/reference" AS ?step)
     BIND (fhirr4:medicationReferenceUnresolved AS ?gap)
+  }
+  UNION
+  {
+    ?resource xyz:resourceType "MedicationRequest" ;
+      xyz:intent ?value .
+    FILTER (!(?value IN ("proposal", "plan", "order", "original-order", "reflex-order",
+                           "filler-order", "instance-order", "option"))
+      && NOT EXISTS { ?resource xyz:reportedReference ?reportedReference }
+      && NOT EXISTS { ?resource xyz:reportedBoolean "true" })
+    BIND ("/intent" AS ?step)
+    BIND (fhirr4:medicationRequestIntentNotMapped AS ?gap)
   }
   UNION
   {
