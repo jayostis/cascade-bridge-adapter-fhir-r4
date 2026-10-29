@@ -4,21 +4,23 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;AnAvs0rTYHOWwiWO28TejJ0yb_GijsumkNy7mTVrfyg> foaf:familyName "Okonkwo" ;
+<ni:///sha-256;jXlQd8oNjCsX1hHuuNRb8f-mDt3a5X5I_ywwzEPbRsU> foaf:familyName "Okonkwo" ;
 	foaf:givenName "Ngozi" ;
-	cascade:dateOfBirth "1972-11-08"^^xsd:date .
-_:79f029c1208bbf0b360e09e2364002b8 bridge:arrivedAs <ni:///sha-256;AnAvs0rTYHOWwiWO28TejJ0yb_GijsumkNy7mTVrfyg> .
-<ni:///sha-256;AnAvs0rTYHOWwiWO28TejJ0yb_GijsumkNy7mTVrfyg> prov:specializationOf <urn:uuid:77540d7b-cf43-85f1-b6d4-65121aaf654f> .
+	cascade:dateOfBirth "1972-11-08"^^xsd:date ;
+	cascade:administrativeGender "female" .
 <urn:uuid:77540d7b-cf43-85f1-b6d4-65121aaf654f> a cascade:PatientProfile .
-_:79f029c1208bbf0b360e09e2364002b8 oa:hasSelector _:a6f89f8f490d86c1b0c1562f6e703c91 ;
+<ni:///sha-256;jXlQd8oNjCsX1hHuuNRb8f-mDt3a5X5I_ywwzEPbRsU> prov:specializationOf <urn:uuid:77540d7b-cf43-85f1-b6d4-65121aaf654f> .
+_:862c45d4d364cbff22f005a508b5add5 bridge:arrivedAs <ni:///sha-256;jXlQd8oNjCsX1hHuuNRb8f-mDt3a5X5I_ywwzEPbRsU> ;
+	oa:hasSelector _:9db8c68884a27f846236dd2cadda4764 ;
 	oa:hasSource <ni:///sha-256;tQEgRR1IboQ_nxkbdyRRxput_fuyr7mKpVli4o00_-s> ;
 	prov:wasDerivedFrom <ni:///sha-256;tQEgRR1IboQ_nxkbdyRRxput_fuyr7mKpVli4o00_-s> ;
 	prov:wasGeneratedBy _:518825e0c895128f84d3735b9f00dbdd .
-_:a6f89f8f490d86c1b0c1562f6e703c91 a oa:FragmentSelector ;
-	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+_:9db8c68884a27f846236dd2cadda4764 a oa:FragmentSelector ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;tQEgRR1IboQ_nxkbdyRRxput_fuyr7mKpVli4o00_-s> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
 	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .

@@ -9,22 +9,23 @@
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;wtSeyc6v3wEcq30Hg5V9owNB9iFCbyszEHhBjvv7llE> foaf:familyName "Okonkwo" ;
+<ni:///sha-256;NNIMacvE96ADGnK9fVzFKL0Dj454RxIVxPaN4Gkw7Z4> foaf:familyName "Okonkwo" ;
 	foaf:givenName "Ada" ;
-	cascade:dateOfBirth "1979-06-02"^^xsd:date .
+	cascade:dateOfBirth "1979-06-02"^^xsd:date ;
+	cascade:administrativeGender "female" .
 <urn:uuid:e0247e77-1049-8494-aa7b-5b8887aa6b0b> a cascade:PatientProfile .
-<ni:///sha-256;wtSeyc6v3wEcq30Hg5V9owNB9iFCbyszEHhBjvv7llE> prov:specializationOf <urn:uuid:e0247e77-1049-8494-aa7b-5b8887aa6b0b> .
-_:3ba347fac068c450e62d6aad149cb0af bridge:arrivedAs <ni:///sha-256;wtSeyc6v3wEcq30Hg5V9owNB9iFCbyszEHhBjvv7llE> ;
-	oa:hasSelector _:aebd12b36f6c1376c1dab9ca59523d55 ;
+<ni:///sha-256;NNIMacvE96ADGnK9fVzFKL0Dj454RxIVxPaN4Gkw7Z4> prov:specializationOf <urn:uuid:e0247e77-1049-8494-aa7b-5b8887aa6b0b> .
+_:d6b77867880196780edebdd080013054 bridge:arrivedAs <ni:///sha-256;NNIMacvE96ADGnK9fVzFKL0Dj454RxIVxPaN4Gkw7Z4> ;
+	oa:hasSelector _:50267b4faaa5342b895867e924f5c661 ;
 	oa:hasSource <ni:///sha-256;eN7foYUylLlq_zZUkA9W6vis0D0xBFgXnFos9SoT6bY> ;
 	prov:wasDerivedFrom <ni:///sha-256;eN7foYUylLlq_zZUkA9W6vis0D0xBFgXnFos9SoT6bY> ;
 	prov:wasGeneratedBy _:813943a0fe67b061fcc4a549ca5e792d .
-_:aebd12b36f6c1376c1dab9ca59523d55 a oa:FragmentSelector ;
+_:50267b4faaa5342b895867e924f5c661 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/1" .
 <urn:uuid:b272d9d2-08db-8fd9-9d33-eca1e48c75ba> a cascade:Organization .
-<ni:///sha-256;eN7foYUylLlq_zZUkA9W6vis0D0xBFgXnFos9SoT6bY> prov:qualifiedAttribution _:e9df24144191c82d19438ad43ee5cbdf .
-_:e9df24144191c82d19438ad43ee5cbdf prov:agent <urn:uuid:b272d9d2-08db-8fd9-9d33-eca1e48c75ba> ;
+<ni:///sha-256;eN7foYUylLlq_zZUkA9W6vis0D0xBFgXnFos9SoT6bY> prov:qualifiedAttribution _:ed14530da4fe3810f11bb3cebba469de .
+_:ed14530da4fe3810f11bb3cebba469de prov:agent <urn:uuid:b272d9d2-08db-8fd9-9d33-eca1e48c75ba> ;
 	prov:hadRole cascade:CustodianRole .
 <ni:///sha-256;VngbwigCMkGdPCNTniVcVY_lGy6sn7H9kQ4HLTPAqps> prov:specializationOf <urn:uuid:b272d9d2-08db-8fd9-9d33-eca1e48c75ba> .
 _:823e9b02349f0f490dbd0efaf614a406 bridge:arrivedAs <ni:///sha-256;VngbwigCMkGdPCNTniVcVY_lGy6sn7H9kQ4HLTPAqps> .
@@ -38,12 +39,12 @@ _:823e9b02349f0f490dbd0efaf614a406 oa:hasSelector _:1bb27455adb95ef89e789364d923
 _:1bb27455adb95ef89e789364d9237c75 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/2" .
-<ni:///sha-256;eN7foYUylLlq_zZUkA9W6vis0D0xBFgXnFos9SoT6bY> prov:qualifiedAttribution _:f3e1d480e64a0fca16fa57df303017ad .
-_:f3e1d480e64a0fca16fa57df303017ad prov:agent <urn:uuid:b272d9d2-08db-8fd9-9d33-eca1e48c75ba> ;
+<ni:///sha-256;eN7foYUylLlq_zZUkA9W6vis0D0xBFgXnFos9SoT6bY> prov:qualifiedAttribution _:b0bf4c5c10288af834b7dca3675b096d .
+_:b0bf4c5c10288af834b7dca3675b096d prov:agent <urn:uuid:b272d9d2-08db-8fd9-9d33-eca1e48c75ba> ;
 	prov:hadRole cascade:AuthorRole .
 <urn:uuid:5769da63-d46b-8c66-b381-d00b2f7ccadb> a cascade:Organization .
-<ni:///sha-256;eN7foYUylLlq_zZUkA9W6vis0D0xBFgXnFos9SoT6bY> prov:qualifiedAttribution _:a6163466e09bda4a2db16f2f27d06f8b .
-_:a6163466e09bda4a2db16f2f27d06f8b prov:agent <urn:uuid:5769da63-d46b-8c66-b381-d00b2f7ccadb> ;
+<ni:///sha-256;eN7foYUylLlq_zZUkA9W6vis0D0xBFgXnFos9SoT6bY> prov:qualifiedAttribution _:ebff066dcd090b4c2e490042b3c01199 .
+_:ebff066dcd090b4c2e490042b3c01199 prov:agent <urn:uuid:5769da63-d46b-8c66-b381-d00b2f7ccadb> ;
 	prov:hadRole cascade:AuthorRole .
 <ni:///sha-256;ZKCRlsdZDF_dd5vAgYobQgb7Vn2gCC-1NQyFyiGx59M> prov:specializationOf <urn:uuid:5769da63-d46b-8c66-b381-d00b2f7ccadb> .
 _:e9379f26cb62852040336ffbc44a37cf bridge:arrivedAs <ni:///sha-256;ZKCRlsdZDF_dd5vAgYobQgb7Vn2gCC-1NQyFyiGx59M> .

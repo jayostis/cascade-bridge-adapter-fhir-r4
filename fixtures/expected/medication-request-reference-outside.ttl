@@ -3,25 +3,27 @@
 @prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;sPKxvqoFGckEWcSemWM0CdJTOPt8iiC-FPz8Gf6UUc4> cascade:prescribedOrReported "prescribed" ;
+<ni:///sha-256;1ngx-34_MstA8oL3xNQb2z_90vs1kkw5YbzqtBTr3Hk> cascade:prescribedOrReported "prescribed" ;
 	cascade:drugName "metFORMIN 500 MG tablet" ;
 	cascade:workflowStatus "active" ;
+	cascade:medicationRequestIntent "order" ;
 	cascade:prescriptionWrittenDate "2025-08-12"^^xsd:date .
-_:7981b0b21a0b1b7ef9a5108fcca58bac bridge:arrivedAs <ni:///sha-256;sPKxvqoFGckEWcSemWM0CdJTOPt8iiC-FPz8Gf6UUc4> .
-<ni:///sha-256;sPKxvqoFGckEWcSemWM0CdJTOPt8iiC-FPz8Gf6UUc4> cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> ;
-	prov:specializationOf <urn:uuid:eecdfb48-f001-83b7-8037-93f28a7ec846> .
-<urn:uuid:eecdfb48-f001-83b7-8037-93f28a7ec846> cascade:sourceRecordId "medrx-metformin-2" ;
+<urn:uuid:eecdfb48-f001-83b7-8037-93f28a7ec846> a cascade:PrescribedOrReportedMedication ;
 	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/MedicationRequest/medrx-metformin-2> ;
-	a cascade:PrescribedOrReportedMedication .
-_:7981b0b21a0b1b7ef9a5108fcca58bac oa:hasSelector _:da074eeb19be946e0ff9bdcb7bbe3024 ;
+	cascade:sourceRecordId "medrx-metformin-2" .
+<ni:///sha-256;1ngx-34_MstA8oL3xNQb2z_90vs1kkw5YbzqtBTr3Hk> prov:specializationOf <urn:uuid:eecdfb48-f001-83b7-8037-93f28a7ec846> ;
+	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
+_:46ffc7b17f6c4197c0ce1c0d6aa05155 bridge:arrivedAs <ni:///sha-256;1ngx-34_MstA8oL3xNQb2z_90vs1kkw5YbzqtBTr3Hk> ;
+	oa:hasSelector _:a6438153cf5675231ea4299993d67e9a ;
 	oa:hasSource <ni:///sha-256;5hLbfaBRxIsEARJ-bbia28IHhvQsWCflP5bW9NWIXP0> ;
 	prov:wasDerivedFrom <ni:///sha-256;5hLbfaBRxIsEARJ-bbia28IHhvQsWCflP5bW9NWIXP0> ;
 	prov:wasGeneratedBy _:39eddb1bff96bb5ba1c4198065b67681 .
-_:da074eeb19be946e0ff9bdcb7bbe3024 a oa:FragmentSelector ;
-	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+_:a6438153cf5675231ea4299993d67e9a a oa:FragmentSelector ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;5hLbfaBRxIsEARJ-bbia28IHhvQsWCflP5bW9NWIXP0> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
 	pav:retrievedFrom <https://FHIR.Meridian.example/api/FHIR/R4/MedicationRequest/medrx-metformin-2> ;

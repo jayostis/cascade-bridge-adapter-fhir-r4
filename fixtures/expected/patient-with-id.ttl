@@ -4,23 +4,25 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;ehrKCKmJ8OMNaNDyUYxGcH_ljvkJcgfrGCOwyMTEgsI> foaf:familyName "Rivera" ;
+<ni:///sha-256;xANxu5cueaxIe6Yf5LkkI7hse8qawh65A_iHXdK4Eus> foaf:familyName "Rivera" ;
 	foaf:givenName "Alex" ;
-	cascade:dateOfBirth "1985-03-15"^^xsd:date .
-_:172169f450315871b77b917e1923991 bridge:arrivedAs <ni:///sha-256;ehrKCKmJ8OMNaNDyUYxGcH_ljvkJcgfrGCOwyMTEgsI> .
-<ni:///sha-256;ehrKCKmJ8OMNaNDyUYxGcH_ljvkJcgfrGCOwyMTEgsI> prov:specializationOf <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
-<urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> cascade:sourceRecordId "pat-conformance-1" ;
+	cascade:dateOfBirth "1985-03-15"^^xsd:date ;
+	cascade:administrativeGender "female" .
+<urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> a cascade:PatientProfile ;
 	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Patient/pat-conformance-1> ;
-	a cascade:PatientProfile .
-_:172169f450315871b77b917e1923991 oa:hasSelector _:54c595e78e09aad22351d42d099fa7f8 ;
+	cascade:sourceRecordId "pat-conformance-1" .
+<ni:///sha-256;xANxu5cueaxIe6Yf5LkkI7hse8qawh65A_iHXdK4Eus> prov:specializationOf <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
+_:653f3978fbb56cd5ee4cbd89c216c349 bridge:arrivedAs <ni:///sha-256;xANxu5cueaxIe6Yf5LkkI7hse8qawh65A_iHXdK4Eus> ;
+	oa:hasSelector _:aee282b1f9aa3813725d2394ff4ebf32 ;
 	oa:hasSource <ni:///sha-256;iLtvtM4JjGHRYz94rICBZL6WG3D-yFhBMG8CY1cOSyo> ;
 	prov:wasDerivedFrom <ni:///sha-256;iLtvtM4JjGHRYz94rICBZL6WG3D-yFhBMG8CY1cOSyo> ;
 	prov:wasGeneratedBy _:482733c3663f83b93335e33dc3eb5b1c .
-_:54c595e78e09aad22351d42d099fa7f8 a oa:FragmentSelector ;
-	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+_:aee282b1f9aa3813725d2394ff4ebf32 a oa:FragmentSelector ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;iLtvtM4JjGHRYz94rICBZL6WG3D-yFhBMG8CY1cOSyo> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
 	pav:retrievedFrom <https://FHIR.Meridian.example/api/FHIR/R4/Patient/pat-conformance-1> ;

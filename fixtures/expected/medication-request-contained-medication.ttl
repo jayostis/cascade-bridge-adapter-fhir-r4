@@ -3,26 +3,28 @@
 @prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;xZkpqhRLxzODzvDl5U4fG3OfxlzYO13EW5uGYHiIy3U> cascade:prescribedOrReported "prescribed" ;
+<ni:///sha-256;Hstiixr-1tgKEXEu1fDToQzpYrbxkpH0tP-SP-XXMGE> cascade:prescribedOrReported "prescribed" ;
 	cascade:drugName "amlodipine 5 MG Oral Tablet" ;
 	cascade:rxNormCode <https://ns.cascadeprotocol.org/codes/rxnorm/197361> ;
 	cascade:workflowStatus "active" ;
+	cascade:medicationRequestIntent "order" ;
 	cascade:prescriptionWrittenDate "2025-11-20"^^xsd:date .
-_:2133cdd617acab781f03a8c22f2422b0 bridge:arrivedAs <ni:///sha-256;xZkpqhRLxzODzvDl5U4fG3OfxlzYO13EW5uGYHiIy3U> .
-<ni:///sha-256;xZkpqhRLxzODzvDl5U4fG3OfxlzYO13EW5uGYHiIy3U> cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> ;
-	prov:specializationOf <urn:uuid:f8b51cf4-4b4a-83d3-a230-5c34f576f353> .
-<urn:uuid:f8b51cf4-4b4a-83d3-a230-5c34f576f353> cascade:sourceRecordId "medrx-amlodipine-1" ;
+<urn:uuid:f8b51cf4-4b4a-83d3-a230-5c34f576f353> a cascade:PrescribedOrReportedMedication ;
 	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/MedicationRequest/medrx-amlodipine-1> ;
-	a cascade:PrescribedOrReportedMedication .
-_:2133cdd617acab781f03a8c22f2422b0 oa:hasSelector _:5190712a7e1bd5c37d3824fcb02bdac9 ;
+	cascade:sourceRecordId "medrx-amlodipine-1" .
+<ni:///sha-256;Hstiixr-1tgKEXEu1fDToQzpYrbxkpH0tP-SP-XXMGE> prov:specializationOf <urn:uuid:f8b51cf4-4b4a-83d3-a230-5c34f576f353> ;
+	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
+_:437358c481434b420d9cfa41c53ae2df bridge:arrivedAs <ni:///sha-256;Hstiixr-1tgKEXEu1fDToQzpYrbxkpH0tP-SP-XXMGE> ;
+	oa:hasSelector _:71209739d9201f8bc3ca0675967d35d2 ;
 	oa:hasSource <ni:///sha-256;wx5heyp-6EB-wZs6sc5cmKEW6Ce7cCOGMHWEFM_4mtM> ;
 	prov:wasDerivedFrom <ni:///sha-256;wx5heyp-6EB-wZs6sc5cmKEW6Ce7cCOGMHWEFM_4mtM> ;
 	prov:wasGeneratedBy _:c0455c3e9a76c2da5c834b3aa943c47 .
-_:5190712a7e1bd5c37d3824fcb02bdac9 a oa:FragmentSelector ;
-	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+_:71209739d9201f8bc3ca0675967d35d2 a oa:FragmentSelector ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;wx5heyp-6EB-wZs6sc5cmKEW6Ce7cCOGMHWEFM_4mtM> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
 	pav:retrievedFrom <https://FHIR.Meridian.example/api/FHIR/R4/MedicationRequest/medrx-amlodipine-1> ;

@@ -4,13 +4,14 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-_:ca3e490326293c54cee4ba319b06d77 bridge:arrivedAs <ni:///sha-256;cbmZiipbqmhaOjxkRQcUhuB3b-cpdyTaieh8dOLSOvQ> .
-<ni:///sha-256;cbmZiipbqmhaOjxkRQcUhuB3b-cpdyTaieh8dOLSOvQ> cascade:patient <urn:uuid:afbce8ca-06af-8140-a016-dcb382fe189f> ;
-	prov:specializationOf <urn:uuid:0bfad897-353b-8f23-b8b9-6f17f8b292e7> .
 <urn:uuid:0bfad897-353b-8f23-b8b9-6f17f8b292e7> a cascade:GeneticVariantFinding .
+<ni:///sha-256;cbmZiipbqmhaOjxkRQcUhuB3b-cpdyTaieh8dOLSOvQ> prov:specializationOf <urn:uuid:0bfad897-353b-8f23-b8b9-6f17f8b292e7> ;
+	cascade:patient <urn:uuid:afbce8ca-06af-8140-a016-dcb382fe189f> .
+_:ca3e490326293c54cee4ba319b06d77 bridge:arrivedAs <ni:///sha-256;cbmZiipbqmhaOjxkRQcUhuB3b-cpdyTaieh8dOLSOvQ> .
 <ni:///sha-256;cbmZiipbqmhaOjxkRQcUhuB3b-cpdyTaieh8dOLSOvQ> cascade:hgvsCodingDnaExpression "NM_022787.3:c.769G>A" ;
 	cascade:workflowStatus "final" .
 _:ca3e490326293c54cee4ba319b06d77 oa:hasSelector _:409f5c644e60a658c980bec0b76fc70 ;
@@ -18,12 +19,12 @@ _:ca3e490326293c54cee4ba319b06d77 oa:hasSelector _:409f5c644e60a658c980bec0b76fc
 	prov:wasDerivedFrom <ni:///sha-256;9cryQY4swZhgPRUTOf1ScoLRzHOunIPp_PiGmlp-HB4> ;
 	prov:wasGeneratedBy _:52b605f31df5066d72f3bc1915e78ec1 .
 _:409f5c644e60a658c980bec0b76fc70 a oa:FragmentSelector ;
-	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/0" .
-_:7b9aa403f027f307077116b95584c5b2 bridge:arrivedAs <ni:///sha-256;AJd_6hR7zN3aqiRZ_c8Q1weDpSi0LOLmbsRMdsvJbX0> .
-<ni:///sha-256;AJd_6hR7zN3aqiRZ_c8Q1weDpSi0LOLmbsRMdsvJbX0> cascade:patient <urn:uuid:afbce8ca-06af-8140-a016-dcb382fe189f> ;
-	prov:specializationOf <urn:uuid:ddcb3d4e-3930-8dab-b04b-51e8a3d99898> .
 <urn:uuid:ddcb3d4e-3930-8dab-b04b-51e8a3d99898> a cascade:GeneticVariantFinding .
+<ni:///sha-256;AJd_6hR7zN3aqiRZ_c8Q1weDpSi0LOLmbsRMdsvJbX0> prov:specializationOf <urn:uuid:ddcb3d4e-3930-8dab-b04b-51e8a3d99898> ;
+	cascade:patient <urn:uuid:afbce8ca-06af-8140-a016-dcb382fe189f> .
+_:7b9aa403f027f307077116b95584c5b2 bridge:arrivedAs <ni:///sha-256;AJd_6hR7zN3aqiRZ_c8Q1weDpSi0LOLmbsRMdsvJbX0> .
 <ni:///sha-256;AJd_6hR7zN3aqiRZ_c8Q1weDpSi0LOLmbsRMdsvJbX0> cascade:hgvsCodingDnaExpression "NM_022787.3:c.53A>G" ;
 	cascade:workflowStatus "final" .
 _:7b9aa403f027f307077116b95584c5b2 oa:hasSelector _:2789251f9c7c97d141e853b357428eca ;
@@ -31,22 +32,23 @@ _:7b9aa403f027f307077116b95584c5b2 oa:hasSelector _:2789251f9c7c97d141e853b35742
 	prov:wasDerivedFrom <ni:///sha-256;9cryQY4swZhgPRUTOf1ScoLRzHOunIPp_PiGmlp-HB4> ;
 	prov:wasGeneratedBy _:52b605f31df5066d72f3bc1915e78ec1 .
 _:2789251f9c7c97d141e853b357428eca a oa:FragmentSelector ;
-	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/1" .
-<ni:///sha-256;nVcteW_uLChnpwbRsJ1gI4Kqh0myk7ieDA73feYu0go> foaf:familyName "Storm" ;
+<ni:///sha-256;Ot7NvKaXtFWW72W3G-OSBVWHKBdPRTEOozVVOs2rrb8> foaf:familyName "Storm" ;
 	foaf:givenName "John" ;
 	foaf:name "John Storm" ;
-	cascade:dateOfBirth "1986-12-31"^^xsd:date .
-_:125b02b9e88882512a0f6485186c66f3 bridge:arrivedAs <ni:///sha-256;nVcteW_uLChnpwbRsJ1gI4Kqh0myk7ieDA73feYu0go> .
-<ni:///sha-256;nVcteW_uLChnpwbRsJ1gI4Kqh0myk7ieDA73feYu0go> prov:specializationOf <urn:uuid:afbce8ca-06af-8140-a016-dcb382fe189f> .
-<urn:uuid:afbce8ca-06af-8140-a016-dcb382fe189f> cascade:sourceRecordId "patient" ;
-	a cascade:PatientProfile .
-_:125b02b9e88882512a0f6485186c66f3 oa:hasSelector _:9f2597930ce2726adbeff6c9b998d73d ;
+	cascade:dateOfBirth "1986-12-31"^^xsd:date ;
+	cascade:administrativeGender "male" .
+<urn:uuid:afbce8ca-06af-8140-a016-dcb382fe189f> a cascade:PatientProfile ;
+	cascade:sourceRecordId "patient" .
+<ni:///sha-256;Ot7NvKaXtFWW72W3G-OSBVWHKBdPRTEOozVVOs2rrb8> prov:specializationOf <urn:uuid:afbce8ca-06af-8140-a016-dcb382fe189f> .
+_:5c4cfb2c26f1c35b91553f71d5d29678 bridge:arrivedAs <ni:///sha-256;Ot7NvKaXtFWW72W3G-OSBVWHKBdPRTEOozVVOs2rrb8> ;
+	oa:hasSelector _:6db37f4fd441cd83eee8c67829c5d474 ;
 	oa:hasSource <ni:///sha-256;9cryQY4swZhgPRUTOf1ScoLRzHOunIPp_PiGmlp-HB4> ;
 	prov:wasDerivedFrom <ni:///sha-256;9cryQY4swZhgPRUTOf1ScoLRzHOunIPp_PiGmlp-HB4> ;
 	prov:wasGeneratedBy _:52b605f31df5066d72f3bc1915e78ec1 .
-_:9f2597930ce2726adbeff6c9b998d73d a oa:FragmentSelector ;
-	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+_:6db37f4fd441cd83eee8c67829c5d474 a oa:FragmentSelector ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/4" .
 <ni:///sha-256;9cryQY4swZhgPRUTOf1ScoLRzHOunIPp_PiGmlp-HB4> pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
 _:6820e88c695685b92e7c7bf37c282aa1 prov:agent _:575499afd593dd0911b34af8ae46ec4b .

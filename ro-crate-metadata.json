@@ -181,6 +181,9 @@
           "@id": "in/sparql/recorded-date-findings.rq"
         },
         {
+          "@id": "in/sparql/patient-findings.rq"
+        },
+        {
           "@id": "in/sparql/reference-display-findings.rq"
         },
         {
@@ -309,6 +312,9 @@
         },
         {
           "@id": "in/sparql/recorded-date-findings.rq"
+        },
+        {
+          "@id": "in/sparql/patient-findings.rq"
         },
         {
           "@id": "in/sparql/reference-display-findings.rq"
@@ -564,6 +570,21 @@
         },
         {
           "@id": "fixtures/in/bundle-medication-repeated-id.json"
+        },
+        {
+          "@id": "fixtures/in/patient-deceased-date.json"
+        },
+        {
+          "@id": "fixtures/in/patient-deceased-boolean.json"
+        },
+        {
+          "@id": "fixtures/in/patient-gender-absent-for-reason.json"
+        },
+        {
+          "@id": "fixtures/in/patient-gender-not-a-code.json"
+        },
+        {
+          "@id": "fixtures/in/medication-request-reported-and-proposal.json"
         },
         {
           "@id": "fixtures/in/bundle-pull-collection-versions.json"
@@ -1091,6 +1112,21 @@
           "@id": "fixtures/expected/bundle-medication-repeated-id.ttl"
         },
         {
+          "@id": "fixtures/expected/patient-deceased-date.ttl"
+        },
+        {
+          "@id": "fixtures/expected/patient-deceased-boolean.ttl"
+        },
+        {
+          "@id": "fixtures/expected/patient-gender-absent-for-reason.ttl"
+        },
+        {
+          "@id": "fixtures/expected/patient-gender-not-a-code.ttl"
+        },
+        {
+          "@id": "fixtures/expected/medication-request-reported-and-proposal.ttl"
+        },
+        {
           "@id": "fixtures/expected/bundle-pull-collection-versions.ttl"
         },
         {
@@ -1143,6 +1179,21 @@
         },
         {
           "@id": "fixtures/findings/bundle-medication-repeated-id.ttl"
+        },
+        {
+          "@id": "fixtures/findings/patient-deceased-date.ttl"
+        },
+        {
+          "@id": "fixtures/findings/patient-deceased-boolean.ttl"
+        },
+        {
+          "@id": "fixtures/findings/patient-gender-absent-for-reason.ttl"
+        },
+        {
+          "@id": "fixtures/findings/patient-gender-not-a-code.ttl"
+        },
+        {
+          "@id": "fixtures/findings/medication-request-reported-and-proposal.ttl"
         },
         {
           "@id": "fixtures/findings/bundle-pull-collection-versions.ttl"
@@ -1518,8 +1569,8 @@
       "@type": "File",
       "name": "Mapping: a Patient's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "2301",
-      "sha256": "aae0b145f5ca0326149c15bd84c70cd253fa8fed01df837a9fefceee0faf8619",
+      "contentSize": "4317",
+      "sha256": "f4c480ddc90afc11784d32127276876f6650c7ea1a71a543ab12c85b9558c8a6",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1530,8 +1581,8 @@
       "@type": "File",
       "name": "Mapping: a MedicationRequest's or MedicationStatement's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "11004",
-      "sha256": "33ea6823d6664b601a8e0a0c4a0551b8c28872b1b3022af27a041cc3a7c85432",
+      "contentSize": "11850",
+      "sha256": "27f97e1ebf0c4ab7009411fe65a6f59a18e0fbe5aacd2cddcaf859beeec0a59e",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1590,8 +1641,8 @@
       "@type": "File",
       "name": "Mapping: a value absent for a stated reason",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "5025",
-      "sha256": "50154a11fda1cdcb6e16808830e78ecb1478931289c43cd3914aa46aa94ddafe",
+      "contentSize": "5161",
+      "sha256": "c3063b7ba04d31ba7788176ca0597406c3a54cf4e1223617c8ba016b5e60db7d",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1694,6 +1745,18 @@
       "description": "A finding for each AllergyIntolerance or Condition that states the date it was recorded, which no Cascade predicate carries."
     },
     {
+      "@id": "in/sparql/patient-findings.rq",
+      "@type": "File",
+      "name": "Findings: a patient's gender",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "1806",
+      "sha256": "d26c6858e928f40150d76621c8e1c84d7031b07dbe16b6f5a79ba24ad8a1e839",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A finding for each Patient whose gender is not one of the four codes of FHIR's administrative gender, which patient.rq does not carry."
+    },
+    {
       "@id": "in/sparql/reference-display-findings.rq",
       "@type": "File",
       "name": "Findings: a reference's display",
@@ -1746,8 +1809,8 @@
       "@type": "File",
       "name": "Findings: a reason a value is absent that is not carried",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "4539",
-      "sha256": "dc2795b9d35f95eba2afd487b5203f00ab2862c26b81b1c9e4e9f2fcc720142a",
+      "contentSize": "4603",
+      "sha256": "91be1c05b7f364c8c7a348764079e85a1eec0dbb628d52bdf3fb2a156a640de2",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1782,8 +1845,8 @@
       "@type": "File",
       "name": "FHIR R4 JSON source accounting",
       "encodingFormat": "text/turtle",
-      "contentSize": "230881",
-      "sha256": "5ffd3a12a689252bd3834482c5f0b8158e742925ff28a17465f994322cc02add",
+      "contentSize": "234467",
+      "sha256": "288c1a302715cd9ce33dab7e56a6925cbfaf831c34d81a820238ece7367ea8e0",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1830,8 +1893,8 @@
       "@type": "File",
       "name": "FHIR R4 JSON gaps",
       "encodingFormat": "text/turtle",
-      "contentSize": "15254",
-      "sha256": "bfebccd57248767475cb161040e99cd798cc7ac99998dccc168454743a8b9e90",
+      "contentSize": "15359",
+      "sha256": "d418cd8414f510c39475549df3a91f464824b2552dc202d24e62343a23743a98",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2845,6 +2908,231 @@
       "description": "A collection Bundle: a Medication of metformin, id med-metformin-2, coded by RxNorm (861007) and NDC; and a MedicationRequest, id medrx-metformin-3, referencing it as Medication/med-metformin-2/_history/3. Authored here on 2026-10-06, for a case the conformance corpus does not hold: a reference naming a version of the Medication it resolves to."
     },
     {
+      "@id": "fixtures/in/patient-deceased-date.json",
+      "@type": "File",
+      "name": "Patient who died on a stated day",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "212",
+      "sha256": "cd6bae2d1bee4f3fbd6cb1a3917c3505f94ebf9e3c76bb6063e56be901725874",
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Patient, Edmund Hale, male, born 1941-07-02, with no id, whose deceasedDateTime is 2024-03-15. Authored here on 2026-10-29, for a case the conformance corpus does not hold: a death time, which states that the person died and when."
+    },
+    {
+      "@id": "fixtures/in/patient-deceased-boolean.json",
+      "@type": "File",
+      "name": "Patient stated deceased",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "206",
+      "sha256": "0285b933cf1bc256a21777de90a01257c21142b948ea3e75bbafc80700ccf275",
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Patient, Odette Marsh, female, born 1938-02-19, with no id, whose deceasedBoolean is true. Authored here on 2026-10-29, for a case the conformance corpus does not hold: a death stated with no time."
+    },
+    {
+      "@id": "fixtures/in/patient-gender-absent-for-reason.json",
+      "@type": "File",
+      "name": "Patient whose gender is absent for a reason",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "332",
+      "sha256": "4786d876b70bba0a5cc72988f309b5d3c04d298ac206cfbe2c31f760c3816771",
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Patient, Sasha Quill, born 1990-06-30, with no id and no gender, whose _gender carries the data-absent-reason extension with the code asked-declined. Authored here on 2026-10-29, for a case the conformance corpus does not hold: a gender FHIR says is absent, and why."
+    },
+    {
+      "@id": "fixtures/in/patient-gender-not-a-code.json",
+      "@type": "File",
+      "name": "Patient whose gender is not a code",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "173",
+      "sha256": "2cebccb6436ef6a843e8056377488908964324ec1a89eb7496408f5cefcf8e26",
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Patient, Ilse Brandt, born 1966-12-01, with no id, whose gender is F, which is none of the four codes of FHIR's administrative gender and which the schema refuses. Authored here on 2026-10-29, for a case the conformance corpus does not hold: a gender outside its required binding."
+    },
+    {
+      "@id": "fixtures/in/medication-request-reported-and-proposal.json",
+      "@type": "File",
+      "name": "Bundle of reported and proposed MedicationRequests",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "1727",
+      "sha256": "06463e74ab89435f9fed7062bbb2665cc66129c9dac7f9425f68476267a36a64",
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A collection Bundle of three MedicationRequests for Patient/pat-conformance-1, each authored 2025-11-04 and naming its drug by text alone: medrx-reported-boolean-1 (simvastatin, intent plan, reportedBoolean true), medrx-reported-reference-1 (vitamin D3, intent order, reportedReference to the patient) and medrx-proposal-1 (metformin, status draft, intent proposal, reportedBoolean false). Authored here on 2026-10-29, for a case the conformance corpus does not hold: reported[x] and an intent other than order."
+    },
+    {
+      "@id": "fixtures/expected/patient-deceased-date.ttl",
+      "@type": "File",
+      "name": "Expected graph for patient-deceased-date",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3460",
+      "sha256": "e3ff5a40635e458e3c3bfe6290d18684ac51ccfb9a368ef03a02bd7c77f623ab",
+      "about": {
+        "@id": "fixtures/in/patient-deceased-date.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/patient-deceased-boolean.ttl",
+      "@type": "File",
+      "name": "Expected graph for patient-deceased-boolean",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3415",
+      "sha256": "8fba41d756c497746e77243aba55aa39aa535fb5b4a1740a4bcda54f6bac2984",
+      "about": {
+        "@id": "fixtures/in/patient-deceased-boolean.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/patient-gender-absent-for-reason.ttl",
+      "@type": "File",
+      "name": "Expected graph for patient-gender-absent-for-reason",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3777",
+      "sha256": "a464ba10806181513ef71327cd772d358bcfcbb58027fab95efa4875e432d364",
+      "about": {
+        "@id": "fixtures/in/patient-gender-absent-for-reason.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/patient-gender-not-a-code.ttl",
+      "@type": "File",
+      "name": "Expected graph for patient-gender-not-a-code",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3347",
+      "sha256": "8971950350332da92a936d1f0e46031dc495ad1a32aca230999c8f265057d6d3",
+      "about": {
+        "@id": "fixtures/in/patient-gender-not-a-code.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/medication-request-reported-and-proposal.ttl",
+      "@type": "File",
+      "name": "Expected graph for medication-request-reported-and-proposal",
+      "encodingFormat": "text/turtle",
+      "contentSize": "6123",
+      "sha256": "889e1e631e179be113241a4f08457b65a9ced5baddd8bd36de845e2fe0204fe2",
+      "about": {
+        "@id": "fixtures/in/medication-request-reported-and-proposal.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/findings/patient-deceased-date.ttl",
+      "@type": "File",
+      "name": "Expected findings for patient-deceased-date",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/patient-deceased-date.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/patient-deceased-boolean.ttl",
+      "@type": "File",
+      "name": "Expected findings for patient-deceased-boolean",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/patient-deceased-boolean.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/patient-gender-absent-for-reason.ttl",
+      "@type": "File",
+      "name": "Expected findings for patient-gender-absent-for-reason",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/patient-gender-absent-for-reason.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/patient-gender-not-a-code.ttl",
+      "@type": "File",
+      "name": "Expected findings for patient-gender-not-a-code",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1651",
+      "sha256": "d15bd0abfaf68ed16b2f44aa10f66031761d785384d2197b0dd83934acec1f17",
+      "about": {
+        "@id": "fixtures/in/patient-gender-not-a-code.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/medication-request-reported-and-proposal.ttl",
+      "@type": "File",
+      "name": "Expected findings for medication-request-reported-and-proposal",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/medication-request-reported-and-proposal.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
       "@id": "fixtures/in/bundle-medication-repeated-id.json",
       "@type": "File",
       "name": "Bundle of two Medications sharing an id, and a request referencing it",
@@ -3473,8 +3761,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-urn-uuid-full-urls",
       "encodingFormat": "text/turtle",
-      "contentSize": "4404",
-      "sha256": "e21479a28861d1179f1adb233e27535c031f546a589bc8be75a0cdc7c33fdbbe",
+      "contentSize": "4412",
+      "sha256": "1d0395bd4f4b4e9192bc3dcaa0787629fec6cc6d640d291060e564b19f79c547",
       "about": {
         "@id": "fixtures/in/bundle-urn-uuid-full-urls.json"
       },
@@ -3489,8 +3777,8 @@
       "@type": "File",
       "name": "Expected findings for bundle-urn-uuid-full-urls",
       "encodingFormat": "text/turtle",
-      "contentSize": "1051",
-      "sha256": "e31e437d538589f943590c441799257bb18e8722754cca64c0cf5f2848015c78",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "about": {
         "@id": "fixtures/in/bundle-urn-uuid-full-urls.json"
       },
@@ -3505,8 +3793,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-document-custodian-and-authors",
       "encodingFormat": "text/turtle",
-      "contentSize": "6849",
-      "sha256": "b6286dfca14d81ce514f8c77d9a229a78bd925cd10b21ac0017320dab0393fd6",
+      "contentSize": "6917",
+      "sha256": "b620a064e4b7bcdf6e7af8230b1d31ed7241a7e31aa95b0eccd2564cd86b0680",
       "about": {
         "@id": "fixtures/in/bundle-document-custodian-and-authors.json"
       },
@@ -3521,8 +3809,8 @@
       "@type": "File",
       "name": "Expected findings for bundle-document-custodian-and-authors",
       "encodingFormat": "text/turtle",
-      "contentSize": "3630",
-      "sha256": "f0699724d9f6ce65933146734a27a314eb7da194dcee3af0d16e8922b2d81d9b",
+      "contentSize": "2787",
+      "sha256": "cdab5b8eb61ac1ee4ff230b04a5fceb37684e561801c421eb36cc7878dadcfb8",
       "about": {
         "@id": "fixtures/in/bundle-document-custodian-and-authors.json"
       },
@@ -3569,8 +3857,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-document-without-custodian",
       "encodingFormat": "text/turtle",
-      "contentSize": "4207",
-      "sha256": "8051ad668919f5894367b49abee478415cdd297fe2ee0ede84744f4f4dc8876e",
+      "contentSize": "4285",
+      "sha256": "c683cf594bd4104b65f2131526e13a480a8beae83e4ddf8d363b38f7bddb58d6",
       "about": {
         "@id": "fixtures/in/bundle-document-without-custodian.json"
       },
@@ -3585,8 +3873,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-document-organizations-one-npi",
       "encodingFormat": "text/turtle",
-      "contentSize": "6151",
-      "sha256": "ca519897b12a3db30bcd82ad5d123b5740cecbfc6388381f0102ad0628d252be",
+      "contentSize": "6192",
+      "sha256": "ed7c9b5a04b3b080b785f6149c040f7964d2d9816c8807dfe1f32b1e06514e83",
       "about": {
         "@id": "fixtures/in/bundle-document-organizations-one-npi.json"
       },
@@ -3617,8 +3905,8 @@
       "@type": "File",
       "name": "Expected findings for bundle-document-without-custodian",
       "encodingFormat": "text/turtle",
-      "contentSize": "3617",
-      "sha256": "114e8e788595c9ea2f857a543803684d62c3d243d33d77405bcd1cd32bad3895",
+      "contentSize": "2778",
+      "sha256": "3bbb0b5cb0f01cf3ebe7f5ddec394cbc4bc55189346caf7dd962a9e4080ae27b",
       "about": {
         "@id": "fixtures/in/bundle-document-without-custodian.json"
       },
@@ -3633,8 +3921,8 @@
       "@type": "File",
       "name": "Expected findings for bundle-document-organizations-one-npi",
       "encodingFormat": "text/turtle",
-      "contentSize": "3685",
-      "sha256": "906d87fdc2fd0f83a868313c88d02e22bd9862bcb7b5f38b35ac3444e1351349",
+      "contentSize": "2841",
+      "sha256": "f50465a4f6bf462465accf83272f934a672bddbad4ebd14b8c11e0df5fbeb45b",
       "about": {
         "@id": "fixtures/in/bundle-document-organizations-one-npi.json"
       },
@@ -4465,8 +4753,8 @@
       "@type": "File",
       "name": "Expected graph for medication-request-every-mapped-element",
       "encodingFormat": "text/turtle",
-      "contentSize": "3925",
-      "sha256": "e25e55ffd42a06ee57f7234ba7e9cc1912c817b90a1f3aaabe8c714480aea3ad",
+      "contentSize": "3975",
+      "sha256": "6f4bf17c7f620e9ffe5b30da5e74c5ac44adcda2357852ab8775e2cb670312d7",
       "about": {
         "@id": "fixtures/in/medication-request-every-mapped-element.json"
       },
@@ -4529,8 +4817,8 @@
       "@type": "File",
       "name": "Expected graph for medication-request-contained-medication",
       "encodingFormat": "text/turtle",
-      "contentSize": "3795",
-      "sha256": "85208ed3f7049a144ad7186548207b9efbf1a5319c866c1255d12cbd6e4b6243",
+      "contentSize": "3843",
+      "sha256": "d8ca9fc202a7df5d4356b63403da9cc9fee08cf2feea029706d3c579a489ed3e",
       "about": {
         "@id": "fixtures/in/medication-request-contained-medication.json"
       },
@@ -4561,8 +4849,8 @@
       "@type": "File",
       "name": "Expected graph for medication-request-reference-outside",
       "encodingFormat": "text/turtle",
-      "contentSize": "3716",
-      "sha256": "d5c7b9991abd27c75b25bb772c105b0705c015db0250c0defa1c2241d01c5d69",
+      "contentSize": "3764",
+      "sha256": "2c90d79400a3fb42725efce5ba78d45658565ad27aaf546e9cda3ebe702c93c5",
       "about": {
         "@id": "fixtures/in/medication-request-reference-outside.json"
       },
@@ -4593,8 +4881,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-medication-request-and-medication",
       "encodingFormat": "text/turtle",
-      "contentSize": "3698",
-      "sha256": "db80b2be32ce79528d82dd3bc0964d309347fc7f95d399c4ced90d1e18c66ac8",
+      "contentSize": "3746",
+      "sha256": "ccf854c20bb2cb422997b5d2aed80f42fd86586670c767b5b55a867659ae1b5b",
       "about": {
         "@id": "fixtures/in/bundle-medication-request-and-medication.json"
       },
@@ -5041,8 +5329,8 @@
       "@type": "File",
       "name": "Expected graph for medication-request-two-rxnorm-codes",
       "encodingFormat": "text/turtle",
-      "contentSize": "3884",
-      "sha256": "da60766cc0f3387605910c911c3ec8553320523411de74774600a8857c52f52b",
+      "contentSize": "3932",
+      "sha256": "3cb49e49c33ef32917e26dfc7050e6757de5acf425af0a159b11b53552efdb94",
       "about": {
         "@id": "fixtures/in/medication-request-two-rxnorm-codes.json"
       },
@@ -5073,8 +5361,8 @@
       "@type": "File",
       "name": "Expected graph for medication-request-ndc-forms",
       "encodingFormat": "text/turtle",
-      "contentSize": "4020",
-      "sha256": "c99e4aad8bea2c4c16984337cf65c159f9eedcb8ddfd0533fbffa9785e6c62a5",
+      "contentSize": "4068",
+      "sha256": "be43b91f49ecf37b78002f979604e3967866e33a8802168ebaec9977b96b9589",
       "about": {
         "@id": "fixtures/in/medication-request-ndc-forms.json"
       },
@@ -5105,8 +5393,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-medication-versioned-reference",
       "encodingFormat": "text/turtle",
-      "contentSize": "3774",
-      "sha256": "c26bdc7ecefdff1d7b862f97b813ee952822a726d387efe1e8437ecd5908df3d",
+      "contentSize": "3822",
+      "sha256": "b6786c15a530c324b9c6696b37c1d0d457d78c58b0c7f7edbe92d7b68b617aeb",
       "about": {
         "@id": "fixtures/in/bundle-medication-versioned-reference.json"
       },
@@ -5137,8 +5425,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-medication-repeated-id",
       "encodingFormat": "text/turtle",
-      "contentSize": "3573",
-      "sha256": "0c86a90083c4a45630872ae392037b9c47195ad5063442a4d4dc96edada96b11",
+      "contentSize": "3621",
+      "sha256": "4ce1a68f5a3d36d80aed165c4a57a80524779ce5bf459d161707ee6828156d25",
       "about": {
         "@id": "fixtures/in/bundle-medication-repeated-id.json"
       },
@@ -5313,8 +5601,8 @@
       "@type": "File",
       "name": "Expected graph for Bundle-bundle-compound-heterozygote",
       "encodingFormat": "text/turtle",
-      "contentSize": "5332",
-      "sha256": "088ea65b609f67b7851886ff9e02c88cfc5df7cc5840a5c94d0c288a90824a80",
+      "contentSize": "5368",
+      "sha256": "056d3f294dd641666e4bfd5e7e780df11fee2d61739875879d5a2ac1ea978933",
       "about": {
         "@id": "fixtures/in/Bundle-bundle-compound-heterozygote.input.json"
       },
@@ -5329,8 +5617,8 @@
       "@type": "File",
       "name": "Expected graph for Bundle-bundle-oncology-diagnostic",
       "encodingFormat": "text/turtle",
-      "contentSize": "7043",
-      "sha256": "6fa607829bfab14e81c6d9579802c8cd9b400676e8bdefbbf49a4a2cce1deeee",
+      "contentSize": "7109",
+      "sha256": "315286771142fc3de40e13f30cc867f9f12720b1c2e63793f214a1178ef170c2",
       "about": {
         "@id": "fixtures/in/Bundle-bundle-oncology-diagnostic.input.json"
       },
@@ -5393,8 +5681,8 @@
       "@type": "File",
       "name": "Expected graph for martin-okafor-st-columba-exome-2024-with-lab",
       "encodingFormat": "text/turtle",
-      "contentSize": "16011",
-      "sha256": "29be5cd772be8dbca045cea418d296597ba4f03a45f1cf60acacbcc60c2e1a26",
+      "contentSize": "16088",
+      "sha256": "af1660bf5bee8f43accb609bdc913bbb369fe9058d267db4ea820f28b2ec9a7a",
       "about": {
         "@id": "fixtures/in/martin-okafor-st-columba-exome-2024-with-lab.json"
       },
@@ -5585,8 +5873,8 @@
       "@type": "File",
       "name": "Expected findings for Bundle-bundle-compound-heterozygote",
       "encodingFormat": "text/turtle",
-      "contentSize": "8102",
-      "sha256": "2dcdc8b7d0c06ee5c16e568a7f7d401e3f27ffc00225511cf170b657a1e90589",
+      "contentSize": "7256",
+      "sha256": "dba90fef0427708541d46f138b014ff00906081dba05507d4a5919062e8353d0",
       "about": {
         "@id": "fixtures/in/Bundle-bundle-compound-heterozygote.input.json"
       },
@@ -5601,8 +5889,8 @@
       "@type": "File",
       "name": "Expected findings for Bundle-bundle-oncology-diagnostic",
       "encodingFormat": "text/turtle",
-      "contentSize": "10465",
-      "sha256": "e522a4912245b3ed2d9cecc7a0dc89db3c718de2adc0e4dfc11aa9f837047870",
+      "contentSize": "9630",
+      "sha256": "3b4240b1024af2320c162462b99f13c2a0174da930cdee5d2cbbc5e56e41cd6c",
       "about": {
         "@id": "fixtures/in/Bundle-bundle-oncology-diagnostic.input.json"
       },
@@ -5681,8 +5969,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-interpretation-performer-is-custodian",
       "encodingFormat": "text/turtle",
-      "contentSize": "6878",
-      "sha256": "4191a9a7a164f236f1868174de116cd93eec12f910628ad692e84f79a99befe7",
+      "contentSize": "6944",
+      "sha256": "b348c2e6c23d99a35a45f3b026909f7135c15b06f88902f468b7480666d321bc",
       "about": {
         "@id": "fixtures/in/bundle-interpretation-performer-is-custodian.json"
       },
@@ -5729,8 +6017,8 @@
       "@type": "File",
       "name": "Expected findings for bundle-interpretation-performer-is-custodian",
       "encodingFormat": "text/turtle",
-      "contentSize": "1935",
-      "sha256": "37183b50f5cb42717406ba2da8bab951f6a8f35faead27854b15a9c1ec71cde1",
+      "contentSize": "1085",
+      "sha256": "cfe7722eda24c2e90e2a8de8609308c392f2d2d36b127bcac8bf879d999d0aae",
       "about": {
         "@id": "fixtures/in/bundle-interpretation-performer-is-custodian.json"
       },
@@ -5777,8 +6065,8 @@
       "@type": "File",
       "name": "Expected graph for patient-no-id",
       "encodingFormat": "text/turtle",
-      "contentSize": "3347",
-      "sha256": "88693d4a04953ea3b3d79710a85780d1966c162a9ae620abe53747f4c6d9b8ff",
+      "contentSize": "3393",
+      "sha256": "25f939e5a86574deda1e309bed3cac133ced5c324fb597d5fdc3be7bc6752cf5",
       "about": {
         "@id": "fixtures/in/patient-no-id.json"
       },
@@ -5793,8 +6081,8 @@
       "@type": "File",
       "name": "Expected findings for patient-no-id",
       "encodingFormat": "text/turtle",
-      "contentSize": "1014",
-      "sha256": "b12976878eccb48034a3d24f818751526a96794f94383100742a6cda6109621d",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "about": {
         "@id": "fixtures/in/patient-no-id.json"
       },
@@ -5809,8 +6097,8 @@
       "@type": "File",
       "name": "Expected graph for patient-with-id",
       "encodingFormat": "text/turtle",
-      "contentSize": "3569",
-      "sha256": "f5d7ee0d337d3a9cd89cfc0ce1e22304144ab766c8d73e5c0a0ef857083d41de",
+      "contentSize": "3617",
+      "sha256": "7121d7873adc008b03902e122415e029117f70451c6c14bea4ff9b87908a0a2b",
       "about": {
         "@id": "fixtures/in/patient-with-id.json"
       },
@@ -5825,8 +6113,8 @@
       "@type": "File",
       "name": "Expected findings for patient-with-id",
       "encodingFormat": "text/turtle",
-      "contentSize": "1018",
-      "sha256": "238f98b551f5314e0130a2a3e7904d95e02c36784d1bef19a6e11720066fd09f",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "about": {
         "@id": "fixtures/in/patient-with-id.json"
       },
@@ -6286,8 +6574,8 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "contentSize": "73418",
-      "sha256": "d9572f718a600af3768526bf7c826d694f434a522891278e05c88e9183a57f91"
+      "contentSize": "76954",
+      "sha256": "ac3c051a4e50eaa1d4b9924874034a139ddc47200e9640a52173d4fb7065bb7a"
     },
     {
       "@id": "fixtures/facts/meridian.ttl",
@@ -6597,8 +6885,8 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "What a record is, the two envelopes, how a record is named, JSON as FHIR writes it, the schema, the versions in and out of scope, and what is known about the committed inputs. Read from hl7.org/fhir/R4/ on 2026-09-27.",
-      "contentSize": "21123",
-      "sha256": "d38451e9e0a2bee421c4d7f4a11e323e4c2819c273a464e4ad6d770ed7a404b0"
+      "contentSize": "21925",
+      "sha256": "75cba369acaf5e6e8701415a1ea268fe72ada0f6d7adb38ef285d9131bcc9c22"
     },
     {
       "@id": "fixtures/CLAUDE.md",

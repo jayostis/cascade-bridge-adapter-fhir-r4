@@ -32,6 +32,10 @@
     <#procedure-contained-empty-version-id>
     <#patient-with-id>
     <#patient-no-id>
+    <#patient-deceased-date>
+    <#patient-deceased-boolean>
+    <#patient-gender-absent-for-reason>
+    <#patient-gender-not-a-code>
     <#bundle-two-identical-id-less-allergies>
     <#bundle-urn-uuid-full-urls>
     <#bundle-document-custodian-and-authors>
@@ -75,6 +79,7 @@
     <#medication-request-ndc-forms>
     <#bundle-medication-versioned-reference>
     <#bundle-medication-repeated-id>
+    <#medication-request-reported-and-proposal>
     <#bundle-pull-collection-versions>
     <#bundle-pull-searchset-outcome>
     <#bundle-pull-organization>
@@ -430,6 +435,58 @@
   mf:result [
     bridge:expectedGraph <expected/patient-no-id.ttl> ;
     bridge:expectedFindings <findings/patient-no-id.ttl>
+  ] .
+
+<#patient-deceased-date> a bridge:IsomorphicConversionTest ;
+  mf:name "patient-deceased-date" ;
+  rdfs:comment "A Patient whose deceasedDateTime is a day: the version states cascade:deceased true and the day as its cascade:dateOfDeath, an xsd:date, beside its gender." ;
+  mf:action [
+    bridge:input <in/patient-deceased-date.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/patient-deceased-date.ttl> ;
+    bridge:expectedFindings <findings/patient-deceased-date.ttl>
+  ] .
+
+<#patient-deceased-boolean> a bridge:IsomorphicConversionTest ;
+  mf:name "patient-deceased-boolean" ;
+  rdfs:comment "A Patient whose deceasedBoolean is true: the version states cascade:deceased true, an xsd:boolean, and no date of death." ;
+  mf:action [
+    bridge:input <in/patient-deceased-boolean.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/patient-deceased-boolean.ttl> ;
+    bridge:expectedFindings <findings/patient-deceased-boolean.ttl>
+  ] .
+
+<#patient-gender-absent-for-reason> a bridge:IsomorphicConversionTest ;
+  mf:name "patient-gender-absent-for-reason" ;
+  rdfs:comment "A Patient with no gender whose _gender carries the data-absent-reason extension asked-declined: the version states no gender and a cascade:ValueAbsentForReason node naming cascade:administrativeGender with that reason." ;
+  mf:action [
+    bridge:input <in/patient-gender-absent-for-reason.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/patient-gender-absent-for-reason.ttl> ;
+    bridge:expectedFindings <findings/patient-gender-absent-for-reason.ttl>
+  ] .
+
+<#patient-gender-not-a-code> a bridge:IsomorphicConversionTest ;
+  mf:name "patient-gender-not-a-code" ;
+  rdfs:comment "A Patient whose gender is F, none of the four codes of FHIR's administrative gender: the version states no gender, and the value is a finding of fhirr4:administrativeGenderNotMapped beside the schema's." ;
+  mf:action [
+    bridge:input <in/patient-gender-not-a-code.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/patient-gender-not-a-code.ttl> ;
+    bridge:expectedFindings <findings/patient-gender-not-a-code.ttl>
   ] .
 
 <#bundle-two-identical-id-less-allergies> a bridge:IsomorphicConversionTest ;
@@ -1240,6 +1297,19 @@
   mf:result [
     bridge:expectedGraph <expected/medication-request-two-rxnorm-codes.ttl> ;
     bridge:expectedFindings <findings/medication-request-two-rxnorm-codes.ttl>
+  ] .
+
+<#medication-request-reported-and-proposal> a bridge:IsomorphicConversionTest ;
+  mf:name "medication-request-reported-and-proposal" ;
+  rdfs:comment "A Bundle of three MedicationRequests: one with reportedBoolean true and intent plan, one with a reportedReference and intent order, each reported use stating no intent; and one with reportedBoolean false and intent proposal, prescribed, stating its intent." ;
+  mf:action [
+    bridge:input <in/medication-request-reported-and-proposal.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/medication-request-reported-and-proposal.ttl> ;
+    bridge:expectedFindings <findings/medication-request-reported-and-proposal.ttl>
   ] .
 
 <#medication-request-ndc-forms> a bridge:IsomorphicConversionTest ;

@@ -4,21 +4,23 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;FkXdOoOx68cSe1rVoy2vmaB0A1CmQ3FPIucAyeIGJpo> foaf:givenName "Carrot" ;
-	cascade:dateOfBirth "1962-12-31"^^xsd:date .
+<ni:///sha-256;KGY9Iqe56WpHyRFUd2RDGRCZHy-jyTXy8wi_x9HND2s> foaf:givenName "Carrot" ;
+	cascade:dateOfBirth "1962-12-31"^^xsd:date ;
+	cascade:administrativeGender "male" .
 <urn:uuid:ceea121c-8851-818a-b6a4-7fa0603c6761> a cascade:PatientProfile ;
 	cascade:sourceRecordId "Inline-Instance-for-oncology-diagnostic-1" .
-<ni:///sha-256;FkXdOoOx68cSe1rVoy2vmaB0A1CmQ3FPIucAyeIGJpo> prov:specializationOf <urn:uuid:ceea121c-8851-818a-b6a4-7fa0603c6761> .
-_:891261df622065676657e3e04c241b36 bridge:arrivedAs <ni:///sha-256;FkXdOoOx68cSe1rVoy2vmaB0A1CmQ3FPIucAyeIGJpo> ;
-	oa:hasSelector _:a9fef18ab10a227d513b70d54a139d9b ;
+<ni:///sha-256;KGY9Iqe56WpHyRFUd2RDGRCZHy-jyTXy8wi_x9HND2s> prov:specializationOf <urn:uuid:ceea121c-8851-818a-b6a4-7fa0603c6761> .
+_:235f26399b54206ae34b3bc90b7a0054 bridge:arrivedAs <ni:///sha-256;KGY9Iqe56WpHyRFUd2RDGRCZHy-jyTXy8wi_x9HND2s> ;
+	oa:hasSelector _:5fd8867c3a8ec03fedfa592bfcc441de ;
 	oa:hasSource <ni:///sha-256;AO4h25x6rbUzWIH6kVDQcwa3ERvIWJrTz_X_yERgjq0> ;
 	prov:wasDerivedFrom <ni:///sha-256;AO4h25x6rbUzWIH6kVDQcwa3ERvIWJrTz_X_yERgjq0> ;
 	prov:wasGeneratedBy _:dbc91de89e8120f9d35937be69ca4b4d .
-_:a9fef18ab10a227d513b70d54a139d9b a oa:FragmentSelector ;
-	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+_:5fd8867c3a8ec03fedfa592bfcc441de a oa:FragmentSelector ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/0" .
 <ni:///sha-256;TU9gzGxul9I7ePB8L4k0o4R__ag_eBAWaVTsdSdJeCI> cascade:resultQuantity <ni:///sha-256;TU9gzGxul9I7ePB8L4k0o4R__ag_eBAWaVTsdSdJeCI#value> .
 <ni:///sha-256;TU9gzGxul9I7ePB8L4k0o4R__ag_eBAWaVTsdSdJeCI#value> cascade:decimalValue "25"^^xsd:decimal ;
@@ -40,7 +42,7 @@ _:895c6d22f891f8324bf4c2e5a6a56371 bridge:arrivedAs <ni:///sha-256;TU9gzGxul9I7e
 	prov:wasDerivedFrom <ni:///sha-256;AO4h25x6rbUzWIH6kVDQcwa3ERvIWJrTz_X_yERgjq0> ;
 	prov:wasGeneratedBy _:dbc91de89e8120f9d35937be69ca4b4d .
 _:660063f5aa1ec8d6fddf1f28d54183a a oa:FragmentSelector ;
-	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/3" .
 <urn:uuid:9c5d2693-efff-81af-8792-7d01125d7d54> a cascade:GeneticVariantFinding .
 <ni:///sha-256;8L26tBt2CPKsgUp9IgqE7US8CEh4HEM7RMN9CY2lGPA> prov:specializationOf <urn:uuid:9c5d2693-efff-81af-8792-7d01125d7d54> ;
@@ -54,7 +56,7 @@ _:4b69862c929b93582aa81225ce341490 oa:hasSelector _:2a39362fbea72c6f308b0b0e7b71
 	prov:wasDerivedFrom <ni:///sha-256;AO4h25x6rbUzWIH6kVDQcwa3ERvIWJrTz_X_yERgjq0> ;
 	prov:wasGeneratedBy _:dbc91de89e8120f9d35937be69ca4b4d .
 _:2a39362fbea72c6f308b0b0e7b719b7e a oa:FragmentSelector ;
-	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/4" .
 <urn:uuid:54c6a08e-c119-8aad-b228-95e92dabeeba> a cascade:VariantInterpretation .
 <ni:///sha-256;7zDoi-e8CWJuDw26mnIWPU7NCRoHZpPJSdPa49gA1r4> prov:specializationOf <urn:uuid:54c6a08e-c119-8aad-b228-95e92dabeeba> ;
@@ -69,7 +71,7 @@ _:ec1e24d6a2febaa3fe91495e470475db oa:hasSelector _:2c4369d995f890143950523e7ceb
 	prov:wasDerivedFrom <ni:///sha-256;AO4h25x6rbUzWIH6kVDQcwa3ERvIWJrTz_X_yERgjq0> ;
 	prov:wasGeneratedBy _:dbc91de89e8120f9d35937be69ca4b4d .
 _:2c4369d995f890143950523e7ceb3515 a oa:FragmentSelector ;
-	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/5" .
 <ni:///sha-256;AO4h25x6rbUzWIH6kVDQcwa3ERvIWJrTz_X_yERgjq0> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
 	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
