@@ -13,7 +13,13 @@ PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # display; each coding of its type, in LOINC a cascade:noteOrDocumentType IRI,
 # in any other system a cascade:noteOrDocumentTypeInOtherSystem literal typed by
 # the system read; its description as its title; its status; its docStatus,
-# the status of its content, as cascade:noteOrDocumentContentStatus; and its date,
+# the status of its content, as cascade:noteOrDocumentContentStatus; its
+# masterIdentifier, the
+# identifier of the one version of the document it describes, as
+# cascade:noteOrDocumentMasterIdentifier, its value typed by its system as
+# lab-result-identifiers.rq types a business identifier, and a plain string
+# where it states none, so that the C-CDA adapter's note of the same
+# ClinicalDocument/id is one identifier; and its date,
 # typed and padded as lab-result.rq types and pads a lab result's time. Its
 # category and the context it was written in are not carried.
 # Its author is report-and-note-performer.rq's, its attachments and text
@@ -72,6 +78,19 @@ WHERE {
     FILTER (isLiteral(?description) && STR(?description) != "")
     BIND (cascade:noteOrDocumentTitle AS ?p)
     BIND (STR(?description) AS ?o)
+  }
+  UNION
+  {
+    ?resource xyz:masterIdentifier ?master .
+    ?master xyz:value ?masterValue .
+    FILTER (isLiteral(?masterValue) && STRLEN(?masterValue) > 0)
+    OPTIONAL { ?master xyz:system ?masterSystem }
+    BIND (IF(?masterSystem = "urn:oid:2.16.840.1.113883.4.6", "http://hl7.org/fhir/sid/us-npi",
+             IF(REGEX(?masterSystem, "^urn:uuid:", "i"), LCASE(?masterSystem), ?masterSystem)) AS ?masterType)
+    BIND (IF(?masterSystem = "urn:ietf:rfc:3986" && REGEX(?masterValue, "^urn:uuid:", "i"),
+             LCASE(?masterValue), STR(?masterValue)) AS ?masterText)
+    BIND (cascade:noteOrDocumentMasterIdentifier AS ?p)
+    BIND (IF(BOUND(?masterSystem), STRDT(?masterText, IRI(?masterType)), STR(?masterValue)) AS ?o)
   }
   UNION
   {

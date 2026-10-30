@@ -12581,3 +12581,27 @@
   bridge:sourcePath "/resource/_date/extension/valueCode" ;
   bridge:verdict bridge:carriedInPart ;
   bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/masterIdentifier" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/masterIdentifier/system" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/masterIdentifier/value" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/masterIdentifier" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/masterIdentifier/system" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/masterIdentifier/value" ;
+  bridge:verdict bridge:carried .
