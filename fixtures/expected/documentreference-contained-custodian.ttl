@@ -1,8 +1,27 @@
+@prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
+<ni:///sha-256;KARZDfRsJ-91g8gFXoyQF2N6imXcumHim51IuQa_ejU> cascade:attachment <ni:///sha-256;KARZDfRsJ-91g8gFXoyQF2N6imXcumHim51IuQa_ejU#attachment-1> .
+<ni:///sha-256;KARZDfRsJ-91g8gFXoyQF2N6imXcumHim51IuQa_ejU#attachment-1> cascade:attachmentContentType "application/pdf" ;
+	cascade:attachmentTitle "Discharge summary" .
+<ni:///sha-256;KARZDfRsJ-91g8gFXoyQF2N6imXcumHim51IuQa_ejU> cascade:workflowStatus "current" ;
+	cascade:noteOrDocumentDate "2026-09-02T08:00:00Z"^^xsd:dateTime .
+<urn:uuid:210e50ae-0089-8883-90f1-1eb6a833b0b9> a cascade:ClinicalNoteOrDocument .
+<ni:///sha-256;KARZDfRsJ-91g8gFXoyQF2N6imXcumHim51IuQa_ejU> prov:specializationOf <urn:uuid:210e50ae-0089-8883-90f1-1eb6a833b0b9> .
+_:393a07c1929be5d45ce7e6e2663d4c78 bridge:arrivedAs <ni:///sha-256;KARZDfRsJ-91g8gFXoyQF2N6imXcumHim51IuQa_ejU> ;
+	oa:hasSelector _:805937b78c87323d55c17e266783b1e0 ;
+	oa:hasSource <ni:///sha-256;iXeFyRKFNEIaLU-zhqElxToEdPbtC8SYj3a5r4z-L-A> ;
+	prov:wasDerivedFrom <ni:///sha-256;iXeFyRKFNEIaLU-zhqElxToEdPbtC8SYj3a5r4z-L-A> ;
+	prov:wasGeneratedBy _:79e783b2646934a9405d30b2c4db408c .
+_:805937b78c87323d55c17e266783b1e0 a oa:FragmentSelector ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "" .
 <ni:///sha-256;iXeFyRKFNEIaLU-zhqElxToEdPbtC8SYj3a5r4z-L-A> pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
 _:433206e3e640e8b6f94410873b69fc97 prov:agent _:b070c78fba5387b556527a504aff604f .
 _:b070c78fba5387b556527a504aff604f <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .

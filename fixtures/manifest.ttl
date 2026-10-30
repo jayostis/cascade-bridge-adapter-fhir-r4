@@ -40,6 +40,10 @@
     <#bundle-urn-uuid-full-urls>
     <#bundle-document-custodian-and-authors>
     <#documentreference-contained-custodian>
+    <#diagnostic-report-pdf-only>
+    <#diagnostic-report-every-mapped-element>
+    <#document-reference-progress-note>
+    <#document-reference-ccd>
     <#bundle-document-without-custodian>
     <#bundle-document-organizations-one-npi>
     <#composition-contained-custodian>
@@ -1858,4 +1862,56 @@
   mf:result [
     bridge:expectedGraph <expected/medication-request-supply-and-timing-values-not-carried.ttl> ;
     bridge:expectedFindings <findings/medication-request-supply-and-timing-values-not-carried.ttl>
+  ] .
+
+<#diagnostic-report-pdf-only> a bridge:IsomorphicConversionTest ;
+  mf:name "diagnostic-report-pdf-only" ;
+  rdfs:comment "A DiagnosticReport whose vitamin B12 result is only a PDF (presentedForm), with no Observation: a report record with its code, category, time, status, performer and the PDF as an attachment, whose data is reported as not read." ;
+  mf:action [
+    bridge:input <in/diagnostic-report-pdf-only.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/example-org.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/diagnostic-report-pdf-only.ttl> ;
+    bridge:expectedFindings <findings/diagnostic-report-pdf-only.ttl>
+  ] .
+
+<#diagnostic-report-every-mapped-element> a bridge:IsomorphicConversionTest ;
+  mf:name "diagnostic-report-every-mapped-element" ;
+  rdfs:comment "A DiagnosticReport carrying every element report.rq, report-results.rq, attachments.rq and narrative-text.rq read: a LOINC and a lab's own code, a period start written to the minute, a conclusion and its SNOMED CT code, a narrative div with markup, an attachment by URL, a result on its server named as a record, and a contained result and one on another server, which name none." ;
+  mf:action [
+    bridge:input <in/diagnostic-report-every-mapped-element.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/example-org.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/diagnostic-report-every-mapped-element.ttl> ;
+    bridge:expectedFindings <findings/diagnostic-report-every-mapped-element.ttl>
+  ] .
+
+<#document-reference-progress-note> a bridge:IsomorphicConversionTest ;
+  mf:name "document-reference-progress-note" ;
+  rdfs:comment "A DocumentReference of a progress note: a note or document record with its LOINC type, type name, title, date, status, author and its inline text/plain attachment's decoded text as its narrative text; its narrative div, not that text, is reported." ;
+  mf:action [
+    bridge:input <in/document-reference-progress-note.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/example-org.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/document-reference-progress-note.ttl> ;
+    bridge:expectedFindings <findings/document-reference-progress-note.ttl>
+  ] .
+
+<#document-reference-ccd> a bridge:IsomorphicConversionTest ;
+  mf:name "document-reference-ccd" ;
+  rdfs:comment "A DocumentReference whose content is a C-CDA document, format urn:hl7-org:sdwg:ccda-structuredBody:2.1 as US Core codes a CCD: no record, and the format code reported." ;
+  mf:action [
+    bridge:input <in/document-reference-ccd.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/example-org.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/document-reference-ccd.ttl> ;
+    bridge:expectedFindings <findings/document-reference-ccd.ttl>
   ] .
