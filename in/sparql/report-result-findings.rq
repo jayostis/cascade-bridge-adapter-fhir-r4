@@ -68,7 +68,7 @@ WHERE {
            ?unversioned) AS ?relative)
   OPTIONAL {
     {
-      SELECT ?key (COUNT(DISTINCT ?keySelector) AS ?heldAtKey) (SAMPLE(?keySelector) AS ?heldSelector)
+      SELECT ?key (COUNT(DISTINCT ?keySelector) AS ?heldAtKey) (MIN(?keySelector) AS ?heldSelector)
       WHERE {
         ?held fhirr4:heldAt ?keySelector ;
           fhirr4:fullUrl ?key .

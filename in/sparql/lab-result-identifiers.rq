@@ -12,8 +12,12 @@ PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # URI, as organization.rq types an organization's, and a plain string where it
 # states none. A urn:uuid: system, and a urn:uuid: value of the system
 # urn:ietf:rfc:3986, are in lower case, as result-identifiers.rq in the C-CDA
-# adapter writes a UUID root, so one UUID is one identifier from either. A
-# system that is no IRI gives none.
+# adapter writes a UUID root, and a urn:oid: system or such a value is written
+# urn:oid: in lower case whatever case it came in, so one id is one identifier
+# from either. A system that is no absolute URI, as "mysys", names no system an
+# identifier can be told by, and would resolve against wherever the adapter's
+# files are; the value is a plain string, as for no system. A system that is an
+# absolute URI no IRI may be gives none.
 
 CONSTRUCT {
   ?version dct:identifier ?identifier .
@@ -47,10 +51,15 @@ WHERE {
   ?identifierNode xyz:value ?identifierValue .
   FILTER (STRLEN(?identifierValue) > 0)
   OPTIONAL { ?identifierNode xyz:system ?identifierSystem }
-  BIND (IF(?identifierSystem = "urn:oid:2.16.840.1.113883.4.6", "http://hl7.org/fhir/sid/us-npi",
+  BIND (IF(REGEX(?identifierSystem, "^urn:oid:", "i"), CONCAT("urn:oid:", SUBSTR(?identifierSystem, 9)),
            IF(REGEX(?identifierSystem, "^urn:uuid:", "i"), LCASE(?identifierSystem), ?identifierSystem))
+        AS ?identifierFolded)
+  BIND (IF(?identifierFolded = "urn:oid:2.16.840.1.113883.4.6", "http://hl7.org/fhir/sid/us-npi", ?identifierFolded)
         AS ?identifierType)
-  BIND (IF(?identifierSystem = "urn:ietf:rfc:3986" && REGEX(?identifierValue, "^urn:uuid:", "i"),
-           LCASE(?identifierValue), ?identifierValue) AS ?identifierText)
-  BIND (IF(BOUND(?identifierSystem), STRDT(?identifierText, IRI(?identifierType)), ?identifierValue) AS ?identifier)
+  BIND (IF(?identifierSystem = "urn:ietf:rfc:3986",
+           IF(REGEX(?identifierValue, "^urn:uuid:", "i"), LCASE(?identifierValue),
+              IF(REGEX(?identifierValue, "^urn:oid:", "i"), CONCAT("urn:oid:", SUBSTR(?identifierValue, 9)), ?identifierValue)),
+           ?identifierValue) AS ?identifierText)
+  BIND (IF(BOUND(?identifierSystem) && REGEX(?identifierSystem, "^[A-Za-z][A-Za-z0-9+.-]*:"),
+           STRDT(?identifierText, IRI(?identifierType)), ?identifierValue) AS ?identifier)
 }

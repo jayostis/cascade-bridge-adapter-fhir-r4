@@ -126,7 +126,14 @@ entries to import, so it is a note.
 Neither `type` nor `category` tells the two apart: a discharge summary may be
 a C-CDA document or a PDF. A note's version carries every coding of its `type`
 (LOINC as IRIs, any other system as a literal), its type's name, its
-`description` as its title, its `date` (absent for a reason as any date is), its `status`, its `docStatus` and
+`description` as its title, its `date` (absent for a reason as any date is), its `status`,
+its `docStatus`, its `masterIdentifier`, the id of the one version of the document it describes,
+as `cascade:noteOrDocumentMasterIdentifier`: the value typed by its system, a
+`urn:oid:` system in lower case, the NPI's OID as `http://hl7.org/fhir/sid/us-npi`,
+a `urn:uuid:` system, and a `urn:uuid:` or `urn:oid:` value of
+`urn:ietf:rfc:3986`, in lower case, as the C-CDA adapter writes a
+`ClinicalDocument/id`, so one document is one identifier from either; a plain
+string where it states no system, or one that is no absolute URI; and
 the one `Organization` its authors name from a server; its `category` and
 `context` are not carried.
 
@@ -464,4 +471,5 @@ carry no `subject`, which FHIR R4's schema requires of both types, so the four
 fail the schema. So do four authored reports and notes, on purpose:
 `diagnostic-report-codes-and-times` and `document-reference-type-codings` write
 a time to the minute, `diagnostic-report-contained-results` an `issued` of a
-day, and `document-reference-inline-pdf` an empty title. Every other input, copied or authored, validates against it.
+day, `document-reference-inline-pdf` an empty title, and
+`document-reference-master-identifier-rewrites` an empty identifier value. Every other input, copied or authored, validates against it.

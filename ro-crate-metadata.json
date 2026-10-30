@@ -2118,12 +2118,12 @@
       "@type": "File",
       "name": "Mapping: the business identifiers of a lab result's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "2793",
-      "sha256": "edc26a94c15e18e869456cd62993e3251d3284adcefd488174ea263f992fd65c",
+      "contentSize": "3482",
+      "sha256": "780330a515da3178998e16cb4f7bacf4e5b7de41fd83db8c68eae8138eb14e80",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "Each identifier with a value of a lab result, as a dct:identifier of the version record.rq names: its value typed by its system, a system urn:oid: and the NPI's OID as the NPI's URI, or a plain string where it states no system."
+      "description": "Each business identifier of a lab result as dct:identifier of its version: its value typed by its system, the NPI's OID as its URI, a urn:oid: system or urn:ietf:rfc:3986 value in lower case urn:oid:, a urn:uuid: system or urn:ietf:rfc:3986 value in lower case, as the C-CDA adapter writes one; a plain string where it states no system or one that is no absolute URI."
     },
     {
       "@id": "in/sparql/lab-result-performer.rq",
@@ -2178,8 +2178,8 @@
       "@type": "File",
       "name": "Mapping: the result records a DiagnosticReport names",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "9426",
-      "sha256": "6826cdb09dac7392582060f838734a31c19c25483799b11e88caf67c490abff1",
+      "contentSize": "9423",
+      "sha256": "b31f43979d3a41bdc103fd16ea81e9e71c1066dbc7b1718c3ad52d511edb0715",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2190,12 +2190,12 @@
       "@type": "File",
       "name": "Mapping: a DocumentReference's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "6511",
-      "sha256": "71f7a95ed16794cdd2391b6be362d04e0714f8f5f8ab8fb256fe53a9f0c885fc",
+      "contentSize": "6888",
+      "sha256": "5c4208016edf320927a8ac98b3e0c2df51d82977cfb75db631c05174b12b5233",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "A note or document's type codings (LOINC as cascade:noteOrDocumentType IRIs, any other system as literals), type name, description as its title, status and date, typed by its precision and padded when written to the minute."
+      "description": "A note or document's type codings (LOINC as cascade:noteOrDocumentType IRIs, any other system as literals), type name, description as its title, status, docStatus, date, typed by its precision and padded when written to the minute, and masterIdentifier as cascade:noteOrDocumentMasterIdentifier, typed by its system as the C-CDA adapter writes a ClinicalDocument/id."
     },
     {
       "@id": "in/sparql/attachments.rq",
@@ -2430,8 +2430,8 @@
       "@type": "File",
       "name": "Findings: a report's result that names no record",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "5476",
-      "sha256": "847c5129614a7a342786b7ef3607998b64e2139639f71e302bb764253b4a1ada",
+      "contentSize": "5473",
+      "sha256": "7e553f7b5c8851fceb53fc06f87dd9f21af8719eea050b440ab7851352c2a657",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -9153,8 +9153,8 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "What a record is, reports and notes, the two envelopes, how a record is named, JSON as FHIR writes it, the schema, the versions in and out of scope, and what is known about the committed inputs. Read from hl7.org/fhir/R4/ on 2026-09-27, reports and notes on 2026-10-30.",
-      "contentSize": "30500",
-      "sha256": "e34cf9b5081bf71c0774380fe5a4871fa2f4a5a042b49890619dad69097ef30d"
+      "contentSize": "31091",
+      "sha256": "44430093e0a8ef5d92c997c413048672bdf85953d42d2f2cdf8b03ef94aa6f02"
     },
     {
       "@id": "fixtures/CLAUDE.md",
