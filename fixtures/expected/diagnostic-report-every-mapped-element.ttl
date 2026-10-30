@@ -8,30 +8,30 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;gndjVzkiaS8lPzdCIYahfeoVxZTp0C9cEcEZv-0BrXc> cascade:attachment <ni:///sha-256;gndjVzkiaS8lPzdCIYahfeoVxZTp0C9cEcEZv-0BrXc#attachment-1> .
-<ni:///sha-256;gndjVzkiaS8lPzdCIYahfeoVxZTp0C9cEcEZv-0BrXc#attachment-1> cascade:attachmentContentType "application/pdf" ;
+<ni:///sha-256;GiNbXMmdTU4AZkqOYR_FH6kyUqz-fZGkQonpDL0PcnQ> cascade:attachment <ni:///sha-256;GiNbXMmdTU4AZkqOYR_FH6kyUqz-fZGkQonpDL0PcnQ#attachment-1> .
+<ni:///sha-256;GiNbXMmdTU4AZkqOYR_FH6kyUqz-fZGkQonpDL0PcnQ#attachment-1> cascade:attachmentContentType "application/pdf" ;
 	cascade:attachmentTitle "Report" ;
 	cascade:attachmentUrl "Binary/b12-panel-pdf"^^xsd:anyURI .
 <ni:///sha-256;5nBDVEpZLOCQ5IHGzDGOpfR3drjYVk5zJZWwybp2jj0> cascade:testCode <http://loinc.org/rdf/2284-8> ;
 	cascade:workflowStatus "final" .
-<ni:///sha-256;gndjVzkiaS8lPzdCIYahfeoVxZTp0C9cEcEZv-0BrXc> cascade:narrativeText "Vitamin B12 low & folate normal.\nRepeat in 3 months." .
+<ni:///sha-256;GiNbXMmdTU4AZkqOYR_FH6kyUqz-fZGkQonpDL0PcnQ> cascade:narrativeText "Vitamin B12 low & folate normal.\nRepeat in 3 months." .
 <urn:uuid:7a54c545-53d7-82c2-addb-fc0ed9770417> a cascade:DiagnosticReport ;
 	cascade:sourceUrl <http://example.org/fhir/DiagnosticReport/b12-panel-report> ;
 	cascade:sourceRecordId "b12-panel-report" .
-<ni:///sha-256;gndjVzkiaS8lPzdCIYahfeoVxZTp0C9cEcEZv-0BrXc> prov:specializationOf <urn:uuid:7a54c545-53d7-82c2-addb-fc0ed9770417> ;
+<ni:///sha-256;GiNbXMmdTU4AZkqOYR_FH6kyUqz-fZGkQonpDL0PcnQ> prov:specializationOf <urn:uuid:7a54c545-53d7-82c2-addb-fc0ed9770417> ;
 	cascade:patient <urn:uuid:1cc3cbf1-3a8f-8691-923b-e87de6e5c3a3> .
-_:1cf2357afa87360a4fa573888f5f2c4c bridge:arrivedAs <ni:///sha-256;gndjVzkiaS8lPzdCIYahfeoVxZTp0C9cEcEZv-0BrXc> .
+_:43f43361ab38b1a58d71b53f15273ed5 bridge:arrivedAs <ni:///sha-256;GiNbXMmdTU4AZkqOYR_FH6kyUqz-fZGkQonpDL0PcnQ> .
 <urn:uuid:efc146b6-416e-8d4f-98a2-e8248727692d> a cascade:LaboratoryTestResult ;
 	cascade:sourceUrl <http://example.org/fhir/DiagnosticReport/b12-panel-report#folate> ;
 	cascade:sourceRecordId "folate" .
 <ni:///sha-256;5nBDVEpZLOCQ5IHGzDGOpfR3drjYVk5zJZWwybp2jj0> prov:specializationOf <urn:uuid:efc146b6-416e-8d4f-98a2-e8248727692d> ;
 	cascade:patient <urn:uuid:1cc3cbf1-3a8f-8691-923b-e87de6e5c3a3> .
 _:6fbabfcce4580bb1c3f27a03e8bf1e22 bridge:arrivedAs <ni:///sha-256;5nBDVEpZLOCQ5IHGzDGOpfR3drjYVk5zJZWwybp2jj0> ;
-	oa:hasSelector _:f7e66f7c74635ef90277d5b1643da373 .
-_:f7e66f7c74635ef90277d5b1643da373 a oa:FragmentSelector ;
+	oa:hasSelector _:a2582d2f328203c2ededfd918074c601 .
+_:a2582d2f328203c2ededfd918074c601 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/contained/0" .
-<ni:///sha-256;gndjVzkiaS8lPzdCIYahfeoVxZTp0C9cEcEZv-0BrXc> obo:RO_0002351 <urn:uuid:1b1f6343-d944-822c-a7c4-9eda7136a587> ;
+<ni:///sha-256;GiNbXMmdTU4AZkqOYR_FH6kyUqz-fZGkQonpDL0PcnQ> obo:RO_0002351 <urn:uuid:efc146b6-416e-8d4f-98a2-e8248727692d> , <urn:uuid:1b1f6343-d944-822c-a7c4-9eda7136a587> ;
 	cascade:workflowStatus "amended" ;
 	cascade:reportCategory "LAB"^^<http://terminology.hl7.org/CodeSystem/v2-0074> ;
 	cascade:reportCodeInOtherSystem "B12"^^<https://lab.example/report-codes> ;
@@ -40,14 +40,14 @@ _:f7e66f7c74635ef90277d5b1643da373 a oa:FragmentSelector ;
 	cascade:reportEffectiveTime "2026-08-14T09:30:00Z"^^xsd:dateTime ;
 	cascade:reportName "Cobalamin (Vitamin B12) [Mass/volume] in Serum or Plasma" ;
 	cascade:reportConclusion "Low vitamin B12" .
-_:1cf2357afa87360a4fa573888f5f2c4c oa:hasSelector _:ba6d10ddc3e1a802e9a732a6c0641c97 ;
+_:43f43361ab38b1a58d71b53f15273ed5 oa:hasSelector _:3bef1cfbe7d5ae71998c6dd5fcb80159 ;
 	oa:hasSource <ni:///sha-256;jUoSep6Go7OGb0YPKqgKyfjMDuOn_NxJaNn5nbx-iHs> ;
 	prov:wasDerivedFrom <ni:///sha-256;jUoSep6Go7OGb0YPKqgKyfjMDuOn_NxJaNn5nbx-iHs> ;
 	prov:wasGeneratedBy _:5106152344463c3a906211d083ec79db .
 _:6fbabfcce4580bb1c3f27a03e8bf1e22 oa:hasSource <ni:///sha-256;jUoSep6Go7OGb0YPKqgKyfjMDuOn_NxJaNn5nbx-iHs> ;
 	prov:wasDerivedFrom <ni:///sha-256;jUoSep6Go7OGb0YPKqgKyfjMDuOn_NxJaNn5nbx-iHs> ;
 	prov:wasGeneratedBy _:5106152344463c3a906211d083ec79db .
-_:ba6d10ddc3e1a802e9a732a6c0641c97 a oa:FragmentSelector ;
+_:3bef1cfbe7d5ae71998c6dd5fcb80159 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;jUoSep6Go7OGb0YPKqgKyfjMDuOn_NxJaNn5nbx-iHs> cascade:serverBaseUrl "http://example.org/fhir" ;

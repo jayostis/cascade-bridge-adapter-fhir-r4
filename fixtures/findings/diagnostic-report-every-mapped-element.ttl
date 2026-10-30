@@ -2,33 +2,48 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:f9597f1a9158fa75006c969600198800 a oa:FragmentSelector ;
+_:f0117f4cb01f356681f1942e7ad46a8c a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:c14e60a543651a1e51b97890ee117d74 oa:hasSource <../in/diagnostic-report-every-mapped-element.json> .
-_:f9597f1a9158fa75006c969600198800 oa:refinedBy _:fdde83ad55b0fcac3d2416eab8728937 .
-_:fdde83ad55b0fcac3d2416eab8728937 a oa:FragmentSelector ;
+_:c51a8533e629b582ef9f233d699d1b4d oa:hasSource <../in/diagnostic-report-every-mapped-element.json> .
+_:f0117f4cb01f356681f1942e7ad46a8c oa:refinedBy _:f7becc182d4e4e0a834322ef83e7b505 .
+_:f7becc182d4e4e0a834322ef83e7b505 a oa:FragmentSelector ;
+	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/performer/1/reference" .
+_:c51a8533e629b582ef9f233d699d1b4d oa:hasSelector _:f0117f4cb01f356681f1942e7ad46a8c .
+_:ef74f5b131facecaa881c233d95280f5 oa:hasTarget _:c51a8533e629b582ef9f233d699d1b4d .
+_:a6f09915b8c8e783d8b75db40fbd89ec a oa:FragmentSelector ;
+	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "" .
+_:bc301c5a2a96ba3a0763d43035a550ad oa:hasSource <../in/diagnostic-report-every-mapped-element.json> .
+_:a6f09915b8c8e783d8b75db40fbd89ec oa:refinedBy _:d5f9af55ae2759e2309143f148f02f53 .
+_:d5f9af55ae2759e2309143f148f02f53 a oa:FragmentSelector ;
+	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/performer/0/reference" .
+_:bc301c5a2a96ba3a0763d43035a550ad oa:hasSelector _:a6f09915b8c8e783d8b75db40fbd89ec .
+_:bf30f77724bfcf105b359a34ba104990 oa:hasTarget _:bc301c5a2a96ba3a0763d43035a550ad .
+_:ef74f5b131facecaa881c233d95280f5 sh:resultSeverity sh:Warning .
+_:bf30f77724bfcf105b359a34ba104990 sh:resultSeverity sh:Warning .
+_:ef74f5b131facecaa881c233d95280f5 a oa:Annotation ;
+	oa:hasBody fhirr4:performerCarriedOnlyAsOneOrganizationRecord ;
+	oa:motivatedBy oa:classifying ;
+	sh:value "Organization/lab-2" .
+_:bf30f77724bfcf105b359a34ba104990 a oa:Annotation ;
+	oa:hasBody fhirr4:performerCarriedOnlyAsOneOrganizationRecord ;
+	oa:motivatedBy oa:classifying ;
+	sh:value "Organization/lab-1" .
+_:d25eac597abe74008561e1c1ef9343bd a oa:FragmentSelector ;
+	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "" .
+_:b3bdebe53466c46faed8da3397a4dfb7 oa:hasSource <../in/diagnostic-report-every-mapped-element.json> .
+_:d25eac597abe74008561e1c1ef9343bd oa:refinedBy _:ca2243e7a6565df798e17c35e21cfd9c .
+_:ca2243e7a6565df798e17c35e21cfd9c a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/result/2/reference" .
-_:c14e60a543651a1e51b97890ee117d74 oa:hasSelector _:f9597f1a9158fa75006c969600198800 .
-_:b284367625eb6cbbf02370216e873087 oa:hasTarget _:c14e60a543651a1e51b97890ee117d74 .
-_:b39695524caa6b2fe992b0c907463d47 a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "" .
-_:e0f54e145fad2e2f8f8299c762d72571 oa:hasSource <../in/diagnostic-report-every-mapped-element.json> .
-_:b39695524caa6b2fe992b0c907463d47 oa:refinedBy _:e5ce742f02855e7a3cc9d37556638438 .
-_:e5ce742f02855e7a3cc9d37556638438 a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/result/1/reference" .
-_:e0f54e145fad2e2f8f8299c762d72571 oa:hasSelector _:b39695524caa6b2fe992b0c907463d47 .
-_:e738e3399d7607f88428d3bcb0cae4ae oa:hasTarget _:e0f54e145fad2e2f8f8299c762d72571 .
-_:b284367625eb6cbbf02370216e873087 sh:resultSeverity sh:Warning .
-_:e738e3399d7607f88428d3bcb0cae4ae sh:resultSeverity sh:Warning .
-_:b284367625eb6cbbf02370216e873087 a oa:Annotation ;
+_:b3bdebe53466c46faed8da3397a4dfb7 oa:hasSelector _:d25eac597abe74008561e1c1ef9343bd .
+_:f45bd198cbd8e70f812289d5847d5f99 oa:hasTarget _:b3bdebe53466c46faed8da3397a4dfb7 ;
+	sh:resultSeverity sh:Warning ;
+	a oa:Annotation ;
 	oa:hasBody fhirr4:reportResultNotNamed ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "https://other.example/fhir/Observation/b12-2" .
-_:e738e3399d7607f88428d3bcb0cae4ae a oa:Annotation ;
-	oa:hasBody fhirr4:reportResultNotNamed ;
-	oa:motivatedBy oa:classifying ;
-	sh:value "#folate" .

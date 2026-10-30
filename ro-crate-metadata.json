@@ -572,6 +572,12 @@
           "@id": "fixtures/in/document-reference-ccd.json"
         },
         {
+          "@id": "fixtures/in/diagnostic-report-times-absent-for-reason.json"
+        },
+        {
+          "@id": "fixtures/in/document-reference-date-absent-for-reason.json"
+        },
+        {
           "@id": "fixtures/in/bundle-document-custodian-and-authors.json"
         },
         {
@@ -993,6 +999,18 @@
         },
         {
           "@id": "fixtures/findings/document-reference-ccd.ttl"
+        },
+        {
+          "@id": "fixtures/expected/diagnostic-report-times-absent-for-reason.ttl"
+        },
+        {
+          "@id": "fixtures/findings/diagnostic-report-times-absent-for-reason.ttl"
+        },
+        {
+          "@id": "fixtures/expected/document-reference-date-absent-for-reason.ttl"
+        },
+        {
+          "@id": "fixtures/findings/document-reference-date-absent-for-reason.ttl"
         },
         {
           "@id": "fixtures/expected/bundle-document-custodian-and-authors.ttl"
@@ -2978,6 +2996,32 @@
       "description": "A DocumentReference from a server of type LOINC 34133-9, Summary of episode note, whose one content is an application/xml attachment by URL with the HL7 document format code urn:hl7-org:sdwg:ccda-structuredBody:2.1. Authored here on 2026-10-30, for a case the conformance corpus does not hold."
     },
     {
+      "@id": "fixtures/in/diagnostic-report-times-absent-for-reason.json",
+      "@type": "File",
+      "name": "DiagnosticReport whose times are absent for a reason",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "812",
+      "sha256": "7a51ae7c0c5cd32738e8744726f4f1056be3322a30e5aa750d75ba9e3459de49",
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A DiagnosticReport from a server, LOINC 2132-9, with no effective[x] or issued and the data-absent-reason extension on _effectiveDateTime (unknown) and _issued (masked), and a PDF by URL. Authored here on 2026-10-30, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/document-reference-date-absent-for-reason.json",
+      "@type": "File",
+      "name": "DocumentReference whose date is absent for a reason",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "631",
+      "sha256": "a30ca24efb22d538055872a12311b24162adf90a10185fb5c3c4903f98d4e513",
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A DocumentReference from a server of type LOINC 11506-3, Progress note, with no date and the data-absent-reason extension on _date (unknown), and a PDF by URL. Authored here on 2026-10-30, for a case the conformance corpus does not hold."
+    },
+    {
       "@id": "fixtures/in/bundle-document-without-custodian.json",
       "@type": "File",
       "name": "Document Bundle naming no custodian",
@@ -4631,8 +4675,8 @@
       "@type": "File",
       "name": "Expected graph for diagnostic-report-every-mapped-element",
       "encodingFormat": "text/turtle",
-      "contentSize": "4802",
-      "sha256": "a0ca2c966ad97a175a107c4416da9949ff03fc5ad91dfeb8d19a498a981178dc",
+      "contentSize": "4852",
+      "sha256": "92a6e29b9bfe8f6213d92f8d7c6808032843930d6b93910cc5c7dc617347155d",
       "about": {
         "@id": "fixtures/in/diagnostic-report-every-mapped-element.json"
       },
@@ -4647,8 +4691,8 @@
       "@type": "File",
       "name": "Expected findings for diagnostic-report-every-mapped-element",
       "encodingFormat": "text/turtle",
-      "contentSize": "2076",
-      "sha256": "906ea966d46cc7e33c681344bccfdcbb0bea716c1af58905ad977a9bf44c3d14",
+      "contentSize": "2990",
+      "sha256": "3660667134ec3fec82bf025b80f26c3311c83eb1f40711518e6b85ef9664bed2",
       "about": {
         "@id": "fixtures/in/diagnostic-report-every-mapped-element.json"
       },
@@ -4715,6 +4759,70 @@
       "sha256": "03b23e5e1bb1c02f8e8a918ee10b1abef7c349adbf99e503fb076b88fc0d31fc",
       "about": {
         "@id": "fixtures/in/document-reference-ccd.json"
+      },
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/diagnostic-report-times-absent-for-reason.ttl",
+      "@type": "File",
+      "name": "Expected graph for diagnostic-report-times-absent-for-reason",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3902",
+      "sha256": "b80ffe8880b4bb3a7fc82a597b06f9754c2d24f0ef2a25e66af6f6c2cd5d0e4b",
+      "about": {
+        "@id": "fixtures/in/diagnostic-report-times-absent-for-reason.json"
+      },
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/findings/diagnostic-report-times-absent-for-reason.ttl",
+      "@type": "File",
+      "name": "Expected findings for diagnostic-report-times-absent-for-reason",
+      "encodingFormat": "text/turtle",
+      "contentSize": "883",
+      "sha256": "cb9f709efc0a4d2e94a8347c5af85ba22f936b8bea26b88fd22e3f2f00956898",
+      "about": {
+        "@id": "fixtures/in/diagnostic-report-times-absent-for-reason.json"
+      },
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/document-reference-date-absent-for-reason.ttl",
+      "@type": "File",
+      "name": "Expected graph for document-reference-date-absent-for-reason",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3456",
+      "sha256": "cbdb05005d3cc15a832a96f6684ab4a684cbc882f8b84962da13a4e61858bfe7",
+      "about": {
+        "@id": "fixtures/in/document-reference-date-absent-for-reason.json"
+      },
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/findings/document-reference-date-absent-for-reason.ttl",
+      "@type": "File",
+      "name": "Expected findings for document-reference-date-absent-for-reason",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/document-reference-date-absent-for-reason.json"
       },
       "dateCreated": "2026-10-30",
       "license": {
@@ -7924,8 +8032,8 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "contentSize": "92847",
-      "sha256": "18a5b2dff2193bb913416ccff0166ce3b3042cbe0bb0b2a2eb4444086fe39e11"
+      "contentSize": "94416",
+      "sha256": "bbb93b00cefb386915623389017b82c7f0c66d203b0e26a2fd2ad3e062e8a147"
     },
     {
       "@id": "fixtures/facts/meridian.ttl",

@@ -44,6 +44,8 @@
     <#diagnostic-report-every-mapped-element>
     <#document-reference-progress-note>
     <#document-reference-ccd>
+    <#diagnostic-report-times-absent-for-reason>
+    <#document-reference-date-absent-for-reason>
     <#bundle-document-without-custodian>
     <#bundle-document-organizations-one-npi>
     <#composition-contained-custodian>
@@ -1914,4 +1916,30 @@
   mf:result [
     bridge:expectedGraph <expected/document-reference-ccd.ttl> ;
     bridge:expectedFindings <findings/document-reference-ccd.ttl>
+  ] .
+
+<#diagnostic-report-times-absent-for-reason> a bridge:IsomorphicConversionTest ;
+  mf:name "diagnostic-report-times-absent-for-reason" ;
+  rdfs:comment "A DiagnosticReport whose effective time and issued time are absent, each for a reason the data-absent-reason extension gives: a cascade:ValueAbsentForReason node for each, as for any other date." ;
+  mf:action [
+    bridge:input <in/diagnostic-report-times-absent-for-reason.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/example-org.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/diagnostic-report-times-absent-for-reason.ttl> ;
+    bridge:expectedFindings <findings/diagnostic-report-times-absent-for-reason.ttl>
+  ] .
+
+<#document-reference-date-absent-for-reason> a bridge:IsomorphicConversionTest ;
+  mf:name "document-reference-date-absent-for-reason" ;
+  rdfs:comment "A DocumentReference of a progress note whose date is absent for a reason the data-absent-reason extension gives: a cascade:ValueAbsentForReason node naming cascade:noteOrDocumentDate." ;
+  mf:action [
+    bridge:input <in/document-reference-date-absent-for-reason.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/example-org.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/document-reference-date-absent-for-reason.ttl> ;
+    bridge:expectedFindings <findings/document-reference-date-absent-for-reason.ttl>
   ] .
