@@ -126,8 +126,8 @@ _:6aeaa0370135b919b6b96b9be86b8de6 oa:hasSelector _:f939740c5eff5b2fe09e7fca7c2d
 _:f939740c5eff5b2fe09e7fca7c2da67a a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/10" .
-<ni:///sha-256;esbqyB8dYlJumvZ24dPMyIdTAQSbULoX6V-p4q6mQH4> prov:wasAttributedTo <urn:uuid:aa14ac09-843c-8ff4-8ea4-fb0df4295fff> ;
-	cascade:testCode <http://loinc.org/rdf/84414-2> ;
+<ni:///sha-256;esbqyB8dYlJumvZ24dPMyIdTAQSbULoX6V-p4q6mQH4> cascade:testCode <http://loinc.org/rdf/84414-2> ;
+	prov:wasAttributedTo <urn:uuid:aa14ac09-843c-8ff4-8ea4-fb0df4295fff> ;
 	cascade:resultValueKind cascade:CodedResultValue ;
 	cascade:resultClinicallyRelevantTime "2016"^^xsd:gYear ;
 	cascade:workflowStatus "final" .
@@ -144,8 +144,8 @@ _:c03429481d06a6fea5d5de39c45911aa bridge:arrivedAs <ni:///sha-256;esbqyB8dYlJum
 _:d630627615b623a025d7f31b69e49da6 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/11" .
-<ni:///sha-256;wBoP0dHAPfFBZNpG-uuQnPYHILYyJ19V3q7obDR9ExA> prov:wasAttributedTo <urn:uuid:aa14ac09-843c-8ff4-8ea4-fb0df4295fff> ;
-	cascade:testCode <http://loinc.org/rdf/84413-4> ;
+<ni:///sha-256;wBoP0dHAPfFBZNpG-uuQnPYHILYyJ19V3q7obDR9ExA> cascade:testCode <http://loinc.org/rdf/84413-4> ;
+	prov:wasAttributedTo <urn:uuid:aa14ac09-843c-8ff4-8ea4-fb0df4295fff> ;
 	cascade:resultValueKind cascade:CodedResultValue ;
 	cascade:resultValue "CYP2C9 *2/*5" ;
 	cascade:resultClinicallyRelevantTime "2016"^^xsd:gYear ;
@@ -163,52 +163,55 @@ _:d636df12fe94d8cb910d0c9270448ea7 bridge:arrivedAs <ni:///sha-256;wBoP0dHAPfFBZ
 _:a1303a956a46beb8a346bc1c7557250 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/12" .
-<ni:///sha-256;hm4X3ZmOCLdXXdD5C6odUIcZE1Hq5utCwebiiHfIVfE> prov:wasAttributedTo <urn:uuid:aa14ac09-843c-8ff4-8ea4-fb0df4295fff> ;
+<ni:///sha-256;f9hyvHfnyHrSDNTdZZPHE-1PfJJVlI4jsE0ASX9Jm58> cascade:testCodeInOtherSystem "therapeutic-implication"^^<http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs> ;
+	prov:wasAttributedTo <urn:uuid:aa14ac09-843c-8ff4-8ea4-fb0df4295fff> ;
 	cascade:resultClinicallyRelevantTime "2016"^^xsd:gYear ;
 	cascade:workflowStatus "final" .
 <urn:uuid:c01357e6-99d9-82cb-b0a5-356a360b1340> a cascade:LaboratoryTestResult ;
 	cascade:sourceUrl <http://example.org/fhir/Observation/metab> ;
 	cascade:sourceRecordId "metab" .
-<ni:///sha-256;hm4X3ZmOCLdXXdD5C6odUIcZE1Hq5utCwebiiHfIVfE> prov:specializationOf <urn:uuid:c01357e6-99d9-82cb-b0a5-356a360b1340> ;
+<ni:///sha-256;f9hyvHfnyHrSDNTdZZPHE-1PfJJVlI4jsE0ASX9Jm58> prov:specializationOf <urn:uuid:c01357e6-99d9-82cb-b0a5-356a360b1340> ;
 	cascade:patient <urn:uuid:578d95d0-f38a-8c54-95d4-3ab764e59f21> .
-_:300930c787fb2f8189465091a9e2d0f4 bridge:arrivedAs <ni:///sha-256;hm4X3ZmOCLdXXdD5C6odUIcZE1Hq5utCwebiiHfIVfE> ;
-	oa:hasSelector _:91f48e4a68a3079ebc6f992b3475fa8 ;
+_:40445d16ccc890d6bada495fc2e45727 bridge:arrivedAs <ni:///sha-256;f9hyvHfnyHrSDNTdZZPHE-1PfJJVlI4jsE0ASX9Jm58> ;
+	oa:hasSelector _:9dd050f7b5aefbe921b08d06d7246a8d ;
 	oa:hasSource <ni:///sha-256;uOCsRbuj3LdZzmRqIAmqgcrCuf0dnH_qp3oZKaOqFDo> ;
 	prov:wasDerivedFrom <ni:///sha-256;uOCsRbuj3LdZzmRqIAmqgcrCuf0dnH_qp3oZKaOqFDo> ;
 	prov:wasGeneratedBy _:7c8f578e0d5bf1cb55b40af00927dc86 .
-_:91f48e4a68a3079ebc6f992b3475fa8 a oa:FragmentSelector ;
+_:9dd050f7b5aefbe921b08d06d7246a8d a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/13" .
-<ni:///sha-256;oAG-88GZEIqkZnIwJk_yNRjYRQLw4bjO_htMAkEk8ho> prov:wasAttributedTo <urn:uuid:aa14ac09-843c-8ff4-8ea4-fb0df4295fff> ;
+<ni:///sha-256;SYQPH-CRcozy-HgV9JpZcfr7NJKzLMQGBfxPvc7-BS0> cascade:testCodeInOtherSystem "therapeutic-implication"^^<http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs> ;
+	prov:wasAttributedTo <urn:uuid:aa14ac09-843c-8ff4-8ea4-fb0df4295fff> ;
 	cascade:resultClinicallyRelevantTime "2016"^^xsd:gYear ;
 	cascade:workflowStatus "final" .
 <urn:uuid:68530f82-14be-86d9-be9b-da03cd0d16ce> a cascade:LaboratoryTestResult ;
 	cascade:sourceUrl <http://example.org/fhir/Observation/efficacy> ;
 	cascade:sourceRecordId "efficacy" .
-<ni:///sha-256;oAG-88GZEIqkZnIwJk_yNRjYRQLw4bjO_htMAkEk8ho> prov:specializationOf <urn:uuid:68530f82-14be-86d9-be9b-da03cd0d16ce> ;
+<ni:///sha-256;SYQPH-CRcozy-HgV9JpZcfr7NJKzLMQGBfxPvc7-BS0> prov:specializationOf <urn:uuid:68530f82-14be-86d9-be9b-da03cd0d16ce> ;
 	cascade:patient <urn:uuid:578d95d0-f38a-8c54-95d4-3ab764e59f21> .
-_:7ee1762e00fd93a5206205b32785fab3 bridge:arrivedAs <ni:///sha-256;oAG-88GZEIqkZnIwJk_yNRjYRQLw4bjO_htMAkEk8ho> ;
-	oa:hasSelector _:c290b86814cb4243d58d274c74903c63 ;
+_:ee9874f5dd4ce74f4319e138fd8e6378 bridge:arrivedAs <ni:///sha-256;SYQPH-CRcozy-HgV9JpZcfr7NJKzLMQGBfxPvc7-BS0> ;
+	oa:hasSelector _:c14cce362b27d789ceea4356d15ec75a ;
 	oa:hasSource <ni:///sha-256;uOCsRbuj3LdZzmRqIAmqgcrCuf0dnH_qp3oZKaOqFDo> ;
 	prov:wasDerivedFrom <ni:///sha-256;uOCsRbuj3LdZzmRqIAmqgcrCuf0dnH_qp3oZKaOqFDo> ;
 	prov:wasGeneratedBy _:7c8f578e0d5bf1cb55b40af00927dc86 .
-_:c290b86814cb4243d58d274c74903c63 a oa:FragmentSelector ;
+_:c14cce362b27d789ceea4356d15ec75a a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/14" .
-<ni:///sha-256;UvWr1pbCVpItsWpy_txddLRyXjslSpw2WAP5cjxc_J0> prov:wasAttributedTo <urn:uuid:aa14ac09-843c-8ff4-8ea4-fb0df4295fff> ;
+<ni:///sha-256;ComeKx0o-p0WIY2MQVrUe6rjsn3fQLXJz5wL9L-RhIk> cascade:testCodeInOtherSystem "therapeutic-implication"^^<http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs> ;
+	prov:wasAttributedTo <urn:uuid:aa14ac09-843c-8ff4-8ea4-fb0df4295fff> ;
 	cascade:resultClinicallyRelevantTime "2016"^^xsd:gYear ;
 	cascade:workflowStatus "final" .
 <urn:uuid:f80fb9cd-5e1b-8bfc-8732-46faa77e9576> a cascade:LaboratoryTestResult ;
 	cascade:sourceUrl <http://example.org/fhir/Observation/highrisk> ;
 	cascade:sourceRecordId "highrisk" .
-<ni:///sha-256;UvWr1pbCVpItsWpy_txddLRyXjslSpw2WAP5cjxc_J0> prov:specializationOf <urn:uuid:f80fb9cd-5e1b-8bfc-8732-46faa77e9576> ;
+<ni:///sha-256;ComeKx0o-p0WIY2MQVrUe6rjsn3fQLXJz5wL9L-RhIk> prov:specializationOf <urn:uuid:f80fb9cd-5e1b-8bfc-8732-46faa77e9576> ;
 	cascade:patient <urn:uuid:578d95d0-f38a-8c54-95d4-3ab764e59f21> .
-_:1f211ce382b534c45cb5a1970293bbde bridge:arrivedAs <ni:///sha-256;UvWr1pbCVpItsWpy_txddLRyXjslSpw2WAP5cjxc_J0> ;
-	oa:hasSelector _:43ee3c3ba706df912014b240cccbd6dd ;
+_:84fc53be21bf586e6693127b7651b56c bridge:arrivedAs <ni:///sha-256;ComeKx0o-p0WIY2MQVrUe6rjsn3fQLXJz5wL9L-RhIk> ;
+	oa:hasSelector _:9c2f9248a960b96e7cf25602c497cc35 ;
 	oa:hasSource <ni:///sha-256;uOCsRbuj3LdZzmRqIAmqgcrCuf0dnH_qp3oZKaOqFDo> ;
 	prov:wasDerivedFrom <ni:///sha-256;uOCsRbuj3LdZzmRqIAmqgcrCuf0dnH_qp3oZKaOqFDo> ;
 	prov:wasGeneratedBy _:7c8f578e0d5bf1cb55b40af00927dc86 .
-_:43ee3c3ba706df912014b240cccbd6dd a oa:FragmentSelector ;
+_:9c2f9248a960b96e7cf25602c497cc35 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/15" .
 <ni:///sha-256;uOCsRbuj3LdZzmRqIAmqgcrCuf0dnH_qp3oZKaOqFDo> cascade:serverBaseUrl "http://example.org/fhir" ;

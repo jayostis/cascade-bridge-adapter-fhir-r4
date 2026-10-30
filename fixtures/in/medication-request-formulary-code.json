@@ -1,0 +1,26 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "medrx-atorvastatin-2",
+  "status": "active",
+  "intent": "order",
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "https://formulary.meridian.example/drugs",
+        "code": "F-ATOR-10",
+        "display": "Atorvastatin 10 mg tab (formulary)",
+        "userSelected": true
+      },
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "617312",
+        "display": "atorvastatin calcium 10 MG Oral Tablet"
+      }
+    ],
+    "text": "Atorvastatin 10 mg tablet"
+  },
+  "subject": {
+    "reference": "Patient/pat-conformance-1"
+  },
+  "authoredOn": "2026-03-02"
+}

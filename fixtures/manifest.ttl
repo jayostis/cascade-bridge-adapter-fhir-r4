@@ -121,6 +121,19 @@
     <#lab-same-day-same-code-different-value-id-less>
     <#medication-no-id-bare-differs-from-note-only>
     <#lab-id-bearing-differs-from-id-less>
+    <#lab-b12-local-code-only>
+    <#lab-test-code-in-snomed-ct>
+    <#lab-mcv-two-interpretations>
+    <#lab-interpretation-flag-systems>
+    <#condition-codes-under-other-system-names>
+    <#condition-codings-not-carried>
+    <#procedure-hcpcs-code>
+    <#procedure-two-cpt-codes>
+    <#medication-request-formulary-code>
+    <#medication-request-us-core-supply-only>
+    <#medication-request-supply-and-dosages>
+    <#bundle-medication-supply-not-carried>
+    <#bundle-codings-without-system>
   ) .
 
 <#allergy-with-id> a bridge:IsomorphicConversionTest ;
@@ -1068,7 +1081,7 @@
 
 <#lab-troponin-below-detection> a bridge:IsomorphicConversionTest ;
   mf:name "lab-troponin-below-detection" ;
-  rdfs:comment "A laboratory Observation below its detection limit: its value keeps its comparator, its one-bounded first range is written as that bound, and its note is carried; a second range, a second interpretation, a code outside LOINC and the end of its period are findings." ;
+  rdfs:comment "A laboratory Observation below its detection limit: its value keeps its comparator, its one-bounded first range is written as that bound, its note, its N flag and its local code, as a cascade:testCodeInOtherSystem literal, are carried; a second range, an interpretation of text alone and the end of its period are findings." ;
   mf:action [
     bridge:input <in/lab-troponin-below-detection.json> ;
     bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
@@ -1224,7 +1237,7 @@
 
 <#medication-request-every-mapped-element> a bridge:IsomorphicConversionTest ;
   mf:name "medication-request-every-mapped-element" ;
-  rdfs:comment "A MedicationRequest carrying every element in/sparql/medication.rq reads of a request: one medication, a prescription." ;
+  rdfs:comment "A MedicationRequest carrying every element in/sparql/medication.rq reads of a request: one medication, a prescription, its dosage a node holding its frequency, period, period unit, SNOMED CT route and dose." ;
   mf:action [
     bridge:input <in/medication-request-every-mapped-element.json> ;
     bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
@@ -1289,7 +1302,7 @@
 
 <#medication-request-two-rxnorm-codes> a bridge:IsomorphicConversionTest ;
   mf:name "medication-request-two-rxnorm-codes" ;
-  rdfs:comment "A MedicationRequest coded by two RxNorm codes and an NDC code, with two dosages: both RxNorm codes and the NDC, as its 11-digit code, are carried, and the second dosage alone is a finding." ;
+  rdfs:comment "A MedicationRequest coded by two RxNorm codes and an NDC code, with two dosages: both RxNorm codes and the NDC, as its 11-digit code, are carried, each dosage is a node, and the second dosage's text alone is a finding." ;
   mf:action [
     bridge:input <in/medication-request-two-rxnorm-codes.json> ;
     bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
@@ -1648,4 +1661,173 @@
   mf:result [
     bridge:expectedGraph <expected/bundle-pull-id-shared-across-types.ttl> ;
     bridge:expectedFindings <findings/bundle-pull-id-shared-across-types.ttl>
+  ] .
+
+<#lab-b12-local-code-only> a bridge:IsomorphicConversionTest ;
+  mf:name "lab-b12-local-code-only" ;
+  rdfs:comment "A laboratory Observation coded only by its lab's own code: the code is carried as a cascade:testCodeInOtherSystem literal typed by its system, and no finding says it was lost." ;
+  mf:action [
+    bridge:input <in/lab-b12-local-code-only.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/lab-b12-local-code-only.ttl> ;
+    bridge:expectedFindings <findings/lab-b12-local-code-only.ttl>
+  ] .
+
+<#lab-test-code-in-snomed-ct> a bridge:IsomorphicConversionTest ;
+  mf:name "lab-test-code-in-snomed-ct" ;
+  rdfs:comment "A laboratory Observation coded in SNOMED CT: the code is a cascade:testCode IRI, as a LOINC code is." ;
+  mf:action [
+    bridge:input <in/lab-test-code-in-snomed-ct.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/lab-test-code-in-snomed-ct.ttl> ;
+    bridge:expectedFindings <findings/lab-test-code-in-snomed-ct.ttl>
+  ] .
+
+<#lab-mcv-two-interpretations> a bridge:IsomorphicConversionTest ;
+  mf:name "lab-mcv-two-interpretations" ;
+  rdfs:comment "A laboratory Observation with two interpretations, H and A, in HL7's v3 ObservationInterpretation: each is a cascade:resultInterpretationCode IRI." ;
+  mf:action [
+    bridge:input <in/lab-mcv-two-interpretations.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/lab-mcv-two-interpretations.ttl> ;
+    bridge:expectedFindings <findings/lab-mcv-two-interpretations.ttl>
+  ] .
+
+<#lab-interpretation-flag-systems> a bridge:IsomorphicConversionTest ;
+  mf:name "lab-interpretation-flag-systems" ;
+  rdfs:comment "A laboratory Observation whose flags are written in four ways: v3 ObservationInterpretation by its OID after urn:oid: is carried as the v3 code; v2's table 0078 by its THO URI and its legacy URI, and an interpretation of text alone, are not, each a finding." ;
+  mf:action [
+    bridge:input <in/lab-interpretation-flag-systems.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/lab-interpretation-flag-systems.ttl> ;
+    bridge:expectedFindings <findings/lab-interpretation-flag-systems.ttl>
+  ] .
+
+<#condition-codes-under-other-system-names> a bridge:IsomorphicConversionTest ;
+  mf:name "condition-codes-under-other-system-names" ;
+  rdfs:comment "A Condition whose codings name their systems in other forms: SNOMED CT by its OID with the prefix URN:OID: in capitals and ICD-10-CM by a URI HL7 Terminology lists as not preferred are their IRIs; ICD-9-CM by its OID is a cascade:conditionCodeInOtherSystem literal typed http://hl7.org/fhir/sid/icd-9-cm." ;
+  mf:action [
+    bridge:input <in/condition-codes-under-other-system-names.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/condition-codes-under-other-system-names.ttl> ;
+    bridge:expectedFindings <findings/condition-codes-under-other-system-names.ttl>
+  ] .
+
+<#condition-codings-not-carried> a bridge:IsomorphicConversionTest ;
+  mf:name "condition-codings-not-carried" ;
+  rdfs:comment "A Condition whose codings carry no code: one with no system, one whose system is no absolute URI and one with no code; each is a fhirr4:codingNotCarried finding." ;
+  mf:action [
+    bridge:input <in/condition-codings-not-carried.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/condition-codings-not-carried.ttl> ;
+    bridge:expectedFindings <findings/condition-codings-not-carried.ttl>
+  ] .
+
+<#procedure-hcpcs-code> a bridge:IsomorphicConversionTest ;
+  mf:name "procedure-hcpcs-code" ;
+  rdfs:comment "A Procedure coded in HCPCS Level II, CPT and SNOMED CT: the HCPCS code is a cascade:procedureCodeInOtherSystem literal, the CPT code a cascade:cptCode IRI and the SNOMED CT code a cascade:snomedCode IRI." ;
+  mf:action [
+    bridge:input <in/procedure-hcpcs-code.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/procedure-hcpcs-code.ttl> ;
+    bridge:expectedFindings <findings/procedure-hcpcs-code.ttl>
+  ] .
+
+<#procedure-two-cpt-codes> a bridge:IsomorphicConversionTest ;
+  mf:name "procedure-two-cpt-codes" ;
+  rdfs:comment "A Procedure with two CPT codes: the first is its cascade:cptCode, the second a fhirr4:procedureCptCodeRepeated finding." ;
+  mf:action [
+    bridge:input <in/procedure-two-cpt-codes.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/procedure-two-cpt-codes.ttl> ;
+    bridge:expectedFindings <findings/procedure-two-cpt-codes.ttl>
+  ] .
+
+<#medication-request-formulary-code> a bridge:IsomorphicConversionTest ;
+  mf:name "medication-request-formulary-code" ;
+  rdfs:comment "A MedicationRequest coded by its formulary and by RxNorm: the formulary code is a cascade:medicationCodeInOtherSystem literal, and its userSelected flag marks nothing, a selected code being an RxNorm or NDC IRI." ;
+  mf:action [
+    bridge:input <in/medication-request-formulary-code.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/medication-request-formulary-code.ttl> ;
+    bridge:expectedFindings <findings/medication-request-formulary-code.ttl>
+  ] .
+
+<#medication-request-us-core-supply-only> a bridge:IsomorphicConversionTest ;
+  mf:name "medication-request-us-core-supply-only" ;
+  rdfs:comment "A US Core MedicationRequest stating only authoredOn and its dispense: its expected supply duration is a quantity node in days and its number of repeats allowed an integer." ;
+  mf:action [
+    bridge:input <in/medication-request-us-core-supply-only.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/medication-request-us-core-supply-only.ttl> ;
+    bridge:expectedFindings <findings/medication-request-us-core-supply-only.ttl>
+  ] .
+
+<#medication-request-supply-and-dosages> a bridge:IsomorphicConversionTest ;
+  mf:name "medication-request-supply-and-dosages" ;
+  rdfs:comment "A MedicationRequest carrying every supply and dosage element medication-supply-and-dosages.rq reads: a course of therapy, a dispensing window, no refill, a supply duration, and two dosages, each a node, the first with its bounds, its timing, an NCI Thesaurus route and two doses; the dispense quantity, the timing's when, the second dose and the second dosage's text are findings." ;
+  mf:action [
+    bridge:input <in/medication-request-supply-and-dosages.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/medication-request-supply-and-dosages.ttl> ;
+    bridge:expectedFindings <findings/medication-request-supply-and-dosages.ttl>
+  ] .
+
+<#bundle-medication-supply-not-carried> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-medication-supply-not-carried" ;
+  rdfs:comment "A Bundle of two MedicationRequests whose supply is not carried as written: an expected supply duration with the comparator >= is carried with it and is a finding, one in no unit of time is not carried, and a course of therapy of text alone or in another system is not carried; each is a finding." ;
+  mf:action [
+    bridge:input <in/bundle-medication-supply-not-carried.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-medication-supply-not-carried.ttl> ;
+    bridge:expectedFindings <findings/bundle-medication-supply-not-carried.ttl>
+  ] .
+
+<#bundle-codings-without-system> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-codings-without-system" ;
+  rdfs:comment "A Bundle of a lab result and a MedicationRequest, each with a coding that states a code and no system: the code is not carried, and each is a fhirr4:codingNotCarried finding; the LOINC and RxNorm codings beside them are carried." ;
+  mf:action [
+    bridge:input <in/bundle-codings-without-system.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-codings-without-system.ttl> ;
+    bridge:expectedFindings <findings/bundle-codings-without-system.ttl>
   ] .

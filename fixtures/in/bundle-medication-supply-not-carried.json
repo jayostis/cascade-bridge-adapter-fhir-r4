@@ -1,0 +1,78 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "https://fhir.meridian.example/api/FHIR/R4/MedicationRequest/medrx-atorvastatin-5",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "medrx-atorvastatin-5",
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "617312",
+              "display": "atorvastatin calcium 10 MG Oral Tablet"
+            }
+          ],
+          "text": "Atorvastatin 10 mg tablet"
+        },
+        "subject": {
+          "reference": "Patient/pat-conformance-1"
+        },
+        "authoredOn": "2026-03-02",
+        "courseOfTherapyType": {
+          "text": "Long term"
+        },
+        "dispenseRequest": {
+          "expectedSupplyDuration": {
+            "value": 30,
+            "comparator": ">=",
+            "unit": "days",
+            "system": "http://unitsofmeasure.org",
+            "code": "d"
+          }
+        }
+      }
+    },
+    {
+      "fullUrl": "https://fhir.meridian.example/api/FHIR/R4/MedicationRequest/medrx-atorvastatin-6",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "medrx-atorvastatin-6",
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "617312",
+              "display": "atorvastatin calcium 10 MG Oral Tablet"
+            }
+          ],
+          "text": "Atorvastatin 10 mg tablet"
+        },
+        "subject": {
+          "reference": "Patient/pat-conformance-1"
+        },
+        "authoredOn": "2026-03-02",
+        "courseOfTherapyType": {
+          "coding": [
+            {
+              "system": "https://formulary.meridian.example/course",
+              "code": "chronic"
+            }
+          ]
+        },
+        "dispenseRequest": {
+          "expectedSupplyDuration": {
+            "value": 2,
+            "unit": "packs"
+          }
+        }
+      }
+    }
+  ]
+}

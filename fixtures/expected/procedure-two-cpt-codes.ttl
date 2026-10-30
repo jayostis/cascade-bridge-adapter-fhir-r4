@@ -1,0 +1,53 @@
+@prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix pav: <http://purl.org/pav/> .
+<ni:///sha-256;1B2ELOFdcaBS-Mt4karZAUb4T5JXbCovJwCgby9Y6s4> cascade:procedureName "Colonoscopy with biopsy" ;
+	cascade:cptCode <https://ns.cascadeprotocol.org/codes/cpt/45378> ;
+	cascade:procedureDate "2026-02-18"^^xsd:date ;
+	cascade:workflowStatus "completed" .
+<urn:uuid:2687df56-9eef-8249-a485-4d98401af9ec> a cascade:MedicalProcedure ;
+	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Procedure/proc-colonoscopy-3> ;
+	cascade:sourceRecordId "proc-colonoscopy-3" .
+<ni:///sha-256;1B2ELOFdcaBS-Mt4karZAUb4T5JXbCovJwCgby9Y6s4> prov:specializationOf <urn:uuid:2687df56-9eef-8249-a485-4d98401af9ec> ;
+	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
+_:aadb81bc4c40ddb1791eb89915684b22 bridge:arrivedAs <ni:///sha-256;1B2ELOFdcaBS-Mt4karZAUb4T5JXbCovJwCgby9Y6s4> ;
+	oa:hasSelector _:1e89869b766208ea64fb0ed9567395e3 ;
+	oa:hasSource <ni:///sha-256;dBrh9q-wBz6lO7THpF6sifdBjQWpO7PwPyBjY5mlXFk> ;
+	prov:wasDerivedFrom <ni:///sha-256;dBrh9q-wBz6lO7THpF6sifdBjQWpO7PwPyBjY5mlXFk> ;
+	prov:wasGeneratedBy _:568e485f86d45cdef0379a7dbc2e4363 .
+_:1e89869b766208ea64fb0ed9567395e3 a oa:FragmentSelector ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "" .
+<ni:///sha-256;dBrh9q-wBz6lO7THpF6sifdBjQWpO7PwPyBjY5mlXFk> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
+	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
+_:d62f3964a76b46e4c2b9cfa52719796f prov:agent _:85a6bbfb4eb832f23aaf31e7fca48a55 .
+_:85a6bbfb4eb832f23aaf31e7fca48a55 <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:d62f3964a76b46e4c2b9cfa52719796f prov:hadRole cascade:AuthorRole .
+<ni:///sha-256;dBrh9q-wBz6lO7THpF6sifdBjQWpO7PwPyBjY5mlXFk> prov:qualifiedAttribution _:d62f3964a76b46e4c2b9cfa52719796f .
+_:20e4c95a7935b5b4b99ff73104ea7eba prov:agent _:5f64c322a83fdcaf2a15613de74d737e .
+_:5f64c322a83fdcaf2a15613de74d737e <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
+_:20e4c95a7935b5b4b99ff73104ea7eba prov:hadRole cascade:TransmitterRole .
+<ni:///sha-256;dBrh9q-wBz6lO7THpF6sifdBjQWpO7PwPyBjY5mlXFk> prov:qualifiedAttribution _:20e4c95a7935b5b4b99ff73104ea7eba ;
+	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
+	cascade:authenticatedAsProxy false ;
+	cascade:sourceFormatVersion "4.0.1" .
+_:568e485f86d45cdef0379a7dbc2e4363 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
+	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
+<ni:///sha-256;dBrh9q-wBz6lO7THpF6sifdBjQWpO7PwPyBjY5mlXFk> a prov:Entity .
+_:568e485f86d45cdef0379a7dbc2e4363 a prov:Activity ;
+	prov:used <ni:///sha-256;dBrh9q-wBz6lO7THpF6sifdBjQWpO7PwPyBjY5mlXFk> ;
+	prov:qualifiedAssociation _:355e7532e2f376f6134beb430885a1c8 .
+_:355e7532e2f376f6134beb430885a1c8 prov:hadPlan _:8eb863128301f51dedf9f1d0c36fd419 .
+_:8eb863128301f51dedf9f1d0c36fd419 a prov:Plan ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "fhir-r4" ;
+	pav:version "0.1.0" .
+_:355e7532e2f376f6134beb430885a1c8 prov:agent _:73c08e1eeec4c32fcd0868bccf5a7b9a .
+_:73c08e1eeec4c32fcd0868bccf5a7b9a a prov:SoftwareAgent ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Cascade Bridge for Rust" ;
+	pav:version "0.1.0" .

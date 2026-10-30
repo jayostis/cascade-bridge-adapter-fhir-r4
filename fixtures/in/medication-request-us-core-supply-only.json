@@ -1,0 +1,29 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "medrx-atorvastatin-3",
+  "status": "active",
+  "intent": "order",
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "617312",
+        "display": "atorvastatin calcium 10 MG Oral Tablet"
+      }
+    ],
+    "text": "Atorvastatin 10 mg tablet"
+  },
+  "subject": {
+    "reference": "Patient/pat-conformance-1"
+  },
+  "authoredOn": "2026-03-02",
+  "dispenseRequest": {
+    "numberOfRepeatsAllowed": 3,
+    "expectedSupplyDuration": {
+      "value": 90,
+      "unit": "days",
+      "system": "http://unitsofmeasure.org",
+      "code": "d"
+    }
+  }
+}

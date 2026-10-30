@@ -2,61 +2,16 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:bf4c624449d69d7245f4a96f16b2d703 a oa:FragmentSelector ;
+_:fb6948b23de5e377586370d4b7476553 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:eb88263f81a1634b1a11fa9af0fb6918 a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/dosageInstruction/0/timing" .
-_:bf4c624449d69d7245f4a96f16b2d703 oa:refinedBy _:eb88263f81a1634b1a11fa9af0fb6918 .
-_:a7d338808775aadad3d85375733cfef8 a oa:Annotation ;
-	oa:hasTarget _:b1e1f46fc9ddf7692253e709487735d8 .
-_:b1e1f46fc9ddf7692253e709487735d8 oa:hasSource <../in/medication-request-every-mapped-element.json> ;
-	oa:hasSelector _:bf4c624449d69d7245f4a96f16b2d703 .
-_:a7d338808775aadad3d85375733cfef8 oa:hasBody fhirr4:structuredDosage ;
-	oa:motivatedBy oa:classifying ;
-	sh:value "/dosageInstruction/timing" ;
-	sh:resultSeverity sh:Info .
-_:e1c4aef616cc678b4bd589d3f8c11b5f a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "" .
-_:c63beee4dabab5cc0e74e79e51480f43 a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/dosageInstruction/0/route" .
-_:e1c4aef616cc678b4bd589d3f8c11b5f oa:refinedBy _:c63beee4dabab5cc0e74e79e51480f43 .
-_:da61061bedb8d66e1a4890739833c173 a oa:Annotation ;
-	oa:hasTarget _:b568a724e427092072b87b356a1f76ec .
-_:b568a724e427092072b87b356a1f76ec oa:hasSource <../in/medication-request-every-mapped-element.json> ;
-	oa:hasSelector _:e1c4aef616cc678b4bd589d3f8c11b5f .
-_:da61061bedb8d66e1a4890739833c173 oa:hasBody fhirr4:structuredDosage ;
-	oa:motivatedBy oa:classifying ;
-	sh:value "/dosageInstruction/route" ;
-	sh:resultSeverity sh:Info .
-_:c87179e54c1ab2a75bf5c8cd50da869c a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "" .
-_:fa3083800beb60a089d10159f2ed7188 a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/dosageInstruction/0/doseAndRate/0" .
-_:c87179e54c1ab2a75bf5c8cd50da869c oa:refinedBy _:fa3083800beb60a089d10159f2ed7188 .
-_:dc7fb97448ab3022edc318af67b12fb1 a oa:Annotation ;
-	oa:hasTarget _:ad20f740b5275c359018bcb85dc67693 .
-_:ad20f740b5275c359018bcb85dc67693 oa:hasSource <../in/medication-request-every-mapped-element.json> ;
-	oa:hasSelector _:c87179e54c1ab2a75bf5c8cd50da869c .
-_:dc7fb97448ab3022edc318af67b12fb1 oa:hasBody fhirr4:structuredDosage ;
-	oa:motivatedBy oa:classifying ;
-	sh:value "/dosageInstruction/doseAndRate" ;
-	sh:resultSeverity sh:Info .
-_:c6c48864d99092b239b76fde051798cd a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "" .
-_:fa5f6a151bcfb8b68f34193668960e77 oa:hasSource <../in/medication-request-every-mapped-element.json> .
-_:c6c48864d99092b239b76fde051798cd oa:refinedBy _:cd302cca25d2ae648ca9dafb23e61331 .
-_:cd302cca25d2ae648ca9dafb23e61331 a oa:FragmentSelector ;
+_:bb074d18ab0abe961f38bd4083b08177 oa:hasSource <../in/medication-request-every-mapped-element.json> .
+_:fb6948b23de5e377586370d4b7476553 oa:refinedBy _:fdfd883296047fa79b96989039941daf .
+_:fdfd883296047fa79b96989039941daf a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/note/0/text" .
-_:fa5f6a151bcfb8b68f34193668960e77 oa:hasSelector _:c6c48864d99092b239b76fde051798cd .
-_:c4e7e892be97b0331b381cdb0d6334d6 oa:hasTarget _:fa5f6a151bcfb8b68f34193668960e77 ;
+_:bb074d18ab0abe961f38bd4083b08177 oa:hasSelector _:fb6948b23de5e377586370d4b7476553 .
+_:fe404c748757add1a9036d2e581329d1 oa:hasTarget _:bb074d18ab0abe961f38bd4083b08177 ;
 	sh:resultSeverity sh:Info ;
 	a oa:Annotation ;
 	oa:hasBody fhirr4:medicationNote ;
