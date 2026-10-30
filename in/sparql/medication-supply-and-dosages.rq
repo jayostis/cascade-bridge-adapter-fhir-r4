@@ -1,0 +1,260 @@
+PREFIX rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
+PREFIX fx:       <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:      <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX cascade:  <https://ns.cascadeprotocol.org/cascade#>
+PREFIX skos:     <http://www.w3.org/2004/02/skos/core#>
+PREFIX void:     <http://rdfs.org/ns/void#>
+PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+
+# A medication's supply and the structure of its dosages, on the version
+# medication.rq writes. A request states its course of therapy, the first
+# coding in FHIR's medicationrequest-course-of-therapy whose code is one of its
+# three; the number of repeats its dispense allows, an xsd:integer, 0 included, since it says
+# no refill where absence says nothing; its expected supply duration, a
+# quantity node <version>#expected-supply-duration, only in one of UCUM's seven
+# units of time FHIR's Duration allows (drt-1), with its comparator where it is
+# one of R4's four; and its dispensing window's start and end. Every dosage,
+# a request's dosageInstruction or a statement's dosage, is a node
+# <version>#dosage-n, n its place, whatever it holds, so that a version's
+# dosages can be counted; the node states its first dose quantity, a node
+# <version>#dosage-n-dose-quantity, its timing's repeat frequency, period and
+# period unit, its bounds period's start and end, and every route code, SNOMED
+# CT's as IRIs and any other system's as literals typed by the system as
+# coding-system-table.rq reads it. A number is written as the source wrote it
+# and as a canonical xsd:decimal, as lab-result-quantities.rq writes one, and a
+# unit is a UCUM code only where its system is UCUM's. A date is typed by the
+# precision FHIR wrote it to, and a time written to the minute padded to the
+# second with a cascade:PaddedDateTime node, <holder>#padded- and its
+# property's local name, or <holder>-padded- where the holder is a dosage node.
+# medication-findings.rq reports what is not carried.
+
+CONSTRUCT {
+  ?subject ?p ?o .
+  ?subject cascade:paddedDateTime ?paddedNode .
+  ?paddedNode cascade:paddedDateTimeProperty ?p ;
+    cascade:writtenDate ?writtenTime .
+  ?quantityNode cascade:decimalValue ?decimal ;
+    cascade:writtenValue ?written ;
+    cascade:quantityComparator ?comparator ;
+    cascade:ucumUnit ?ucumUnit ;
+    cascade:unitText ?unitText .
+}
+WHERE {
+  FILTER NOT EXISTS {
+    bridge:thisDocument cascade:sourceFormatVersion ?stated .
+    FILTER (!STRSTARTS(?stated, "4.0."))
+  }
+  bridge:thisRecord bridge:selector ?recordSelector .
+  ?root a fx:root .
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  { BIND ("" AS ?containedStep) }
+  UNION
+  {
+    ?top xyz:contained ?containedList .
+    ?containedList ?containedSlot ?contained .
+    ?contained xyz:resourceType ?containedType .
+    BIND (CONCAT("/contained/", STR(xsd:integer(STRAFTER(STR(?containedSlot), "#_")) - 1)) AS ?containedStep)
+  }
+  BIND (COALESCE(?contained, ?top) AS ?resource)
+  ?resource xyz:resourceType ?type .
+  FILTER (?type IN ("MedicationRequest", "MedicationStatement"))
+  BIND (CONCAT(?recordSelector, ?topStep, ?containedStep) AS ?resourcePointer)
+  BIND (IRI(CONCAT("urn:cascade:version-at:", SHA256(?resourcePointer))) AS ?version)
+
+  {
+    ?resource xyz:courseOfTherapyType ?course .
+    ?course xyz:coding ?courseCodings . ?courseCodings ?courseSlot ?courseCoding .
+    ?courseCoding xyz:system "http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy" ;
+      xyz:code ?value .
+    FILTER (?value IN ("continuous", "acute", "seasonal"))
+    FILTER NOT EXISTS {
+      ?courseCodings ?earlierCourseSlot ?earlierCourse .
+      ?earlierCourse xyz:system "http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy" ;
+        xyz:code ?earlierCourseCode .
+      FILTER (?earlierCourseCode IN ("continuous", "acute", "seasonal")
+        && xsd:integer(STRAFTER(STR(?earlierCourseSlot), "#_")) < xsd:integer(STRAFTER(STR(?courseSlot), "#_")))
+    }
+    BIND ("" AS ?suffix)
+    BIND (cascade:courseOfTherapyType AS ?p)
+  }
+  UNION
+  {
+    ?resource xyz:dispenseRequest ?repeatsRequest .
+    ?repeatsRequest xyz:numberOfRepeatsAllowed ?repeats .
+    FILTER (REGEX(STR(?repeats), "^[0-9]+$"))
+    BIND ("" AS ?suffix)
+    BIND (cascade:numberOfRepeatsAllowed AS ?p)
+    BIND (xsd:integer(STR(?repeats)) AS ?value)
+  }
+  UNION
+  {
+    ?resource ?dosageMember ?dosages .
+    VALUES ?dosageMember { xyz:dosage xyz:dosageInstruction }
+    ?dosages ?dosageSlot ?dosage .
+    FILTER (STRSTARTS(STR(?dosageSlot), STR(rdf:_)))
+    BIND ("" AS ?suffix)
+    BIND (cascade:structuredDosage AS ?p)
+    BIND (CONCAT("#dosage-", STRAFTER(STR(?dosageSlot), "#_")) AS ?objectSuffix)
+  }
+  UNION
+  {
+    ?resource ?dosageMember ?dosages .
+    VALUES ?dosageMember { xyz:dosage xyz:dosageInstruction }
+    ?dosages ?dosageSlot ?dosage .
+    ?dosage xyz:timing ?frequencyTiming . ?frequencyTiming xyz:repeat ?frequencyRepeat .
+    ?frequencyRepeat xyz:frequency ?frequency .
+    FILTER (REGEX(STR(?frequency), "^[0-9]+$") && xsd:integer(STR(?frequency)) > 0)
+    BIND (CONCAT("#dosage-", STRAFTER(STR(?dosageSlot), "#_")) AS ?suffix)
+    BIND (cascade:dosageRepeatFrequency AS ?p)
+    BIND (xsd:integer(STR(?frequency)) AS ?value)
+  }
+  UNION
+  {
+    ?resource ?dosageMember ?dosages .
+    VALUES ?dosageMember { xyz:dosage xyz:dosageInstruction }
+    ?dosages ?dosageSlot ?dosage .
+    ?dosage xyz:timing ?unitTiming . ?unitTiming xyz:repeat ?unitRepeat .
+    ?unitRepeat xyz:periodUnit ?value .
+    FILTER (?value IN ("s", "min", "h", "d", "wk", "mo", "a"))
+    BIND (CONCAT("#dosage-", STRAFTER(STR(?dosageSlot), "#_")) AS ?suffix)
+    BIND (cascade:dosageRepeatPeriodUnit AS ?p)
+  }
+  UNION
+  {
+    ?resource ?dosageMember ?dosages .
+    VALUES ?dosageMember { xyz:dosage xyz:dosageInstruction }
+    ?dosages ?dosageSlot ?dosage .
+    ?dosage xyz:route ?route . ?route xyz:coding ?routeCodings . ?routeCodings ?routeSlot ?routeCoding .
+    ?routeCoding xyz:system ?routeSystemWritten ;
+      xyz:code ?routeWritten .
+    ?routeSystemRow fhirr4:systemWritten ?routeSystemWritten ;
+      fhirr4:systemRead ?routeSystem .
+    BIND (REPLACE(STR(?routeWritten), "^\\s+|\\s+$", "") AS ?routeCode)
+    FILTER (?routeCode != "")
+    OPTIONAL {
+      VALUES ?routeSystem { "http://snomed.info/sct" }
+      ?routeCodeSystem skos:inScheme fhirr4:codeSystems ;
+        cascade:codingSystemUri ?routeListedSystem ;
+        void:uriSpace ?routeStem .
+      FILTER (STR(?routeListedSystem) = ?routeSystem)
+    }
+    BIND (CONCAT("#dosage-", STRAFTER(STR(?dosageSlot), "#_")) AS ?suffix)
+    BIND (IF(BOUND(?routeStem), cascade:dosageRouteCode, cascade:dosageRouteCodeInOtherSystem) AS ?p)
+    BIND (IF(BOUND(?routeStem), IRI(CONCAT(?routeStem, ENCODE_FOR_URI(?routeCode))),
+             STRDT(?routeCode, IRI(?routeSystem))) AS ?value)
+  }
+  UNION
+  {
+    {
+      ?resource xyz:dispenseRequest ?dateRequest .
+      ?dateRequest xyz:validityPeriod ?validity .
+      ?validity ?dateSide ?when .
+      VALUES (?dateSide ?p) {
+        (xyz:start cascade:dispenseValidityPeriodStart)
+        (xyz:end cascade:dispenseValidityPeriodEnd)
+      }
+      BIND ("" AS ?suffix)
+    }
+    UNION
+    {
+      ?resource ?dosageMember ?dosages .
+      VALUES ?dosageMember { xyz:dosage xyz:dosageInstruction }
+      ?dosages ?dosageSlot ?dosage .
+      ?dosage xyz:timing ?boundsTiming . ?boundsTiming xyz:repeat ?boundsRepeat .
+      ?boundsRepeat xyz:boundsPeriod ?bounds .
+      ?bounds ?dateSide ?when .
+      VALUES (?dateSide ?p) {
+        (xyz:start cascade:dosageBoundsPeriodStart)
+        (xyz:end cascade:dosageBoundsPeriodEnd)
+      }
+      BIND (CONCAT("#dosage-", STRAFTER(STR(?dosageSlot), "#_")) AS ?suffix)
+    }
+    BIND (IF(REGEX(?when, "^[0-9]{4}$"), STRDT(?when, xsd:gYear),
+             IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}$"), STRDT(?when, xsd:gYearMonth),
+             IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"), STRDT(?when, xsd:date),
+             IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(Z|[+-][0-9]{2}:[0-9]{2})?$"), STRDT(CONCAT(SUBSTR(?when, 1, 16), ":00", SUBSTR(?when, 17)), xsd:dateTime),
+             IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T"), STRDT(?when, xsd:dateTime), 1/0))))) AS ?value)
+    BIND (IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(Z|[+-][0-9]{2}:[0-9]{2})?$"), ?when, 1/0) AS ?writtenTime)
+  }
+  UNION
+  {
+    {
+      ?resource xyz:dispenseRequest ?durationRequest .
+      ?durationRequest xyz:expectedSupplyDuration ?quantity .
+      ?quantity xyz:system "http://unitsofmeasure.org" ;
+        xyz:code ?quantityUcum .
+      FILTER (?quantityUcum IN ("s", "min", "h", "d", "wk", "mo", "a"))
+      OPTIONAL { ?quantity xyz:comparator ?statedComparator }
+      ?quantity xyz:value ?quantityWritten .
+      OPTIONAL { ?quantity xyz:unit ?quantityUnit }
+      FILTER (!BOUND(?statedComparator) || ?statedComparator IN ("<", "<=", ">=", ">"))
+      BIND ("" AS ?suffix)
+      BIND (cascade:expectedSupplyDuration AS ?p)
+      BIND ("#expected-supply-duration" AS ?objectSuffix)
+    }
+    UNION
+    {
+      ?resource ?dosageMember ?dosages .
+      VALUES ?dosageMember { xyz:dosage xyz:dosageInstruction }
+      ?dosages ?dosageSlot ?dosage .
+      ?dosage xyz:doseAndRate ?doseRates . ?doseRates ?doseSlot ?doseRate .
+      ?doseRate xyz:doseQuantity ?quantity .
+      ?quantity xyz:value ?quantityWritten .
+      OPTIONAL { ?quantity xyz:unit ?quantityUnit }
+      OPTIONAL { ?quantity xyz:system "http://unitsofmeasure.org" ; xyz:code ?quantityUcum }
+      FILTER NOT EXISTS { ?quantity xyz:comparator ?doseComparator }
+      FILTER NOT EXISTS {
+        ?doseRates ?earlierDoseSlot ?earlierDoseRate . ?earlierDoseRate xyz:doseQuantity ?earlierDose .
+        FILTER (xsd:integer(STRAFTER(STR(?earlierDoseSlot), "#_")) < xsd:integer(STRAFTER(STR(?doseSlot), "#_")))
+      }
+      BIND (CONCAT("#dosage-", STRAFTER(STR(?dosageSlot), "#_")) AS ?suffix)
+      BIND (cascade:dosageDoseQuantity AS ?p)
+      BIND (CONCAT("#dosage-", STRAFTER(STR(?dosageSlot), "#_"), "-dose-quantity") AS ?objectSuffix)
+    }
+    UNION
+    {
+      ?resource ?dosageMember ?dosages .
+      VALUES ?dosageMember { xyz:dosage xyz:dosageInstruction }
+      ?dosages ?dosageSlot ?dosage .
+      ?dosage xyz:timing ?periodTiming . ?periodTiming xyz:repeat ?periodRepeat .
+      ?periodRepeat xyz:period ?periodWritten .
+      BIND (CONCAT("#dosage-", STRAFTER(STR(?dosageSlot), "#_")) AS ?suffix)
+      BIND (cascade:dosageRepeatPeriod AS ?p)
+    }
+    BIND (STR(COALESCE(?quantityWritten, ?periodWritten)) AS ?number)
+    FILTER (REGEX(?number, "^[+-]?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE][+-]?[0-9]+)?$"))
+    BIND (STRSTARTS(?number, "-") AS ?negative)
+    BIND (REPLACE(?number, "^[+-]", "") AS ?unsigned)
+    BIND (REPLACE(?unsigned, "[eE].*$", "") AS ?mantissa)
+    BIND (IF(REGEX(?unsigned, "[eE]"), xsd:integer(REPLACE(?unsigned, "^[^eE]*[eE]", "")), 0) AS ?exponent)
+    BIND (IF(CONTAINS(?mantissa, "."), STRBEFORE(?mantissa, "."), ?mantissa) AS ?whole)
+    BIND (CONCAT(?whole, STRAFTER(?mantissa, ".")) AS ?digits)
+    BIND (STRLEN(?whole) + ?exponent AS ?point)
+    BIND ("000000000000000000000000000000000000000000000000000000000000" AS ?zeros)
+    BIND (IF(?point + 20 < 0 || ?point - STRLEN(?digits) > 20, 1/0,
+             IF(?point <= 0, CONCAT("0.", SUBSTR(?zeros, 1, 0 - ?point), ?digits),
+                IF(?point >= STRLEN(?digits), CONCAT(?digits, SUBSTR(?zeros, 1, ?point - STRLEN(?digits))),
+                   CONCAT(SUBSTR(?digits, 1, ?point), ".", SUBSTR(?digits, ?point + 1))))) AS ?plain)
+    BIND (REPLACE(IF(CONTAINS(?plain, "."), STRBEFORE(?plain, "."), ?plain), "^0+", "") AS ?wholeDigits)
+    BIND (REPLACE(STRAFTER(?plain, "."), "0+$", "") AS ?fractionDigits)
+    BIND (CONCAT(IF(?wholeDigits = "", "0", ?wholeDigits), IF(?fractionDigits = "", "", CONCAT(".", ?fractionDigits)))
+          AS ?magnitude)
+    BIND (STRDT(CONCAT(IF(?negative && ?magnitude != "0", "-", ""), ?magnitude), xsd:decimal) AS ?canonical)
+    FILTER (BOUND(?canonical))
+    BIND (IF(BOUND(?quantity), 1/0, ?canonical) AS ?value)
+  }
+  BIND (IRI(CONCAT(STR(?version), ?suffix)) AS ?subject)
+  BIND (COALESCE(?value, IRI(CONCAT(STR(?version), ?objectSuffix))) AS ?o)
+  BIND (IF(BOUND(?quantity), ?o, 1/0) AS ?quantityNode)
+  BIND (IF(BOUND(?quantity), ?canonical, 1/0) AS ?decimal)
+  BIND (IF(BOUND(?quantity), STR(?quantityWritten), 1/0) AS ?written)
+  BIND (?statedComparator AS ?comparator)
+  BIND (?quantityUcum AS ?ucumUnit)
+  BIND (?quantityUnit AS ?unitText)
+  BIND (IF(BOUND(?writtenTime),
+           IRI(CONCAT(STR(?subject), IF(?suffix = "", "#padded-", "-padded-"), STRAFTER(STR(?p), "#"))), 1/0) AS ?paddedNode)
+}

@@ -108,6 +108,9 @@
           "@id": "in/sparql/medication-table.rq"
         },
         {
+          "@id": "in/sparql/coding-system-table.rq"
+        },
+        {
           "@id": "in/sparql/organization-table.rq"
         }
       ],
@@ -134,6 +137,9 @@
           "@id": "in/sparql/medication.rq"
         },
         {
+          "@id": "in/sparql/medication-supply-and-dosages.rq"
+        },
+        {
           "@id": "in/sparql/organization.rq"
         },
         {
@@ -141,6 +147,9 @@
         },
         {
           "@id": "in/sparql/lab-result.rq"
+        },
+        {
+          "@id": "in/sparql/lab-result-codes.rq"
         },
         {
           "@id": "in/sparql/lab-result-quantities.rq"
@@ -191,6 +200,9 @@
         },
         {
           "@id": "in/sparql/medication-findings.rq"
+        },
+        {
+          "@id": "in/sparql/code-findings.rq"
         },
         {
           "@id": "in/sparql/lab-result-findings.rq"
@@ -251,6 +263,9 @@
           "@id": "in/sparql/medication-table.rq"
         },
         {
+          "@id": "in/sparql/coding-system-table.rq"
+        },
+        {
           "@id": "in/sparql/organization-table.rq"
         },
         {
@@ -275,6 +290,9 @@
           "@id": "in/sparql/medication.rq"
         },
         {
+          "@id": "in/sparql/medication-supply-and-dosages.rq"
+        },
+        {
           "@id": "in/sparql/organization.rq"
         },
         {
@@ -282,6 +300,9 @@
         },
         {
           "@id": "in/sparql/lab-result.rq"
+        },
+        {
+          "@id": "in/sparql/lab-result-codes.rq"
         },
         {
           "@id": "in/sparql/lab-result-quantities.rq"
@@ -324,6 +345,9 @@
         },
         {
           "@id": "in/sparql/medication-findings.rq"
+        },
+        {
+          "@id": "in/sparql/code-findings.rq"
         },
         {
           "@id": "in/sparql/lab-result-findings.rq"
@@ -651,6 +675,45 @@
         },
         {
           "@id": "fixtures/in/martin-okafor-st-columba-exome-2024-with-lab.json"
+        },
+        {
+          "@id": "fixtures/in/lab-b12-local-code-only.json"
+        },
+        {
+          "@id": "fixtures/in/lab-test-code-in-snomed-ct.json"
+        },
+        {
+          "@id": "fixtures/in/lab-mcv-two-interpretations.json"
+        },
+        {
+          "@id": "fixtures/in/lab-interpretation-flag-systems.json"
+        },
+        {
+          "@id": "fixtures/in/condition-codes-under-other-system-names.json"
+        },
+        {
+          "@id": "fixtures/in/condition-codings-not-carried.json"
+        },
+        {
+          "@id": "fixtures/in/procedure-hcpcs-code.json"
+        },
+        {
+          "@id": "fixtures/in/procedure-two-cpt-codes.json"
+        },
+        {
+          "@id": "fixtures/in/medication-request-formulary-code.json"
+        },
+        {
+          "@id": "fixtures/in/medication-request-us-core-supply-only.json"
+        },
+        {
+          "@id": "fixtures/in/medication-request-supply-and-dosages.json"
+        },
+        {
+          "@id": "fixtures/in/bundle-medication-supply-not-carried.json"
+        },
+        {
+          "@id": "fixtures/in/bundle-codings-without-system.json"
         },
         {
           "@id": "bench/manifest.json"
@@ -1313,7 +1376,85 @@
           "@id": "fixtures/expected/procedure-with-id.ttl"
         },
         {
+          "@id": "fixtures/expected/lab-b12-local-code-only.ttl"
+        },
+        {
+          "@id": "fixtures/expected/lab-test-code-in-snomed-ct.ttl"
+        },
+        {
+          "@id": "fixtures/expected/lab-mcv-two-interpretations.ttl"
+        },
+        {
+          "@id": "fixtures/expected/lab-interpretation-flag-systems.ttl"
+        },
+        {
+          "@id": "fixtures/expected/condition-codes-under-other-system-names.ttl"
+        },
+        {
+          "@id": "fixtures/expected/condition-codings-not-carried.ttl"
+        },
+        {
+          "@id": "fixtures/expected/procedure-hcpcs-code.ttl"
+        },
+        {
+          "@id": "fixtures/expected/procedure-two-cpt-codes.ttl"
+        },
+        {
+          "@id": "fixtures/expected/medication-request-formulary-code.ttl"
+        },
+        {
+          "@id": "fixtures/expected/medication-request-us-core-supply-only.ttl"
+        },
+        {
+          "@id": "fixtures/expected/medication-request-supply-and-dosages.ttl"
+        },
+        {
+          "@id": "fixtures/expected/bundle-medication-supply-not-carried.ttl"
+        },
+        {
+          "@id": "fixtures/expected/bundle-codings-without-system.ttl"
+        },
+        {
           "@id": "fixtures/findings/procedure-with-id.ttl"
+        },
+        {
+          "@id": "fixtures/findings/lab-b12-local-code-only.ttl"
+        },
+        {
+          "@id": "fixtures/findings/lab-test-code-in-snomed-ct.ttl"
+        },
+        {
+          "@id": "fixtures/findings/lab-mcv-two-interpretations.ttl"
+        },
+        {
+          "@id": "fixtures/findings/lab-interpretation-flag-systems.ttl"
+        },
+        {
+          "@id": "fixtures/findings/condition-codes-under-other-system-names.ttl"
+        },
+        {
+          "@id": "fixtures/findings/condition-codings-not-carried.ttl"
+        },
+        {
+          "@id": "fixtures/findings/procedure-hcpcs-code.ttl"
+        },
+        {
+          "@id": "fixtures/findings/procedure-two-cpt-codes.ttl"
+        },
+        {
+          "@id": "fixtures/findings/medication-request-formulary-code.ttl"
+        },
+        {
+          "@id": "fixtures/findings/medication-request-us-core-supply-only.ttl"
+        },
+        {
+          "@id": "fixtures/findings/medication-request-supply-and-dosages.ttl"
+        },
+        {
+          "@id": "fixtures/findings/bundle-medication-supply-not-carried.ttl"
+        },
+        {
+          "@id": "fixtures/findings/bundle-codings-without-system.ttl"
         },
         {
           "@id": "views/allergies.rq"
@@ -1514,6 +1655,18 @@
       "description": "A bridge:documentTableQuery: a row for each key an Organization of a record can be referenced by, within the scope it holds there; a row for each custodian and author reference of the document's Composition, the first entry of a Bundle or one standing alone, the key it names, that key's scope and the role, and for each performer reference of a Diagnostic Implication, with no role, a version stripped; and a row for each Organization from a server, one at the top of an entry with an id and a fullUrl that is no urn:uuid where the server is known, with its id, and for each other Organization with an identifier it can be named by, that identifier, picked as cascade-vocabulary's decisions/naming.md says, and its place in the document. And a row for each name, identifier and address an Organization's version would carry, which organization-findings.rq compares. organization.rq and resource-type-findings.rq resolve a reference by joining them, to the one Organization holding its key in its scope."
     },
     {
+      "@id": "in/sparql/coding-system-table.rq",
+      "@type": "File",
+      "name": "Document table query: the system each written Coding.system is read as",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "1873",
+      "sha256": "cb989279f262b913231f3c01174bd2457f7418c12aebef3fa54c19cb0195c4a4",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "One row for each system the record writes, named by the system as written, and the system a mapping reads it as: the cascade:codingSystemUri of the concept of vocab/fhir-code-systems.ttl whose skos:notation is its OID after urn:oid: (the prefix in any case) or whose skos:hiddenLabel is it, a URI HL7 Terminology lists as not preferred; else urn:oid: and the OID, or the system as written. A system that is no absolute URI, or holds a space or a character an IRI may not, has no row, and no code of it is carried. So one code from this adapter and from the C-CDA adapter is one term (https://github.com/jayostis/cascade-vocabulary/issues/290)."
+    },
+    {
       "@id": "in/sparql/record.rq",
       "@type": "File",
       "name": "Mapping: records, versions and arrivals",
@@ -1542,12 +1695,12 @@
       "@type": "File",
       "name": "Mapping: a Condition's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "6061",
-      "sha256": "fb43a58a34ba55e04d303813646a012adcb8e72b801fc5b6edae99ac92c9e5be",
+      "contentSize": "6543",
+      "sha256": "5a8b05c02defeffc9c838c64afcd82761838c870b20f95eebde483f62eb951ad",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "What a Condition says, written on the version record.rq names: name, SNOMED CT and ICD-10-CM codes, clinical and verification status, category, onset, abatement and notes."
+      "description": "What a Condition says, written on the version record.rq names: name, every code, SNOMED CT and ICD-10-CM as IRIs and any other system's, ICD-9-CM's among them, as cascade:conditionCodeInOtherSystem literals typed by the system coding-system-table.rq reads (https://github.com/jayostis/cascade-vocabulary/issues/290), clinical and verification status, category, onset, abatement and notes."
     },
     {
       "@id": "in/sparql/immunization.rq",
@@ -1566,12 +1719,12 @@
       "@type": "File",
       "name": "Mapping: a Procedure's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "4188",
-      "sha256": "814ebed8675244ec464a7524f3c2808364506331fca68103bc1a044ec401a9d8",
+      "contentSize": "5483",
+      "sha256": "0b264f21ba8483c96d2dd231c9f2a0f0b664eddc5a0911d9dba6e9cc601861c4",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "What a Procedure says, written on the version record.rq names: name, SNOMED CT codes as IRIs and CPT codes, date and status."
+      "description": "What a Procedure says, written on the version record.rq names: name, every code, SNOMED CT as IRIs, the first CPT code as a cascade:cptCode IRI under https://ns.cascadeprotocol.org/codes/cpt/, and any other system's, HCPCS's among them, as cascade:procedureCodeInOtherSystem literals typed by the system coding-system-table.rq reads (https://github.com/jayostis/cascade-vocabulary/issues/290), date and status."
     },
     {
       "@id": "in/sparql/patient.rq",
@@ -1590,12 +1743,24 @@
       "@type": "File",
       "name": "Mapping: a MedicationRequest's or MedicationStatement's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "11919",
-      "sha256": "941212ba5c8aded570df72e19ccb738b192010fee0f59cc6192ee3c1f8b6391c",
+      "contentSize": "13005",
+      "sha256": "1979ec468bb5ea4c61d3b386a57dfea245733574e375c6bae7758e8f8a2ec78c",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "What a medication says, written on the version record.rq names: whether it was prescribed or reported, prescribed for a request unless its reported[x] says it was reported, and reportedUse for a statement or such a request; a prescribed request's intent, where it is one of the eight codes of medicationrequest-intent (cascade:medicationRequestIntent); the drug's name and RxNorm code, from its concept or from the Medication its reference resolves to in the document, else the reference's display; status, start and end dates of use, the day a request was written, never a start, and the first dosage's text."
+      "description": "What a medication says, written on the version record.rq names: whether it was prescribed or reported, prescribed for a request unless its reported[x] says it was reported, and reportedUse for a statement or such a request; a prescribed request's intent, where it is one of the eight codes of medicationrequest-intent (cascade:medicationRequestIntent); the drug's name and every code, from its concept or from the Medication its reference resolves to in the document, else the reference's display: RxNorm and NDC as IRIs, the first userSelected one the selected code, and any other system's as cascade:medicationCodeInOtherSystem literals typed by the system coding-system-table.rq reads (https://github.com/jayostis/cascade-vocabulary/issues/290); status, start and end dates of use, the day a request was written, never a start, and the first dosage's text. Its supply and dosages are medication-supply-and-dosages.rq's."
+    },
+    {
+      "@id": "in/sparql/medication-supply-and-dosages.rq",
+      "@type": "File",
+      "name": "Mapping: a medication's supply and the structure of its dosages",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "12936",
+      "sha256": "09791280e7d436cfe50c3611dd632191986d20c437115c0b448d636e9b522a30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "On the version medication.rq writes (https://github.com/jayostis/cascade-vocabulary/issues/299): a request's cascade:courseOfTherapyType (a code of FHIR's medicationrequest-course-of-therapy), cascade:numberOfRepeatsAllowed (0 included), cascade:expectedSupplyDuration (a quantity node <version>#expected-supply-duration, only in one of UCUM's seven units of time, with its comparator where it is one of R4's four) and cascade:dispenseValidityPeriodStart and End; and for every dosage, a request's dosageInstruction or a statement's dosage, a cascade:structuredDosage node <version>#dosage-n whatever it holds, with its first dose quantity (<version>#dosage-n-dose-quantity), its timing's cascade:dosageRepeatFrequency, cascade:dosageRepeatPeriod and cascade:dosageRepeatPeriodUnit, its bounds period's start and end, and every route code, SNOMED CT's as cascade:dosageRouteCode IRIs and any other system's as cascade:dosageRouteCodeInOtherSystem literals. Numbers are written as written and as canonical xsd:decimal values; dates are typed by their precision, a time to the minute padded with a cascade:PaddedDateTime node."
     },
     {
       "@id": "in/sparql/organization.rq",
@@ -1626,12 +1791,24 @@
       "@type": "File",
       "name": "Mapping: a lab result's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "13089",
-      "sha256": "a9e569a46920e2de117ef3ff1c23a3f36ca2ccee05bb31b7382cc37cfe4662d8",
+      "contentSize": "11911",
+      "sha256": "5906515a9014e40ec70a07d72fc1688cca03589894d2217cf5b5fbc619fe5c1a",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "What a lab result says, written on the version record.rq names: test name and LOINC codes, the kind of its value (quantity, ratio, range, coded or text), a coded value's SNOMED CT and LOINC codes and its text, a text value, the first reference range as text, the first interpretation, performed time, notes and status; its numbers are lab-result-quantities.rq's."
+      "description": "What a lab result says, written on the version record.rq names: test name, the kind of its value (quantity, ratio, range, coded or text), a coded value's SNOMED CT and LOINC codes and its text, a text value, the first reference range as text, performed time, notes and status; its numbers are lab-result-quantities.rq's, its test codes and interpretations lab-result-codes.rq's."
+    },
+    {
+      "@id": "in/sparql/lab-result-codes.rq",
+      "@type": "File",
+      "name": "Mapping: a lab result's test codes and interpretation flags",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "4028",
+      "sha256": "6f118845b6853751064ca581a2eca6d13533473e20b06b21cfb3e9939a0524a2",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "Every coding of a lab result's code, on the version record.rq names: one in LOINC or SNOMED CT as a cascade:testCode IRI, one in any other system as a cascade:testCodeInOtherSystem literal typed by the system coding-system-table.rq reads (https://github.com/jayostis/cascade-vocabulary/issues/290); and every flag of every interpretation in HL7's v3 ObservationInterpretation as a cascade:resultInterpretationCode IRI under https://ns.cascadeprotocol.org/codes/observationinterpretation/, the code as written, case kept (https://github.com/jayostis/cascade-vocabulary/issues/298). Each in its own branch, so that one does not multiply the others; a code is trimmed of leading and trailing whitespace."
     },
     {
       "@id": "in/sparql/lab-result-quantities.rq",
@@ -1794,24 +1971,36 @@
       "@type": "File",
       "name": "Findings: what a medication's mapping leaves behind",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "6243",
-      "sha256": "3fd4ba564b3ac774ddb5b9bbe37a88997c14aaff05c9109d9515e35376653b32",
+      "contentSize": "10219",
+      "sha256": "35e3e6a66aeb9f1c6c2fdeacd9b625fcf62e6f7e8e0c07aa6920b7780a97e209",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "Reports fhirr4:medicationReferenceUnresolved for a medication's reference that resolves to no one Medication of its document, fhirr4:medicationNote for a medication's note, fhirr4:medicationCode for each code in a system other than RxNorm or NDC, fhirr4:ndcNotNormalised for each NDC no 11-digit code can be made of, of a medication or of a Medication a reference resolves to, and fhirr4:medicationDosageRepeated for each dosage text after the first, at paths the source accounting carries for the other kinds or where they hold one value."
+      "description": "Reports fhirr4:medicationReferenceUnresolved for a medication's reference that resolves to no one Medication of its document, fhirr4:medicationNote for a medication's note, fhirr4:codingNotCarried for each coding with no system, a system coding-system-table.rq gives no row, or no code, fhirr4:ndcNotNormalised for each NDC no 11-digit code can be made of, of a medication or of a Medication a reference resolves to, fhirr4:medicationDosageRepeated for each dosage text after the first, fhirr4:dosageElementNotCarried for each dose quantity of a dosage after its first, fhirr4:courseOfTherapyTypeNotMapped for a course of therapy's coding outside FHIR's three codes and its text where none is carried, fhirr4:expectedSupplyDurationNotInUnitOfTime for a supply duration in no unit of time, and fhirr4:expectedSupplyDurationBound for its comparator, at paths the source accounting carries for the other kinds or where they hold one value."
+    },
+    {
+      "@id": "in/sparql/code-findings.rq",
+      "@type": "File",
+      "name": "Findings query: the codes of a condition or a procedure not carried",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "4523",
+      "sha256": "221b7a3da74f9b32ecd51a2fa742baf3bd92e21eac2e313e7fe188d4f378e8dc",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "What condition.rq and procedure.rq leave behind of a code: fhirr4:codingNotCarried for a coding with no system, a system coding-system-table.rq gives no row, or no code or a code of blanks, at its code or its system; and fhirr4:procedureCptCodeRepeated for each CPT code of a procedure after the first that differs from it, the vocabulary holding one."
     },
     {
       "@id": "in/sparql/lab-result-findings.rq",
       "@type": "File",
       "name": "Findings: what a lab result's mapping leaves behind",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "9028",
-      "sha256": "37e80fd0312b47746136f5eef2438231a7b38966bae312825496ad060ac5b5dd",
+      "contentSize": "10967",
+      "sha256": "3981e9e6ed79fc1659a9ce44d100ae8a1210a8cfd1914d9a4699b6201dd7ca86",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "Reports, for an Observation lab-result-table.rq calls a lab result, fhirr4:labResultPeriodEnd for the end of its effectivePeriod, fhirr4:labResultCode for each code outside LOINC, and fhirr4:labResultRangeRepeated and fhirr4:labResultInterpretationRepeated for each value of a reference range or an interpretation after the first, fhirr4:performerCarriedOnlyAsOneOrganizationRecord for each performer reference of a result from a server whose performers name more than one Organization, at paths the source accounting carries for the other kinds or where they hold one value."
+      "description": "Reports, for an Observation lab-result-table.rq calls a lab result, fhirr4:labResultPeriodEnd for the end of its effectivePeriod, fhirr4:codingNotCarried for each coding of its code with no system, a system coding-system-table.rq gives no row, or no code, fhirr4:labResultRangeRepeated for each value of a reference range after the first, fhirr4:labResultInterpretationNotCarried for each flag in a system other than v3 ObservationInterpretation or with no code, and for an interpretation's text where none of its flags is carried, fhirr4:performerCarriedOnlyAsOneOrganizationRecord for each performer reference of a result from a server whose performers name more than one Organization, at paths the source accounting carries for the other kinds or where they hold one value."
     },
     {
       "@id": "in/sparql/absent-reason-findings.rq",
@@ -1854,8 +2043,8 @@
       "@type": "File",
       "name": "FHIR R4 JSON source accounting",
       "encodingFormat": "text/turtle",
-      "contentSize": "235015",
-      "sha256": "fbc89c93446c438cf59c87f4a8721041370cea5cacdf06953a882749a205ab7b",
+      "contentSize": "477077",
+      "sha256": "35504349507f7c8e9da77bbe953932b977f23d254fe808e948d297e8c1993e55",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1902,8 +2091,8 @@
       "@type": "File",
       "name": "FHIR R4 JSON gaps",
       "encodingFormat": "text/turtle",
-      "contentSize": "15692",
-      "sha256": "9beb9b232c5bd8179b8d81df0e2fc1afaacfb41c3bd90ec351b4ea8c5b4fe4b3",
+      "contentSize": "17606",
+      "sha256": "781ac3198a5e3245cfd3cc1178611d6b2069a66211ba5b6db25b70097aecc8a4",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -1929,8 +2118,8 @@
       "@type": "File",
       "name": "FHIR R4 code systems",
       "encodingFormat": "text/turtle",
-      "contentSize": "7325",
-      "sha256": "535387c2c06b4f331eb9d66b586a617918ee92a5823dccd3a9e4018fa3f9f319",
+      "contentSize": "12922",
+      "sha256": "e9a43a7340133717d91e04dbf675fb73535e395d4af0c534a1898493be4695ee",
       "isBasedOn": [
         {
           "@id": "https://terminology.hl7.org/SNOMEDCT.html"
@@ -1940,12 +2129,30 @@
         },
         {
           "@id": "https://hl7.org/fhir/R5/rdf.html#iri-stem"
+        },
+        {
+          "@id": "https://hl7.org/fhir/R4/terminologies-systems.html"
+        },
+        {
+          "@id": "https://hl7.org/fhir/R4/icd.html"
+        },
+        {
+          "@id": "https://github.com/HL7/UTG/tree/777bba6292b3bd16b1ea648d0f99e9ee8865fedd/input/sourceOfTruth"
+        },
+        {
+          "@id": "https://terminology.hl7.org/NamingSystem-icd10CM.json"
+        },
+        {
+          "@id": "https://terminology.hl7.org/NamingSystem-CDT.json"
+        },
+        {
+          "@id": "https://terminology.hl7.org/CodeSystem-v3-ObservationInterpretation.html"
         }
       ],
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The bridge:table every mapping reads for the IRI stem of a code it writes as an IRI: one skos:Concept per Coding.system a mapping reads such a code from, its cascade:codingSystemUri the system URI as FHIR writes it and its void:uriSpace the stem, which is never the system URI, each as cascade-vocabulary's cascade:CodeSystem for it states them and its decisions/code-iris.md rules them. SNOMED CT's stem is HL7 Terminology's (SNOMEDCT.html, section RDF) and LOINC's is THO's iri-stem (v3-loinc.xml), authoritative though FHIR R5's table writes https; RxNorm's, ICD-10-CM's and CVX's are Cascade's own under https://ns.cascadeprotocol.org/codes/, THO stating none. NDC's is the 11-digit space cascade-vocabulary registers, the code normalised into it, since FHIR's NDC code is the 10-digit label code (https://hl7.org/fhir/R4/ndc.html, https://github.com/jayostis/cascade-vocabulary/issues/104). Read on 2026-10-22. Not a concept map: no code maps to a Cascade term, and no entry of the source accounting looks a value up in it."
+      "description": "The bridge:table every mapping reads for the system a Coding.system is read as and for the IRI stem of a code it writes as an IRI: one skos:Concept per system, its cascade:codingSystemUri the system URI as FHIR writes it, its skos:notation the system's HL7 OID, which a Coding.system may give after urn:oid:, any URI HL7 Terminology lists for it as not preferred as a skos:hiddenLabel, and, for a system whose codes a mapping writes as IRIs, its void:uriSpace the stem, which is never the system URI, each as cascade-vocabulary's cascade:CodeSystem for it states them and its decisions/code-iris.md rules them. The rows the system table of https://github.com/jayostis/cascade-vocabulary/issues/290 gives are the C-CDA adapter's too, so one code from either adapter is one term: ICD-9-CM under its four OIDs and HL7 Terminology's retired URI, HCPCS Level II, ICD-10-PCS, CDT and UNII with no stem, read in HL7's UTG at 777bba6 and on terminology.hl7.org on 2026-10-29; and v3 ObservationInterpretation (https://github.com/jayostis/cascade-vocabulary/issues/298). SNOMED CT's stem is HL7 Terminology's (SNOMEDCT.html, section RDF) and LOINC's is THO's iri-stem (v3-loinc.xml), authoritative though FHIR R5's table writes https; RxNorm's, ICD-10-CM's, CVX's, CPT's and ObservationInterpretation's are Cascade's own under https://ns.cascadeprotocol.org/codes/, THO stating none. NDC's is the 11-digit space cascade-vocabulary registers, the code normalised into it, since FHIR's NDC code is the 10-digit label code (https://hl7.org/fhir/R4/ndc.html, https://github.com/jayostis/cascade-vocabulary/issues/104). OIDs read in FHIR R4's terminologies-systems.html on 2026-10-29. Not a concept map: no code maps to a Cascade term, and no entry of the source accounting looks a value up in it."
     },
     {
       "@id": "vocab/fhir-acmg-classifications.ttl",
@@ -3511,6 +3718,175 @@
       "description": "A collection Bundle, each resource named by a urn:uuid fullUrl and none with an id, of the same Patient, the DiagnosticReport 51969-4 issued 2024-03-21, three Variants and a Diagnostic Implication derived from each, and his conditions, each with a clinicalStatus of active, medications and a procedure: V1', MLH1 NM_000249.4:c.2042C>T of ClinVar variation 90011, Likely pathogenic; V2', the ID and expression of V2, Benign; V4, BRCA2 NM_000059.4:c.7865A>G of variation 91496, a gene outside MLH1, MSH2, MSH6, PMS2 and EPCAM, no ClinVar ID, Uncertain significance; each Diagnostic Implication's performer the lab, an Organization entry last in the Bundle, St Columba's Hospital, by its CLIA number 99D0024032 (system urn:oid:2.16.840.1.113883.4.7). The variations and what ClinVar says of them are real (variant_summary and hgvs4variation of 2026-10); the person, the hospital, the dates and the identifiers are invented. Authored here on 2026-10-13 and replaced on 2026-10-24, for a case the conformance corpus does not hold."
     },
     {
+      "@id": "fixtures/in/lab-b12-local-code-only.json",
+      "@type": "File",
+      "name": "Laboratory Observation coded only by a lab's own code",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "718",
+      "sha256": "c9d7163fe0f92e71a848f0f03ebb244a7cca54816cb2be08c76c3e1a2cf42e9c",
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A laboratory Observation of serum vitamin B12, id obs-b12-local-1, whose only coding is in the lab's own system https://lab.meridian.example/codes (B12-SER), with a valueQuantity of 182 pg/mL. Authored here on 2026-10-29, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/lab-test-code-in-snomed-ct.json",
+      "@type": "File",
+      "name": "Laboratory Observation coded in SNOMED CT",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "713",
+      "sha256": "a1d0868bc67005a336d803fa4f52c3655c67098b1cc8f612ddddd94b7bdb4450",
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A laboratory Observation of vitamin B12, id obs-b12-snomed-1, coded in SNOMED CT (271216009 Serum vitamin B12 measurement, read on tx.fhir.org on 2026-10-29), with a valueQuantity of 410 pg/mL. Authored here on 2026-10-29, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/lab-mcv-two-interpretations.json",
+      "@type": "File",
+      "name": "Laboratory Observation with two interpretations",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "1146",
+      "sha256": "351d3987c2573f11e79ef23bcad1727b0805a35a6e0606dd3f487d07f257565f",
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A laboratory Observation of MCV (LOINC 787-2, read on tx.fhir.org on 2026-10-29), id obs-mcv-1, 104 fL, with two interpretation CodeableConcepts, H and A, in http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation. Authored here on 2026-10-29, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/lab-interpretation-flag-systems.json",
+      "@type": "File",
+      "name": "Laboratory Observation with flags in other systems",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "1200",
+      "sha256": "76dee9823a3bbf99c4ee217e29a0175fd253cb343b04e0bf5a7d37c7203ff11a",
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A laboratory Observation of MCV (LOINC 787-2), id obs-mcv-2, 106 fL, with four interpretations: H in urn:oid:2.16.840.1.113883.5.83, A in http://terminology.hl7.org/CodeSystem/v2-0078, HH in http://hl7.org/fhir/v2/0078, and the text Macrocytic. Authored here on 2026-10-29, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/condition-codes-under-other-system-names.json",
+      "@type": "File",
+      "name": "Condition coded under other names of its systems",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "776",
+      "sha256": "a2aaa261e470ea43fe27acfec1f7cd1550675cf2dd6665795800993aba28847f",
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Condition of type 2 diabetes mellitus, id cond-dm2-1, coded in SNOMED CT (44054006) as URN:OID:2.16.840.1.113883.6.96, in ICD-10-CM (E11.9) as http://terminology.hl7.org/CodeSystem/icd10CM and in ICD-9-CM (250.00) as urn:oid:2.16.840.1.113883.6.103, each code read on tx.fhir.org on 2026-10-29. Authored here on 2026-10-29, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/condition-codings-not-carried.json",
+      "@type": "File",
+      "name": "Condition with codings that carry no code",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "462",
+      "sha256": "0a286fd44f3eb5108013a4c5ba9f2fe282b191fd0d0c8b0489834cd508f084a8",
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Condition of type 2 diabetes mellitus, id cond-dm2-2, with three codings: E11.9 with no system, DM2 in the system meridian-problem-list, which is no absolute URI, and SNOMED CT with a display and no code. Authored here on 2026-10-29, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/procedure-hcpcs-code.json",
+      "@type": "File",
+      "name": "Procedure coded in HCPCS, CPT and SNOMED CT",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "864",
+      "sha256": "142b4678fbebb6e6e04afc5ac1703cdaec7dc8e3030d7bb3f2ffe1ca0bffb0d3",
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Procedure of a screening colonoscopy, id proc-colonoscopy-2, coded in HCPCS Level II (G0121, read on aapc.com on 2026-10-29), CPT (45378) and SNOMED CT (73761001), the last two read on tx.fhir.org on 2026-10-29. Authored here on 2026-10-29, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/procedure-two-cpt-codes.json",
+      "@type": "File",
+      "name": "Procedure with two CPT codes",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "684",
+      "sha256": "741ae1f6afb0073ea53bb4c7a45eac89f7418d05a93bb3f03f20636399a55c59",
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Procedure of a colonoscopy, id proc-colonoscopy-3, coded in CPT twice, 45378 and 45380, each read on tx.fhir.org on 2026-10-29. Authored here on 2026-10-29, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/medication-request-formulary-code.json",
+      "@type": "File",
+      "name": "MedicationRequest coded by a formulary and by RxNorm",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "674",
+      "sha256": "e6406edc99602ca0b790f2127b840c453ae5a02b9c4da4fb59b872598701488b",
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A MedicationRequest of atorvastatin, id medrx-atorvastatin-2, coded in the formulary system https://formulary.meridian.example/drugs (F-ATOR-10, userSelected) and in RxNorm (617312). Authored here on 2026-10-29, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/medication-request-us-core-supply-only.json",
+      "@type": "File",
+      "name": "MedicationRequest with only its date and its supply",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "683",
+      "sha256": "c5cca53650a895d399f5c0751e6d1c2455ecca6117efde88dc4c081f93fba234",
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A MedicationRequest of atorvastatin (RxNorm 617312), id medrx-atorvastatin-3, active, with only authoredOn 2026-03-02, a dispenseRequest.expectedSupplyDuration of 90 d in UCUM and dispenseRequest.numberOfRepeatsAllowed 3. Authored here on 2026-10-29, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/medication-request-supply-and-dosages.json",
+      "@type": "File",
+      "name": "MedicationRequest with every supply and dosage element",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "2336",
+      "sha256": "36cff75a9ea6f036d2e029db46c65c4c3ee63b7438fa943061e299ff0bd57b92",
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A MedicationRequest of atorvastatin (RxNorm 617312), id medrx-atorvastatin-4, with courseOfTherapyType continuous, a dispenseRequest with a validityPeriod, numberOfRepeatsAllowed 0, a quantity of 60 tablets and an expectedSupplyDuration of 30 d, and two dosageInstructions: the first with a boundsPeriod starting at a time written to the minute, frequency 2 per 1 d, when MORN and EVE, the route C38288 ORAL of the NCI Thesaurus (read on tx.fhir.org on 2026-10-29) and two doseAndRate entries; the second text only. Authored here on 2026-10-29, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/bundle-medication-supply-not-carried.json",
+      "@type": "File",
+      "name": "Bundle of MedicationRequests whose supply is not carried as written",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "2197",
+      "sha256": "dd540c89adebf4e62cb81d790a7c8906dadbb702f6d464866f001ac69eebee03",
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A collection Bundle of two MedicationRequests of atorvastatin (RxNorm 617312): medrx-atorvastatin-5, with an expectedSupplyDuration of >= 30 d and a courseOfTherapyType of text alone; medrx-atorvastatin-6, with an expectedSupplyDuration of 2 packs with no system and a courseOfTherapyType coded chronic in https://formulary.meridian.example/course. Authored here on 2026-10-29, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/bundle-codings-without-system.json",
+      "@type": "File",
+      "name": "Bundle of a lab result and a MedicationRequest with codings without a system",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "1984",
+      "sha256": "bca49df8a6912667afbcbb89b5e2fd12161b0728558da62c6847bc4aace4f4df",
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A collection Bundle of a laboratory Observation of vitamin B12, id obs-b12-local-2, coded in LOINC (2132-9, read on tx.fhir.org on 2026-10-29) and by B12-SER with no system, and a MedicationRequest of atorvastatin, id medrx-atorvastatin-7, coded in RxNorm (617312) and by F-ATOR-10 with no system. Authored here on 2026-10-29, for a case the conformance corpus does not hold."
+    },
+    {
       "@id": "bench/manifest.json",
       "@type": "File",
       "name": "Benchmark inputs and what to measure on each",
@@ -4583,8 +4959,8 @@
       "@type": "File",
       "name": "Expected graph for lab-every-mapped-element",
       "encodingFormat": "text/turtle",
-      "contentSize": "4887",
-      "sha256": "f7f4357b7172684c14c536a20247cb7befb2ece3ad5418425f286170a4fdec61",
+      "contentSize": "4991",
+      "sha256": "f1c0eaa3e73e03b511c658a51707f0b1c37f443ffd51af95c345fadb8bde9964",
       "about": {
         "@id": "fixtures/in/lab-every-mapped-element.json"
       },
@@ -4807,8 +5183,8 @@
       "@type": "File",
       "name": "Expected graph for medication-request-every-mapped-element",
       "encodingFormat": "text/turtle",
-      "contentSize": "3975",
-      "sha256": "6f4bf17c7f620e9ffe5b30da5e74c5ac44adcda2357852ab8775e2cb670312d7",
+      "contentSize": "4740",
+      "sha256": "6f9350442fba0b5bd48f5f62e5c26f6d45d9f98ef4f0107216d66fca3df5ce39",
       "about": {
         "@id": "fixtures/in/medication-request-every-mapped-element.json"
       },
@@ -4823,8 +5199,8 @@
       "@type": "File",
       "name": "Expected findings for medication-request-every-mapped-element",
       "encodingFormat": "text/turtle",
-      "contentSize": "3667",
-      "sha256": "6c834317b1093e7c16ec35f56fd6ead69583a861857249806ac4c7a0f064a451",
+      "contentSize": "1077",
+      "sha256": "a925dfab2468701725ff301c6f31820b98c529c1280853a42deb65975e729fa5",
       "about": {
         "@id": "fixtures/in/medication-request-every-mapped-element.json"
       },
@@ -4839,8 +5215,8 @@
       "@type": "File",
       "name": "Expected graph for medication-statement-every-mapped-element",
       "encodingFormat": "text/turtle",
-      "contentSize": "3928",
-      "sha256": "0a5dd887ff39b46912900351568df6c7bde6f550c18d4c58c1ff82a6d4dfe550",
+      "contentSize": "4030",
+      "sha256": "3bd4ca6d23cd5030573e2b67c0d82db3a3fcf01e4e6d1157578a3fe08041a103",
       "about": {
         "@id": "fixtures/in/medication-statement-every-mapped-element.json"
       },
@@ -4856,7 +5232,7 @@
       "name": "Expected findings for medication-statement-every-mapped-element",
       "encodingFormat": "text/turtle",
       "contentSize": "1074",
-      "sha256": "a81e72339fe35fa88f686b501aabebb32855d6a5a16bb63b5771729c48d22bb2",
+      "sha256": "6e865a6f7cc170e84bd9ba63ba47fc84ff3c7a06b4e500294841bef700bc8473",
       "about": {
         "@id": "fixtures/in/medication-statement-every-mapped-element.json"
       },
@@ -4967,8 +5343,8 @@
       "@type": "File",
       "name": "Expected graph for lab-troponin-below-detection",
       "encodingFormat": "text/turtle",
-      "contentSize": "4177",
-      "sha256": "d0ac1e5de8a913a01d27406c66eb0058a743b04a390ecc65026f50f1812abe52",
+      "contentSize": "4362",
+      "sha256": "1555061e77c0e1f8904875fb4b1d35f825cde8ba3977e2e67b12abf1c1fb877d",
       "about": {
         "@id": "fixtures/in/lab-troponin-below-detection.json"
       },
@@ -5175,8 +5551,8 @@
       "@type": "File",
       "name": "Expected findings for lab-troponin-below-detection",
       "encodingFormat": "text/turtle",
-      "contentSize": "4776",
-      "sha256": "13a560967a073e12f7d3af142e257232dfc3f87ab666289d17a4e85420ad945f",
+      "contentSize": "3892",
+      "sha256": "300d66faea1e326de4f3abbd80c1f5055faed43f1b15474c7aed122ca8a09f03",
       "about": {
         "@id": "fixtures/in/lab-troponin-below-detection.json"
       },
@@ -5383,8 +5759,8 @@
       "@type": "File",
       "name": "Expected graph for medication-request-two-rxnorm-codes",
       "encodingFormat": "text/turtle",
-      "contentSize": "3932",
-      "sha256": "3cb49e49c33ef32917e26dfc7050e6757de5acf425af0a159b11b53552efdb94",
+      "contentSize": "4100",
+      "sha256": "8af3ab9b042ff52a2d3627353facfa97a6db977ff76b295ebefa38e459a02774",
       "about": {
         "@id": "fixtures/in/medication-request-two-rxnorm-codes.json"
       },
@@ -5399,8 +5775,8 @@
       "@type": "File",
       "name": "Expected findings for medication-request-two-rxnorm-codes",
       "encodingFormat": "text/turtle",
-      "contentSize": "1094",
-      "sha256": "ead9bcbfa7388c3db4a949d9ddf7b9182dc5c9ac6c856619fe8ca5cc34848817",
+      "contentSize": "1098",
+      "sha256": "4eb04b5692c3f3492454f29064139dc47521a7c3cfc68ab92782215038c88d6a",
       "about": {
         "@id": "fixtures/in/medication-request-two-rxnorm-codes.json"
       },
@@ -5639,8 +6015,8 @@
       "@type": "File",
       "name": "Expected graph for Bundle-bundle-cgexample",
       "encodingFormat": "text/turtle",
-      "contentSize": "16178",
-      "sha256": "27ac2e2ca33d7756e5a0ca7830983ec6c22178992aef043a49c51dc8e6d15e88",
+      "contentSize": "16564",
+      "sha256": "8660cdf40c648044b531eed8484b747096cdec7e11cdbf831c766e55dc744c12",
       "about": {
         "@id": "fixtures/in/Bundle-bundle-cgexample.input.json"
       },
@@ -5735,8 +6111,8 @@
       "@type": "File",
       "name": "Expected graph for martin-okafor-st-columba-exome-2024-with-lab",
       "encodingFormat": "text/turtle",
-      "contentSize": "16088",
-      "sha256": "af1660bf5bee8f43accb609bdc913bbb369fe9058d267db4ea820f28b2ec9a7a",
+      "contentSize": "16281",
+      "sha256": "edc32f36b974b9161d899f44009d2d0e635f70eef61f7b36747483a1ab1646b0",
       "about": {
         "@id": "fixtures/in/martin-okafor-st-columba-exome-2024-with-lab.json"
       },
@@ -5911,8 +6287,8 @@
       "@type": "File",
       "name": "Expected findings for Bundle-bundle-cgexample",
       "encodingFormat": "text/turtle",
-      "contentSize": "23835",
-      "sha256": "b753c5d2067174537f181940b56308740088dba893bbadc16a721eda4571d1c3",
+      "contentSize": "21281",
+      "sha256": "1378085f1c3f4818228ccfe0bb7df349d089dd7805b198060b688456dafe74b4",
       "about": {
         "@id": "fixtures/in/Bundle-bundle-cgexample.input.json"
       },
@@ -6104,7 +6480,7 @@
       "name": "Expected findings for martin-okafor-st-columba-exome-2024-with-lab",
       "encodingFormat": "text/turtle",
       "contentSize": "1090",
-      "sha256": "3a0dd08688d9292a0695f93c601fd9cfb8321de03da261e76c975dfd8b4b1f02",
+      "sha256": "f50cccf77a845dad62dc72ae01480f586e8618c862aa623a2a223ef06828ba28",
       "about": {
         "@id": "fixtures/in/martin-okafor-st-columba-exome-2024-with-lab.json"
       },
@@ -6323,6 +6699,214 @@
       "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
+      "@id": "fixtures/expected/lab-b12-local-code-only.ttl",
+      "@type": "File",
+      "name": "Expected graph for lab-b12-local-code-only",
+      "encodingFormat": "text/turtle",
+      "contentSize": "4035",
+      "sha256": "843cac1a142fc41b23b48e5ec90cb47a8f3988e5ea1319367caaecc35bd00189",
+      "about": {
+        "@id": "fixtures/in/lab-b12-local-code-only.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/lab-test-code-in-snomed-ct.ttl",
+      "@type": "File",
+      "name": "Expected graph for lab-test-code-in-snomed-ct",
+      "encodingFormat": "text/turtle",
+      "contentSize": "4001",
+      "sha256": "cd352f8ed4e871a1cb2b0f2ebff293e6e07d3db6edf6eba8b86c1cc9bae63dd7",
+      "about": {
+        "@id": "fixtures/in/lab-test-code-in-snomed-ct.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/lab-mcv-two-interpretations.ttl",
+      "@type": "File",
+      "name": "Expected graph for lab-mcv-two-interpretations",
+      "encodingFormat": "text/turtle",
+      "contentSize": "4142",
+      "sha256": "34297ad47ffc4a982ef52261d0778fff6c93b0887f32e739fff548049a306b6a",
+      "about": {
+        "@id": "fixtures/in/lab-mcv-two-interpretations.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/lab-interpretation-flag-systems.ttl",
+      "@type": "File",
+      "name": "Expected graph for lab-interpretation-flag-systems",
+      "encodingFormat": "text/turtle",
+      "contentSize": "4071",
+      "sha256": "42c8d586281db649631f813d3c237bb78c36ea67f134fd753040ebd4fac691f1",
+      "about": {
+        "@id": "fixtures/in/lab-interpretation-flag-systems.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/condition-codes-under-other-system-names.ttl",
+      "@type": "File",
+      "name": "Expected graph for condition-codes-under-other-system-names",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3710",
+      "sha256": "d055780792e2e830f714f85695a98aaef068a737196c797ab1ff87c0eda0cd11",
+      "about": {
+        "@id": "fixtures/in/condition-codes-under-other-system-names.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/condition-codings-not-carried.ttl",
+      "@type": "File",
+      "name": "Expected graph for condition-codings-not-carried",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3494",
+      "sha256": "32268e6e0a9d27e2d9c57bec3f4236997d799baf50983e798491a880b7bbc5a6",
+      "about": {
+        "@id": "fixtures/in/condition-codings-not-carried.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/procedure-hcpcs-code.ttl",
+      "@type": "File",
+      "name": "Expected graph for procedure-hcpcs-code",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3775",
+      "sha256": "d27873030e385279ec8ad2a45c39b4e359b5ae3ea72ef1bdad546ff848e2a777",
+      "about": {
+        "@id": "fixtures/in/procedure-hcpcs-code.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/procedure-two-cpt-codes.ttl",
+      "@type": "File",
+      "name": "Expected graph for procedure-two-cpt-codes",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3621",
+      "sha256": "6bb5fa41d0113f8a2da58f03735f420a5e20fd79f785491bd25c4f4eb469f4d6",
+      "about": {
+        "@id": "fixtures/in/procedure-two-cpt-codes.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/medication-request-formulary-code.ttl",
+      "@type": "File",
+      "name": "Expected graph for medication-request-formulary-code",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3841",
+      "sha256": "1d69fbf40dcc32d08f1198af2eb1cfe76cee0ae2996d9eaeba35ec83a911db2f",
+      "about": {
+        "@id": "fixtures/in/medication-request-formulary-code.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/medication-request-us-core-supply-only.ttl",
+      "@type": "File",
+      "name": "Expected graph for medication-request-us-core-supply-only",
+      "encodingFormat": "text/turtle",
+      "contentSize": "4161",
+      "sha256": "37edd39806a1f61ccfc9b0b6ca6df7daa2a64ec6440dc665a0505e453d7fab7f",
+      "about": {
+        "@id": "fixtures/in/medication-request-us-core-supply-only.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/medication-request-supply-and-dosages.ttl",
+      "@type": "File",
+      "name": "Expected graph for medication-request-supply-and-dosages",
+      "encodingFormat": "text/turtle",
+      "contentSize": "5994",
+      "sha256": "64d6f728ea986e46724273dd4d5e64f618a9d33f4203609f741f6c67c3bed4e9",
+      "about": {
+        "@id": "fixtures/in/medication-request-supply-and-dosages.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/bundle-medication-supply-not-carried.ttl",
+      "@type": "File",
+      "name": "Expected graph for bundle-medication-supply-not-carried",
+      "encodingFormat": "text/turtle",
+      "contentSize": "5505",
+      "sha256": "cb622d673490a0feaac8a85b57a9bea8c3e614320c7ac24ac234ce84cd1777d5",
+      "about": {
+        "@id": "fixtures/in/bundle-medication-supply-not-carried.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/bundle-codings-without-system.ttl",
+      "@type": "File",
+      "name": "Expected graph for bundle-codings-without-system",
+      "encodingFormat": "text/turtle",
+      "contentSize": "5342",
+      "sha256": "4b4a447ef98dac569ae27099b74755d39c39902abf584c4d76bab9b97957c44d",
+      "about": {
+        "@id": "fixtures/in/bundle-codings-without-system.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
       "@id": "fixtures/findings/procedure-with-id.ttl",
       "@type": "File",
       "name": "Expected findings for procedure-with-id",
@@ -6333,6 +6917,214 @@
         "@id": "fixtures/in/procedure-with-id.json"
       },
       "dateCreated": "2026-09-27",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/lab-b12-local-code-only.ttl",
+      "@type": "File",
+      "name": "Expected findings for lab-b12-local-code-only",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/lab-b12-local-code-only.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/lab-test-code-in-snomed-ct.ttl",
+      "@type": "File",
+      "name": "Expected findings for lab-test-code-in-snomed-ct",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/lab-test-code-in-snomed-ct.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/lab-mcv-two-interpretations.ttl",
+      "@type": "File",
+      "name": "Expected findings for lab-mcv-two-interpretations",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/lab-mcv-two-interpretations.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/lab-interpretation-flag-systems.ttl",
+      "@type": "File",
+      "name": "Expected findings for lab-interpretation-flag-systems",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2972",
+      "sha256": "ddee47ff0b517b38d6cbac27fb5c19f37b48c0e9552427236e1090eb9c7745e6",
+      "about": {
+        "@id": "fixtures/in/lab-interpretation-flag-systems.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/condition-codes-under-other-system-names.ttl",
+      "@type": "File",
+      "name": "Expected findings for condition-codes-under-other-system-names",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/condition-codes-under-other-system-names.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/condition-codings-not-carried.ttl",
+      "@type": "File",
+      "name": "Expected findings for condition-codings-not-carried",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2925",
+      "sha256": "5d24e26f76685de1171778151164410fab69ef4966590047b8ede274b4c86cf2",
+      "about": {
+        "@id": "fixtures/in/condition-codings-not-carried.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/procedure-hcpcs-code.ttl",
+      "@type": "File",
+      "name": "Expected findings for procedure-hcpcs-code",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/procedure-hcpcs-code.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/procedure-two-cpt-codes.ttl",
+      "@type": "File",
+      "name": "Expected findings for procedure-two-cpt-codes",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1050",
+      "sha256": "1043155a4a3670e9e910961d547ba3c31735f6e0fc8dd7ee90c41e257d753ae6",
+      "about": {
+        "@id": "fixtures/in/procedure-two-cpt-codes.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/medication-request-formulary-code.ttl",
+      "@type": "File",
+      "name": "Expected findings for medication-request-formulary-code",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/medication-request-formulary-code.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/medication-request-us-core-supply-only.ttl",
+      "@type": "File",
+      "name": "Expected findings for medication-request-us-core-supply-only",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/medication-request-us-core-supply-only.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/medication-request-supply-and-dosages.ttl",
+      "@type": "File",
+      "name": "Expected findings for medication-request-supply-and-dosages",
+      "encodingFormat": "text/turtle",
+      "contentSize": "4546",
+      "sha256": "46be8460c361a6d68584e41275416e2815e54b27b1c329814e73311cf0d59d27",
+      "about": {
+        "@id": "fixtures/in/medication-request-supply-and-dosages.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/bundle-medication-supply-not-carried.ttl",
+      "@type": "File",
+      "name": "Expected findings for bundle-medication-supply-not-carried",
+      "encodingFormat": "text/turtle",
+      "contentSize": "4024",
+      "sha256": "d907b072978254bfc6de9e221fb00e8b3c472abdbfbee6b31243eb7894b3956d",
+      "about": {
+        "@id": "fixtures/in/bundle-medication-supply-not-carried.json"
+      },
+      "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/bundle-codings-without-system.ttl",
+      "@type": "File",
+      "name": "Expected findings for bundle-codings-without-system",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1928",
+      "sha256": "44436040e9ab96fc7a852343c4b53aa32d000fa58af5f280f2071945274d74f9",
+      "about": {
+        "@id": "fixtures/in/bundle-codings-without-system.json"
+      },
+      "dateCreated": "2026-10-29",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -6415,12 +7207,12 @@
       "@type": "File",
       "name": "View: lab results",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "1791",
-      "sha256": "084fd659843e46dd8b0070d5cae87596809b90d00f53b8bab83e61a7fa670f07",
+      "contentSize": "1945",
+      "sha256": "56615790b520b7c245aac646f5718ce3331e50af08a4ac56cd0196c300204866",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "A SELECT over a Bridge's graph: one row per LabResultRecord record at its current version, else at each version, with its source id and test name, LOINC code, value, unit, reference range, interpretation, status and performed date, each a plain string. Not run by a Bridge: #view-comparison-with-cascade-cli names what it is compared with."
+      "description": "A SELECT over a Bridge's graph: one row per LabResultRecord record at its current version, else at each version, and per interpretation flag, with its source id and test name, LOINC code (a test code in SNOMED CT is not one), value, unit, reference range, interpretation code, status and performed date, each a plain string. Not run by a Bridge: #view-comparison-with-cascade-cli names what it is compared with."
     },
     {
       "@id": "#view-comparison-with-cascade-cli",
@@ -6628,8 +7420,8 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "contentSize": "77796",
-      "sha256": "d89a9435f622654cc5de43dc56e97eafef02fe3019afa07d7067f1bdb6e24ef5"
+      "contentSize": "87582",
+      "sha256": "c33e42196958f795719a14111f6c0714e5134f43ab68a15135a2d3e564ef7a11"
     },
     {
       "@id": "fixtures/facts/meridian.ttl",
@@ -6939,8 +7731,8 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "What a record is, the two envelopes, how a record is named, JSON as FHIR writes it, the schema, the versions in and out of scope, and what is known about the committed inputs. Read from hl7.org/fhir/R4/ on 2026-09-27.",
-      "contentSize": "22102",
-      "sha256": "206e8ab28d24290827211a1016ef650f2d90b01c695473bcab8e60de348c2879"
+      "contentSize": "25282",
+      "sha256": "15877122e83476ef228beb5ab5c3b7f82956f52e12e4b6445ebd42906c27af56"
     },
     {
       "@id": "fixtures/CLAUDE.md",

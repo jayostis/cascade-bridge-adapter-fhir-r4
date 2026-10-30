@@ -21,10 +21,8 @@ PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # cascade-cli writes one where the source gives no text for it, and a range
 # with one bound as that bound and its comparator, a FHIR range's bounds being
 # inclusive; its typed bounds are lab-result-quantities.rq's. A lab result
-# states one reference range text and one interpretation, the first of each,
-# but every LOINC code its concept carries: the vocabulary takes one test code
-# per coding, and a result shares any of them with the same result elsewhere.
-# The time a result was issued is not when it was performed, and is not
+# states one reference range text, the first; its test codes and its
+# interpretations are lab-result-codes.rq's. The time a result was issued is not when it was performed, and is not
 # carried. A date is typed by the precision FHIR wrote it to: a year is an
 # xsd:gYear, a year and month an xsd:gYearMonth, a day an xsd:date, a time an
 # xsd:dateTime. A value absent for a reason FHIR names is
@@ -35,13 +33,11 @@ PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 
 CONSTRUCT {
   ?version cascade:testName ?testName ;
-    cascade:testCode ?testCode ;
     cascade:resultValueKind ?valueKind ;
     cascade:resultValue ?resultValue ;
     cascade:resultUnit ?resultUnit ;
     cascade:resultCode ?resultCode ;
     cascade:referenceRange ?referenceRange ;
-    cascade:resultInterpretation ?interpretation ;
     cascade:resultClinicallyRelevantTime ?performedDate ;
     cascade:notes ?note ;
     cascade:workflowStatus ?status .
@@ -85,18 +81,6 @@ WHERE {
     }
   }
   BIND (COALESCE(?conceptText, ?conceptDisplay) AS ?testName)
-
-  OPTIONAL {
-    ?resource xyz:code ?codedConcept .
-    ?codedConcept xyz:coding ?codedCodings .
-    ?codedCodings ?codedSlot ?codedCoding .
-    ?codedCoding xyz:system "http://loinc.org" ;
-      xyz:code ?loinc .
-    ?codeSystem skos:inScheme fhirr4:codeSystems ;
-      cascade:codingSystemUri "http://loinc.org"^^xsd:anyURI ;
-      void:uriSpace ?stem .
-  }
-  BIND (IRI(CONCAT(?stem, ENCODE_FOR_URI(?loinc))) AS ?testCode)
 
   OPTIONAL { ?resource xyz:valueQuantity ?quantity }
   OPTIONAL { ?resource xyz:valueRatio ?ratio }
@@ -209,17 +193,6 @@ WHERE {
            IF(BOUND(?lowValue), CONCAT(">=", ?lowValue), CONCAT("<=", ?highValue))) AS ?bounds)
   BIND (COALESCE(?rangeText, IF(BOUND(?lowUnit) || BOUND(?highUnit),
                                 CONCAT(?bounds, " ", COALESCE(?lowUnit, ?highUnit)), ?bounds)) AS ?referenceRange)
-
-  OPTIONAL {
-    ?resource xyz:interpretation ?interpretations . ?interpretations rdf:_1 ?firstInterpretation .
-    ?firstInterpretation xyz:coding ?interpretationCodings . ?interpretationCodings rdf:_1 ?interpretationCoding .
-    ?interpretationCoding xyz:code ?interpretationCode .
-  }
-  OPTIONAL {
-    ?resource xyz:interpretation ?textInterpretations . ?textInterpretations rdf:_1 ?textInterpretation .
-    ?textInterpretation xyz:text ?interpretationText .
-  }
-  BIND (COALESCE(?interpretationCode, ?interpretationText) AS ?interpretation)
 
   OPTIONAL { ?resource xyz:effectiveDateTime ?effective }
   OPTIONAL { ?resource xyz:effectivePeriod ?period . ?period xyz:start ?periodStart }

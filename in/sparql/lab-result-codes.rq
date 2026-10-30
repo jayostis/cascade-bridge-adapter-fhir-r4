@@ -1,0 +1,84 @@
+PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
+PREFIX fx:       <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:      <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX cascade:  <https://ns.cascadeprotocol.org/cascade#>
+PREFIX skos:     <http://www.w3.org/2004/02/skos/core#>
+PREFIX void:     <http://rdfs.org/ns/void#>
+PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+
+# A lab result's codes, each in a branch of its own so that one does not
+# multiply the others: every coding of its code, and every flag of every
+# interpretation. A coding's system is read as coding-system-table.rq reads it,
+# and its code trimmed of leading and trailing whitespace. A coding in LOINC or
+# SNOMED CT is a cascade:testCode IRI; a coding in any other system is a
+# cascade:testCodeInOtherSystem literal, the code typed by the system read, so
+# that a result coded only by a lab's own code keeps it. A flag is a coding of
+# an interpretation in HL7's v3 ObservationInterpretation, its code as the
+# source wrote it, case kept; a flag in any other system, v2's table 0078
+# among them, and an interpretation's text are not carried, and
+# lab-result-findings.rq reports them. A coding with no system, a system no row
+# reads, or no code is not carried either, and is reported there too.
+
+CONSTRUCT {
+  ?version ?p ?o .
+}
+WHERE {
+  FILTER NOT EXISTS {
+    bridge:thisDocument cascade:sourceFormatVersion ?stated .
+    FILTER (!STRSTARTS(?stated, "4.0."))
+  }
+  bridge:thisRecord bridge:selector ?recordSelector .
+  ?root a fx:root .
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  { BIND ("" AS ?containedStep) }
+  UNION
+  {
+    ?top xyz:contained ?containedList .
+    ?containedList ?containedSlot ?contained .
+    ?contained xyz:resourceType ?containedType .
+    BIND (CONCAT("/contained/", STR(xsd:integer(STRAFTER(STR(?containedSlot), "#_")) - 1)) AS ?containedStep)
+  }
+  BIND (COALESCE(?contained, ?top) AS ?resource)
+  ?resource xyz:resourceType "Observation" .
+  BIND (CONCAT(?recordSelector, ?topStep, ?containedStep) AS ?resourcePointer)
+  ?lab fhirr4:labResultAt ?resourcePointer .
+  BIND (IRI(CONCAT("urn:cascade:version-at:", SHA256(?resourcePointer))) AS ?version)
+
+  {
+    ?resource xyz:code ?concept . ?concept xyz:coding ?codings . ?codings ?codingSlot ?coding .
+    ?coding xyz:system ?systemWritten ;
+      xyz:code ?codeWritten .
+    ?systemRow fhirr4:systemWritten ?systemWritten ;
+      fhirr4:systemRead ?system .
+    BIND (REPLACE(STR(?codeWritten), "^\\s+|\\s+$", "") AS ?code)
+    FILTER (?code != "")
+    OPTIONAL {
+      VALUES ?system { "http://loinc.org" "http://snomed.info/sct" }
+      ?listed skos:inScheme fhirr4:codeSystems ;
+        cascade:codingSystemUri ?listedSystem ;
+        void:uriSpace ?stem .
+      FILTER (STR(?listedSystem) = ?system)
+    }
+    BIND (IF(BOUND(?stem), cascade:testCode, cascade:testCodeInOtherSystem) AS ?p)
+    BIND (IF(BOUND(?stem), IRI(CONCAT(?stem, ENCODE_FOR_URI(?code))), STRDT(?code, IRI(?system))) AS ?o)
+  }
+  UNION
+  {
+    ?resource xyz:interpretation ?interpretations . ?interpretations ?interpretationSlot ?interpretation .
+    ?interpretation xyz:coding ?flagCodings . ?flagCodings ?flagSlot ?flag .
+    ?flag xyz:system ?flagSystemWritten ;
+      xyz:code ?flagWritten .
+    ?flagRow fhirr4:systemWritten ?flagSystemWritten ;
+      fhirr4:systemRead "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation" .
+    ?flagSystem skos:inScheme fhirr4:codeSystems ;
+      cascade:codingSystemUri "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"^^xsd:anyURI ;
+      void:uriSpace ?flagStem .
+    BIND (REPLACE(STR(?flagWritten), "^\\s+|\\s+$", "") AS ?flagCode)
+    FILTER (?flagCode != "")
+    BIND (cascade:resultInterpretationCode AS ?p)
+    BIND (IRI(CONCAT(?flagStem, ENCODE_FOR_URI(?flagCode))) AS ?o)
+  }
+}

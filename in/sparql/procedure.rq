@@ -9,6 +9,14 @@ PREFIX cascade:  <https://ns.cascadeprotocol.org/cascade#>
 PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 PREFIX foaf:     <http://xmlns.com/foaf/0.1/>
 
+# Every coding of a procedure's code is carried: one in SNOMED CT as its IRI,
+# the first in CPT as its IRI, the vocabulary holding one CPT code, and one in
+# any other system, HCPCS, ICD-10-PCS, CDT and LOINC among them, as a
+# cascade:procedureCodeInOtherSystem literal typed by the system. A coding's
+# system is read as coding-system-table.rq reads it, and its code trimmed of
+# leading and trailing whitespace; one with no system, a system no row reads,
+# or no code is not carried, nor a later CPT code, and code-findings.rq reports
+# each.
 # A date is typed by the precision FHIR wrote it to: a year is an xsd:gYear, a
 # year and month an xsd:gYearMonth, a day an xsd:date, a time an xsd:dateTime.
 # A time written to the minute, as C-CDA on FHIR writes one, is padded to the
@@ -61,21 +69,33 @@ WHERE {
   UNION
   {
     ?resource xyz:code ?coded . ?coded xyz:coding ?codings . ?codings ?codingSlot ?coding .
-    ?coding xyz:system "http://snomed.info/sct" ;
-      xyz:code ?code .
-    ?codeSystem skos:inScheme fhirr4:codeSystems ;
-      cascade:codingSystemUri "http://snomed.info/sct"^^xsd:anyURI ;
-      void:uriSpace ?stem .
-    BIND (cascade:snomedCode AS ?p)
-    BIND (IRI(CONCAT(?stem, ENCODE_FOR_URI(?code))) AS ?o)
-  }
-  UNION
-  {
-    ?resource xyz:code ?coded . ?coded xyz:coding ?codings . ?codings ?codingSlot ?coding .
-    ?coding xyz:system "http://www.ama-assn.org/go/cpt" ;
-      xyz:code ?code .
-    BIND (cascade:cptCode AS ?p)
-    BIND (?code AS ?o)
+    ?coding xyz:system ?systemWritten ;
+      xyz:code ?codeWritten .
+    ?systemRow fhirr4:systemWritten ?systemWritten ;
+      fhirr4:systemRead ?system .
+    BIND (REPLACE(STR(?codeWritten), "^\\s+|\\s+$", "") AS ?code)
+    FILTER (?code != "")
+    FILTER (?system != "http://www.ama-assn.org/go/cpt" || NOT EXISTS {
+      ?codings ?earlierSlot ?earlier .
+      ?earlier xyz:system ?earlierSystemWritten ;
+        xyz:code ?earlierWritten .
+      ?earlierSystemRow fhirr4:systemWritten ?earlierSystemWritten ;
+        fhirr4:systemRead "http://www.ama-assn.org/go/cpt" .
+      FILTER (REPLACE(STR(?earlierWritten), "^\\s+|\\s+$", "") != ""
+        && xsd:integer(STRAFTER(STR(?earlierSlot), "#_")) < xsd:integer(STRAFTER(STR(?codingSlot), "#_")))
+    })
+    OPTIONAL {
+      VALUES (?system ?listedProperty) {
+        ("http://snomed.info/sct" cascade:snomedCode)
+        ("http://www.ama-assn.org/go/cpt" cascade:cptCode)
+      }
+      ?codeSystem skos:inScheme fhirr4:codeSystems ;
+        cascade:codingSystemUri ?listedSystem ;
+        void:uriSpace ?stem .
+      FILTER (STR(?listedSystem) = ?system)
+    }
+    BIND (COALESCE(?listedProperty, cascade:procedureCodeInOtherSystem) AS ?p)
+    BIND (IF(BOUND(?listedProperty), IRI(CONCAT(?stem, ENCODE_FOR_URI(?code))), STRDT(?code, IRI(?system))) AS ?o)
   }
   UNION
   {

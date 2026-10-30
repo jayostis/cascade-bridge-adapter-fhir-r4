@@ -19,12 +19,18 @@ PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # to in the document, as medication-table.rq says. One that resolves to no one
 # Medication leaves the reference's display as the name.
 #
-# A medication states every RxNorm code and every NDC its codings give, and one
-# dosage, the first dosage's text. An NDC is Cascade's 11-digit code: FHIR's is
+# A medication states every RxNorm code and every NDC its codings give, every
+# code in any other system as a cascade:medicationCodeInOtherSystem literal
+# typed by the system, SNOMED CT's among them, and one dosage, the first
+# dosage's text; its supply and its dosages' structure are
+# medication-supply-and-dosages.rq's. A coding's system is read as
+# coding-system-table.rq reads it, and its code trimmed of leading and trailing
+# whitespace. An NDC is Cascade's 11-digit code: FHIR's is
 # the 10-digit label code with its hyphens, in one of three segmentings, which
 # the missing digit tells apart; ten digits with no hyphens, or any other
 # value, are no code, and medication-findings.rq reports them. The coding the
-# source marked userSelected is the selected code, the first such carried one.
+# source marked userSelected is the selected code, the first such RxNorm or NDC
+# IRI: a code in another system marks nothing.
 # Every other value is single, so each is bound beside the others rather than
 # in a branch of its own, and a medication stating nothing still states whether
 # it was prescribed or reported. A date is typed by the precision FHIR wrote it
@@ -132,25 +138,32 @@ WHERE {
       ?resource xyz:medicationCodeableConcept ?codedConcept .
       ?codedConcept xyz:coding ?codedCodings .
       ?codedCodings ?codedSlot ?codedCoding .
-      ?codedCoding xyz:system ?codedSystem ;
-        xyz:code ?codedValue .
+      ?codedCoding xyz:system ?codedSystemWritten ;
+        xyz:code ?codedWritten .
       OPTIONAL { ?codedCoding xyz:userSelected ?userSelected }
     }
     UNION
     {
       ?codeRow fhirr4:medicationAt ?codePointer ;
-        fhirr4:medicationCodeSystem ?codedSystem ;
-        fhirr4:medicationCodeValue ?codedValue .
+        fhirr4:medicationCodeSystem ?codedSystemWritten ;
+        fhirr4:medicationCodeValue ?codedWritten .
     }
     FILTER (!BOUND(?codePointer) || ?codePointer = ?medicationPointer)
-    VALUES (?codedSystem ?codeProperty) {
-      ("http://www.nlm.nih.gov/research/umls/rxnorm" cascade:rxNormCode)
-      ("http://hl7.org/fhir/sid/ndc" cascade:ndcCode)
+    ?codedSystemRow fhirr4:systemWritten ?codedSystemWritten ;
+      fhirr4:systemRead ?codedSystem .
+    BIND (REPLACE(STR(?codedWritten), "^\\s+|\\s+$", "") AS ?codedValue)
+    FILTER (?codedValue != "")
+    OPTIONAL {
+      VALUES (?codedSystem ?listedProperty) {
+        ("http://www.nlm.nih.gov/research/umls/rxnorm" cascade:rxNormCode)
+        ("http://hl7.org/fhir/sid/ndc" cascade:ndcCode)
+      }
+      ?codeSystem skos:inScheme fhirr4:codeSystems ;
+        cascade:codingSystemUri ?codedSystemUri ;
+        void:uriSpace ?stem .
+      FILTER (STR(?codedSystemUri) = ?codedSystem)
     }
-    ?codeSystem skos:inScheme fhirr4:codeSystems ;
-      cascade:codingSystemUri ?codedSystemUri ;
-      void:uriSpace ?stem .
-    FILTER (STR(?codedSystemUri) = ?codedSystem)
+    BIND (COALESCE(?listedProperty, cascade:medicationCodeInOtherSystem) AS ?codeProperty)
     BIND (IF(?codeProperty = cascade:rxNormCode, ?codedValue,
              IF(REGEX(?codedValue, "^[0-9]{11}$"), ?codedValue,
                IF(REGEX(?codedValue, "^[0-9]{5}-[0-9]{4}-[0-9]{2}$"), REPLACE(?codedValue, "-", ""),
@@ -160,15 +173,19 @@ WHERE {
                      IF(REGEX(?codedValue, "^[0-9]{5}-[0-9]{4}-[0-9]$"),
                         CONCAT(SUBSTR(?codedValue, 1, 5), SUBSTR(?codedValue, 7, 4), "0", SUBSTR(?codedValue, 12, 1)),
                        1/0)))))) AS ?codeDigits)
-    BIND (IRI(CONCAT(?stem, ENCODE_FOR_URI(?codeDigits))) AS ?codeIri)
-    BIND (IF(STR(?userSelected) = "true" && BOUND(?codeIri) && NOT EXISTS {
+    BIND (IF(BOUND(?listedProperty), IRI(CONCAT(?stem, ENCODE_FOR_URI(?codeDigits))),
+             STRDT(?codedValue, IRI(?codedSystem))) AS ?codeIri)
+    BIND (IF(STR(?userSelected) = "true" && BOUND(?listedProperty) && BOUND(?codeIri) && NOT EXISTS {
              ?codedCodings ?earlierSlot ?earlier .
              ?earlier xyz:userSelected ?earlierSelected ;
-               xyz:system ?earlierSystem ;
-               xyz:code ?earlierValue .
+               xyz:system ?earlierSystemWritten ;
+               xyz:code ?earlierWritten .
+             ?earlierSystemRow fhirr4:systemWritten ?earlierSystemWritten ;
+               fhirr4:systemRead ?earlierSystem .
+             BIND (REPLACE(STR(?earlierWritten), "^\\s+|\\s+$", "") AS ?earlierValue)
              FILTER (STR(?earlierSelected) = "true"
                && xsd:integer(STRAFTER(STR(?earlierSlot), "#_")) < xsd:integer(STRAFTER(STR(?codedSlot), "#_"))
-               && (?earlierSystem = "http://www.nlm.nih.gov/research/umls/rxnorm"
+               && ((?earlierSystem = "http://www.nlm.nih.gov/research/umls/rxnorm" && ?earlierValue != "")
                    || (?earlierSystem = "http://hl7.org/fhir/sid/ndc"
                        && REGEX(?earlierValue, "^([0-9]{11}|[0-9]{5}-[0-9]{4}-[0-9]{2}|[0-9]{4}-[0-9]{4}-[0-9]{2}|[0-9]{5}-[0-9]{3}-[0-9]{2}|[0-9]{5}-[0-9]{4}-[0-9])$"))))
            }, ?codeIri, 1/0) AS ?selectedCode)

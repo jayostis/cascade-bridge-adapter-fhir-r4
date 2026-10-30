@@ -9,10 +9,13 @@ PREFIX bridge:  <https://ns.cascadeprotocol.org/bridge/v1-draft#>
 PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 PREFIX cascade: <https://ns.cascadeprotocol.org/cascade#>
 
-# What lab-result.rq leaves behind at a path the source accounting carries for
-# another kind, or carries where it holds one value: the end of the period a
-# result was performed over, a code from a system other than LOINC, each value
-# of a reference range or an interpretation after the first, a number's unit
+# What lab-result.rq and lab-result-codes.rq leave behind at a path the source
+# accounting carries for another kind, or carries where it holds one value: the
+# end of the period a result was performed over, a coding of its code with no
+# system, a system coding-system-table.rq gives no row, or no code, each value
+# of a reference range after the first, each flag of an interpretation in a
+# system other than HL7's v3 ObservationInterpretation or with no code, and an
+# interpretation's text where none of its flags is carried, a number's unit
 # code in a system other than UCUM, a comparator on a bound, a number
 # lab-result-quantities.rq refuses for its form, its size or its comparator,
 # a coded value's code in a system other than SNOMED CT or LOINC, and, from a
@@ -64,10 +67,21 @@ WHERE {
   UNION
   {
     ?resource xyz:code ?concept . ?concept xyz:coding ?codings . ?codings ?codingSlot ?coding .
-    ?coding xyz:code ?value .
-    FILTER NOT EXISTS { ?coding xyz:system "http://loinc.org" }
-    BIND (CONCAT("/code/coding/", STR(xsd:integer(STRAFTER(STR(?codingSlot), "#_")) - 1), "/code") AS ?step)
-    BIND (fhirr4:labResultCode AS ?gap)
+    FILTER (STRSTARTS(STR(?codingSlot), STR(rdf:_)))
+    OPTIONAL { ?coding xyz:code ?codeWritten }
+    OPTIONAL { ?coding xyz:system ?systemWritten }
+    FILTER (BOUND(?codeWritten) || BOUND(?systemWritten))
+    OPTIONAL {
+      ?systemRow fhirr4:systemWritten ?rowSystem ;
+        fhirr4:systemRead ?system .
+      FILTER (sameTerm(?rowSystem, ?systemWritten))
+    }
+    BIND (COALESCE(REPLACE(STR(?codeWritten), "^\\s+|\\s+$", ""), "") AS ?code)
+    FILTER (!BOUND(?system) || ?code = "")
+    BIND (IF(!BOUND(?systemWritten) || (BOUND(?system) && BOUND(?codeWritten)), "/code", "/system") AS ?part)
+    BIND (IF(?part = "/code", ?codeWritten, ?systemWritten) AS ?value)
+    BIND (CONCAT("/code/coding/", STR(xsd:integer(STRAFTER(STR(?codingSlot), "#_")) - 1), ?part) AS ?step)
+    BIND (fhirr4:codingNotCarried AS ?gap)
   }
   UNION
   {
@@ -91,22 +105,41 @@ WHERE {
   UNION
   {
     ?resource xyz:interpretation ?interpretations . ?interpretations ?interpretationSlot ?interpretation .
-    FILTER (?interpretationSlot != rdf:_1)
+    FILTER (STRSTARTS(STR(?interpretationSlot), STR(rdf:_)))
     {
-      ?interpretation xyz:text ?value .
-      BIND ("/text" AS ?interpretationStep)
+      ?interpretation xyz:coding ?flagCodings . ?flagCodings ?flagSlot ?flag .
+      FILTER (STRSTARTS(STR(?flagSlot), STR(rdf:_)))
+      OPTIONAL { ?flag xyz:code ?flagWritten }
+      OPTIONAL { ?flag xyz:system ?flagSystemWritten }
+      FILTER (BOUND(?flagWritten) || BOUND(?flagSystemWritten))
+      OPTIONAL {
+        ?flagSystemRow fhirr4:systemWritten ?flagRowSystem ;
+          fhirr4:systemRead ?flagSystem .
+        FILTER (sameTerm(?flagRowSystem, ?flagSystemWritten))
+      }
+      BIND (COALESCE(REPLACE(STR(?flagWritten), "^\\s+|\\s+$", ""), "") AS ?flagCode)
+      FILTER (COALESCE(?flagSystem != "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation", true)
+              || ?flagCode = "")
+      BIND (IF(BOUND(?flagWritten), ?flagWritten, ?flagSystemWritten) AS ?value)
+      BIND (CONCAT("/coding/", STR(xsd:integer(STRAFTER(STR(?flagSlot), "#_")) - 1),
+                   IF(BOUND(?flagWritten), "/code", "/system")) AS ?interpretationStep)
     }
     UNION
     {
-      ?interpretation xyz:coding ?interpretationCodings .
-      ?interpretationCodings ?interpretationCodingSlot ?interpretationCoding .
-      ?interpretationCoding xyz:code ?value .
-      BIND (CONCAT("/coding/", STR(xsd:integer(STRAFTER(STR(?interpretationCodingSlot), "#_")) - 1), "/code")
-            AS ?interpretationStep)
+      ?interpretation xyz:text ?value .
+      FILTER NOT EXISTS {
+        ?interpretation xyz:coding ?carriedCodings . ?carriedCodings ?carriedSlot ?carried .
+        ?carried xyz:system ?carriedSystemWritten ;
+          xyz:code ?carriedWritten .
+        ?carriedSystemRow fhirr4:systemWritten ?carriedSystemWritten ;
+          fhirr4:systemRead "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation" .
+        FILTER (REPLACE(STR(?carriedWritten), "^\\s+|\\s+$", "") != "")
+      }
+      BIND ("/text" AS ?interpretationStep)
     }
     BIND (CONCAT("/interpretation/", STR(xsd:integer(STRAFTER(STR(?interpretationSlot), "#_")) - 1),
                  ?interpretationStep) AS ?step)
-    BIND (fhirr4:labResultInterpretationRepeated AS ?gap)
+    BIND (fhirr4:labResultInterpretationNotCarried AS ?gap)
   }
   UNION
   {

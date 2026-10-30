@@ -95,23 +95,13 @@ fhirr4:medicationNote a skos:Concept ;
   skos:inScheme fhirr4:gaps ;
   skos:broader bridge:noPredicate .
 
-fhirr4:structuredDosage a skos:Concept ;
-  skos:prefLabel "A medication's dosage states its timing, route or dose as structured elements beside its text, and no Cascade predicate carries them."@en ;
-  skos:inScheme fhirr4:gaps ;
-  skos:broader bridge:noPredicate .
-
-fhirr4:medicationCode a skos:Concept ;
-  skos:prefLabel "A medication, or the Medication resource naming its drug, carries a code in a system other than RxNorm or NDC, and no Cascade predicate carries it."@en ;
-  skos:inScheme fhirr4:gaps ;
-  skos:broader bridge:noPredicate .
-
 fhirr4:ndcNotNormalised a skos:Concept ;
   skos:prefLabel "An NDC not in the 10-digit hyphenated forms 4-4-2, 5-3-2 or 5-4-1, nor 11 digits, so no 11-digit form can be made of it."@en ;
   skos:inScheme fhirr4:gaps ;
   skos:broader bridge:noPredicate .
 
 fhirr4:medicationDosageRepeated a skos:Concept ;
-  skos:prefLabel "A medication carries more than one dosage, and only the first dosage's text is carried."@en ;
+  skos:prefLabel "A medication carries more than one dosage, and only the first dosage's text is carried: each dosage's structure is, but no Cascade term holds a later dosage's text."@en ;
   skos:inScheme fhirr4:gaps ;
   skos:broader bridge:carriedWithLoss ;
   sh:resultSeverity sh:Warning .
@@ -121,19 +111,8 @@ fhirr4:labResultPeriodEnd a skos:Concept ;
   skos:inScheme fhirr4:gaps ;
   skos:broader bridge:noPredicate .
 
-fhirr4:labResultCode a skos:Concept ;
-  skos:prefLabel "A lab result carries a code from a system other than LOINC, and no Cascade predicate carries it."@en ;
-  skos:inScheme fhirr4:gaps ;
-  skos:broader bridge:noPredicate .
-
 fhirr4:labResultRangeRepeated a skos:Concept ;
   skos:prefLabel "A lab result carries more than one reference range, and only the first is carried."@en ;
-  skos:inScheme fhirr4:gaps ;
-  skos:broader bridge:carriedWithLoss ;
-  sh:resultSeverity sh:Warning .
-
-fhirr4:labResultInterpretationRepeated a skos:Concept ;
-  skos:prefLabel "A lab result carries more than one interpretation, and only the first is carried."@en ;
   skos:inScheme fhirr4:gaps ;
   skos:broader bridge:carriedWithLoss ;
   sh:resultSeverity sh:Warning .
@@ -276,3 +255,47 @@ fhirr4:medicationRequestIntentNotMapped a skos:Concept ;
   skos:inScheme fhirr4:gaps ;
   skos:broader bridge:valueNotMapped ;
   sh:resultSeverity sh:Warning .
+
+fhirr4:codingNotCarried a skos:Concept ;
+  skos:prefLabel "A coding of a lab result's test, a medication's drug, a condition or a procedure states no system, a system that is no absolute URI or holds a character an IRI may not, or no code, or a code of blanks, so its code is not carried."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:carriedWithLoss .
+
+fhirr4:procedureCptCodeRepeated a skos:Concept ;
+  skos:prefLabel "A procedure carries more than one CPT code, and a procedure holds one, so only the first is carried."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:carriedWithLoss ;
+  sh:resultSeverity sh:Warning .
+
+fhirr4:labResultInterpretationNotCarried a skos:Concept ;
+  skos:prefLabel "A lab result's interpretation is a coding in a system other than HL7's v3 ObservationInterpretation, v2's table 0078 among them, a coding with no system or no code, or text where none of its codings is carried, and it is not carried."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:carriedWithLoss .
+
+fhirr4:dispenseQuantityNotCarried a skos:Concept ;
+  skos:prefLabel "A prescription states the quantity its dispense supplies, and no Cascade predicate carries it, so a supply is not computed from the quantity and the dose."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:noPredicate .
+
+fhirr4:expectedSupplyDurationNotInUnitOfTime a skos:Concept ;
+  skos:prefLabel "A prescription's expected supply duration is not in one of UCUM's seven units of time FHIR's Duration allows, so nothing of it is carried."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:valueNotMapped ;
+  sh:resultSeverity sh:Warning .
+
+fhirr4:expectedSupplyDurationBound a skos:Concept ;
+  skos:prefLabel "A prescription's expected supply duration carries a comparator: it is carried with the comparator where that is one of R4's four, and not at all where it is another, and a bound gives the exposure derivation no end."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:carriedWithLoss ;
+  sh:resultSeverity sh:Warning .
+
+fhirr4:courseOfTherapyTypeNotMapped a skos:Concept ;
+  skos:prefLabel "A prescription's course of therapy is a coding in a system other than FHIR's medicationrequest-course-of-therapy, a code that system does not define, or text where no coding is carried, so it is not carried."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:valueNotMapped ;
+  sh:resultSeverity sh:Warning .
+
+fhirr4:dosageElementNotCarried a skos:Concept ;
+  skos:prefLabel "A dosage carries an element no Cascade predicate carries, such as its timing's count, duration, days, times of day or events, a bound that is no period, an as-needed condition, a site, a method, a rate, a dose range or a dose after the first, a maximum dose, or an instruction beside its text."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:noPredicate .

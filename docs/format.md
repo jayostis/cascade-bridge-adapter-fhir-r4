@@ -83,9 +83,10 @@ A medication names its drug in `medicationCodeableConcept`, or by
 `medicationReference` to a `Medication` resource: contained in it, another
 entry of its Bundle, or a resource the document does not hold. An Apple Health
 export holds one resource per file, so a reference there points outside it.
-Every RxNorm and NDC coding of the drug is carried, and the first of them
-`medicationCodeableConcept` marks `userSelected` is the medication's selected
-code. A `userSelected` on a referenced `Medication`'s coding is not read.
+Every coding of the drug is carried (see [Codes](#codes)), and the first RxNorm
+or NDC coding `medicationCodeableConcept` marks `userSelected` is the
+medication's selected code; a selected code in another system marks nothing. A
+`userSelected` on a referenced `Medication`'s coding is not read.
 A request's `authoredOn` is the day the prescription was written, never the
 start of use, which only `effective[x]` gives. A `MedicationStatement` is
 reported use. A `MedicationRequest` is too where its `reported[x]` says the
@@ -96,6 +97,28 @@ otherwise prescribed. Only a prescribed request carries its `intent`
 read on 2026-10-29), because a reported request's intent is not read. An intent
 outside R4's eight codes is not carried and is a finding,
 `fhirr4:medicationRequestIntentNotMapped`.
+
+A request's supply is carried as US Core sends it, so an order with only
+`authoredOn` has an exposure end
+([cascade-vocabulary#299](https://github.com/jayostis/cascade-vocabulary/issues/299)):
+`courseOfTherapyType`, a code of
+[medicationrequest-course-of-therapy](https://terminology.hl7.org/CodeSystem-medicationrequest-course-of-therapy.html);
+`dispenseRequest.numberOfRepeatsAllowed`, `0` included, since it says no
+refill where absence says nothing; `dispenseRequest.expectedSupplyDuration`, a
+quantity node, only in one of UCUM's seven units of time FHIR's `Duration`
+allows; and `dispenseRequest.validityPeriod`. A supply duration with a
+comparator is carried with it and is a finding, since a bound gives no end; one
+in no unit of time, a course of therapy in another system or of text alone, and
+`dispenseRequest.quantity`, which no term holds, are findings.
+
+Every dosage (`dosageInstruction` of a request, `dosage` of a statement) is a
+node of the version, `<version>#dosage-n`, whatever it holds, so that a
+version's dosages can be counted. It holds its first dose quantity, its
+timing's `repeat.frequency`, `period`, `periodUnit` and `boundsPeriod`, and its
+route's codings, SNOMED CT's as IRIs and any other system's (the NCI
+Thesaurus's, which US Core's binding names) as literals typed by the system.
+Every other dosage element, a later dose and a later dosage's text are findings;
+the first dosage's text is the version's `cascade:dosage`.
 
 A `Patient`'s `gender` is carried as one of the four codes of
 [administrative-gender](https://hl7.org/fhir/R4/valueset-administrative-gender.html),
@@ -275,6 +298,30 @@ says, read on 2026-10-24:
   CodeSystem does not define is a finding.
 
 ## Codes
+
+Every coding of a lab result's test, a medication's drug, a condition and a
+procedure is carried, so that a result coded only by its lab's own code keeps it
+([cascade-vocabulary#290](https://github.com/jayostis/cascade-vocabulary/issues/290)).
+A coding in a system its kind has a term for is that term's IRI: LOINC and
+SNOMED CT for a test, RxNorm and NDC for a drug, SNOMED CT and ICD-10-CM for a
+condition, SNOMED CT and the first CPT code for a procedure. A coding in any
+other system is a literal on the kind's `…CodeInOtherSystem` term, the code
+typed by the system, ICD-9-CM, HCPCS and a formulary's code among them; a
+SNOMED CT drug code stays a literal while how drug codes are matched is open. A
+system is read as
+[`in/sparql/coding-system-table.rq`](../in/sparql/coding-system-table.rq) reads
+it: an OID after `urn:oid:`, its prefix in any case, and a URI HL7 Terminology
+lists as not preferred are read as the system's URI, the rows of
+[`vocab/fhir-code-systems.ttl`](../vocab/fhir-code-systems.ttl) the C-CDA
+adapter holds too, so one code from either adapter is one term; an OID no row
+holds is `urn:oid:` and the OID. A coding with no system, a system that is no
+absolute URI, or no code is a finding, `fhirr4:codingNotCarried`, and so is a
+later CPT code. A lab result's interpretation is carried as every coding in HL7's
+[v3 ObservationInterpretation](https://terminology.hl7.org/CodeSystem-v3-ObservationInterpretation.html),
+the code kept as written
+([cascade-vocabulary#298](https://github.com/jayostis/cascade-vocabulary/issues/298));
+a flag in v2's table 0078 or another system, and an interpretation of text
+alone, are findings.
 
 A `Coding.system` is not the namespace of its codes' IRIs: FHIR R5 says "there
 is no simple formula for determining the correct IRI stem from a
