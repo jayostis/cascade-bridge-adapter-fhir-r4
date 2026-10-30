@@ -57,6 +57,9 @@
     <#diagnostic-report-narrative-markup>
     <#document-reference-text-attachments>
     <#document-reference-master-identifiers>
+    <#document-reference-master-identifier-rewrites>
+    <#lab-identifier-system-forms>
+    <#diagnostic-report-numeric-references>
     <#document-reference-inline-pdf>
     <#bundle-document-without-custodian>
     <#bundle-document-organizations-one-npi>
@@ -2110,4 +2113,43 @@
   mf:result [
     bridge:expectedGraph <expected/document-reference-master-identifiers.ttl> ;
     bridge:expectedFindings <findings/document-reference-master-identifiers.ttl>
+  ] .
+
+<#document-reference-master-identifier-rewrites> a bridge:IsomorphicConversionTest ;
+  mf:name "document-reference-master-identifier-rewrites" ;
+  rdfs:comment "Notes whose masterIdentifier needs rewriting to be the identifier the C-CDA adapter writes for one ClinicalDocument/id: the NPI's OID as us-npi; a urn:uuid system in upper case, in lower case; a URN:OID: system in upper case, in lower case; a urn:oid: value of urn:ietf:rfc:3986 in upper case, in lower case; and kept as written: a urn:uuid value of a system other than urn:ietf:rfc:3986, and a system that is no absolute URI, a plain string; an empty value, which FHIR's schema refuses, writes none." ;
+  mf:action [
+    bridge:input <in/document-reference-master-identifier-rewrites.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/example-org.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/document-reference-master-identifier-rewrites.ttl> ;
+    bridge:expectedFindings <findings/document-reference-master-identifier-rewrites.ttl>
+  ] .
+
+<#lab-identifier-system-forms> a bridge:IsomorphicConversionTest ;
+  mf:name "lab-identifier-system-forms" ;
+  rdfs:comment "A lab result's business identifiers in a URN:OID: system in upper case, written urn:oid:; a urn:oid: value of urn:ietf:rfc:3986 in upper case, written in lower case; and in a system that is no absolute URI, a plain string, never resolved against the adapter's files." ;
+  mf:action [
+    bridge:input <in/lab-identifier-system-forms.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/example-org.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/lab-identifier-system-forms.ttl> ;
+    bridge:expectedFindings <findings/lab-identifier-system-forms.ttl>
+  ] .
+
+<#diagnostic-report-numeric-references> a bridge:IsomorphicConversionTest ;
+  mf:name "diagnostic-report-numeric-references" ;
+  rdfs:comment "A report whose div holds every numeric reference the text reads, decimal and hexadecimal, and whose PDF is given both inline and by URL: the references read, and the PDF reported at its data alone." ;
+  mf:action [
+    bridge:input <in/diagnostic-report-numeric-references.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/example-org.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/diagnostic-report-numeric-references.ttl> ;
+    bridge:expectedFindings <findings/diagnostic-report-numeric-references.ttl>
   ] .
