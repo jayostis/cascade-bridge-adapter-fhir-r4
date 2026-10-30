@@ -335,7 +335,7 @@ fhirr4:attachmentDataNotRead a skos:Concept ;
   sh:resultSeverity sh:Warning .
 
 fhirr4:reportResultNotNamed a skos:Concept ;
-  skos:prefLabel "A report's result references no result record: a contained resource, one on another server, a panel, or a reference that resolves to no one entry, so the link is not carried."@en ;
+  skos:prefLabel "A report's result references no result record: one on another server, a panel, a contained resource that is no record, or a reference that resolves to no one entry, so the link is not carried."@en ;
   skos:inScheme fhirr4:gaps ;
   skos:broader bridge:carriedWithLoss ;
   sh:resultSeverity sh:Warning .

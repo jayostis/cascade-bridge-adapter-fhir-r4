@@ -1971,8 +1971,8 @@
       "@type": "File",
       "name": "Mapping: a value absent for a stated reason",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "5161",
-      "sha256": "c3063b7ba04d31ba7788176ca0597406c3a54cf4e1223617c8ba016b5e60db7d",
+      "contentSize": "5638",
+      "sha256": "ef5120c856eb426b6874cdde8bc457bc89f86cb87e6a64f1ac1058f4d1e1b6c9",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2043,12 +2043,12 @@
       "@type": "File",
       "name": "Mapping: the result records a DiagnosticReport names",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "6462",
-      "sha256": "91411ebe8ee8c2eef2c50223b9c1b4a4fdf1ba4c9e72a964d594b9a0a22e8702",
+      "contentSize": "9369",
+      "sha256": "6630543b43dd49010a3359df01036f1d4bbdca1fafa2f45d13636bf1c5be51f6",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "Each result of a DiagnosticReport that names a lab result, variant or diagnostic implication record, by a urn:uuid one entry holds or by Observation/<id> on the report's server, as that record's IRI under obo:RO_0002351 on the report's version."
+      "description": "Each result of a DiagnosticReport that names a lab result, variant or diagnostic implication record, by a urn:uuid one entry holds, by Observation/<id> on the report's server, or by \"#\" and the id of an Observation the report contains, as that record's IRI under obo:RO_0002351 on the report's version."
     },
     {
       "@id": "in/sparql/note-or-document.rq",
@@ -2091,8 +2091,8 @@
       "@type": "File",
       "name": "Mapping: the organization a report's performer or a note's author names",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "4739",
-      "sha256": "e027d52444175e26ff49bda5d713dd1c9c2f0a6b08d33836cd993599b7ef55f3",
+      "contentSize": "4784",
+      "sha256": "8dfd09093c8f055a83dd06b9e198408eaff9af74ee817fa1f4bf194b6efb4458",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2223,8 +2223,8 @@
       "@type": "File",
       "name": "Findings: a reason a value is absent that is not carried",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "4603",
-      "sha256": "91be1c05b7f364c8c7a348764079e85a1eec0dbb628d52bdf3fb2a156a640de2",
+      "contentSize": "4900",
+      "sha256": "f7c68cfacffc5f72925da89f2cf22e1bcbc7784964a16c4ff9f539f6127b2bf6",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2259,8 +2259,8 @@
       "@type": "File",
       "name": "FHIR R4 JSON source accounting",
       "encodingFormat": "text/turtle",
-      "contentSize": "508448",
-      "sha256": "be30bd601bcddcf05bb3c42310d268827289faf62ac4b7ad1fbfb2e04f8c4c2d",
+      "contentSize": "510540",
+      "sha256": "b5997aee3de32a30257316e542f8ce52c2d81ffd55113062af3856ea20433547",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2283,20 +2283,20 @@
       "@type": "File",
       "name": "Findings: a DocumentReference of a C-CDA document, and attachment data not read",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "3736",
-      "sha256": "f6ba13e7ae55f49f1812ffbefd021cb56a19de43ea7b760f6c69ffa13ed7956a",
+      "contentSize": "5238",
+      "sha256": "1e00fd8409f63c6f237da37c5b5c06e99a7921f842b7014411b9a3c0b2013f2c",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "Reports fhirr4:documentReferenceToCcdaDocument at the format code of a DocumentReference whose content is a C-CDA document, and fhirr4:attachmentDataNotRead at each report or note attachment's data the Bridge decodes no text from."
+      "description": "Reports fhirr4:documentReferenceToCcdaDocument at the format code of a DocumentReference whose content is a C-CDA document, fhirr4:attachmentDataNotRead at each report or note attachment's data the Bridge decodes no text from, and fhirr4:performerCarriedOnlyAsOneOrganizationRecord at each performer or author reference of a report or note whose performers or authors name more than one Organization."
     },
     {
       "@id": "in/sparql/report-result-findings.rq",
       "@type": "File",
       "name": "Findings: a report's result that names no record",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "4825",
-      "sha256": "f4371b3b0429ef223a6942351fe72f81b72898a88a0cbeed6a13a8328eae26e8",
+      "contentSize": "5498",
+      "sha256": "89c439a20241a0ef1417111a792cc846aa9b82be34c55efd2bd214b41fea11cb",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2343,8 +2343,8 @@
       "@type": "File",
       "name": "FHIR R4 JSON gaps",
       "encodingFormat": "text/turtle",
-      "contentSize": "20479",
-      "sha256": "996d9cba2e96568e01bdaa69f1d970a7c43ee4293bda55b4d43b7fbc48edf63c",
+      "contentSize": "20497",
+      "sha256": "936acae7fa83f7b15735dd1f932601d1a72a855c729f59d8a35d5657713452ce",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -8343,8 +8343,8 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "What a record is, reports and notes, the two envelopes, how a record is named, JSON as FHIR writes it, the schema, the versions in and out of scope, and what is known about the committed inputs. Read from hl7.org/fhir/R4/ on 2026-09-27, reports and notes on 2026-10-30.",
-      "contentSize": "29461",
-      "sha256": "d56e743e272889dd826dc1b5793d4c2bdd48bc1d1c7cd09aff2dd299c3d4108f"
+      "contentSize": "29745",
+      "sha256": "eb3c755fbdf45a235987f5fa7c9c9ca948959c82f2bb3072932c98cc8d5ec4ed"
     },
     {
       "@id": "fixtures/CLAUDE.md",

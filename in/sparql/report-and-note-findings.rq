@@ -13,7 +13,10 @@ PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # whose content is a C-CDA document, at the format code
 # note-or-document-table.rq reads it by, the code as its value; and a report's
 # or a note's attachment whose data the Bridge decodes no text from, at its
-# data, its content type as its value.
+# data, its content type as its value; and, of a report or a note from a
+# server, each performer's or author's reference where they name more than one
+# Organization, as report-and-note-performer.rq reads them and
+# lab-result-findings.rq reports a lab result's.
 
 CONSTRUCT {
   [] a oa:Annotation ;
@@ -77,6 +80,32 @@ WHERE {
     OPTIONAL { ?attachment xyz:contentType ?contentType }
     BIND (?contentType AS ?value)
     BIND (fhirr4:attachmentDataNotRead AS ?gap)
+  }
+  UNION
+  {
+    {
+      SELECT ?resource (COUNT(DISTINCT ?performerId) AS ?organizations) WHERE {
+        bridge:thisDocument cascade:serverBaseUrl ?performerServer .
+        { ?resource xyz:resourceType "DiagnosticReport" ; xyz:performer ?countedPerformers }
+        UNION
+        { ?resource xyz:resourceType "DocumentReference" ; xyz:author ?countedPerformers }
+        ?countedPerformers ?countedSlot ?countedPerformer .
+        ?countedPerformer xyz:reference ?written .
+        BIND (REPLACE(?written, "/_history/[A-Za-z0-9.-]{1,64}$", "") AS ?unversioned)
+        BIND (IF(STRSTARTS(?unversioned, CONCAT(?performerServer, "/")), STRAFTER(?unversioned, CONCAT(?performerServer, "/")),
+                 ?unversioned) AS ?relative)
+        FILTER (REGEX(?relative, "^Organization/[A-Za-z0-9.-]{1,64}$"))
+        BIND (STRAFTER(?relative, "Organization/") AS ?performerId)
+      } GROUP BY ?resource
+    }
+    FILTER (?organizations > 1)
+    { ?resource xyz:performer ?performers . BIND ("/performer/" AS ?list) }
+    UNION
+    { ?resource xyz:author ?performers . BIND ("/author/" AS ?list) }
+    ?performers ?slot ?performer .
+    ?performer xyz:reference ?value .
+    BIND ("/reference" AS ?part)
+    BIND (fhirr4:performerCarriedOnlyAsOneOrganizationRecord AS ?gap)
   }
   FILTER (?gap = fhirr4:documentReferenceToCcdaDocument || ?resourceType = "DiagnosticReport" || ?isNote)
   BIND (CONCAT(?resourceStep, ?list, STR(xsd:integer(STRAFTER(STR(?slot), "#_")) - 1), ?part) AS ?pointer)

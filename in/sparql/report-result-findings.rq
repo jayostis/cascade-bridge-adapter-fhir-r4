@@ -54,6 +54,15 @@ WHERE {
   ?results ?resultSlot ?result .
   ?result xyz:reference ?written .
   BIND (CONCAT(?recordSelector, ?topStep, ?containedStep) AS ?resourcePointer)
+  OPTIONAL {
+    ?top xyz:contained ?targetList .
+    ?targetList ?targetSlot ?targetResource .
+    ?targetResource xyz:id ?targetId .
+    FILTER (!BOUND(?contained) && CONCAT("#", STR(?targetId)) = ?written)
+  }
+  BIND (IF(BOUND(?targetSlot),
+           CONCAT(?recordSelector, ?topStep, "/contained/", STR(xsd:integer(STRAFTER(STR(?targetSlot), "#_")) - 1)), 1/0)
+        AS ?containedTarget)
   BIND (REPLACE(?written, "/_history/[A-Za-z0-9.-]{1,64}$", "") AS ?unversioned)
   BIND (IF(BOUND(?server) && STRSTARTS(?unversioned, CONCAT(?server, "/")), STRAFTER(?unversioned, CONCAT(?server, "/")),
            ?unversioned) AS ?relative)
@@ -73,7 +82,11 @@ WHERE {
            IF(BOUND(?server) && !STRSTARTS(COALESCE(?fullUrl, ""), "urn:uuid:")
               && REGEX(?relative, "^Observation/[A-Za-z0-9.-]{1,64}$"), "", 1/0)) AS ?target)
   BIND (STRAFTER(?relative, "Observation/") AS ?resultId)
-  BIND (BOUND(?target) && IF(?target != "",
+  BIND (IF(BOUND(?containedTarget),
+           EXISTS { ?containedLab fhirr4:labResultAt ?containedTarget }
+           || EXISTS { ?containedVariant fhirr4:variantAt ?containedTarget }
+           || EXISTS { ?containedInterpretation fhirr4:interpretationAt ?containedTarget },
+        BOUND(?target) && IF(?target != "",
              EXISTS { ?lab fhirr4:labResultAt ?target } || EXISTS { ?variantRow fhirr4:variantAt ?target }
              || EXISTS { ?interpretationRow fhirr4:interpretationAt ?target },
              NOT EXISTS {
@@ -104,7 +117,7 @@ WHERE {
                  { ?sameRow fhirr4:interpretationAt ?samePointer }
                  FILTER (?samePointer = CONCAT(?sameAt, "/resource"))
                }
-             }) AS ?namesRecord)
+             })) AS ?namesRecord)
   FILTER (!?namesRecord)
   BIND (CONCAT(?topStep, ?containedStep, "/result/", STR(xsd:integer(STRAFTER(STR(?resultSlot), "#_")) - 1), "/reference")
         AS ?pointer)

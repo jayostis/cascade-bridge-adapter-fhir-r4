@@ -98,15 +98,18 @@ though no query reads the PDF. Its version carries its name (`code.text`,
 else the first coding's display), every coding of its `code` (LOINC and
 SNOMED CT as IRIs, any other system as a literal typed by it), each
 `category` coding as a literal typed by its system, its `effectiveDateTime`
-or `effectivePeriod.start` typed by precision, its `issued` instant, its
+or `effectivePeriod.start` typed by precision, its `issued` instant, each time absent for a reason as any date is (see Dates), its
 `conclusion` and each `conclusionCode` coding of a listed system, its
 `status`, and the one `Organization` its performers name from a server, as a
 lab result's. Each `result` is the IRI of the record it names, under RO's
-"has member": an entry of the document held under that `urn:uuid:`, or
+"has member": an entry of the document held under that `urn:uuid:`,
 `Observation/<id>` on the report's server, as a record from a server is named
-(see Names). It names a record only where the `Observation` is one, never a
-panel; a contained result, one on another server, or one that resolves to no
-one entry is `fhirr4:reportResultNotNamed`.
+(see Names), or `#` and the id of an `Observation` the report contains, as a
+contained record is named. It names a record only where the `Observation` is
+one, never a panel; one on another server, or one that resolves to no one
+entry, is `fhirr4:reportResultNotNamed`. Performers naming two
+`Organization`s name none, and each is a finding, as a lab result's are; so
+are a note's authors.
 
 A `DocumentReference` is a note or document record unless its content is a
 C-CDA document: a `content.format` coded `urn:hl7-org:sdwg:ccda-…` in HL7's
@@ -120,7 +123,7 @@ reference makes no record and is `fhirr4:documentReferenceToCcdaDocument`.
 Neither `type` nor `category` tells the two apart: a discharge summary may be
 a C-CDA document or a PDF. A note's version carries every coding of its `type`
 (LOINC as IRIs, any other system as a literal), its type's name, its
-`description` as its title, its `date`, its `status`, its `docStatus` and
+`description` as its title, its `date` (absent for a reason as any date is), its `status`, its `docStatus` and
 the one `Organization` its authors name from a server; its `category` and
 `context` are not carried.
 

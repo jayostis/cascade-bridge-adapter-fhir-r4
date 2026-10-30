@@ -11643,7 +11643,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/author/reference" ;
-  bridge:verdict bridge:consumed .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:performerCarriedOnlyAsOneOrganizationRecord .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/date" ;
@@ -11701,7 +11702,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/author/reference" ;
-  bridge:verdict bridge:consumed .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:performerCarriedOnlyAsOneOrganizationRecord .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/date" ;
@@ -12511,3 +12513,71 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/docStatus" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_issued" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_issued/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_issued/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_issued/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_date" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_date/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_date/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_date/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_issued" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_issued/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_issued/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_issued/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_date" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_date/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_date/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_date/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .

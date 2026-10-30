@@ -21,8 +21,10 @@ PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # one: a lab result, a variant or a diagnostic implication, never a panel. As
 # record.rq reads a reference to a Patient, Observation/<id> naming an entry
 # held under a urn:uuid, or an id two entries hold an Observation under, names
-# none. Any other result, a contained one or one on another server among them,
-# names none: report-result-findings.rq reports it, resolving each as this does.
+# none. A result "#" and an id names the record of the Observation the report
+# contains under that id, as record.rq names a contained record, where it is
+# one. Any other result, one on another server among them, names none:
+# report-result-findings.rq reports it, resolving each as this does.
 
 CONSTRUCT {
   ?version obo:RO_0002351 ?member .
@@ -54,6 +56,38 @@ WHERE {
   ?results ?resultSlot ?result .
   ?result xyz:reference ?written .
   BIND (CONCAT(?recordSelector, ?topStep, ?containedStep) AS ?resourcePointer)
+  OPTIONAL { ?top xyz:id ?topId }
+  OPTIONAL { ?top xyz:meta ?topMeta . ?topMeta xyz:versionId ?topVersionId . FILTER (STR(?topVersionId) != "") }
+  OPTIONAL { ?top xyz:meta ?topUpdatedMeta . ?topUpdatedMeta xyz:lastUpdated ?topUpdated }
+
+  BIND (BOUND(?topId) && BOUND(?server) && !STRSTARTS(COALESCE(?fullUrl, ""), "urn:uuid:") && NOT EXISTS {
+          ?sameId fhirr4:resourceId ?sameIdValue ;
+            fhirr4:resourceType ?topType ;
+            fhirr4:heldAt ?sameIdSelector .
+          FILTER (?sameIdValue = ?topId && ?sameIdSelector != ?recordSelector)
+        } AS ?fromServer)
+  BIND (IF(?fromServer,
+           CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|https://ns.cascadeprotocol.org/cascade#RecordFromServerNamingRule",
+                  "|", REPLACE(REPLACE(?server, "%", "%25"), "\\|", "%7C"),
+                  "|", REPLACE(REPLACE(?topType, "%", "%25"), "\\|", "%7C"),
+                  "|", REPLACE(REPLACE(?topId, "%", "%25"), "\\|", "%7C")),
+           CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|https://ns.cascadeprotocol.org/cascade#RecordFromDocumentNamingRule",
+                  "|", REPLACE(REPLACE(?document, "%", "%25"), "\\|", "%7C"),
+                  "|", REPLACE(REPLACE(?recordSelector, "%", "%25"), "\\|", "%7C"))) AS ?topNamed)
+  BIND (SHA256(?topNamed) AS ?topHash)
+  BIND (REPLACE(REPLACE(REPLACE(REPLACE(SUBSTR(?topHash, 17, 1), "[048c]", "8"), "[159d]", "9"), "[26ae]", "a"), "[37bf]", "b")
+        AS ?topVariant)
+  BIND (CONCAT("urn:uuid:", SUBSTR(?topHash, 1, 8), "-", SUBSTR(?topHash, 9, 4), "-8", SUBSTR(?topHash, 14, 3), "-", ?topVariant,
+               SUBSTR(?topHash, 18, 3), "-", SUBSTR(?topHash, 21, 12)) AS ?topName)
+  OPTIONAL {
+    ?top xyz:contained ?targetList .
+    ?targetList ?targetSlot ?targetResource .
+    ?targetResource xyz:id ?targetId .
+    FILTER (!BOUND(?contained) && CONCAT("#", STR(?targetId)) = ?written)
+  }
+  BIND (IF(BOUND(?targetSlot),
+           CONCAT(?recordSelector, ?topStep, "/contained/", STR(xsd:integer(STRAFTER(STR(?targetSlot), "#_")) - 1)), 1/0)
+        AS ?containedTarget)
   BIND (REPLACE(?written, "/_history/[A-Za-z0-9.-]{1,64}$", "") AS ?unversioned)
   BIND (IF(BOUND(?server) && STRSTARTS(?unversioned, CONCAT(?server, "/")), STRAFTER(?unversioned, CONCAT(?server, "/")),
            ?unversioned) AS ?relative)
@@ -73,7 +107,11 @@ WHERE {
            IF(BOUND(?server) && !STRSTARTS(COALESCE(?fullUrl, ""), "urn:uuid:")
               && REGEX(?relative, "^Observation/[A-Za-z0-9.-]{1,64}$"), "", 1/0)) AS ?target)
   BIND (STRAFTER(?relative, "Observation/") AS ?resultId)
-  BIND (BOUND(?target) && IF(?target != "",
+  BIND (IF(BOUND(?containedTarget),
+           EXISTS { ?containedLab fhirr4:labResultAt ?containedTarget }
+           || EXISTS { ?containedVariant fhirr4:variantAt ?containedTarget }
+           || EXISTS { ?containedInterpretation fhirr4:interpretationAt ?containedTarget },
+        BOUND(?target) && IF(?target != "",
              EXISTS { ?lab fhirr4:labResultAt ?target } || EXISTS { ?variantRow fhirr4:variantAt ?target }
              || EXISTS { ?interpretationRow fhirr4:interpretationAt ?target },
              NOT EXISTS {
@@ -104,18 +142,23 @@ WHERE {
                  { ?sameRow fhirr4:interpretationAt ?samePointer }
                  FILTER (?samePointer = CONCAT(?sameAt, "/resource"))
                }
-             }) AS ?namesRecord)
+             })) AS ?namesRecord)
   FILTER (?namesRecord)
   BIND (IRI(CONCAT("urn:cascade:version-at:", SHA256(?resourcePointer))) AS ?version)
   BIND (SUBSTR(?target, 1, STRLEN(?target) - 9) AS ?targetSelector)
-  BIND (IF(?target != "",
+  BIND (IF(BOUND(?containedTarget),
+           CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|https://ns.cascadeprotocol.org/cascade#ContainedRecordNamingRule",
+                  "|", REPLACE(REPLACE(?topName, "%", "%25"), "\\|", "%7C"),
+                  "|", REPLACE(REPLACE(COALESCE(?topVersionId, ?topUpdated, ""), "%", "%25"), "\\|", "%7C"),
+                  "|", REPLACE(REPLACE(?targetId, "%", "%25"), "\\|", "%7C")),
+        IF(?target != "",
            CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|https://ns.cascadeprotocol.org/cascade#RecordFromDocumentNamingRule",
                   "|", REPLACE(REPLACE(?document, "%", "%25"), "\\|", "%7C"),
                   "|", REPLACE(REPLACE(?targetSelector, "%", "%25"), "\\|", "%7C")),
            CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|https://ns.cascadeprotocol.org/cascade#RecordFromServerNamingRule",
                   "|", REPLACE(REPLACE(?server, "%", "%25"), "\\|", "%7C"),
                   "|", REPLACE(REPLACE("Observation", "%", "%25"), "\\|", "%7C"),
-                  "|", REPLACE(REPLACE(?resultId, "%", "%25"), "\\|", "%7C"))) AS ?named)
+                  "|", REPLACE(REPLACE(?resultId, "%", "%25"), "\\|", "%7C")))) AS ?named)
   BIND (SHA256(?named) AS ?hash)
   BIND (REPLACE(REPLACE(REPLACE(REPLACE(SUBSTR(?hash, 17, 1), "[048c]", "8"), "[159d]", "9"), "[26ae]", "a"), "[37bf]", "b")
         AS ?variant)
