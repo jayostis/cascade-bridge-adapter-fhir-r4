@@ -2,33 +2,33 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:b984bb6921ac281a048fe41cddd551cf a oa:FragmentSelector ;
+_:a744c99f7ca90c2c5eb1f70c0ea887d8 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:e564e3da9bf12679d438276de6d2fa1e oa:hasSource <../in/document-reference-two-authors.json> .
-_:b984bb6921ac281a048fe41cddd551cf oa:refinedBy _:c143c48d575eaf49f9e159a0548ffb01 .
-_:c143c48d575eaf49f9e159a0548ffb01 a oa:FragmentSelector ;
+_:b39e2768d72233203a06df40c3467672 oa:hasSource <../in/document-reference-two-authors.json> .
+_:a744c99f7ca90c2c5eb1f70c0ea887d8 oa:refinedBy _:cafba1f202ebbe81c6e01292caf93c1e .
+_:cafba1f202ebbe81c6e01292caf93c1e a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/author/1/reference" .
-_:e564e3da9bf12679d438276de6d2fa1e oa:hasSelector _:b984bb6921ac281a048fe41cddd551cf .
-_:e1aa5acdad086de8aaf545edd7e24136 oa:hasTarget _:e564e3da9bf12679d438276de6d2fa1e .
-_:f196d548acdefaca13490dd689fdadbb a oa:FragmentSelector ;
+_:b39e2768d72233203a06df40c3467672 oa:hasSelector _:a744c99f7ca90c2c5eb1f70c0ea887d8 .
+_:ff11cdb7cc5ba4f52d82cb054a63244c oa:hasTarget _:b39e2768d72233203a06df40c3467672 .
+_:f50c90db79d3b4a8fbd6bf2cdebeaadf a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:fac1fee0cef53a9fa3932e038831e1fb oa:hasSource <../in/document-reference-two-authors.json> .
-_:f196d548acdefaca13490dd689fdadbb oa:refinedBy _:da22bd718c572051376969b92e6209c6 .
-_:da22bd718c572051376969b92e6209c6 a oa:FragmentSelector ;
+_:e730ef1eecef51f64136ea4f0f1f77d3 oa:hasSource <../in/document-reference-two-authors.json> .
+_:f50c90db79d3b4a8fbd6bf2cdebeaadf oa:refinedBy _:f171a119de455d206663fdd7b89bb11e .
+_:f171a119de455d206663fdd7b89bb11e a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/author/0/reference" .
-_:fac1fee0cef53a9fa3932e038831e1fb oa:hasSelector _:f196d548acdefaca13490dd689fdadbb .
-_:a210526c05c67ef714d797e58f4c295a oa:hasTarget _:fac1fee0cef53a9fa3932e038831e1fb .
-_:e1aa5acdad086de8aaf545edd7e24136 sh:resultSeverity sh:Warning .
-_:a210526c05c67ef714d797e58f4c295a sh:resultSeverity sh:Warning .
-_:e1aa5acdad086de8aaf545edd7e24136 a oa:Annotation ;
+_:e730ef1eecef51f64136ea4f0f1f77d3 oa:hasSelector _:f50c90db79d3b4a8fbd6bf2cdebeaadf .
+_:b63a282d6f23a20e829460e0362c3936 oa:hasTarget _:e730ef1eecef51f64136ea4f0f1f77d3 .
+_:ff11cdb7cc5ba4f52d82cb054a63244c sh:resultSeverity sh:Warning .
+_:b63a282d6f23a20e829460e0362c3936 sh:resultSeverity sh:Warning .
+_:ff11cdb7cc5ba4f52d82cb054a63244c a oa:Annotation ;
 	oa:hasBody fhirr4:performerCarriedOnlyAsOneOrganizationRecord ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "Organization/clinic-2" .
-_:a210526c05c67ef714d797e58f4c295a a oa:Annotation ;
+_:b63a282d6f23a20e829460e0362c3936 a oa:Annotation ;
 	oa:hasBody fhirr4:performerCarriedOnlyAsOneOrganizationRecord ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "Organization/clinic-1" .

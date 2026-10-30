@@ -608,6 +608,9 @@
           "@id": "fixtures/in/document-reference-text-attachments.json"
         },
         {
+          "@id": "fixtures/in/document-reference-master-identifiers.json"
+        },
+        {
           "@id": "fixtures/in/document-reference-inline-pdf.json"
         },
         {
@@ -1104,6 +1107,12 @@
         },
         {
           "@id": "fixtures/findings/document-reference-text-attachments.ttl"
+        },
+        {
+          "@id": "fixtures/expected/document-reference-master-identifiers.ttl"
+        },
+        {
+          "@id": "fixtures/findings/document-reference-master-identifiers.ttl"
         },
         {
           "@id": "fixtures/expected/document-reference-inline-pdf.ttl"
@@ -3251,6 +3260,19 @@
       "description": "A DocumentReference from a server whose contents are inline text/xml, text/plain of white space, text/plain \"B12 < 200 pg/mL; folate > 4 ng/mL\" and text/plain \"A second rendition\". Authored here on 2026-10-30, for a case the conformance corpus does not hold."
     },
     {
+      "@id": "fixtures/in/document-reference-master-identifiers.json",
+      "@type": "File",
+      "name": "document-reference-master-identifiers",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "3033",
+      "sha256": "f3148452186e470bcedbb38bb1f984ca398147a8ab6521d6a2a012b1d10d6a38",
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Bundle from a server of three DocumentReferences of discharge summaries (LOINC 18842-5), each an application/pdf by URL with the format urn:hl7-org:sdwg:ccda-nonXMLBody:2.1, whose masterIdentifiers are CCD-2026-1005 in urn:oid:2.16.840.1.113883.19.5.99999.1, urn:uuid:A1B2C3D4-0000-4000-8000-00000000000A in urn:ietf:rfc:3986, and DS-7 with no system. Authored here on 2026-10-30, for a case the conformance corpus does not hold."
+    },
+    {
       "@id": "fixtures/in/document-reference-inline-pdf.json",
       "@type": "File",
       "name": "document-reference-inline-pdf",
@@ -5093,8 +5115,8 @@
       "@type": "File",
       "name": "Expected findings for bundle-reports-results-and-performers",
       "encodingFormat": "text/turtle",
-      "contentSize": "17696",
-      "sha256": "3f314c33ac313c6ee630f5d365ee08b4617981eb60657aa6485041fd207523d6",
+      "contentSize": "17674",
+      "sha256": "3a9c93f08c24411cd67c857867b6f624aee0d200e43cc460d8df122016405d88",
       "about": {
         "@id": "fixtures/in/bundle-reports-results-and-performers.json"
       },
@@ -5109,8 +5131,8 @@
       "@type": "File",
       "name": "Expected graph for diagnostic-report-contained-results",
       "encodingFormat": "text/turtle",
-      "contentSize": "5762",
-      "sha256": "9e286c9e119a2e0bbda6710d390aa595e6b67110475d151dfe1af9e3f3d653b8",
+      "contentSize": "5766",
+      "sha256": "df10c8e4e67d96a9d4f21e6e0d1281863430d705df64eea7430efe6d7ecafbad",
       "about": {
         "@id": "fixtures/in/diagnostic-report-contained-results.json"
       },
@@ -5125,8 +5147,8 @@
       "@type": "File",
       "name": "Expected findings for diagnostic-report-contained-results",
       "encodingFormat": "text/turtle",
-      "contentSize": "2538",
-      "sha256": "accb999ac4aef42d67f4f7822e332b1886189cdd8e1c407bbfa1fbd9b32bab34",
+      "contentSize": "2530",
+      "sha256": "76e0c7652354996d0e242fc378b148faab34cf49cd780c0b26e10a6b005f3896",
       "about": {
         "@id": "fixtures/in/diagnostic-report-contained-results.json"
       },
@@ -5157,8 +5179,8 @@
       "@type": "File",
       "name": "Expected findings for diagnostic-report-codes-and-times",
       "encodingFormat": "text/turtle",
-      "contentSize": "1665",
-      "sha256": "063275092655f4a1d88f0aa43be419013c2252e3bf305922736284e65c5da7d1",
+      "contentSize": "1663",
+      "sha256": "60e365d991035a39d14d88caad4c3f4c66bd1c0276935df07e0be3e19b5019cf",
       "about": {
         "@id": "fixtures/in/diagnostic-report-codes-and-times.json"
       },
@@ -5190,7 +5212,7 @@
       "name": "Expected findings for document-reference-type-codings",
       "encodingFormat": "text/turtle",
       "contentSize": "1676",
-      "sha256": "5f81291b07cd536d8f0d2c6f40c6b9b2e04c86985e025626d16abbf95489e672",
+      "sha256": "aaaa1b8d12ccfe0b8df0c9a1ce3175c6960f79acba8213b57fad30064372c46c",
       "about": {
         "@id": "fixtures/in/document-reference-type-codings.json"
       },
@@ -5222,7 +5244,7 @@
       "name": "Expected findings for document-reference-two-authors",
       "encodingFormat": "text/turtle",
       "contentSize": "2097",
-      "sha256": "bf83e355b4455b6173431bcb0f0951923dd8b50c5aa2e5964c62e98670642cdb",
+      "sha256": "835e6ccf990dfe4cf864143f05669ef9df7015da788b25fd7f5717cb6a4534ca",
       "about": {
         "@id": "fixtures/in/document-reference-two-authors.json"
       },
@@ -5254,7 +5276,7 @@
       "name": "Expected findings for document-reference-ccd-ihe-r4-system",
       "encodingFormat": "text/turtle",
       "contentSize": "1108",
-      "sha256": "c60c0e30cc3678fc93cab25f02eb9d11ceb2ca8bcd016d65fc62a0f679ef10a8",
+      "sha256": "1f25c8683e60cee738204974b24692da4eeff538ebbd5d3911ecf4f7a535548f",
       "about": {
         "@id": "fixtures/in/document-reference-ccd-ihe-r4-system.json"
       },
@@ -5286,7 +5308,7 @@
       "name": "Expected findings for document-reference-ccd-ihe-canonical-system",
       "encodingFormat": "text/turtle",
       "contentSize": "1115",
-      "sha256": "66c2d4f93cecf7b32de773ce6f5852879b90c12140fd019eb85d1a51468fc06f",
+      "sha256": "9af9ff433142056b8674183692ab182728b7fb3bce2abc7954f8688ecd58e05e",
       "about": {
         "@id": "fixtures/in/document-reference-ccd-ihe-canonical-system.json"
       },
@@ -5318,7 +5340,7 @@
       "name": "Expected findings for document-reference-unstructured-ccda",
       "encodingFormat": "text/turtle",
       "contentSize": "1076",
-      "sha256": "3fa009b5d7c44cf0611e2077745c065230f84adce0ab596768b8203a62dc2a53",
+      "sha256": "10844adc0d0941a4c0284aa5667e485d59a402b2310458ab1719a7336cf04290",
       "about": {
         "@id": "fixtures/in/document-reference-unstructured-ccda.json"
       },
@@ -5381,10 +5403,42 @@
       "@type": "File",
       "name": "Expected findings for document-reference-text-attachments",
       "encodingFormat": "text/turtle",
-      "contentSize": "2053",
-      "sha256": "7d1d139d112a0ab0a4a2d589d408dd24c9eee61024cccd9f39177d978eef3d97",
+      "contentSize": "2051",
+      "sha256": "311c3f9fc977c8edcf31c4c1782a842a32244bfdb9fdd52bc2c09c45fe7934b6",
       "about": {
         "@id": "fixtures/in/document-reference-text-attachments.json"
+      },
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/document-reference-master-identifiers.ttl",
+      "@type": "File",
+      "name": "Expected graph for document-reference-master-identifiers",
+      "encodingFormat": "text/turtle",
+      "contentSize": "6177",
+      "sha256": "397b16f897746853dc48c50e06101d6eb599487aaeb338b8b837912ce215ea88",
+      "about": {
+        "@id": "fixtures/in/document-reference-master-identifiers.json"
+      },
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/findings/document-reference-master-identifiers.ttl",
+      "@type": "File",
+      "name": "Expected findings for document-reference-master-identifiers",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2832",
+      "sha256": "cf562b9e0dfcd77e14c59ac971f3aea436d623e746737d9346c1939ba025de05",
+      "about": {
+        "@id": "fixtures/in/document-reference-master-identifiers.json"
       },
       "dateCreated": "2026-10-30",
       "license": {
@@ -5413,8 +5467,8 @@
       "@type": "File",
       "name": "Expected findings for document-reference-inline-pdf",
       "encodingFormat": "text/turtle",
-      "contentSize": "1684",
-      "sha256": "af1065aee94ef4392ac02b545d7bf05282a7ac11d385c0f82db3c04ef5ba2063",
+      "contentSize": "1680",
+      "sha256": "7b8e3f03075803e04cb031bb16af663c167084eb94c3fecbe9eb9abdf6baea44",
       "about": {
         "@id": "fixtures/in/document-reference-inline-pdf.json"
       },
@@ -8626,8 +8680,8 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "contentSize": "103169",
-      "sha256": "ba7a4296100fefd678048744d2aae208bf3f4dba855e462eb318aa5221b14286"
+      "contentSize": "112758",
+      "sha256": "cc06b4c39d7a2a530156af8e0e756266397201567a06d43fb0a229df7bf7aaa2"
     },
     {
       "@id": "fixtures/facts/meridian.ttl",

@@ -2,33 +2,33 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:dbee1d121a9d25ec48d3dfaa9fe83e4c a oa:FragmentSelector ;
+_:d353929b9ce47eb2d879e7bc63f67367 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:e45df2ba525aecbef429bdfca5c50f0b oa:hasSource <../in/document-reference-text-attachments.json> .
-_:dbee1d121a9d25ec48d3dfaa9fe83e4c oa:refinedBy _:dae217c47724d4888a2d0c7587577c92 .
-_:dae217c47724d4888a2d0c7587577c92 a oa:FragmentSelector ;
+_:bf9f9647183860f2b6838333a416dbbb oa:hasSource <../in/document-reference-text-attachments.json> .
+_:d353929b9ce47eb2d879e7bc63f67367 oa:refinedBy _:e01397c275512cc259867da4e8a8d6a4 .
+_:e01397c275512cc259867da4e8a8d6a4 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/content/0/attachment/data" .
-_:e45df2ba525aecbef429bdfca5c50f0b oa:hasSelector _:dbee1d121a9d25ec48d3dfaa9fe83e4c .
-_:f191e972fb939b60494af642451e1ad0 oa:hasTarget _:e45df2ba525aecbef429bdfca5c50f0b .
-_:aae7981eac7c70493f432ec1af6044ed a oa:FragmentSelector ;
+_:bf9f9647183860f2b6838333a416dbbb oa:hasSelector _:d353929b9ce47eb2d879e7bc63f67367 .
+_:d11e691ded004c282f0f92a53798518f oa:hasTarget _:bf9f9647183860f2b6838333a416dbbb .
+_:addfb345dcdc87234c06c3e1f1cc8b27 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:ad32ac95186f5816ebc6c5fef35116aa oa:hasSource <../in/document-reference-text-attachments.json> .
-_:aae7981eac7c70493f432ec1af6044ed oa:refinedBy _:e6c26891f5465d7b41adf8bb85d2df62 .
-_:e6c26891f5465d7b41adf8bb85d2df62 a oa:FragmentSelector ;
+_:e9a0246204d30a2cb0acde34968a4e0d oa:hasSource <../in/document-reference-text-attachments.json> .
+_:addfb345dcdc87234c06c3e1f1cc8b27 oa:refinedBy _:db754562baf8c24645e2c7d6fa5f3f2 .
+_:db754562baf8c24645e2c7d6fa5f3f2 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/content/3/attachment/data" .
-_:ad32ac95186f5816ebc6c5fef35116aa oa:hasSelector _:aae7981eac7c70493f432ec1af6044ed .
-_:a114ce33af474b08d10ea961dd689ed1 oa:hasTarget _:ad32ac95186f5816ebc6c5fef35116aa .
-_:f191e972fb939b60494af642451e1ad0 sh:resultSeverity sh:Warning .
-_:a114ce33af474b08d10ea961dd689ed1 sh:resultSeverity sh:Info .
-_:f191e972fb939b60494af642451e1ad0 a oa:Annotation ;
+_:e9a0246204d30a2cb0acde34968a4e0d oa:hasSelector _:addfb345dcdc87234c06c3e1f1cc8b27 .
+_:b15ddb3cea9de2747e564d28f5e678d2 oa:hasTarget _:e9a0246204d30a2cb0acde34968a4e0d .
+_:d11e691ded004c282f0f92a53798518f sh:resultSeverity sh:Warning .
+_:b15ddb3cea9de2747e564d28f5e678d2 sh:resultSeverity sh:Info .
+_:d11e691ded004c282f0f92a53798518f a oa:Annotation ;
 	oa:hasBody fhirr4:attachmentDataNotRead ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "text/xml" .
-_:a114ce33af474b08d10ea961dd689ed1 a oa:Annotation ;
+_:b15ddb3cea9de2747e564d28f5e678d2 a oa:Annotation ;
 	oa:hasBody fhirr4:textAttachmentNotCarried ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "text/plain" .
