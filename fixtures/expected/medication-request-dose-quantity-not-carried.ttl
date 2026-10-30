@@ -1,0 +1,60 @@
+@prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix pav: <http://purl.org/pav/> .
+<ni:///sha-256;DhCoxLAJ5ojgOVc1Nyijyr7MpD26-ORnbD3CnhPpxtc> cascade:structuredDosage <ni:///sha-256;DhCoxLAJ5ojgOVc1Nyijyr7MpD26-ORnbD3CnhPpxtc#dosage-3> , <ni:///sha-256;DhCoxLAJ5ojgOVc1Nyijyr7MpD26-ORnbD3CnhPpxtc#dosage-2> , <ni:///sha-256;DhCoxLAJ5ojgOVc1Nyijyr7MpD26-ORnbD3CnhPpxtc#dosage-1> .
+<ni:///sha-256;DhCoxLAJ5ojgOVc1Nyijyr7MpD26-ORnbD3CnhPpxtc#dosage-1> cascade:dosageDoseQuantity <ni:///sha-256;DhCoxLAJ5ojgOVc1Nyijyr7MpD26-ORnbD3CnhPpxtc#dosage-1-dose-quantity> .
+<ni:///sha-256;DhCoxLAJ5ojgOVc1Nyijyr7MpD26-ORnbD3CnhPpxtc#dosage-1-dose-quantity> cascade:decimalValue "1"^^xsd:decimal ;
+	cascade:writtenValue "1" ;
+	cascade:unitText "tablet" .
+<ni:///sha-256;DhCoxLAJ5ojgOVc1Nyijyr7MpD26-ORnbD3CnhPpxtc> cascade:prescribedOrReported "prescribed" ;
+	cascade:drugName "Atorvastatin 10 mg tablet" ;
+	cascade:rxNormCode <https://ns.cascadeprotocol.org/codes/rxnorm/617312> ;
+	cascade:workflowStatus "active" ;
+	cascade:medicationRequestIntent "order" ;
+	cascade:prescriptionWrittenDate "2026-03-02"^^xsd:date .
+<urn:uuid:a392bd2a-dea6-84dc-8ac1-95c4d6a9a605> a cascade:PrescribedOrReportedMedication ;
+	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/MedicationRequest/medrx-atorvastatin-8> ;
+	cascade:sourceRecordId "medrx-atorvastatin-8" .
+<ni:///sha-256;DhCoxLAJ5ojgOVc1Nyijyr7MpD26-ORnbD3CnhPpxtc> prov:specializationOf <urn:uuid:a392bd2a-dea6-84dc-8ac1-95c4d6a9a605> ;
+	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
+_:b70a9c48b1fa68987043e8211c0a46c3 bridge:arrivedAs <ni:///sha-256;DhCoxLAJ5ojgOVc1Nyijyr7MpD26-ORnbD3CnhPpxtc> ;
+	oa:hasSelector _:e5b5a792934fa73259057e50095c2508 ;
+	oa:hasSource <ni:///sha-256;aipNkvVQIS0QME_5zYxzotbN5t_5_DJ1nr7N5f56WDQ> ;
+	prov:wasDerivedFrom <ni:///sha-256;aipNkvVQIS0QME_5zYxzotbN5t_5_DJ1nr7N5f56WDQ> ;
+	prov:wasGeneratedBy _:48ef587b1abe75d205f7fa1e0b12150f .
+_:e5b5a792934fa73259057e50095c2508 a oa:FragmentSelector ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "" .
+<ni:///sha-256;aipNkvVQIS0QME_5zYxzotbN5t_5_DJ1nr7N5f56WDQ> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
+	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
+_:36071110cb7896e94938a4f77d67952 prov:agent _:f5f22d0dd1850e3c3d33537d0fd79e05 .
+_:f5f22d0dd1850e3c3d33537d0fd79e05 <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:36071110cb7896e94938a4f77d67952 prov:hadRole cascade:AuthorRole .
+<ni:///sha-256;aipNkvVQIS0QME_5zYxzotbN5t_5_DJ1nr7N5f56WDQ> prov:qualifiedAttribution _:36071110cb7896e94938a4f77d67952 .
+_:c0747efd7b630db047760f78d973cadd prov:agent _:d9b5613ea429958d153005a32a79006b .
+_:d9b5613ea429958d153005a32a79006b <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
+_:c0747efd7b630db047760f78d973cadd prov:hadRole cascade:TransmitterRole .
+<ni:///sha-256;aipNkvVQIS0QME_5zYxzotbN5t_5_DJ1nr7N5f56WDQ> prov:qualifiedAttribution _:c0747efd7b630db047760f78d973cadd ;
+	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
+	cascade:authenticatedAsProxy false ;
+	cascade:sourceFormatVersion "4.0.1" .
+_:48ef587b1abe75d205f7fa1e0b12150f <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
+	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
+<ni:///sha-256;aipNkvVQIS0QME_5zYxzotbN5t_5_DJ1nr7N5f56WDQ> a prov:Entity .
+_:48ef587b1abe75d205f7fa1e0b12150f a prov:Activity ;
+	prov:used <ni:///sha-256;aipNkvVQIS0QME_5zYxzotbN5t_5_DJ1nr7N5f56WDQ> ;
+	prov:qualifiedAssociation _:919fc0e96721f301e9ea10d583f19f8a .
+_:919fc0e96721f301e9ea10d583f19f8a prov:hadPlan _:4d5d9b1ac5664c4f001f669bd8541863 .
+_:4d5d9b1ac5664c4f001f669bd8541863 a prov:Plan ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "fhir-r4" ;
+	pav:version "0.1.0" .
+_:919fc0e96721f301e9ea10d583f19f8a prov:agent _:def64a9a44949af34263d1abd947e0db .
+_:def64a9a44949af34263d1abd947e0db a prov:SoftwareAgent ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Cascade Bridge for Rust" ;
+	pav:version "0.1.0" .

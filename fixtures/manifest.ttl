@@ -134,6 +134,8 @@
     <#medication-request-supply-and-dosages>
     <#bundle-medication-supply-not-carried>
     <#bundle-codings-without-system>
+    <#medication-request-dose-quantity-not-carried>
+    <#medication-request-supply-and-timing-values-not-carried>
   ) .
 
 <#allergy-with-id> a bridge:IsomorphicConversionTest ;
@@ -1830,4 +1832,30 @@
   mf:result [
     bridge:expectedGraph <expected/bundle-codings-without-system.ttl> ;
     bridge:expectedFindings <findings/bundle-codings-without-system.ttl>
+  ] .
+
+<#medication-request-dose-quantity-not-carried> a bridge:IsomorphicConversionTest ;
+  mf:name "medication-request-dose-quantity-not-carried" ;
+  rdfs:comment "A MedicationRequest of three dosages whose dose quantity is not carried as written: a unit code in a system other than UCUM is a fhirr4:doseUnitCodeOutsideUcum finding, a comparator, which FHIR's SimpleQuantity forbids, writes no dose node and is a fhirr4:dosageElementNotCarried finding, and a value that is no number writes none and is a fhirr4:medicationNumberNotCarried finding." ;
+  mf:action [
+    bridge:input <in/medication-request-dose-quantity-not-carried.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/medication-request-dose-quantity-not-carried.ttl> ;
+    bridge:expectedFindings <findings/medication-request-dose-quantity-not-carried.ttl>
+  ] .
+
+<#medication-request-supply-and-timing-values-not-carried> a bridge:IsomorphicConversionTest ;
+  mf:name "medication-request-supply-and-timing-values-not-carried" ;
+  rdfs:comment "A MedicationRequest whose supply and timing are not carried as written: a second course-of-therapy coding is a fhirr4:courseOfTherapyTypeNotMapped finding, a repeat frequency of 0, a repeat period that is no number, a number of repeats allowed that is no number and a supply duration value that is no number are each a fhirr4:medicationNumberNotCarried finding, and a period unit outside UCUM's seven units of time is a fhirr4:dosageRepeatPeriodUnitNotCarried finding." ;
+  mf:action [
+    bridge:input <in/medication-request-supply-and-timing-values-not-carried.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/medication-request-supply-and-timing-values-not-carried.ttl> ;
+    bridge:expectedFindings <findings/medication-request-supply-and-timing-values-not-carried.ttl>
   ] .
