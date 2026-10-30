@@ -290,12 +290,34 @@ fhirr4:expectedSupplyDurationBound a skos:Concept ;
   sh:resultSeverity sh:Warning .
 
 fhirr4:courseOfTherapyTypeNotMapped a skos:Concept ;
-  skos:prefLabel "A prescription's course of therapy is a coding in a system other than FHIR's medicationrequest-course-of-therapy, a code that system does not define, or text where no coding is carried, so it is not carried."@en ;
+  skos:prefLabel "A prescription's course of therapy is a coding in a system other than FHIR's medicationrequest-course-of-therapy, a code that system does not define, a second coding in that system (a course holds one, the first), or text where no coding is carried, so it is not carried."@en ;
   skos:inScheme fhirr4:gaps ;
   skos:broader bridge:valueNotMapped ;
   sh:resultSeverity sh:Warning .
 
 fhirr4:dosageElementNotCarried a skos:Concept ;
-  skos:prefLabel "A dosage carries an element no Cascade predicate carries, such as its timing's count, duration, days, times of day or events, a bound that is no period, an as-needed condition, a site, a method, a rate, a dose range or a dose after the first, a maximum dose, or an instruction beside its text."@en ;
+  skos:prefLabel "A dosage carries an element no Cascade predicate carries, such as its timing's count, duration, days, times of day or events, a bound that is no period, an as-needed condition, a site, a method, a rate, a dose range or a dose after the first, a dose quantity with a comparator (FHIR's SimpleQuantity forbids one), a maximum dose, its sequence, a route coding's version or userSelected, or an instruction beside its text."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:noPredicate .
+
+fhirr4:doseUnitCodeOutsideUcum a skos:Concept ;
+  skos:prefLabel "A dose quantity carries a unit code in a system other than UCUM, or in none, which is not carried as a UCUM unit; its unit text is."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:carriedWithLoss .
+
+fhirr4:medicationNumberNotCarried a skos:Concept ;
+  skos:prefLabel "A number of a medication's supply or dosage is not in the form its predicate states, so it is not carried: the number of repeats a dispense allows is not a whole number, a repeat frequency is not a whole number of 1 or more, and an expected supply duration, a repeat period or a dose quantity is not in FHIR's decimal form."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:carriedWithLoss ;
+  sh:resultSeverity sh:Warning .
+
+fhirr4:dosageRepeatPeriodUnitNotCarried a skos:Concept ;
+  skos:prefLabel "A dosage's timing repeat states a period unit outside the seven UCUM units of time FHIR's code set holds (s, min, h, d, wk, mo, a), so it is not carried."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:carriedWithLoss ;
+  sh:resultSeverity sh:Warning .
+
+fhirr4:dispenseRequestElementNotCarried a skos:Concept ;
+  skos:prefLabel "A prescription's dispense request states its initial fill, its dispense interval or its performer, and no Cascade predicate carries them."@en ;
   skos:inScheme fhirr4:gaps ;
   skos:broader bridge:noPredicate .
