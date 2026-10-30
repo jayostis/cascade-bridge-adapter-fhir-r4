@@ -2,18 +2,33 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:fb6948b23de5e377586370d4b7476553 a oa:FragmentSelector ;
+_:b8f5d86eb081720a3698e206e3ab9ebf a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:bb074d18ab0abe961f38bd4083b08177 oa:hasSource <../in/medication-request-every-mapped-element.json> .
-_:fb6948b23de5e377586370d4b7476553 oa:refinedBy _:fdfd883296047fa79b96989039941daf .
-_:fdfd883296047fa79b96989039941daf a oa:FragmentSelector ;
+_:a8872b021d6e201617e9b871f922ec51 oa:hasSource <../in/medication-request-every-mapped-element.json> .
+_:b8f5d86eb081720a3698e206e3ab9ebf oa:refinedBy _:dc2ad35ffa1a91f7591d36994b0414f0 .
+_:dc2ad35ffa1a91f7591d36994b0414f0 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/note/0/text" .
-_:bb074d18ab0abe961f38bd4083b08177 oa:hasSelector _:fb6948b23de5e377586370d4b7476553 .
-_:fe404c748757add1a9036d2e581329d1 oa:hasTarget _:bb074d18ab0abe961f38bd4083b08177 ;
-	sh:resultSeverity sh:Info ;
-	a oa:Annotation ;
+_:a8872b021d6e201617e9b871f922ec51 oa:hasSelector _:b8f5d86eb081720a3698e206e3ab9ebf .
+_:f1700e0c85c431803f4112461d9b9d9d oa:hasTarget _:a8872b021d6e201617e9b871f922ec51 .
+_:a535bcbc4ea54b752f9c7aaee8e2e33a a oa:FragmentSelector ;
+	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "" .
+_:b1a065406ddb0984150ef955b211ba65 oa:hasSource <../in/medication-request-every-mapped-element.json> .
+_:a535bcbc4ea54b752f9c7aaee8e2e33a oa:refinedBy _:f21dedaa34ff4aab991d895dbc51c3e4 .
+_:f21dedaa34ff4aab991d895dbc51c3e4 a oa:FragmentSelector ;
+	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/dosageInstruction/0/doseAndRate/0/doseQuantity/code" .
+_:b1a065406ddb0984150ef955b211ba65 oa:hasSelector _:a535bcbc4ea54b752f9c7aaee8e2e33a .
+_:d1771cf70994db156d516eb9cfab9378 oa:hasTarget _:b1a065406ddb0984150ef955b211ba65 .
+_:f1700e0c85c431803f4112461d9b9d9d sh:resultSeverity sh:Info .
+_:d1771cf70994db156d516eb9cfab9378 sh:resultSeverity sh:Info .
+_:f1700e0c85c431803f4112461d9b9d9d a oa:Annotation ;
 	oa:hasBody fhirr4:medicationNote ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "Recheck lipid panel in three months." .
+_:d1771cf70994db156d516eb9cfab9378 a oa:Annotation ;
+	oa:hasBody fhirr4:doseUnitCodeOutsideUcum ;
+	oa:motivatedBy oa:classifying ;
+	sh:value "TAB" .

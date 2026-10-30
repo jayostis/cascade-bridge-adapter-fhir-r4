@@ -108,8 +108,11 @@ refill where absence says nothing; `dispenseRequest.expectedSupplyDuration`, a
 quantity node, only in one of UCUM's seven units of time FHIR's `Duration`
 allows; and `dispenseRequest.validityPeriod`. A supply duration with a
 comparator is carried with it and is a finding, since a bound gives no end; one
-in no unit of time, a course of therapy in another system or of text alone, and
-`dispenseRequest.quantity`, which no term holds, are findings.
+in no unit of time, a course of therapy in another system, after its first coding
+or of text alone, and `dispenseRequest.quantity`, which no term holds, are
+findings, as are the initial fill, the dispense interval and the performer. A
+number that is no number, a repeat frequency of 0 and a period unit outside the
+seven units of time are findings too, not dropped under a carried path.
 
 Every dosage (`dosageInstruction` of a request, `dosage` of a statement) is a
 node of the version, `<version>#dosage-n`, whatever it holds, so that a
@@ -117,6 +120,9 @@ version's dosages can be counted. It holds its first dose quantity, its
 timing's `repeat.frequency`, `period`, `periodUnit` and `boundsPeriod`, and its
 route's codings, SNOMED CT's as IRIs and any other system's (the NCI
 Thesaurus's, which US Core's binding names) as literals typed by the system.
+A dose quantity is carried as a UCUM unit only where its system is UCUM's
+(`fhirr4:doseUnitCodeOutsideUcum`), and one with a comparator, which FHIR's
+SimpleQuantity forbids, writes no node and is `fhirr4:dosageElementNotCarried`.
 Every other dosage element, a later dose and a later dosage's text are findings;
 the first dosage's text is the version's `cascade:dosage`.
 
@@ -315,8 +321,8 @@ lists as not preferred are read as the system's URI, the rows of
 [`vocab/fhir-code-systems.ttl`](../vocab/fhir-code-systems.ttl) the C-CDA
 adapter holds too, so one code from either adapter is one term; an OID no row
 holds is `urn:oid:` and the OID. A coding with no system, a system that is no
-absolute URI, or no code is a finding, `fhirr4:codingNotCarried`, and so is a
-later CPT code. A lab result's interpretation is carried as every coding in HL7's
+absolute URI, or no code is a finding, `fhirr4:codingNotCarried`; a later CPT code is
+`fhirr4:procedureCptCodeRepeated`. A lab result's interpretation is carried as every coding in HL7's
 [v3 ObservationInterpretation](https://terminology.hl7.org/CodeSystem-v3-ObservationInterpretation.html),
 the code kept as written
 ([cascade-vocabulary#298](https://github.com/jayostis/cascade-vocabulary/issues/298));
