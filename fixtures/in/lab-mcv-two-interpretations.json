@@ -1,0 +1,55 @@
+{
+  "resourceType": "Observation",
+  "id": "obs-mcv-1",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "787-2",
+        "display": "MCV [Entitic mean volume] in Red Blood Cells by Automated count"
+      }
+    ],
+    "text": "MCV"
+  },
+  "subject": {
+    "reference": "Patient/pat-conformance-1"
+  },
+  "effectiveDateTime": "2026-04-14",
+  "valueQuantity": {
+    "value": 104,
+    "unit": "fL",
+    "system": "http://unitsofmeasure.org",
+    "code": "fL"
+  },
+  "interpretation": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+          "code": "H",
+          "display": "High"
+        }
+      ]
+    },
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+          "code": "A",
+          "display": "Abnormal"
+        }
+      ]
+    }
+  ]
+}

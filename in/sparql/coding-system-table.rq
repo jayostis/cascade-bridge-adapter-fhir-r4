@@ -1,0 +1,39 @@
+PREFIX skos:    <http://www.w3.org/2004/02/skos/core#>
+PREFIX xyz:     <http://sparql.xyz/facade-x/data/>
+PREFIX cascade: <https://ns.cascadeprotocol.org/cascade#>
+PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+
+# One row for each system the record writes, wherever it stands, and the system
+# a mapping reads it as, so that one code from this adapter and from the C-CDA
+# adapter is one term. A system is read as the cascade:codingSystemUri of the
+# concept of fhir-code-systems.ttl whose skos:notation is its OID, where it is
+# urn:oid: and an OID, the prefix in any case, or whose skos:hiddenLabel it is,
+# HL7 Terminology naming it a URI that is not preferred; an OID no concept
+# carries is read as urn:oid: and the OID, and any other system as written. A
+# system that is no absolute URI, or holds a space or a character an IRI may
+# not, has no row: no code of it is carried. A row is named by the system as
+# written, so that the records of one document give one row for it.
+
+CONSTRUCT {
+  ?row fhirr4:systemWritten ?written ;
+    fhirr4:systemRead ?read .
+}
+WHERE {
+  ?node xyz:system ?written .
+  FILTER (isLiteral(?written) && REGEX(STR(?written), "^[A-Za-z][A-Za-z0-9+.-]*:[^\\s<>\"{}|\\\\^`]+$"))
+  BIND (IF(REGEX(STR(?written), "^urn:oid:", "i"), CONCAT("urn:oid:", SUBSTR(STR(?written), 9)), STR(?written)) AS ?cased)
+  OPTIONAL {
+    ?byOid skos:inScheme fhirr4:codeSystems ;
+      skos:notation ?oid ;
+      cascade:codingSystemUri ?oidSystem .
+    FILTER (CONCAT("urn:oid:", STR(?oid)) = ?cased)
+  }
+  OPTIONAL {
+    ?byLabel skos:inScheme fhirr4:codeSystems ;
+      skos:hiddenLabel ?label ;
+      cascade:codingSystemUri ?labelSystem .
+    FILTER (STR(?label) = ?cased)
+  }
+  BIND (STR(COALESCE(?oidSystem, ?labelSystem, ?cased)) AS ?read)
+  BIND (IRI(CONCAT("urn:cascade:system-written:", SHA256(STR(?written)))) AS ?row)
+}

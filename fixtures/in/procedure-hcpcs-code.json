@@ -1,0 +1,29 @@
+{
+  "resourceType": "Procedure",
+  "id": "proc-colonoscopy-2",
+  "status": "completed",
+  "code": {
+    "coding": [
+      {
+        "system": "http://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets",
+        "code": "G0121",
+        "display": "Colorectal cancer screening; colonoscopy on individual not meeting criteria for high risk"
+      },
+      {
+        "system": "http://www.ama-assn.org/go/cpt",
+        "code": "45378",
+        "display": "Colonoscopy, flexible; diagnostic, including collection of specimen(s) by brushing or washing, when performed (separate procedure)"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "73761001",
+        "display": "Colonoscopy"
+      }
+    ],
+    "text": "Screening colonoscopy"
+  },
+  "subject": {
+    "reference": "Patient/pat-conformance-1"
+  },
+  "performedDateTime": "2026-02-18"
+}

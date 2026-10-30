@@ -7,7 +7,16 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;28b0jRk7Wtte2ngpyT7ZT93rnhX8EEM09S0QnWhglNk> cascade:prescribedOrReported "prescribed" ;
+<ni:///sha-256;X7rgaH1GgX-W31t61tzYBQ_78Q2jFD9f1kKUa1ypRbU> cascade:structuredDosage <ni:///sha-256;X7rgaH1GgX-W31t61tzYBQ_78Q2jFD9f1kKUa1ypRbU#dosage-1> .
+<ni:///sha-256;X7rgaH1GgX-W31t61tzYBQ_78Q2jFD9f1kKUa1ypRbU#dosage-1> cascade:dosageRepeatFrequency 1 ;
+	cascade:dosageRepeatPeriodUnit "d" ;
+	cascade:dosageRouteCode <http://snomed.info/id/26643006> ;
+	cascade:dosageDoseQuantity <ni:///sha-256;X7rgaH1GgX-W31t61tzYBQ_78Q2jFD9f1kKUa1ypRbU#dosage-1-dose-quantity> .
+<ni:///sha-256;X7rgaH1GgX-W31t61tzYBQ_78Q2jFD9f1kKUa1ypRbU#dosage-1-dose-quantity> cascade:decimalValue "1"^^xsd:decimal ;
+	cascade:writtenValue "1" ;
+	cascade:unitText "tablet" .
+<ni:///sha-256;X7rgaH1GgX-W31t61tzYBQ_78Q2jFD9f1kKUa1ypRbU#dosage-1> cascade:dosageRepeatPeriod "1"^^xsd:decimal .
+<ni:///sha-256;X7rgaH1GgX-W31t61tzYBQ_78Q2jFD9f1kKUa1ypRbU> cascade:prescribedOrReported "prescribed" ;
 	cascade:drugName "Atorvastatin 10 mg tablet" ;
 	cascade:rxNormCode <https://ns.cascadeprotocol.org/codes/rxnorm/617312> ;
 	cascade:workflowStatus "active" ;
@@ -17,16 +26,16 @@
 <urn:uuid:e10d33f4-5d5b-889d-8c36-c05a9850a9e8> a cascade:PrescribedOrReportedMedication ;
 	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/MedicationRequest/medrx-atorvastatin-1> ;
 	cascade:sourceRecordId "medrx-atorvastatin-1" .
-<ni:///sha-256;28b0jRk7Wtte2ngpyT7ZT93rnhX8EEM09S0QnWhglNk> prov:specializationOf <urn:uuid:e10d33f4-5d5b-889d-8c36-c05a9850a9e8> ;
+<ni:///sha-256;X7rgaH1GgX-W31t61tzYBQ_78Q2jFD9f1kKUa1ypRbU> prov:specializationOf <urn:uuid:e10d33f4-5d5b-889d-8c36-c05a9850a9e8> ;
 	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
-_:a395ffe0cb9661bb4bb5051776628981 bridge:arrivedAs <ni:///sha-256;28b0jRk7Wtte2ngpyT7ZT93rnhX8EEM09S0QnWhglNk> ;
+_:7b94add0a2666bd0bce488506231ac1c bridge:arrivedAs <ni:///sha-256;X7rgaH1GgX-W31t61tzYBQ_78Q2jFD9f1kKUa1ypRbU> ;
 	pav:version "2" ;
 	pav:lastUpdateOn "2026-03-02T09:15:00Z"^^xsd:dateTime ;
-	oa:hasSelector _:9a8225f451aa49cdf7973b32a50c6653 ;
+	oa:hasSelector _:e8ec33eb6a55e1497b15c35f3cb8b755 ;
 	oa:hasSource <ni:///sha-256;7bBazRJX5AEBT89SGpRxHvZ20pzhKXPs8CexzvUAWg8> ;
 	prov:wasDerivedFrom <ni:///sha-256;7bBazRJX5AEBT89SGpRxHvZ20pzhKXPs8CexzvUAWg8> ;
 	prov:wasGeneratedBy _:fcb3e046b697cdaa2cfb977db368d22a .
-_:9a8225f451aa49cdf7973b32a50c6653 a oa:FragmentSelector ;
+_:e8ec33eb6a55e1497b15c35f3cb8b755 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;7bBazRJX5AEBT89SGpRxHvZ20pzhKXPs8CexzvUAWg8> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;

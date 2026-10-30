@@ -1,0 +1,101 @@
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX sh:      <http://www.w3.org/ns/shacl#>
+PREFIX oa:      <http://www.w3.org/ns/oa#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX fx:      <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:     <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:  <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+PREFIX cascade: <https://ns.cascadeprotocol.org/cascade#>
+
+# What condition.rq and procedure.rq leave behind of a code: a coding with no
+# system, a system coding-system-table.rq gives no row, or no code or a code of
+# blanks, reported at its code where the code is the part that fails or the
+# system names nothing, else at its system; and each CPT code of a procedure
+# after the first that differs from it, the vocabulary holding one.
+
+CONSTRUCT {
+  [] a oa:Annotation ;
+    oa:hasTarget [
+      oa:hasSource bridge:thisRecord ;
+      oa:hasSelector [
+        a oa:FragmentSelector ;
+        dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+        rdf:value ?pointer
+      ]
+    ] ;
+    oa:hasBody ?gap ;
+    oa:motivatedBy oa:classifying ;
+    sh:value ?value .
+}
+WHERE {
+  FILTER NOT EXISTS {
+    bridge:thisDocument cascade:sourceFormatVersion ?stated .
+    FILTER (!STRSTARTS(?stated, "4.0."))
+  }
+  bridge:thisRecord bridge:selector ?recordSelector .
+  ?root a fx:root .
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  { BIND ("" AS ?containedStep) }
+  UNION
+  {
+    ?top xyz:contained ?containedList .
+    ?containedList ?containedSlot ?contained .
+    ?contained xyz:resourceType ?containedType .
+    BIND (CONCAT("/contained/", STR(xsd:integer(STRAFTER(STR(?containedSlot), "#_")) - 1)) AS ?containedStep)
+  }
+  BIND (COALESCE(?contained, ?top) AS ?resource)
+  ?resource xyz:resourceType ?type .
+  FILTER (?type IN ("Condition", "Procedure"))
+
+  {
+    ?resource xyz:code ?concept . ?concept xyz:coding ?codings . ?codings ?codingSlot ?coding .
+    FILTER (STRSTARTS(STR(?codingSlot), STR(rdf:_)))
+    OPTIONAL { ?coding xyz:code ?codeWritten }
+    OPTIONAL { ?coding xyz:system ?systemWritten }
+    FILTER (BOUND(?codeWritten) || BOUND(?systemWritten))
+    BIND (EXISTS { ?coding xyz:system ?readSystem . ?readRow fhirr4:systemWritten ?readSystem } AS ?systemRead)
+    BIND (COALESCE(REPLACE(STR(?codeWritten), "^\\s+|\\s+$", "") != "", false) AS ?codeRead)
+    FILTER (!?systemRead || !?codeRead)
+    BIND (IF(!BOUND(?systemWritten) || (?systemRead && BOUND(?codeWritten)), "/code", "/system") AS ?part)
+    BIND (IF(?part = "/code", ?codeWritten, ?systemWritten) AS ?value)
+    BIND (fhirr4:codingNotCarried AS ?gap)
+  }
+  UNION
+  {
+    ?resource xyz:code ?concept . ?concept xyz:coding ?codings . ?codings ?codingSlot ?coding .
+    ?coding xyz:system ?systemWritten ;
+      xyz:code ?value .
+    ?systemRow fhirr4:systemWritten ?systemWritten ;
+      fhirr4:systemRead "http://www.ama-assn.org/go/cpt" .
+    BIND (REPLACE(STR(?value), "^\\s+|\\s+$", "") AS ?code)
+    FILTER (?code != "")
+    FILTER EXISTS {
+      ?codings ?firstSlot ?first .
+      ?first xyz:system ?firstSystemWritten ;
+        xyz:code ?firstWritten .
+      ?firstSystemRow fhirr4:systemWritten ?firstSystemWritten ;
+        fhirr4:systemRead "http://www.ama-assn.org/go/cpt" .
+      BIND (REPLACE(STR(?firstWritten), "^\\s+|\\s+$", "") AS ?firstCode)
+      FILTER (?firstCode != "" && ?firstCode != ?code
+        && xsd:integer(STRAFTER(STR(?firstSlot), "#_")) < xsd:integer(STRAFTER(STR(?codingSlot), "#_")))
+      FILTER NOT EXISTS {
+        ?codings ?earlierSlot ?earlier .
+        ?earlier xyz:system ?earlierSystemWritten ;
+          xyz:code ?earlierWritten .
+        ?earlierSystemRow fhirr4:systemWritten ?earlierSystemWritten ;
+          fhirr4:systemRead "http://www.ama-assn.org/go/cpt" .
+        FILTER (REPLACE(STR(?earlierWritten), "^\\s+|\\s+$", "") != ""
+          && xsd:integer(STRAFTER(STR(?earlierSlot), "#_")) < xsd:integer(STRAFTER(STR(?firstSlot), "#_")))
+      }
+    }
+    BIND ("/code" AS ?part)
+    BIND (fhirr4:procedureCptCodeRepeated AS ?gap)
+  }
+  FILTER (?gap != fhirr4:procedureCptCodeRepeated || ?type = "Procedure")
+  BIND (CONCAT(?topStep, ?containedStep, "/code/coding/", STR(xsd:integer(STRAFTER(STR(?codingSlot), "#_")) - 1), ?part)
+        AS ?pointer)
+}

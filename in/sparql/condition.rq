@@ -9,6 +9,12 @@ PREFIX skos:     <http://www.w3.org/2004/02/skos/core#>
 PREFIX void:     <http://rdfs.org/ns/void#>
 PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 
+# Every coding of a condition's code is carried: one in SNOMED CT or ICD-10-CM
+# as its IRI, one in any other system, ICD-9-CM among them, as a
+# cascade:conditionCodeInOtherSystem literal typed by the system. A coding's
+# system is read as coding-system-table.rq reads it, and its code trimmed of
+# leading and trailing whitespace; one with no system, a system no row reads,
+# or no code is not carried, and code-findings.rq reports it.
 # A date is typed by the precision FHIR wrote it to: a year is an xsd:gYear, a
 # year and month an xsd:gYearMonth, a day an xsd:date, a time an xsd:dateTime.
 # A time written to the minute, as C-CDA on FHIR writes one, is padded to the
@@ -61,24 +67,24 @@ WHERE {
   UNION
   {
     ?resource xyz:code ?coded . ?coded xyz:coding ?codings . ?codings ?codingSlot ?coding .
-    ?coding xyz:system "http://snomed.info/sct" ;
-      xyz:code ?code .
-    ?codeSystem skos:inScheme fhirr4:codeSystems ;
-      cascade:codingSystemUri "http://snomed.info/sct"^^xsd:anyURI ;
-      void:uriSpace ?stem .
-    BIND (cascade:snomedCode AS ?p)
-    BIND (IRI(CONCAT(?stem, ENCODE_FOR_URI(?code))) AS ?o)
-  }
-  UNION
-  {
-    ?resource xyz:code ?coded . ?coded xyz:coding ?codings . ?codings ?codingSlot ?coding .
-    ?coding xyz:system "http://hl7.org/fhir/sid/icd-10-cm" ;
-      xyz:code ?code .
-    ?codeSystem skos:inScheme fhirr4:codeSystems ;
-      cascade:codingSystemUri "http://hl7.org/fhir/sid/icd-10-cm"^^xsd:anyURI ;
-      void:uriSpace ?stem .
-    BIND (cascade:icd10Code AS ?p)
-    BIND (IRI(CONCAT(?stem, ENCODE_FOR_URI(?code))) AS ?o)
+    ?coding xyz:system ?systemWritten ;
+      xyz:code ?codeWritten .
+    ?systemRow fhirr4:systemWritten ?systemWritten ;
+      fhirr4:systemRead ?system .
+    BIND (REPLACE(STR(?codeWritten), "^\\s+|\\s+$", "") AS ?code)
+    FILTER (?code != "")
+    OPTIONAL {
+      VALUES (?system ?listedProperty) {
+        ("http://snomed.info/sct" cascade:snomedCode)
+        ("http://hl7.org/fhir/sid/icd-10-cm" cascade:icd10Code)
+      }
+      ?codeSystem skos:inScheme fhirr4:codeSystems ;
+        cascade:codingSystemUri ?listedSystem ;
+        void:uriSpace ?stem .
+      FILTER (STR(?listedSystem) = ?system)
+    }
+    BIND (COALESCE(?listedProperty, cascade:conditionCodeInOtherSystem) AS ?p)
+    BIND (IF(BOUND(?listedProperty), IRI(CONCAT(?stem, ENCODE_FOR_URI(?code))), STRDT(?code, IRI(?system))) AS ?o)
   }
   UNION
   {

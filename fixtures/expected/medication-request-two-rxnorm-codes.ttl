@@ -7,7 +7,8 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;RKx3cl3mnswm0sYPfNFW7fbIcU3zjLw1GN8TByb-fes> cascade:prescribedOrReported "prescribed" ;
+<ni:///sha-256;qg_UJ2oMGJ7z7wPRvfd1qFYZw3K8oQpgA3fR6vtFUD4> cascade:structuredDosage <ni:///sha-256;qg_UJ2oMGJ7z7wPRvfd1qFYZw3K8oQpgA3fR6vtFUD4#dosage-2> , <ni:///sha-256;qg_UJ2oMGJ7z7wPRvfd1qFYZw3K8oQpgA3fR6vtFUD4#dosage-1> ;
+	cascade:prescribedOrReported "prescribed" ;
 	cascade:drugName "Amlodipine 5 mg tablet" ;
 	cascade:ndcCode <https://ns.cascadeprotocol.org/codes/ndc11/00069153066> ;
 	cascade:workflowStatus "active" ;
@@ -18,14 +19,14 @@
 <urn:uuid:c03a321f-11c9-877c-b099-97c607e4a74e> a cascade:PrescribedOrReportedMedication ;
 	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/MedicationRequest/medrx-amlodipine-2> ;
 	cascade:sourceRecordId "medrx-amlodipine-2" .
-<ni:///sha-256;RKx3cl3mnswm0sYPfNFW7fbIcU3zjLw1GN8TByb-fes> prov:specializationOf <urn:uuid:c03a321f-11c9-877c-b099-97c607e4a74e> ;
+<ni:///sha-256;qg_UJ2oMGJ7z7wPRvfd1qFYZw3K8oQpgA3fR6vtFUD4> prov:specializationOf <urn:uuid:c03a321f-11c9-877c-b099-97c607e4a74e> ;
 	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
-_:49bc9d06aa34904b35d409766e4fa9d0 bridge:arrivedAs <ni:///sha-256;RKx3cl3mnswm0sYPfNFW7fbIcU3zjLw1GN8TByb-fes> ;
-	oa:hasSelector _:fd6ea85ffd1b52069636be4d43920cd1 ;
+_:d00a6616d77b03c6f5e7a480f3153471 bridge:arrivedAs <ni:///sha-256;qg_UJ2oMGJ7z7wPRvfd1qFYZw3K8oQpgA3fR6vtFUD4> ;
+	oa:hasSelector _:3482233e0473d5e031a33f61b52d00c9 ;
 	oa:hasSource <ni:///sha-256;VEtONQnRpYfpn4Rp7ACtzas_jYXuhZFk7gZHXCbFP6U> ;
 	prov:wasDerivedFrom <ni:///sha-256;VEtONQnRpYfpn4Rp7ACtzas_jYXuhZFk7gZHXCbFP6U> ;
 	prov:wasGeneratedBy _:da2040eb9ead971f0f9c80d7b1286101 .
-_:fd6ea85ffd1b52069636be4d43920cd1 a oa:FragmentSelector ;
+_:3482233e0473d5e031a33f61b52d00c9 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;VEtONQnRpYfpn4Rp7ACtzas_jYXuhZFk7gZHXCbFP6U> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
