@@ -1,15 +1,31 @@
+@prefix fhirr4: <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:f59f3e6216ed89bde3280107462ab330 a oa:FragmentSelector ;
+_:b76ed9ca852d30271b4034a6973de12b a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:d1216bace7d1e284dff1a389b546255d a oa:Annotation ;
-	oa:hasTarget _:c665c9875632cad0b1d962479c5ee03a .
-_:c665c9875632cad0b1d962479c5ee03a oa:hasSource <../in/diagnostic-report-times-absent-for-reason.json> ;
-	oa:hasSelector _:f59f3e6216ed89bde3280107462ab330 .
-_:d1216bace7d1e284dff1a389b546255d oa:hasBody sh:InConstraintComponent ;
+_:f3fbeff7ad07774f2c5faebb60c09f99 a oa:Annotation ;
+	oa:hasTarget _:c6559fa0e72a0683e92829d919b81573 .
+_:c6559fa0e72a0683e92829d919b81573 oa:hasSource <../in/diagnostic-report-times-absent-for-reason.json> ;
+	oa:hasSelector _:b76ed9ca852d30271b4034a6973de12b .
+_:f3fbeff7ad07774f2c5faebb60c09f99 oa:hasBody sh:InConstraintComponent ;
 	oa:motivatedBy oa:classifying ;
 	sh:resultPath <https://ns.cascadeprotocol.org/cascade#absentValueProperty> ;
 	sh:focusNode <ni:///sha-256;hc4bg5tpODWKBjo7SvTsaZXy_KA49NDBWlFNmp1vm9g#absent-reportIssuedTime> ;
 	sh:resultSeverity sh:Violation .
+_:e16f4a4b7537d9d111a8fc8103cfcb21 a oa:FragmentSelector ;
+	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "" .
+_:b1192b8d8050f0b1229ca967f67e7b2d oa:hasSource <../in/diagnostic-report-times-absent-for-reason.json> .
+_:e16f4a4b7537d9d111a8fc8103cfcb21 oa:refinedBy _:b5680105f4fdf1fc5a46b4b66a737d1e .
+_:b5680105f4fdf1fc5a46b4b66a737d1e a oa:FragmentSelector ;
+	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/presentedForm/0/url" .
+_:b1192b8d8050f0b1229ca967f67e7b2d oa:hasSelector _:e16f4a4b7537d9d111a8fc8103cfcb21 .
+_:c5dcd722a2324d6fa754cae059c5cba3 oa:hasTarget _:b1192b8d8050f0b1229ca967f67e7b2d ;
+	sh:resultSeverity sh:Warning ;
+	a oa:Annotation ;
+	oa:hasBody fhirr4:attachmentDataNotRead ;
+	oa:motivatedBy oa:classifying ;
+	sh:value "application/pdf" .

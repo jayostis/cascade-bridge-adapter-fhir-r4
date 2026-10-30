@@ -1,0 +1,43 @@
+@prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix pav: <http://purl.org/pav/> .
+<ni:///sha-256;Q6-w2VI3eRAurKDxP9BI7n_-utmUAPauZDH_kx09JLw> cascade:narrativeText "B12 < 200 pg/mL & folate \"normal\", the patient's diet 'mixed' — repeat\nin 3 months\nB12\n150 pg/mL" .
+<urn:uuid:474cc339-337a-89df-b9a4-2aad3efa61f1> a cascade:DiagnosticReport ;
+	cascade:sourceUrl <http://example.org/fhir/DiagnosticReport/narrative-markup> ;
+	cascade:sourceRecordId "narrative-markup" .
+<ni:///sha-256;Q6-w2VI3eRAurKDxP9BI7n_-utmUAPauZDH_kx09JLw> prov:specializationOf <urn:uuid:474cc339-337a-89df-b9a4-2aad3efa61f1> ;
+	cascade:patient <urn:uuid:1cc3cbf1-3a8f-8691-923b-e87de6e5c3a3> .
+_:f3af86b855ddbe84d777bced2c7b4c00 bridge:arrivedAs <ni:///sha-256;Q6-w2VI3eRAurKDxP9BI7n_-utmUAPauZDH_kx09JLw> .
+<ni:///sha-256;Q6-w2VI3eRAurKDxP9BI7n_-utmUAPauZDH_kx09JLw> cascade:reportName "Cobalamin (Vitamin B12) [Mass/volume] in Serum or Plasma" ;
+	cascade:workflowStatus "final" ;
+	cascade:reportCode <http://loinc.org/rdf/2132-9> .
+_:f3af86b855ddbe84d777bced2c7b4c00 oa:hasSelector _:2b1f9e34c2a1a08457c49b1ea4778eba ;
+	oa:hasSource <ni:///sha-256;qWoy0494hFtRv1v5-BXFj26U2A7b0i8hD-VEL7tpSIg> ;
+	prov:wasDerivedFrom <ni:///sha-256;qWoy0494hFtRv1v5-BXFj26U2A7b0i8hD-VEL7tpSIg> ;
+	prov:wasGeneratedBy _:5be93a3e3b432a8f5304c9c0b47021e0 .
+_:2b1f9e34c2a1a08457c49b1ea4778eba a oa:FragmentSelector ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "" .
+<ni:///sha-256;qWoy0494hFtRv1v5-BXFj26U2A7b0i8hD-VEL7tpSIg> cascade:serverBaseUrl "http://example.org/fhir" ;
+	pav:retrievedOn "2026-10-13T09:00:00Z"^^xsd:dateTime ;
+	cascade:sourceFormatVersion "4.0.1" .
+_:5be93a3e3b432a8f5304c9c0b47021e0 <http://www.w3.org/2000/01/rdf-schema#label> "Example server export" ;
+	prov:startedAtTime "2026-10-13T09:00:04Z"^^xsd:dateTime .
+<ni:///sha-256;qWoy0494hFtRv1v5-BXFj26U2A7b0i8hD-VEL7tpSIg> a prov:Entity .
+_:5be93a3e3b432a8f5304c9c0b47021e0 a prov:Activity ;
+	prov:used <ni:///sha-256;qWoy0494hFtRv1v5-BXFj26U2A7b0i8hD-VEL7tpSIg> ;
+	prov:qualifiedAssociation _:6c5b6e7b16933bba579cf7e44bb25793 .
+_:6c5b6e7b16933bba579cf7e44bb25793 prov:hadPlan _:9818eb2517e0a1456427674d90d0b1f6 .
+_:9818eb2517e0a1456427674d90d0b1f6 a prov:Plan ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "fhir-r4" ;
+	pav:version "0.1.0" .
+_:6c5b6e7b16933bba579cf7e44bb25793 prov:agent _:c69649d49d4b5859d16afb3a78f7e8b4 .
+_:c69649d49d4b5859d16afb3a78f7e8b4 a prov:SoftwareAgent ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Cascade Bridge for Rust" ;
+	pav:version "0.1.0" .

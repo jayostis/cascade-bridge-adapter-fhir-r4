@@ -578,6 +578,39 @@
           "@id": "fixtures/in/document-reference-date-absent-for-reason.json"
         },
         {
+          "@id": "fixtures/in/bundle-reports-results-and-performers.json"
+        },
+        {
+          "@id": "fixtures/in/diagnostic-report-contained-results.json"
+        },
+        {
+          "@id": "fixtures/in/diagnostic-report-codes-and-times.json"
+        },
+        {
+          "@id": "fixtures/in/document-reference-type-codings.json"
+        },
+        {
+          "@id": "fixtures/in/document-reference-two-authors.json"
+        },
+        {
+          "@id": "fixtures/in/document-reference-ccd-ihe-r4-system.json"
+        },
+        {
+          "@id": "fixtures/in/document-reference-ccd-ihe-canonical-system.json"
+        },
+        {
+          "@id": "fixtures/in/document-reference-unstructured-ccda.json"
+        },
+        {
+          "@id": "fixtures/in/diagnostic-report-narrative-markup.json"
+        },
+        {
+          "@id": "fixtures/in/document-reference-text-attachments.json"
+        },
+        {
+          "@id": "fixtures/in/document-reference-inline-pdf.json"
+        },
+        {
           "@id": "fixtures/in/bundle-document-custodian-and-authors.json"
         },
         {
@@ -1011,6 +1044,72 @@
         },
         {
           "@id": "fixtures/findings/document-reference-date-absent-for-reason.ttl"
+        },
+        {
+          "@id": "fixtures/expected/bundle-reports-results-and-performers.ttl"
+        },
+        {
+          "@id": "fixtures/findings/bundle-reports-results-and-performers.ttl"
+        },
+        {
+          "@id": "fixtures/expected/diagnostic-report-contained-results.ttl"
+        },
+        {
+          "@id": "fixtures/findings/diagnostic-report-contained-results.ttl"
+        },
+        {
+          "@id": "fixtures/expected/diagnostic-report-codes-and-times.ttl"
+        },
+        {
+          "@id": "fixtures/findings/diagnostic-report-codes-and-times.ttl"
+        },
+        {
+          "@id": "fixtures/expected/document-reference-type-codings.ttl"
+        },
+        {
+          "@id": "fixtures/findings/document-reference-type-codings.ttl"
+        },
+        {
+          "@id": "fixtures/expected/document-reference-two-authors.ttl"
+        },
+        {
+          "@id": "fixtures/findings/document-reference-two-authors.ttl"
+        },
+        {
+          "@id": "fixtures/expected/document-reference-ccd-ihe-r4-system.ttl"
+        },
+        {
+          "@id": "fixtures/findings/document-reference-ccd-ihe-r4-system.ttl"
+        },
+        {
+          "@id": "fixtures/expected/document-reference-ccd-ihe-canonical-system.ttl"
+        },
+        {
+          "@id": "fixtures/findings/document-reference-ccd-ihe-canonical-system.ttl"
+        },
+        {
+          "@id": "fixtures/expected/document-reference-unstructured-ccda.ttl"
+        },
+        {
+          "@id": "fixtures/findings/document-reference-unstructured-ccda.ttl"
+        },
+        {
+          "@id": "fixtures/expected/diagnostic-report-narrative-markup.ttl"
+        },
+        {
+          "@id": "fixtures/findings/diagnostic-report-narrative-markup.ttl"
+        },
+        {
+          "@id": "fixtures/expected/document-reference-text-attachments.ttl"
+        },
+        {
+          "@id": "fixtures/findings/document-reference-text-attachments.ttl"
+        },
+        {
+          "@id": "fixtures/expected/document-reference-inline-pdf.ttl"
+        },
+        {
+          "@id": "fixtures/findings/document-reference-inline-pdf.ttl"
         },
         {
           "@id": "fixtures/expected/bundle-document-custodian-and-authors.ttl"
@@ -3022,6 +3121,149 @@
       "description": "A DocumentReference from a server of type LOINC 11506-3, Progress note, with no date and the data-absent-reason extension on _date (unknown), and a PDF by URL. Authored here on 2026-10-30, for a case the conformance corpus does not hold."
     },
     {
+      "@id": "fixtures/in/bundle-reports-results-and-performers.json",
+      "@type": "File",
+      "name": "bundle-reports-results-and-performers",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "12311",
+      "sha256": "190cd92e8ff4b0c826a33c851b5a5cd56472e69c379c630036b3e9960ec451ad",
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Bundle from a server of three DiagnosticReports (LOINC 2132-9), two with server fullUrls and one under a urn:uuid, a CBC panel (LOINC 58410-2) with a member, two heart rates (LOINC 8867-4), one under a urn:uuid, a report whose div holds only white space, lab results under server fullUrls and urn:uuids, two entries holding one Observation id, two sharing one urn:uuid, and Organizations held twice or under a urn:uuid. Authored here on 2026-10-30, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/diagnostic-report-contained-results.json",
+      "@type": "File",
+      "name": "diagnostic-report-contained-results",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "2452",
+      "sha256": "8a5ab2303c89007cc63f40d7a43f11dfc331fbec7dde6102bb0194c8bdd422d3",
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A DiagnosticReport from a server with meta.versionId 3, containing a lab result (LOINC 2132-9), a heart rate (LOINC 8867-4) and a DiagnosticReport issued on a day whose result is \"#obs\", with results \"#obs\" and \"#hr\". Authored here on 2026-10-30, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/diagnostic-report-codes-and-times.json",
+      "@type": "File",
+      "name": "diagnostic-report-codes-and-times",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "580",
+      "sha256": "f0f95c1c52397588fa601828fb040c62d79c1c4440590adbe2050564a7bf365b",
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A DiagnosticReport from a server coded SNOMED CT 271216009, Serum vitamin B12 measurement, with no display, then a code with no system displayed \"Vitamin B12 test\", effectiveDateTime written to the minute and issued with milliseconds. Authored here on 2026-10-30, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/document-reference-type-codings.json",
+      "@type": "File",
+      "name": "document-reference-type-codings",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "638",
+      "sha256": "3d863f0b4f395c1a3366bca60be1e668b561287f567a2fbd2bc9cb614256978a",
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A DocumentReference from a server whose type's text is \"Clinic progress note\", with SNOMED CT 371532007, Progress report, and a LOINC coding with no code, dated to the minute. Authored here on 2026-10-30, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/document-reference-two-authors.json",
+      "@type": "File",
+      "name": "document-reference-two-authors",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "852",
+      "sha256": "e6a9f394d77032f9495f940e7960cc6a275c0cd1dfbabb5598e904b5f6d26577",
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A DocumentReference from a server typed LOINC 11506-3 with no display then SNOMED CT 371532007, Progress report, then a clinic's own code displayed \"Clinic note\", with two Organization authors. Authored here on 2026-10-30, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/document-reference-ccd-ihe-r4-system.json",
+      "@type": "File",
+      "name": "document-reference-ccd-ihe-r4-system",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "895",
+      "sha256": "0dc635f20779407bd24ef0fbf4cc21126d16f37c2c9273f855e205772aa2baa0",
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A DocumentReference from a server of a CCD, format urn:hl7-org:sdwg:ccda-structuredBody:2.1 in http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem, with data-absent-reasons unknown and not-a-reason on _date, a type coding with no system and a subject display. Authored here on 2026-10-30, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/document-reference-ccd-ihe-canonical-system.json",
+      "@type": "File",
+      "name": "document-reference-ccd-ihe-canonical-system",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "627",
+      "sha256": "52d1506e189b891ff80bab744b011f64dca86a57fd6bcfd183f05ffeee5ba695",
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A DocumentReference from a server of a CCD, format urn:hl7-org:sdwg:ccda-structuredBody:2.1 in http://ihe.net/fhir/ihe.formatcode.fhir/CodeSystem/formatcode. Authored here on 2026-10-30, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/document-reference-unstructured-ccda.json",
+      "@type": "File",
+      "name": "document-reference-unstructured-ccda",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "609",
+      "sha256": "904f1c8615e5a19bc99a9756924717001d8c8cae5fd5f56a958a69640785a824",
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A DocumentReference from a server of a discharge summary (LOINC 18842-5) whose content is an application/pdf by URL with the HL7 document format code urn:hl7-org:sdwg:ccda-nonXMLBody:2.1. Authored here on 2026-10-30, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/diagnostic-report-narrative-markup.json",
+      "@type": "File",
+      "name": "diagnostic-report-narrative-markup",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "642",
+      "sha256": "a96a32d38f78845b51bf5bf9f815c58f6e94d80edbd22f210fe5442fbb694888",
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A DiagnosticReport from a server whose div holds a paragraph with <br/>, &lt;, &amp;, &quot;, &apos;, &#39;, &#160;, &nbsp; and &#x2014;, then a table of two cells. Authored here on 2026-10-30, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/document-reference-text-attachments.json",
+      "@type": "File",
+      "name": "document-reference-text-attachments",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "874",
+      "sha256": "456760f725b564583ddda19c53e92008aad8b7221d214e9728ba1b4bec73ece4",
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A DocumentReference from a server whose contents are inline text/xml, text/plain of white space, text/plain \"B12 < 200 pg/mL; folate > 4 ng/mL\" and text/plain \"A second rendition\". Authored here on 2026-10-30, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/document-reference-inline-pdf.json",
+      "@type": "File",
+      "name": "document-reference-inline-pdf",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "695",
+      "sha256": "febef49a6a18b6fb7dd112a7cc65d3a3e8d4896051cd92c366ce02d0c92344f4",
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A DocumentReference from a server of a discharge summary (LOINC 18842-5) with a narrative div, an inline application/pdf with an empty title, and an inline text/plain of white space. Authored here on 2026-10-30, for a case the conformance corpus does not hold."
+    },
+    {
       "@id": "fixtures/in/bundle-document-without-custodian.json",
       "@type": "File",
       "name": "Document Bundle naming no custodian",
@@ -4691,8 +4933,8 @@
       "@type": "File",
       "name": "Expected findings for diagnostic-report-every-mapped-element",
       "encodingFormat": "text/turtle",
-      "contentSize": "2990",
-      "sha256": "3660667134ec3fec82bf025b80f26c3311c83eb1f40711518e6b85ef9664bed2",
+      "contentSize": "3906",
+      "sha256": "e76abe6164b087f111b6c2c90d7b63fa44526b83219110a368f1611ae531a8c2",
       "about": {
         "@id": "fixtures/in/diagnostic-report-every-mapped-element.json"
       },
@@ -4787,8 +5029,8 @@
       "@type": "File",
       "name": "Expected findings for diagnostic-report-times-absent-for-reason",
       "encodingFormat": "text/turtle",
-      "contentSize": "883",
-      "sha256": "cb9f709efc0a4d2e94a8347c5af85ba22f936b8bea26b88fd22e3f2f00956898",
+      "contentSize": "1813",
+      "sha256": "b47860657c9f2617623e79b578630cc547927499b88054e68e94982602458b35",
       "about": {
         "@id": "fixtures/in/diagnostic-report-times-absent-for-reason.json"
       },
@@ -4819,10 +5061,362 @@
       "@type": "File",
       "name": "Expected findings for document-reference-date-absent-for-reason",
       "encodingFormat": "text/turtle",
+      "contentSize": "1081",
+      "sha256": "30eaa9bb0a3b0325995198ce390bf806ea2b81c470e22020a3faaa4e98a712c0",
+      "about": {
+        "@id": "fixtures/in/document-reference-date-absent-for-reason.json"
+      },
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/bundle-reports-results-and-performers.ttl",
+      "@type": "File",
+      "name": "Expected graph for bundle-reports-results-and-performers",
+      "encodingFormat": "text/turtle",
+      "contentSize": "14988",
+      "sha256": "89bd3e39adc3baa62ebca75fd5647b932d527a0d63000d782916c6e9cbdba848",
+      "about": {
+        "@id": "fixtures/in/bundle-reports-results-and-performers.json"
+      },
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/findings/bundle-reports-results-and-performers.ttl",
+      "@type": "File",
+      "name": "Expected findings for bundle-reports-results-and-performers",
+      "encodingFormat": "text/turtle",
+      "contentSize": "17696",
+      "sha256": "3f314c33ac313c6ee630f5d365ee08b4617981eb60657aa6485041fd207523d6",
+      "about": {
+        "@id": "fixtures/in/bundle-reports-results-and-performers.json"
+      },
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/diagnostic-report-contained-results.ttl",
+      "@type": "File",
+      "name": "Expected graph for diagnostic-report-contained-results",
+      "encodingFormat": "text/turtle",
+      "contentSize": "5762",
+      "sha256": "9e286c9e119a2e0bbda6710d390aa595e6b67110475d151dfe1af9e3f3d653b8",
+      "about": {
+        "@id": "fixtures/in/diagnostic-report-contained-results.json"
+      },
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/findings/diagnostic-report-contained-results.ttl",
+      "@type": "File",
+      "name": "Expected findings for diagnostic-report-contained-results",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2538",
+      "sha256": "accb999ac4aef42d67f4f7822e332b1886189cdd8e1c407bbfa1fbd9b32bab34",
+      "about": {
+        "@id": "fixtures/in/diagnostic-report-contained-results.json"
+      },
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/diagnostic-report-codes-and-times.ttl",
+      "@type": "File",
+      "name": "Expected graph for diagnostic-report-codes-and-times",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3195",
+      "sha256": "4996af4bdfc26f69290a03f63c0086913c25add95d9a794abfd2ff2e47169a96",
+      "about": {
+        "@id": "fixtures/in/diagnostic-report-codes-and-times.json"
+      },
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/findings/diagnostic-report-codes-and-times.ttl",
+      "@type": "File",
+      "name": "Expected findings for diagnostic-report-codes-and-times",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1665",
+      "sha256": "063275092655f4a1d88f0aa43be419013c2252e3bf305922736284e65c5da7d1",
+      "about": {
+        "@id": "fixtures/in/diagnostic-report-codes-and-times.json"
+      },
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/document-reference-type-codings.ttl",
+      "@type": "File",
+      "name": "Expected graph for document-reference-type-codings",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3463",
+      "sha256": "0eb5f73d4b89351b3efeb25c6f1b8e685350ef2e04bb2a7b71a35d2381f24bed",
+      "about": {
+        "@id": "fixtures/in/document-reference-type-codings.json"
+      },
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/findings/document-reference-type-codings.ttl",
+      "@type": "File",
+      "name": "Expected findings for document-reference-type-codings",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1676",
+      "sha256": "5f81291b07cd536d8f0d2c6f40c6b9b2e04c86985e025626d16abbf95489e672",
+      "about": {
+        "@id": "fixtures/in/document-reference-type-codings.json"
+      },
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/document-reference-two-authors.ttl",
+      "@type": "File",
+      "name": "Expected graph for document-reference-two-authors",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3197",
+      "sha256": "c5be854f770c816f46c0e08f752a5c19c0b52844a164e069b1c147db23369118",
+      "about": {
+        "@id": "fixtures/in/document-reference-two-authors.json"
+      },
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/findings/document-reference-two-authors.ttl",
+      "@type": "File",
+      "name": "Expected findings for document-reference-two-authors",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2097",
+      "sha256": "bf83e355b4455b6173431bcb0f0951923dd8b50c5aa2e5964c62e98670642cdb",
+      "about": {
+        "@id": "fixtures/in/document-reference-two-authors.json"
+      },
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/document-reference-ccd-ihe-r4-system.ttl",
+      "@type": "File",
+      "name": "Expected graph for document-reference-ccd-ihe-r4-system",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1343",
+      "sha256": "885cbc8a7c48e1ea13663d5b15ad737e3d0cbd803f5cc56d409b2002f9b7a72b",
+      "about": {
+        "@id": "fixtures/in/document-reference-ccd-ihe-r4-system.json"
+      },
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/findings/document-reference-ccd-ihe-r4-system.ttl",
+      "@type": "File",
+      "name": "Expected findings for document-reference-ccd-ihe-r4-system",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1108",
+      "sha256": "c60c0e30cc3678fc93cab25f02eb9d11ceb2ca8bcd016d65fc62a0f679ef10a8",
+      "about": {
+        "@id": "fixtures/in/document-reference-ccd-ihe-r4-system.json"
+      },
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/document-reference-ccd-ihe-canonical-system.ttl",
+      "@type": "File",
+      "name": "Expected graph for document-reference-ccd-ihe-canonical-system",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1345",
+      "sha256": "d2499fcf0701234c0232bb48afb32020e4770f68f495d823a318c61884712006",
+      "about": {
+        "@id": "fixtures/in/document-reference-ccd-ihe-canonical-system.json"
+      },
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/findings/document-reference-ccd-ihe-canonical-system.ttl",
+      "@type": "File",
+      "name": "Expected findings for document-reference-ccd-ihe-canonical-system",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1115",
+      "sha256": "66c2d4f93cecf7b32de773ce6f5852879b90c12140fd019eb85d1a51468fc06f",
+      "about": {
+        "@id": "fixtures/in/document-reference-ccd-ihe-canonical-system.json"
+      },
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/document-reference-unstructured-ccda.ttl",
+      "@type": "File",
+      "name": "Expected graph for document-reference-unstructured-ccda",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3009",
+      "sha256": "2e0e3e86494c3fbc00e541fa51af5166797933dafadedb9b25d2aeb832240149",
+      "about": {
+        "@id": "fixtures/in/document-reference-unstructured-ccda.json"
+      },
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/findings/document-reference-unstructured-ccda.ttl",
+      "@type": "File",
+      "name": "Expected findings for document-reference-unstructured-ccda",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1076",
+      "sha256": "3fa009b5d7c44cf0611e2077745c065230f84adce0ab596768b8203a62dc2a53",
+      "about": {
+        "@id": "fixtures/in/document-reference-unstructured-ccda.json"
+      },
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/diagnostic-report-narrative-markup.ttl",
+      "@type": "File",
+      "name": "Expected graph for diagnostic-report-narrative-markup",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2914",
+      "sha256": "52d9c802199d5811e8acdc60f14a1c7f14602724f8ef236135053a8d5db59166",
+      "about": {
+        "@id": "fixtures/in/diagnostic-report-narrative-markup.json"
+      },
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/findings/diagnostic-report-narrative-markup.ttl",
+      "@type": "File",
+      "name": "Expected findings for diagnostic-report-narrative-markup",
+      "encodingFormat": "text/turtle",
       "contentSize": "0",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "about": {
-        "@id": "fixtures/in/document-reference-date-absent-for-reason.json"
+        "@id": "fixtures/in/diagnostic-report-narrative-markup.json"
+      },
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/document-reference-text-attachments.ttl",
+      "@type": "File",
+      "name": "Expected graph for document-reference-text-attachments",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3824",
+      "sha256": "dcb12e2f966be834b79922a6ab6fb7768d8cf84c635f06c20f3bd597ad3c5e3a",
+      "about": {
+        "@id": "fixtures/in/document-reference-text-attachments.json"
+      },
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/findings/document-reference-text-attachments.ttl",
+      "@type": "File",
+      "name": "Expected findings for document-reference-text-attachments",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2053",
+      "sha256": "7d1d139d112a0ab0a4a2d589d408dd24c9eee61024cccd9f39177d978eef3d97",
+      "about": {
+        "@id": "fixtures/in/document-reference-text-attachments.json"
+      },
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/expected/document-reference-inline-pdf.ttl",
+      "@type": "File",
+      "name": "Expected graph for document-reference-inline-pdf",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3275",
+      "sha256": "7f269f4b6019fa8bfba8351e819e18ce05f48ce708e0c43ca643850d8ce7818e",
+      "about": {
+        "@id": "fixtures/in/document-reference-inline-pdf.json"
+      },
+      "dateCreated": "2026-10-30",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/findings/document-reference-inline-pdf.ttl",
+      "@type": "File",
+      "name": "Expected findings for document-reference-inline-pdf",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1684",
+      "sha256": "af1065aee94ef4392ac02b545d7bf05282a7ac11d385c0f82db3c04ef5ba2063",
+      "about": {
+        "@id": "fixtures/in/document-reference-inline-pdf.json"
       },
       "dateCreated": "2026-10-30",
       "license": {
@@ -8032,8 +8626,8 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "contentSize": "94416",
-      "sha256": "bbb93b00cefb386915623389017b82c7f0c66d203b0e26a2fd2ad3e062e8a147"
+      "contentSize": "103169",
+      "sha256": "ba7a4296100fefd678048744d2aae208bf3f4dba855e462eb318aa5221b14286"
     },
     {
       "@id": "fixtures/facts/meridian.ttl",

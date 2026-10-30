@@ -46,6 +46,17 @@
     <#document-reference-ccd>
     <#diagnostic-report-times-absent-for-reason>
     <#document-reference-date-absent-for-reason>
+    <#bundle-reports-results-and-performers>
+    <#diagnostic-report-contained-results>
+    <#diagnostic-report-codes-and-times>
+    <#document-reference-type-codings>
+    <#document-reference-two-authors>
+    <#document-reference-ccd-ihe-r4-system>
+    <#document-reference-ccd-ihe-canonical-system>
+    <#document-reference-unstructured-ccda>
+    <#diagnostic-report-narrative-markup>
+    <#document-reference-text-attachments>
+    <#document-reference-inline-pdf>
     <#bundle-document-without-custodian>
     <#bundle-document-organizations-one-npi>
     <#composition-contained-custodian>
@@ -1942,4 +1953,147 @@
   mf:result [
     bridge:expectedGraph <expected/document-reference-date-absent-for-reason.ttl> ;
     bridge:expectedFindings <findings/document-reference-date-absent-for-reason.ttl>
+  ] .
+
+<#bundle-reports-results-and-performers> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-reports-results-and-performers" ;
+  rdfs:comment "Reports in a Bundle from a server: a result names a record by an absolute URL on the server with a version, or by a urn:uuid one entry holds, and names none when it is a panel, a vital sign, an Observation/<id> held under a urn:uuid or by two entries, or a urn:uuid two entries share, or a urn:uuid one entry holds of a vital sign; a report whose div holds only white space has no text; a performer names no organization when it is held by two entries or under a urn:uuid, or the report's own entry is held under a urn:uuid." ;
+  mf:action [
+    bridge:input <in/bundle-reports-results-and-performers.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/example-org.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-reports-results-and-performers.ttl> ;
+    bridge:expectedFindings <findings/bundle-reports-results-and-performers.ttl>
+  ] .
+
+<#diagnostic-report-contained-results> a bridge:IsomorphicConversionTest ;
+  mf:name "diagnostic-report-contained-results" ;
+  rdfs:comment "A DiagnosticReport whose results and whose contained DiagnosticReport's result are \"#\" and the id of an Observation it contains: a lab result's names its contained record, by the report's name and its meta.versionId, and a vital sign's names none; the contained report's issued, a day where FHIR's instant needs a time, is not carried, which FHIR's schema refuses." ;
+  mf:action [
+    bridge:input <in/diagnostic-report-contained-results.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/example-org.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/diagnostic-report-contained-results.ttl> ;
+    bridge:expectedFindings <findings/diagnostic-report-contained-results.ttl>
+  ] .
+
+<#diagnostic-report-codes-and-times> a bridge:IsomorphicConversionTest ;
+  mf:name "diagnostic-report-codes-and-times" ;
+  rdfs:comment "A DiagnosticReport coded in SNOMED CT beside a coding with no system, named by its first coding with a display, effective at a time written to the minute, which is padded, and issued with fractions of a second; FHIR's schema refuses the minute." ;
+  mf:action [
+    bridge:input <in/diagnostic-report-codes-and-times.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/example-org.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/diagnostic-report-codes-and-times.ttl> ;
+    bridge:expectedFindings <findings/diagnostic-report-codes-and-times.ttl>
+  ] .
+
+<#document-reference-type-codings> a bridge:IsomorphicConversionTest ;
+  mf:name "document-reference-type-codings" ;
+  rdfs:comment "A DocumentReference typed in SNOMED CT beside a LOINC coding with no code, named by its type's text, dated to the minute, which is padded; FHIR's schema refuses the minute." ;
+  mf:action [
+    bridge:input <in/document-reference-type-codings.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/example-org.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/document-reference-type-codings.ttl> ;
+    bridge:expectedFindings <findings/document-reference-type-codings.ttl>
+  ] .
+
+<#document-reference-two-authors> a bridge:IsomorphicConversionTest ;
+  mf:name "document-reference-two-authors" ;
+  rdfs:comment "A DocumentReference whose two authors name two Organizations: attributed to none, and each author reported; its name is the first of its two codings with a display." ;
+  mf:action [
+    bridge:input <in/document-reference-two-authors.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/example-org.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/document-reference-two-authors.ttl> ;
+    bridge:expectedFindings <findings/document-reference-two-authors.ttl>
+  ] .
+
+<#document-reference-ccd-ihe-r4-system> a bridge:IsomorphicConversionTest ;
+  mf:name "document-reference-ccd-ihe-r4-system" ;
+  rdfs:comment "A DocumentReference whose content is a CCD, its format in the IHE system R4's formatcodes names: no record, so its absent date, a reason code no CodeSystem defines, its type coding with no system and its patient's display are not reported." ;
+  mf:action [
+    bridge:input <in/document-reference-ccd-ihe-r4-system.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/example-org.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/document-reference-ccd-ihe-r4-system.ttl> ;
+    bridge:expectedFindings <findings/document-reference-ccd-ihe-r4-system.ttl>
+  ] .
+
+<#document-reference-ccd-ihe-canonical-system> a bridge:IsomorphicConversionTest ;
+  mf:name "document-reference-ccd-ihe-canonical-system" ;
+  rdfs:comment "A DocumentReference whose content is a CCD, its format in IHE's canonical format code system: no record." ;
+  mf:action [
+    bridge:input <in/document-reference-ccd-ihe-canonical-system.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/example-org.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/document-reference-ccd-ihe-canonical-system.ttl> ;
+    bridge:expectedFindings <findings/document-reference-ccd-ihe-canonical-system.ttl>
+  ] .
+
+<#document-reference-unstructured-ccda> a bridge:IsomorphicConversionTest ;
+  mf:name "document-reference-unstructured-ccda" ;
+  rdfs:comment "A DocumentReference whose content is an unstructured C-CDA document (ccda-nonXMLBody), which no C-CDA adapter reads entries from: a note, its PDF by URL reported as not read." ;
+  mf:action [
+    bridge:input <in/document-reference-unstructured-ccda.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/example-org.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/document-reference-unstructured-ccda.ttl> ;
+    bridge:expectedFindings <findings/document-reference-unstructured-ccda.ttl>
+  ] .
+
+<#diagnostic-report-narrative-markup> a bridge:IsomorphicConversionTest ;
+  mf:name "diagnostic-report-narrative-markup" ;
+  rdfs:comment "A DiagnosticReport whose only text is its narrative div, with a line break, a table, the XML entities, &nbsp; and numeric references: its text a line to each, the references read." ;
+  mf:action [
+    bridge:input <in/diagnostic-report-narrative-markup.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/example-org.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/diagnostic-report-narrative-markup.ttl> ;
+    bridge:expectedFindings <findings/diagnostic-report-narrative-markup.ttl>
+  ] .
+
+<#document-reference-text-attachments> a bridge:IsomorphicConversionTest ;
+  mf:name "document-reference-text-attachments" ;
+  rdfs:comment "A DocumentReference with four inline text contents: XML, which is not read and is reported; text/plain of white space only, passed over; text/plain holding < and >, kept as written as its text; and a second text/plain, reported as not carried." ;
+  mf:action [
+    bridge:input <in/document-reference-text-attachments.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/example-org.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/document-reference-text-attachments.ttl> ;
+    bridge:expectedFindings <findings/document-reference-text-attachments.ttl>
+  ] .
+
+<#document-reference-inline-pdf> a bridge:IsomorphicConversionTest ;
+  mf:name "document-reference-inline-pdf" ;
+  rdfs:comment "A note whose content is an inline PDF with an empty title, beside text/plain of white space only: its data reported as not read, its title not carried, and its text its narrative div; FHIR's schema refuses the empty title." ;
+  mf:action [
+    bridge:input <in/document-reference-inline-pdf.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/example-org.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/document-reference-inline-pdf.ttl> ;
+    bridge:expectedFindings <findings/document-reference-inline-pdf.ttl>
   ] .
