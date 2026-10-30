@@ -1,0 +1,63 @@
+PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
+PREFIX fx:       <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:      <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX cascade:  <https://ns.cascadeprotocol.org/cascade#>
+PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+
+# Each attachment of a report, its presentedForm, and of a note or document,
+# the attachment of each content, is a node <version>#attachment-n, n its
+# 1-based position in the list that holds it, with its content type, title and
+# URL as the source wrote them. Its data is not carried: its bytes stay in the
+# kept document. A text attachment's decoded text is narrative-text.rq's, and
+# report-and-note-findings.rq reports data no text is decoded from.
+
+CONSTRUCT {
+  ?version cascade:attachment ?node .
+  ?node cascade:attachmentContentType ?contentType ;
+    cascade:attachmentTitle ?title ;
+    cascade:attachmentUrl ?url .
+}
+WHERE {
+  FILTER NOT EXISTS {
+    bridge:thisDocument cascade:sourceFormatVersion ?stated .
+    FILTER (!STRSTARTS(?stated, "4.0."))
+  }
+  bridge:thisRecord bridge:selector ?recordSelector .
+  ?root a fx:root .
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  { BIND ("" AS ?containedStep) }
+  UNION
+  {
+    ?top xyz:contained ?containedList .
+    ?containedList ?containedSlot ?contained .
+    ?contained xyz:resourceType ?containedType .
+    BIND (CONCAT("/contained/", STR(xsd:integer(STRAFTER(STR(?containedSlot), "#_")) - 1)) AS ?containedStep)
+  }
+  BIND (COALESCE(?contained, ?top) AS ?resource)
+  BIND (CONCAT(?recordSelector, ?topStep, ?containedStep) AS ?resourcePointer)
+  {
+    ?resource xyz:resourceType "DiagnosticReport" ;
+      xyz:presentedForm ?forms .
+    ?forms ?slot ?attachment .
+  }
+  UNION
+  {
+    ?resource xyz:resourceType "DocumentReference" ;
+      xyz:content ?contents .
+    ?contents ?slot ?content .
+    ?content xyz:attachment ?attachment .
+  }
+  FILTER (?resourceType != "DocumentReference" || EXISTS { ?note fhirr4:noteOrDocumentAt ?resourcePointer })
+  ?resource xyz:resourceType ?resourceType .
+  BIND (IRI(CONCAT("urn:cascade:version-at:", SHA256(?resourcePointer))) AS ?version)
+  BIND (IRI(CONCAT(STR(?version), "#attachment-", STRAFTER(STR(?slot), "#_"))) AS ?node)
+  OPTIONAL { ?attachment xyz:contentType ?writtenContentType . FILTER (isLiteral(?writtenContentType) && STR(?writtenContentType) != "") }
+  OPTIONAL { ?attachment xyz:title ?writtenTitle . FILTER (isLiteral(?writtenTitle) && STR(?writtenTitle) != "") }
+  OPTIONAL { ?attachment xyz:url ?writtenUrl . FILTER (isLiteral(?writtenUrl) && STR(?writtenUrl) != "") }
+  BIND (STR(?writtenContentType) AS ?contentType)
+  BIND (STR(?writtenTitle) AS ?title)
+  BIND (STRDT(STR(?writtenUrl), xsd:anyURI) AS ?url)
+}

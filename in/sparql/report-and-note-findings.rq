@@ -1,0 +1,83 @@
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX oa:      <http://www.w3.org/ns/oa#>
+PREFIX sh:      <http://www.w3.org/ns/shacl#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX fx:      <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:     <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:  <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX cascade: <https://ns.cascadeprotocol.org/cascade#>
+PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+
+# What note-or-document.rq and attachments.rq leave behind: a DocumentReference
+# whose content is a C-CDA document, at the format code
+# note-or-document-table.rq reads it by, the code as its value; and a report's
+# or a note's attachment whose data the Bridge decodes no text from, at its
+# data, its content type as its value.
+
+CONSTRUCT {
+  [] a oa:Annotation ;
+    oa:hasTarget [
+      oa:hasSource bridge:thisRecord ;
+      oa:hasSelector [
+        a oa:FragmentSelector ;
+        dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+        rdf:value ?pointer
+      ]
+    ] ;
+    oa:hasBody ?gap ;
+    oa:motivatedBy oa:classifying ;
+    sh:value ?value .
+}
+WHERE {
+  FILTER NOT EXISTS {
+    bridge:thisDocument cascade:sourceFormatVersion ?stated .
+    FILTER (!STRSTARTS(?stated, "4.0."))
+  }
+  bridge:thisRecord bridge:selector ?recordSelector .
+  ?root a fx:root .
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  { BIND ("" AS ?containedStep) }
+  UNION
+  {
+    ?top xyz:contained ?containedList .
+    ?containedList ?containedSlot ?contained .
+    ?contained xyz:resourceType ?containedType .
+    BIND (CONCAT("/contained/", STR(xsd:integer(STRAFTER(STR(?containedSlot), "#_")) - 1)) AS ?containedStep)
+  }
+  BIND (COALESCE(?contained, ?top) AS ?resource)
+  BIND (CONCAT(?topStep, ?containedStep) AS ?resourceStep)
+  BIND (CONCAT(?recordSelector, ?resourceStep) AS ?resourcePointer)
+  ?resource xyz:resourceType ?resourceType .
+  FILTER (?resourceType IN ("DiagnosticReport", "DocumentReference"))
+  BIND (EXISTS { ?note fhirr4:noteOrDocumentAt ?resourcePointer } AS ?isNote)
+  {
+    ?resource xyz:content ?ccdaContents . ?ccdaContents ?slot ?ccdaContent .
+    ?ccdaContent xyz:format ?format .
+    ?format xyz:system ?formatSystem ;
+      xyz:code ?value .
+    FILTER (?formatSystem IN ("http://terminology.hl7.org/CodeSystem/v3-HL7DocumentFormatCodes",
+                              "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+                              "http://ihe.net/fhir/ihe.formatcode.fhir/CodeSystem/formatcode")
+            && STRSTARTS(STR(?value), "urn:hl7-org:sdwg:ccda-"))
+    BIND ("/content/" AS ?list)
+    BIND ("/format/code" AS ?part)
+    BIND (fhirr4:documentReferenceToCcdaDocument AS ?gap)
+  }
+  UNION
+  {
+    { ?resource xyz:presentedForm ?forms . ?forms ?slot ?attachment . BIND ("/presentedForm/" AS ?list) BIND ("/data" AS ?part) }
+    UNION
+    { ?resource xyz:content ?contents . ?contents ?slot ?content . ?content xyz:attachment ?attachment .
+      BIND ("/content/" AS ?list) BIND ("/attachment/data" AS ?part) }
+    ?attachment xyz:data ?data .
+    FILTER NOT EXISTS { ?attachment bridge:textDecodedFromBase64 ?decoded }
+    OPTIONAL { ?attachment xyz:contentType ?contentType }
+    BIND (?contentType AS ?value)
+    BIND (fhirr4:attachmentDataNotRead AS ?gap)
+  }
+  FILTER (?gap = fhirr4:documentReferenceToCcdaDocument || ?resourceType = "DiagnosticReport" || ?isNote)
+  BIND (CONCAT(?resourceStep, ?list, STR(xsd:integer(STRAFTER(STR(?slot), "#_")) - 1), ?part) AS ?pointer)
+}

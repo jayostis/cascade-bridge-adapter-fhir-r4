@@ -9,7 +9,8 @@ PREFIX bridge:  <https://ns.cascadeprotocol.org/bridge/v1-draft#>
 PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 PREFIX cascade: <https://ns.cascadeprotocol.org/cascade#>
 
-# An Observation is reported by observation-findings.rq. A Medication is read
+# An Observation is reported by observation-findings.rq, and a DocumentReference
+# that makes no record by report-and-note-findings.rq. A Medication is read
 # through the medication whose reference resolves to it, as medication-table.rq
 # says, so only one no reference resolves to is reported; an Organization is
 # read where it is from a server, or where a document's custodian or author, or a
@@ -53,7 +54,8 @@ WHERE {
   BIND (CONCAT(?topStep, ?containedStep) AS ?resourcePointer)
   ?resource xyz:resourceType ?value .
   FILTER (?value NOT IN ("AllergyIntolerance", "Condition", "Immunization", "Procedure", "Patient",
-                        "MedicationRequest", "MedicationStatement", "Observation"))
+                        "MedicationRequest", "MedicationStatement", "Observation",
+                        "DiagnosticReport", "DocumentReference"))
   BIND (CONCAT(?recordSelector, ?resourcePointer) AS ?medicationPointer)
   FILTER (?value != "Medication" || NOT EXISTS {
     ?resolving fhirr4:medicationReferenceFrom ?from ;

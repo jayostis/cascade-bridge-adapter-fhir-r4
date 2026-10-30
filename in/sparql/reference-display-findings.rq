@@ -45,7 +45,11 @@ WHERE {
   BIND (CONCAT(?topStep, ?containedStep) AS ?resourcePointer)
   ?resource xyz:resourceType ?type .
   FILTER (?type IN ("AllergyIntolerance", "Condition", "Immunization", "Procedure", "Patient",
-                    "MedicationRequest", "MedicationStatement", "Observation"))
+                    "MedicationRequest", "MedicationStatement", "Observation", "DiagnosticReport", "DocumentReference"))
+  FILTER (?type != "DocumentReference" || EXISTS {
+    ?note fhirr4:noteOrDocumentAt ?notePointer .
+    FILTER (?notePointer = CONCAT(?recordSelector, ?resourcePointer))
+  })
   FILTER (?type != "Observation" || EXISTS {
     ?lab fhirr4:labResultAt ?labPointer .
     FILTER (?labPointer = CONCAT(?recordSelector, ?resourcePointer))
@@ -63,6 +67,13 @@ WHERE {
     ?references ?referenceSlot ?reference .
     ?reference xyz:display ?value .
     BIND (CONCAT("/reasonReference/", STR(xsd:integer(STRAFTER(STR(?referenceSlot), "#_")) - 1), "/display") AS ?step)
+  }
+  UNION
+  {
+    ?resource xyz:result ?results .
+    ?results ?resultSlot ?reference .
+    ?reference xyz:display ?value .
+    BIND (CONCAT("/result/", STR(xsd:integer(STRAFTER(STR(?resultSlot), "#_")) - 1), "/display") AS ?step)
   }
   BIND (CONCAT(?resourcePointer, ?step) AS ?pointer)
 }

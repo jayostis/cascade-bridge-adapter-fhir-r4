@@ -1,0 +1,47 @@
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX fx:      <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:     <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:  <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+
+# One row for each DocumentReference of the record that is a note or document,
+# wherever it stands, so that every query asking whether one is a record asks
+# this one. Every DocumentReference is one, whatever its type and category,
+# except one whose content is a C-CDA document: a content's format coded
+# urn:hl7-org:sdwg:ccda- and the rest in HL7's document format codes, or in the
+# IHE format codes R4 binds and their canonical, as US Core codes a CCD. That
+# document is a source of its own, imported by the C-CDA adapter, and its
+# records are its entries, so its reference makes no record and
+# note-or-document-findings.rq reports it.
+
+CONSTRUCT {
+  [] fhirr4:noteOrDocumentAt ?pointer .
+}
+WHERE {
+  bridge:thisRecord bridge:selector ?recordSelector .
+  ?root a fx:root .
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  { BIND ("" AS ?containedStep) }
+  UNION
+  {
+    ?top xyz:contained ?containedList .
+    ?containedList ?containedSlot ?contained .
+    ?contained xyz:resourceType ?containedType .
+    BIND (CONCAT("/contained/", STR(xsd:integer(STRAFTER(STR(?containedSlot), "#_")) - 1)) AS ?containedStep)
+  }
+  BIND (COALESCE(?contained, ?top) AS ?resource)
+  ?resource xyz:resourceType "DocumentReference" .
+  FILTER NOT EXISTS {
+    ?resource xyz:content ?contents . ?contents ?contentSlot ?content .
+    ?content xyz:format ?format .
+    ?format xyz:system ?formatSystem ;
+      xyz:code ?formatCode .
+    FILTER (?formatSystem IN ("http://terminology.hl7.org/CodeSystem/v3-HL7DocumentFormatCodes",
+                              "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+                              "http://ihe.net/fhir/ihe.formatcode.fhir/CodeSystem/formatcode")
+            && STRSTARTS(STR(?formatCode), "urn:hl7-org:sdwg:ccda-"))
+  }
+  BIND (CONCAT(?recordSelector, ?topStep, ?containedStep) AS ?pointer)
+}

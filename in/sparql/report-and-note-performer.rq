@@ -1,0 +1,90 @@
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX fx:      <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:     <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:  <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX cascade: <https://ns.cascadeprotocol.org/cascade#>
+PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+
+# A report from a server is attributed to the organization its performer names,
+# and a note or document from a server to the one its author names, as
+# lab-result-performer.rq attributes a lab result: the record of an
+# Organization on its server, named by cascade-vocabulary's
+# OrganizationNamingRule from the server and the id, whether or not this
+# document holds it, by a reference Organization/<id>, or the server's base,
+# "/" and that, a version's /_history/ dropped; none from an entry whose
+# fullUrl is a urn:uuid, to an Organization held under one, or to an id two
+# entries hold an Organization under. Performers or authors that name more
+# than one Organization leave the version attributed to none; a performer or
+# an author of another type, and a note's custodian, are not read.
+
+CONSTRUCT {
+  ?version prov:wasAttributedTo ?organization .
+}
+WHERE {
+  FILTER NOT EXISTS {
+    bridge:thisDocument cascade:sourceFormatVersion ?stated .
+    FILTER (!STRSTARTS(?stated, "4.0."))
+  }
+  bridge:thisRecord bridge:selector ?recordSelector .
+  bridge:thisDocument cascade:serverBaseUrl ?input1 .
+  ?root a fx:root .
+  FILTER NOT EXISTS { ?root xyz:fullUrl ?urnFullUrl . FILTER (STRSTARTS(?urnFullUrl, "urn:uuid:")) }
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  { BIND ("" AS ?containedStep) }
+  UNION
+  {
+    ?top xyz:contained ?containedList .
+    ?containedList ?containedSlot ?contained .
+    ?contained xyz:resourceType ?containedType .
+    BIND (CONCAT("/contained/", STR(xsd:integer(STRAFTER(STR(?containedSlot), "#_")) - 1)) AS ?containedStep)
+  }
+  BIND (COALESCE(?contained, ?top) AS ?resource)
+  ?resource xyz:resourceType ?resourceType .
+  FILTER (?resourceType IN ("DiagnosticReport", "DocumentReference"))
+  BIND (CONCAT(?recordSelector, ?topStep, ?containedStep) AS ?resourcePointer)
+  FILTER (?resourceType = "DiagnosticReport" || EXISTS { ?note fhirr4:noteOrDocumentAt ?resourcePointer })
+  BIND (IRI(CONCAT("urn:cascade:version-at:", SHA256(?resourcePointer))) AS ?version)
+  {
+    SELECT ?resource (COUNT(DISTINCT ?performerId) AS ?organizations) (MIN(?performerId) AS ?input3) WHERE {
+      bridge:thisDocument cascade:serverBaseUrl ?performerServer .
+      { ?resource xyz:resourceType "DiagnosticReport" ; xyz:performer ?performers }
+      UNION
+      { ?resource xyz:resourceType "DocumentReference" ; xyz:author ?performers }
+      ?performers ?performerSlot ?performer .
+      ?performer xyz:reference ?written .
+      BIND (REPLACE(?written, "/_history/[A-Za-z0-9.-]{1,64}$", "") AS ?unversioned)
+      BIND (IF(STRSTARTS(?unversioned, CONCAT(?performerServer, "/")), STRAFTER(?unversioned, CONCAT(?performerServer, "/")),
+               ?unversioned) AS ?relative)
+      FILTER (REGEX(?relative, "^Organization/[A-Za-z0-9.-]{1,64}$"))
+      BIND (STRAFTER(?relative, "Organization/") AS ?performerId)
+    } GROUP BY ?resource
+  }
+  FILTER (?organizations = 1)
+  FILTER NOT EXISTS {
+    ?urnOrganization fhirr4:resourceType "Organization" ;
+      fhirr4:resourceId ?input3 ;
+      fhirr4:fullUrl ?urnOrganizationUrl .
+    FILTER (STRSTARTS(?urnOrganizationUrl, "urn:uuid:"))
+  }
+  FILTER NOT EXISTS {
+    ?heldOnce fhirr4:resourceType "Organization" ;
+      fhirr4:resourceId ?input3 ;
+      fhirr4:heldAt ?onceAt .
+    ?heldTwice fhirr4:resourceType "Organization" ;
+      fhirr4:resourceId ?input3 ;
+      fhirr4:heldAt ?twiceAt .
+    FILTER (?onceAt != ?twiceAt)
+  }
+  BIND ("Organization" AS ?input2)
+  BIND (SHA256(CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|https://ns.cascadeprotocol.org/cascade#OrganizationNamingRule",
+                       "|", REPLACE(REPLACE(?input1, "%", "%25"), "\\|", "%7C"),
+                       "|", REPLACE(REPLACE(?input2, "%", "%25"), "\\|", "%7C"),
+                       COALESCE(CONCAT("|", REPLACE(REPLACE(?input3, "%", "%25"), "\\|", "%7C")), ""))) AS ?hash)
+  BIND (REPLACE(REPLACE(REPLACE(REPLACE(SUBSTR(?hash, 17, 1), "[048c]", "8"), "[159d]", "9"), "[26ae]", "a"), "[37bf]", "b")
+        AS ?variant)
+  BIND (IRI(CONCAT("urn:uuid:", SUBSTR(?hash, 1, 8), "-", SUBSTR(?hash, 9, 4), "-8", SUBSTR(?hash, 14, 3), "-", ?variant,
+                   SUBSTR(?hash, 18, 3), "-", SUBSTR(?hash, 21, 12))) AS ?organization)
+}

@@ -1,0 +1,124 @@
+PREFIX rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
+PREFIX obo:      <http://purl.obolibrary.org/obo/>
+PREFIX oa:       <http://www.w3.org/ns/oa#>
+PREFIX sh:       <http://www.w3.org/ns/shacl#>
+PREFIX dcterms:  <http://purl.org/dc/terms/>
+PREFIX fx:       <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:      <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX cascade:  <https://ns.cascadeprotocol.org/cascade#>
+PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+
+# Each result of a report that names a record is that record's IRI on the
+# report's version, RO's "has member", never a version. A result names an
+# Observation of its document by the urn:uuid exactly one entry holds as its
+# fullUrl, that entry's record, or one on the report's server, by a reference
+# Observation/<id>, or the server's base, "/" and that, a version's /_history/
+# dropped, from an entry whose fullUrl is no urn:uuid, as record.rq names a
+# record from its server, whether or not this document holds it. Either names
+# a record only where each Observation it names that this document holds is
+# one: a lab result, a variant or a diagnostic implication, never a panel. As
+# record.rq reads a reference to a Patient, Observation/<id> naming an entry
+# held under a urn:uuid, or an id two entries hold an Observation under, names
+# none. Any other result, a contained one or one on another server among them,
+# names none: report-result-findings.rq reports it, resolving each as this does.
+
+CONSTRUCT {
+  ?version obo:RO_0002351 ?member .
+}
+WHERE {
+  FILTER NOT EXISTS {
+    bridge:thisDocument cascade:sourceFormatVersion ?stated .
+    FILTER (!STRSTARTS(?stated, "4.0."))
+  }
+  bridge:thisRecord bridge:selector ?recordSelector .
+  bridge:thisDocument bridge:sha256 ?document .
+  OPTIONAL { bridge:thisDocument cascade:serverBaseUrl ?server }
+  ?root a fx:root .
+  OPTIONAL { ?root xyz:fullUrl ?fullUrl }
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  { BIND ("" AS ?containedStep) }
+  UNION
+  {
+    ?top xyz:contained ?containedList .
+    ?containedList ?containedSlot ?contained .
+    ?contained xyz:resourceType ?containedType .
+    BIND (CONCAT("/contained/", STR(xsd:integer(STRAFTER(STR(?containedSlot), "#_")) - 1)) AS ?containedStep)
+  }
+  BIND (COALESCE(?contained, ?top) AS ?resource)
+  ?resource xyz:resourceType "DiagnosticReport" ;
+    xyz:result ?results .
+  ?results ?resultSlot ?result .
+  ?result xyz:reference ?written .
+  BIND (CONCAT(?recordSelector, ?topStep, ?containedStep) AS ?resourcePointer)
+  BIND (REPLACE(?written, "/_history/[A-Za-z0-9.-]{1,64}$", "") AS ?unversioned)
+  BIND (IF(BOUND(?server) && STRSTARTS(?unversioned, CONCAT(?server, "/")), STRAFTER(?unversioned, CONCAT(?server, "/")),
+           ?unversioned) AS ?relative)
+  OPTIONAL {
+    {
+      SELECT ?key (COUNT(DISTINCT ?keySelector) AS ?heldAtKey) (SAMPLE(?keySelector) AS ?heldSelector)
+      WHERE {
+        ?held fhirr4:heldAt ?keySelector ;
+          fhirr4:fullUrl ?key .
+        FILTER (STRSTARTS(?key, "urn:uuid:"))
+      }
+      GROUP BY ?key
+    }
+    FILTER (?key = ?written)
+  }
+  BIND (IF(BOUND(?heldAtKey), IF(?heldAtKey = 1, CONCAT(?heldSelector, "/resource"), 1/0),
+           IF(BOUND(?server) && !STRSTARTS(COALESCE(?fullUrl, ""), "urn:uuid:")
+              && REGEX(?relative, "^Observation/[A-Za-z0-9.-]{1,64}$"), "", 1/0)) AS ?target)
+  BIND (STRAFTER(?relative, "Observation/") AS ?resultId)
+  BIND (BOUND(?target) && IF(?target != "",
+             EXISTS { ?lab fhirr4:labResultAt ?target } || EXISTS { ?variantRow fhirr4:variantAt ?target }
+             || EXISTS { ?interpretationRow fhirr4:interpretationAt ?target },
+             NOT EXISTS {
+               ?urnHeld fhirr4:resourceType "Observation" ;
+                 fhirr4:resourceId ?urnId ;
+                 fhirr4:fullUrl ?urnUrl .
+               FILTER (STRSTARTS(?urnUrl, "urn:uuid:") && ?urnId = ?resultId)
+             }
+             && NOT EXISTS {
+               ?onceHeld fhirr4:resourceType "Observation" ;
+                 fhirr4:resourceId ?onceId ;
+                 fhirr4:heldAt ?onceAt .
+               ?twiceHeld fhirr4:resourceType "Observation" ;
+                 fhirr4:resourceId ?twiceId ;
+                 fhirr4:heldAt ?twiceAt .
+               FILTER (?onceId = ?resultId && ?twiceId = ?resultId && ?onceAt != ?twiceAt)
+             }
+             && NOT EXISTS {
+               ?sameHeld fhirr4:resourceType "Observation" ;
+                 fhirr4:resourceId ?sameId ;
+                 fhirr4:heldAt ?sameAt .
+               FILTER (?sameId = ?resultId)
+               FILTER NOT EXISTS {
+                 { ?sameRow fhirr4:labResultAt ?samePointer }
+                 UNION
+                 { ?sameRow fhirr4:variantAt ?samePointer }
+                 UNION
+                 { ?sameRow fhirr4:interpretationAt ?samePointer }
+                 FILTER (?samePointer = CONCAT(?sameAt, "/resource"))
+               }
+             }) AS ?namesRecord)
+  FILTER (?namesRecord)
+  BIND (IRI(CONCAT("urn:cascade:version-at:", SHA256(?resourcePointer))) AS ?version)
+  BIND (SUBSTR(?target, 1, STRLEN(?target) - 9) AS ?targetSelector)
+  BIND (IF(?target != "",
+           CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|https://ns.cascadeprotocol.org/cascade#RecordFromDocumentNamingRule",
+                  "|", REPLACE(REPLACE(?document, "%", "%25"), "\\|", "%7C"),
+                  "|", REPLACE(REPLACE(?targetSelector, "%", "%25"), "\\|", "%7C")),
+           CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|https://ns.cascadeprotocol.org/cascade#RecordFromServerNamingRule",
+                  "|", REPLACE(REPLACE(?server, "%", "%25"), "\\|", "%7C"),
+                  "|", REPLACE(REPLACE("Observation", "%", "%25"), "\\|", "%7C"),
+                  "|", REPLACE(REPLACE(?resultId, "%", "%25"), "\\|", "%7C"))) AS ?named)
+  BIND (SHA256(?named) AS ?hash)
+  BIND (REPLACE(REPLACE(REPLACE(REPLACE(SUBSTR(?hash, 17, 1), "[048c]", "8"), "[159d]", "9"), "[26ae]", "a"), "[37bf]", "b")
+        AS ?variant)
+  BIND (IRI(CONCAT("urn:uuid:", SUBSTR(?hash, 1, 8), "-", SUBSTR(?hash, 9, 4), "-8", SUBSTR(?hash, 14, 3), "-", ?variant,
+                   SUBSTR(?hash, 18, 3), "-", SUBSTR(?hash, 21, 12))) AS ?member)
+}

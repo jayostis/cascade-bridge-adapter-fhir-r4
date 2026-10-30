@@ -1,0 +1,155 @@
+PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
+PREFIX fx:       <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:      <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX cascade:  <https://ns.cascadeprotocol.org/cascade#>
+PREFIX skos:     <http://www.w3.org/2004/02/skos/core#>
+PREFIX void:     <http://rdfs.org/ns/void#>
+PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+
+# A DiagnosticReport's version, each part in a branch of its own so that one
+# does not multiply the others. Its name is its code's text, else its first
+# coding's display. Each coding of its code is read as lab-result-codes.rq reads
+# a test's: in LOINC or SNOMED CT a cascade:reportCode IRI, in any other system
+# a cascade:reportCodeInOtherSystem literal typed by the system read. Each coding
+# of each category is a cascade:reportCategory literal typed by the system read,
+# LOINC's too, since no table joins a category. Each coding of its conclusion
+# code in a system the code systems table gives a stem is a code IRI. Its
+# effective time is the effectiveDateTime, else the effectivePeriod's start,
+# typed and padded as lab-result.rq types and pads a lab result's; the time it
+# was issued, an instant, is its cascade:reportIssuedTime, never its effective
+# time. Its results
+# are report-results.rq's, its performer report-and-note-performer.rq's, its
+# attachments and text attachments.rq's. A coding not carried is reported by
+# code-findings.rq.
+
+CONSTRUCT {
+  ?version ?p ?o .
+  ?version cascade:paddedDateTime ?padded .
+  ?padded cascade:paddedDateTimeProperty cascade:reportEffectiveTime ;
+    cascade:writtenDate ?written .
+}
+WHERE {
+  FILTER NOT EXISTS {
+    bridge:thisDocument cascade:sourceFormatVersion ?stated .
+    FILTER (!STRSTARTS(?stated, "4.0."))
+  }
+  bridge:thisRecord bridge:selector ?recordSelector .
+  ?root a fx:root .
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  { BIND ("" AS ?containedStep) }
+  UNION
+  {
+    ?top xyz:contained ?containedList .
+    ?containedList ?containedSlot ?contained .
+    ?contained xyz:resourceType ?containedType .
+    BIND (CONCAT("/contained/", STR(xsd:integer(STRAFTER(STR(?containedSlot), "#_")) - 1)) AS ?containedStep)
+  }
+  BIND (COALESCE(?contained, ?top) AS ?resource)
+  ?resource xyz:resourceType "DiagnosticReport" .
+  BIND (CONCAT(?recordSelector, ?topStep, ?containedStep) AS ?resourcePointer)
+  BIND (IRI(CONCAT("urn:cascade:version-at:", SHA256(?resourcePointer))) AS ?version)
+
+  {
+    OPTIONAL { ?resource xyz:code ?textConcept . ?textConcept xyz:text ?conceptText }
+    OPTIONAL {
+      ?resource xyz:code ?displayConcept .
+      ?displayConcept xyz:coding ?displayCodings .
+      ?displayCodings ?displaySlot ?displayCoding .
+      ?displayCoding xyz:display ?conceptDisplay .
+      FILTER NOT EXISTS {
+        ?displayCodings ?earlierSlot ?earlier . ?earlier xyz:display ?earlierDisplay .
+        FILTER (xsd:integer(STRAFTER(STR(?earlierSlot), "#_")) < xsd:integer(STRAFTER(STR(?displaySlot), "#_")))
+      }
+    }
+    BIND (cascade:reportName AS ?p)
+    BIND (STR(COALESCE(?conceptText, ?conceptDisplay)) AS ?o)
+    FILTER (BOUND(?o) && ?o != "")
+  }
+  UNION
+  {
+    ?resource xyz:conclusion ?conclusion .
+    FILTER (isLiteral(?conclusion) && STR(?conclusion) != "")
+    BIND (cascade:reportConclusion AS ?p)
+    BIND (STR(?conclusion) AS ?o)
+  }
+  UNION
+  {
+    ?resource xyz:issued ?issued .
+    FILTER (REGEX(?issued, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$"))
+    BIND (cascade:reportIssuedTime AS ?p)
+    BIND (STRDT(?issued, xsd:dateTime) AS ?o)
+  }
+  UNION
+  {
+    ?resource xyz:status ?status .
+    BIND (cascade:workflowStatus AS ?p)
+    BIND (STR(?status) AS ?o)
+  }
+  UNION
+  {
+    OPTIONAL { ?resource xyz:effectiveDateTime ?effective }
+    OPTIONAL { ?resource xyz:effectivePeriod ?period . ?period xyz:start ?periodStart }
+    BIND (COALESCE(?effective, ?periodStart) AS ?time)
+    FILTER (BOUND(?time))
+    BIND (cascade:reportEffectiveTime AS ?p)
+    BIND (IF(REGEX(?time, "^[0-9]{4}$"), STRDT(?time, xsd:gYear),
+             IF(REGEX(?time, "^[0-9]{4}-[0-9]{2}$"), STRDT(?time, xsd:gYearMonth),
+             IF(REGEX(?time, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"), STRDT(?time, xsd:date),
+             IF(REGEX(?time, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(Z|[+-][0-9]{2}:[0-9]{2})?$"), STRDT(CONCAT(SUBSTR(?time, 1, 16), ":00", SUBSTR(?time, 17)), xsd:dateTime),
+               IF(REGEX(?time, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T"), STRDT(?time, xsd:dateTime), 1/0))))) AS ?o)
+    BIND (IF(REGEX(?time, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(Z|[+-][0-9]{2}:[0-9]{2})?$"), ?time, 1/0) AS ?written)
+  }
+  UNION
+  {
+    ?resource xyz:code ?concept . ?concept xyz:coding ?codings . ?codings ?codingSlot ?coding .
+    ?coding xyz:system ?systemWritten ;
+      xyz:code ?codeWritten .
+    ?systemRow fhirr4:systemWritten ?systemWritten ;
+      fhirr4:systemRead ?system .
+    BIND (REPLACE(STR(?codeWritten), "^\\s+|\\s+$", "") AS ?code)
+    FILTER (?code != "")
+    OPTIONAL {
+      VALUES ?system { "http://loinc.org" "http://snomed.info/sct" }
+      ?listed skos:inScheme fhirr4:codeSystems ;
+        cascade:codingSystemUri ?listedSystem ;
+        void:uriSpace ?stem .
+      FILTER (STR(?listedSystem) = ?system)
+    }
+    BIND (IF(BOUND(?stem), cascade:reportCode, cascade:reportCodeInOtherSystem) AS ?p)
+    BIND (IF(BOUND(?stem), IRI(CONCAT(?stem, ENCODE_FOR_URI(?code))), STRDT(?code, IRI(?system))) AS ?o)
+  }
+  UNION
+  {
+    ?resource xyz:category ?categories . ?categories ?categorySlot ?category .
+    ?category xyz:coding ?categoryCodings . ?categoryCodings ?categoryCodingSlot ?categoryCoding .
+    ?categoryCoding xyz:system ?categorySystemWritten ;
+      xyz:code ?categoryCodeWritten .
+    ?categorySystemRow fhirr4:systemWritten ?categorySystemWritten ;
+      fhirr4:systemRead ?categorySystem .
+    BIND (REPLACE(STR(?categoryCodeWritten), "^\\s+|\\s+$", "") AS ?categoryCode)
+    FILTER (?categoryCode != "")
+    BIND (cascade:reportCategory AS ?p)
+    BIND (STRDT(?categoryCode, IRI(?categorySystem)) AS ?o)
+  }
+  UNION
+  {
+    ?resource xyz:conclusionCode ?conclusionConcepts . ?conclusionConcepts ?conclusionSlot ?conclusionConcept .
+    ?conclusionConcept xyz:coding ?conclusionCodings . ?conclusionCodings ?conclusionCodingSlot ?conclusionCoding .
+    ?conclusionCoding xyz:system ?conclusionSystemWritten ;
+      xyz:code ?conclusionCodeWritten .
+    ?conclusionSystemRow fhirr4:systemWritten ?conclusionSystemWritten ;
+      fhirr4:systemRead ?conclusionSystem .
+    ?conclusionListed skos:inScheme fhirr4:codeSystems ;
+      cascade:codingSystemUri ?conclusionListedSystem ;
+      void:uriSpace ?conclusionStem .
+    FILTER (STR(?conclusionListedSystem) = ?conclusionSystem)
+    BIND (REPLACE(STR(?conclusionCodeWritten), "^\\s+|\\s+$", "") AS ?conclusionCode)
+    FILTER (?conclusionCode != "")
+    BIND (cascade:reportConclusionCode AS ?p)
+    BIND (IRI(CONCAT(?conclusionStem, ENCODE_FOR_URI(?conclusionCode))) AS ?o)
+  }
+  BIND (IF(BOUND(?written), IRI(CONCAT(STR(?version), "#padded-reportEffectiveTime")), 1/0) AS ?padded)
+}

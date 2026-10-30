@@ -40,9 +40,9 @@ fhirr4:resourceIdRepeated a skos:Concept ;
   skos:broader bridge:idRepeated .
 
 fhirr4:narrative a skos:Concept ;
-  skos:prefLabel "A resource carries a human-readable narrative, and no Cascade predicate carries it."@en ;
+  skos:prefLabel "A resource carries a human-readable narrative, which is carried only as the text of a report or a note or document that has no text attachment, and nothing carries any other."@en ;
   skos:inScheme fhirr4:gaps ;
-  skos:broader bridge:noPredicate .
+  skos:broader bridge:carriedWithLoss .
 
 fhirr4:serverSource a skos:Concept ;
   skos:prefLabel "A resource's metadata names the system its server received it from, and no Cascade predicate carries it."@en ;
@@ -210,7 +210,7 @@ fhirr4:interpretationVariantLink a skos:Concept ;
   sh:resultSeverity sh:Warning .
 
 fhirr4:performerCarriedOnlyAsOneOrganizationRecord a skos:Concept ;
-  skos:prefLabel "A performer is carried only as the one organization record it names: a diagnostic implication's, an Organization of its document, and a lab result's from a server, an Organization of that server by type and id; one whose performers name no organization record, or more than one, is attributed to none, and any other performer is not carried."@en ;
+  skos:prefLabel "A performer or an author is carried only as the one organization record it names: a diagnostic implication's, an Organization of its document, and a lab result's or a report's performer and a note's author from a server, an Organization of that server by type and id; one whose performers or authors name no organization record, or more than one, is attributed to none, and any other is not carried."@en ;
   skos:inScheme fhirr4:gaps ;
   skos:broader bridge:carriedWithLoss ;
   sh:resultSeverity sh:Warning .
@@ -226,7 +226,7 @@ fhirr4:identifierCarriedForLabResultsAndOrganizationsOnly a skos:Concept ;
   skos:broader bridge:carriedWithLoss .
 
 fhirr4:issuedNotCarried a skos:Concept ;
-  skos:prefLabel "A result carries the time it was issued, which is not when it was performed, and only a diagnostic implication's is carried, as its date."@en ;
+  skos:prefLabel "A result carries the time it was issued, which is not when it was performed, and only a diagnostic implication's is carried, as its date, and a report's, as its issued time."@en ;
   skos:inScheme fhirr4:gaps ;
   skos:broader bridge:carriedWithLoss .
 
@@ -257,7 +257,7 @@ fhirr4:medicationRequestIntentNotMapped a skos:Concept ;
   sh:resultSeverity sh:Warning .
 
 fhirr4:codingNotCarried a skos:Concept ;
-  skos:prefLabel "A coding of a lab result's test, a medication's drug, a condition or a procedure states no system, a system that is no absolute URI or holds a character an IRI may not, or no code, or a code of blanks, so its code is not carried."@en ;
+  skos:prefLabel "A coding of a lab result's test, a medication's drug, a condition, a procedure, a report or a note's type states no system, a system that is no absolute URI or holds a character an IRI may not, or no code, or a code of blanks, so its code is not carried."@en ;
   skos:inScheme fhirr4:gaps ;
   skos:broader bridge:carriedWithLoss .
 
@@ -321,3 +321,21 @@ fhirr4:dispenseRequestElementNotCarried a skos:Concept ;
   skos:prefLabel "A prescription's dispense request states its initial fill, its dispense interval or its performer, and no Cascade predicate carries them."@en ;
   skos:inScheme fhirr4:gaps ;
   skos:broader bridge:noPredicate .
+
+fhirr4:documentReferenceToCcdaDocument a skos:Concept ;
+  skos:prefLabel "A DocumentReference's content is a C-CDA document, a source of its own for a C-CDA adapter to import, so it makes no note or document record and nothing in it is carried."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:valueNotMapped ;
+  sh:resultSeverity sh:Warning .
+
+fhirr4:attachmentDataNotRead a skos:Concept ;
+  skos:prefLabel "An attachment's data is no text the Bridge decodes, as a PDF or an image, so only its content type, title and URL are carried: what it says is not, and its bytes stay in the kept document."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:carriedWithLoss ;
+  sh:resultSeverity sh:Warning .
+
+fhirr4:reportResultNotNamed a skos:Concept ;
+  skos:prefLabel "A report's result references no result record: a contained resource, one on another server, a panel, or a reference that resolves to no one entry, so the link is not carried."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:carriedWithLoss ;
+  sh:resultSeverity sh:Warning .

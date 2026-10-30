@@ -11,10 +11,11 @@ The FHIR specification is HL7's, published under CC0.
 
 A record is one **resource**: a JSON object whose `resourceType` member names
 its type. This release maps `AllergyIntolerance`, `Condition`, `Immunization`,
-`Procedure`, `Patient`, `MedicationRequest`, `MedicationStatement`, and an
+`Procedure`, `Patient`, `MedicationRequest`, `MedicationStatement`,
+`DiagnosticReport`, a `DocumentReference` that is a note or document, and an
 `Observation` that is a laboratory result, a genomic variant or a diagnostic
-implication; a resource of any other type, and any other `Observation`, yields
-a finding and no record. A `Medication` is read
+implication; a resource of any other type, any other `Observation` and any
+other `DocumentReference` yields a finding and no record. A `Medication` is read
 through the medication that references it, and is no record of its own.
 
 An `Organization` is a record where a document names it: the `custodian` or
@@ -45,8 +46,9 @@ version. Its version carries its `name`, each identifier, typed by its system
 where it has one, the NPI's OID as its URI, and each address, its `text` or
 else its first four `line`s, city, state, postal code and country, one to a
 line. The document names it in
-`cascade:CustodianRole` or `cascade:AuthorRole`. The `Composition` and the
-`DocumentReference` are no records. An `Organization` a diagnostic
+`cascade:CustodianRole` or `cascade:AuthorRole`. The `Composition` is no record, and a
+`DocumentReference` is a note or document record (see Reports and notes), which
+its custodian does not attribute. An `Organization` a diagnostic
 implication's `performer` references, resolved and named alike, is a record
 too, and the document names it in no role.
 
@@ -77,7 +79,61 @@ An `Observation`'s `category` says what kind it is, from
 code alone may have to tell a lab result from a vital sign: the
 [vital signs profile](https://hl7.org/fhir/R4/observation-vitalsigns.html),
 read on 2026-10-06, fixes the LOINC code of each vital sign. An `Observation`
-with `hasMember` groups others, as a panel does.
+with `hasMember` groups others, as a panel does, and is no record: its members
+are, and it yields `fhirr4:observationNotLabResult`. It is not made a report,
+since FHIR holds it as an `Observation` and every member is already a record
+(cascade-vocabulary's `decisions/reports-and-notes.md`).
+
+## Reports and notes
+
+Read from `hl7.org/fhir/R4/` and US Core on 2026-10-30:
+[DiagnosticReport](https://hl7.org/fhir/R4/diagnosticreport-definitions.html),
+[DocumentReference](https://hl7.org/fhir/R4/documentreference-definitions.html),
+[Attachment](https://hl7.org/fhir/R4/datatypes-definitions.html#Attachment) and
+[US Core DocumentReference](https://hl7.org/fhir/us/core/STU6.1/StructureDefinition-us-core-documentreference.html).
+
+A `DiagnosticReport` is a report record, whatever its category, so a result a
+lab sends only as a PDF in `presentedForm` is found by its code and date
+though no query reads the PDF. Its version carries its name (`code.text`,
+else the first coding's display), every coding of its `code` (LOINC and
+SNOMED CT as IRIs, any other system as a literal typed by it), each
+`category` coding as a literal typed by its system, its `effectiveDateTime`
+or `effectivePeriod.start` typed by precision, its `issued` instant, its
+`conclusion` and each `conclusionCode` coding of a listed system, its
+`status`, and the one `Organization` its performers name from a server, as a
+lab result's. Each `result` is the IRI of the record it names, under RO's
+"has member": an entry of the document held under that `urn:uuid:`, or
+`Observation/<id>` on the report's server, as a record from a server is named
+(see Names). It names a record only where the `Observation` is one, never a
+panel; a contained result, one on another server, or one that resolves to no
+one entry is `fhirr4:reportResultNotNamed`.
+
+A `DocumentReference` is a note or document record unless its content is a
+C-CDA document: a `content.format` coded `urn:hl7-org:sdwg:ccda-…` in HL7's
+[document format codes](https://terminology.hl7.org/CodeSystem-v3-HL7DocumentFormatCodes.html)
+or the IHE format codes R4's
+[formatcodes](https://hl7.org/fhir/R4/valueset-formatcodes.html) binds, as US
+Core codes a CCD (`type` 34133-9, format
+`urn:hl7-org:sdwg:ccda-structuredBody:2.1`). That document is a source of its
+own for a C-CDA adapter to import, its records being its entries, so its
+reference makes no record and is `fhirr4:documentReferenceToCcdaDocument`.
+Neither `type` nor `category` tells the two apart: a discharge summary may be
+a C-CDA document or a PDF. A note's version carries every coding of its `type`
+(LOINC as IRIs, any other system as a literal), its type's name, its
+`description` as its title, its `date`, its `status`, its `docStatus` and
+the one `Organization` its authors name from a server; its `category` and
+`context` are not carried.
+
+Each attachment, a report's `presentedForm` and each `content.attachment` of a
+note, is a node of the version, `<version>#attachment-n`, `n` its 1-based
+position, with its `contentType`, `title` and `url`. Its bytes stay in the
+kept document. The version's text, `cascade:narrativeText`, is its first
+attachment the Bridge decodes text from (inline `data` of a `text/*` type,
+`bridge:textDecodedFromBase64`), else its narrative `text.div`; HTML loses its
+markup, a line to each block, the XML entities and `&nbsp;` read. Data no text
+is decoded from, a PDF or an image, is `fhirr4:attachmentDataNotRead`, and a
+`text.div` that is not the text carried, any other resource's included, is
+`fhirr4:narrative`.
 
 A medication names its drug in `medicationCodeableConcept`, or by
 `medicationReference` to a `Medication` resource: contained in it, another
@@ -384,7 +440,7 @@ their `INVENTORY.md` there, at the commit the crate names.
 Three more are example Bundles the Genomics Reporting IG publishes, in that
 corpus's `fixtures/genomics/fhir-genomics-ig/`: whole transaction or collection
 Bundles, with the ids and fullUrls the IG's authors gave them. The resources in
-them that this release does not map (a DiagnosticReport, a Specimen, a Task)
+them that this release does not map (a Specimen, a Task, a ServiceRequest)
 yield findings and no record. The authored Bundles of variants and
 interpretations are for the rules above, and the two named for Martin Okafor
 are for a story of cascade-vocabulary, jayostis/cascade-vocabulary#138: the
