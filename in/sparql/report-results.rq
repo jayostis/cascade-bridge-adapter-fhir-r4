@@ -21,8 +21,9 @@ PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # one: a lab result, a variant or a diagnostic implication, never a panel. As
 # record.rq reads a reference to a Patient, Observation/<id> naming an entry
 # held under a urn:uuid, or an id two entries hold an Observation under, names
-# none. A result "#" and an id names the record of the Observation the report
-# contains under that id, as record.rq names a contained record, where it is
+# none. A result "#" and an id names the record of the Observation its record
+# contains under that id, whether the report is that record or contained in it
+# beside the Observation, as record.rq names a contained record, where it is
 # one. Any other result, one on another server among them, names none:
 # report-result-findings.rq reports it, resolving each as this does.
 
@@ -83,7 +84,7 @@ WHERE {
     ?top xyz:contained ?targetList .
     ?targetList ?targetSlot ?targetResource .
     ?targetResource xyz:id ?targetId .
-    FILTER (!BOUND(?contained) && CONCAT("#", STR(?targetId)) = ?written)
+    FILTER (CONCAT("#", STR(?targetId)) = ?written)
   }
   BIND (IF(BOUND(?targetSlot),
            CONCAT(?recordSelector, ?topStep, "/contained/", STR(xsd:integer(STRAFTER(STR(?targetSlot), "#_")) - 1)), 1/0)

@@ -12,8 +12,10 @@ PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # What note-or-document.rq and attachments.rq leave behind: a DocumentReference
 # whose content is a C-CDA document, at the format code
 # note-or-document-table.rq reads it by, the code as its value; and a report's
-# or a note's attachment whose data the Bridge decodes no text from, at its
-# data, its content type as its value; and, of a report or a note from a
+# or a note's attachment whose content is not read, at its data or, given by
+# URL only, at its URL, its content type as its value: any but text/plain or
+# text/html data the Bridge decodes; a text attachment after the first
+# narrative-text.rq carries, at its data; and, of a report or a note from a
 # server, each performer's or author's reference where they name more than one
 # Organization, as report-and-note-performer.rq reads them and
 # lab-result-findings.rq reports a lab result's.
@@ -64,22 +66,56 @@ WHERE {
     FILTER (?formatSystem IN ("http://terminology.hl7.org/CodeSystem/v3-HL7DocumentFormatCodes",
                               "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
                               "http://ihe.net/fhir/ihe.formatcode.fhir/CodeSystem/formatcode")
-            && STRSTARTS(STR(?value), "urn:hl7-org:sdwg:ccda-"))
+            && STRSTARTS(STR(?value), "urn:hl7-org:sdwg:ccda-structuredBody:"))
     BIND ("/content/" AS ?list)
     BIND ("/format/code" AS ?part)
     BIND (fhirr4:documentReferenceToCcdaDocument AS ?gap)
   }
   UNION
   {
-    { ?resource xyz:presentedForm ?forms . ?forms ?slot ?attachment . BIND ("/presentedForm/" AS ?list) BIND ("/data" AS ?part) }
+    { ?resource xyz:presentedForm ?forms . ?forms ?slot ?attachment . BIND ("/presentedForm/" AS ?list) BIND ("" AS ?within) }
     UNION
     { ?resource xyz:content ?contents . ?contents ?slot ?content . ?content xyz:attachment ?attachment .
-      BIND ("/content/" AS ?list) BIND ("/attachment/data" AS ?part) }
-    ?attachment xyz:data ?data .
-    FILTER NOT EXISTS { ?attachment bridge:textDecodedFromBase64 ?decoded }
+      BIND ("/content/" AS ?list) BIND ("/attachment" AS ?within) }
+    { ?attachment xyz:data ?given . BIND ("/data" AS ?member) }
+    UNION
+    { ?attachment xyz:url ?given . FILTER NOT EXISTS { ?attachment xyz:data ?inline } BIND ("/url" AS ?member) }
+    FILTER NOT EXISTS {
+      ?attachment bridge:textDecodedFromBase64 ?decoded ;
+        xyz:contentType ?readType .
+      FILTER (REGEX(STR(?readType), "^\\s*text/(plain|html)\\s*(;.*)?$", "i"))
+    }
     OPTIONAL { ?attachment xyz:contentType ?contentType }
     BIND (?contentType AS ?value)
+    BIND (CONCAT(?within, ?member) AS ?part)
     BIND (fhirr4:attachmentDataNotRead AS ?gap)
+  }
+  UNION
+  {
+    {
+      SELECT ?resource (MIN(?position) AS ?first) WHERE {
+        { ?resource xyz:presentedForm ?firstForms . ?firstForms ?firstSlot ?readable }
+        UNION
+        { ?resource xyz:content ?firstContents . ?firstContents ?firstSlot ?firstContent . ?firstContent xyz:attachment ?readable }
+        ?readable bridge:textDecodedFromBase64 ?firstText ;
+          xyz:contentType ?firstType .
+        BIND (REGEX(STR(?firstType), "^\\s*text/html\\s*(;.*)?$", "i") AS ?firstHtml)
+        FILTER ((?firstHtml || REGEX(STR(?firstType), "^\\s*text/plain\\s*(;.*)?$", "i"))
+                && REGEX(IF(?firstHtml, REPLACE(STR(?firstText), "<[^>]*>|&nbsp;|&#160;|&#[xX][aA]0;", ""), STR(?firstText)), "\\S"))
+        BIND (xsd:integer(STRAFTER(STR(?firstSlot), "#_")) AS ?position)
+      } GROUP BY ?resource
+    }
+    { ?resource xyz:presentedForm ?laterForms . ?laterForms ?slot ?later . BIND ("/presentedForm/" AS ?list) BIND ("/data" AS ?part) }
+    UNION
+    { ?resource xyz:content ?laterContents . ?laterContents ?slot ?laterContent . ?laterContent xyz:attachment ?later .
+      BIND ("/content/" AS ?list) BIND ("/attachment/data" AS ?part) }
+    FILTER (xsd:integer(STRAFTER(STR(?slot), "#_")) > ?first)
+    ?later bridge:textDecodedFromBase64 ?laterText ;
+      xyz:contentType ?value .
+    BIND (REGEX(STR(?value), "^\\s*text/html\\s*(;.*)?$", "i") AS ?laterHtml)
+    FILTER ((?laterHtml || REGEX(STR(?value), "^\\s*text/plain\\s*(;.*)?$", "i"))
+            && REGEX(IF(?laterHtml, REPLACE(STR(?laterText), "<[^>]*>|&nbsp;|&#160;|&#[xX][aA]0;", ""), STR(?laterText)), "\\S"))
+    BIND (fhirr4:textAttachmentNotCarried AS ?gap)
   }
   UNION
   {

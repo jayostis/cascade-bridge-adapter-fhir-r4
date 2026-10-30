@@ -50,6 +50,7 @@ WHERE {
   BIND (IRI(CONCAT("urn:cascade:version-at:", SHA256(?resourcePointer))) AS ?version)
 
   {
+    ?resource xyz:type ?nameConcept .
     OPTIONAL { ?resource xyz:type ?textConcept . ?textConcept xyz:text ?conceptText }
     OPTIONAL {
       ?resource xyz:type ?displayConcept .

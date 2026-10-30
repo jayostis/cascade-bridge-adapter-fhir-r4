@@ -5,14 +5,17 @@ PREFIX bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#>
 PREFIX cascade:  <https://ns.cascadeprotocol.org/cascade#>
 PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 
-# A report's or a note's text is its first attachment whose text the Bridge
-# decodes (bridge:textDecodedFromBase64: inline data of a text/* content type),
-# else its narrative's div. HTML, the div and a text/html attachment, loses
-# its markup: a tag of a block, a line or a cell (p, div, br, li, tr, td, th,
-# h1 to h6, table, thead, tbody, tfoot, ul, ol, dl, dt, dd, pre, blockquote,
-# caption) breaks the line, any other tag goes, and the five entities of XML
-# and &nbsp; are read; each line's runs of white space become one space, and
-# empty lines go. Text of any other text/* type is kept as written, trimmed.
+# A report's or a note's text is its first attachment of type text/plain or
+# text/html whose text the Bridge decodes (bridge:textDecodedFromBase64, inline
+# data) and holds more than white space, else its narrative's div. Text of
+# any other type, XML among it, is not text to read: report-and-note-findings.rq
+# reports it. HTML, the div and a text/html attachment, loses its markup: a tag
+# of a block, a line or a cell (p, div, br, li, tr, td, th, h1 to h6, table,
+# thead, tbody, tfoot, ul, ol, dl, dt, dd, pre, blockquote, caption) breaks the
+# line, any other tag goes, and the five entities of XML, &nbsp;, and the
+# numeric references of those characters, the no-break space and the en and em
+# dashes are read; each line's runs of white space become one space, and
+# empty lines go. A text/plain attachment is kept as written, trimmed.
 # narrative-findings.rq reports a div that is not the text carried.
 
 CONSTRUCT {
@@ -50,7 +53,11 @@ WHERE {
         UNION
         { ?resource xyz:content ?contents . ?contents ?contentSlot ?content . ?content xyz:attachment ?decoded .
           BIND (?contentSlot AS ?slot) }
-        ?decoded bridge:textDecodedFromBase64 ?anyText .
+        ?decoded bridge:textDecodedFromBase64 ?anyText ;
+          xyz:contentType ?anyType .
+        BIND (REGEX(STR(?anyType), "^\\s*text/html\\s*(;.*)?$", "i") AS ?anyHtml)
+        FILTER ((?anyHtml || REGEX(STR(?anyType), "^\\s*text/plain\\s*(;.*)?$", "i"))
+                && REGEX(IF(?anyHtml, REPLACE(STR(?anyText), "<[^>]*>|&nbsp;|&#160;|&#[xX][aA]0;", ""), STR(?anyText)), "\\S"))
         BIND (xsd:integer(STRAFTER(STR(?slot), "#_")) AS ?position)
       } GROUP BY ?resource
     }
@@ -58,17 +65,19 @@ WHERE {
     UNION
     { ?resource xyz:content ?firstContents . ?firstContents ?firstSlot ?firstContent . ?firstContent xyz:attachment ?firstAttachment }
     FILTER (xsd:integer(STRAFTER(STR(?firstSlot), "#_")) = ?first)
-    ?firstAttachment bridge:textDecodedFromBase64 ?decodedText .
-    OPTIONAL { ?firstAttachment xyz:contentType ?decodedType }
+    ?firstAttachment bridge:textDecodedFromBase64 ?decodedText ;
+      xyz:contentType ?decodedType .
   }
   OPTIONAL { ?resource xyz:text ?narrative . ?narrative xyz:div ?div }
-  BIND (BOUND(?decodedText) && !REGEX(COALESCE(STR(?decodedType), ""), "^\\s*text/html", "i") AS ?plain)
+  BIND (BOUND(?decodedText) && !REGEX(STR(?decodedType), "^\\s*text/html", "i") AS ?plain)
   BIND (IF(BOUND(?decodedText), STR(?decodedText), STR(?div)) AS ?raw)
   BIND (REPLACE(?raw, "<\\s*/?\\s*(p|div|br|li|tr|td|th|h[1-6]|table|thead|tbody|tfoot|ul|ol|dl|dt|dd|pre|blockquote|caption)([\\s/][^>]*)?>", "&#10;", "i")
         AS ?broken)
-  BIND (REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(?broken,
-          "<[^>]*>", ""), "&lt;", "<"), "&gt;", ">"), "&quot;", "\""), "&apos;", "'"), "&#39;", "'"), "&nbsp;", " "),
-          "&#10;", "\n"), "&amp;", "&") AS ?unmarked)
+  BIND (REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(?broken,
+          "<[^>]*>", ""), "&lt;|&#60;|&#[xX]3[cC];", "<"), "&gt;|&#62;|&#[xX]3[eE];", ">"), "&quot;|&#34;|&#[xX]22;", "\""),
+          "&apos;|&#39;|&#[xX]27;", "'"), "&nbsp;|&#160;|&#[xX][aA]0;", " "), "&#8212;|&#[xX]2014;", "—"),
+          "&#8211;|&#[xX]2013;", "–") AS ?unreferenced)
+  BIND (REPLACE(REPLACE(?unreferenced, "&#10;", "\n"), "&amp;|&#38;|&#[xX]26;", "&") AS ?unmarked)
   BIND (REPLACE(REPLACE(REPLACE(?unmarked, "[ \\t\\r ]+", " "), " ?\\n ?", "\n"), "\\n+", "\n") AS ?lines)
   BIND (IF(?plain, REPLACE(?raw, "^\\s+|\\s+$", ""), REPLACE(?lines, "^\\n|\\n$|^ | $", "")) AS ?trimmed)
   BIND (IF(BOUND(?raw) && ?trimmed != "", ?trimmed, 1/0) AS ?text)

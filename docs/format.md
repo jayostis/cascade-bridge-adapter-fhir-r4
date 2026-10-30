@@ -112,14 +112,17 @@ entry, is `fhirr4:reportResultNotNamed`. Performers naming two
 are a note's authors.
 
 A `DocumentReference` is a note or document record unless its content is a
-C-CDA document: a `content.format` coded `urn:hl7-org:sdwg:ccda-…` in HL7's
+structured C-CDA document: a `content.format` coded
+`urn:hl7-org:sdwg:ccda-structuredBody:…` in HL7's
 [document format codes](https://terminology.hl7.org/CodeSystem-v3-HL7DocumentFormatCodes.html)
 or the IHE format codes R4's
 [formatcodes](https://hl7.org/fhir/R4/valueset-formatcodes.html) binds, as US
 Core codes a CCD (`type` 34133-9, format
 `urn:hl7-org:sdwg:ccda-structuredBody:2.1`). That document is a source of its
 own for a C-CDA adapter to import, its records being its entries, so its
-reference makes no record and is `fhirr4:documentReferenceToCcdaDocument`.
+reference makes no record and is `fhirr4:documentReferenceToCcdaDocument`. An
+unstructured one (`ccda-nonXMLBody:…`), a PDF or text in a CDA header, has no
+entries to import, so it is a note.
 Neither `type` nor `category` tells the two apart: a discharge summary may be
 a C-CDA document or a PDF. A note's version carries every coding of its `type`
 (LOINC as IRIs, any other system as a literal), its type's name, its
@@ -131,12 +134,16 @@ Each attachment, a report's `presentedForm` and each `content.attachment` of a
 note, is a node of the version, `<version>#attachment-n`, `n` its 1-based
 position, with its `contentType`, `title` and `url`. Its bytes stay in the
 kept document. The version's text, `cascade:narrativeText`, is its first
-attachment the Bridge decodes text from (inline `data` of a `text/*` type,
-`bridge:textDecodedFromBase64`), else its narrative `text.div`; HTML loses its
-markup, a line to each block, the XML entities and `&nbsp;` read. Data no text
-is decoded from, a PDF or an image, is `fhirr4:attachmentDataNotRead`, and a
-`text.div` that is not the text carried, any other resource's included, is
-`fhirr4:narrative`.
+`text/plain` or `text/html` attachment the Bridge decodes text from (inline
+`data`, `bridge:textDecodedFromBase64`) that holds more than white space, else
+its narrative `text.div`; HTML loses its markup, a line to each block, the XML
+entities, `&nbsp;` and the numeric references of those characters and the
+dashes read; plain text is kept as written. An attachment whose content is not
+read, given by `url` only, as most servers send `presentedForm`, or as data
+that is no plain or HTML text (a PDF, an image, XML), is
+`fhirr4:attachmentDataNotRead`; a later text attachment, another rendition of
+the content, is `fhirr4:textAttachmentNotCarried`; and a `text.div` that is
+not the text carried, any other resource's included, is `fhirr4:narrative`.
 
 A medication names its drug in `medicationCodeableConcept`, or by
 `medicationReference` to a `Medication` resource: contained in it, another
@@ -454,4 +461,7 @@ The two narrative-only Conditions, `condition-no-id-narrative-diabetes` and
 `condition-no-id-narrative-breast-cancer`, and the two id-less
 MedicationStatements, `medication-no-id-bare` and `medication-no-id-note-only`,
 carry no `subject`, which FHIR R4's schema requires of both types, so the four
-fail the schema. Every other input, copied or authored, validates against it.
+fail the schema. So do four authored reports and notes, on purpose:
+`diagnostic-report-codes-and-times` and `document-reference-type-codings` write
+a time to the minute, `diagnostic-report-contained-results` an `issued` of a
+day, and `document-reference-inline-pdf` an empty title. Every other input, copied or authored, validates against it.

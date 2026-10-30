@@ -7,12 +7,14 @@ PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # One row for each DocumentReference of the record that is a note or document,
 # wherever it stands, so that every query asking whether one is a record asks
 # this one. Every DocumentReference is one, whatever its type and category,
-# except one whose content is a C-CDA document: a content's format coded
-# urn:hl7-org:sdwg:ccda- and the rest in HL7's document format codes, or in the
-# IHE format codes R4 binds and their canonical, as US Core codes a CCD. That
-# document is a source of its own, imported by the C-CDA adapter, and its
-# records are its entries, so its reference makes no record and
-# note-or-document-findings.rq reports it.
+# except one whose content is a structured C-CDA document: a content's format
+# coded urn:hl7-org:sdwg:ccda-structuredBody: and its version, in HL7's
+# document format codes, or in the IHE format codes R4 binds and their
+# canonical, as US Core codes a CCD. That document is a source of its own,
+# imported by the C-CDA adapter, and its records are its entries, so its
+# reference makes no record and report-and-note-findings.rq reports it. An
+# unstructured C-CDA document (ccda-nonXMLBody:), a PDF or text in a CDA
+# header, has no entries for the C-CDA adapter to read, so it is a note.
 
 CONSTRUCT {
   [] fhirr4:noteOrDocumentAt ?pointer .
@@ -41,7 +43,7 @@ WHERE {
     FILTER (?formatSystem IN ("http://terminology.hl7.org/CodeSystem/v3-HL7DocumentFormatCodes",
                               "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
                               "http://ihe.net/fhir/ihe.formatcode.fhir/CodeSystem/formatcode")
-            && STRSTARTS(STR(?formatCode), "urn:hl7-org:sdwg:ccda-"))
+            && STRSTARTS(STR(?formatCode), "urn:hl7-org:sdwg:ccda-structuredBody:"))
   }
   BIND (CONCAT(?recordSelector, ?topStep, ?containedStep) AS ?pointer)
 }

@@ -58,7 +58,7 @@ WHERE {
     ?top xyz:contained ?targetList .
     ?targetList ?targetSlot ?targetResource .
     ?targetResource xyz:id ?targetId .
-    FILTER (!BOUND(?contained) && CONCAT("#", STR(?targetId)) = ?written)
+    FILTER (CONCAT("#", STR(?targetId)) = ?written)
   }
   BIND (IF(BOUND(?targetSlot),
            CONCAT(?recordSelector, ?topStep, "/contained/", STR(xsd:integer(STRAFTER(STR(?targetSlot), "#_")) - 1)), 1/0)

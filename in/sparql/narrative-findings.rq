@@ -58,7 +58,12 @@ WHERE {
             { ?resource xyz:presentedForm ?forms . ?forms ?formSlot ?decoded }
             UNION
             { ?resource xyz:content ?contents . ?contents ?contentSlot ?content . ?content xyz:attachment ?decoded }
-            ?decoded bridge:textDecodedFromBase64 ?decodedText .
+            ?decoded bridge:textDecodedFromBase64 ?decodedText ;
+              xyz:contentType ?decodedType .
+            BIND (REGEX(STR(?decodedType), "^\\s*text/html\\s*(;.*)?$", "i") AS ?decodedHtml)
+            FILTER ((?decodedHtml || REGEX(STR(?decodedType), "^\\s*text/plain\\s*(;.*)?$", "i"))
+                    && REGEX(IF(?decodedHtml, REPLACE(STR(?decodedText), "<[^>]*>|&nbsp;|&#160;|&#[xX][aA]0;", ""),
+                                STR(?decodedText)), "\\S"))
           }))
   BIND (CONCAT(?topStep, ?containedStep, "/text/div") AS ?pointer)
   BIND (CONCAT(?topStep, ?containedPath, "/text/div") AS ?value)

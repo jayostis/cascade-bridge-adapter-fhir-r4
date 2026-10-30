@@ -1890,12 +1890,12 @@
       "@type": "File",
       "name": "Document table: which DocumentReference is a note or document",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "2282",
-      "sha256": "6d38efaee5053d012750f1f17671032b98c286c198d4a729caa2599ecc966f59",
+      "contentSize": "2475",
+      "sha256": "770ac4030676d090b3d917b3e0588d626d2334d293a8caf4397317bb25eefcdf",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "One row per DocumentReference that is a note or document record: every one but one whose content's format is a C-CDA document (urn:hl7-org:sdwg:ccda-, in HL7's document format codes or the IHE format codes), which is a source of its own."
+      "description": "One row per DocumentReference that is a note or document record: every one but one whose content's format is a structured C-CDA document (urn:hl7-org:sdwg:ccda-structuredBody:, in HL7's document format codes or the IHE format codes), which is a source of its own; an unstructured one (ccda-nonXMLBody:) is a note."
     },
     {
       "@id": "in/sparql/coding-system-table.rq",
@@ -2130,8 +2130,8 @@
       "@type": "File",
       "name": "Mapping: a DiagnosticReport's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "7316",
-      "sha256": "03e26d6bc19b31c405009aaa660e5f84ed6c10304414e5bde573fd62f5e9e31b",
+      "contentSize": "7454",
+      "sha256": "d66bda9893a19b4d938aac61a4b4b9a1984a02504dcd966a5a375c3968c09403",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2142,20 +2142,20 @@
       "@type": "File",
       "name": "Mapping: the result records a DiagnosticReport names",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "9369",
-      "sha256": "6630543b43dd49010a3359df01036f1d4bbdca1fafa2f45d13636bf1c5be51f6",
+      "contentSize": "9426",
+      "sha256": "6826cdb09dac7392582060f838734a31c19c25483799b11e88caf67c490abff1",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "Each result of a DiagnosticReport that names a lab result, variant or diagnostic implication record, by a urn:uuid one entry holds, by Observation/<id> on the report's server, or by \"#\" and the id of an Observation the report contains, as that record's IRI under obo:RO_0002351 on the report's version."
+      "description": "Each result of a DiagnosticReport that names a lab result, variant or diagnostic implication record, by a urn:uuid one entry holds, by Observation/<id> on the report's server, or by \"#\" and the id of an Observation its record contains, as that record's IRI under obo:RO_0002351 on the report's version."
     },
     {
       "@id": "in/sparql/note-or-document.rq",
       "@type": "File",
       "name": "Mapping: a DocumentReference's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "5383",
-      "sha256": "e752f7bee71d39f188365497a58528553b037b8991a98147878d7401750ec5ef",
+      "contentSize": "5421",
+      "sha256": "2e79ea76aef1f5250d52bc92d67001bd48d1d121db3a73dc6801ab180ddc6656",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2178,12 +2178,12 @@
       "@type": "File",
       "name": "Mapping: a report's or a note's text",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "4120",
-      "sha256": "b189138ac5bbb7875986b5c51a10d5ad6f85f5737bbbc1b2f453ec44ab7b8080",
+      "contentSize": "4852",
+      "sha256": "1ca3f1c22993901744624930017c3c25b22efabb6fe8e7b4a6ad265558e506e6",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "A report's or a note's cascade:narrativeText: its first attachment's text the Bridge decodes from base64, else its narrative div, HTML stripped of its markup, a line per block and entities read."
+      "description": "A report's or a note's cascade:narrativeText: its first text/plain or text/html attachment's text the Bridge decodes from base64 that holds more than white space, else its narrative div, HTML stripped of its markup, a line per block, entities and their numeric references read."
     },
     {
       "@id": "in/sparql/report-and-note-performer.rq",
@@ -2382,20 +2382,20 @@
       "@type": "File",
       "name": "Findings: a DocumentReference of a C-CDA document, and attachment data not read",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "5238",
-      "sha256": "1e00fd8409f63c6f237da37c5b5c06e99a7921f842b7014411b9a3c0b2013f2c",
+      "contentSize": "7376",
+      "sha256": "5de0f00ef7a54be80c5dd358ddbf0fd00bacc0e346a3b628f9aa59e7bff12e1a",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "Reports fhirr4:documentReferenceToCcdaDocument at the format code of a DocumentReference whose content is a C-CDA document, fhirr4:attachmentDataNotRead at each report or note attachment's data the Bridge decodes no text from, and fhirr4:performerCarriedOnlyAsOneOrganizationRecord at each performer or author reference of a report or note whose performers or authors name more than one Organization."
+      "description": "Reports fhirr4:documentReferenceToCcdaDocument at the format code of a DocumentReference whose content is a structured C-CDA document, fhirr4:attachmentDataNotRead at each report or note attachment whose content is not read (by URL only, or data that is no text/plain or text/html the Bridge decodes), fhirr4:textAttachmentNotCarried at each text attachment after the one carried, and fhirr4:performerCarriedOnlyAsOneOrganizationRecord at each performer or author reference of a report or note whose performers or authors name more than one Organization."
     },
     {
       "@id": "in/sparql/report-result-findings.rq",
       "@type": "File",
       "name": "Findings: a report's result that names no record",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "5498",
-      "sha256": "89c439a20241a0ef1417111a792cc846aa9b82be34c55efd2bd214b41fea11cb",
+      "contentSize": "5476",
+      "sha256": "847c5129614a7a342786b7ef3607998b64e2139639f71e302bb764253b4a1ada",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2406,12 +2406,12 @@
       "@type": "File",
       "name": "Findings: a narrative not carried",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "2802",
-      "sha256": "a19a5d8147047de6b51f1ecea7bd9e18991fd19cda5ab746e91d470d2a786a6e",
+      "contentSize": "3215",
+      "sha256": "fc84a1185ae392a101bc40403dc9bf97d503881907f685a0dd6cb8f485f51fc8",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "Reports fhirr4:narrative at each text div narrative-text.rq does not carry: any resource's but a report's or a note's, and theirs where a text attachment is carried instead."
+      "description": "Reports fhirr4:narrative at each text div narrative-text.rq does not carry: any resource's but a report's or a note's, and theirs where a text/plain or text/html attachment is carried instead."
     },
     {
       "@id": "in/sparql/reference-without-server-findings.rq",
@@ -2442,8 +2442,8 @@
       "@type": "File",
       "name": "FHIR R4 JSON gaps",
       "encodingFormat": "text/turtle",
-      "contentSize": "20497",
-      "sha256": "936acae7fa83f7b15735dd1f932601d1a72a855c729f59d8a35d5657713452ce",
+      "contentSize": "20860",
+      "sha256": "aef22ad42166bdf7202b4301fd282925ca25195b7631ea5fc2d0427957af6dee",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -8937,8 +8937,8 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "What a record is, reports and notes, the two envelopes, how a record is named, JSON as FHIR writes it, the schema, the versions in and out of scope, and what is known about the committed inputs. Read from hl7.org/fhir/R4/ on 2026-09-27, reports and notes on 2026-10-30.",
-      "contentSize": "29745",
-      "sha256": "eb3c755fbdf45a235987f5fa7c9c9ca948959c82f2bb3072932c98cc8d5ec4ed"
+      "contentSize": "30500",
+      "sha256": "e34cf9b5081bf71c0774380fe5a4871fa2f4a5a042b49890619dad69097ef30d"
     },
     {
       "@id": "fixtures/CLAUDE.md",

@@ -53,6 +53,7 @@ WHERE {
   BIND (IRI(CONCAT("urn:cascade:version-at:", SHA256(?resourcePointer))) AS ?version)
 
   {
+    ?resource xyz:code ?nameConcept .
     OPTIONAL { ?resource xyz:code ?textConcept . ?textConcept xyz:text ?conceptText }
     OPTIONAL {
       ?resource xyz:code ?displayConcept .
@@ -90,6 +91,7 @@ WHERE {
   }
   UNION
   {
+    { ?resource xyz:effectiveDateTime ?anyTime } UNION { ?resource xyz:effectivePeriod ?anyPeriod }
     OPTIONAL { ?resource xyz:effectiveDateTime ?effective }
     OPTIONAL { ?resource xyz:effectivePeriod ?period . ?period xyz:start ?periodStart }
     BIND (COALESCE(?effective, ?periodStart) AS ?time)

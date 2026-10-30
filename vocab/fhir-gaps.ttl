@@ -329,7 +329,7 @@ fhirr4:documentReferenceToCcdaDocument a skos:Concept ;
   sh:resultSeverity sh:Warning .
 
 fhirr4:attachmentDataNotRead a skos:Concept ;
-  skos:prefLabel "An attachment's data is no text the Bridge decodes, as a PDF or an image, so only its content type, title and URL are carried: what it says is not, and its bytes stay in the kept document."@en ;
+  skos:prefLabel "An attachment is given by URL only, or as data that is no text/plain or text/html text the Bridge decodes, as a PDF, an image or XML, so only its content type, title and URL are carried: what it says is not, and inline bytes stay in the kept document."@en ;
   skos:inScheme fhirr4:gaps ;
   skos:broader bridge:carriedWithLoss ;
   sh:resultSeverity sh:Warning .
@@ -339,3 +339,8 @@ fhirr4:reportResultNotNamed a skos:Concept ;
   skos:inScheme fhirr4:gaps ;
   skos:broader bridge:carriedWithLoss ;
   sh:resultSeverity sh:Warning .
+
+fhirr4:textAttachmentNotCarried a skos:Concept ;
+  skos:prefLabel "A report or a note gives more than one text attachment, and only the first is carried as its text: FHIR reads its attachments as renditions of one content."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:carriedWithLoss .
