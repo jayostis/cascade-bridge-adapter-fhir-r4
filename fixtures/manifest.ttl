@@ -169,6 +169,8 @@
     <#bundle-medication-dispense-prescriptions-not-named>
     <#bundle-absolute-reference-from-urn-entry>
     <#bundle-medication-impossible-dates>
+    <#bundle-dates-that-do-not-exist>
+    <#bundle-condition-onsets-and-the-fhir-date-forms>
   ) .
 
 <#allergy-with-id> a bridge:IsomorphicConversionTest ;
@@ -2294,6 +2296,32 @@
   mf:result [
     bridge:expectedGraph <expected/bundle-medication-impossible-dates.ttl> ;
     bridge:expectedFindings <findings/bundle-medication-impossible-dates.ttl>
+  ] .
+
+<#bundle-dates-that-do-not-exist> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-dates-that-do-not-exist" ;
+  rdfs:comment "A Bundle with one resource of each kind a mapping reads a date from, each holding a day or month the calendar lacks: a Patient's birth and death, an AllergyIntolerance's, a Condition's onset and abatement, an Immunization's occurrence, a Procedure's performance, a DocumentReference's date, a DiagnosticReport's effective time and issued instant, a laboratory Observation's effective time, and a Diagnostic Implication's issued instant. Each is no value and is a finding, fhirr4:dateNotCarried." ;
+  mf:action [
+    bridge:input <in/bundle-dates-that-do-not-exist.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/example-org.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-dates-that-do-not-exist.ttl> ;
+    bridge:expectedFindings <findings/bundle-dates-that-do-not-exist.ttl>
+  ] .
+
+<#bundle-condition-onsets-and-the-fhir-date-forms> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-condition-onsets-and-the-fhir-date-forms" ;
+  rdfs:comment "A Bundle of Conditions whose onsetDateTime is each form of FHIR's date and dateTime or none of them: the carried are a leap day, a leap day of a year divisible by 400, a year, a year and month, a time to the minute with an offset (held padded to the second), a fraction of a second and the last second of a day; hour 24, year 0000, a leap second, a time with no zone, with seconds or without, February 29 of 1900 and minute 61 are no value and each is a finding, fhirr4:dateNotCarried." ;
+  mf:action [
+    bridge:input <in/bundle-condition-onsets-and-the-fhir-date-forms.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/example-org.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-condition-onsets-and-the-fhir-date-forms.ttl> ;
+    bridge:expectedFindings <findings/bundle-condition-onsets-and-the-fhir-date-forms.ttl>
   ] .
 
 <#medication-dispense-prescription-without-server> a bridge:IsomorphicConversionTest ;

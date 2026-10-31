@@ -2,91 +2,91 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:c556461e1a25cff94548529ff27abd39 a oa:FragmentSelector ;
+_:b47b11c940d58b2946e93b44538018d1 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/entry/0" ;
-	oa:refinedBy _:c83dd8985aae19d7925501e0cb71dbb .
-_:e3d4515eb807d570eaa86613064530bc oa:hasSource <../in/bundle-medication-impossible-dates.json> .
-_:c83dd8985aae19d7925501e0cb71dbb rdf:value "/resource/dosageInstruction/0/timing/repeat/boundsPeriod/end" ;
+	rdf:value "/entry/0" .
+_:a6eccd4cf08f97e4efa5d88b1d5d5b0f oa:hasSource <../in/bundle-medication-impossible-dates.json> .
+_:b47b11c940d58b2946e93b44538018d1 oa:refinedBy _:a86fa2269627b0be3a3a4b29074d1bc8 .
+_:a86fa2269627b0be3a3a4b29074d1bc8 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	a oa:FragmentSelector .
-_:e3d4515eb807d570eaa86613064530bc oa:hasSelector _:c556461e1a25cff94548529ff27abd39 .
-_:c6a30df116b25f06303b3a0d2dd20470 oa:hasTarget _:e3d4515eb807d570eaa86613064530bc .
-_:dd7bbf2fbb5b6c0acd844cb298fd6c4a a oa:FragmentSelector ;
+	rdf:value "/resource/authoredOn" .
+_:a6eccd4cf08f97e4efa5d88b1d5d5b0f oa:hasSelector _:b47b11c940d58b2946e93b44538018d1 .
+_:f5c19579dd6826c5add2afa65ef43587 oa:hasTarget _:a6eccd4cf08f97e4efa5d88b1d5d5b0f .
+_:a689fb2be617f621a2e1fb833f6f41ab a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/entry/0" ;
-	oa:refinedBy _:da4f60cb7bd51bf74520a94cae52735f .
-_:d76978ec3d9528ec12b7c98b29312280 oa:hasSource <../in/bundle-medication-impossible-dates.json> .
-_:da4f60cb7bd51bf74520a94cae52735f rdf:value "/resource/authoredOn" ;
+	rdf:value "/entry/0" .
+_:d75be76770880306beb071f7ed75d747 oa:hasSource <../in/bundle-medication-impossible-dates.json> .
+_:a689fb2be617f621a2e1fb833f6f41ab oa:refinedBy _:dca45e674bdb8eea1e172ea4300f42ea .
+_:dca45e674bdb8eea1e172ea4300f42ea a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	a oa:FragmentSelector .
-_:d76978ec3d9528ec12b7c98b29312280 oa:hasSelector _:dd7bbf2fbb5b6c0acd844cb298fd6c4a .
-_:b75a88661d77e73c9cd8643c4a938879 oa:hasTarget _:d76978ec3d9528ec12b7c98b29312280 .
-_:c6a30df116b25f06303b3a0d2dd20470 sh:resultSeverity sh:Warning .
-_:b75a88661d77e73c9cd8643c4a938879 sh:resultSeverity sh:Warning .
-_:c6a30df116b25f06303b3a0d2dd20470 sh:value "2025-02-29" ;
+	rdf:value "/resource/dosageInstruction/0/timing/repeat/boundsPeriod/end" .
+_:d75be76770880306beb071f7ed75d747 oa:hasSelector _:a689fb2be617f621a2e1fb833f6f41ab .
+_:e933a53c9502d7ed809c9b49e3fbe35a oa:hasTarget _:d75be76770880306beb071f7ed75d747 .
+_:f5c19579dd6826c5add2afa65ef43587 sh:resultSeverity sh:Warning .
+_:e933a53c9502d7ed809c9b49e3fbe35a sh:resultSeverity sh:Warning .
+_:f5c19579dd6826c5add2afa65ef43587 a oa:Annotation ;
+	oa:hasBody fhirr4:dateNotCarried ;
 	oa:motivatedBy oa:classifying ;
-	oa:hasBody fhirr4:medicationDateNotCarried ;
-	a oa:Annotation .
-_:b75a88661d77e73c9cd8643c4a938879 sh:value "2026-02-30" ;
+	sh:value "2026-02-30" .
+_:e933a53c9502d7ed809c9b49e3fbe35a a oa:Annotation ;
+	oa:hasBody fhirr4:dateNotCarried ;
 	oa:motivatedBy oa:classifying ;
-	oa:hasBody fhirr4:medicationDateNotCarried ;
-	a oa:Annotation .
-_:cbab1e7de65f11a212ae1e30e98650ce a oa:FragmentSelector ;
+	sh:value "2025-02-29" .
+_:eeeb2c650d64156865a20655d03b2d65 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/1" .
-_:e4caa2cdd0bb9d1d9632a39dddbe393e a oa:FragmentSelector ;
+_:bb17d035ed3ee9e587d872d8960f10cc a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource" .
-_:cbab1e7de65f11a212ae1e30e98650ce oa:refinedBy _:e4caa2cdd0bb9d1d9632a39dddbe393e .
-_:aa5bf9fc393cbc276a82937b8264361d a oa:Annotation ;
-	oa:hasTarget _:d7ec09ebd3279f860322bb0e3c36d899 .
-_:d7ec09ebd3279f860322bb0e3c36d899 oa:hasSource <../in/bundle-medication-impossible-dates.json> ;
-	oa:hasSelector _:cbab1e7de65f11a212ae1e30e98650ce .
-_:aa5bf9fc393cbc276a82937b8264361d oa:hasBody <https://datatracker.ietf.org/doc/html/draft-wright-json-schema-validation-01#section-6.28> ;
+_:eeeb2c650d64156865a20655d03b2d65 oa:refinedBy _:bb17d035ed3ee9e587d872d8960f10cc .
+_:b98b3509ba505d96bded613ca233a51f a oa:Annotation ;
+	oa:hasTarget _:f27d77124fa1a25362f5a4430e711b57 .
+_:f27d77124fa1a25362f5a4430e711b57 oa:hasSource <../in/bundle-medication-impossible-dates.json> ;
+	oa:hasSelector _:eeeb2c650d64156865a20655d03b2d65 .
+_:b98b3509ba505d96bded613ca233a51f oa:hasBody <https://datatracker.ietf.org/doc/html/draft-wright-json-schema-validation-01#section-6.28> ;
 	oa:motivatedBy oa:classifying ;
 	sh:resultSeverity sh:Violation .
-_:b236769a1011a2345257d37affc83155 a oa:FragmentSelector ;
+_:daf5d15c1505395918372aea54ef056f a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/entry/1" ;
-	oa:refinedBy _:d3b9e8379d3f779a8916b8c722ae9ec0 .
-_:beca4766e58595a1929b77ee42927582 oa:hasSource <../in/bundle-medication-impossible-dates.json> .
-_:d3b9e8379d3f779a8916b8c722ae9ec0 rdf:value "/resource/effectiveDateTime" ;
+	rdf:value "/entry/1" .
+_:a46899b210453680a49782d1cd548148 oa:hasSource <../in/bundle-medication-impossible-dates.json> .
+_:daf5d15c1505395918372aea54ef056f oa:refinedBy _:f72e1c34bde7cecced555dfc9c615241 .
+_:f72e1c34bde7cecced555dfc9c615241 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	a oa:FragmentSelector .
-_:beca4766e58595a1929b77ee42927582 oa:hasSelector _:b236769a1011a2345257d37affc83155 .
-_:ddd7ab4563b280d1f380d0cb25bed3 oa:hasTarget _:beca4766e58595a1929b77ee42927582 ;
+	rdf:value "/resource/effectiveDateTime" .
+_:a46899b210453680a49782d1cd548148 oa:hasSelector _:daf5d15c1505395918372aea54ef056f .
+_:c723ab4a8e5034aa17d0b98a4a854240 oa:hasTarget _:a46899b210453680a49782d1cd548148 ;
 	sh:resultSeverity sh:Warning ;
-	sh:value "2026-13-45" ;
+	a oa:Annotation ;
+	oa:hasBody fhirr4:dateNotCarried ;
 	oa:motivatedBy oa:classifying ;
-	oa:hasBody fhirr4:medicationDateNotCarried ;
-	a oa:Annotation .
-_:b6beaea05d53ed812310cce3f9c5b517 a oa:FragmentSelector ;
+	sh:value "2026-13-45" .
+_:a5b656aa1ad7ab6710546ec020fb3d7d a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/2" .
-_:a408a2c137bfd9b9a90afe106d8b5bfb a oa:FragmentSelector ;
+_:c1692177d908d169e793a6881f82995b a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource" .
-_:b6beaea05d53ed812310cce3f9c5b517 oa:refinedBy _:a408a2c137bfd9b9a90afe106d8b5bfb .
-_:faacadd2ae54074de20b4be3944bb174 a oa:Annotation ;
-	oa:hasTarget _:e7bdd15762c4321bc80be61793a912b8 .
-_:e7bdd15762c4321bc80be61793a912b8 oa:hasSource <../in/bundle-medication-impossible-dates.json> ;
-	oa:hasSelector _:b6beaea05d53ed812310cce3f9c5b517 .
-_:faacadd2ae54074de20b4be3944bb174 oa:hasBody <https://datatracker.ietf.org/doc/html/draft-wright-json-schema-validation-01#section-6.28> ;
+_:a5b656aa1ad7ab6710546ec020fb3d7d oa:refinedBy _:c1692177d908d169e793a6881f82995b .
+_:e8d0067aaf48ffd7720f30a15a53962 a oa:Annotation ;
+	oa:hasTarget _:b86ad7318ebeeeab8a4169730abae8cb .
+_:b86ad7318ebeeeab8a4169730abae8cb oa:hasSource <../in/bundle-medication-impossible-dates.json> ;
+	oa:hasSelector _:a5b656aa1ad7ab6710546ec020fb3d7d .
+_:e8d0067aaf48ffd7720f30a15a53962 oa:hasBody <https://datatracker.ietf.org/doc/html/draft-wright-json-schema-validation-01#section-6.28> ;
 	oa:motivatedBy oa:classifying ;
 	sh:resultSeverity sh:Violation .
-_:d102ef46174a5bf5bf6c712be57d9be0 a oa:FragmentSelector ;
+_:f7698319ce8d3f86d842030fa1876b95 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/entry/2" ;
-	oa:refinedBy _:d673c46d11f495c0e1bd80ee230871ca .
-_:d7e16e64cce73278f4fca99fa955f176 oa:hasSource <../in/bundle-medication-impossible-dates.json> .
-_:d673c46d11f495c0e1bd80ee230871ca rdf:value "/resource/whenPrepared" ;
+	rdf:value "/entry/2" .
+_:e5ff3912aff7c7524582001fda69fffa oa:hasSource <../in/bundle-medication-impossible-dates.json> .
+_:f7698319ce8d3f86d842030fa1876b95 oa:refinedBy _:e77f14b9ce62b988e9e5dd0cac585bac .
+_:e77f14b9ce62b988e9e5dd0cac585bac a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	a oa:FragmentSelector .
-_:d7e16e64cce73278f4fca99fa955f176 oa:hasSelector _:d102ef46174a5bf5bf6c712be57d9be0 .
-_:d0791810c40b47f6533d93f945fa3601 oa:hasTarget _:d7e16e64cce73278f4fca99fa955f176 ;
+	rdf:value "/resource/whenPrepared" .
+_:e5ff3912aff7c7524582001fda69fffa oa:hasSelector _:f7698319ce8d3f86d842030fa1876b95 .
+_:cd97a2d907e8b8bf0c605b0ca4b656fe oa:hasTarget _:e5ff3912aff7c7524582001fda69fffa ;
 	sh:resultSeverity sh:Warning ;
-	sh:value "2026-04-31" ;
+	a oa:Annotation ;
+	oa:hasBody fhirr4:dateNotCarried ;
 	oa:motivatedBy oa:classifying ;
-	oa:hasBody fhirr4:medicationDateNotCarried ;
-	a oa:Annotation .
+	sh:value "2026-04-31" .
