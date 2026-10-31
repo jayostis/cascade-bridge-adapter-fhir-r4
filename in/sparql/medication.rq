@@ -202,23 +202,23 @@ WHERE {
   OPTIONAL { ?resource xyz:effectivePeriod ?startPeriod . ?startPeriod xyz:start ?periodStart }
   OPTIONAL { ?resource xyz:authoredOn ?authored }
   BIND (COALESCE(?effective, ?periodStart) AS ?started)
-  BIND (IF(REGEX(?started, "^[0-9]{4}$"), STRDT(?started, xsd:gYear),
-           IF(REGEX(?started, "^[0-9]{4}-[0-9]{2}$"), STRDT(?started, xsd:gYearMonth),
-           IF(REGEX(?started, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"), STRDT(?started, xsd:date),
-           IF(REGEX(?started, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(Z|[+-][0-9]{2}:[0-9]{2})?$"), STRDT(CONCAT(SUBSTR(?started, 1, 16), ":00", SUBSTR(?started, 17)), xsd:dateTime),
-             IF(REGEX(?started, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T"), STRDT(?started, xsd:dateTime), 1/0))))) AS ?startDate)
-  BIND (IF(REGEX(?authored, "^[0-9]{4}$"), STRDT(?authored, xsd:gYear),
-           IF(REGEX(?authored, "^[0-9]{4}-[0-9]{2}$"), STRDT(?authored, xsd:gYearMonth),
-           IF(REGEX(?authored, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"), STRDT(?authored, xsd:date),
-           IF(REGEX(?authored, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(Z|[+-][0-9]{2}:[0-9]{2})?$"), STRDT(CONCAT(SUBSTR(?authored, 1, 16), ":00", SUBSTR(?authored, 17)), xsd:dateTime),
-             IF(REGEX(?authored, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T"), STRDT(?authored, xsd:dateTime), 1/0))))) AS ?writtenDate)
+  BIND (IF(!REGEX(?started, "^(([0-9]{3}[1-9]|[0-9]{2}[1-9]0|[0-9][1-9]00|[1-9]000)(-(0[1-9]|1[0-2])|-((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01])|(0[469]|11)-(0[1-9]|[12][0-9]|30)|02-(0[1-9]|1[0-9]|2[0-8]))(T([01][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9]([.][0-9]+)?)?(Z|[+-]((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?|([0-9]{2}(0[48]|[2468][048]|[13579][26])|(0[48]|[2468][048]|[13579][26])00)-02-29(T([01][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9]([.][0-9]+)?)?(Z|[+-]((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)$"), 1/0,
+           IF(STRLEN(?started) = 4, STRDT(?started, xsd:gYear),
+           IF(STRLEN(?started) = 7, STRDT(?started, xsd:gYearMonth),
+           IF(STRLEN(?started) = 10, STRDT(?started, xsd:date),
+              STRDT(CONCAT(SUBSTR(?started, 1, 16), IF(SUBSTR(?started, 17, 1) = ":", "", ":00"), SUBSTR(?started, 17)), xsd:dateTime))))) AS ?startDate)
+  BIND (IF(!REGEX(?authored, "^(([0-9]{3}[1-9]|[0-9]{2}[1-9]0|[0-9][1-9]00|[1-9]000)(-(0[1-9]|1[0-2])|-((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01])|(0[469]|11)-(0[1-9]|[12][0-9]|30)|02-(0[1-9]|1[0-9]|2[0-8]))(T([01][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9]([.][0-9]+)?)?(Z|[+-]((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?|([0-9]{2}(0[48]|[2468][048]|[13579][26])|(0[48]|[2468][048]|[13579][26])00)-02-29(T([01][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9]([.][0-9]+)?)?(Z|[+-]((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)$"), 1/0,
+           IF(STRLEN(?authored) = 4, STRDT(?authored, xsd:gYear),
+           IF(STRLEN(?authored) = 7, STRDT(?authored, xsd:gYearMonth),
+           IF(STRLEN(?authored) = 10, STRDT(?authored, xsd:date),
+              STRDT(CONCAT(SUBSTR(?authored, 1, 16), IF(SUBSTR(?authored, 17, 1) = ":", "", ":00"), SUBSTR(?authored, 17)), xsd:dateTime))))) AS ?writtenDate)
 
   OPTIONAL { ?resource xyz:effectivePeriod ?endPeriod . ?endPeriod xyz:end ?ended }
-  BIND (IF(REGEX(?ended, "^[0-9]{4}$"), STRDT(?ended, xsd:gYear),
-           IF(REGEX(?ended, "^[0-9]{4}-[0-9]{2}$"), STRDT(?ended, xsd:gYearMonth),
-           IF(REGEX(?ended, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"), STRDT(?ended, xsd:date),
-           IF(REGEX(?ended, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(Z|[+-][0-9]{2}:[0-9]{2})?$"), STRDT(CONCAT(SUBSTR(?ended, 1, 16), ":00", SUBSTR(?ended, 17)), xsd:dateTime),
-             IF(REGEX(?ended, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T"), STRDT(?ended, xsd:dateTime), 1/0))))) AS ?endDate)
+  BIND (IF(!REGEX(?ended, "^(([0-9]{3}[1-9]|[0-9]{2}[1-9]0|[0-9][1-9]00|[1-9]000)(-(0[1-9]|1[0-2])|-((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01])|(0[469]|11)-(0[1-9]|[12][0-9]|30)|02-(0[1-9]|1[0-9]|2[0-8]))(T([01][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9]([.][0-9]+)?)?(Z|[+-]((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?|([0-9]{2}(0[48]|[2468][048]|[13579][26])|(0[48]|[2468][048]|[13579][26])00)-02-29(T([01][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9]([.][0-9]+)?)?(Z|[+-]((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)$"), 1/0,
+           IF(STRLEN(?ended) = 4, STRDT(?ended, xsd:gYear),
+           IF(STRLEN(?ended) = 7, STRDT(?ended, xsd:gYearMonth),
+           IF(STRLEN(?ended) = 10, STRDT(?ended, xsd:date),
+              STRDT(CONCAT(SUBSTR(?ended, 1, 16), IF(SUBSTR(?ended, 17, 1) = ":", "", ":00"), SUBSTR(?ended, 17)), xsd:dateTime))))) AS ?endDate)
 
   OPTIONAL {
     ?resource ?dosageMember ?dosages .
@@ -226,10 +226,10 @@ WHERE {
     ?dosages rdf:_1 ?firstDosage .
     ?firstDosage xyz:text ?dosage .
   }
-  BIND (IF(REGEX(?started, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(Z|[+-][0-9]{2}:[0-9]{2})?$"), ?started, 1/0) AS ?startDateWritten)
+  BIND (IF(BOUND(?startDate) && STRLEN(?started) > 10 && SUBSTR(?started, 17, 1) != ":", ?started, 1/0) AS ?startDateWritten)
   BIND (IF(BOUND(?startDateWritten), IRI(CONCAT(STR(?version), "#padded-medicationUseStartDate")), 1/0) AS ?startDatePadded)
-  BIND (IF(REGEX(?authored, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(Z|[+-][0-9]{2}:[0-9]{2})?$"), ?authored, 1/0) AS ?authoredDateWritten)
+  BIND (IF(BOUND(?writtenDate) && STRLEN(?authored) > 10 && SUBSTR(?authored, 17, 1) != ":", ?authored, 1/0) AS ?authoredDateWritten)
   BIND (IF(BOUND(?authoredDateWritten), IRI(CONCAT(STR(?version), "#padded-prescriptionWrittenDate")), 1/0) AS ?authoredDatePadded)
-  BIND (IF(REGEX(?ended, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(Z|[+-][0-9]{2}:[0-9]{2})?$"), ?ended, 1/0) AS ?endDateWritten)
+  BIND (IF(BOUND(?endDate) && STRLEN(?ended) > 10 && SUBSTR(?ended, 17, 1) != ":", ?ended, 1/0) AS ?endDateWritten)
   BIND (IF(BOUND(?endDateWritten), IRI(CONCAT(STR(?version), "#padded-medicationUseEndDate")), 1/0) AS ?endDatePadded)
 }

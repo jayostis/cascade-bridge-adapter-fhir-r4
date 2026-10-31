@@ -198,15 +198,15 @@ WHERE {
   OPTIONAL { ?resource xyz:effectivePeriod ?period . ?period xyz:start ?periodStart }
   OPTIONAL { ?resource xyz:effectiveInstant ?instant }
   BIND (COALESCE(?effective, ?periodStart, ?instant) AS ?performed)
-  BIND (IF(REGEX(?performed, "^[0-9]{4}$"), STRDT(?performed, xsd:gYear),
-           IF(REGEX(?performed, "^[0-9]{4}-[0-9]{2}$"), STRDT(?performed, xsd:gYearMonth),
-           IF(REGEX(?performed, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"), STRDT(?performed, xsd:date),
-           IF(REGEX(?performed, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(Z|[+-][0-9]{2}:[0-9]{2})?$"), STRDT(CONCAT(SUBSTR(?performed, 1, 16), ":00", SUBSTR(?performed, 17)), xsd:dateTime),
-             IF(REGEX(?performed, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T"), STRDT(?performed, xsd:dateTime), 1/0))))) AS ?performedDate)
+  BIND (IF(!REGEX(?performed, "^(([0-9]{3}[1-9]|[0-9]{2}[1-9]0|[0-9][1-9]00|[1-9]000)(-(0[1-9]|1[0-2])|-((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01])|(0[469]|11)-(0[1-9]|[12][0-9]|30)|02-(0[1-9]|1[0-9]|2[0-8]))(T([01][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9]([.][0-9]+)?)?(Z|[+-]((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?|([0-9]{2}(0[48]|[2468][048]|[13579][26])|(0[48]|[2468][048]|[13579][26])00)-02-29(T([01][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9]([.][0-9]+)?)?(Z|[+-]((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)$"), 1/0,
+           IF(STRLEN(?performed) = 4, STRDT(?performed, xsd:gYear),
+           IF(STRLEN(?performed) = 7, STRDT(?performed, xsd:gYearMonth),
+           IF(STRLEN(?performed) = 10, STRDT(?performed, xsd:date),
+              STRDT(CONCAT(SUBSTR(?performed, 1, 16), IF(SUBSTR(?performed, 17, 1) = ":", "", ":00"), SUBSTR(?performed, 17)), xsd:dateTime))))) AS ?performedDate)
 
   OPTIONAL { ?resource xyz:note ?notes . ?notes ?noteSlot ?noteItem . ?noteItem xyz:text ?note }
 
   OPTIONAL { ?resource xyz:status ?status }
-  BIND (IF(REGEX(?performed, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(Z|[+-][0-9]{2}:[0-9]{2})?$"), ?performed, 1/0) AS ?performedDateWritten)
+  BIND (IF(BOUND(?performedDate) && STRLEN(?performed) > 10 && SUBSTR(?performed, 17, 1) != ":", ?performed, 1/0) AS ?performedDateWritten)
   BIND (IF(BOUND(?performedDateWritten), IRI(CONCAT(STR(?version), "#padded-resultClinicallyRelevantTime")), 1/0) AS ?performedDatePadded)
 }

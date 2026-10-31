@@ -20,9 +20,11 @@ PREFIX cascade: <https://ns.cascadeprotocol.org/cascade#>
 # quantity of a dosage after its first, a course of therapy's coding outside
 # FHIR's three codes or after the first of them and its text where no coding
 # is carried, an expected supply duration in no unit of time, and its
-# comparator, a bound the exposure derivation reads no end from, a dose
-# quantity's unit code outside UCUM, and a number or a period unit the
-# structure of a dosage or the supply states in a form no predicate takes. A
+# comparator, a bound the exposure derivation reads no end from, a
+# prescription's, a use's or a bound's date that matches no form of FHIR's date
+# and dateTime, a dose quantity's unit code outside UCUM, and a number or a
+# period unit the structure of a dosage or the supply states in a form no
+# predicate takes. A
 # reference resolves as medication-table.rq says, and a Medication's codes are
 # reported only where a reference resolves to it: resource-type-findings.rq
 # reports one nothing resolves to. A MedicationDispense states a Medication
@@ -287,6 +289,50 @@ WHERE {
       BIND ("/dispenseRequest/expectedSupplyDuration/value" AS ?step)
     }
     BIND (fhirr4:medicationNumberNotCarried AS ?gap)
+  }
+  UNION
+  {
+    {
+      ?resource xyz:effectiveDateTime ?value .
+      BIND ("/effectiveDateTime" AS ?step)
+    }
+    UNION
+    {
+      ?resource xyz:effectivePeriod ?period . ?period ?edge ?value .
+      VALUES (?edge ?edgeStep) { (xyz:start "/effectivePeriod/start") (xyz:end "/effectivePeriod/end") }
+      BIND (?edgeStep AS ?step)
+    }
+    UNION
+    {
+      ?resource xyz:authoredOn ?value .
+      BIND ("/authoredOn" AS ?step)
+    }
+    UNION
+    {
+      ?resource xyz:dispenseRequest ?validityRequest . ?validityRequest xyz:validityPeriod ?validity . ?validity ?validityEdge ?value .
+      VALUES (?validityEdge ?validityStep) {
+        (xyz:start "/dispenseRequest/validityPeriod/start")
+        (xyz:end "/dispenseRequest/validityPeriod/end")
+      }
+      BIND (?validityStep AS ?step)
+    }
+    UNION
+    {
+      ?resource ?boundsMember ?boundsDosages .
+      VALUES (?boundsMember ?boundsStep) {
+        (xyz:dosage "/dosage/")
+        (xyz:dosageInstruction "/dosageInstruction/")
+      }
+      ?boundsDosages ?boundsDosageSlot ?boundsDosage .
+      ?boundsDosage xyz:timing ?boundsTiming . ?boundsTiming xyz:repeat ?boundsRepeat .
+      ?boundsRepeat xyz:boundsPeriod ?bounds . ?bounds ?boundsEdge ?value .
+      VALUES (?boundsEdge ?boundsEdgeStep) { (xyz:start "/start") (xyz:end "/end") }
+      BIND (CONCAT(?boundsStep, STR(xsd:integer(STRAFTER(STR(?boundsDosageSlot), "#_")) - 1), "/timing/repeat/boundsPeriod",
+                   ?boundsEdgeStep) AS ?step)
+    }
+    BIND (STR(?value) AS ?written)
+    FILTER (!REGEX(?written, "^(([0-9]{3}[1-9]|[0-9]{2}[1-9]0|[0-9][1-9]00|[1-9]000)(-(0[1-9]|1[0-2])|-((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01])|(0[469]|11)-(0[1-9]|[12][0-9]|30)|02-(0[1-9]|1[0-9]|2[0-8]))(T([01][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9]([.][0-9]+)?)?(Z|[+-]((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?|([0-9]{2}(0[48]|[2468][048]|[13579][26])|(0[48]|[2468][048]|[13579][26])00)-02-29(T([01][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9]([.][0-9]+)?)?(Z|[+-]((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)$"))
+    BIND (fhirr4:dateNotCarried AS ?gap)
   }
   FILTER (IF(?type = "Medication",
              STRSTARTS(?step, "/code/") && EXISTS {

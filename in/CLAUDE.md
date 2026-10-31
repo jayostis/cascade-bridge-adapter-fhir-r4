@@ -35,3 +35,23 @@ in place of each `?inputN` and the line breaks. A body is pasted from there, nev
   sys.exit(1 if bad else 0)
   EOF
   ```
+
+- Every copy of FHIR's date pattern is the same text. Each mapping and findings query inlines the pattern, one text for
+  a `dateTime` and one, shorter, for a `date` held alone, so a copy that is edited alone drifts. From the repository root:
+
+  ```
+  python3 - <<'EOF2'
+  import collections, pathlib, re, sys
+
+  copies = collections.defaultdict(lambda: collections.defaultdict(list))
+  for query in sorted(pathlib.Path("in/sparql").glob("*.rq")):
+      for text in re.findall(r'"\^\(\(\[0-9\]\{3\}\[1-9\][^"]*"', query.read_text(encoding="utf-8")):
+          copies["dateTime" if "T(" in text else "date"][text].append(query.name)
+  bad = 0
+  for kind, texts in sorted(copies.items()):
+      count = sum(len(files) for files in texts.values())
+      print(f"{kind}: {count} copies, {len(texts)} distinct")
+      bad += len(texts) != 1
+  sys.exit(1 if bad or len(copies) != 2 else 0)
+  EOF2
+  ```

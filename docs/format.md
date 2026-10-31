@@ -104,7 +104,8 @@ or `effectivePeriod.start` typed by precision, its `issued` instant, each time a
 lab result's. Each `result` is the IRI of the record it names, under RO's
 "has member": an entry of the document held under that `urn:uuid:`,
 `Observation/<id>` on the report's server, as a record from a server is named
-(see Names), or `#` and the id of an `Observation` the report contains, as a
+(see Names), the absolute URL of that `Observation` on the server, which needs no
+`fullUrl` of the report's entry to resolve it and is named from a `urn:uuid:` entry as from any other, or `#` and the id of an `Observation` the report contains, as a
 contained record is named. It names a record only where the `Observation` is
 one, never a panel; one on another server, or one that resolves to no one
 entry, is `fhirr4:reportResultNotNamed`. Performers naming two
@@ -240,12 +241,14 @@ unit is a UCUM unit only where its system is UCUM's
 UCUM's seven units of time, as FHIR's `Duration` allows, and otherwise in none
 (`fhirr4:dispenseDaysSupplyNotInUnitOfTime`). A quantity or days' supply with a
 comparator, which `SimpleQuantity` forbids, and one whose number is no decimal
-(`fhirr4:medicationNumberNotCarried`) write no node.
+(`fhirr4:medicationNumberNotCarried`) write no node. A time that is no date, such as
+2026-02-30 or month 13, writes none either (`fhirr4:dateNotCarried`).
 
 Each `authorizingPrescription`, a reference to a `MedicationRequest`, is
 `cascade:authorizingPrescription` of the version: the IRI of that request's
 record, one for each reference, resolved as a report's result is, by a `urn:uuid:`
-exactly one entry holds, or `MedicationRequest/<id>` on the dispense's server
+exactly one entry holds, or `MedicationRequest/<id>` on the dispense's server or
+its absolute URL there, which is named whatever the dispense's `fullUrl` is
 (whether or not the document holds the request), or `#` and the id of a request
 the dispense contains. A reference that names no record, one on another server,
 to another kind of resource, to a request held twice or under a `urn:uuid:`, or to
@@ -405,6 +408,20 @@ says, read on 2026-10-24:
   writes one though R4 asks for seconds: it is held padded to the second,
   `2023-05-31T14:00:00-05:00`, beside a `cascade:PaddedDateTime` node
   `<version>#padded-` and the property's local name keeping what was written.
+- **A date FHIR does not allow, or that no `xsd:date` or `xsd:dateTime` carries, is no value.** One test, FHIR's
+  own pattern for `date` and `dateTime` ([datatypes](https://hl7.org/fhir/R4/datatypes.html)), is written in each
+  mapping that reads a date and in its findings: a year from 0001, a month 01 to 12, a day the month has in that year
+  (February 29 only in a leap year), a time of hour 00 to 23, minute 00 to 59 and second 00 to 59, with an offset
+  of up to 13:59 either side of UTC, or 14:00, or `Z`. A day the calendar lacks, such as 2026-02-30 or 2025-02-29, a month 00 or
+  13, year 0000, hour 24, a time with no zone, and a leap second, `23:59:60Z`, which FHIR allows and no
+  `xsd:dateTime` carries, are not typed by their precision. They are carried as nothing, and a finding,
+  `fhirr4:dateNotCarried`, reports each: on a patient's birth and death, an allergy's or a condition's onset or
+  abatement, an immunization's occurrence, a procedure's performance, a document reference's date, a report's
+  effective time and `issued`, a laboratory result's or an interpretation's time, a prescription's `authoredOn`, a
+  use's `effective[x]`, a dosage bound and a dispense's time. A birth date holds no time. A schema violation may
+  report the same date as well. The test is looser than FHIR in two ways: a time to the minute is accepted, as above,
+  though FHIR asks for seconds (it needs its zone), and a date alone is accepted where FHIR
+  types the field `instant` and asks for a time, such as `issued`.
 - **A lab result's `dataAbsentReason`** stands for its value, which obs-6 says
   it has none of ([Observation](https://hl7.org/fhir/R4/observation-definitions.html)),
   and is a `cascade:ValueAbsentForReason` node of the version naming

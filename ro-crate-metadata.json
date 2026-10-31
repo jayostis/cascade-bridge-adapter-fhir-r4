@@ -217,6 +217,9 @@
           "@id": "in/sparql/recorded-date-findings.rq"
         },
         {
+          "@id": "in/sparql/date-findings.rq"
+        },
+        {
           "@id": "in/sparql/patient-findings.rq"
         },
         {
@@ -402,6 +405,9 @@
         },
         {
           "@id": "in/sparql/recorded-date-findings.rq"
+        },
+        {
+          "@id": "in/sparql/date-findings.rq"
         },
         {
           "@id": "in/sparql/patient-findings.rq"
@@ -897,6 +903,18 @@
         },
         {
           "@id": "fixtures/in/bundle-medication-dispense-prescriptions-not-named.json"
+        },
+        {
+          "@id": "fixtures/in/bundle-absolute-reference-from-urn-entry.json"
+        },
+        {
+          "@id": "fixtures/in/bundle-medication-impossible-dates.json"
+        },
+        {
+          "@id": "fixtures/in/bundle-dates-that-do-not-exist.json"
+        },
+        {
+          "@id": "fixtures/in/bundle-condition-onsets-and-the-fhir-date-forms.json"
         },
         {
           "@id": "bench/manifest.json"
@@ -1760,6 +1778,18 @@
           "@id": "fixtures/expected/bundle-medication-dispense-prescriptions-not-named.ttl"
         },
         {
+          "@id": "fixtures/expected/bundle-absolute-reference-from-urn-entry.ttl"
+        },
+        {
+          "@id": "fixtures/expected/bundle-medication-impossible-dates.ttl"
+        },
+        {
+          "@id": "fixtures/expected/bundle-dates-that-do-not-exist.ttl"
+        },
+        {
+          "@id": "fixtures/expected/bundle-condition-onsets-and-the-fhir-date-forms.ttl"
+        },
+        {
           "@id": "fixtures/findings/procedure-with-id.ttl"
         },
         {
@@ -1836,6 +1866,18 @@
         },
         {
           "@id": "fixtures/findings/bundle-medication-dispense-prescriptions-not-named.ttl"
+        },
+        {
+          "@id": "fixtures/findings/bundle-absolute-reference-from-urn-entry.ttl"
+        },
+        {
+          "@id": "fixtures/findings/bundle-medication-impossible-dates.ttl"
+        },
+        {
+          "@id": "fixtures/findings/bundle-dates-that-do-not-exist.ttl"
+        },
+        {
+          "@id": "fixtures/findings/bundle-condition-onsets-and-the-fhir-date-forms.ttl"
         },
         {
           "@id": "views/allergies.rq"
@@ -2076,8 +2118,8 @@
       "@type": "File",
       "name": "Mapping: an AllergyIntolerance's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "6378",
-      "sha256": "19513097bf61aceaa34397fad7f703f00838ab996c1e2e1312dea47be135afcf",
+      "contentSize": "6653",
+      "sha256": "96da7411b228b8867c6fdd56a10f0de46bcb7ab0095d8a2cebddf209b2c52f74",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2088,8 +2130,8 @@
       "@type": "File",
       "name": "Mapping: a Condition's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "6543",
-      "sha256": "5a8b05c02defeffc9c838c64afcd82761838c870b20f95eebde483f62eb951ad",
+      "contentSize": "7093",
+      "sha256": "3cebb78f0267c0f5eb3892d0415d7d458ba0298eb4d7f444047ffd1eb3c52104",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2100,8 +2142,8 @@
       "@type": "File",
       "name": "Mapping: an Immunization's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "5600",
-      "sha256": "dc5166bded9685127520b3e4947090bcc3cf76edc823d08a8adc6b3a27e77cd3",
+      "contentSize": "5875",
+      "sha256": "f5d688724960255f4c3a5538544edeeaa224f1c03abc0ba6e8039b78c530af20",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2112,8 +2154,8 @@
       "@type": "File",
       "name": "Mapping: a Procedure's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "5483",
-      "sha256": "0b264f21ba8483c96d2dd231c9f2a0f0b664eddc5a0911d9dba6e9cc601861c4",
+      "contentSize": "5758",
+      "sha256": "5fc68282df29241b15f8e277327d719874fc4beb936dd18c2cde186772f85958",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2124,8 +2166,8 @@
       "@type": "File",
       "name": "Mapping: a Patient's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "4317",
-      "sha256": "f4c480ddc90afc11784d32127276876f6650c7ea1a71a543ab12c85b9558c8a6",
+      "contentSize": "4816",
+      "sha256": "41f57e11362d61179282f50cbd3fac586623c1fe45a3cfeef41cb187762f057f",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2136,8 +2178,8 @@
       "@type": "File",
       "name": "Mapping: a MedicationRequest's or MedicationStatement's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "13394",
-      "sha256": "8a411aa5485b4954a45e556be94eb53455a346cb6ea1fa62c21e155d6b6dd4b8",
+      "contentSize": "14237",
+      "sha256": "8de12eebd7ab5a7c997ce57ce8fc585abb47a763e15831ea49cb6a49a94fb7ac",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2148,8 +2190,8 @@
       "@type": "File",
       "name": "Mapping: a medication's supply and the structure of its dosages",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "12936",
-      "sha256": "09791280e7d436cfe50c3611dd632191986d20c437115c0b448d636e9b522a30",
+      "contentSize": "13215",
+      "sha256": "2121f0d9e0514ef1230b036e2c8c086371db66297652b0609fb76981388b3362",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2160,8 +2202,8 @@
       "@type": "File",
       "name": "Mapping: a MedicationDispense's times and amounts",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "5795",
-      "sha256": "dcab9934a0fe2f886e8028feb76f2139c7632476dddc702c557bec01ab502f65",
+      "contentSize": "6076",
+      "sha256": "6ac61e9f6383fd31bca960a75fec31126be32c910d5f51d3ec32108990f34410",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2172,12 +2214,12 @@
       "@type": "File",
       "name": "Mapping: the prescriptions a MedicationDispense names",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "8033",
-      "sha256": "77c4218ef42e68a1ef2838579370ab979fac073a5add707d87b0e6b1cdb942a3",
+      "contentSize": "8098",
+      "sha256": "a6d9570453bd0a1d1419fe9b12d03c208e8ea2370b3676dd090d78bcae1e1bd2",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "Each authorizingPrescription of a MedicationDispense that names a MedicationRequest record, by a urn:uuid one entry holds, by MedicationRequest/<id> on the dispense's server, or by \"#\" and the id of a MedicationRequest its record contains, as that record's IRI under cascade:authorizingPrescription on the dispense's version."
+      "description": "Each authorizingPrescription of a MedicationDispense that names a MedicationRequest record, by a urn:uuid one entry holds, by MedicationRequest/<id> on the dispense's server or its absolute URL there, whatever the dispense's fullUrl is, or by \"#\" and the id of a MedicationRequest its record contains, as that record's IRI under cascade:authorizingPrescription on the dispense's version."
     },
     {
       "@id": "in/sparql/organization.rq",
@@ -2208,8 +2250,8 @@
       "@type": "File",
       "name": "Mapping: a lab result's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "11911",
-      "sha256": "5906515a9014e40ec70a07d72fc1688cca03589894d2217cf5b5fbc619fe5c1a",
+      "contentSize": "12196",
+      "sha256": "e53aeb0101c54d82a880132b74dbf91c6bbdded01f25f6aa47e7dd5aa1cb7a11",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2292,8 +2334,8 @@
       "@type": "File",
       "name": "Mapping: a variant interpretation's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "14242",
-      "sha256": "4106d3130e85fb1adb29442c316430c02d1fc49592f4c427767801d587232794",
+      "contentSize": "14662",
+      "sha256": "adcd414363cecc53c24da0e24c607a7f62c70afc4d16352c3cfe8018cfe25e0b",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2304,8 +2346,8 @@
       "@type": "File",
       "name": "Mapping: a DiagnosticReport's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "7454",
-      "sha256": "d66bda9893a19b4d938aac61a4b4b9a1984a02504dcd966a5a375c3968c09403",
+      "contentSize": "8131",
+      "sha256": "1f4481feee0b6c8a0d59aa15b9dec069f7d3a6ef8a108f54ae39584164bbe6b8",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2316,20 +2358,20 @@
       "@type": "File",
       "name": "Mapping: the result records a DiagnosticReport names",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "9423",
-      "sha256": "b31f43979d3a41bdc103fd16ea81e9e71c1066dbc7b1718c3ad52d511edb0715",
+      "contentSize": "9488",
+      "sha256": "2782515fcd7a2352a006d937014b6c908860bff0a702b830785f8089bef79e16",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "Each result of a DiagnosticReport that names a lab result, variant or diagnostic implication record, by a urn:uuid one entry holds, by Observation/<id> on the report's server, or by \"#\" and the id of an Observation its record contains, as that record's IRI under obo:RO_0002351 on the report's version."
+      "description": "Each result of a DiagnosticReport that names a lab result, variant or diagnostic implication record, by a urn:uuid one entry holds, by Observation/<id> on the report's server or its absolute URL there, whatever the report's fullUrl is, or by \"#\" and the id of an Observation its record contains, as that record's IRI under obo:RO_0002351 on the report's version."
     },
     {
       "@id": "in/sparql/note-or-document.rq",
       "@type": "File",
       "name": "Mapping: a DocumentReference's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "6888",
-      "sha256": "5c4208016edf320927a8ac98b3e0c2df51d82977cfb75db631c05174b12b5233",
+      "contentSize": "7161",
+      "sha256": "219eee5be9c6ca1b242688d1dbddb5f62cfe1113f4d0891378c324bd04893199",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2420,6 +2462,18 @@
       "description": "A finding for each AllergyIntolerance or Condition that states the date it was recorded, which no Cascade predicate carries."
     },
     {
+      "@id": "in/sparql/date-findings.rq",
+      "@type": "File",
+      "name": "Findings: a date no mapping can type",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "4884",
+      "sha256": "66056236fb3c32ee8e76aadffb21f213d1aee953b45e2690a312235da89d389c",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A finding for each date of a patient, allergy, condition, immunization, procedure, document reference, diagnostic report, laboratory result or interpretation that matches none of the forms of FHIR's date and dateTime, as the mappings test it, so its mapping writes no value."
+    },
+    {
       "@id": "in/sparql/patient-findings.rq",
       "@type": "File",
       "name": "Findings: a patient's gender",
@@ -2460,32 +2514,32 @@
       "@type": "File",
       "name": "Findings: what a medication's mapping leaves behind",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "14482",
-      "sha256": "aef07f2df5dd650065a1be3a26ab11a8f7ec1535ed227e970d3445bd74546d36",
+      "contentSize": "16642",
+      "sha256": "32a819d82c34ef9fc0a28129f6c2bb3b557eb99aaa29777e3ecdfedbdac5dd2b",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "Reports fhirr4:medicationReferenceUnresolved for a medication's reference that resolves to no one Medication of its document, fhirr4:medicationNote for a medication's note, fhirr4:codingNotCarried for each coding with no system, a system coding-system-table.rq gives no row, or no code, fhirr4:ndcNotNormalised for each NDC no 11-digit code can be made of, of a medication or of a Medication a reference resolves to, fhirr4:medicationDosageRepeated for each dosage text after the first, fhirr4:dosageElementNotCarried for each dose quantity of a dosage after its first, fhirr4:courseOfTherapyTypeNotMapped for a course of therapy's coding outside FHIR's three codes and its text where none is carried, fhirr4:expectedSupplyDurationNotInUnitOfTime for a supply duration in no unit of time, and fhirr4:expectedSupplyDurationBound for its comparator, at paths the source accounting carries for the other kinds or where they hold one value; for a MedicationDispense, only the reference, the note and the codings."
+      "description": "Reports fhirr4:medicationReferenceUnresolved for a medication's reference that resolves to no one Medication of its document, fhirr4:medicationNote for a medication's note, fhirr4:codingNotCarried for each coding with no system, a system coding-system-table.rq gives no row, or no code, fhirr4:ndcNotNormalised for each NDC no 11-digit code can be made of, of a medication or of a Medication a reference resolves to, fhirr4:medicationDosageRepeated for each dosage text after the first, fhirr4:dosageElementNotCarried for each dose quantity of a dosage after its first, fhirr4:courseOfTherapyTypeNotMapped for a course of therapy's coding outside FHIR's three codes and its text where none is carried, fhirr4:expectedSupplyDurationNotInUnitOfTime for a supply duration in no unit of time, fhirr4:dateNotCarried for an authoredOn, effective[x] or dosage bound that matches no form of FHIR's date and dateTime, and fhirr4:expectedSupplyDurationBound for its comparator, at paths the source accounting carries for the other kinds or where they hold one value; for a MedicationDispense, only the reference, the note and the codings."
     },
     {
       "@id": "in/sparql/medication-dispense-findings.rq",
       "@type": "File",
       "name": "Findings: what a MedicationDispense's mapping leaves behind",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "5638",
-      "sha256": "7f9ba163ed8d1b34049df75b7679338016e413456bfd27dd3ed0cad9206eb1e0",
+      "contentSize": "6471",
+      "sha256": "b095f3b2522e36a8af88112beae87c137fcc152cf28b7059b34eabd9895681b4",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "Reports fhirr4:medicationDispenseElementNotCarried for each element of a dispense no Cascade predicate carries and for a quantity or days' supply with a comparator, fhirr4:medicationNumberNotCarried for a quantity or days' supply in no decimal form, fhirr4:dispenseDaysSupplyNotInUnitOfTime for a days' supply in no UCUM unit of time, and fhirr4:doseUnitCodeOutsideUcum for a quantity whose unit code is not UCUM's."
+      "description": "Reports fhirr4:medicationDispenseElementNotCarried for each element of a dispense no Cascade predicate carries and for a quantity or days' supply with a comparator, fhirr4:medicationNumberNotCarried for a quantity or days' supply in no decimal form, fhirr4:dispenseDaysSupplyNotInUnitOfTime for a days' supply in no UCUM unit of time, fhirr4:doseUnitCodeOutsideUcum for a quantity whose unit code is not UCUM's, and fhirr4:dateNotCarried for a whenPrepared or whenHandedOver that matches no form of FHIR's date and dateTime."
     },
     {
       "@id": "in/sparql/medication-dispense-prescription-findings.rq",
       "@type": "File",
       "name": "Findings: a dispense's prescription that names no record",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "4361",
-      "sha256": "6dd7f4068dd90bc669eb496e67726060108c32282d3c8be4916ae138cf94b7c7",
+      "contentSize": "4412",
+      "sha256": "a3960bff4d7e1b73721611e3154ae0c9e50bb43a11b3b74a2b140bc892c07205",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2592,8 +2646,8 @@
       "@type": "File",
       "name": "Findings: a report's result that names no record",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "5473",
-      "sha256": "7e553f7b5c8851fceb53fc06f87dd9f21af8719eea050b440ab7851352c2a657",
+      "contentSize": "5524",
+      "sha256": "72f9dfdecf964d55066cb600d2eb454b01bbeb3760c70b8a5c86ad2805c34fc7",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2640,8 +2694,8 @@
       "@type": "File",
       "name": "FHIR R4 JSON gaps",
       "encodingFormat": "text/turtle",
-      "contentSize": "22253",
-      "sha256": "a56025212d5afc9585a884c86331d8d040bcb5c9444c332cdf277c9bb99673e6",
+      "contentSize": "22670",
+      "sha256": "d9d018a5381409b40a9606469ea41e84f00c4acec9ec5d795939409645a749b7",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -4863,6 +4917,58 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "A Bundle of a Patient and a MedicationRequest under urn:uuid fullUrls, two MedicationRequests under their server URLs with one id, a ServiceRequest under a urn:uuid, two MedicationRequests under one urn:uuid, a dispense under its server URL with a contained MedicationRequest and a contained Medication and eleven authorizingPrescriptions, and a dispense under a urn:uuid with two. Authored here on 2026-10-31, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/bundle-absolute-reference-from-urn-entry.json",
+      "@type": "File",
+      "name": "Bundle of a MedicationRequest, an Observation, a MedicationDispense and a DiagnosticReport, the last two under a urn:uuid, naming theirs by absolute URL",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "3054",
+      "sha256": "455523eefc08f3f0f556b6a3573efbc1cc86a9e12f272ca00ad242c9e71e9acd",
+      "dateCreated": "2026-10-31",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Bundle on the server http://example.org/fhir: a MedicationRequest rx1 and a lab Observation b12-1 held under their URLs, a MedicationDispense under a urn:uuid whose authorizingPrescription names rx1 by absolute URL, with and without a version, by a relative reference, and on another server, and a DiagnosticReport under a urn:uuid whose result names b12-1 by absolute URL, by a relative reference, and on another server. Authored here on 2026-10-31, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/bundle-medication-impossible-dates.json",
+      "@type": "File",
+      "name": "Bundle of a MedicationRequest, a MedicationStatement and a MedicationDispense whose dates do not exist",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "1870",
+      "sha256": "5b348239b29619c25e1b61ae6271943a0720e1638d902f298b09bd75c11a7289",
+      "dateCreated": "2026-10-31",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Bundle on the server http://example.org/fhir: a MedicationRequest with authoredOn 2026-02-30, a dispense validity period from 2026-02-30 to 2025-02-29, neither a date, and a dosage whose bounds are 2024-02-29, a date, and 2025-02-29, not a date; a MedicationStatement with effectiveDateTime 2026-13-45; and a MedicationDispense with whenPrepared 2026-04-31 and whenHandedOver 2026-01-12T09:30-05:00, a time. Authored here on 2026-10-31, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/bundle-dates-that-do-not-exist.json",
+      "@type": "File",
+      "name": "Bundle of a patient, an allergy, a condition, an immunization, a procedure, a document reference, a diagnostic report, a laboratory result and a variant interpretation whose dates do not exist",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "7353",
+      "sha256": "601985c07d511eda987e37022789bc1d4478beaefad743e5164b64687595031d",
+      "dateCreated": "2026-10-31",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Bundle on the server http://example.org/fhir with one resource of each kind a mapping reads a date from, each with a day or month the calendar lacks: a Patient born 1985-02-30 who died 2026-04-31T10:00:00Z, an AllergyIntolerance with onsetDateTime 2024-06-31, a Condition with onsetDateTime 2023-02-29 and abatementDateTime 2024-13-10, an Immunization with occurrenceDateTime 2022-09-31T10:00:00Z, a Procedure with performedDateTime 2021-00-15, a DocumentReference dated 2026-11-31T08:00:00Z, a DiagnosticReport with effectiveDateTime 2026-02-30 and issued 2026-02-30T10:00:00Z, a laboratory Observation with effectiveDateTime 2026-06-31, and a Variant with its Diagnostic Implication issued 2025-02-29T12:00:00Z. Authored here on 2026-10-31, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/bundle-condition-onsets-and-the-fhir-date-forms.json",
+      "@type": "File",
+      "name": "Bundle of fourteen Conditions, each with an onsetDateTime in a form FHIR's date and dateTime allow or forbid",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "7749",
+      "sha256": "d8680b6ecae1fc28658d092a24c8ddae497f27ea3700ad4445625c34e012e238",
+      "dateCreated": "2026-10-31",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Bundle on the server http://example.org/fhir of fourteen Conditions whose onsetDateTime is, in order: a leap day, a leap day of a year divisible by 400, a year, a year and month, a time to the minute with an offset, a time with a fraction of a second, a time at the last second of a day, hour 24, year 0000, a leap second, a time with seconds and no zone, a time to the minute and no zone, February 29 of 1900, and minute 61. Authored here on 2026-10-31, for a case the conformance corpus does not hold."
     },
     {
       "@id": "bench/manifest.json",
@@ -8749,6 +8855,70 @@
       "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
+      "@id": "fixtures/expected/bundle-absolute-reference-from-urn-entry.ttl",
+      "@type": "File",
+      "name": "Expected graph for bundle-absolute-reference-from-urn-entry",
+      "encodingFormat": "text/turtle",
+      "contentSize": "6424",
+      "sha256": "36205dc8d117e083f6a615d9c9e649eac0ae9cea99d12b6ca4281c8066b75e84",
+      "about": {
+        "@id": "fixtures/in/bundle-absolute-reference-from-urn-entry.json"
+      },
+      "dateCreated": "2026-10-31",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/bundle-medication-impossible-dates.ttl",
+      "@type": "File",
+      "name": "Expected graph for bundle-medication-impossible-dates",
+      "encodingFormat": "text/turtle",
+      "contentSize": "5643",
+      "sha256": "ce9ff58c15909a1846f9469c5820ca2be117d23c510e4dc087599bccba376ca4",
+      "about": {
+        "@id": "fixtures/in/bundle-medication-impossible-dates.json"
+      },
+      "dateCreated": "2026-10-31",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/bundle-dates-that-do-not-exist.ttl",
+      "@type": "File",
+      "name": "Expected graph for bundle-dates-that-do-not-exist",
+      "encodingFormat": "text/turtle",
+      "contentSize": "13158",
+      "sha256": "cef890e884721e42b5d3b4b67ed57d560156540de2573920146f32a977be9e61",
+      "about": {
+        "@id": "fixtures/in/bundle-dates-that-do-not-exist.json"
+      },
+      "dateCreated": "2026-10-31",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/bundle-condition-onsets-and-the-fhir-date-forms.ttl",
+      "@type": "File",
+      "name": "Expected graph for bundle-condition-onsets-and-the-fhir-date-forms",
+      "encodingFormat": "text/turtle",
+      "contentSize": "17142",
+      "sha256": "2d48a4c6cd5bb7dd46e667f0edfb8b453bbae346bd049182e64509c562ccd7df",
+      "about": {
+        "@id": "fixtures/in/bundle-condition-onsets-and-the-fhir-date-forms.json"
+      },
+      "dateCreated": "2026-10-31",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
       "@id": "fixtures/findings/procedure-with-id.ttl",
       "@type": "File",
       "name": "Expected findings for procedure-with-id",
@@ -9165,6 +9335,70 @@
       "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
     },
     {
+      "@id": "fixtures/findings/bundle-absolute-reference-from-urn-entry.ttl",
+      "@type": "File",
+      "name": "Expected findings for bundle-absolute-reference-from-urn-entry",
+      "encodingFormat": "text/turtle",
+      "contentSize": "4952",
+      "sha256": "067084b22a637c413862616f6c840df9cb77213e5099ca6e0a4979941dff4c5f",
+      "about": {
+        "@id": "fixtures/in/bundle-absolute-reference-from-urn-entry.json"
+      },
+      "dateCreated": "2026-10-31",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/bundle-medication-impossible-dates.ttl",
+      "@type": "File",
+      "name": "Expected findings for bundle-medication-impossible-dates",
+      "encodingFormat": "text/turtle",
+      "contentSize": "7399",
+      "sha256": "cf8f249cfd2f8c2181b981f74038fb4456d051ae725b46e5ce468b5ce9938aec",
+      "about": {
+        "@id": "fixtures/in/bundle-medication-impossible-dates.json"
+      },
+      "dateCreated": "2026-10-31",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/bundle-dates-that-do-not-exist.ttl",
+      "@type": "File",
+      "name": "Expected findings for bundle-dates-that-do-not-exist",
+      "encodingFormat": "text/turtle",
+      "contentSize": "12514",
+      "sha256": "6848eadc60d42b2671bcb8d22a96447a911054270ee1378444a0cb05a7b62961",
+      "about": {
+        "@id": "fixtures/in/bundle-dates-that-do-not-exist.json"
+      },
+      "dateCreated": "2026-10-31",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/bundle-condition-onsets-and-the-fhir-date-forms.ttl",
+      "@type": "File",
+      "name": "Expected findings for bundle-condition-onsets-and-the-fhir-date-forms",
+      "encodingFormat": "text/turtle",
+      "contentSize": "11617",
+      "sha256": "70e1a3e83aac46ae587f2d7aebd87d65a99bdab320b86fb72e4d86f80503cf8e",
+      "about": {
+        "@id": "fixtures/in/bundle-condition-onsets-and-the-fhir-date-forms.json"
+      },
+      "dateCreated": "2026-10-31",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
       "@id": "views/allergies.rq",
       "@type": "File",
       "name": "View: allergies",
@@ -9454,8 +9688,8 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "contentSize": "116486",
-      "sha256": "06a16a41ab9fc4748db1bfa8a6d2fc3649abf76b0678f04051de2bcd33029a75"
+      "contentSize": "120688",
+      "sha256": "6cb1eaf1422710b3559c41b411d0eedf3a218a1943c9b959dc207610fe0b683d"
     },
     {
       "@id": "fixtures/facts/meridian.ttl",
@@ -9765,8 +9999,8 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "What a record is, reports and notes, medication dispenses, the two envelopes, how a record is named, JSON as FHIR writes it, the schema, the versions in and out of scope, and what is known about the committed inputs. Read from hl7.org/fhir/R4/ on 2026-09-27, reports and notes on 2026-10-30, medication dispenses on 2026-10-31.",
-      "contentSize": "34024",
-      "sha256": "fb4a36cf5c12d8121f1977458f7b5273276f0ce3658f7b72d8a015c03175e92d"
+      "contentSize": "35900",
+      "sha256": "5a62e4a64a709e2cc6a8dafacfeee5db4ef8396956455d1054fe2921499ff4a2"
     },
     {
       "@id": "fixtures/CLAUDE.md",

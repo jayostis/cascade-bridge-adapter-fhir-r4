@@ -1,0 +1,72 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "http://example.org/fhir/MedicationRequest/rx-dates",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "rx-dates",
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "text": "Lisinopril 10 mg tablet"
+        },
+        "subject": {
+          "reference": "Patient/pat-1"
+        },
+        "authoredOn": "2026-02-30",
+        "dispenseRequest": {
+          "validityPeriod": {
+            "start": "2026-02-30",
+            "end": "2025-02-29"
+          }
+        },
+        "dosageInstruction": [
+          {
+            "text": "One tablet daily",
+            "timing": {
+              "repeat": {
+                "boundsPeriod": {
+                  "start": "2024-02-29",
+                  "end": "2025-02-29"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://example.org/fhir/MedicationStatement/ms-dates",
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "ms-dates",
+        "status": "active",
+        "medicationCodeableConcept": {
+          "text": "Atorvastatin 10 mg tablet"
+        },
+        "subject": {
+          "reference": "Patient/pat-1"
+        },
+        "effectiveDateTime": "2026-13-45"
+      }
+    },
+    {
+      "fullUrl": "http://example.org/fhir/MedicationDispense/md-dates",
+      "resource": {
+        "resourceType": "MedicationDispense",
+        "id": "md-dates",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "text": "Lisinopril 10 mg tablet"
+        },
+        "subject": {
+          "reference": "Patient/pat-1"
+        },
+        "whenPrepared": "2026-04-31",
+        "whenHandedOver": "2026-01-12T09:30-05:00"
+      }
+    }
+  ]
+}

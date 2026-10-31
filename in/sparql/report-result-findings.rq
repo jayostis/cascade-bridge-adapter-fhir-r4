@@ -79,7 +79,7 @@ WHERE {
     FILTER (?key = ?written)
   }
   BIND (IF(BOUND(?heldAtKey), IF(?heldAtKey = 1, CONCAT(?heldSelector, "/resource"), 1/0),
-           IF(BOUND(?server) && !STRSTARTS(COALESCE(?fullUrl, ""), "urn:uuid:")
+           IF(BOUND(?server) && (STRSTARTS(?unversioned, CONCAT(?server, "/")) || !STRSTARTS(COALESCE(?fullUrl, ""), "urn:uuid:"))
               && REGEX(?relative, "^Observation/[A-Za-z0-9.-]{1,64}$"), "", 1/0)) AS ?target)
   BIND (STRAFTER(?relative, "Observation/") AS ?resultId)
   BIND (IF(BOUND(?containedTarget),
