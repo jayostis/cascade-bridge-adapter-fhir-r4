@@ -167,6 +167,8 @@
     <#medication-dispense-codings-not-carried>
     <#medication-dispense-elements-not-carried>
     <#bundle-medication-dispense-prescriptions-not-named>
+    <#bundle-absolute-reference-from-urn-entry>
+    <#bundle-medication-impossible-dates>
   ) .
 
 <#allergy-with-id> a bridge:IsomorphicConversionTest ;
@@ -2266,6 +2268,32 @@
   mf:result [
     bridge:expectedGraph <expected/bundle-medication-dispense-prescriptions-not-named.ttl> ;
     bridge:expectedFindings <findings/bundle-medication-dispense-prescriptions-not-named.ttl>
+  ] .
+
+<#bundle-absolute-reference-from-urn-entry> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-absolute-reference-from-urn-entry" ;
+  rdfs:comment "A Bundle on a server whose MedicationDispense and DiagnosticReport are held under a urn:uuid. An absolute URL on the server names a record whatever the referrer's fullUrl, so the dispense's prescription and the report's result named by one are named, with or without a version; a relative reference from the same entries names none, as does an absolute URL on another server, and each is a finding." ;
+  mf:action [
+    bridge:input <in/bundle-absolute-reference-from-urn-entry.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/example-org.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-absolute-reference-from-urn-entry.ttl> ;
+    bridge:expectedFindings <findings/bundle-absolute-reference-from-urn-entry.ttl>
+  ] .
+
+<#bundle-medication-impossible-dates> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-medication-impossible-dates" ;
+  rdfs:comment "A Bundle of a MedicationRequest, a MedicationStatement and a MedicationDispense whose dates do not exist: February 30 as a prescription's authoredOn, February 29 of a year with none as a dosage bound's end, month 13 as a use's effectiveDateTime and April 31 as a dispense's whenPrepared. Each is no value and is a finding, fhirr4:medicationDateNotCarried; February 29 of a leap year as a bound's start and a time handed over to the minute are carried." ;
+  mf:action [
+    bridge:input <in/bundle-medication-impossible-dates.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/example-org.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-medication-impossible-dates.ttl> ;
+    bridge:expectedFindings <findings/bundle-medication-impossible-dates.ttl>
   ] .
 
 <#medication-dispense-prescription-without-server> a bridge:IsomorphicConversionTest ;
