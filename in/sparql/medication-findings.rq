@@ -309,6 +309,15 @@ WHERE {
     }
     UNION
     {
+      ?resource xyz:dispenseRequest ?validityRequest . ?validityRequest xyz:validityPeriod ?validity . ?validity ?validityEdge ?value .
+      VALUES (?validityEdge ?validityStep) {
+        (xyz:start "/dispenseRequest/validityPeriod/start")
+        (xyz:end "/dispenseRequest/validityPeriod/end")
+      }
+      BIND (?validityStep AS ?step)
+    }
+    UNION
+    {
       ?resource ?boundsMember ?boundsDosages .
       VALUES (?boundsMember ?boundsStep) {
         (xyz:dosage "/dosage/")

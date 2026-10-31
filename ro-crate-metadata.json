@@ -2514,8 +2514,8 @@
       "@type": "File",
       "name": "Findings: what a medication's mapping leaves behind",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "16279",
-      "sha256": "d1849746e0e09ddcc4454f5cd12004f54cf1cd88dd748b680c630412a3f2af4a",
+      "contentSize": "16642",
+      "sha256": "32a819d82c34ef9fc0a28129f6c2bb3b557eb99aaa29777e3ecdfedbdac5dd2b",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -4942,7 +4942,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "A Bundle on the server http://example.org/fhir: a MedicationRequest with authoredOn 2026-02-30 and a dosage whose bounds are 2024-02-29, a date, and 2025-02-29, not a date; a MedicationStatement with effectiveDateTime 2026-13-45; and a MedicationDispense with whenPrepared 2026-04-31 and whenHandedOver 2026-01-12T09:30-05:00, a time. Authored here on 2026-10-31, for a case the conformance corpus does not hold."
+      "description": "A Bundle on the server http://example.org/fhir: a MedicationRequest with authoredOn 2026-02-30, a dispense validity period from 2026-02-30 to 2025-02-29, neither a date, and a dosage whose bounds are 2024-02-29, a date, and 2025-02-29, not a date; a MedicationStatement with effectiveDateTime 2026-13-45; and a MedicationDispense with whenPrepared 2026-04-31 and whenHandedOver 2026-01-12T09:30-05:00, a time. Authored here on 2026-10-31, for a case the conformance corpus does not hold."
     },
     {
       "@id": "fixtures/in/bundle-dates-that-do-not-exist.json",
@@ -8875,8 +8875,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-medication-impossible-dates",
       "encodingFormat": "text/turtle",
-      "contentSize": "5586",
-      "sha256": "3ecc015cd42cd03cb8a23e4e7689f3f03f4040103fd5ed468213ad7f61b50b36",
+      "contentSize": "5643",
+      "sha256": "ce9ff58c15909a1846f9469c5820ca2be117d23c510e4dc087599bccba376ca4",
       "about": {
         "@id": "fixtures/in/bundle-medication-impossible-dates.json"
       },
@@ -9355,8 +9355,8 @@
       "@type": "File",
       "name": "Expected findings for bundle-medication-impossible-dates",
       "encodingFormat": "text/turtle",
-      "contentSize": "5530",
-      "sha256": "6d243c6c4d44c8dfed137a0011a0b356ebe5b65317a1e50328da2b4c891d2ec1",
+      "contentSize": "7399",
+      "sha256": "cf8f249cfd2f8c2181b981f74038fb4456d051ae725b46e5ce468b5ce9938aec",
       "about": {
         "@id": "fixtures/in/bundle-medication-impossible-dates.json"
       },
@@ -9688,8 +9688,8 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "contentSize": "120612",
-      "sha256": "2e61039a44b17b46b5db99816cc60bd7cdee062f09a89772c76b0f6652dd6397"
+      "contentSize": "120688",
+      "sha256": "6cb1eaf1422710b3559c41b411d0eedf3a218a1943c9b959dc207610fe0b683d"
     },
     {
       "@id": "fixtures/facts/meridian.ttl",
@@ -9999,8 +9999,8 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "What a record is, reports and notes, medication dispenses, the two envelopes, how a record is named, JSON as FHIR writes it, the schema, the versions in and out of scope, and what is known about the committed inputs. Read from hl7.org/fhir/R4/ on 2026-09-27, reports and notes on 2026-10-30, medication dispenses on 2026-10-31.",
-      "contentSize": "35759",
-      "sha256": "3f6b936141d99dbd20c13c9622fd1a0368ebe2798ec681c605a65147f3232ce1"
+      "contentSize": "35900",
+      "sha256": "5a62e4a64a709e2cc6a8dafacfeee5db4ef8396956455d1054fe2921499ff4a2"
     },
     {
       "@id": "fixtures/CLAUDE.md",

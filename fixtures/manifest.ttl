@@ -2287,7 +2287,7 @@
 
 <#bundle-medication-impossible-dates> a bridge:IsomorphicConversionTest ;
   mf:name "bundle-medication-impossible-dates" ;
-  rdfs:comment "A Bundle of a MedicationRequest, a MedicationStatement and a MedicationDispense whose dates do not exist: February 30 as a prescription's authoredOn, February 29 of a year with none as a dosage bound's end, month 13 as a use's effectiveDateTime and April 31 as a dispense's whenPrepared. Each is no value and is a finding, fhirr4:medicationDateNotCarried; February 29 of a leap year as a bound's start and a time handed over to the minute are carried." ;
+  rdfs:comment "A Bundle of a MedicationRequest, a MedicationStatement and a MedicationDispense whose dates do not exist: February 30 as a prescription's authoredOn, February 30 and February 29 of a year with none as a dispense validity start and end, February 29 of a year with none as a dosage bound's end, month 13 as a use's effectiveDateTime and April 31 as a dispense's whenPrepared. Each is no value and is a finding, fhirr4:dateNotCarried; February 29 of a leap year as a bound's start and a time handed over to the minute are carried." ;
   mf:action [
     bridge:input <in/bundle-medication-impossible-dates.json> ;
     bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;

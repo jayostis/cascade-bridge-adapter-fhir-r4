@@ -9,73 +9,73 @@
 @prefix pav: <http://purl.org/pav/> .
 <ni:///sha-256;QBJxiydWVPDlI1A_SE_grS_9tFbX56XDpy4htre44Pg> cascade:structuredDosage <ni:///sha-256;QBJxiydWVPDlI1A_SE_grS_9tFbX56XDpy4htre44Pg#dosage-1> .
 <ni:///sha-256;QBJxiydWVPDlI1A_SE_grS_9tFbX56XDpy4htre44Pg#dosage-1> cascade:dosageBoundsPeriodStart "2024-02-29"^^xsd:date .
-<ni:///sha-256;QBJxiydWVPDlI1A_SE_grS_9tFbX56XDpy4htre44Pg> cascade:dosage "One tablet daily" ;
-	cascade:medicationRequestIntent "order" ;
-	cascade:workflowStatus "active" ;
+<ni:///sha-256;QBJxiydWVPDlI1A_SE_grS_9tFbX56XDpy4htre44Pg> cascade:prescribedOrReported "prescribed" ;
 	cascade:drugName "Lisinopril 10 mg tablet" ;
-	cascade:prescribedOrReported "prescribed" .
+	cascade:workflowStatus "active" ;
+	cascade:medicationRequestIntent "order" ;
+	cascade:dosage "One tablet daily" .
 <urn:uuid:02fe7b47-87bc-83b8-888b-954934e10351> a cascade:PrescribedOrReportedMedication ;
 	cascade:sourceUrl <http://example.org/fhir/MedicationRequest/rx-dates> ;
 	cascade:sourceRecordId "rx-dates" .
 <ni:///sha-256;QBJxiydWVPDlI1A_SE_grS_9tFbX56XDpy4htre44Pg> prov:specializationOf <urn:uuid:02fe7b47-87bc-83b8-888b-954934e10351> ;
 	cascade:patient <urn:uuid:1cc3cbf1-3a8f-8691-923b-e87de6e5c3a3> .
-_:977eb9107ae9709bcd77f9430f30f95b bridge:arrivedAs <ni:///sha-256;QBJxiydWVPDlI1A_SE_grS_9tFbX56XDpy4htre44Pg> ;
-	oa:hasSelector _:2c6e15950ac5c819808701f6757cfc9e ;
-	oa:hasSource <ni:///sha-256;mBAhg_o4Y9tmVRmKsHw-XSNxewQZJBvrX6qMffnOj3g> ;
-	prov:wasDerivedFrom <ni:///sha-256;mBAhg_o4Y9tmVRmKsHw-XSNxewQZJBvrX6qMffnOj3g> ;
-	prov:wasGeneratedBy _:c5d2fa036a0d0473255aea3cfe27149a .
-_:2c6e15950ac5c819808701f6757cfc9e a oa:FragmentSelector ;
+_:e43a4729c10befd60d1a33ab6b9cf56d bridge:arrivedAs <ni:///sha-256;QBJxiydWVPDlI1A_SE_grS_9tFbX56XDpy4htre44Pg> ;
+	oa:hasSelector _:d3f6a03f9a2446dc45c5848114bc4ee5 ;
+	oa:hasSource <ni:///sha-256;WzSCObKWGcJeG2GuYnGUOgcg4WONkC8piwm9dcEacok> ;
+	prov:wasDerivedFrom <ni:///sha-256;WzSCObKWGcJeG2GuYnGUOgcg4WONkC8piwm9dcEacok> ;
+	prov:wasGeneratedBy _:95dfc1839eceab9787efd091ed29d444 .
+_:d3f6a03f9a2446dc45c5848114bc4ee5 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/0" .
-<ni:///sha-256;Q5dOpNm2ISKqLQNLOWqoMOie6xHAULf4eal06YwyLGw> cascade:workflowStatus "active" ;
+<ni:///sha-256;Q5dOpNm2ISKqLQNLOWqoMOie6xHAULf4eal06YwyLGw> cascade:prescribedOrReported "reportedUse" ;
 	cascade:drugName "Atorvastatin 10 mg tablet" ;
-	cascade:prescribedOrReported "reportedUse" .
+	cascade:workflowStatus "active" .
 <urn:uuid:e8ded59c-9c0b-804c-a188-e6589d3b29a6> a cascade:PrescribedOrReportedMedication ;
 	cascade:sourceUrl <http://example.org/fhir/MedicationStatement/ms-dates> ;
 	cascade:sourceRecordId "ms-dates" .
 <ni:///sha-256;Q5dOpNm2ISKqLQNLOWqoMOie6xHAULf4eal06YwyLGw> prov:specializationOf <urn:uuid:e8ded59c-9c0b-804c-a188-e6589d3b29a6> ;
 	cascade:patient <urn:uuid:1cc3cbf1-3a8f-8691-923b-e87de6e5c3a3> .
-_:d2ebb2e158f02a03b4d0528a3013375a bridge:arrivedAs <ni:///sha-256;Q5dOpNm2ISKqLQNLOWqoMOie6xHAULf4eal06YwyLGw> ;
-	oa:hasSelector _:dbc13a4fe21b274788abdd4d9cb3e28 ;
-	oa:hasSource <ni:///sha-256;mBAhg_o4Y9tmVRmKsHw-XSNxewQZJBvrX6qMffnOj3g> ;
-	prov:wasDerivedFrom <ni:///sha-256;mBAhg_o4Y9tmVRmKsHw-XSNxewQZJBvrX6qMffnOj3g> ;
-	prov:wasGeneratedBy _:c5d2fa036a0d0473255aea3cfe27149a .
-_:dbc13a4fe21b274788abdd4d9cb3e28 a oa:FragmentSelector ;
+_:50fc2c931080623e2c43e6e42cf00d2d bridge:arrivedAs <ni:///sha-256;Q5dOpNm2ISKqLQNLOWqoMOie6xHAULf4eal06YwyLGw> ;
+	oa:hasSelector _:477bb36d2d9d843b797ed265417f26d6 ;
+	oa:hasSource <ni:///sha-256;WzSCObKWGcJeG2GuYnGUOgcg4WONkC8piwm9dcEacok> ;
+	prov:wasDerivedFrom <ni:///sha-256;WzSCObKWGcJeG2GuYnGUOgcg4WONkC8piwm9dcEacok> ;
+	prov:wasGeneratedBy _:95dfc1839eceab9787efd091ed29d444 .
+_:477bb36d2d9d843b797ed265417f26d6 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/1" .
-<ni:///sha-256;GR4S0zCC69-wZuom1M6S-6El53yNsr4xcw37WKoHyto#padded-dispenseHandedOverTime> cascade:writtenDate "2026-01-12T09:30-05:00" ;
-	cascade:paddedDateTimeProperty cascade:dispenseHandedOverTime .
-<ni:///sha-256;GR4S0zCC69-wZuom1M6S-6El53yNsr4xcw37WKoHyto> cascade:paddedDateTime <ni:///sha-256;GR4S0zCC69-wZuom1M6S-6El53yNsr4xcw37WKoHyto#padded-dispenseHandedOverTime> ;
-	cascade:dispenseHandedOverTime "2026-01-12T09:30:00-05:00"^^xsd:dateTime ;
-	cascade:workflowStatus "completed" ;
-	cascade:drugName "Lisinopril 10 mg tablet" .
+<ni:///sha-256;GR4S0zCC69-wZuom1M6S-6El53yNsr4xcw37WKoHyto> cascade:dispenseHandedOverTime "2026-01-12T09:30:00-05:00"^^xsd:dateTime ;
+	cascade:paddedDateTime <ni:///sha-256;GR4S0zCC69-wZuom1M6S-6El53yNsr4xcw37WKoHyto#padded-dispenseHandedOverTime> .
+<ni:///sha-256;GR4S0zCC69-wZuom1M6S-6El53yNsr4xcw37WKoHyto#padded-dispenseHandedOverTime> cascade:paddedDateTimeProperty cascade:dispenseHandedOverTime ;
+	cascade:writtenDate "2026-01-12T09:30-05:00" .
+<ni:///sha-256;GR4S0zCC69-wZuom1M6S-6El53yNsr4xcw37WKoHyto> cascade:drugName "Lisinopril 10 mg tablet" ;
+	cascade:workflowStatus "completed" .
 <urn:uuid:c11b3e26-88a1-8907-960e-58ddfc7c8b6c> a cascade:MedicationDispense ;
 	cascade:sourceUrl <http://example.org/fhir/MedicationDispense/md-dates> ;
 	cascade:sourceRecordId "md-dates" .
 <ni:///sha-256;GR4S0zCC69-wZuom1M6S-6El53yNsr4xcw37WKoHyto> prov:specializationOf <urn:uuid:c11b3e26-88a1-8907-960e-58ddfc7c8b6c> ;
 	cascade:patient <urn:uuid:1cc3cbf1-3a8f-8691-923b-e87de6e5c3a3> .
-_:d969f85a204891da31cee9c1f48bff27 bridge:arrivedAs <ni:///sha-256;GR4S0zCC69-wZuom1M6S-6El53yNsr4xcw37WKoHyto> ;
-	oa:hasSelector _:31c6d3fc396d5ffc8f3be723d493e028 ;
-	oa:hasSource <ni:///sha-256;mBAhg_o4Y9tmVRmKsHw-XSNxewQZJBvrX6qMffnOj3g> ;
-	prov:wasDerivedFrom <ni:///sha-256;mBAhg_o4Y9tmVRmKsHw-XSNxewQZJBvrX6qMffnOj3g> ;
-	prov:wasGeneratedBy _:c5d2fa036a0d0473255aea3cfe27149a .
-_:31c6d3fc396d5ffc8f3be723d493e028 a oa:FragmentSelector ;
+_:8d21c07a01aacbef435ad81e33522247 bridge:arrivedAs <ni:///sha-256;GR4S0zCC69-wZuom1M6S-6El53yNsr4xcw37WKoHyto> ;
+	oa:hasSelector _:a4a099601672298021137caf40926a5 ;
+	oa:hasSource <ni:///sha-256;WzSCObKWGcJeG2GuYnGUOgcg4WONkC8piwm9dcEacok> ;
+	prov:wasDerivedFrom <ni:///sha-256;WzSCObKWGcJeG2GuYnGUOgcg4WONkC8piwm9dcEacok> ;
+	prov:wasGeneratedBy _:95dfc1839eceab9787efd091ed29d444 .
+_:a4a099601672298021137caf40926a5 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/2" .
-<ni:///sha-256;mBAhg_o4Y9tmVRmKsHw-XSNxewQZJBvrX6qMffnOj3g> cascade:serverBaseUrl "http://example.org/fhir" ;
+<ni:///sha-256;WzSCObKWGcJeG2GuYnGUOgcg4WONkC8piwm9dcEacok> cascade:serverBaseUrl "http://example.org/fhir" ;
 	pav:retrievedOn "2026-10-13T09:00:00Z"^^xsd:dateTime ;
 	cascade:sourceFormatVersion "4.0.1" .
-_:c5d2fa036a0d0473255aea3cfe27149a <http://www.w3.org/2000/01/rdf-schema#label> "Example server export" ;
+_:95dfc1839eceab9787efd091ed29d444 <http://www.w3.org/2000/01/rdf-schema#label> "Example server export" ;
 	prov:startedAtTime "2026-10-13T09:00:04Z"^^xsd:dateTime .
-<ni:///sha-256;mBAhg_o4Y9tmVRmKsHw-XSNxewQZJBvrX6qMffnOj3g> a prov:Entity .
-_:c5d2fa036a0d0473255aea3cfe27149a a prov:Activity ;
-	prov:used <ni:///sha-256;mBAhg_o4Y9tmVRmKsHw-XSNxewQZJBvrX6qMffnOj3g> ;
-	prov:qualifiedAssociation _:503d92b5baff2d77105f436c2bd6c9f7 .
-_:503d92b5baff2d77105f436c2bd6c9f7 prov:hadPlan _:58867f1f86138a80f506aa88726b6e7c .
-_:58867f1f86138a80f506aa88726b6e7c a prov:Plan ;
+<ni:///sha-256;WzSCObKWGcJeG2GuYnGUOgcg4WONkC8piwm9dcEacok> a prov:Entity .
+_:95dfc1839eceab9787efd091ed29d444 a prov:Activity ;
+	prov:used <ni:///sha-256;WzSCObKWGcJeG2GuYnGUOgcg4WONkC8piwm9dcEacok> ;
+	prov:qualifiedAssociation _:efe9ef1d8199e4eb0b9eccb66bca0e8d .
+_:efe9ef1d8199e4eb0b9eccb66bca0e8d prov:hadPlan _:48a362084a6b8b7a6adda45758dcd83f .
+_:48a362084a6b8b7a6adda45758dcd83f a prov:Plan ;
 	<http://www.w3.org/2000/01/rdf-schema#label> "fhir-r4" ;
 	pav:version "0.1.0" .
-_:503d92b5baff2d77105f436c2bd6c9f7 prov:agent _:905d02bbce2dde58c4662738a4b34ad0 .
-_:905d02bbce2dde58c4662738a4b34ad0 a prov:SoftwareAgent ;
+_:efe9ef1d8199e4eb0b9eccb66bca0e8d prov:agent _:15363298ba1f189d5bbb55803810844 .
+_:15363298ba1f189d5bbb55803810844 a prov:SoftwareAgent ;
 	<http://www.w3.org/2000/01/rdf-schema#label> "Cascade Bridge for Rust" ;
 	pav:version "0.1.0" .

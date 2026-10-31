@@ -419,8 +419,9 @@ says, read on 2026-10-24:
   abatement, an immunization's occurrence, a procedure's performance, a document reference's date, a report's
   effective time and `issued`, a laboratory result's or an interpretation's time, a prescription's `authoredOn`, a
   use's `effective[x]`, a dosage bound and a dispense's time. A birth date holds no time. A schema violation may
-  report the same date as well. A time to the minute is the one form held though FHIR asks for seconds, as above, and
-  needs its zone.
+  report the same date as well. The test is looser than FHIR in two ways: a time to the minute is accepted, as above,
+  though FHIR asks for seconds (it needs its zone), and a date alone is accepted where FHIR
+  types the field `instant` and asks for a time, such as `issued`.
 - **A lab result's `dataAbsentReason`** stands for its value, which obs-6 says
   it has none of ([Observation](https://hl7.org/fhir/R4/observation-definitions.html)),
   and is a `cascade:ValueAbsentForReason` node of the version naming
