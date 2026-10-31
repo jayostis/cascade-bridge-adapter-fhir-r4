@@ -1,0 +1,39 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "b12-report-times-absent",
+  "status": "final",
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "2132-9",
+        "display": "Cobalamin (Vitamin B12) [Mass/volume] in Serum or Plasma"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/pat-1"
+  },
+  "_effectiveDateTime": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+        "valueCode": "unknown"
+      }
+    ]
+  },
+  "_issued": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+        "valueCode": "masked"
+      }
+    ]
+  },
+  "presentedForm": [
+    {
+      "contentType": "application/pdf",
+      "url": "Binary/b12-times-absent"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX oa:      <http://www.w3.org/ns/oa#>
+PREFIX sh:      <http://www.w3.org/ns/shacl#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX fx:      <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:     <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:  <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX cascade: <https://ns.cascadeprotocol.org/cascade#>
+PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+
+# Each narrative div narrative-text.rq does not carry, at the div, its path as
+# its value as the source accounting would give it: any resource's but a
+# report's or a note or document's, and theirs where a text attachment is the
+# text carried instead.
+
+CONSTRUCT {
+  [] a oa:Annotation ;
+    oa:hasTarget [
+      oa:hasSource bridge:thisRecord ;
+      oa:hasSelector [
+        a oa:FragmentSelector ;
+        dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+        rdf:value ?pointer
+      ]
+    ] ;
+    oa:hasBody fhirr4:narrative ;
+    oa:motivatedBy oa:classifying ;
+    sh:value ?value .
+}
+WHERE {
+  bridge:thisRecord bridge:selector ?recordSelector .
+  ?root a fx:root .
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  { BIND ("" AS ?containedStep) BIND ("" AS ?containedPath) }
+  UNION
+  {
+    ?top xyz:contained ?containedList .
+    ?containedList ?containedSlot ?contained .
+    ?contained xyz:resourceType ?containedType .
+    BIND (CONCAT("/contained/", STR(xsd:integer(STRAFTER(STR(?containedSlot), "#_")) - 1)) AS ?containedStep)
+    BIND ("/contained" AS ?containedPath)
+  }
+  BIND (COALESCE(?contained, ?top) AS ?resource)
+  ?resource xyz:text ?narrative .
+  ?narrative xyz:div ?div .
+  ?resource xyz:resourceType ?resourceType .
+  BIND (CONCAT(?recordSelector, ?topStep, ?containedStep) AS ?resourcePointer)
+  FILTER (!(NOT EXISTS {
+            bridge:thisDocument cascade:sourceFormatVersion ?stated .
+            FILTER (!STRSTARTS(?stated, "4.0."))
+          }
+          && (?resourceType = "DiagnosticReport"
+              || (?resourceType = "DocumentReference" && EXISTS { ?note fhirr4:noteOrDocumentAt ?resourcePointer }))
+          && NOT EXISTS {
+            { ?resource xyz:presentedForm ?forms . ?forms ?formSlot ?decoded }
+            UNION
+            { ?resource xyz:content ?contents . ?contents ?contentSlot ?content . ?content xyz:attachment ?decoded }
+            ?decoded bridge:textDecodedFromBase64 ?decodedText ;
+              xyz:contentType ?decodedType .
+            BIND (REGEX(STR(?decodedType), "^\\s*text/html\\s*(;.*)?$", "i") AS ?decodedHtml)
+            FILTER ((?decodedHtml || REGEX(STR(?decodedType), "^\\s*text/plain\\s*(;.*)?$", "i"))
+                    && REGEX(IF(?decodedHtml, REPLACE(STR(?decodedText), "<[^>]*>|&nbsp;|&#160;|&#[xX][aA]0;", ""),
+                                STR(?decodedText)), "\\S"))
+          }))
+  BIND (CONCAT(?topStep, ?containedStep, "/text/div") AS ?pointer)
+  BIND (CONCAT(?topStep, ?containedPath, "/text/div") AS ?value)
+}

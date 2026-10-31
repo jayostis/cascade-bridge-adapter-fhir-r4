@@ -1,0 +1,113 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "http://example.org/fhir/DocumentReference/by-oid",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "by-oid",
+        "status": "current",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18842-5",
+              "display": "Discharge summary"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/pat-1"
+        },
+        "content": [
+          {
+            "attachment": {
+              "contentType": "application/pdf",
+              "url": "Binary/by-oid"
+            },
+            "format": {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-HL7DocumentFormatCodes",
+              "code": "urn:hl7-org:sdwg:ccda-nonXMLBody:2.1"
+            }
+          }
+        ],
+        "masterIdentifier": {
+          "system": "urn:oid:2.16.840.1.113883.19.5.99999.1",
+          "value": "CCD-2026-1005"
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.org/fhir/DocumentReference/by-uuid",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "by-uuid",
+        "status": "current",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18842-5",
+              "display": "Discharge summary"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/pat-1"
+        },
+        "content": [
+          {
+            "attachment": {
+              "contentType": "application/pdf",
+              "url": "Binary/by-uuid"
+            },
+            "format": {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-HL7DocumentFormatCodes",
+              "code": "urn:hl7-org:sdwg:ccda-nonXMLBody:2.1"
+            }
+          }
+        ],
+        "masterIdentifier": {
+          "system": "urn:ietf:rfc:3986",
+          "value": "urn:uuid:A1B2C3D4-0000-4000-8000-00000000000A"
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.org/fhir/DocumentReference/no-system",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "no-system",
+        "status": "current",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18842-5",
+              "display": "Discharge summary"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/pat-1"
+        },
+        "content": [
+          {
+            "attachment": {
+              "contentType": "application/pdf",
+              "url": "Binary/no-system"
+            },
+            "format": {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-HL7DocumentFormatCodes",
+              "code": "urn:hl7-org:sdwg:ccda-nonXMLBody:2.1"
+            }
+          }
+        ],
+        "masterIdentifier": {
+          "value": "DS-7"
+        }
+      }
+    }
+  ]
+}

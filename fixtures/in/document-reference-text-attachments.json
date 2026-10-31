@@ -1,0 +1,43 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "text-attachments",
+  "status": "current",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "11506-3",
+        "display": "Progress note"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/pat-1"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/xml",
+        "data": "PD94bWwgdmVyc2lvbj0iMS4wIj8+PENsaW5pY2FsRG9jdW1lbnQgeG1sbnM9InVybjpobDctb3JnOnYzIi8+"
+      }
+    },
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "ICAgCiAg"
+      }
+    },
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "QjEyIDwgMjAwIHBnL21MOyBmb2xhdGUgPiA0IG5nL21M"
+      }
+    },
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "QSBzZWNvbmQgcmVuZGl0aW9u"
+      }
+    }
+  ]
+}

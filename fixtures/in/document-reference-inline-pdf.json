@@ -1,0 +1,36 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "inline-pdf",
+  "status": "current",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "18842-5",
+        "display": "Discharge summary"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/pat-1"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "application/pdf",
+        "data": "JVBERi0xLjQK",
+        "title": ""
+      }
+    },
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "IAog"
+      }
+    }
+  ],
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Discharge summary, in the PDF</div>"
+  }
+}

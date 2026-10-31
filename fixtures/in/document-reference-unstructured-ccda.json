@@ -1,0 +1,29 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "unstructured",
+  "status": "current",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "18842-5",
+        "display": "Discharge summary"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/pat-1"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "application/pdf",
+        "url": "Binary/unstructured"
+      },
+      "format": {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-HL7DocumentFormatCodes",
+        "code": "urn:hl7-org:sdwg:ccda-nonXMLBody:2.1"
+      }
+    }
+  ]
+}

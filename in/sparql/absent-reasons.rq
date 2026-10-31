@@ -71,11 +71,15 @@ WHERE {
       ("Observation"         xyz:_effectiveDateTime  cascade:resultClinicallyRelevantTime xyz:effectiveDateTime  xyz:effectivePeriod)
       ("MedicationStatement" xyz:_effectiveDateTime  cascade:medicationUseStartDate       xyz:effectiveDateTime  xyz:effectivePeriod)
       ("MedicationRequest"   xyz:_authoredOn         cascade:prescriptionWrittenDate      xyz:authoredOn         UNDEF)
+      ("DiagnosticReport"    xyz:_effectiveDateTime  cascade:reportEffectiveTime          xyz:effectiveDateTime  xyz:effectivePeriod)
+      ("DiagnosticReport"    xyz:_issued             cascade:reportIssuedTime             xyz:issued             UNDEF)
+      ("DocumentReference"   xyz:_date               cascade:noteOrDocumentDate           xyz:date               UNDEF)
     }
     ?resource ?absentKey ?element .
     ?element xyz:extension ?extensions . ?extensions ?extensionSlot ?extension .
     ?extension xyz:url "http://hl7.org/fhir/StructureDefinition/data-absent-reason" ; xyz:valueCode ?code .
     FILTER (?type != "Observation" || EXISTS { ?lab fhirr4:labResultAt ?resourcePointer })
+    FILTER (?type != "DocumentReference" || EXISTS { ?note fhirr4:noteOrDocumentAt ?resourcePointer })
     FILTER NOT EXISTS { ?resource ?valueKey ?value }
     FILTER (!BOUND(?otherKey) || NOT EXISTS { ?resource ?otherKey ?other })
     BIND ("http://terminology.hl7.org/CodeSystem/data-absent-reason" AS ?system)

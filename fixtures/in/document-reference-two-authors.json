@@ -1,0 +1,43 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "two-authors",
+  "status": "current",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "11506-3"
+      },
+      {
+        "system": "http://snomed.info/sct",
+        "code": "371532007",
+        "display": "Progress report"
+      },
+      {
+        "system": "https://clinic.example/note-types",
+        "code": "pn",
+        "display": "Clinic note"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/pat-1"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "U2VlbiBmb3IgZm9sbG93LXVwIG9mIGEgbG93IHZpdGFtaW4gQjEyLg=="
+      }
+    }
+  ],
+  "author": [
+    {
+      "reference": "Organization/clinic-1"
+    },
+    {
+      "reference": "Organization/clinic-2"
+    }
+  ],
+  "date": "2026-08-20T14:05:00Z"
+}

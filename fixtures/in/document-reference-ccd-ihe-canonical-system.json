@@ -1,0 +1,29 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "ccd-ihe-canonical",
+  "status": "current",
+  "subject": {
+    "reference": "Patient/pat-1"
+  },
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "34133-9",
+        "display": "Summary of episode note"
+      }
+    ]
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "application/xml",
+        "url": "Binary/ccd-ihe-canonical"
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ihe.formatcode.fhir/CodeSystem/formatcode",
+        "code": "urn:hl7-org:sdwg:ccda-structuredBody:2.1"
+      }
+    }
+  ]
+}

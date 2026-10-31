@@ -2,31 +2,16 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:d1feb2d440b86944eaa73beeb57c5790 a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/entry/1" .
-_:d062fc6bcddf975d9dfd2fa11ee0177e oa:hasSource <../in/martin-okafor-harbourline-panel-2022-with-lab.json> .
-_:d1feb2d440b86944eaa73beeb57c5790 oa:refinedBy _:c6730f56bb77b4295e0d26e89f99c06a .
-_:c6730f56bb77b4295e0d26e89f99c06a a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/resource/resourceType" .
-_:d062fc6bcddf975d9dfd2fa11ee0177e oa:hasSelector _:d1feb2d440b86944eaa73beeb57c5790 .
-_:fcabdc54d7dbba1062e1de917c861505 oa:hasTarget _:d062fc6bcddf975d9dfd2fa11ee0177e ;
-	sh:resultSeverity sh:Warning ;
-	a oa:Annotation ;
-	oa:hasBody fhirr4:resourceTypeNotMapped ;
-	oa:motivatedBy oa:classifying ;
-	sh:value "DiagnosticReport" .
-_:a98dc8043fdba5bf52fa8298d36b6fb3 a oa:FragmentSelector ;
+_:df3d6b533ce5050d895fa8c5b0e687f9 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/2" .
-_:c071d0e1b24af5cbbd1672c5293a494e oa:hasSource <../in/martin-okafor-harbourline-panel-2022-with-lab.json> .
-_:a98dc8043fdba5bf52fa8298d36b6fb3 oa:refinedBy _:d3d5d484eb6421cc0cc2379b6045e0c5 .
-_:d3d5d484eb6421cc0cc2379b6045e0c5 a oa:FragmentSelector ;
+_:d9a73237ee06077634029f491d95548 oa:hasSource <../in/martin-okafor-harbourline-panel-2022-with-lab.json> .
+_:df3d6b533ce5050d895fa8c5b0e687f9 oa:refinedBy _:b7b91de0d49bbf85dc758994add26805 .
+_:b7b91de0d49bbf85dc758994add26805 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/component/0/valueCodeableConcept/coding/0/code" .
-_:c071d0e1b24af5cbbd1672c5293a494e oa:hasSelector _:a98dc8043fdba5bf52fa8298d36b6fb3 .
-_:c7ad9845bbd93dc55035f9a5fe561927 oa:hasTarget _:c071d0e1b24af5cbbd1672c5293a494e ;
+_:d9a73237ee06077634029f491d95548 oa:hasSelector _:df3d6b533ce5050d895fa8c5b0e687f9 .
+_:d7eaa4561608fda58c244609bdae7997 oa:hasTarget _:d9a73237ee06077634029f491d95548 ;
 	sh:resultSeverity sh:Info ;
 	a oa:Annotation ;
 	oa:hasBody fhirr4:variantHgvsGeneOrProtein ;

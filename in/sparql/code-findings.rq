@@ -9,7 +9,8 @@ PREFIX bridge:  <https://ns.cascadeprotocol.org/bridge/v1-draft#>
 PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 PREFIX cascade: <https://ns.cascadeprotocol.org/cascade#>
 
-# What condition.rq and procedure.rq leave behind of a code: a coding with no
+# What condition.rq, procedure.rq and report.rq leave behind of a code, and
+# note-or-document.rq of a note's type: a coding with no
 # system, a system coding-system-table.rq gives no row, or no code or a code of
 # blanks, reported at its code where the code is the part that fails or the
 # system names nothing, else at its system; and each CPT code of a procedure
@@ -49,10 +50,17 @@ WHERE {
   }
   BIND (COALESCE(?contained, ?top) AS ?resource)
   ?resource xyz:resourceType ?type .
-  FILTER (?type IN ("Condition", "Procedure"))
+  VALUES (?type ?member ?memberStep) {
+    ("Condition"         xyz:code "/code")
+    ("Procedure"         xyz:code "/code")
+    ("DiagnosticReport"  xyz:code "/code")
+    ("DocumentReference" xyz:type "/type")
+  }
+  BIND (CONCAT(?recordSelector, ?topStep, ?containedStep) AS ?resourcePointer)
+  FILTER (?type != "DocumentReference" || EXISTS { ?note fhirr4:noteOrDocumentAt ?resourcePointer })
 
   {
-    ?resource xyz:code ?concept . ?concept xyz:coding ?codings . ?codings ?codingSlot ?coding .
+    ?resource ?member ?concept . ?concept xyz:coding ?codings . ?codings ?codingSlot ?coding .
     FILTER (STRSTARTS(STR(?codingSlot), STR(rdf:_)))
     OPTIONAL { ?coding xyz:code ?codeWritten }
     OPTIONAL { ?coding xyz:system ?systemWritten }
@@ -96,6 +104,6 @@ WHERE {
     BIND (fhirr4:procedureCptCodeRepeated AS ?gap)
   }
   FILTER (?gap != fhirr4:procedureCptCodeRepeated || ?type = "Procedure")
-  BIND (CONCAT(?topStep, ?containedStep, "/code/coding/", STR(xsd:integer(STRAFTER(STR(?codingSlot), "#_")) - 1), ?part)
+  BIND (CONCAT(?topStep, ?containedStep, ?memberStep, "/coding/", STR(xsd:integer(STRAFTER(STR(?codingSlot), "#_")) - 1), ?part)
         AS ?pointer)
 }

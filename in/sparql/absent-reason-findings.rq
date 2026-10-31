@@ -80,6 +80,9 @@ WHERE {
       ("Observation"         xyz:_effectiveDateTime  "_effectiveDateTime")
       ("MedicationStatement" xyz:_effectiveDateTime  "_effectiveDateTime")
       ("MedicationRequest"   xyz:_authoredOn         "_authoredOn")
+      ("DiagnosticReport"    xyz:_effectiveDateTime  "_effectiveDateTime")
+      ("DiagnosticReport"    xyz:_issued             "_issued")
+      ("DocumentReference"   xyz:_date               "_date")
     }
     ?resource ?absentKey ?element .
     ?element xyz:extension ?extensions . ?extensions ?extensionSlot ?extension .
@@ -89,6 +92,7 @@ WHERE {
                  "/valueCode") AS ?tail)
   }
   FILTER (?type != "Observation" || EXISTS { ?lab fhirr4:labResultAt ?labPointer })
+  FILTER (?type != "DocumentReference" || EXISTS { ?note fhirr4:noteOrDocumentAt ?labPointer })
   BIND (CONCAT(?resourcePointer, ?tail) AS ?pointer)
   BIND (STRDT(COALESCE(?system, ""), xsd:anyURI) AS ?systemUri)
   OPTIONAL { ?codeSystem skos:inScheme fhirr4:codeSystems ; cascade:codingSystemUri ?systemUri ; void:uriSpace ?stem }

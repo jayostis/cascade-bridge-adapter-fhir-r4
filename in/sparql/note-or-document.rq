@@ -1,0 +1,144 @@
+PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
+PREFIX fx:       <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:      <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX cascade:  <https://ns.cascadeprotocol.org/cascade#>
+PREFIX skos:     <http://www.w3.org/2004/02/skos/core#>
+PREFIX void:     <http://rdfs.org/ns/void#>
+PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+
+# Which DocumentReference is a note or document is note-or-document-table.rq's
+# to say. Its version, each part in a branch of its own so that one does not
+# multiply the others: its type's name, the type's text, else its first coding's
+# display; each coding of its type, in LOINC a cascade:noteOrDocumentType IRI,
+# in any other system a cascade:noteOrDocumentTypeInOtherSystem literal typed by
+# the system read; its description as its title; its status; its docStatus,
+# the status of its content, as cascade:noteOrDocumentContentStatus; its
+# masterIdentifier, the
+# identifier of the one version of the document it describes, as
+# cascade:noteOrDocumentMasterIdentifier, its value typed by its system as
+# lab-result-identifiers.rq types a business identifier, and a plain string
+# where it states none or one that is no absolute URI, so that the C-CDA
+# adapter's note of the same ClinicalDocument/id is one identifier; and its date,
+# typed and padded as lab-result.rq types and pads a lab result's time. Its
+# category and the context it was written in are not carried.
+# Its author is report-and-note-performer.rq's, its attachments and text
+# attachments.rq's. A coding not carried is reported by code-findings.rq.
+
+CONSTRUCT {
+  ?version ?p ?o .
+  ?version cascade:paddedDateTime ?padded .
+  ?padded cascade:paddedDateTimeProperty cascade:noteOrDocumentDate ;
+    cascade:writtenDate ?written .
+}
+WHERE {
+  FILTER NOT EXISTS {
+    bridge:thisDocument cascade:sourceFormatVersion ?stated .
+    FILTER (!STRSTARTS(?stated, "4.0."))
+  }
+  bridge:thisRecord bridge:selector ?recordSelector .
+  ?root a fx:root .
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  { BIND ("" AS ?containedStep) }
+  UNION
+  {
+    ?top xyz:contained ?containedList .
+    ?containedList ?containedSlot ?contained .
+    ?contained xyz:resourceType ?containedType .
+    BIND (CONCAT("/contained/", STR(xsd:integer(STRAFTER(STR(?containedSlot), "#_")) - 1)) AS ?containedStep)
+  }
+  BIND (COALESCE(?contained, ?top) AS ?resource)
+  ?resource xyz:resourceType "DocumentReference" .
+  BIND (CONCAT(?recordSelector, ?topStep, ?containedStep) AS ?resourcePointer)
+  ?note fhirr4:noteOrDocumentAt ?resourcePointer .
+  BIND (IRI(CONCAT("urn:cascade:version-at:", SHA256(?resourcePointer))) AS ?version)
+
+  {
+    ?resource xyz:type ?nameConcept .
+    OPTIONAL { ?resource xyz:type ?textConcept . ?textConcept xyz:text ?conceptText }
+    OPTIONAL {
+      ?resource xyz:type ?displayConcept .
+      ?displayConcept xyz:coding ?displayCodings .
+      ?displayCodings ?displaySlot ?displayCoding .
+      ?displayCoding xyz:display ?conceptDisplay .
+      FILTER NOT EXISTS {
+        ?displayCodings ?earlierSlot ?earlier . ?earlier xyz:display ?earlierDisplay .
+        FILTER (xsd:integer(STRAFTER(STR(?earlierSlot), "#_")) < xsd:integer(STRAFTER(STR(?displaySlot), "#_")))
+      }
+    }
+    BIND (cascade:noteOrDocumentTypeName AS ?p)
+    BIND (STR(COALESCE(?conceptText, ?conceptDisplay)) AS ?o)
+    FILTER (BOUND(?o) && ?o != "")
+  }
+  UNION
+  {
+    ?resource xyz:description ?description .
+    FILTER (isLiteral(?description) && STR(?description) != "")
+    BIND (cascade:noteOrDocumentTitle AS ?p)
+    BIND (STR(?description) AS ?o)
+  }
+  UNION
+  {
+    ?resource xyz:masterIdentifier ?master .
+    ?master xyz:value ?masterValue .
+    FILTER (isLiteral(?masterValue) && STRLEN(?masterValue) > 0)
+    OPTIONAL { ?master xyz:system ?masterSystem }
+    BIND (IF(REGEX(?masterSystem, "^urn:oid:", "i"), CONCAT("urn:oid:", SUBSTR(?masterSystem, 9)),
+             IF(REGEX(?masterSystem, "^urn:uuid:", "i"), LCASE(?masterSystem), ?masterSystem)) AS ?masterFolded)
+    BIND (IF(?masterFolded = "urn:oid:2.16.840.1.113883.4.6", "http://hl7.org/fhir/sid/us-npi", ?masterFolded)
+          AS ?masterType)
+    BIND (IF(?masterSystem = "urn:ietf:rfc:3986",
+             IF(REGEX(?masterValue, "^urn:uuid:", "i"), LCASE(?masterValue),
+                IF(REGEX(?masterValue, "^urn:oid:", "i"), CONCAT("urn:oid:", SUBSTR(?masterValue, 9)), STR(?masterValue))),
+             STR(?masterValue)) AS ?masterText)
+    BIND (cascade:noteOrDocumentMasterIdentifier AS ?p)
+    BIND (IF(BOUND(?masterSystem) && REGEX(?masterSystem, "^[A-Za-z][A-Za-z0-9+.-]*:"),
+             STRDT(?masterText, IRI(?masterType)), STR(?masterValue)) AS ?o)
+  }
+  UNION
+  {
+    ?resource xyz:docStatus ?contentStatus .
+    FILTER (isLiteral(?contentStatus) && STR(?contentStatus) != "")
+    BIND (cascade:noteOrDocumentContentStatus AS ?p)
+    BIND (STR(?contentStatus) AS ?o)
+  }
+  UNION
+  {
+    ?resource xyz:status ?status .
+    BIND (cascade:workflowStatus AS ?p)
+    BIND (STR(?status) AS ?o)
+  }
+  UNION
+  {
+    ?resource xyz:date ?time .
+    BIND (cascade:noteOrDocumentDate AS ?p)
+    BIND (IF(REGEX(?time, "^[0-9]{4}$"), STRDT(?time, xsd:gYear),
+             IF(REGEX(?time, "^[0-9]{4}-[0-9]{2}$"), STRDT(?time, xsd:gYearMonth),
+             IF(REGEX(?time, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"), STRDT(?time, xsd:date),
+             IF(REGEX(?time, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(Z|[+-][0-9]{2}:[0-9]{2})?$"), STRDT(CONCAT(SUBSTR(?time, 1, 16), ":00", SUBSTR(?time, 17)), xsd:dateTime),
+               IF(REGEX(?time, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T"), STRDT(?time, xsd:dateTime), 1/0))))) AS ?o)
+    BIND (IF(REGEX(?time, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(Z|[+-][0-9]{2}:[0-9]{2})?$"), ?time, 1/0) AS ?written)
+  }
+  UNION
+  {
+    ?resource xyz:type ?concept . ?concept xyz:coding ?codings . ?codings ?codingSlot ?coding .
+    ?coding xyz:system ?systemWritten ;
+      xyz:code ?codeWritten .
+    ?systemRow fhirr4:systemWritten ?systemWritten ;
+      fhirr4:systemRead ?system .
+    BIND (REPLACE(STR(?codeWritten), "^\\s+|\\s+$", "") AS ?code)
+    FILTER (?code != "")
+    OPTIONAL {
+      VALUES ?system { "http://loinc.org" }
+      ?listed skos:inScheme fhirr4:codeSystems ;
+        cascade:codingSystemUri ?listedSystem ;
+        void:uriSpace ?stem .
+      FILTER (STR(?listedSystem) = ?system)
+    }
+    BIND (IF(BOUND(?stem), cascade:noteOrDocumentType, cascade:noteOrDocumentTypeInOtherSystem) AS ?p)
+    BIND (IF(BOUND(?stem), IRI(CONCAT(?stem, ENCODE_FOR_URI(?code))), STRDT(?code, IRI(?system))) AS ?o)
+  }
+  BIND (IF(BOUND(?written), IRI(CONCAT(STR(?version), "#padded-noteOrDocumentDate")), 1/0) AS ?padded)
+}

@@ -1,0 +1,33 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "progress-note-date-absent",
+  "status": "current",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "11506-3",
+        "display": "Progress note"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/pat-1"
+  },
+  "_date": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+        "valueCode": "unknown"
+      }
+    ]
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "application/pdf",
+        "url": "Binary/progress-note-date-absent"
+      }
+    }
+  ]
+}

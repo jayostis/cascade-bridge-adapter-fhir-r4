@@ -1,0 +1,41 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "ccd-ihe-r4",
+  "status": "current",
+  "type": {
+    "coding": [
+      {
+        "code": "34133-9",
+        "display": "Summary of episode note"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/pat-1",
+    "display": "Ada Okonkwo"
+  },
+  "_date": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+        "valueCode": "unknown"
+      },
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+        "valueCode": "not-a-reason"
+      }
+    ]
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "application/xml",
+        "url": "Binary/ccd-ihe-r4"
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:hl7-org:sdwg:ccda-structuredBody:2.1"
+      }
+    }
+  ]
+}

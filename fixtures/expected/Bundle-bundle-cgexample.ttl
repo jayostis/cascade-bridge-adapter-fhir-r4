@@ -2,12 +2,37 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
+<ni:///sha-256;eft8jky9Fq6J2V6nmjYoEOAzDFMXQjxAx7cPpgEkwIA> cascade:attachment <ni:///sha-256;eft8jky9Fq6J2V6nmjYoEOAzDFMXQjxAx7cPpgEkwIA#attachment-1> .
+<ni:///sha-256;eft8jky9Fq6J2V6nmjYoEOAzDFMXQjxAx7cPpgEkwIA#attachment-1> cascade:attachmentContentType "text/plain" .
+<ni:///sha-256;eft8jky9Fq6J2V6nmjYoEOAzDFMXQjxAx7cPpgEkwIA> cascade:narrativeText "Put the report text here - mime-encoded" .
+<urn:uuid:50874038-e860-8b8f-8d5e-96e712b9cef0> a cascade:DiagnosticReport ;
+	cascade:sourceUrl <http://example.org/fhir/DiagnosticReport/report> ;
+	cascade:sourceRecordId "report" .
+<ni:///sha-256;eft8jky9Fq6J2V6nmjYoEOAzDFMXQjxAx7cPpgEkwIA> prov:specializationOf <urn:uuid:50874038-e860-8b8f-8d5e-96e712b9cef0> ;
+	cascade:patient <urn:uuid:578d95d0-f38a-8c54-95d4-3ab764e59f21> .
+_:1af60ac306bf4b97aec4e2244b0f3cd7 bridge:arrivedAs <ni:///sha-256;eft8jky9Fq6J2V6nmjYoEOAzDFMXQjxAx7cPpgEkwIA> .
+<ni:///sha-256;eft8jky9Fq6J2V6nmjYoEOAzDFMXQjxAx7cPpgEkwIA> prov:wasAttributedTo <urn:uuid:aa14ac09-843c-8ff4-8ea4-fb0df4295fff> ;
+	obo:RO_0002351 <urn:uuid:68530f82-14be-86d9-be9b-da03cd0d16ce> , <urn:uuid:c01357e6-99d9-82cb-b0a5-356a360b1340> , <urn:uuid:da7c3495-bc90-8e5c-894a-3959e48701a4> , <urn:uuid:4500af88-5e2d-8974-ba01-faf19df49032> , <urn:uuid:c73c3c72-9611-8100-9ef6-ba6a2d921254> , <urn:uuid:cc01d168-e795-8c4c-bd85-e037c82914e5> , <urn:uuid:dc583197-0fb3-8f76-988c-2bf7d538476c> , <urn:uuid:5a27263d-270b-8a7e-84aa-393ee6fb0eb1> ;
+	cascade:workflowStatus "final" ;
+	cascade:reportIssuedTime "2016-09-06T00:00:00-05:00"^^xsd:dateTime ;
+	cascade:reportCategory "GE"^^<http://terminology.hl7.org/CodeSystem/v2-0074> ;
+	cascade:reportCode <http://loinc.org/rdf/51969-4> ;
+	cascade:reportConclusionCode <http://snomed.info/id/10828004> , <http://loinc.org/rdf/LA6576-8> ;
+	cascade:reportEffectiveTime "2016"^^xsd:gYear .
+_:1af60ac306bf4b97aec4e2244b0f3cd7 oa:hasSelector _:47c65418ce6e72fceffca61c34c27d7a ;
+	oa:hasSource <ni:///sha-256;uOCsRbuj3LdZzmRqIAmqgcrCuf0dnH_qp3oZKaOqFDo> ;
+	prov:wasDerivedFrom <ni:///sha-256;uOCsRbuj3LdZzmRqIAmqgcrCuf0dnH_qp3oZKaOqFDo> ;
+	prov:wasGeneratedBy _:7c8f578e0d5bf1cb55b40af00927dc86 .
+_:47c65418ce6e72fceffca61c34c27d7a a oa:FragmentSelector ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/entry/0" .
 <urn:uuid:578d95d0-f38a-8c54-95d4-3ab764e59f21> a cascade:PatientProfile ;
 	cascade:sourceUrl <http://example.org/fhir/Patient/ExamplePatient> ;
 	cascade:sourceRecordId "ExamplePatient" .

@@ -63,12 +63,12 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/basedOn" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:because "The request a report fulfils: no Cascade predicate carries it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/basedOn/reference" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:because "The request a report fulfils: no Cascade predicate carries it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/birthDate" ;
@@ -280,28 +280,24 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/conclusionCode" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/conclusionCode/coding" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/conclusionCode/coding/code" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/conclusionCode/coding/display" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:because "A conclusion code's display, which says no more than its code." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/conclusionCode/coding/system" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained" ;
@@ -3002,7 +2998,7 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/text/div" ;
-  bridge:verdict bridge:noHome ;
+  bridge:verdict bridge:carriedInPart ;
   bridge:namesGap fhirr4:narrative .
 
 [] a bridge:PathEntry ;
@@ -5316,18 +5312,16 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/presentedForm" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/presentedForm/contentType" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/presentedForm/data" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:attachmentDataNotRead .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/reaction" ;
@@ -5558,12 +5552,12 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/basedOn" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:because "The request a report fulfils: no Cascade predicate carries it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/basedOn/reference" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:because "The request a report fulfils: no Cascade predicate carries it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/birthDate" ;
@@ -5775,28 +5769,24 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/conclusionCode" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/conclusionCode/coding" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/conclusionCode/coding/code" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/conclusionCode/coding/display" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:because "A conclusion code's display, which says no more than its code." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/conclusionCode/coding/system" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained" ;
@@ -8497,7 +8487,7 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/text/div" ;
-  bridge:verdict bridge:noHome ;
+  bridge:verdict bridge:carriedInPart ;
   bridge:namesGap fhirr4:narrative .
 
 [] a bridge:PathEntry ;
@@ -10807,18 +10797,16 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/presentedForm" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/presentedForm/contentType" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/presentedForm/data" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:attachmentDataNotRead .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/reaction" ;
@@ -10975,18 +10963,17 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/result" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/result/display" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:because "A reference's display, which reference-display-findings.rq reports as fhirr4:referenceDisplay." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/result/reference" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:reportResultNotNamed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/route" ;
@@ -11076,7 +11063,7 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/text/div" ;
-  bridge:verdict bridge:noHome ;
+  bridge:verdict bridge:carriedInPart ;
   bridge:namesGap fhirr4:narrative .
 
 [] a bridge:PathEntry ;
@@ -11267,18 +11254,17 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/result" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/result/display" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:because "A reference's display, which reference-display-findings.rq reports as fhirr4:referenceDisplay." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/result/reference" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:reportResultNotNamed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/route" ;
@@ -11368,7 +11354,7 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/text/div" ;
-  bridge:verdict bridge:noHome ;
+  bridge:verdict bridge:carriedInPart ;
   bridge:namesGap fhirr4:narrative .
 
 [] a bridge:PathEntry ;
@@ -11657,12 +11643,12 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/author/reference" ;
-  bridge:verdict bridge:consumed .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:performerCarriedOnlyAsOneOrganizationRecord .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/date" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/title" ;
@@ -11671,43 +11657,36 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/type/coding" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/type/coding/code" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/type/coding/system" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/content" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/content/attachment" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/content/attachment/contentType" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/content/attachment/title" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/subject/display" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:because "A reference's display, which reference-display-findings.rq reports as fhirr4:referenceDisplay for a record's patient or subject." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/custodian" ;
@@ -11723,12 +11702,12 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/author/reference" ;
-  bridge:verdict bridge:consumed .
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:performerCarriedOnlyAsOneOrganizationRecord .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/date" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/title" ;
@@ -11737,43 +11716,36 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/type/coding" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/type/coding/code" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/type/coding/system" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/content" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/content/attachment" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/content/attachment/contentType" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/content/attachment/title" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/subject/display" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+  bridge:because "A reference's display, which reference-display-findings.rq reports as fhirr4:referenceDisplay for a record's patient or subject." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/identifier/system" ;
@@ -12441,3 +12413,195 @@
   bridge:sourcePath "/resource/contained/_authoredOn/extension/valueCode" ;
   bridge:verdict bridge:carriedInPart ;
   bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/conclusion" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/content/attachment/url" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/content/attachment/data" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:attachmentDataNotRead .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/content/format" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/content/format/code" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/content/format/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/presentedForm/title" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/presentedForm/url" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/description" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/type/coding/display" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/type/text" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/type/text" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/conclusion" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/content/attachment/url" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/content/attachment/data" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:attachmentDataNotRead .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/content/format" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/content/format/code" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/content/format/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/presentedForm/title" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/presentedForm/url" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/description" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/type/coding/display" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/resource/type/text" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/type/text" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/docStatus" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/docStatus" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_issued" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_issued/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_issued/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_issued/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_date" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_date/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_date/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_date/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_issued" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_issued/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_issued/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_issued/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_date" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_date/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_date/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_date/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/masterIdentifier" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/masterIdentifier/system" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/masterIdentifier/value" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/masterIdentifier" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/masterIdentifier/system" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/masterIdentifier/value" ;
+  bridge:verdict bridge:carried .

@@ -2,33 +2,33 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:e4fbd6fcf06eca4ad99bbaf06394dc5f a oa:FragmentSelector ;
+_:d75505ccea1603ba8f00a07914794f8d a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:f89b72982eeb4347762be4fa5b20f511 oa:hasSource <../in/documentreference-contained-custodian.json> .
-_:e4fbd6fcf06eca4ad99bbaf06394dc5f oa:refinedBy _:ad98c7264b21a9ea87002962cd43dc31 .
-_:ad98c7264b21a9ea87002962cd43dc31 a oa:FragmentSelector ;
+_:f93ff17d3d28418378185c478ea98189 oa:hasSource <../in/documentreference-contained-custodian.json> .
+_:d75505ccea1603ba8f00a07914794f8d oa:refinedBy _:f0c30f460cb92e5f50b32871c6da0d45 .
+_:f0c30f460cb92e5f50b32871c6da0d45 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/resourceType" .
-_:f89b72982eeb4347762be4fa5b20f511 oa:hasSelector _:e4fbd6fcf06eca4ad99bbaf06394dc5f .
-_:c1a2cf77397a9d0aa85ea090e9a1e1ef oa:hasTarget _:f89b72982eeb4347762be4fa5b20f511 .
-_:aebefdaf51326b0f83df2779c58dc772 a oa:FragmentSelector ;
+	rdf:value "/subject/display" .
+_:f93ff17d3d28418378185c478ea98189 oa:hasSelector _:d75505ccea1603ba8f00a07914794f8d .
+_:e51a76c6638bc3b96d3d097b4dbfbb78 oa:hasTarget _:f93ff17d3d28418378185c478ea98189 ;
+	sh:resultSeverity sh:Info ;
+	a oa:Annotation ;
+	oa:hasBody fhirr4:referenceDisplay ;
+	oa:motivatedBy oa:classifying ;
+	sh:value "Ada Okonkwo" .
+_:a0d182dbe3067f28e08b830176954e0f a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:e059f03e3483fd78e3ff9bad729ef5e1 oa:hasSource <../in/documentreference-contained-custodian.json> .
-_:aebefdaf51326b0f83df2779c58dc772 oa:refinedBy _:c5e4c8642d1bdf0dd93de0767841b3ea .
-_:c5e4c8642d1bdf0dd93de0767841b3ea a oa:FragmentSelector ;
+_:bc7b18749f48b20cab406dad90de3206 oa:hasSource <../in/documentreference-contained-custodian.json> .
+_:a0d182dbe3067f28e08b830176954e0f oa:refinedBy _:d11c3667fe5a76666cca2df1b43b06a7 .
+_:d11c3667fe5a76666cca2df1b43b06a7 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/contained/0/resourceType" .
-_:e059f03e3483fd78e3ff9bad729ef5e1 oa:hasSelector _:aebefdaf51326b0f83df2779c58dc772 .
-_:ef9b8c0221e06acef3d4682646d81754 oa:hasTarget _:e059f03e3483fd78e3ff9bad729ef5e1 .
-_:c1a2cf77397a9d0aa85ea090e9a1e1ef sh:resultSeverity sh:Warning .
-_:ef9b8c0221e06acef3d4682646d81754 sh:resultSeverity sh:Warning .
-_:c1a2cf77397a9d0aa85ea090e9a1e1ef a oa:Annotation ;
-	oa:hasBody fhirr4:resourceTypeNotMapped ;
-	oa:motivatedBy oa:classifying ;
-	sh:value "DocumentReference" .
-_:ef9b8c0221e06acef3d4682646d81754 a oa:Annotation ;
+_:bc7b18749f48b20cab406dad90de3206 oa:hasSelector _:a0d182dbe3067f28e08b830176954e0f .
+_:b9a66b376c54c1707be0f4cdb93a5ac3 oa:hasTarget _:bc7b18749f48b20cab406dad90de3206 ;
+	sh:resultSeverity sh:Warning ;
+	a oa:Annotation ;
 	oa:hasBody fhirr4:resourceTypeNotMapped ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "Organization" .

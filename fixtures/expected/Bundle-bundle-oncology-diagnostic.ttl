@@ -2,6 +2,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix dct: <http://purl.org/dc/terms/> .
@@ -22,13 +23,13 @@ _:235f26399b54206ae34b3bc90b7a0054 bridge:arrivedAs <ni:///sha-256;KGY9Iqe56WpHy
 _:5fd8867c3a8ec03fedfa592bfcc441de a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/0" .
-<ni:///sha-256;TU9gzGxul9I7ePB8L4k0o4R__ag_eBAWaVTsdSdJeCI> cascade:resultQuantity <ni:///sha-256;TU9gzGxul9I7ePB8L4k0o4R__ag_eBAWaVTsdSdJeCI#value> .
+<ni:///sha-256;TU9gzGxul9I7ePB8L4k0o4R__ag_eBAWaVTsdSdJeCI> cascade:testCode <http://loinc.org/rdf/94076-7> ;
+	cascade:resultQuantity <ni:///sha-256;TU9gzGxul9I7ePB8L4k0o4R__ag_eBAWaVTsdSdJeCI#value> .
 <ni:///sha-256;TU9gzGxul9I7ePB8L4k0o4R__ag_eBAWaVTsdSdJeCI#value> cascade:decimalValue "25"^^xsd:decimal ;
 	cascade:writtenValue "25" ;
 	cascade:ucumUnit "1/1000000" ;
 	cascade:unitText "Mutations/Megabase" .
 <ni:///sha-256;TU9gzGxul9I7ePB8L4k0o4R__ag_eBAWaVTsdSdJeCI> cascade:testName "Mutations/Megabase [# Ratio] in Tumor" ;
-	cascade:testCode <http://loinc.org/rdf/94076-7> ;
 	cascade:resultValueKind cascade:QuantityResultValue ;
 	cascade:resultClinicallyRelevantTime "2019-03-05"^^xsd:date ;
 	cascade:workflowStatus "final" .
@@ -73,6 +74,25 @@ _:ec1e24d6a2febaa3fe91495e470475db oa:hasSelector _:2c4369d995f890143950523e7ceb
 _:2c4369d995f890143950523e7ceb3515 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/5" .
+<ni:///sha-256;aLssZpi6FO8CzwXmc9EIqllULtryHG6u-y6gE1W9Wis> cascade:narrativeText "Generated Narrative: DiagnosticReport Inline-Instance-for-oncology-diagnostic-7\nGenetic analysis report (Genetics)\nSubject\nNot done yet\nWhen For\n2019-03-05\nPerformer\nBundle: type = transaction\nReport Details\nCode\nValue" .
+<urn:uuid:7996cc33-ad8f-8ad1-8eba-d6d774fbdb78> a cascade:DiagnosticReport ;
+	cascade:sourceRecordId "Inline-Instance-for-oncology-diagnostic-7" .
+<ni:///sha-256;aLssZpi6FO8CzwXmc9EIqllULtryHG6u-y6gE1W9Wis> prov:specializationOf <urn:uuid:7996cc33-ad8f-8ad1-8eba-d6d774fbdb78> ;
+	cascade:patient <urn:uuid:ceea121c-8851-818a-b6a4-7fa0603c6761> .
+_:3ecb9cf76a7eecd0dcc563fa3a7d3e0e bridge:arrivedAs <ni:///sha-256;aLssZpi6FO8CzwXmc9EIqllULtryHG6u-y6gE1W9Wis> .
+<ni:///sha-256;aLssZpi6FO8CzwXmc9EIqllULtryHG6u-y6gE1W9Wis> obo:RO_0002351 <urn:uuid:54c6a08e-c119-8aad-b228-95e92dabeeba> , <urn:uuid:9c5d2693-efff-81af-8792-7d01125d7d54> ;
+	cascade:workflowStatus "final" ;
+	cascade:reportCategory "GE"^^<http://terminology.hl7.org/CodeSystem/v2-0074> ;
+	cascade:reportCode <http://loinc.org/rdf/51969-4> ;
+	cascade:reportEffectiveTime "2019-03-05"^^xsd:date ;
+	cascade:reportName "Genetic analysis report" .
+_:3ecb9cf76a7eecd0dcc563fa3a7d3e0e oa:hasSelector _:82bb4d940b43e2b67f165155ef57321e ;
+	oa:hasSource <ni:///sha-256;AO4h25x6rbUzWIH6kVDQcwa3ERvIWJrTz_X_yERgjq0> ;
+	prov:wasDerivedFrom <ni:///sha-256;AO4h25x6rbUzWIH6kVDQcwa3ERvIWJrTz_X_yERgjq0> ;
+	prov:wasGeneratedBy _:dbc91de89e8120f9d35937be69ca4b4d .
+_:82bb4d940b43e2b67f165155ef57321e a oa:FragmentSelector ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/entry/6" .
 <ni:///sha-256;AO4h25x6rbUzWIH6kVDQcwa3ERvIWJrTz_X_yERgjq0> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
 	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
 _:f34bd6267233317da438567200730fc0 prov:agent _:a1c145592cda6d1137dc23456b0dc919 .
