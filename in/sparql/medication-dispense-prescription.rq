@@ -101,19 +101,19 @@ WHERE {
   BIND (?namesContained || (BOUND(?target) && IF(?target != "",
              EXISTS { ?request fhirr4:heldAt ?target ; fhirr4:resourceType "MedicationRequest" },
              NOT EXISTS {
-               ?urnHeld fhirr4:resourceId ?requestId ;
+               ?urnHeld fhirr4:resourceId ?urnId ;
                  fhirr4:resourceType "MedicationRequest" ;
                  fhirr4:fullUrl ?urnUrl .
-               FILTER (STRSTARTS(?urnUrl, "urn:uuid:"))
+               FILTER (STRSTARTS(?urnUrl, "urn:uuid:") && ?urnId = ?requestId)
              }
              && NOT EXISTS {
-               ?onceHeld fhirr4:resourceId ?requestId ;
+               ?onceHeld fhirr4:resourceId ?onceId ;
                  fhirr4:resourceType "MedicationRequest" ;
                  fhirr4:heldAt ?onceAt .
-               ?twiceHeld fhirr4:resourceId ?requestId ;
+               ?twiceHeld fhirr4:resourceId ?onceId ;
                  fhirr4:resourceType "MedicationRequest" ;
                  fhirr4:heldAt ?twiceAt .
-               FILTER (?onceAt != ?twiceAt)
+               FILTER (?onceId = ?requestId && ?onceAt != ?twiceAt)
              })) AS ?namesRecord)
   FILTER (?namesRecord)
   BIND (IRI(CONCAT("urn:cascade:version-at:", SHA256(?resourcePointer))) AS ?version)
