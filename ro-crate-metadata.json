@@ -845,6 +845,30 @@
           "@id": "fixtures/in/medication-request-supply-and-timing-values-not-carried.json"
         },
         {
+          "@id": "fixtures/in/medication-dispense-completed.json"
+        },
+        {
+          "@id": "fixtures/in/bundle-medication-dispense-and-prescription.json"
+        },
+        {
+          "@id": "fixtures/in/medication-dispense-partial-times.json"
+        },
+        {
+          "@id": "fixtures/in/medication-dispense-times-absent-for-reason.json"
+        },
+        {
+          "@id": "fixtures/in/bundle-medication-dispense-supply-not-carried.json"
+        },
+        {
+          "@id": "fixtures/in/medication-dispense-codings-not-carried.json"
+        },
+        {
+          "@id": "fixtures/in/medication-dispense-elements-not-carried.json"
+        },
+        {
+          "@id": "fixtures/in/bundle-medication-dispense-prescriptions-not-named.json"
+        },
+        {
           "@id": "bench/manifest.json"
         },
         {
@@ -1676,6 +1700,30 @@
           "@id": "fixtures/expected/medication-request-supply-and-timing-values-not-carried.ttl"
         },
         {
+          "@id": "fixtures/expected/medication-dispense-completed.ttl"
+        },
+        {
+          "@id": "fixtures/expected/bundle-medication-dispense-and-prescription.ttl"
+        },
+        {
+          "@id": "fixtures/expected/medication-dispense-partial-times.ttl"
+        },
+        {
+          "@id": "fixtures/expected/medication-dispense-times-absent-for-reason.ttl"
+        },
+        {
+          "@id": "fixtures/expected/bundle-medication-dispense-supply-not-carried.ttl"
+        },
+        {
+          "@id": "fixtures/expected/medication-dispense-codings-not-carried.ttl"
+        },
+        {
+          "@id": "fixtures/expected/medication-dispense-elements-not-carried.ttl"
+        },
+        {
+          "@id": "fixtures/expected/bundle-medication-dispense-prescriptions-not-named.ttl"
+        },
+        {
           "@id": "fixtures/findings/procedure-with-id.ttl"
         },
         {
@@ -1722,6 +1770,30 @@
         },
         {
           "@id": "fixtures/findings/medication-request-supply-and-timing-values-not-carried.ttl"
+        },
+        {
+          "@id": "fixtures/findings/medication-dispense-completed.ttl"
+        },
+        {
+          "@id": "fixtures/findings/bundle-medication-dispense-and-prescription.ttl"
+        },
+        {
+          "@id": "fixtures/findings/medication-dispense-partial-times.ttl"
+        },
+        {
+          "@id": "fixtures/findings/medication-dispense-times-absent-for-reason.ttl"
+        },
+        {
+          "@id": "fixtures/findings/bundle-medication-dispense-supply-not-carried.ttl"
+        },
+        {
+          "@id": "fixtures/findings/medication-dispense-codings-not-carried.ttl"
+        },
+        {
+          "@id": "fixtures/findings/medication-dispense-elements-not-carried.ttl"
+        },
+        {
+          "@id": "fixtures/findings/bundle-medication-dispense-prescriptions-not-named.ttl"
         },
         {
           "@id": "views/allergies.rq"
@@ -4571,6 +4643,110 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "A MedicationRequest of atorvastatin, id medrx-atorvastatin-9, coded in RxNorm (617312), with the course of therapy continuous and acute, one dosage whose timing repeats 0 times per daily fortnight, and a dispense request of two repeats allowed, written as the text two, and a supply duration of the text thirty days. Authored here on 2026-10-29, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/medication-dispense-completed.json",
+      "@type": "File",
+      "name": "MedicationDispense with every mapped element",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "969",
+      "sha256": "35a7bd3474a3fe2bec47b80a416c5c51df9401875785b111c2fdf350e70cf550",
+      "dateCreated": "2026-10-31",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A MedicationDispense of metformin (RxNorm 861007, NDC 0093-1048-01), id meddisp-metformin-1, status completed, with a quantity of 60 tablets in UCUM annotation {tbl}, a days' supply of 30 d, one authorizingPrescription by MedicationRequest/medrx-metformin-1, a time prepared to the second in UTC and a time handed over to the second with an offset. Authored here on 2026-10-31, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/bundle-medication-dispense-and-prescription.json",
+      "@type": "File",
+      "name": "Bundle of a MedicationRequest, a Medication and two MedicationDispenses",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "3319",
+      "sha256": "dcbd5f99afc66250dd5e8bc709f613750b2a09cfa17d17b732641b184a119934",
+      "dateCreated": "2026-10-31",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Bundle of a MedicationRequest and a Medication under urn:uuid fullUrls (the Medication amlodipine 5 MG Oral Tablet, RxNorm 197361, read on rxnav.nlm.nih.gov on 2026-10-31), a dispense under a urn:uuid that references both, and a dispense under its server URL with a contained Medication (lisinopril 10 MG Oral Tablet, RxNorm 314076, read on rxnav.nlm.nih.gov on 2026-10-31) and three authorizingPrescriptions: the request's urn:uuid, a versioned absolute reference on the server and a relative one. Authored here on 2026-10-31, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/medication-dispense-partial-times.json",
+      "@type": "File",
+      "name": "MedicationDispense with times to the month and to the minute",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "320",
+      "sha256": "f0b4903ba11abc0146f6ab6174c6e490816de5143fc9c0a1a44300d1dabc8b75",
+      "dateCreated": "2026-10-31",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A MedicationDispense of text alone, id meddisp-atorvastatin-1, with whenPrepared 2026-01 and whenHandedOver 2026-01-12T09:30-05:00. Authored here on 2026-10-31, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/medication-dispense-times-absent-for-reason.json",
+      "@type": "File",
+      "name": "MedicationDispense with both times absent for a reason",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "605",
+      "sha256": "329204fac70b1b28d70d2dd1ea30120c0f14ec810b165089fc6f1aa2e98f8e8e",
+      "dateCreated": "2026-10-31",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A MedicationDispense in progress, id meddisp-atorvastatin-2, with no whenPrepared or whenHandedOver and a data-absent-reason extension on each (asked-unknown and unknown). Authored here on 2026-10-31, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/bundle-medication-dispense-supply-not-carried.json",
+      "@type": "File",
+      "name": "Bundle of three MedicationDispenses whose amounts are not carried",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "2224",
+      "sha256": "90462f78e6f8aee73e8bc4a14baffbe9ccf54b3d2200a292cd431aa4989e108f",
+      "dateCreated": "2026-10-31",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Bundle of three MedicationDispenses: a quantity of the text sixty and a days' supply in the UCUM annotation {tbl}; a quantity coded in a system that is no UCUM (an example.org system, authored here) and a days' supply of days with no system; a quantity with the comparator > and a days' supply with the comparator <. Authored here on 2026-10-31, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/medication-dispense-codings-not-carried.json",
+      "@type": "File",
+      "name": "MedicationDispense with codings not carried",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "703",
+      "sha256": "639f19b89eac0de581f5f1cf6d16ccff6cbb5642346177ebc2635b066e75fab0",
+      "dateCreated": "2026-10-31",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A MedicationDispense, id meddisp-codings-1, whose drug is coded by RxNorm 861007, an NDC of ten digits with no hyphens, a code with no system and a code in an example.org formulary system (authored here). Authored here on 2026-10-31, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/medication-dispense-elements-not-carried.json",
+      "@type": "File",
+      "name": "MedicationDispense with every element no Cascade predicate carries",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "2108",
+      "sha256": "f815054c2895815a3e279f788f4aa80b789d7cae44d558b8490ad1980a299ee7",
+      "dateCreated": "2026-10-31",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A MedicationDispense, id meddisp-elements-1, naming its drug by a reference to a Medication the document does not hold, and stating an identifier (carried for lab results and organizations only, and reported for none), partOf, statusReasonCodeableConcept, category, a subject with a display, context, supportingInformation, a performer, location, type, destination, receiver, note, two dosageInstructions, substitution, detectedIssue and eventHistory. Authored here on 2026-10-31, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/bundle-medication-dispense-prescriptions-not-named.json",
+      "@type": "File",
+      "name": "Bundle of two MedicationDispenses whose prescriptions name no record",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "4408",
+      "sha256": "b98eab2e9fa21f71e3feb8f6f9a725258410612d0eae37546b981b122f44d36c",
+      "dateCreated": "2026-10-31",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Bundle of a Patient and a MedicationRequest under urn:uuid fullUrls, two MedicationRequests under their server URLs with one id, a ServiceRequest under a urn:uuid, a dispense under its server URL with a contained MedicationRequest and eight authorizingPrescriptions, and a dispense under a urn:uuid with two. Authored here on 2026-10-31, for a case the conformance corpus does not hold."
     },
     {
       "@id": "bench/manifest.json",
@@ -8297,6 +8473,134 @@
       "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
+      "@id": "fixtures/expected/medication-dispense-completed.ttl",
+      "@type": "File",
+      "name": "Expected graph for medication-dispense-completed",
+      "encodingFormat": "text/turtle",
+      "contentSize": "4634",
+      "sha256": "951cab1cbcf63f82ed9a144f0420a63967d698a2113db66db4a06c279ba23ee6",
+      "about": {
+        "@id": "fixtures/in/medication-dispense-completed.json"
+      },
+      "dateCreated": "2026-10-31",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/bundle-medication-dispense-and-prescription.ttl",
+      "@type": "File",
+      "name": "Expected graph for bundle-medication-dispense-and-prescription",
+      "encodingFormat": "text/turtle",
+      "contentSize": "7289",
+      "sha256": "7c1d21d0aa9854677522c2684eff7cb66d2738c883fb0f53fa3edef358531c19",
+      "about": {
+        "@id": "fixtures/in/bundle-medication-dispense-and-prescription.json"
+      },
+      "dateCreated": "2026-10-31",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/medication-dispense-partial-times.ttl",
+      "@type": "File",
+      "name": "Expected graph for medication-dispense-partial-times",
+      "encodingFormat": "text/turtle",
+      "contentSize": "4030",
+      "sha256": "10feb03f216e782f5248ab71c1c7a9b6dfd2b151235d28d7dde983a518e86bff",
+      "about": {
+        "@id": "fixtures/in/medication-dispense-partial-times.json"
+      },
+      "dateCreated": "2026-10-31",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/medication-dispense-times-absent-for-reason.ttl",
+      "@type": "File",
+      "name": "Expected graph for medication-dispense-times-absent-for-reason",
+      "encodingFormat": "text/turtle",
+      "contentSize": "4375",
+      "sha256": "d4ae3cd714531e1e0317d9016e91ee680c079bcb166789da48089a201fc19f4a",
+      "about": {
+        "@id": "fixtures/in/medication-dispense-times-absent-for-reason.json"
+      },
+      "dateCreated": "2026-10-31",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/bundle-medication-dispense-supply-not-carried.ttl",
+      "@type": "File",
+      "name": "Expected graph for bundle-medication-dispense-supply-not-carried",
+      "encodingFormat": "text/turtle",
+      "contentSize": "6040",
+      "sha256": "15cc1e520ea6be0e61a765567a01bb8479f6063717172765184501dda25751e9",
+      "about": {
+        "@id": "fixtures/in/bundle-medication-dispense-supply-not-carried.json"
+      },
+      "dateCreated": "2026-10-31",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/medication-dispense-codings-not-carried.ttl",
+      "@type": "File",
+      "name": "Expected graph for medication-dispense-codings-not-carried",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3726",
+      "sha256": "6ac64fc2fb82d0e6ad921ba97ba8ecbb3e15b9d5b4889dc8890d524b1592d970",
+      "about": {
+        "@id": "fixtures/in/medication-dispense-codings-not-carried.json"
+      },
+      "dateCreated": "2026-10-31",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/medication-dispense-elements-not-carried.ttl",
+      "@type": "File",
+      "name": "Expected graph for medication-dispense-elements-not-carried",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3511",
+      "sha256": "70b31e34670ea7e1a0d2898a06edd659809717d4e0691039e231ee82ce795dc7",
+      "about": {
+        "@id": "fixtures/in/medication-dispense-elements-not-carried.json"
+      },
+      "dateCreated": "2026-10-31",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/bundle-medication-dispense-prescriptions-not-named.ttl",
+      "@type": "File",
+      "name": "Expected graph for bundle-medication-dispense-prescriptions-not-named",
+      "encodingFormat": "text/turtle",
+      "contentSize": "10355",
+      "sha256": "b47c863c214f4c2edd1a34476787483198b014878c569fc292ab9037e7e1bf45",
+      "about": {
+        "@id": "fixtures/in/bundle-medication-dispense-prescriptions-not-named.json"
+      },
+      "dateCreated": "2026-10-31",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
       "@id": "fixtures/findings/procedure-with-id.ttl",
       "@type": "File",
       "name": "Expected findings for procedure-with-id",
@@ -8547,6 +8851,134 @@
         "@id": "fixtures/in/medication-request-supply-and-timing-values-not-carried.json"
       },
       "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/medication-dispense-completed.ttl",
+      "@type": "File",
+      "name": "Expected findings for medication-dispense-completed",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/medication-dispense-completed.json"
+      },
+      "dateCreated": "2026-10-31",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/bundle-medication-dispense-and-prescription.ttl",
+      "@type": "File",
+      "name": "Expected findings for bundle-medication-dispense-and-prescription",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/bundle-medication-dispense-and-prescription.json"
+      },
+      "dateCreated": "2026-10-31",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/medication-dispense-partial-times.ttl",
+      "@type": "File",
+      "name": "Expected findings for medication-dispense-partial-times",
+      "encodingFormat": "text/turtle",
+      "contentSize": "764",
+      "sha256": "e0e335830389bec97d7881c8b14f7838b51818721cdba382aa8906cd82f6d4d2",
+      "about": {
+        "@id": "fixtures/in/medication-dispense-partial-times.json"
+      },
+      "dateCreated": "2026-10-31",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/medication-dispense-times-absent-for-reason.ttl",
+      "@type": "File",
+      "name": "Expected findings for medication-dispense-times-absent-for-reason",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/medication-dispense-times-absent-for-reason.json"
+      },
+      "dateCreated": "2026-10-31",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/bundle-medication-dispense-supply-not-carried.ttl",
+      "@type": "File",
+      "name": "Expected findings for bundle-medication-dispense-supply-not-carried",
+      "encodingFormat": "text/turtle",
+      "contentSize": "6723",
+      "sha256": "a85c62f4d859b0a69cd381656b024a8cbf0fe316ba60a8338b43f7dd962781dc",
+      "about": {
+        "@id": "fixtures/in/bundle-medication-dispense-supply-not-carried.json"
+      },
+      "dateCreated": "2026-10-31",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/medication-dispense-codings-not-carried.ttl",
+      "@type": "File",
+      "name": "Expected findings for medication-dispense-codings-not-carried",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2071",
+      "sha256": "7cd1ba825841260c8507a95a950cf30460d2bb2cde96d3d913c68fc77321b04c",
+      "about": {
+        "@id": "fixtures/in/medication-dispense-codings-not-carried.json"
+      },
+      "dateCreated": "2026-10-31",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/medication-dispense-elements-not-carried.ttl",
+      "@type": "File",
+      "name": "Expected findings for medication-dispense-elements-not-carried",
+      "encodingFormat": "text/turtle",
+      "contentSize": "15825",
+      "sha256": "da49f2a212889cca3ace2cbba4ad1adc029d8e143273ed528857c56c8ca14a98",
+      "about": {
+        "@id": "fixtures/in/medication-dispense-elements-not-carried.json"
+      },
+      "dateCreated": "2026-10-31",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/bundle-medication-dispense-prescriptions-not-named.ttl",
+      "@type": "File",
+      "name": "Expected findings for bundle-medication-dispense-prescriptions-not-named",
+      "encodingFormat": "text/turtle",
+      "contentSize": "10605",
+      "sha256": "d46b2eeb106fff44037dff12769e44a24a2b4b443a2a5f09eb0541f561a59553",
+      "about": {
+        "@id": "fixtures/in/bundle-medication-dispense-prescriptions-not-named.json"
+      },
+      "dateCreated": "2026-10-31",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -8842,8 +9274,8 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "contentSize": "106664",
-      "sha256": "1863e5cbf1e7f04e2ecfe1414d9c5600eabbb2990bda2f822050aff60bfda13f"
+      "contentSize": "114603",
+      "sha256": "4bfdff9a0a8769e45a372d4badaf45d78e53753dbbe8580159a740d768966458"
     },
     {
       "@id": "fixtures/facts/meridian.ttl",

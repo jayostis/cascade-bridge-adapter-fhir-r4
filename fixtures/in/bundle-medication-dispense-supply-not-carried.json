@@ -1,0 +1,82 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "https://fhir.meridian.example/api/FHIR/R4/MedicationDispense/meddisp-supply-1",
+      "resource": {
+        "resourceType": "MedicationDispense",
+        "id": "meddisp-supply-1",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "text": "Metformin 500 mg tablet"
+        },
+        "subject": {
+          "reference": "Patient/pat-conformance-1"
+        },
+        "quantity": {
+          "value": "sixty",
+          "unit": "tablet",
+          "system": "http://unitsofmeasure.org",
+          "code": "{tbl}"
+        },
+        "daysSupply": {
+          "value": 30,
+          "unit": "tablet",
+          "system": "http://unitsofmeasure.org",
+          "code": "{tbl}"
+        }
+      }
+    },
+    {
+      "fullUrl": "https://fhir.meridian.example/api/FHIR/R4/MedicationDispense/meddisp-supply-2",
+      "resource": {
+        "resourceType": "MedicationDispense",
+        "id": "meddisp-supply-2",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "text": "Metformin 500 mg tablet"
+        },
+        "subject": {
+          "reference": "Patient/pat-conformance-1"
+        },
+        "quantity": {
+          "value": 60,
+          "unit": "tablet",
+          "system": "http://example.org/fhir/dispense-units",
+          "code": "TAB"
+        },
+        "daysSupply": {
+          "value": 30,
+          "unit": "days"
+        }
+      }
+    },
+    {
+      "fullUrl": "https://fhir.meridian.example/api/FHIR/R4/MedicationDispense/meddisp-supply-3",
+      "resource": {
+        "resourceType": "MedicationDispense",
+        "id": "meddisp-supply-3",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "text": "Metformin 500 mg tablet"
+        },
+        "subject": {
+          "reference": "Patient/pat-conformance-1"
+        },
+        "quantity": {
+          "comparator": ">",
+          "value": 60,
+          "unit": "tablet"
+        },
+        "daysSupply": {
+          "comparator": "<",
+          "value": 30,
+          "unit": "days",
+          "system": "http://unitsofmeasure.org",
+          "code": "d"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:1a3c5e70-9b2d-4f48-8a6c-0d2f4b6a8c19",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "pat-urn-1",
+        "name": [
+          {
+            "family": "Rivera",
+            "given": [
+              "Alex"
+            ]
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1985-03-15"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:3c5e7a90-1d2b-4f48-a6c3-9b8d0e2f4a15",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "medrx-held-under-urn",
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "text": "Lisinopril 10 mg tablet"
+        },
+        "subject": {
+          "reference": "urn:uuid:1a3c5e70-9b2d-4f48-8a6c-0d2f4b6a8c19"
+        }
+      }
+    },
+    {
+      "fullUrl": "https://fhir.meridian.example/api/FHIR/R4/MedicationRequest/medrx-twice-1",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "medrx-twice",
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "text": "Lisinopril 10 mg tablet"
+        },
+        "subject": {
+          "reference": "Patient/pat-conformance-1"
+        }
+      }
+    },
+    {
+      "fullUrl": "https://fhir.meridian.example/api/FHIR/R4/MedicationRequest/medrx-twice-2",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "medrx-twice",
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "text": "Lisinopril 10 mg tablet"
+        },
+        "subject": {
+          "reference": "Patient/pat-conformance-1"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:e4a6c8d0-2f1b-4a37-8c59-0d7b3e1f6a28",
+      "resource": {
+        "resourceType": "ServiceRequest",
+        "id": "sr-1",
+        "status": "active",
+        "intent": "order",
+        "subject": {
+          "reference": "urn:uuid:1a3c5e70-9b2d-4f48-8a6c-0d2f4b6a8c19"
+        }
+      }
+    },
+    {
+      "fullUrl": "https://fhir.meridian.example/api/FHIR/R4/MedicationDispense/meddisp-unnamed-1",
+      "resource": {
+        "resourceType": "MedicationDispense",
+        "id": "meddisp-unnamed-1",
+        "contained": [
+          {
+            "resourceType": "MedicationRequest",
+            "id": "rx-contained",
+            "status": "active",
+            "intent": "order",
+            "medicationCodeableConcept": {
+              "text": "Lisinopril 10 mg tablet"
+            },
+            "subject": {
+              "reference": "Patient/pat-conformance-1"
+            }
+          }
+        ],
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "text": "Lisinopril 10 mg tablet"
+        },
+        "subject": {
+          "reference": "Patient/pat-conformance-1"
+        },
+        "authorizingPrescription": [
+          {
+            "reference": "#rx-contained"
+          },
+          {
+            "reference": "urn:uuid:9a1b2c3d-4e5f-4a6b-8c7d-0e1f2a3b4c5d"
+          },
+          {
+            "reference": "MedicationRequest/medrx-held-under-urn"
+          },
+          {
+            "reference": "MedicationRequest/medrx-twice"
+          },
+          {
+            "reference": "https://other.example/fhir/MedicationRequest/medrx-elsewhere"
+          },
+          {
+            "reference": "urn:uuid:e4a6c8d0-2f1b-4a37-8c59-0d7b3e1f6a28"
+          },
+          {
+            "reference": "ServiceRequest/sr-1"
+          },
+          {
+            "display": "A prescription with no reference"
+          }
+        ],
+        "whenHandedOver": "2026-02-04"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:7f9a1c3e-5b2d-4e80-9a6c-2d4f6b8a0c37",
+      "resource": {
+        "resourceType": "MedicationDispense",
+        "id": "meddisp-unnamed-2",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "text": "Lisinopril 10 mg tablet"
+        },
+        "subject": {
+          "reference": "urn:uuid:1a3c5e70-9b2d-4f48-8a6c-0d2f4b6a8c19"
+        },
+        "authorizingPrescription": [
+          {
+            "reference": "MedicationRequest/medrx-held-elsewhere"
+          },
+          {
+            "reference": "urn:uuid:3c5e7a90-1d2b-4f48-a6c3-9b8d0e2f4a15"
+          }
+        ],
+        "whenHandedOver": "2026-02-05"
+      }
+    }
+  ]
+}

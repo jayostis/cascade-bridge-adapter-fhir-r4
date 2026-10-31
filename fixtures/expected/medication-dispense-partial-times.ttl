@@ -1,0 +1,56 @@
+@prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix pav: <http://purl.org/pav/> .
+<ni:///sha-256;CdXcDxo68jGjrGUV66oxHaoFGUy6rzJMerBZPSTyFqs> cascade:dispenseHandedOverTime "2026-01-12T09:30:00-05:00"^^xsd:dateTime ;
+	cascade:paddedDateTime <ni:///sha-256;CdXcDxo68jGjrGUV66oxHaoFGUy6rzJMerBZPSTyFqs#padded-dispenseHandedOverTime> .
+<ni:///sha-256;CdXcDxo68jGjrGUV66oxHaoFGUy6rzJMerBZPSTyFqs#padded-dispenseHandedOverTime> cascade:paddedDateTimeProperty cascade:dispenseHandedOverTime ;
+	cascade:writtenDate "2026-01-12T09:30-05:00" .
+<ni:///sha-256;CdXcDxo68jGjrGUV66oxHaoFGUy6rzJMerBZPSTyFqs> cascade:dispensePreparedTime "2026-01"^^xsd:gYearMonth ;
+	cascade:drugName "Atorvastatin 10 mg tablet" ;
+	cascade:workflowStatus "completed" .
+<urn:uuid:1626334c-3412-8bd0-a987-e96614b99c7b> a cascade:MedicationDispense ;
+	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/MedicationDispense/meddisp-atorvastatin-1> ;
+	cascade:sourceRecordId "meddisp-atorvastatin-1" .
+<ni:///sha-256;CdXcDxo68jGjrGUV66oxHaoFGUy6rzJMerBZPSTyFqs> prov:specializationOf <urn:uuid:1626334c-3412-8bd0-a987-e96614b99c7b> ;
+	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
+_:a1004a563e7af5afba399b868e91d920 bridge:arrivedAs <ni:///sha-256;CdXcDxo68jGjrGUV66oxHaoFGUy6rzJMerBZPSTyFqs> ;
+	oa:hasSelector _:e421b24469df5ce683b77c8ffa59a057 ;
+	oa:hasSource <ni:///sha-256;8LSQO6EavAFG9qthdMbkkIFt5RQ_ycChpEMA0dq8i3U> ;
+	prov:wasDerivedFrom <ni:///sha-256;8LSQO6EavAFG9qthdMbkkIFt5RQ_ycChpEMA0dq8i3U> ;
+	prov:wasGeneratedBy _:9c2cd866d70a5faab8347b392ca2f8b7 .
+_:e421b24469df5ce683b77c8ffa59a057 a oa:FragmentSelector ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "" .
+<ni:///sha-256;8LSQO6EavAFG9qthdMbkkIFt5RQ_ycChpEMA0dq8i3U> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
+	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
+_:f9425d101c32b30c257b47676aff05ad prov:agent _:cee0e82530cba58db3bf2f64e7ac75ba .
+_:cee0e82530cba58db3bf2f64e7ac75ba <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:f9425d101c32b30c257b47676aff05ad prov:hadRole cascade:AuthorRole .
+<ni:///sha-256;8LSQO6EavAFG9qthdMbkkIFt5RQ_ycChpEMA0dq8i3U> prov:qualifiedAttribution _:f9425d101c32b30c257b47676aff05ad .
+_:4629e9b8115387fdb2abbe9cb11b39d3 prov:agent _:c7fb67df50c002241fa13f3ab4c48052 .
+_:c7fb67df50c002241fa13f3ab4c48052 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
+_:4629e9b8115387fdb2abbe9cb11b39d3 prov:hadRole cascade:TransmitterRole .
+<ni:///sha-256;8LSQO6EavAFG9qthdMbkkIFt5RQ_ycChpEMA0dq8i3U> prov:qualifiedAttribution _:4629e9b8115387fdb2abbe9cb11b39d3 ;
+	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
+	cascade:authenticatedAsProxy false ;
+	cascade:sourceFormatVersion "4.0.1" .
+_:9c2cd866d70a5faab8347b392ca2f8b7 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
+	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
+<ni:///sha-256;8LSQO6EavAFG9qthdMbkkIFt5RQ_ycChpEMA0dq8i3U> a prov:Entity .
+_:9c2cd866d70a5faab8347b392ca2f8b7 a prov:Activity ;
+	prov:used <ni:///sha-256;8LSQO6EavAFG9qthdMbkkIFt5RQ_ycChpEMA0dq8i3U> ;
+	prov:qualifiedAssociation _:58b4ad45a4da7fe705630ee22abd1bb2 .
+_:58b4ad45a4da7fe705630ee22abd1bb2 prov:hadPlan _:c8959c2c3bd6ee4df9c89168995a214f .
+_:c8959c2c3bd6ee4df9c89168995a214f a prov:Plan ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "fhir-r4" ;
+	pav:version "0.1.0" .
+_:58b4ad45a4da7fe705630ee22abd1bb2 prov:agent _:fa6a7b2c076399430e830841443e4de .
+_:fa6a7b2c076399430e830841443e4de a prov:SoftwareAgent ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Cascade Bridge for Rust" ;
+	pav:version "0.1.0" .

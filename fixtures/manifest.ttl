@@ -157,6 +157,14 @@
     <#bundle-codings-without-system>
     <#medication-request-dose-quantity-not-carried>
     <#medication-request-supply-and-timing-values-not-carried>
+    <#medication-dispense-completed>
+    <#bundle-medication-dispense-and-prescription>
+    <#medication-dispense-partial-times>
+    <#medication-dispense-times-absent-for-reason>
+    <#bundle-medication-dispense-supply-not-carried>
+    <#medication-dispense-codings-not-carried>
+    <#medication-dispense-elements-not-carried>
+    <#bundle-medication-dispense-prescriptions-not-named>
   ) .
 
 <#allergy-with-id> a bridge:IsomorphicConversionTest ;
@@ -2152,4 +2160,108 @@
   mf:result [
     bridge:expectedGraph <expected/diagnostic-report-numeric-references.ttl> ;
     bridge:expectedFindings <findings/diagnostic-report-numeric-references.ttl>
+  ] .
+
+<#medication-dispense-completed> a bridge:IsomorphicConversionTest ;
+  mf:name "medication-dispense-completed" ;
+  rdfs:comment "A completed MedicationDispense with every element medication-dispense.rq and medication.rq read: the drug by its RxNorm and NDC codes and text, the status as written, when it was prepared and handed over, the quantity dispensed in a UCUM unit, the days it lasts and the prescription it fills, named by the MedicationRequest of its own server; a dispense is a record of its own kind, with neither whether it was prescribed or reported nor an intent." ;
+  mf:action [
+    bridge:input <in/medication-dispense-completed.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/medication-dispense-completed.ttl> ;
+    bridge:expectedFindings <findings/medication-dispense-completed.ttl>
+  ] .
+
+<#bundle-medication-dispense-and-prescription> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-medication-dispense-and-prescription" ;
+  rdfs:comment "A Bundle of a MedicationRequest and a Medication, each under a urn:uuid, and two dispenses: one naming its drug by reference to that Medication and its prescription by the request's urn:uuid, the record of that entry; one naming its drug by a contained Medication and three prescriptions, the same urn:uuid, a versioned reference on its server and a relative one the document does not hold, each a prescription of its own." ;
+  mf:action [
+    bridge:input <in/bundle-medication-dispense-and-prescription.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-medication-dispense-and-prescription.ttl> ;
+    bridge:expectedFindings <findings/bundle-medication-dispense-and-prescription.ttl>
+  ] .
+
+<#medication-dispense-partial-times> a bridge:IsomorphicConversionTest ;
+  mf:name "medication-dispense-partial-times" ;
+  rdfs:comment "A MedicationDispense whose time prepared is written to the month and whose time handed over is written to the minute: the month is an xsd:gYearMonth, and the minute is padded to the second with a cascade:PaddedDateTime node holding what was written." ;
+  mf:action [
+    bridge:input <in/medication-dispense-partial-times.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/medication-dispense-partial-times.ttl> ;
+    bridge:expectedFindings <findings/medication-dispense-partial-times.ttl>
+  ] .
+
+<#medication-dispense-times-absent-for-reason> a bridge:IsomorphicConversionTest ;
+  mf:name "medication-dispense-times-absent-for-reason" ;
+  rdfs:comment "A MedicationDispense in progress whose time prepared and time handed over are each given by a data-absent-reason extension and no value: each is a cascade:ValueAbsentForReason node of its property, with the reason's code." ;
+  mf:action [
+    bridge:input <in/medication-dispense-times-absent-for-reason.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/medication-dispense-times-absent-for-reason.ttl> ;
+    bridge:expectedFindings <findings/medication-dispense-times-absent-for-reason.ttl>
+  ] .
+
+<#bundle-medication-dispense-supply-not-carried> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-medication-dispense-supply-not-carried" ;
+  rdfs:comment "A Bundle of three MedicationDispenses whose amounts are not carried as written: a quantity that is no number, with a days' supply in a unit that is no unit of time; a quantity in a system that is no UCUM, kept by its unit text, with a days' supply with no system; a quantity and a days' supply that each state a comparator. Each is a finding, and no days' supply or comparated quantity is carried." ;
+  mf:action [
+    bridge:input <in/bundle-medication-dispense-supply-not-carried.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-medication-dispense-supply-not-carried.ttl> ;
+    bridge:expectedFindings <findings/bundle-medication-dispense-supply-not-carried.ttl>
+  ] .
+
+<#medication-dispense-codings-not-carried> a bridge:IsomorphicConversionTest ;
+  mf:name "medication-dispense-codings-not-carried" ;
+  rdfs:comment "A MedicationDispense whose drug is coded by an RxNorm code, an NDC of ten digits with no hyphens, a code with no system and a code in a formulary system: the RxNorm code and the formulary code are carried, and the NDC and the code with no system are findings, as for a medication." ;
+  mf:action [
+    bridge:input <in/medication-dispense-codings-not-carried.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/medication-dispense-codings-not-carried.ttl> ;
+    bridge:expectedFindings <findings/medication-dispense-codings-not-carried.ttl>
+  ] .
+
+<#medication-dispense-elements-not-carried> a bridge:IsomorphicConversionTest ;
+  mf:name "medication-dispense-elements-not-carried" ;
+  rdfs:comment "A MedicationDispense naming its drug by a reference to a Medication the document does not hold, and stating every element no Cascade predicate carries, among them its type, category, status reason, performer, location, context, destination, receiver, two dosage instructions, substitution, detected issue and event history, and a note and a subject with a display: each element is a finding, at the element, the reference is unresolved, and the note and the display are the findings every medication has, with none for the second dosage instruction." ;
+  mf:action [
+    bridge:input <in/medication-dispense-elements-not-carried.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/medication-dispense-elements-not-carried.ttl> ;
+    bridge:expectedFindings <findings/medication-dispense-elements-not-carried.ttl>
+  ] .
+
+<#bundle-medication-dispense-prescriptions-not-named> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-medication-dispense-prescriptions-not-named" ;
+  rdfs:comment "A Bundle of a Patient and two MedicationRequests held under their server URL with one id, one under a urn:uuid and a ServiceRequest under another, and two dispenses naming prescriptions that name no record: a reference to a contained MedicationRequest, which names it; a urn:uuid no entry holds; a relative reference to a MedicationRequest held under a urn:uuid, and to one whose id two entries hold; one on another server; a urn:uuid held by a ServiceRequest, and a ServiceRequest; one with a display and no reference; and, from an entry under a urn:uuid, a relative reference, and a urn:uuid a MedicationRequest holds, which names it. Each that names none is a finding." ;
+  mf:action [
+    bridge:input <in/bundle-medication-dispense-prescriptions-not-named.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-medication-dispense-prescriptions-not-named.ttl> ;
+    bridge:expectedFindings <findings/bundle-medication-dispense-prescriptions-not-named.ttl>
   ] .
