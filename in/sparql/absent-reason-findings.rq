@@ -83,6 +83,8 @@ WHERE {
       ("DiagnosticReport"    xyz:_effectiveDateTime  "_effectiveDateTime")
       ("DiagnosticReport"    xyz:_issued             "_issued")
       ("DocumentReference"   xyz:_date               "_date")
+      ("MedicationDispense"  xyz:_whenPrepared       "_whenPrepared")
+      ("MedicationDispense"  xyz:_whenHandedOver     "_whenHandedOver")
     }
     ?resource ?absentKey ?element .
     ?element xyz:extension ?extensions . ?extensions ?extensionSlot ?extension .

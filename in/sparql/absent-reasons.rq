@@ -74,6 +74,8 @@ WHERE {
       ("DiagnosticReport"    xyz:_effectiveDateTime  cascade:reportEffectiveTime          xyz:effectiveDateTime  xyz:effectivePeriod)
       ("DiagnosticReport"    xyz:_issued             cascade:reportIssuedTime             xyz:issued             UNDEF)
       ("DocumentReference"   xyz:_date               cascade:noteOrDocumentDate           xyz:date               UNDEF)
+      ("MedicationDispense"  xyz:_whenPrepared       cascade:dispensePreparedTime         xyz:whenPrepared       UNDEF)
+      ("MedicationDispense"  xyz:_whenHandedOver     cascade:dispenseHandedOverTime       xyz:whenHandedOver     UNDEF)
     }
     ?resource ?absentKey ?element .
     ?element xyz:extension ?extensions . ?extensions ?extensionSlot ?extension .

@@ -1,0 +1,41 @@
+{
+  "resourceType": "MedicationDispense",
+  "id": "meddisp-metformin-1",
+  "status": "completed",
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "861007",
+        "display": "metformin hydrochloride 500 MG Oral Tablet"
+      },
+      {
+        "system": "http://hl7.org/fhir/sid/ndc",
+        "code": "0093-1048-01"
+      }
+    ],
+    "text": "Metformin 500 mg tablet"
+  },
+  "subject": {
+    "reference": "Patient/pat-conformance-1"
+  },
+  "authorizingPrescription": [
+    {
+      "reference": "MedicationRequest/medrx-metformin-1"
+    }
+  ],
+  "quantity": {
+    "value": 60,
+    "unit": "tablet",
+    "system": "http://unitsofmeasure.org",
+    "code": "{tbl}"
+  },
+  "daysSupply": {
+    "value": 30,
+    "unit": "days",
+    "system": "http://unitsofmeasure.org",
+    "code": "d"
+  },
+  "whenPrepared": "2026-01-11T16:00:00Z",
+  "whenHandedOver": "2026-01-12T09:30:00-05:00"
+}

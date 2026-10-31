@@ -1,0 +1,106 @@
+{
+  "resourceType": "MedicationDispense",
+  "id": "meddisp-elements-1",
+  "identifier": [
+    {
+      "system": "https://pharmacy.example/fills",
+      "value": "RX-77231-F3"
+    }
+  ],
+  "partOf": [
+    {
+      "reference": "Procedure/proc-1"
+    }
+  ],
+  "status": "completed",
+  "statusReasonCodeableConcept": {
+    "text": "Picked up in person"
+  },
+  "category": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/medicationdispense-category",
+        "code": "community",
+        "display": "Community"
+      }
+    ]
+  },
+  "medicationReference": {
+    "reference": "Medication/med-metformin-gone",
+    "display": "Metformin 500 mg tablet"
+  },
+  "subject": {
+    "reference": "Patient/pat-conformance-1",
+    "display": "Pat Conformance"
+  },
+  "context": {
+    "reference": "Encounter/enc-visit-1"
+  },
+  "supportingInformation": [
+    {
+      "reference": "Observation/obs-1"
+    }
+  ],
+  "performer": [
+    {
+      "function": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/medicationdispense-performer-function",
+            "code": "finalcheck"
+          }
+        ]
+      },
+      "actor": {
+        "reference": "Practitioner/prac-1",
+        "display": "R. Okafor, RPh"
+      }
+    }
+  ],
+  "location": {
+    "reference": "Location/loc-1"
+  },
+  "type": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "FF",
+        "display": "First Fill"
+      }
+    ]
+  },
+  "destination": {
+    "reference": "Location/loc-2"
+  },
+  "receiver": [
+    {
+      "reference": "Patient/pat-conformance-1"
+    }
+  ],
+  "note": [
+    {
+      "text": "Counselled on taking with food."
+    }
+  ],
+  "dosageInstruction": [
+    {
+      "text": "Take 1 tablet by mouth twice a day."
+    },
+    {
+      "text": "Take 1 extra tablet if a dose is missed."
+    }
+  ],
+  "substitution": {
+    "wasSubstituted": false
+  },
+  "detectedIssue": [
+    {
+      "reference": "DetectedIssue/issue-1"
+    }
+  ],
+  "eventHistory": [
+    {
+      "reference": "Provenance/prov-1"
+    }
+  ]
+}

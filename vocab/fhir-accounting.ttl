@@ -3,6 +3,40 @@
 @prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/_whenHandedOver" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_whenHandedOver/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_whenHandedOver/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_whenHandedOver/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_whenPrepared" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_whenPrepared/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_whenPrepared/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/_whenPrepared/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/abatementDateTime" ;
   bridge:verdict bridge:carried .
 
@@ -59,6 +93,20 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/authoredOn" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/authorizingPrescription" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/authorizingPrescription/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A reference's display, which reference-display-findings.rq reports as fhirr4:referenceDisplay." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/authorizingPrescription/reference" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:authorizingPrescriptionNotNamed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/basedOn" ;
@@ -304,6 +352,40 @@
   bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_whenHandedOver" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_whenHandedOver/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_whenHandedOver/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_whenHandedOver/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_whenPrepared" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_whenPrepared/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_whenPrepared/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/_whenPrepared/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/contained/abatementDateTime" ;
   bridge:verdict bridge:carried .
 
@@ -360,6 +442,20 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/authoredOn" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/authorizingPrescription" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/authorizingPrescription/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A reference's display, which reference-display-findings.rq reports as fhirr4:referenceDisplay." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/authorizingPrescription/reference" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:authorizingPrescriptionNotNamed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/basedOn" ;
@@ -605,6 +701,20 @@
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/context" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/context/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/context/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/contained/courseOfTherapyType" ;
   bridge:verdict bridge:carriedInPart ;
   bridge:namesGap fhirr4:courseOfTherapyTypeNotMapped .
@@ -636,6 +746,32 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/criticality" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/daysSupply" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:dispenseDaysSupplyNotInUnitOfTime .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/daysSupply/code" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/daysSupply/comparator" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/daysSupply/system" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/daysSupply/unit" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/daysSupply/value" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:medicationNumberNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/deceasedBoolean" ;
@@ -678,6 +814,34 @@
   bridge:sourcePath "/contained/derivedFrom/type" ;
   bridge:verdict bridge:ignored ;
   bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/destination" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/destination/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/destination/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/detectedIssue" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/detectedIssue/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/detectedIssue/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dispenseRequest" ;
@@ -2438,6 +2602,20 @@
   bridge:namesGap fhirr4:variantTimeNotCarried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/eventHistory" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/eventHistory/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/eventHistory/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/contained/extension" ;
   bridge:verdict bridge:ignored ;
   bridge:because "An extension, as the Genomics Reporting IG's justification of an interpretation: no Cascade predicate carries one." .
@@ -2560,6 +2738,20 @@
   bridge:sourcePath "/contained/issued" ;
   bridge:verdict bridge:carriedInPart ;
   bridge:namesGap fhirr4:issuedNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/location" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/location/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/location/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/lotNumber" ;
@@ -2692,6 +2884,20 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/partOf" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/partOf/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/partOf/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/contained/patient" ;
   bridge:verdict bridge:consumed .
 
@@ -2706,6 +2912,51 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/performer" ;
   bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/performer/actor" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/performer/actor/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/performer/actor/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/performer/function" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/performer/function/coding" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/performer/function/coding/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/performer/function/coding/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/performer/function/coding/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/performer/function/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/performer/reference" ;
@@ -2741,6 +2992,32 @@
   bridge:sourcePath "/contained/presentedForm/data" ;
   bridge:verdict bridge:ignored ;
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/quantity" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/quantity/code" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:doseUnitCodeOutsideUcum .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/quantity/comparator" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/quantity/system" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/quantity/unit" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/quantity/value" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:medicationNumberNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/reaction" ;
@@ -2789,6 +3066,20 @@
   bridge:sourcePath "/contained/reasonReference/reference" ;
   bridge:verdict bridge:noHome ;
   bridge:namesGap fhirr4:procedureReason .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/receiver" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/receiver/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/receiver/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/referenceRange" ;
@@ -2959,12 +3250,153 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/statusReasonCodeableConcept" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/statusReasonCodeableConcept/coding" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/statusReasonCodeableConcept/coding/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/statusReasonCodeableConcept/coding/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/statusReasonCodeableConcept/coding/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/statusReasonCodeableConcept/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/statusReasonReference" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/statusReasonReference/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/statusReasonReference/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/contained/subject" ;
   bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/subject/reference" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/substitution" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/substitution/reason" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/substitution/reason/coding" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/substitution/reason/coding/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/substitution/reason/coding/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/substitution/reason/coding/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/substitution/reason/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/substitution/responsibleParty" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/substitution/responsibleParty/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/substitution/responsibleParty/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/substitution/type" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/substitution/type/coding" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/substitution/type/coding/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/substitution/type/coding/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/substitution/type/coding/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/substitution/type/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/substitution/wasSubstituted" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/supportingInformation" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/supportingInformation/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/supportingInformation/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/telecom" ;
@@ -3184,6 +3616,28 @@
   bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/whenHandedOver" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/whenPrepared" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/context" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/context/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/context/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/courseOfTherapyType" ;
   bridge:verdict bridge:carriedInPart ;
   bridge:namesGap fhirr4:courseOfTherapyTypeNotMapped .
@@ -3215,6 +3669,32 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/criticality" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/daysSupply" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:dispenseDaysSupplyNotInUnitOfTime .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/daysSupply/code" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/daysSupply/comparator" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/daysSupply/system" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/daysSupply/unit" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/daysSupply/value" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:medicationNumberNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/deceasedBoolean" ;
@@ -3252,6 +3732,34 @@
   bridge:sourcePath "/derivedFrom/reference" ;
   bridge:verdict bridge:carriedInPart ;
   bridge:namesGap fhirr4:interpretationVariantLink .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/destination" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/destination/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/destination/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/detectedIssue" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/detectedIssue/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/detectedIssue/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dispenseRequest" ;
@@ -5017,6 +5525,20 @@
   bridge:namesGap fhirr4:variantTimeNotCarried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/eventHistory" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/eventHistory/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/eventHistory/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/extension" ;
   bridge:verdict bridge:ignored ;
   bridge:because "An extension, as the Genomics Reporting IG's justification of an interpretation: no Cascade predicate carries one." .
@@ -5143,6 +5665,20 @@
   bridge:sourcePath "/issued" ;
   bridge:verdict bridge:carriedInPart ;
   bridge:namesGap fhirr4:issuedNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/location" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/location/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/location/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/lotNumber" ;
@@ -5275,6 +5811,20 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/partOf" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/partOf/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/partOf/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/patient" ;
   bridge:verdict bridge:consumed .
 
@@ -5289,6 +5839,51 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/performer" ;
   bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/performer/actor" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/performer/actor/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/performer/actor/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/performer/function" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/performer/function/coding" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/performer/function/coding/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/performer/function/coding/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/performer/function/coding/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/performer/function/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/performer/reference" ;
@@ -5322,6 +5917,32 @@
   bridge:sourcePath "/presentedForm/data" ;
   bridge:verdict bridge:carriedInPart ;
   bridge:namesGap fhirr4:attachmentDataNotRead .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/quantity" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/quantity/code" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:doseUnitCodeOutsideUcum .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/quantity/comparator" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/quantity/system" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/quantity/unit" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/quantity/value" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:medicationNumberNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/reaction" ;
@@ -5370,6 +5991,20 @@
   bridge:sourcePath "/reasonReference/reference" ;
   bridge:verdict bridge:noHome ;
   bridge:namesGap fhirr4:procedureReason .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/receiver" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/receiver/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/receiver/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/referenceRange" ;
@@ -5492,6 +6127,40 @@
   bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_whenHandedOver" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_whenHandedOver/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_whenHandedOver/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_whenHandedOver/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_whenPrepared" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_whenPrepared/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_whenPrepared/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/_whenPrepared/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/abatementDateTime" ;
   bridge:verdict bridge:carried .
 
@@ -5548,6 +6217,20 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/authoredOn" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/authorizingPrescription" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/authorizingPrescription/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A reference's display, which reference-display-findings.rq reports as fhirr4:referenceDisplay." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/authorizingPrescription/reference" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:authorizingPrescriptionNotNamed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/basedOn" ;
@@ -5793,6 +6476,40 @@
   bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_whenHandedOver" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_whenHandedOver/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_whenHandedOver/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_whenHandedOver/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_whenPrepared" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_whenPrepared/extension" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_whenPrepared/extension/url" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/_whenPrepared/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:absentReasonNotCarried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/abatementDateTime" ;
   bridge:verdict bridge:carried .
 
@@ -5849,6 +6566,20 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/authoredOn" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/authorizingPrescription" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/authorizingPrescription/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "A reference's display, which reference-display-findings.rq reports as fhirr4:referenceDisplay." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/authorizingPrescription/reference" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:authorizingPrescriptionNotNamed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/basedOn" ;
@@ -6094,6 +6825,20 @@
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/context" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/context/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/context/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/courseOfTherapyType" ;
   bridge:verdict bridge:carriedInPart ;
   bridge:namesGap fhirr4:courseOfTherapyTypeNotMapped .
@@ -6125,6 +6870,32 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/criticality" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/daysSupply" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:dispenseDaysSupplyNotInUnitOfTime .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/daysSupply/code" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/daysSupply/comparator" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/daysSupply/system" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/daysSupply/unit" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/daysSupply/value" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:medicationNumberNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/deceasedBoolean" ;
@@ -6167,6 +6938,34 @@
   bridge:sourcePath "/resource/contained/derivedFrom/type" ;
   bridge:verdict bridge:ignored ;
   bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/destination" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/destination/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/destination/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/detectedIssue" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/detectedIssue/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/detectedIssue/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dispenseRequest" ;
@@ -7927,6 +8726,20 @@
   bridge:namesGap fhirr4:variantTimeNotCarried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/eventHistory" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/eventHistory/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/eventHistory/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/extension" ;
   bridge:verdict bridge:ignored ;
   bridge:because "An extension, as the Genomics Reporting IG's justification of an interpretation: no Cascade predicate carries one." .
@@ -8049,6 +8862,20 @@
   bridge:sourcePath "/resource/contained/issued" ;
   bridge:verdict bridge:carriedInPart ;
   bridge:namesGap fhirr4:issuedNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/location" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/location/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/location/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/lotNumber" ;
@@ -8181,6 +9008,20 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/partOf" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/partOf/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/partOf/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/patient" ;
   bridge:verdict bridge:consumed .
 
@@ -8195,6 +9036,51 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/performer" ;
   bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/performer/actor" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/performer/actor/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/performer/actor/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/performer/function" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/performer/function/coding" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/performer/function/coding/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/performer/function/coding/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/performer/function/coding/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/performer/function/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/performer/reference" ;
@@ -8230,6 +9116,32 @@
   bridge:sourcePath "/resource/contained/presentedForm/data" ;
   bridge:verdict bridge:ignored ;
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/quantity" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/quantity/code" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:doseUnitCodeOutsideUcum .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/quantity/comparator" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/quantity/system" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/quantity/unit" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/quantity/value" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:medicationNumberNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/reaction" ;
@@ -8278,6 +9190,20 @@
   bridge:sourcePath "/resource/contained/reasonReference/reference" ;
   bridge:verdict bridge:noHome ;
   bridge:namesGap fhirr4:procedureReason .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/receiver" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/receiver/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/receiver/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/referenceRange" ;
@@ -8448,12 +9374,153 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/statusReasonCodeableConcept" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/statusReasonCodeableConcept/coding" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/statusReasonCodeableConcept/coding/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/statusReasonCodeableConcept/coding/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/statusReasonCodeableConcept/coding/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/statusReasonCodeableConcept/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/statusReasonReference" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/statusReasonReference/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/statusReasonReference/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/subject" ;
   bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/subject/reference" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/substitution" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/substitution/reason" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/substitution/reason/coding" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/substitution/reason/coding/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/substitution/reason/coding/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/substitution/reason/coding/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/substitution/reason/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/substitution/responsibleParty" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/substitution/responsibleParty/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/substitution/responsibleParty/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/substitution/type" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/substitution/type/coding" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/substitution/type/coding/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/substitution/type/coding/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/substitution/type/coding/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/substitution/type/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/substitution/wasSubstituted" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/supportingInformation" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/supportingInformation/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/supportingInformation/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/telecom" ;
@@ -8673,6 +9740,28 @@
   bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/whenHandedOver" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/whenPrepared" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/context" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/context/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/context/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/courseOfTherapyType" ;
   bridge:verdict bridge:carriedInPart ;
   bridge:namesGap fhirr4:courseOfTherapyTypeNotMapped .
@@ -8704,6 +9793,32 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/criticality" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/daysSupply" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:dispenseDaysSupplyNotInUnitOfTime .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/daysSupply/code" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/daysSupply/comparator" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/daysSupply/system" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/daysSupply/unit" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/daysSupply/value" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:medicationNumberNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/deceasedBoolean" ;
@@ -8746,6 +9861,34 @@
   bridge:sourcePath "/resource/derivedFrom/type" ;
   bridge:verdict bridge:ignored ;
   bridge:because "A derivedFrom without a reference names no variant, and an identifier or a display does not name one: fhirr4:interpretationVariantLink reports the interpretation, at its code." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/destination" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/destination/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/destination/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/detectedIssue" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/detectedIssue/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/detectedIssue/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dispenseRequest" ;
@@ -10506,6 +11649,20 @@
   bridge:namesGap fhirr4:variantTimeNotCarried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/eventHistory" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/eventHistory/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/eventHistory/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/extension" ;
   bridge:verdict bridge:ignored ;
   bridge:because "An extension, as the Genomics Reporting IG's justification of an interpretation: no Cascade predicate carries one." .
@@ -10628,6 +11785,20 @@
   bridge:sourcePath "/resource/issued" ;
   bridge:verdict bridge:carriedInPart ;
   bridge:namesGap fhirr4:issuedNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/location" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/location/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/location/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/lotNumber" ;
@@ -10760,6 +11931,20 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/partOf" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/partOf/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/partOf/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/patient" ;
   bridge:verdict bridge:consumed .
 
@@ -10774,6 +11959,51 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/performer" ;
   bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/performer/actor" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/performer/actor/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/performer/actor/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/performer/function" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/performer/function/coding" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/performer/function/coding/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/performer/function/coding/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/performer/function/coding/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/performer/function/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/performer/reference" ;
@@ -10807,6 +12037,32 @@
   bridge:sourcePath "/resource/presentedForm/data" ;
   bridge:verdict bridge:carriedInPart ;
   bridge:namesGap fhirr4:attachmentDataNotRead .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/quantity" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/quantity/code" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:doseUnitCodeOutsideUcum .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/quantity/comparator" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/quantity/system" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/quantity/unit" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/quantity/value" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:medicationNumberNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/reaction" ;
@@ -10855,6 +12111,20 @@
   bridge:sourcePath "/resource/reasonReference/reference" ;
   bridge:verdict bridge:noHome ;
   bridge:namesGap fhirr4:procedureReason .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/receiver" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/receiver/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/receiver/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/referenceRange" ;
@@ -11024,12 +12294,153 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/statusReasonCodeableConcept" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/statusReasonCodeableConcept/coding" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/statusReasonCodeableConcept/coding/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/statusReasonCodeableConcept/coding/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/statusReasonCodeableConcept/coding/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/statusReasonCodeableConcept/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/statusReasonReference" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/statusReasonReference/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/statusReasonReference/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/subject" ;
   bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/subject/reference" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/substitution" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/substitution/reason" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/substitution/reason/coding" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/substitution/reason/coding/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/substitution/reason/coding/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/substitution/reason/coding/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/substitution/reason/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/substitution/responsibleParty" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/substitution/responsibleParty/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/substitution/responsibleParty/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/substitution/type" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/substitution/type/coding" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/substitution/type/coding/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/substitution/type/coding/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/substitution/type/coding/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/substitution/type/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/substitution/wasSubstituted" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/supportingInformation" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/supportingInformation/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/supportingInformation/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/telecom" ;
@@ -11249,6 +12660,14 @@
   bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/whenHandedOver" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/whenPrepared" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resourceType" ;
   bridge:verdict bridge:consumed .
 
@@ -11315,12 +12734,153 @@
   bridge:verdict bridge:carried .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/statusReasonCodeableConcept" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/statusReasonCodeableConcept/coding" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/statusReasonCodeableConcept/coding/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/statusReasonCodeableConcept/coding/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/statusReasonCodeableConcept/coding/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/statusReasonCodeableConcept/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/statusReasonReference" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/statusReasonReference/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/statusReasonReference/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/subject" ;
   bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/subject/reference" ;
   bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/substitution" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/substitution/reason" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/substitution/reason/coding" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/substitution/reason/coding/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/substitution/reason/coding/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/substitution/reason/coding/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/substitution/reason/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/substitution/responsibleParty" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/substitution/responsibleParty/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/substitution/responsibleParty/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/substitution/type" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/substitution/type/coding" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/substitution/type/coding/code" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/substitution/type/coding/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/substitution/type/coding/system" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/substitution/type/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/substitution/wasSubstituted" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/supportingInformation" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/supportingInformation/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/supportingInformation/reference" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/telecom" ;
@@ -12604,4 +14164,12 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/masterIdentifier/value" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/whenHandedOver" ;
+  bridge:verdict bridge:carried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/whenPrepared" ;
   bridge:verdict bridge:carried .

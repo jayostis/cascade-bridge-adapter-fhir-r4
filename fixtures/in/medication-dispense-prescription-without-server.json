@@ -1,0 +1,16 @@
+{
+  "resourceType": "MedicationDispense",
+  "id": "meddisp-noserver-1",
+  "status": "completed",
+  "medicationCodeableConcept": {
+    "text": "Metformin 500 mg tablet"
+  },
+  "subject": {
+    "reference": "Patient/pat-conformance-1"
+  },
+  "authorizingPrescription": [
+    {
+      "reference": "MedicationRequest/medrx-metformin-1"
+    }
+  ]
+}

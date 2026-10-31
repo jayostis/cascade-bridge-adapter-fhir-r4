@@ -1,0 +1,27 @@
+{
+  "resourceType": "MedicationDispense",
+  "id": "meddisp-atorvastatin-2",
+  "status": "in-progress",
+  "medicationCodeableConcept": {
+    "text": "Atorvastatin 10 mg tablet"
+  },
+  "subject": {
+    "reference": "Patient/pat-conformance-1"
+  },
+  "_whenPrepared": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+        "valueCode": "asked-unknown"
+      }
+    ]
+  },
+  "_whenHandedOver": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+        "valueCode": "unknown"
+      }
+    ]
+  }
+}

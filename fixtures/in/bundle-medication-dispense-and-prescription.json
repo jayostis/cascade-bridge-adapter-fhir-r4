@@ -1,0 +1,117 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:1a3c5e70-9b2d-4f48-8a6c-0d2f4b6a8c19",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "pat-urn-1",
+        "name": [
+          {
+            "family": "Rivera",
+            "given": [
+              "Alex"
+            ]
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1985-03-15"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:8d2f4a60-3b1c-4e5d-9a7f-1c0b6e8d2f41",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "medrx-amlodipine-2",
+        "status": "active",
+        "intent": "order",
+        "medicationReference": {
+          "reference": "urn:uuid:5e9c7b13-6a2d-4f80-b1e4-3d7a9c5e1b02"
+        },
+        "subject": {
+          "reference": "urn:uuid:1a3c5e70-9b2d-4f48-8a6c-0d2f4b6a8c19"
+        },
+        "authoredOn": "2026-02-01"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:5e9c7b13-6a2d-4f80-b1e4-3d7a9c5e1b02",
+      "resource": {
+        "resourceType": "Medication",
+        "id": "med-amlodipine-2",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "197361",
+              "display": "amlodipine 5 MG Oral Tablet"
+            }
+          ],
+          "text": "Amlodipine 5 mg tablet"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:b7a1d3f5-9c2e-4d60-8e1b-5f3a7c9d2e63",
+      "resource": {
+        "resourceType": "MedicationDispense",
+        "id": "meddisp-amlodipine-2",
+        "status": "completed",
+        "medicationReference": {
+          "reference": "urn:uuid:5e9c7b13-6a2d-4f80-b1e4-3d7a9c5e1b02"
+        },
+        "subject": {
+          "reference": "urn:uuid:1a3c5e70-9b2d-4f48-8a6c-0d2f4b6a8c19"
+        },
+        "authorizingPrescription": [
+          {
+            "reference": "urn:uuid:8d2f4a60-3b1c-4e5d-9a7f-1c0b6e8d2f41"
+          }
+        ],
+        "whenHandedOver": "2026-02-03"
+      }
+    },
+    {
+      "fullUrl": "https://fhir.meridian.example/api/FHIR/R4/MedicationDispense/meddisp-lisinopril-2",
+      "resource": {
+        "resourceType": "MedicationDispense",
+        "id": "meddisp-lisinopril-2",
+        "contained": [
+          {
+            "resourceType": "Medication",
+            "id": "med-lisinopril",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                  "code": "314076",
+                  "display": "lisinopril 10 MG Oral Tablet"
+                }
+              ]
+            }
+          }
+        ],
+        "status": "completed",
+        "medicationReference": {
+          "reference": "#med-lisinopril"
+        },
+        "subject": {
+          "reference": "urn:uuid:1a3c5e70-9b2d-4f48-8a6c-0d2f4b6a8c19"
+        },
+        "authorizingPrescription": [
+          {
+            "reference": "urn:uuid:8d2f4a60-3b1c-4e5d-9a7f-1c0b6e8d2f41"
+          },
+          {
+            "reference": "https://fhir.meridian.example/api/FHIR/R4/MedicationRequest/medrx-lisinopril-3/_history/2"
+          },
+          {
+            "reference": "MedicationRequest/medrx-lisinopril-4"
+          }
+        ],
+        "whenHandedOver": "2026-02-04"
+      }
+    }
+  ]
+}

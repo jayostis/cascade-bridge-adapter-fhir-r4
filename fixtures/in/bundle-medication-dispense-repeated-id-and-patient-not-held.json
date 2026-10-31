@@ -1,0 +1,51 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "https://fhir.meridian.example/api/FHIR/R4/MedicationDispense/meddisp-repeated-1",
+      "resource": {
+        "resourceType": "MedicationDispense",
+        "id": "meddisp-repeated",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "text": "Metformin 500 mg tablet"
+        },
+        "subject": {
+          "reference": "Patient/pat-conformance-1"
+        },
+        "whenHandedOver": "2026-01-12"
+      }
+    },
+    {
+      "fullUrl": "https://fhir.meridian.example/api/FHIR/R4/MedicationDispense/meddisp-repeated-2",
+      "resource": {
+        "resourceType": "MedicationDispense",
+        "id": "meddisp-repeated",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "text": "Metformin 500 mg tablet"
+        },
+        "subject": {
+          "reference": "Patient/pat-conformance-1"
+        },
+        "whenHandedOver": "2026-02-12"
+      }
+    },
+    {
+      "fullUrl": "https://fhir.meridian.example/api/FHIR/R4/MedicationDispense/meddisp-stranger-1",
+      "resource": {
+        "resourceType": "MedicationDispense",
+        "id": "meddisp-stranger-1",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "text": "Metformin 500 mg tablet"
+        },
+        "subject": {
+          "reference": "urn:uuid:6e8a0c2d-4f5b-4d71-9c3e-7b9d1f3a5c82"
+        },
+        "whenHandedOver": "2026-03-12"
+      }
+    }
+  ]
+}

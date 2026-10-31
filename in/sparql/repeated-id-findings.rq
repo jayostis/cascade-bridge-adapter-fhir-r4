@@ -34,7 +34,7 @@ WHERE {
   UNION
   { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
   FILTER (?topType IN ("AllergyIntolerance", "Condition", "Immunization", "Procedure", "Patient",
-                       "MedicationRequest", "MedicationStatement", "Observation", "Organization"))
+                       "MedicationRequest", "MedicationStatement", "MedicationDispense", "Observation", "Organization"))
   FILTER (?topType != "Observation" || EXISTS {
     ?lab fhirr4:labResultAt ?labPointer .
     FILTER (?labPointer = CONCAT(?recordSelector, ?topStep))

@@ -100,6 +100,7 @@ WHERE {
     ("Observation"         cascade:VariantInterpretation           UNDEF)
     ("DiagnosticReport"    cascade:DiagnosticReport                cascade:sourceRecordId)
     ("DocumentReference"   cascade:ClinicalNoteOrDocument          cascade:sourceRecordId)
+    ("MedicationDispense"  cascade:MedicationDispense              cascade:sourceRecordId)
   }
   FILTER ((?resourceType != "Observation" && ?resourceType != "DocumentReference")
           || (?class = cascade:ClinicalNoteOrDocument && EXISTS { ?note fhirr4:noteOrDocumentAt ?resourcePointer })

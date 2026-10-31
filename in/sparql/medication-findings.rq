@@ -25,7 +25,9 @@ PREFIX cascade: <https://ns.cascadeprotocol.org/cascade#>
 # structure of a dosage or the supply states in a form no predicate takes. A
 # reference resolves as medication-table.rq says, and a Medication's codes are
 # reported only where a reference resolves to it: resource-type-findings.rq
-# reports one nothing resolves to.
+# reports one nothing resolves to. A MedicationDispense states a Medication
+# reference, a note and codings as a request does, and nothing else of these;
+# medication-dispense-findings.rq reports the rest of a dispense.
 
 CONSTRUCT {
   [] a oa:Annotation ;
@@ -301,7 +303,10 @@ WHERE {
                  FILTER (?rivalPointer != ?resourcePointer)
                }
              },
-             ?type IN ("MedicationRequest", "MedicationStatement")
+             (?type IN ("MedicationRequest", "MedicationStatement")
+               || (?type = "MedicationDispense"
+                   && ?gap IN (fhirr4:medicationReferenceUnresolved, fhirr4:medicationNote, fhirr4:codingNotCarried,
+                               fhirr4:ndcNotNormalised)))
              && !STRSTARTS(?step, "/code/")
              && (?gap != fhirr4:medicationReferenceUnresolved || NOT EXISTS {
                ?resolving fhirr4:medicationReferenceFrom ?resourcePointer ;

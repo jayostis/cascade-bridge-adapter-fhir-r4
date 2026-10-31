@@ -11,7 +11,7 @@ The FHIR specification is HL7's, published under CC0.
 
 A record is one **resource**: a JSON object whose `resourceType` member names
 its type. This release maps `AllergyIntolerance`, `Condition`, `Immunization`,
-`Procedure`, `Patient`, `MedicationRequest`, `MedicationStatement`,
+`Procedure`, `Patient`, `MedicationRequest`, `MedicationStatement`, `MedicationDispense`,
 `DiagnosticReport`, a `DocumentReference` that is a note or document, and an
 `Observation` that is a laboratory result, a genomic variant or a diagnostic
 implication; a resource of any other type, any other `Observation` and any
@@ -216,6 +216,50 @@ A sender sends one version of each record. A `history` Bundle, which repeats a t
 `resourceType` is not only at a record's root. It names the type of every
 resource nested in another, and a contained resource is a resource.
 
+## Medication dispenses
+
+A [MedicationDispense](https://hl7.org/fhir/R4/medicationdispense.html), read on
+2026-10-31, is a pharmacy's supply of a drug to the person: a record of its own
+kind, `cascade:MedicationDispense`, never a medication, so a fill is evidence of
+use and no course
+([cascade-vocabulary#300](https://github.com/jayostis/cascade-vocabulary/issues/300)).
+It states neither whether it was prescribed or reported, nor an intent, a dosage
+or a date of use. Its drug and its `status`, as written, are read as a request's
+are: `medicationCodeableConcept` or `medicationReference`, every coding carried
+(see [Codes](#codes)), the first userSelected RxNorm or NDC one the selected code.
+
+`whenPrepared` and `whenHandedOver` are `cascade:dispensePreparedTime` and
+`cascade:dispenseHandedOverTime`, typed by the precision FHIR wrote them to and
+padded as any other time (see [Dates](#dates-and-values-absent-for-a-reason)); a
+data-absent-reason extension on either `_` member is a value absent for a reason.
+`quantity` and `daysSupply`, each a `SimpleQuantity`, are quantity nodes
+`<version>#dispense-quantity` and `<version>#dispense-days-supply`, the number
+as written and as a canonical `xsd:decimal`, as a dose quantity is. A quantity's
+unit is a UCUM unit only where its system is UCUM's
+(`fhirr4:doseUnitCodeOutsideUcum`); a days' supply is carried only in one of
+UCUM's seven units of time, as FHIR's `Duration` allows, and otherwise in none
+(`fhirr4:dispenseDaysSupplyNotInUnitOfTime`). A quantity or days' supply with a
+comparator, which `SimpleQuantity` forbids, and one whose number is no decimal
+(`fhirr4:medicationNumberNotCarried`) write no node.
+
+Each `authorizingPrescription`, a reference to a `MedicationRequest`, is
+`cascade:authorizingPrescription` of the version: the IRI of that request's
+record, one for each reference, resolved as a report's result is, by a `urn:uuid:`
+exactly one entry holds, or `MedicationRequest/<id>` on the dispense's server
+(whether or not the document holds the request), or `#` and the id of a request
+the dispense contains. A reference that names no record, one on another server,
+to another kind of resource, to a request held twice or under a `urn:uuid:`, or to
+a `urn:uuid:` no entry holds, is `fhirr4:authorizingPrescriptionNotNamed`.
+No matcher rule joins a dispense to its request; the link is the pod's fact.
+
+Every other element, among them `type`, `category`, `statusReason[x]`,
+`performer`, `location`, `context`, `destination`, `receiver`, `partOf`,
+`supportingInformation`, `dosageInstruction`, `substitution`, `detectedIssue`
+and `eventHistory`, is `fhirr4:medicationDispenseElementNotCarried`, at the
+element; a `note` is `fhirr4:medicationNote`. A C-CDA Medication Dispense is the
+C-CDA adapter's
+([cascade-bridge-adapter-ccda#54](https://github.com/jayostis/cascade-bridge-adapter-ccda/issues/54)).
+
 ## Variants and interpretations
 
 Two profiles of the
@@ -372,7 +416,7 @@ says, read on 2026-10-24:
 - **The [data-absent-reason extension](https://hl7.org/fhir/R4/extension-data-absent-reason.html)**
   on the `_` member of a date the adapter maps (`_birthDate`, `_onsetDateTime`,
   `_abatementDateTime`, `_occurrenceDateTime`, `_performedDateTime`,
-  `_effectiveDateTime`, `_authoredOn`) or of a Patient's `_gender`, where the
+  `_effectiveDateTime`, `_authoredOn`, `_whenPrepared`, `_whenHandedOver`) or of a Patient's `_gender`, where the
   value itself is absent, is such a node naming the value's property; a code its
   CodeSystem does not define is a finding.
 

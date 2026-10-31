@@ -1,0 +1,138 @@
+PREFIX rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
+PREFIX fx:       <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:      <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX cascade:  <https://ns.cascadeprotocol.org/cascade#>
+PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+
+# Each prescription a dispense names, by the IRI of that prescription's medication
+# record, one for each reference, on the dispense's version. A reference names a
+# MedicationRequest of its document by the urn:uuid exactly one entry holds as its
+# fullUrl, that entry's record, or one on the dispense's server, by a reference
+# MedicationRequest/<id>, or the server's base, "/" and that, a version's /_history/
+# dropped, from an entry whose fullUrl is no urn:uuid, as record.rq names a record
+# from its server, whether or not this document holds it. As report-results.rq
+# resolves a result, MedicationRequest/<id> naming an entry held under a urn:uuid,
+# or an id two entries hold a MedicationRequest under, names none; "#" and an id
+# names the record of the MedicationRequest the dispense's resource contains under
+# that id, as record.rq names a contained record. Any other reference, one on
+# another server and one to another kind of resource among them, names none:
+# medication-dispense-prescription-findings.rq reports it, resolving each as this does.
+
+CONSTRUCT {
+  ?version cascade:authorizingPrescription ?prescription .
+}
+WHERE {
+  FILTER NOT EXISTS {
+    bridge:thisDocument cascade:sourceFormatVersion ?stated .
+    FILTER (!STRSTARTS(?stated, "4.0."))
+  }
+  bridge:thisRecord bridge:selector ?recordSelector .
+  bridge:thisDocument bridge:sha256 ?document .
+  OPTIONAL { bridge:thisDocument cascade:serverBaseUrl ?server }
+  ?root a fx:root .
+  OPTIONAL { ?root xyz:fullUrl ?fullUrl }
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  { BIND ("" AS ?containedStep) }
+  UNION
+  {
+    ?top xyz:contained ?containedList .
+    ?containedList ?containedSlot ?contained .
+    ?contained xyz:resourceType ?containedType .
+    BIND (CONCAT("/contained/", STR(xsd:integer(STRAFTER(STR(?containedSlot), "#_")) - 1)) AS ?containedStep)
+  }
+  BIND (COALESCE(?contained, ?top) AS ?resource)
+  ?resource xyz:resourceType "MedicationDispense" ;
+    xyz:authorizingPrescription ?prescriptions .
+  ?prescriptions ?prescriptionSlot ?prescriptionReference .
+  ?prescriptionReference xyz:reference ?written .
+  BIND (CONCAT(?recordSelector, ?topStep, ?containedStep) AS ?resourcePointer)
+  OPTIONAL { ?top xyz:id ?topId }
+  OPTIONAL { ?top xyz:meta ?topMeta . ?topMeta xyz:versionId ?topVersionId . FILTER (STR(?topVersionId) != "") }
+  OPTIONAL { ?top xyz:meta ?topUpdatedMeta . ?topUpdatedMeta xyz:lastUpdated ?topUpdated }
+
+  BIND (BOUND(?topId) && BOUND(?server) && !STRSTARTS(COALESCE(?fullUrl, ""), "urn:uuid:") && NOT EXISTS {
+          ?sameId fhirr4:resourceId ?sameIdValue ;
+            fhirr4:resourceType ?topType ;
+            fhirr4:heldAt ?sameIdSelector .
+          FILTER (?sameIdValue = ?topId && ?sameIdSelector != ?recordSelector)
+        } AS ?fromServer)
+  BIND (IF(?fromServer,
+           CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|https://ns.cascadeprotocol.org/cascade#RecordFromServerNamingRule",
+                  "|", REPLACE(REPLACE(?server, "%", "%25"), "\\|", "%7C"),
+                  "|", REPLACE(REPLACE(?topType, "%", "%25"), "\\|", "%7C"),
+                  "|", REPLACE(REPLACE(?topId, "%", "%25"), "\\|", "%7C")),
+           CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|https://ns.cascadeprotocol.org/cascade#RecordFromDocumentNamingRule",
+                  "|", REPLACE(REPLACE(?document, "%", "%25"), "\\|", "%7C"),
+                  "|", REPLACE(REPLACE(?recordSelector, "%", "%25"), "\\|", "%7C"))) AS ?topNamed)
+  BIND (SHA256(?topNamed) AS ?topHash)
+  BIND (REPLACE(REPLACE(REPLACE(REPLACE(SUBSTR(?topHash, 17, 1), "[048c]", "8"), "[159d]", "9"), "[26ae]", "a"), "[37bf]", "b")
+        AS ?topVariant)
+  BIND (CONCAT("urn:uuid:", SUBSTR(?topHash, 1, 8), "-", SUBSTR(?topHash, 9, 4), "-8", SUBSTR(?topHash, 14, 3), "-", ?topVariant,
+               SUBSTR(?topHash, 18, 3), "-", SUBSTR(?topHash, 21, 12)) AS ?topName)
+  OPTIONAL {
+    ?top xyz:contained ?targetList .
+    ?targetList ?targetSlot ?targetResource .
+    ?targetResource xyz:resourceType "MedicationRequest" ;
+      xyz:id ?targetId .
+    FILTER (CONCAT("#", STR(?targetId)) = ?written)
+  }
+  BIND (BOUND(?targetSlot) AS ?namesContained)
+  BIND (REPLACE(?written, "/_history/[A-Za-z0-9.-]{1,64}$", "") AS ?unversioned)
+  BIND (IF(BOUND(?server) && STRSTARTS(?unversioned, CONCAT(?server, "/")), STRAFTER(?unversioned, CONCAT(?server, "/")),
+           ?unversioned) AS ?relative)
+  OPTIONAL {
+    ?held fhirr4:fullUrl ?written ;
+      fhirr4:heldAt ?heldSelector .
+    FILTER (STRSTARTS(?written, "urn:uuid:"))
+    FILTER NOT EXISTS {
+      ?rival fhirr4:fullUrl ?written ;
+        fhirr4:heldAt ?rivalSelector .
+      FILTER (?rivalSelector != ?heldSelector)
+    }
+  }
+  BIND (IF(STRSTARTS(?written, "urn:uuid:"), COALESCE(?heldSelector, 1/0),
+           IF(BOUND(?server) && !STRSTARTS(COALESCE(?fullUrl, ""), "urn:uuid:")
+              && REGEX(?relative, "^MedicationRequest/[A-Za-z0-9.-]{1,64}$"), "", 1/0)) AS ?target)
+  BIND (STRAFTER(?relative, "MedicationRequest/") AS ?requestId)
+  BIND (?namesContained || (BOUND(?target) && IF(?target != "",
+             EXISTS { ?request fhirr4:heldAt ?target ; fhirr4:resourceType "MedicationRequest" },
+             NOT EXISTS {
+               ?urnHeld fhirr4:resourceId ?urnId ;
+                 fhirr4:resourceType "MedicationRequest" ;
+                 fhirr4:fullUrl ?urnUrl .
+               FILTER (STRSTARTS(?urnUrl, "urn:uuid:") && ?urnId = ?requestId)
+             }
+             && NOT EXISTS {
+               ?onceHeld fhirr4:resourceId ?onceId ;
+                 fhirr4:resourceType "MedicationRequest" ;
+                 fhirr4:heldAt ?onceAt .
+               ?twiceHeld fhirr4:resourceId ?onceId ;
+                 fhirr4:resourceType "MedicationRequest" ;
+                 fhirr4:heldAt ?twiceAt .
+               FILTER (?onceId = ?requestId && ?onceAt != ?twiceAt)
+             })) AS ?namesRecord)
+  FILTER (?namesRecord)
+  BIND (IRI(CONCAT("urn:cascade:version-at:", SHA256(?resourcePointer))) AS ?version)
+  BIND (IF(?namesContained,
+           CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|https://ns.cascadeprotocol.org/cascade#ContainedRecordNamingRule",
+                  "|", REPLACE(REPLACE(?topName, "%", "%25"), "\\|", "%7C"),
+                  "|", REPLACE(REPLACE(COALESCE(?topVersionId, ?topUpdated, ""), "%", "%25"), "\\|", "%7C"),
+                  "|", REPLACE(REPLACE(?targetId, "%", "%25"), "\\|", "%7C")),
+        IF(?target != "",
+           CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|https://ns.cascadeprotocol.org/cascade#RecordFromDocumentNamingRule",
+                  "|", REPLACE(REPLACE(?document, "%", "%25"), "\\|", "%7C"),
+                  "|", REPLACE(REPLACE(?target, "%", "%25"), "\\|", "%7C")),
+           CONCAT("90c60849-c5ef-4ca6-bfb8-8662bd07d2b5|https://ns.cascadeprotocol.org/cascade#RecordFromServerNamingRule",
+                  "|", REPLACE(REPLACE(?server, "%", "%25"), "\\|", "%7C"),
+                  "|", REPLACE(REPLACE("MedicationRequest", "%", "%25"), "\\|", "%7C"),
+                  "|", REPLACE(REPLACE(?requestId, "%", "%25"), "\\|", "%7C")))) AS ?named)
+  BIND (SHA256(?named) AS ?hash)
+  BIND (REPLACE(REPLACE(REPLACE(REPLACE(SUBSTR(?hash, 17, 1), "[048c]", "8"), "[159d]", "9"), "[26ae]", "a"), "[37bf]", "b")
+        AS ?variant)
+  BIND (IRI(CONCAT("urn:uuid:", SUBSTR(?hash, 1, 8), "-", SUBSTR(?hash, 9, 4), "-8", SUBSTR(?hash, 14, 3), "-", ?variant,
+                   SUBSTR(?hash, 18, 3), "-", SUBSTR(?hash, 21, 12))) AS ?prescription)
+}
