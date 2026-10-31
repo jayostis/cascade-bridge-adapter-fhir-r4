@@ -18,7 +18,7 @@ PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # names the record of the MedicationRequest the dispense's resource contains under
 # that id, as record.rq names a contained record. Any other reference, one on
 # another server and one to another kind of resource among them, names none:
-# medication-dispense-findings.rq reports it, resolving each as this does.
+# medication-dispense-prescription-findings.rq reports it, resolving each as this does.
 
 CONSTRUCT {
   ?version cascade:authorizingPrescription ?prescription .
