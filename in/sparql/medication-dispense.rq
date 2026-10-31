@@ -1,0 +1,103 @@
+PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
+PREFIX fx:       <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:      <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX cascade:  <https://ns.cascadeprotocol.org/cascade#>
+
+# A MedicationDispense's times and amounts, on the version medication.rq writes
+# its drug and status on: when it was prepared and when it was handed over, each
+# typed by the precision FHIR wrote it to, as medication.rq types a date, a time
+# written to the minute padded to the second with a cascade:PaddedDateTime node,
+# <version>#padded- and its property's local name; the quantity dispensed, a
+# quantity node <version>#dispense-quantity; and the days it is meant to last, a
+# quantity node <version>#dispense-days-supply, only in one of UCUM's seven units
+# of time, as FHIR's Duration allows. A quantity states the number as written and
+# as a canonical xsd:decimal, as medication-supply-and-dosages.rq writes one, its
+# unit text, and its unit only where its system is UCUM's. A quantity with a
+# comparator is none, since FHIR's SimpleQuantity forbids one. Its prescriptions
+# are medication-dispense-prescription.rq's. medication-dispense-findings.rq
+# reports what is not carried.
+
+CONSTRUCT {
+  ?version ?p ?o .
+  ?version cascade:paddedDateTime ?padded .
+  ?padded cascade:paddedDateTimeProperty ?p ;
+    cascade:writtenDate ?writtenTime .
+  ?quantityNode cascade:decimalValue ?canonical ;
+    cascade:writtenValue ?number ;
+    cascade:ucumUnit ?quantityUcum ;
+    cascade:unitText ?quantityUnit .
+}
+WHERE {
+  FILTER NOT EXISTS {
+    bridge:thisDocument cascade:sourceFormatVersion ?stated .
+    FILTER (!STRSTARTS(?stated, "4.0."))
+  }
+  bridge:thisRecord bridge:selector ?recordSelector .
+  ?root a fx:root .
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  { BIND ("" AS ?containedStep) }
+  UNION
+  {
+    ?top xyz:contained ?containedList .
+    ?containedList ?containedSlot ?contained .
+    ?contained xyz:resourceType ?containedType .
+    BIND (CONCAT("/contained/", STR(xsd:integer(STRAFTER(STR(?containedSlot), "#_")) - 1)) AS ?containedStep)
+  }
+  BIND (COALESCE(?contained, ?top) AS ?resource)
+  ?resource xyz:resourceType "MedicationDispense" .
+  BIND (CONCAT(?recordSelector, ?topStep, ?containedStep) AS ?resourcePointer)
+  BIND (IRI(CONCAT("urn:cascade:version-at:", SHA256(?resourcePointer))) AS ?version)
+
+  {
+    ?resource ?whenMember ?when .
+    VALUES (?whenMember ?p) {
+      (xyz:whenPrepared cascade:dispensePreparedTime)
+      (xyz:whenHandedOver cascade:dispenseHandedOverTime)
+    }
+    BIND (IF(REGEX(?when, "^[0-9]{4}$"), STRDT(?when, xsd:gYear),
+             IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}$"), STRDT(?when, xsd:gYearMonth),
+             IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"), STRDT(?when, xsd:date),
+             IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(Z|[+-][0-9]{2}:[0-9]{2})?$"), STRDT(CONCAT(SUBSTR(?when, 1, 16), ":00", SUBSTR(?when, 17)), xsd:dateTime),
+               IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T"), STRDT(?when, xsd:dateTime), 1/0))))) AS ?timeValue)
+    BIND (IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(Z|[+-][0-9]{2}:[0-9]{2})?$"), ?when, 1/0) AS ?writtenTime)
+  }
+  UNION
+  {
+    ?resource ?quantityMember ?quantity .
+    VALUES (?quantityMember ?p ?objectSuffix) {
+      (xyz:quantity cascade:dispenseQuantity "#dispense-quantity")
+      (xyz:daysSupply cascade:dispenseDaysSupply "#dispense-days-supply")
+    }
+    ?quantity xyz:value ?quantityWritten .
+    OPTIONAL { ?quantity xyz:unit ?quantityUnit }
+    OPTIONAL { ?quantity xyz:system "http://unitsofmeasure.org" ; xyz:code ?quantityUcum }
+    FILTER NOT EXISTS { ?quantity xyz:comparator ?quantityComparator }
+    FILTER (?quantityMember = xyz:quantity || ?quantityUcum IN ("s", "min", "h", "d", "wk", "mo", "a"))
+    BIND (STR(?quantityWritten) AS ?number)
+    FILTER (REGEX(?number, "^[+-]?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE][+-]?[0-9]+)?$"))
+    BIND (STRSTARTS(?number, "-") AS ?negative)
+    BIND (REPLACE(?number, "^[+-]", "") AS ?unsigned)
+    BIND (REPLACE(?unsigned, "[eE].*$", "") AS ?mantissa)
+    BIND (IF(REGEX(?unsigned, "[eE]"), xsd:integer(REPLACE(?unsigned, "^[^eE]*[eE]", "")), 0) AS ?exponent)
+    BIND (IF(CONTAINS(?mantissa, "."), STRBEFORE(?mantissa, "."), ?mantissa) AS ?whole)
+    BIND (CONCAT(?whole, STRAFTER(?mantissa, ".")) AS ?digits)
+    BIND (STRLEN(?whole) + ?exponent AS ?point)
+    BIND ("000000000000000000000000000000000000000000000000000000000000" AS ?zeros)
+    BIND (IF(?point + 20 < 0 || ?point - STRLEN(?digits) > 20, 1/0,
+             IF(?point <= 0, CONCAT("0.", SUBSTR(?zeros, 1, 0 - ?point), ?digits),
+                IF(?point >= STRLEN(?digits), CONCAT(?digits, SUBSTR(?zeros, 1, ?point - STRLEN(?digits))),
+                   CONCAT(SUBSTR(?digits, 1, ?point), ".", SUBSTR(?digits, ?point + 1))))) AS ?plain)
+    BIND (REPLACE(IF(CONTAINS(?plain, "."), STRBEFORE(?plain, "."), ?plain), "^0+", "") AS ?wholeDigits)
+    BIND (REPLACE(STRAFTER(?plain, "."), "0+$", "") AS ?fractionDigits)
+    BIND (CONCAT(IF(?wholeDigits = "", "0", ?wholeDigits), IF(?fractionDigits = "", "", CONCAT(".", ?fractionDigits)))
+          AS ?magnitude)
+    BIND (STRDT(CONCAT(IF(?negative && ?magnitude != "0", "-", ""), ?magnitude), xsd:decimal) AS ?canonical)
+    FILTER (BOUND(?canonical))
+  }
+  BIND (IF(BOUND(?objectSuffix), IRI(CONCAT(STR(?version), ?objectSuffix)), 1/0) AS ?quantityNode)
+  BIND (COALESCE(?quantityNode, ?timeValue) AS ?o)
+  BIND (IF(BOUND(?writtenTime), IRI(CONCAT(STR(?version), "#padded-", STRAFTER(STR(?p), "#"))), 1/0) AS ?padded)
+}

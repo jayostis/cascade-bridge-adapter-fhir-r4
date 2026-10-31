@@ -54,7 +54,7 @@ WHERE {
   BIND (CONCAT(?topStep, ?containedStep) AS ?resourcePointer)
   ?resource xyz:resourceType ?value .
   FILTER (?value NOT IN ("AllergyIntolerance", "Condition", "Immunization", "Procedure", "Patient",
-                        "MedicationRequest", "MedicationStatement", "Observation",
+                        "MedicationRequest", "MedicationStatement", "MedicationDispense", "Observation",
                         "DiagnosticReport", "DocumentReference"))
   BIND (CONCAT(?recordSelector, ?resourcePointer) AS ?medicationPointer)
   FILTER (?value != "Medication" || NOT EXISTS {

@@ -33,7 +33,11 @@ PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # IRI: a code in another system marks nothing.
 # Every other value is single, so each is bound beside the others rather than
 # in a branch of its own, and a medication stating nothing still states whether
-# it was prescribed or reported. A date is typed by the precision FHIR wrote it
+# it was prescribed or reported. A MedicationDispense is a record of its own
+# kind, never a medication: its drug, codes and status are read here as a
+# request's are, and it states neither whether it was prescribed or reported,
+# nor an intent, a dosage or a date of use; medication-dispense.rq reads the
+# rest. A date is typed by the precision FHIR wrote it
 # to: a year is an xsd:gYear, a year and month an xsd:gYearMonth, a day an
 # xsd:date, a time an xsd:dateTime.
 # A time written to the minute, as C-CDA on FHIR writes one, is padded to the
@@ -81,13 +85,14 @@ WHERE {
   }
   BIND (COALESCE(?contained, ?top) AS ?resource)
   ?resource xyz:resourceType ?type .
-  FILTER (?type IN ("MedicationRequest", "MedicationStatement"))
+  FILTER (?type IN ("MedicationRequest", "MedicationStatement", "MedicationDispense"))
   BIND (CONCAT(?recordSelector, ?topStep, ?containedStep) AS ?resourcePointer)
   BIND (IRI(CONCAT("urn:cascade:version-at:", SHA256(?resourcePointer))) AS ?version)
   OPTIONAL { ?resource xyz:reportedBoolean ?reportedBoolean }
   OPTIONAL { ?resource xyz:reportedReference ?reportedReference }
-  BIND (IF(?type = "MedicationRequest" && COALESCE(?reportedBoolean, "") != "true" && !BOUND(?reportedReference),
-           "prescribed", "reportedUse") AS ?prescribedOrReported)
+  BIND (IF(?type = "MedicationDispense", 1/0,
+           IF(?type = "MedicationRequest" && COALESCE(?reportedBoolean, "") != "true" && !BOUND(?reportedReference),
+              "prescribed", "reportedUse")) AS ?prescribedOrReported)
   OPTIONAL { ?resource xyz:intent ?statedIntent }
   BIND (IF(?prescribedOrReported = "prescribed" && ?statedIntent IN ("proposal", "plan", "order", "original-order", "reflex-order",
                                                        "filler-order", "instance-order", "option"),
@@ -217,7 +222,7 @@ WHERE {
 
   OPTIONAL {
     ?resource ?dosageMember ?dosages .
-    FILTER (?dosageMember IN (xyz:dosage, xyz:dosageInstruction))
+    FILTER (?dosageMember IN (xyz:dosage, xyz:dosageInstruction) && ?type != "MedicationDispense")
     ?dosages rdf:_1 ?firstDosage .
     ?firstDosage xyz:text ?dosage .
   }

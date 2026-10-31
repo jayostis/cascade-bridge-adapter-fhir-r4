@@ -301,12 +301,12 @@ fhirr4:dosageElementNotCarried a skos:Concept ;
   skos:broader bridge:noPredicate .
 
 fhirr4:doseUnitCodeOutsideUcum a skos:Concept ;
-  skos:prefLabel "A dose quantity carries a unit code in a system other than UCUM, or in none, which is not carried as a UCUM unit; its unit text is."@en ;
+  skos:prefLabel "A dose quantity, or the quantity a MedicationDispense supplies, carries a unit code in a system other than UCUM, or in none, which is not carried as a UCUM unit; its unit text is."@en ;
   skos:inScheme fhirr4:gaps ;
   skos:broader bridge:carriedWithLoss .
 
 fhirr4:medicationNumberNotCarried a skos:Concept ;
-  skos:prefLabel "A number of a medication's supply or dosage is not in the form its predicate states, so it is not carried: the number of repeats a dispense allows is not a whole number, a repeat frequency is not a whole number of 1 or more, and an expected supply duration, a repeat period or a dose quantity is not in FHIR's decimal form."@en ;
+  skos:prefLabel "A number of a medication's supply or dosage is not in the form its predicate states, so it is not carried: the number of repeats a dispense allows is not a whole number, a repeat frequency is not a whole number of 1 or more, and an expected supply duration, a repeat period, a dose quantity, or the quantity or days' supply of a MedicationDispense is not in FHIR's decimal form."@en ;
   skos:inScheme fhirr4:gaps ;
   skos:broader bridge:carriedWithLoss ;
   sh:resultSeverity sh:Warning .
@@ -321,6 +321,23 @@ fhirr4:dispenseRequestElementNotCarried a skos:Concept ;
   skos:prefLabel "A prescription's dispense request states its initial fill, its dispense interval or its performer, and no Cascade predicate carries them."@en ;
   skos:inScheme fhirr4:gaps ;
   skos:broader bridge:noPredicate .
+
+fhirr4:dispenseDaysSupplyNotInUnitOfTime a skos:Concept ;
+  skos:prefLabel "A MedicationDispense's days' supply is not in one of UCUM's seven units of time FHIR's Duration allows, so nothing of it is carried."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:valueNotMapped ;
+  sh:resultSeverity sh:Warning .
+
+fhirr4:medicationDispenseElementNotCarried a skos:Concept ;
+  skos:prefLabel "A MedicationDispense carries an element no Cascade predicate carries, such as its type, category, status reason, performers, location, context, destination, receivers, the resource it is part of, its supporting information, its dosage instructions, its substitution, its detected issues or its event history, or a comparator on its quantity or days' supply (FHIR's SimpleQuantity forbids one, so neither is carried)."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:noPredicate .
+
+fhirr4:authorizingPrescriptionNotNamed a skos:Concept ;
+  skos:prefLabel "A MedicationDispense's authorizing prescription references no medication record: one on another server, a resource that is no MedicationRequest, a reference with no entry or an ambiguous one, so the link is not carried."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:carriedWithLoss ;
+  sh:resultSeverity sh:Warning .
 
 fhirr4:documentReferenceToCcdaDocument a skos:Concept ;
   skos:prefLabel "A DocumentReference's content is a C-CDA document, a source of its own for a C-CDA adapter to import, so it makes no note or document record and nothing in it is carried."@en ;

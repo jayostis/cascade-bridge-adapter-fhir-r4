@@ -87,7 +87,7 @@ WHERE {
     ?resource xyz:resourceType ?referrerType ;
       xyz:medicationReference ?reference .
     ?reference xyz:reference ?written .
-    FILTER (?referrerType IN ("MedicationRequest", "MedicationStatement"))
+    FILTER (?referrerType IN ("MedicationRequest", "MedicationStatement", "MedicationDispense"))
     BIND (REPLACE(?written, "/_history/[A-Za-z0-9.-]{1,64}$", "") AS ?target)
   }
   FILTER (!BOUND(?fullUrl) || !BOUND(?contained))

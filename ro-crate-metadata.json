@@ -143,6 +143,12 @@
           "@id": "in/sparql/medication-supply-and-dosages.rq"
         },
         {
+          "@id": "in/sparql/medication-dispense.rq"
+        },
+        {
+          "@id": "in/sparql/medication-dispense-prescription.rq"
+        },
+        {
           "@id": "in/sparql/organization.rq"
         },
         {
@@ -221,6 +227,12 @@
         },
         {
           "@id": "in/sparql/medication-findings.rq"
+        },
+        {
+          "@id": "in/sparql/medication-dispense-findings.rq"
+        },
+        {
+          "@id": "in/sparql/medication-dispense-prescription-findings.rq"
         },
         {
           "@id": "in/sparql/code-findings.rq"
@@ -326,6 +338,12 @@
           "@id": "in/sparql/medication-supply-and-dosages.rq"
         },
         {
+          "@id": "in/sparql/medication-dispense.rq"
+        },
+        {
+          "@id": "in/sparql/medication-dispense-prescription.rq"
+        },
+        {
           "@id": "in/sparql/organization.rq"
         },
         {
@@ -396,6 +414,12 @@
         },
         {
           "@id": "in/sparql/medication-findings.rq"
+        },
+        {
+          "@id": "in/sparql/medication-dispense-findings.rq"
+        },
+        {
+          "@id": "in/sparql/medication-dispense-prescription-findings.rq"
         },
         {
           "@id": "in/sparql/code-findings.rq"
@@ -1974,12 +1998,12 @@
       "@type": "File",
       "name": "Document table: Medications, references to them, and their keys",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "4072",
-      "sha256": "b65b84fb20c0a70db2a26a4c1ab96a3439f4faab0c879f31110056d66a9e0d82",
+      "contentSize": "4094",
+      "sha256": "004fafec20ed697d52e7386e3d05e9aa86f8c9da807c0a8d542b0edcf00ceb7f",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "A bridge:documentTableQuery: a row for each key a Medication of a record can be referenced by, within the scope it holds there, with the Medication's name and a row for each of its codings, its system and code as written, and a row for each medication's reference, the key it names and that key's scope, a version stripped; medication.rq, medication-findings.rq and resource-type-findings.rq each resolve a reference by joining them, to the one Medication holding its key in its scope."
+      "description": "A bridge:documentTableQuery: a row for each key a Medication of a record can be referenced by, within the scope it holds there, with the Medication's name and a row for each of its codings, its system and code as written, and a row for each reference of a medication or a MedicationDispense, the key it names and that key's scope, a version stripped; medication.rq, medication-findings.rq and resource-type-findings.rq each resolve a reference by joining them, to the one Medication holding its key in its scope."
     },
     {
       "@id": "in/sparql/organization-table.rq",
@@ -2022,12 +2046,12 @@
       "@type": "File",
       "name": "Mapping: records, versions and arrivals",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "13425",
-      "sha256": "06f4a122c251e5d3a3c987762cc3f4568812f89619d371265381f9526c5986f1",
+      "contentSize": "13516",
+      "sha256": "c7510bd0ea4a9528319a086e3a2ffb1d1724156dd37f06b96f5df9fb5327abd3",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "For each resource of a mapped type, the record's own and each it contains: the record, named by one of cascade-vocabulary's naming rules, its hashed text written as the rule's body in tests/vectors/naming writes it: RecordFromServerNamingRule from the server, type and id where the id is the only one of its type in the document, ContainedRecordNamingRule from the container's name, its meta.versionId, else its meta.lastUpdated, else nothing, and the local id, and RecordFromDocumentNamingRule from the document and the resource's selector otherwise; its class, its source URL where its name has one, and its source id where its class has a predicate for one; its version, the patient the version is about, and the version's arrival with the resource's meta.versionId and meta.lastUpdated, and a contained resource's selector. An Observation is a lab result, a cascade:GeneticVariantFinding or a cascade:VariantInterpretation, and a DocumentReference a cascade:ClinicalNoteOrDocument, by the document table that holds its pointer; a DiagnosticReport is always a cascade:DiagnosticReport."
+      "description": "For each resource of a mapped type, the record's own and each it contains: the record, named by one of cascade-vocabulary's naming rules, its hashed text written as the rule's body in tests/vectors/naming writes it: RecordFromServerNamingRule from the server, type and id where the id is the only one of its type in the document, ContainedRecordNamingRule from the container's name, its meta.versionId, else its meta.lastUpdated, else nothing, and the local id, and RecordFromDocumentNamingRule from the document and the resource's selector otherwise; its class, its source URL where its name has one, and its source id where its class has a predicate for one; its version, the patient the version is about, and the version's arrival with the resource's meta.versionId and meta.lastUpdated, and a contained resource's selector. An Observation is a lab result, a cascade:GeneticVariantFinding or a cascade:VariantInterpretation, and a DocumentReference a cascade:ClinicalNoteOrDocument, by the document table that holds its pointer; a MedicationDispense is a cascade:MedicationDispense; a DiagnosticReport is always a cascade:DiagnosticReport."
     },
     {
       "@id": "in/sparql/allergy-intolerance.rq",
@@ -2094,12 +2118,12 @@
       "@type": "File",
       "name": "Mapping: a MedicationRequest's or MedicationStatement's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "13005",
-      "sha256": "1979ec468bb5ea4c61d3b386a57dfea245733574e375c6bae7758e8f8a2ec78c",
+      "contentSize": "13394",
+      "sha256": "8a411aa5485b4954a45e556be94eb53455a346cb6ea1fa62c21e155d6b6dd4b8",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "What a medication says, written on the version record.rq names: whether it was prescribed or reported, prescribed for a request unless its reported[x] says it was reported, and reportedUse for a statement or such a request; a prescribed request's intent, where it is one of the eight codes of medicationrequest-intent (cascade:medicationRequestIntent); the drug's name and every code, from its concept or from the Medication its reference resolves to in the document, else the reference's display: RxNorm and NDC as IRIs, the first userSelected one the selected code, and any other system's as cascade:medicationCodeInOtherSystem literals typed by the system coding-system-table.rq reads (https://github.com/jayostis/cascade-vocabulary/issues/290); status, start and end dates of use, the day a request was written, never a start, and the first dosage's text. Its supply and dosages are medication-supply-and-dosages.rq's."
+      "description": "What a medication says, written on the version record.rq names: whether it was prescribed or reported, prescribed for a request unless its reported[x] says it was reported, and reportedUse for a statement or such a request; a prescribed request's intent, where it is one of the eight codes of medicationrequest-intent (cascade:medicationRequestIntent); the drug's name and every code, from its concept or from the Medication its reference resolves to in the document, else the reference's display: RxNorm and NDC as IRIs, the first userSelected one the selected code, and any other system's as cascade:medicationCodeInOtherSystem literals typed by the system coding-system-table.rq reads (https://github.com/jayostis/cascade-vocabulary/issues/290); status, start and end dates of use, the day a request was written, never a start, and the first dosage's text. Its supply and dosages are medication-supply-and-dosages.rq's. A MedicationDispense's drug, codes and status are read alike and nothing else of this is; medication-dispense.rq reads the rest."
     },
     {
       "@id": "in/sparql/medication-supply-and-dosages.rq",
@@ -2112,6 +2136,30 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "On the version medication.rq writes (https://github.com/jayostis/cascade-vocabulary/issues/299): a request's cascade:courseOfTherapyType (a code of FHIR's medicationrequest-course-of-therapy), cascade:numberOfRepeatsAllowed (0 included), cascade:expectedSupplyDuration (a quantity node <version>#expected-supply-duration, only in one of UCUM's seven units of time, with its comparator where it is one of R4's four) and cascade:dispenseValidityPeriodStart and End; and for every dosage, a request's dosageInstruction or a statement's dosage, a cascade:structuredDosage node <version>#dosage-n whatever it holds, with its first dose quantity (<version>#dosage-n-dose-quantity), its timing's cascade:dosageRepeatFrequency, cascade:dosageRepeatPeriod and cascade:dosageRepeatPeriodUnit, its bounds period's start and end, and every route code, SNOMED CT's as cascade:dosageRouteCode IRIs and any other system's as cascade:dosageRouteCodeInOtherSystem literals. Numbers are written as written and as canonical xsd:decimal values; dates are typed by their precision, a time to the minute padded with a cascade:PaddedDateTime node."
+    },
+    {
+      "@id": "in/sparql/medication-dispense.rq",
+      "@type": "File",
+      "name": "Mapping: a MedicationDispense's times and amounts",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "5795",
+      "sha256": "dcab9934a0fe2f886e8028feb76f2139c7632476dddc702c557bec01ab502f65",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "On the version medication.rq writes (https://github.com/jayostis/cascade-vocabulary/issues/300): a dispense's cascade:dispensePreparedTime and cascade:dispenseHandedOverTime, typed by their precision, a time to the minute padded with a cascade:PaddedDateTime node; its quantity dispensed (cascade:dispenseQuantity, a quantity node <version>#dispense-quantity) and its days' supply (cascade:dispenseDaysSupply, <version>#dispense-days-supply, only in one of UCUM's seven units of time). A number is written as written and as a canonical xsd:decimal; a quantity with a comparator is none."
+    },
+    {
+      "@id": "in/sparql/medication-dispense-prescription.rq",
+      "@type": "File",
+      "name": "Mapping: the prescriptions a MedicationDispense names",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "8072",
+      "sha256": "711be39af89c5f3d3125983c2669f4aa2ef99d9f4c9507e139c778252805757e",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "Each authorizingPrescription of a MedicationDispense that names a MedicationRequest record, by a urn:uuid one entry holds, by MedicationRequest/<id> on the dispense's server, or by \"#\" and the id of a MedicationRequest its record contains, as that record's IRI under cascade:authorizingPrescription on the dispense's version."
     },
     {
       "@id": "in/sparql/organization.rq",
@@ -2178,12 +2226,12 @@
       "@type": "File",
       "name": "Mapping: a value absent for a stated reason",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "5638",
-      "sha256": "ef5120c856eb426b6874cdde8bc457bc89f86cb87e6a64f1ac1058f4d1e1b6c9",
+      "contentSize": "5878",
+      "sha256": "2ecc8f0a481a731c57c4d9c4be1ef9e5649688722dd0e4a78caa0e81380ce0f0",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "A value FHIR says is absent, and why, as a cascade:ValueAbsentForReason node of the version record.rq names, <version>#absent-<property>: a lab result's dataAbsentReason for its value (cascade:resultValueKind), where it has none, and the data-absent-reason extension on a mapped date's or a Patient's gender's _element, where the value is absent; each reason the code's IRI in FHIR's data absent reasons or v3 NullFlavor, only a code its CodeSystem defines."
+      "description": "A value FHIR says is absent, and why, as a cascade:ValueAbsentForReason node of the version record.rq names, <version>#absent-<property>: a lab result's dataAbsentReason for its value (cascade:resultValueKind), where it has none, and the data-absent-reason extension on a mapped date's (a MedicationDispense's included) or a Patient's gender's _element, where the value is absent; each reason the code's IRI in FHIR's data absent reasons or v3 NullFlavor, only a code its CodeSystem defines."
     },
     {
       "@id": "in/sparql/lab-result-identifiers.rq",
@@ -2310,8 +2358,8 @@
       "@type": "File",
       "name": "Findings: a resource of a type this release does not map",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "4211",
-      "sha256": "cc80a65d68d0ce06093f2bdb8a4337f6668388317d20571b17e800b54bb1e566",
+      "contentSize": "4233",
+      "sha256": "876e20f5ccc600047034ec33d5dcbf84e0ce1590c189e71444eb96f97a1c11e1",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2334,8 +2382,8 @@
       "@type": "File",
       "name": "Findings: an id the document repeats",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "2583",
-      "sha256": "29e6627602e498976c44badc6cf788f64a86a6f4ad4128780232063e75ed68b8",
+      "contentSize": "2605",
+      "sha256": "52648a4dca5d2680716fa4dbf3e5e4bd85d25fc3c86461a34d0bad32b35f762e",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2370,12 +2418,12 @@
       "@type": "File",
       "name": "Findings: a reference's display",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "3126",
-      "sha256": "8b552d3a70d7d9d819fb62b93992bd7e67a9f8faa2b1daf48be64ca06bb43f50",
+      "contentSize": "3459",
+      "sha256": "7fa471f43748d0881bc25988275f4c45087436589bbf5c5f0fead59a312384ee",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "A finding for each patient, subject, reason or result reference of a mapped resource that carries a display string, which no Cascade predicate carries."
+      "description": "A finding for each patient, subject, reason, result or authorizing prescription reference of a mapped resource that carries a display string, which no Cascade predicate carries."
     },
     {
       "@id": "in/sparql/observation-findings.rq",
@@ -2394,12 +2442,36 @@
       "@type": "File",
       "name": "Findings: what a medication's mapping leaves behind",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "14073",
-      "sha256": "1e5ec6c794e4e3c7248150093db852d66c4d256b62fc2a9a09ea5d015833f860",
+      "contentSize": "14482",
+      "sha256": "aef07f2df5dd650065a1be3a26ab11a8f7ec1535ed227e970d3445bd74546d36",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "Reports fhirr4:medicationReferenceUnresolved for a medication's reference that resolves to no one Medication of its document, fhirr4:medicationNote for a medication's note, fhirr4:codingNotCarried for each coding with no system, a system coding-system-table.rq gives no row, or no code, fhirr4:ndcNotNormalised for each NDC no 11-digit code can be made of, of a medication or of a Medication a reference resolves to, fhirr4:medicationDosageRepeated for each dosage text after the first, fhirr4:dosageElementNotCarried for each dose quantity of a dosage after its first, fhirr4:courseOfTherapyTypeNotMapped for a course of therapy's coding outside FHIR's three codes and its text where none is carried, fhirr4:expectedSupplyDurationNotInUnitOfTime for a supply duration in no unit of time, and fhirr4:expectedSupplyDurationBound for its comparator, at paths the source accounting carries for the other kinds or where they hold one value."
+      "description": "Reports fhirr4:medicationReferenceUnresolved for a medication's reference that resolves to no one Medication of its document, fhirr4:medicationNote for a medication's note, fhirr4:codingNotCarried for each coding with no system, a system coding-system-table.rq gives no row, or no code, fhirr4:ndcNotNormalised for each NDC no 11-digit code can be made of, of a medication or of a Medication a reference resolves to, fhirr4:medicationDosageRepeated for each dosage text after the first, fhirr4:dosageElementNotCarried for each dose quantity of a dosage after its first, fhirr4:courseOfTherapyTypeNotMapped for a course of therapy's coding outside FHIR's three codes and its text where none is carried, fhirr4:expectedSupplyDurationNotInUnitOfTime for a supply duration in no unit of time, and fhirr4:expectedSupplyDurationBound for its comparator, at paths the source accounting carries for the other kinds or where they hold one value; for a MedicationDispense, only the reference, the note and the codings."
+    },
+    {
+      "@id": "in/sparql/medication-dispense-findings.rq",
+      "@type": "File",
+      "name": "Findings: what a MedicationDispense's mapping leaves behind",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "5638",
+      "sha256": "7f9ba163ed8d1b34049df75b7679338016e413456bfd27dd3ed0cad9206eb1e0",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "Reports fhirr4:medicationDispenseElementNotCarried for each element of a dispense no Cascade predicate carries and for a quantity or days' supply with a comparator, fhirr4:medicationNumberNotCarried for a quantity or days' supply in no decimal form, fhirr4:dispenseDaysSupplyNotInUnitOfTime for a days' supply in no UCUM unit of time, and fhirr4:doseUnitCodeOutsideUcum for a quantity whose unit code is not UCUM's."
+    },
+    {
+      "@id": "in/sparql/medication-dispense-prescription-findings.rq",
+      "@type": "File",
+      "name": "Findings: a dispense's prescription that names no record",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "4413",
+      "sha256": "48b65b445b1fbc20e59f06b808de8b3d405a3feaae54f3e92c68a3066e3fcb8e",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "Reports fhirr4:authorizingPrescriptionNotNamed at each authorizingPrescription of a MedicationDispense that medication-dispense-prescription.rq resolves to no record."
     },
     {
       "@id": "in/sparql/code-findings.rq",
@@ -2430,8 +2502,8 @@
       "@type": "File",
       "name": "Findings: a reason a value is absent that is not carried",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "4900",
-      "sha256": "f7c68cfacffc5f72925da89f2cf22e1bcbc7784964a16c4ff9f539f6127b2bf6",
+      "contentSize": "5042",
+      "sha256": "6bfff83a0d2c767004d9fc4e33e1f638960d4729ac9a90e779dd09c6a72715b1",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2466,8 +2538,8 @@
       "@type": "File",
       "name": "FHIR R4 JSON source accounting",
       "encodingFormat": "text/turtle",
-      "contentSize": "511201",
-      "sha256": "42b30b58ee0dfd0f2a5188bc71643bcc76d4b6608cc4fe17fe2cd3cc90475b9a",
+      "contentSize": "582645",
+      "sha256": "4a5c9d96f5ebbc10823be60ba8598a670a7d25586af3b8279ca9d5383ce4f7fb",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2526,8 +2598,8 @@
       "@type": "File",
       "name": "Findings: a patient reference in a document from no known server",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "2509",
-      "sha256": "375085545a356a347064d3cfa7effa2f8ec4713dd6a8b92d600b0e589c27c362",
+      "contentSize": "2531",
+      "sha256": "f2f848c8eab7946866fb93d37e9a5cbf3ca02c90fe9cf2ac1b49fe0911e02ca2",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2538,8 +2610,8 @@
       "@type": "File",
       "name": "Findings: a patient reference that names no record",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "4952",
-      "sha256": "806fa76b993103225c8ee72ace49dc41df58ba34ab7335297508b57acb809e8a",
+      "contentSize": "4974",
+      "sha256": "2da66645629e3b924700f71f925692f2cc143f7c9e6374672624eff3a099b9a3",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2550,8 +2622,8 @@
       "@type": "File",
       "name": "FHIR R4 JSON gaps",
       "encodingFormat": "text/turtle",
-      "contentSize": "20860",
-      "sha256": "aef22ad42166bdf7202b4301fd282925ca25195b7631ea5fc2d0427957af6dee",
+      "contentSize": "22253",
+      "sha256": "a56025212d5afc9585a884c86331d8d040bcb5c9444c332cdf277c9bb99673e6",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -9584,9 +9656,9 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "What a record is, reports and notes, the two envelopes, how a record is named, JSON as FHIR writes it, the schema, the versions in and out of scope, and what is known about the committed inputs. Read from hl7.org/fhir/R4/ on 2026-09-27, reports and notes on 2026-10-30.",
-      "contentSize": "31091",
-      "sha256": "44430093e0a8ef5d92c997c413048672bdf85953d42d2f2cdf8b03ef94aa6f02"
+      "description": "What a record is, reports and notes, medication dispenses, the two envelopes, how a record is named, JSON as FHIR writes it, the schema, the versions in and out of scope, and what is known about the committed inputs. Read from hl7.org/fhir/R4/ on 2026-09-27, reports and notes on 2026-10-30, medication dispenses on 2026-10-31.",
+      "contentSize": "34024",
+      "sha256": "fb4a36cf5c12d8121f1977458f7b5273276f0ce3658f7b72d8a015c03175e92d"
     },
     {
       "@id": "fixtures/CLAUDE.md",

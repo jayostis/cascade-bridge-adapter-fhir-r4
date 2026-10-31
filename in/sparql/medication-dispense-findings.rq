@@ -1,0 +1,144 @@
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX sh:      <http://www.w3.org/ns/shacl#>
+PREFIX oa:      <http://www.w3.org/ns/oa#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX fx:      <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:     <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:  <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+PREFIX cascade: <https://ns.cascadeprotocol.org/cascade#>
+
+# What medication-dispense.rq leaves behind, at the path of a dispense: each
+# element a dispense states that no Cascade predicate carries, at the element
+# and not at what it holds, such as its type, category, performers, location,
+# context, destination, receivers, substitution or dosage instructions, whose
+# paths other kinds of resource carry; a quantity or a days' supply that
+# states a comparator, which FHIR's SimpleQuantity forbids, and so is none; a
+# number in no decimal form; a days' supply in no UCUM unit of time, and so
+# none; and a dispensed quantity whose unit code is not UCUM's. A note, a
+# reference to a Medication and a coding are medication-findings.rq's.
+
+CONSTRUCT {
+  [] a oa:Annotation ;
+    oa:hasTarget [
+      oa:hasSource bridge:thisRecord ;
+      oa:hasSelector [
+        a oa:FragmentSelector ;
+        dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+        rdf:value ?pointer
+      ]
+    ] ;
+    oa:hasBody ?gap ;
+    oa:motivatedBy oa:classifying ;
+    sh:value ?value .
+}
+WHERE {
+  FILTER NOT EXISTS {
+    bridge:thisDocument cascade:sourceFormatVersion ?stated .
+    FILTER (!STRSTARTS(?stated, "4.0."))
+  }
+  bridge:thisRecord bridge:selector ?recordSelector .
+  ?root a fx:root .
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  { BIND ("" AS ?containedStep) }
+  UNION
+  {
+    ?top xyz:contained ?containedList .
+    ?containedList ?containedSlot ?contained .
+    ?contained xyz:resourceType ?containedType .
+    BIND (CONCAT("/contained/", STR(xsd:integer(STRAFTER(STR(?containedSlot), "#_")) - 1)) AS ?containedStep)
+  }
+  BIND (COALESCE(?contained, ?top) AS ?resource)
+  ?resource xyz:resourceType "MedicationDispense" .
+
+  {
+    VALUES (?member ?step) {
+      (xyz:type "/type")
+      (xyz:category "/category")
+      (xyz:statusReasonCodeableConcept "/statusReasonCodeableConcept")
+      (xyz:statusReasonReference "/statusReasonReference")
+      (xyz:partOf "/partOf")
+      (xyz:context "/context")
+      (xyz:supportingInformation "/supportingInformation")
+      (xyz:performer "/performer")
+      (xyz:location "/location")
+      (xyz:destination "/destination")
+      (xyz:receiver "/receiver")
+      (xyz:dosageInstruction "/dosageInstruction")
+      (xyz:substitution "/substitution")
+      (xyz:detectedIssue "/detectedIssue")
+      (xyz:eventHistory "/eventHistory")
+    }
+    ?resource ?member ?element .
+    BIND (?step AS ?value)
+    BIND (fhirr4:medicationDispenseElementNotCarried AS ?gap)
+  }
+  UNION
+  {
+    VALUES (?quantityMember ?quantityStep) {
+      (xyz:quantity "/quantity")
+      (xyz:daysSupply "/daysSupply")
+    }
+    ?resource ?quantityMember ?quantity .
+    ?quantity xyz:comparator ?value .
+    BIND (CONCAT(?quantityStep, "/comparator") AS ?step)
+    BIND (fhirr4:medicationDispenseElementNotCarried AS ?gap)
+  }
+  UNION
+  {
+    VALUES (?quantityMember ?quantityStep) {
+      (xyz:quantity "/quantity")
+      (xyz:daysSupply "/daysSupply")
+    }
+    ?resource ?quantityMember ?quantity .
+    ?quantity xyz:value ?value .
+    FILTER NOT EXISTS { ?quantity xyz:comparator ?quantityComparator }
+    FILTER (!REGEX(STR(?value), "^[+-]?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)([eE][+-]?[0-9]+)?$")
+      && (?quantityMember = xyz:quantity || EXISTS {
+        ?quantity xyz:system "http://unitsofmeasure.org" ; xyz:code ?timeUnit .
+        FILTER (?timeUnit IN ("s", "min", "h", "d", "wk", "mo", "a"))
+      }))
+    BIND (CONCAT(?quantityStep, "/value") AS ?step)
+    BIND (fhirr4:medicationNumberNotCarried AS ?gap)
+  }
+  UNION
+  {
+    VALUES (?quantityMember ?quantityStep) {
+      (xyz:quantity "/quantity")
+      (xyz:daysSupply "/daysSupply")
+    }
+    ?resource ?quantityMember ?quantity .
+    FILTER (?quantityMember = xyz:daysSupply)
+    FILTER NOT EXISTS { ?quantity xyz:comparator ?quantityComparator }
+    FILTER NOT EXISTS {
+      ?quantity xyz:system "http://unitsofmeasure.org" ;
+        xyz:code ?timeUnit .
+      FILTER (?timeUnit IN ("s", "min", "h", "d", "wk", "mo", "a"))
+    }
+    OPTIONAL { ?quantity xyz:code ?daysCode }
+    OPTIONAL { ?quantity xyz:unit ?daysUnit }
+    OPTIONAL { ?quantity xyz:value ?daysValue }
+    BIND (COALESCE(?daysCode, ?daysUnit, ?daysValue) AS ?value)
+    FILTER (BOUND(?value))
+    BIND (CONCAT(?quantityStep, "/", IF(BOUND(?daysCode), "code", IF(BOUND(?daysUnit), "unit", "value"))) AS ?step)
+    BIND (fhirr4:dispenseDaysSupplyNotInUnitOfTime AS ?gap)
+  }
+  UNION
+  {
+    VALUES (?quantityMember ?quantityStep) {
+      (xyz:quantity "/quantity")
+      (xyz:daysSupply "/daysSupply")
+    }
+    ?resource ?quantityMember ?quantity .
+    FILTER (?quantityMember = xyz:quantity)
+    ?quantity xyz:code ?value .
+    FILTER NOT EXISTS { ?quantity xyz:comparator ?quantityComparator }
+    FILTER NOT EXISTS { ?quantity xyz:system "http://unitsofmeasure.org" }
+    BIND (CONCAT(?quantityStep, "/code") AS ?step)
+    BIND (fhirr4:doseUnitCodeOutsideUcum AS ?gap)
+  }
+  BIND (CONCAT(?topStep, ?containedStep, ?step) AS ?pointer)
+}

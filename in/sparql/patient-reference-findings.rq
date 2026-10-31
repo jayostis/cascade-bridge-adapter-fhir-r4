@@ -51,7 +51,7 @@ WHERE {
   BIND (CONCAT(?topStep, ?containedStep) AS ?resourcePointer)
   ?resource xyz:resourceType ?type .
   FILTER (?type IN ("AllergyIntolerance", "Condition", "Immunization", "Procedure", "Patient",
-                    "MedicationRequest", "MedicationStatement", "Observation"))
+                    "MedicationRequest", "MedicationStatement", "MedicationDispense", "Observation"))
   FILTER (?type != "Observation" || EXISTS {
     { ?lab fhirr4:labResultAt ?observationPointer }
     UNION { ?variantRow fhirr4:variantAt ?observationPointer }

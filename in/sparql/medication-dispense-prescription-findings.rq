@@ -1,0 +1,102 @@
+PREFIX rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
+PREFIX oa:       <http://www.w3.org/ns/oa#>
+PREFIX sh:       <http://www.w3.org/ns/shacl#>
+PREFIX dcterms:  <http://purl.org/dc/terms/>
+PREFIX fx:       <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:      <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:   <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX cascade:  <https://ns.cascadeprotocol.org/cascade#>
+PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+
+# Each prescription a dispense names that names no record, as
+# medication-dispense-prescription.rq resolves it, at its reference, the
+# reference as its value.
+
+CONSTRUCT {
+  [] a oa:Annotation ;
+    oa:hasTarget [
+      oa:hasSource bridge:thisRecord ;
+      oa:hasSelector [
+        a oa:FragmentSelector ;
+        dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+        rdf:value ?pointer
+      ]
+    ] ;
+    oa:hasBody fhirr4:authorizingPrescriptionNotNamed ;
+    oa:motivatedBy oa:classifying ;
+    sh:value ?written .
+}
+WHERE {
+  FILTER NOT EXISTS {
+    bridge:thisDocument cascade:sourceFormatVersion ?stated .
+    FILTER (!STRSTARTS(?stated, "4.0."))
+  }
+  bridge:thisRecord bridge:selector ?recordSelector .
+  OPTIONAL { bridge:thisDocument cascade:serverBaseUrl ?server }
+  ?root a fx:root .
+  OPTIONAL { ?root xyz:fullUrl ?fullUrl }
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  { BIND ("" AS ?containedStep) }
+  UNION
+  {
+    ?top xyz:contained ?containedList .
+    ?containedList ?containedSlot ?contained .
+    ?contained xyz:resourceType ?containedType .
+    BIND (CONCAT("/contained/", STR(xsd:integer(STRAFTER(STR(?containedSlot), "#_")) - 1)) AS ?containedStep)
+  }
+  BIND (COALESCE(?contained, ?top) AS ?resource)
+  ?resource xyz:resourceType "MedicationDispense" ;
+    xyz:authorizingPrescription ?prescriptions .
+  ?prescriptions ?prescriptionSlot ?prescriptionReference .
+  ?prescriptionReference xyz:reference ?written .
+  OPTIONAL {
+    ?top xyz:contained ?targetList .
+    ?targetList ?targetSlot ?targetResource .
+    ?targetResource xyz:resourceType "MedicationRequest" ;
+      xyz:id ?targetId .
+    FILTER (CONCAT("#", STR(?targetId)) = ?written)
+  }
+  BIND (BOUND(?targetSlot) AS ?namesContained)
+  BIND (REPLACE(?written, "/_history/[A-Za-z0-9.-]{1,64}$", "") AS ?unversioned)
+  BIND (IF(BOUND(?server) && STRSTARTS(?unversioned, CONCAT(?server, "/")), STRAFTER(?unversioned, CONCAT(?server, "/")),
+           ?unversioned) AS ?relative)
+  OPTIONAL {
+    {
+      SELECT ?key (COUNT(DISTINCT ?keySelector) AS ?heldAtKey) (MIN(?keySelector) AS ?heldSelector)
+      WHERE {
+        ?held fhirr4:heldAt ?keySelector ;
+          fhirr4:fullUrl ?key .
+        FILTER (STRSTARTS(?key, "urn:uuid:"))
+      }
+      GROUP BY ?key
+    }
+    FILTER (?key = ?written)
+  }
+  BIND (IF(BOUND(?heldAtKey), IF(?heldAtKey = 1, ?heldSelector, 1/0),
+           IF(BOUND(?server) && !STRSTARTS(COALESCE(?fullUrl, ""), "urn:uuid:")
+              && REGEX(?relative, "^MedicationRequest/[A-Za-z0-9.-]{1,64}$"), "", 1/0)) AS ?target)
+  BIND (STRAFTER(?relative, "MedicationRequest/") AS ?requestId)
+  BIND (?namesContained || (BOUND(?target) && IF(?target != "",
+             EXISTS { ?request fhirr4:heldAt ?target ; fhirr4:resourceType "MedicationRequest" },
+             NOT EXISTS {
+               ?urnHeld fhirr4:resourceType "MedicationRequest" ;
+                 fhirr4:resourceId ?urnId ;
+                 fhirr4:fullUrl ?urnUrl .
+               FILTER (STRSTARTS(?urnUrl, "urn:uuid:") && ?urnId = ?requestId)
+             }
+             && NOT EXISTS {
+               ?onceHeld fhirr4:resourceType "MedicationRequest" ;
+                 fhirr4:resourceId ?onceId ;
+                 fhirr4:heldAt ?onceAt .
+               ?twiceHeld fhirr4:resourceType "MedicationRequest" ;
+                 fhirr4:resourceId ?twiceId ;
+                 fhirr4:heldAt ?twiceAt .
+               FILTER (?onceId = ?requestId && ?twiceId = ?requestId && ?onceAt != ?twiceAt)
+             })) AS ?namesRecord)
+  FILTER (!?namesRecord)
+  BIND (CONCAT(?topStep, ?containedStep, "/authorizingPrescription/", STR(xsd:integer(STRAFTER(STR(?prescriptionSlot), "#_")) - 1), "/reference")
+        AS ?pointer)
+}
