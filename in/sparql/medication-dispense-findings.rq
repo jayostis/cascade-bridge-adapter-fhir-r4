@@ -140,5 +140,21 @@ WHERE {
     BIND (CONCAT(?quantityStep, "/code") AS ?step)
     BIND (fhirr4:doseUnitCodeOutsideUcum AS ?gap)
   }
+  UNION
+  {
+    VALUES (?whenMember ?step) {
+      (xyz:whenPrepared "/whenPrepared")
+      (xyz:whenHandedOver "/whenHandedOver")
+    }
+    ?resource ?whenMember ?value .
+    BIND (STR(?value) AS ?written)
+    FILTER (!(REGEX(?written, "^[0-9]{4}$")
+      || REGEX(?written, "^[0-9]{4}-(0[1-9]|1[0-2])$")
+      || (REGEX(?written, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$") && COALESCE(isLiteral(xsd:date(?written)), false))
+      || (REGEX(?written, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(Z|[+-][0-9]{2}:[0-9]{2})?$")
+          && COALESCE(isLiteral(xsd:dateTime(CONCAT(SUBSTR(?written, 1, 16), ":00", SUBSTR(?written, 17)))), false))
+      || (REGEX(?written, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T") && COALESCE(isLiteral(xsd:dateTime(?written)), false))))
+    BIND (fhirr4:medicationDateNotCarried AS ?gap)
+  }
   BIND (CONCAT(?topStep, ?containedStep, ?step) AS ?pointer)
 }

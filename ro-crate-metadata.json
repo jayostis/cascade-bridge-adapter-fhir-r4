@@ -2154,8 +2154,8 @@
       "@type": "File",
       "name": "Mapping: a MedicationRequest's or MedicationStatement's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "13394",
-      "sha256": "8a411aa5485b4954a45e556be94eb53455a346cb6ea1fa62c21e155d6b6dd4b8",
+      "contentSize": "13951",
+      "sha256": "72598489819229522b66ed1266db398517c9e3bfc7fb3e2bc06ba5da80f7f37b",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2166,8 +2166,8 @@
       "@type": "File",
       "name": "Mapping: a medication's supply and the structure of its dosages",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "12936",
-      "sha256": "09791280e7d436cfe50c3611dd632191986d20c437115c0b448d636e9b522a30",
+      "contentSize": "13107",
+      "sha256": "ef0ecd8c5e00d8b936608a0a73c8caa17e81af8b9659c12b51814715304eadc5",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2178,8 +2178,8 @@
       "@type": "File",
       "name": "Mapping: a MedicationDispense's times and amounts",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "5795",
-      "sha256": "dcab9934a0fe2f886e8028feb76f2139c7632476dddc702c557bec01ab502f65",
+      "contentSize": "5970",
+      "sha256": "9727a79ff07fd08c13261cc9aa2b2677b52ba70061f06df6895c1cd75215c4fa",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2190,12 +2190,12 @@
       "@type": "File",
       "name": "Mapping: the prescriptions a MedicationDispense names",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "8033",
-      "sha256": "77c4218ef42e68a1ef2838579370ab979fac073a5add707d87b0e6b1cdb942a3",
+      "contentSize": "8098",
+      "sha256": "a6d9570453bd0a1d1419fe9b12d03c208e8ea2370b3676dd090d78bcae1e1bd2",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "Each authorizingPrescription of a MedicationDispense that names a MedicationRequest record, by a urn:uuid one entry holds, by MedicationRequest/<id> on the dispense's server, or by \"#\" and the id of a MedicationRequest its record contains, as that record's IRI under cascade:authorizingPrescription on the dispense's version."
+      "description": "Each authorizingPrescription of a MedicationDispense that names a MedicationRequest record, by a urn:uuid one entry holds, by MedicationRequest/<id> on the dispense's server or its absolute URL there, whatever the dispense's fullUrl is, or by \"#\" and the id of a MedicationRequest its record contains, as that record's IRI under cascade:authorizingPrescription on the dispense's version."
     },
     {
       "@id": "in/sparql/organization.rq",
@@ -2334,12 +2334,12 @@
       "@type": "File",
       "name": "Mapping: the result records a DiagnosticReport names",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "9423",
-      "sha256": "b31f43979d3a41bdc103fd16ea81e9e71c1066dbc7b1718c3ad52d511edb0715",
+      "contentSize": "9488",
+      "sha256": "2782515fcd7a2352a006d937014b6c908860bff0a702b830785f8089bef79e16",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "Each result of a DiagnosticReport that names a lab result, variant or diagnostic implication record, by a urn:uuid one entry holds, by Observation/<id> on the report's server, or by \"#\" and the id of an Observation its record contains, as that record's IRI under obo:RO_0002351 on the report's version."
+      "description": "Each result of a DiagnosticReport that names a lab result, variant or diagnostic implication record, by a urn:uuid one entry holds, by Observation/<id> on the report's server or its absolute URL there, whatever the report's fullUrl is, or by \"#\" and the id of an Observation its record contains, as that record's IRI under obo:RO_0002351 on the report's version."
     },
     {
       "@id": "in/sparql/note-or-document.rq",
@@ -2478,32 +2478,32 @@
       "@type": "File",
       "name": "Findings: what a medication's mapping leaves behind",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "14482",
-      "sha256": "aef07f2df5dd650065a1be3a26ab11a8f7ec1535ed227e970d3445bd74546d36",
+      "contentSize": "16235",
+      "sha256": "29a2ce0b35099e749ce573f988c8f24f974516b2a0e008a54143932c50fb82fb",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "Reports fhirr4:medicationReferenceUnresolved for a medication's reference that resolves to no one Medication of its document, fhirr4:medicationNote for a medication's note, fhirr4:codingNotCarried for each coding with no system, a system coding-system-table.rq gives no row, or no code, fhirr4:ndcNotNormalised for each NDC no 11-digit code can be made of, of a medication or of a Medication a reference resolves to, fhirr4:medicationDosageRepeated for each dosage text after the first, fhirr4:dosageElementNotCarried for each dose quantity of a dosage after its first, fhirr4:courseOfTherapyTypeNotMapped for a course of therapy's coding outside FHIR's three codes and its text where none is carried, fhirr4:expectedSupplyDurationNotInUnitOfTime for a supply duration in no unit of time, and fhirr4:expectedSupplyDurationBound for its comparator, at paths the source accounting carries for the other kinds or where they hold one value; for a MedicationDispense, only the reference, the note and the codings."
+      "description": "Reports fhirr4:medicationReferenceUnresolved for a medication's reference that resolves to no one Medication of its document, fhirr4:medicationNote for a medication's note, fhirr4:codingNotCarried for each coding with no system, a system coding-system-table.rq gives no row, or no code, fhirr4:ndcNotNormalised for each NDC no 11-digit code can be made of, of a medication or of a Medication a reference resolves to, fhirr4:medicationDosageRepeated for each dosage text after the first, fhirr4:dosageElementNotCarried for each dose quantity of a dosage after its first, fhirr4:courseOfTherapyTypeNotMapped for a course of therapy's coding outside FHIR's three codes and its text where none is carried, fhirr4:expectedSupplyDurationNotInUnitOfTime for a supply duration in no unit of time, fhirr4:medicationDateNotCarried for an authoredOn, effective[x] or dosage bound that is no date, and fhirr4:expectedSupplyDurationBound for its comparator, at paths the source accounting carries for the other kinds or where they hold one value; for a MedicationDispense, only the reference, the note and the codings."
     },
     {
       "@id": "in/sparql/medication-dispense-findings.rq",
       "@type": "File",
       "name": "Findings: what a MedicationDispense's mapping leaves behind",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "5638",
-      "sha256": "7f9ba163ed8d1b34049df75b7679338016e413456bfd27dd3ed0cad9206eb1e0",
+      "contentSize": "6442",
+      "sha256": "91b6e1eb402068422cdb57d3f6ab87001cc8e1867d96904edc8acf583f034309",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "Reports fhirr4:medicationDispenseElementNotCarried for each element of a dispense no Cascade predicate carries and for a quantity or days' supply with a comparator, fhirr4:medicationNumberNotCarried for a quantity or days' supply in no decimal form, fhirr4:dispenseDaysSupplyNotInUnitOfTime for a days' supply in no UCUM unit of time, and fhirr4:doseUnitCodeOutsideUcum for a quantity whose unit code is not UCUM's."
+      "description": "Reports fhirr4:medicationDispenseElementNotCarried for each element of a dispense no Cascade predicate carries and for a quantity or days' supply with a comparator, fhirr4:medicationNumberNotCarried for a quantity or days' supply in no decimal form, fhirr4:dispenseDaysSupplyNotInUnitOfTime for a days' supply in no UCUM unit of time, fhirr4:doseUnitCodeOutsideUcum for a quantity whose unit code is not UCUM's, and fhirr4:medicationDateNotCarried for a whenPrepared or whenHandedOver that is no date."
     },
     {
       "@id": "in/sparql/medication-dispense-prescription-findings.rq",
       "@type": "File",
       "name": "Findings: a dispense's prescription that names no record",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "4361",
-      "sha256": "6dd7f4068dd90bc669eb496e67726060108c32282d3c8be4916ae138cf94b7c7",
+      "contentSize": "4412",
+      "sha256": "a3960bff4d7e1b73721611e3154ae0c9e50bb43a11b3b74a2b140bc892c07205",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2610,8 +2610,8 @@
       "@type": "File",
       "name": "Findings: a report's result that names no record",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "5473",
-      "sha256": "7e553f7b5c8851fceb53fc06f87dd9f21af8719eea050b440ab7851352c2a657",
+      "contentSize": "5524",
+      "sha256": "72f9dfdecf964d55066cb600d2eb454b01bbeb3760c70b8a5c86ad2805c34fc7",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2658,8 +2658,8 @@
       "@type": "File",
       "name": "FHIR R4 JSON gaps",
       "encodingFormat": "text/turtle",
-      "contentSize": "22253",
-      "sha256": "a56025212d5afc9585a884c86331d8d040bcb5c9444c332cdf277c9bb99673e6",
+      "contentSize": "22630",
+      "sha256": "e1d728f142144aa707a6c76f51783b1b91460efd76ee9ca865a432dc97f8cd08",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -9873,8 +9873,8 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "What a record is, reports and notes, medication dispenses, the two envelopes, how a record is named, JSON as FHIR writes it, the schema, the versions in and out of scope, and what is known about the committed inputs. Read from hl7.org/fhir/R4/ on 2026-09-27, reports and notes on 2026-10-30, medication dispenses on 2026-10-31.",
-      "contentSize": "34024",
-      "sha256": "fb4a36cf5c12d8121f1977458f7b5273276f0ce3658f7b72d8a015c03175e92d"
+      "contentSize": "34824",
+      "sha256": "ba179c8d133c114bef10559e1ab80e4ac487f5c2cb236c5f1388e655afc789ea"
     },
     {
       "@id": "fixtures/CLAUDE.md",

@@ -14,8 +14,8 @@ PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # report's version, RO's "has member", never a version. A result names an
 # Observation of its document by the urn:uuid exactly one entry holds as its
 # fullUrl, that entry's record, or one on the report's server, by a reference
-# Observation/<id>, or the server's base, "/" and that, a version's /_history/
-# dropped, from an entry whose fullUrl is no urn:uuid, as record.rq names a
+# Observation/<id> from an entry whose fullUrl is no urn:uuid, or the server's base,
+# "/" and that from any entry, a version's /_history/ dropped, as record.rq names a
 # record from its server, whether or not this document holds it. Either names
 # a record only where each Observation it names that this document holds is
 # one: a lab result, a variant or a diagnostic implication, never a panel. As
@@ -105,7 +105,7 @@ WHERE {
     FILTER (?key = ?written)
   }
   BIND (IF(BOUND(?heldAtKey), IF(?heldAtKey = 1, CONCAT(?heldSelector, "/resource"), 1/0),
-           IF(BOUND(?server) && !STRSTARTS(COALESCE(?fullUrl, ""), "urn:uuid:")
+           IF(BOUND(?server) && (STRSTARTS(?unversioned, CONCAT(?server, "/")) || !STRSTARTS(COALESCE(?fullUrl, ""), "urn:uuid:"))
               && REGEX(?relative, "^Observation/[A-Za-z0-9.-]{1,64}$"), "", 1/0)) AS ?target)
   BIND (STRAFTER(?relative, "Observation/") AS ?resultId)
   BIND (IF(BOUND(?containedTarget),

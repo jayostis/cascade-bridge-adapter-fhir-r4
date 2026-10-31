@@ -288,6 +288,46 @@ WHERE {
     }
     BIND (fhirr4:medicationNumberNotCarried AS ?gap)
   }
+  UNION
+  {
+    {
+      ?resource xyz:effectiveDateTime ?value .
+      BIND ("/effectiveDateTime" AS ?step)
+    }
+    UNION
+    {
+      ?resource xyz:effectivePeriod ?period . ?period ?edge ?value .
+      VALUES (?edge ?edgeStep) { (xyz:start "/effectivePeriod/start") (xyz:end "/effectivePeriod/end") }
+      BIND (?edgeStep AS ?step)
+    }
+    UNION
+    {
+      ?resource xyz:authoredOn ?value .
+      BIND ("/authoredOn" AS ?step)
+    }
+    UNION
+    {
+      ?resource ?boundsMember ?boundsDosages .
+      VALUES (?boundsMember ?boundsStep) {
+        (xyz:dosage "/dosage/")
+        (xyz:dosageInstruction "/dosageInstruction/")
+      }
+      ?boundsDosages ?boundsDosageSlot ?boundsDosage .
+      ?boundsDosage xyz:timing ?boundsTiming . ?boundsTiming xyz:repeat ?boundsRepeat .
+      ?boundsRepeat xyz:boundsPeriod ?bounds . ?bounds ?boundsEdge ?value .
+      VALUES (?boundsEdge ?boundsEdgeStep) { (xyz:start "/start") (xyz:end "/end") }
+      BIND (CONCAT(?boundsStep, STR(xsd:integer(STRAFTER(STR(?boundsDosageSlot), "#_")) - 1), "/timing/repeat/boundsPeriod",
+                   ?boundsEdgeStep) AS ?step)
+    }
+    BIND (STR(?value) AS ?written)
+    FILTER (!(REGEX(?written, "^[0-9]{4}$")
+      || REGEX(?written, "^[0-9]{4}-(0[1-9]|1[0-2])$")
+      || (REGEX(?written, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$") && COALESCE(isLiteral(xsd:date(?written)), false))
+      || (REGEX(?written, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(Z|[+-][0-9]{2}:[0-9]{2})?$")
+          && COALESCE(isLiteral(xsd:dateTime(CONCAT(SUBSTR(?written, 1, 16), ":00", SUBSTR(?written, 17)))), false))
+      || (REGEX(?written, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T") && COALESCE(isLiteral(xsd:dateTime(?written)), false))))
+    BIND (fhirr4:medicationDateNotCarried AS ?gap)
+  }
   FILTER (IF(?type = "Medication",
              STRSTARTS(?step, "/code/") && EXISTS {
                ?resolving fhirr4:medicationReferenceFrom ?from ;

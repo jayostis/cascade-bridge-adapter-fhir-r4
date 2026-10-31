@@ -311,6 +311,12 @@ fhirr4:medicationNumberNotCarried a skos:Concept ;
   skos:broader bridge:carriedWithLoss ;
   sh:resultSeverity sh:Warning .
 
+fhirr4:medicationDateNotCarried a skos:Concept ;
+  skos:prefLabel "A date or time of a medication, a prescription's, a use's, a dosage bound's or a dispense's, is a date that does not exist or in no form FHIR's date, dateTime or instant allows, so it is not carried."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:carriedWithLoss ;
+  sh:resultSeverity sh:Warning .
+
 fhirr4:dosageRepeatPeriodUnitNotCarried a skos:Concept ;
   skos:prefLabel "A dosage's timing repeat states a period unit outside the seven UCUM units of time FHIR's code set holds (s, min, h, d, wk, mo, a), so it is not carried."@en ;
   skos:inScheme fhirr4:gaps ;

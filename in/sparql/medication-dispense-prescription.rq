@@ -10,9 +10,9 @@ PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # record, one for each reference, on the dispense's version. A reference names a
 # MedicationRequest of its document by the urn:uuid exactly one entry holds as its
 # fullUrl, that entry's record, or one on the dispense's server, by a reference
-# MedicationRequest/<id>, or the server's base, "/" and that, a version's /_history/
-# dropped, from an entry whose fullUrl is no urn:uuid, as record.rq names a record
-# from its server, whether or not this document holds it. As report-results.rq
+# MedicationRequest/<id> from an entry whose fullUrl is no urn:uuid, or the server's
+# base, "/" and that from any entry, a version's /_history/ dropped, as record.rq
+# names a record from its server, whether or not this document holds it. As report-results.rq
 # resolves a result, MedicationRequest/<id> naming an entry held under a urn:uuid,
 # or an id two entries hold a MedicationRequest under, names none; "#" and an id
 # names the record of the MedicationRequest the dispense's resource contains under
@@ -95,7 +95,7 @@ WHERE {
     }
   }
   BIND (IF(STRSTARTS(?written, "urn:uuid:"), COALESCE(?heldSelector, 1/0),
-           IF(BOUND(?server) && !STRSTARTS(COALESCE(?fullUrl, ""), "urn:uuid:")
+           IF(BOUND(?server) && (STRSTARTS(?unversioned, CONCAT(?server, "/")) || !STRSTARTS(COALESCE(?fullUrl, ""), "urn:uuid:"))
               && REGEX(?relative, "^MedicationRequest/[A-Za-z0-9.-]{1,64}$"), "", 1/0)) AS ?target)
   BIND (STRAFTER(?relative, "MedicationRequest/") AS ?requestId)
   BIND (?namesContained || (BOUND(?target) && IF(?target != "",

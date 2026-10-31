@@ -174,11 +174,11 @@ WHERE {
       BIND (CONCAT("#dosage-", STRAFTER(STR(?dosageSlot), "#_")) AS ?suffix)
     }
     BIND (IF(REGEX(?when, "^[0-9]{4}$"), STRDT(?when, xsd:gYear),
-             IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}$"), STRDT(?when, xsd:gYearMonth),
-             IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"), STRDT(?when, xsd:date),
-             IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(Z|[+-][0-9]{2}:[0-9]{2})?$"), STRDT(CONCAT(SUBSTR(?when, 1, 16), ":00", SUBSTR(?when, 17)), xsd:dateTime),
-             IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T"), STRDT(?when, xsd:dateTime), 1/0))))) AS ?value)
-    BIND (IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(Z|[+-][0-9]{2}:[0-9]{2})?$"), ?when, 1/0) AS ?writtenTime)
+             IF(REGEX(?when, "^[0-9]{4}-(0[1-9]|1[0-2])$"), STRDT(?when, xsd:gYearMonth),
+             IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$") && isLiteral(xsd:date(?when)), STRDT(?when, xsd:date),
+             IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(Z|[+-][0-9]{2}:[0-9]{2})?$") && isLiteral(xsd:dateTime(CONCAT(SUBSTR(?when, 1, 16), ":00", SUBSTR(?when, 17)))), STRDT(CONCAT(SUBSTR(?when, 1, 16), ":00", SUBSTR(?when, 17)), xsd:dateTime),
+             IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T") && isLiteral(xsd:dateTime(?when)), STRDT(?when, xsd:dateTime), 1/0))))) AS ?value)
+    BIND (IF(BOUND(?value) && REGEX(?when, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(Z|[+-][0-9]{2}:[0-9]{2})?$"), ?when, 1/0) AS ?writtenTime)
   }
   UNION
   {
