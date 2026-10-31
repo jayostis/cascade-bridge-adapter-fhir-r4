@@ -2,166 +2,241 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:b935026dba4a2cecdf70aa545c1015ec a oa:FragmentSelector ;
+_:fa50c4e6273c115b6cbed7f87ef91a3f a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/2" .
-_:bd4151761aa1128206a76f3ac58b684 oa:hasSource <../in/bundle-medication-dispense-prescriptions-not-named.json> .
-_:b935026dba4a2cecdf70aa545c1015ec oa:refinedBy _:d7536990f412cfb9234655b652aeab2 .
-_:d7536990f412cfb9234655b652aeab2 a oa:FragmentSelector ;
+_:fb272d2f29883c3288277817e27d4617 oa:hasSource <../in/bundle-medication-dispense-prescriptions-not-named.json> .
+_:fa50c4e6273c115b6cbed7f87ef91a3f oa:refinedBy _:d8c2818311ed668a95bf8ef8e5987025 .
+_:d8c2818311ed668a95bf8ef8e5987025 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/id" .
-_:bd4151761aa1128206a76f3ac58b684 oa:hasSelector _:b935026dba4a2cecdf70aa545c1015ec .
-_:f1b1d08f0d302b73e744e5e8845e3f2 oa:hasTarget _:bd4151761aa1128206a76f3ac58b684 ;
+_:fb272d2f29883c3288277817e27d4617 oa:hasSelector _:fa50c4e6273c115b6cbed7f87ef91a3f .
+_:dda80dbb90c5c2cee42445b78b2a5f00 oa:hasTarget _:fb272d2f29883c3288277817e27d4617 ;
 	sh:resultSeverity sh:Info ;
 	a oa:Annotation ;
 	oa:hasBody fhirr4:resourceIdRepeated ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "medrx-twice" .
-_:ab68e13f10144ee32a19900cbe2f873a a oa:FragmentSelector ;
+_:f638f816d34ca2b1e88c34207f37a2b5 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/3" .
-_:fb863b43dffc96a4281c839a506a9526 oa:hasSource <../in/bundle-medication-dispense-prescriptions-not-named.json> .
-_:ab68e13f10144ee32a19900cbe2f873a oa:refinedBy _:c27bb4098beab4c92f056866c2c821c2 .
-_:c27bb4098beab4c92f056866c2c821c2 a oa:FragmentSelector ;
+_:f63daf664ef4eb7e1c18c0ce2f4b1dbb oa:hasSource <../in/bundle-medication-dispense-prescriptions-not-named.json> .
+_:f638f816d34ca2b1e88c34207f37a2b5 oa:refinedBy _:a41503a8d3db0efcd8cc8ab8a828fbc8 .
+_:a41503a8d3db0efcd8cc8ab8a828fbc8 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/id" .
-_:fb863b43dffc96a4281c839a506a9526 oa:hasSelector _:ab68e13f10144ee32a19900cbe2f873a .
-_:a0f6d07cdb2cad6c9d9f3ca508b3f7b oa:hasTarget _:fb863b43dffc96a4281c839a506a9526 ;
+_:f63daf664ef4eb7e1c18c0ce2f4b1dbb oa:hasSelector _:f638f816d34ca2b1e88c34207f37a2b5 .
+_:dff5ce5bd837dc249b96a08af3c713b4 oa:hasTarget _:f63daf664ef4eb7e1c18c0ce2f4b1dbb ;
 	sh:resultSeverity sh:Info ;
 	a oa:Annotation ;
 	oa:hasBody fhirr4:resourceIdRepeated ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "medrx-twice" .
-_:e093ac6d1aa2df8e38c6b13680174d82 a oa:FragmentSelector ;
+_:ac27e56444132b15ffbd74f077f970e8 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/4" .
-_:c6b0575dd24a462626c7c8dc864621f8 oa:hasSource <../in/bundle-medication-dispense-prescriptions-not-named.json> .
-_:e093ac6d1aa2df8e38c6b13680174d82 oa:refinedBy _:f1e2b670ecfd4ad07b759b089043c722 .
-_:f1e2b670ecfd4ad07b759b089043c722 a oa:FragmentSelector ;
+_:c13876f349ec7fc8735b90ec8f9679e7 oa:hasSource <../in/bundle-medication-dispense-prescriptions-not-named.json> .
+_:ac27e56444132b15ffbd74f077f970e8 oa:refinedBy _:e8faf463cd4afa1bf05493ee11fde426 .
+_:e8faf463cd4afa1bf05493ee11fde426 a oa:FragmentSelector ;
+	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/fullUrl" .
+_:c13876f349ec7fc8735b90ec8f9679e7 oa:hasSelector _:ac27e56444132b15ffbd74f077f970e8 .
+_:d4d22a11b52df2fa6a1a1b047b1bb4f6 oa:hasTarget _:c13876f349ec7fc8735b90ec8f9679e7 ;
+	sh:resultSeverity sh:Info ;
+	a oa:Annotation ;
+	oa:hasBody fhirr4:resourceIdRepeated ;
+	oa:motivatedBy oa:classifying ;
+	sh:value "urn:uuid:5d7f9b1c-3e4a-4c60-8b2d-6a8c0e2f4b71" .
+_:e7af5ab368a4f754c8aba9245b4e0459 a oa:FragmentSelector ;
+	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/entry/5" .
+_:cfd75789632f38c20a907ca8e1f04bd8 oa:hasSource <../in/bundle-medication-dispense-prescriptions-not-named.json> .
+_:e7af5ab368a4f754c8aba9245b4e0459 oa:refinedBy _:a0a025ac436637faf0a515a8b7075d90 .
+_:a0a025ac436637faf0a515a8b7075d90 a oa:FragmentSelector ;
+	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/fullUrl" .
+_:cfd75789632f38c20a907ca8e1f04bd8 oa:hasSelector _:e7af5ab368a4f754c8aba9245b4e0459 .
+_:f15ff8f002fc2d5f5be6d7d0b9de0204 oa:hasTarget _:cfd75789632f38c20a907ca8e1f04bd8 ;
+	sh:resultSeverity sh:Info ;
+	a oa:Annotation ;
+	oa:hasBody fhirr4:resourceIdRepeated ;
+	oa:motivatedBy oa:classifying ;
+	sh:value "urn:uuid:5d7f9b1c-3e4a-4c60-8b2d-6a8c0e2f4b71" .
+_:dcb842c7967a1d9a390d8ce17d7cd54d a oa:FragmentSelector ;
+	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/entry/6" .
+_:c771d2b32ee86e3236bcb4a7ad0b4a4e oa:hasSource <../in/bundle-medication-dispense-prescriptions-not-named.json> .
+_:dcb842c7967a1d9a390d8ce17d7cd54d oa:refinedBy _:bd5517ce99a3290e5acd02837b34ee68 .
+_:bd5517ce99a3290e5acd02837b34ee68 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/resourceType" .
-_:c6b0575dd24a462626c7c8dc864621f8 oa:hasSelector _:e093ac6d1aa2df8e38c6b13680174d82 .
-_:b9918b1d49e246f8b4d965df5ffa6242 oa:hasTarget _:c6b0575dd24a462626c7c8dc864621f8 ;
+_:c771d2b32ee86e3236bcb4a7ad0b4a4e oa:hasSelector _:dcb842c7967a1d9a390d8ce17d7cd54d .
+_:b6defa32d52c4ba6a6c3638e22435ef7 oa:hasTarget _:c771d2b32ee86e3236bcb4a7ad0b4a4e ;
 	sh:resultSeverity sh:Warning ;
 	a oa:Annotation ;
 	oa:hasBody fhirr4:resourceTypeNotMapped ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "ServiceRequest" .
-_:a5823ba81af3629e157d20e82e7f9051 a oa:FragmentSelector ;
+_:f2929f46111b0b1624b42aba60016517 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/entry/5" .
-_:c2bcfdb130628cde321da852d2c61ae3 oa:hasSource <../in/bundle-medication-dispense-prescriptions-not-named.json> .
-_:a5823ba81af3629e157d20e82e7f9051 oa:refinedBy _:c26508f6dd3ecb25a1fa5fe1a9aadb9d .
-_:c26508f6dd3ecb25a1fa5fe1a9aadb9d a oa:FragmentSelector ;
+	rdf:value "/entry/7" .
+_:d522fb304c787623ae2163b88e56795a oa:hasSource <../in/bundle-medication-dispense-prescriptions-not-named.json> .
+_:f2929f46111b0b1624b42aba60016517 oa:refinedBy _:aaa3bca89cb8489b978adc3760455431 .
+_:aaa3bca89cb8489b978adc3760455431 a oa:FragmentSelector ;
+	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/resource/authorizingPrescription/8/reference" .
+_:d522fb304c787623ae2163b88e56795a oa:hasSelector _:f2929f46111b0b1624b42aba60016517 .
+_:a26a78dd8f0d2c377aa89341588e7274 oa:hasTarget _:d522fb304c787623ae2163b88e56795a .
+_:bfd1afe88ee9377cf3eb3204931bb19f a oa:FragmentSelector ;
+	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/entry/7" .
+_:f0248fa3158d3cbb6d891001a4855ab0 oa:hasSource <../in/bundle-medication-dispense-prescriptions-not-named.json> .
+_:bfd1afe88ee9377cf3eb3204931bb19f oa:refinedBy _:d6da48a7ebbe8f0570cf33dbb1e30325 .
+_:d6da48a7ebbe8f0570cf33dbb1e30325 a oa:FragmentSelector ;
+	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/resource/authorizingPrescription/7/reference" .
+_:f0248fa3158d3cbb6d891001a4855ab0 oa:hasSelector _:bfd1afe88ee9377cf3eb3204931bb19f .
+_:e9c713e4c3e2640f6c62328e47c993ad oa:hasTarget _:f0248fa3158d3cbb6d891001a4855ab0 .
+_:cddc209a4dcc664476d8999a577b0f8 a oa:FragmentSelector ;
+	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/entry/7" .
+_:b105914ea2215799de2195a817474ef3 oa:hasSource <../in/bundle-medication-dispense-prescriptions-not-named.json> .
+_:cddc209a4dcc664476d8999a577b0f8 oa:refinedBy _:e2e235c5a68899a983be32eb0e61d32a .
+_:e2e235c5a68899a983be32eb0e61d32a a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/authorizingPrescription/6/reference" .
-_:c2bcfdb130628cde321da852d2c61ae3 oa:hasSelector _:a5823ba81af3629e157d20e82e7f9051 .
-_:b3a36c0db083958618c9c46cd5faf59f oa:hasTarget _:c2bcfdb130628cde321da852d2c61ae3 .
-_:db99b9d788be4c93f62c4e984ee0623b a oa:FragmentSelector ;
+_:b105914ea2215799de2195a817474ef3 oa:hasSelector _:cddc209a4dcc664476d8999a577b0f8 .
+_:aa39174c8e2f2ef51c0ecea5e95f2c95 oa:hasTarget _:b105914ea2215799de2195a817474ef3 .
+_:e8af2fa729a33ac22fb8c29195125f94 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/entry/5" .
-_:f33d383a0917256020693b74764863d4 oa:hasSource <../in/bundle-medication-dispense-prescriptions-not-named.json> .
-_:db99b9d788be4c93f62c4e984ee0623b oa:refinedBy _:eb143f76523791f4c3dfd67c83319185 .
-_:eb143f76523791f4c3dfd67c83319185 a oa:FragmentSelector ;
+	rdf:value "/entry/7" .
+_:df7b620834e6d250a776ecbe2f690482 oa:hasSource <../in/bundle-medication-dispense-prescriptions-not-named.json> .
+_:e8af2fa729a33ac22fb8c29195125f94 oa:refinedBy _:ab39f13d594bf8dfd3767e27525e08ca .
+_:ab39f13d594bf8dfd3767e27525e08ca a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/authorizingPrescription/5/reference" .
-_:f33d383a0917256020693b74764863d4 oa:hasSelector _:db99b9d788be4c93f62c4e984ee0623b .
-_:d87a4fde60ae311636f746f03f00b3df oa:hasTarget _:f33d383a0917256020693b74764863d4 .
-_:f9564cbdbed1543264ba7cec60c92eb6 a oa:FragmentSelector ;
+_:df7b620834e6d250a776ecbe2f690482 oa:hasSelector _:e8af2fa729a33ac22fb8c29195125f94 .
+_:e665ac86f105892cccf5aaeb14ae55bf oa:hasTarget _:df7b620834e6d250a776ecbe2f690482 .
+_:b11758cb47f8d2f6b38a7843e35429d a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/entry/5" .
-_:eb42b0ed5278479bf60762fe19de7a93 oa:hasSource <../in/bundle-medication-dispense-prescriptions-not-named.json> .
-_:f9564cbdbed1543264ba7cec60c92eb6 oa:refinedBy _:ab8d254fe98f29caeaa845e310e7d282 .
-_:ab8d254fe98f29caeaa845e310e7d282 a oa:FragmentSelector ;
+	rdf:value "/entry/7" .
+_:c193a7b225e4ce1c4db9d6dcfb9b6f7e oa:hasSource <../in/bundle-medication-dispense-prescriptions-not-named.json> .
+_:b11758cb47f8d2f6b38a7843e35429d oa:refinedBy _:f45c735f78870ad8013a688dc0c32b36 .
+_:f45c735f78870ad8013a688dc0c32b36 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/authorizingPrescription/4/reference" .
-_:eb42b0ed5278479bf60762fe19de7a93 oa:hasSelector _:f9564cbdbed1543264ba7cec60c92eb6 .
-_:fdd47043a5ea3f3d8ba696058f3d19ce oa:hasTarget _:eb42b0ed5278479bf60762fe19de7a93 .
-_:a4baa2787d83e6ae5a3422fff3881443 a oa:FragmentSelector ;
+_:c193a7b225e4ce1c4db9d6dcfb9b6f7e oa:hasSelector _:b11758cb47f8d2f6b38a7843e35429d .
+_:f532a7b675c237f2073cc7b2caeb5aa7 oa:hasTarget _:c193a7b225e4ce1c4db9d6dcfb9b6f7e .
+_:a74b4c1d2eefe8e415dd837fd5928632 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/entry/5" .
-_:b604d984183a91c378c187228028bc8d oa:hasSource <../in/bundle-medication-dispense-prescriptions-not-named.json> .
-_:a4baa2787d83e6ae5a3422fff3881443 oa:refinedBy _:ce276891fccd835d0d68715685cb5f6f .
-_:ce276891fccd835d0d68715685cb5f6f a oa:FragmentSelector ;
+	rdf:value "/entry/7" .
+_:f22f20bf7b5c9f56b4462b8040b883 oa:hasSource <../in/bundle-medication-dispense-prescriptions-not-named.json> .
+_:a74b4c1d2eefe8e415dd837fd5928632 oa:refinedBy _:ca3684ef3c0f4951595a9517e98bf20e .
+_:ca3684ef3c0f4951595a9517e98bf20e a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/authorizingPrescription/3/reference" .
-_:b604d984183a91c378c187228028bc8d oa:hasSelector _:a4baa2787d83e6ae5a3422fff3881443 .
-_:efb7ee67db2f88b37aa999fa4005aa54 oa:hasTarget _:b604d984183a91c378c187228028bc8d .
-_:fae6d73cc6193ebb53baf3310d60f7c8 a oa:FragmentSelector ;
+_:f22f20bf7b5c9f56b4462b8040b883 oa:hasSelector _:a74b4c1d2eefe8e415dd837fd5928632 .
+_:d87af8a1186e5540aaef2f32a3951e20 oa:hasTarget _:f22f20bf7b5c9f56b4462b8040b883 .
+_:e9b3fa8e02734b8129f38737e3179c89 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/entry/5" .
-_:b963f716dd211579650c194198071fd0 oa:hasSource <../in/bundle-medication-dispense-prescriptions-not-named.json> .
-_:fae6d73cc6193ebb53baf3310d60f7c8 oa:refinedBy _:a668d63bc3ef369dd84e370e99fff894 .
-_:a668d63bc3ef369dd84e370e99fff894 a oa:FragmentSelector ;
+	rdf:value "/entry/7" .
+_:bb7e58f8fe40f9465ed185c1fa0ff2a7 oa:hasSource <../in/bundle-medication-dispense-prescriptions-not-named.json> .
+_:e9b3fa8e02734b8129f38737e3179c89 oa:refinedBy _:fd64833bf762443ed2dfec86ec5f13c7 .
+_:fd64833bf762443ed2dfec86ec5f13c7 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/authorizingPrescription/2/reference" .
-_:b963f716dd211579650c194198071fd0 oa:hasSelector _:fae6d73cc6193ebb53baf3310d60f7c8 .
-_:b81d4e296f4f4a3d78c6912b0466c9a4 oa:hasTarget _:b963f716dd211579650c194198071fd0 .
-_:d49cd62e2ad076a8efca0a15170d9020 a oa:FragmentSelector ;
+_:bb7e58f8fe40f9465ed185c1fa0ff2a7 oa:hasSelector _:e9b3fa8e02734b8129f38737e3179c89 .
+_:c73344524865c7445e59ca87af08eb7e oa:hasTarget _:bb7e58f8fe40f9465ed185c1fa0ff2a7 .
+_:fd838ea461e3e62aa58bc59f0ca7deaf a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/entry/5" .
-_:ca79267a3b44b71505044983ae303228 oa:hasSource <../in/bundle-medication-dispense-prescriptions-not-named.json> .
-_:d49cd62e2ad076a8efca0a15170d9020 oa:refinedBy _:e91af9a3a2e77d691b07fe0d9cab9a71 .
-_:e91af9a3a2e77d691b07fe0d9cab9a71 a oa:FragmentSelector ;
+	rdf:value "/entry/7" .
+_:d0eb94755d01ea277425ec11620ad3e1 oa:hasSource <../in/bundle-medication-dispense-prescriptions-not-named.json> .
+_:fd838ea461e3e62aa58bc59f0ca7deaf oa:refinedBy _:b9cfa72e2d9790ff1d4aae0850546d08 .
+_:b9cfa72e2d9790ff1d4aae0850546d08 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/authorizingPrescription/1/reference" .
-_:ca79267a3b44b71505044983ae303228 oa:hasSelector _:d49cd62e2ad076a8efca0a15170d9020 .
-_:c3e89b61dadc8e3d48cfb14cc9d63f77 oa:hasTarget _:ca79267a3b44b71505044983ae303228 .
-_:b3a36c0db083958618c9c46cd5faf59f sh:resultSeverity sh:Warning .
-_:d87a4fde60ae311636f746f03f00b3df sh:resultSeverity sh:Warning .
-_:fdd47043a5ea3f3d8ba696058f3d19ce sh:resultSeverity sh:Warning .
-_:efb7ee67db2f88b37aa999fa4005aa54 sh:resultSeverity sh:Warning .
-_:b81d4e296f4f4a3d78c6912b0466c9a4 sh:resultSeverity sh:Warning .
-_:c3e89b61dadc8e3d48cfb14cc9d63f77 sh:resultSeverity sh:Warning .
-_:b3a36c0db083958618c9c46cd5faf59f a oa:Annotation ;
+_:d0eb94755d01ea277425ec11620ad3e1 oa:hasSelector _:fd838ea461e3e62aa58bc59f0ca7deaf .
+_:b7e85bc3acb9b645f930b2ac886eab8f oa:hasTarget _:d0eb94755d01ea277425ec11620ad3e1 .
+_:a26a78dd8f0d2c377aa89341588e7274 sh:resultSeverity sh:Warning .
+_:e9c713e4c3e2640f6c62328e47c993ad sh:resultSeverity sh:Warning .
+_:aa39174c8e2f2ef51c0ecea5e95f2c95 sh:resultSeverity sh:Warning .
+_:e665ac86f105892cccf5aaeb14ae55bf sh:resultSeverity sh:Warning .
+_:f532a7b675c237f2073cc7b2caeb5aa7 sh:resultSeverity sh:Warning .
+_:d87af8a1186e5540aaef2f32a3951e20 sh:resultSeverity sh:Warning .
+_:c73344524865c7445e59ca87af08eb7e sh:resultSeverity sh:Warning .
+_:b7e85bc3acb9b645f930b2ac886eab8f sh:resultSeverity sh:Warning .
+_:a26a78dd8f0d2c377aa89341588e7274 a oa:Annotation ;
+	oa:hasBody fhirr4:authorizingPrescriptionNotNamed ;
+	oa:motivatedBy oa:classifying ;
+	sh:value "#med-c" .
+_:e9c713e4c3e2640f6c62328e47c993ad a oa:Annotation ;
+	oa:hasBody fhirr4:authorizingPrescriptionNotNamed ;
+	oa:motivatedBy oa:classifying ;
+	sh:value "urn:uuid:5d7f9b1c-3e4a-4c60-8b2d-6a8c0e2f4b71" .
+_:aa39174c8e2f2ef51c0ecea5e95f2c95 a oa:Annotation ;
 	oa:hasBody fhirr4:authorizingPrescriptionNotNamed ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "ServiceRequest/sr-1" .
-_:d87a4fde60ae311636f746f03f00b3df a oa:Annotation ;
+_:e665ac86f105892cccf5aaeb14ae55bf a oa:Annotation ;
 	oa:hasBody fhirr4:authorizingPrescriptionNotNamed ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "urn:uuid:e4a6c8d0-2f1b-4a37-8c59-0d7b3e1f6a28" .
-_:fdd47043a5ea3f3d8ba696058f3d19ce a oa:Annotation ;
+_:f532a7b675c237f2073cc7b2caeb5aa7 a oa:Annotation ;
 	oa:hasBody fhirr4:authorizingPrescriptionNotNamed ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "https://other.example/fhir/MedicationRequest/medrx-elsewhere" .
-_:efb7ee67db2f88b37aa999fa4005aa54 a oa:Annotation ;
+_:d87af8a1186e5540aaef2f32a3951e20 a oa:Annotation ;
 	oa:hasBody fhirr4:authorizingPrescriptionNotNamed ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "MedicationRequest/medrx-twice" .
-_:b81d4e296f4f4a3d78c6912b0466c9a4 a oa:Annotation ;
+_:c73344524865c7445e59ca87af08eb7e a oa:Annotation ;
 	oa:hasBody fhirr4:authorizingPrescriptionNotNamed ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "MedicationRequest/medrx-held-under-urn" .
-_:c3e89b61dadc8e3d48cfb14cc9d63f77 a oa:Annotation ;
+_:b7e85bc3acb9b645f930b2ac886eab8f a oa:Annotation ;
 	oa:hasBody fhirr4:authorizingPrescriptionNotNamed ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "urn:uuid:9a1b2c3d-4e5f-4a6b-8c7d-0e1f2a3b4c5d" .
-_:d313afe0e9dfac83c964dee28f6f168f a oa:FragmentSelector ;
+_:cdbb79a36761a4d7394d3fd0227e7307 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/entry/5" .
-_:ac9a5d4996afd10c67374d9279a7f471 oa:hasSource <../in/bundle-medication-dispense-prescriptions-not-named.json> .
-_:d313afe0e9dfac83c964dee28f6f168f oa:refinedBy _:c6271e5662426ed7a226795adfd7fc32 .
-_:c6271e5662426ed7a226795adfd7fc32 a oa:FragmentSelector ;
+	rdf:value "/entry/7" .
+_:cc8be8074e904db1b3da6532e8e93554 oa:hasSource <../in/bundle-medication-dispense-prescriptions-not-named.json> .
+_:cdbb79a36761a4d7394d3fd0227e7307 oa:refinedBy _:cb193edcea0cbc84e5f686b38e3097d8 .
+_:cb193edcea0cbc84e5f686b38e3097d8 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/resource/authorizingPrescription/7/display" .
-_:ac9a5d4996afd10c67374d9279a7f471 oa:hasSelector _:d313afe0e9dfac83c964dee28f6f168f .
-_:a0b84e9e77c28fe1192f9b8c7a9de1a1 oa:hasTarget _:ac9a5d4996afd10c67374d9279a7f471 ;
+	rdf:value "/resource/authorizingPrescription/9/display" .
+_:cc8be8074e904db1b3da6532e8e93554 oa:hasSelector _:cdbb79a36761a4d7394d3fd0227e7307 .
+_:fd9b4787fb607d16976513b14ea0b626 oa:hasTarget _:cc8be8074e904db1b3da6532e8e93554 ;
 	sh:resultSeverity sh:Info ;
 	a oa:Annotation ;
 	oa:hasBody fhirr4:referenceDisplay ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "A prescription with no reference" .
-_:db515ed94a6c389dde36be24c827bf2d a oa:FragmentSelector ;
+_:a14fa6176cb05ebf5cdb24247e5009ba a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/entry/6" .
-_:aee6f135ec7dadc5fe48cfa65984558a oa:hasSource <../in/bundle-medication-dispense-prescriptions-not-named.json> .
-_:db515ed94a6c389dde36be24c827bf2d oa:refinedBy _:b7f4909086d4d1f4d0830f7e782ef308 .
-_:b7f4909086d4d1f4d0830f7e782ef308 a oa:FragmentSelector ;
+	rdf:value "/entry/7" .
+_:efdb8f9f6e61479449458e44423ddab3 oa:hasSource <../in/bundle-medication-dispense-prescriptions-not-named.json> .
+_:a14fa6176cb05ebf5cdb24247e5009ba oa:refinedBy _:a40ff36d2088d81f214e8dfebb03d52f .
+_:a40ff36d2088d81f214e8dfebb03d52f a oa:FragmentSelector ;
+	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/resource/contained/1/resourceType" .
+_:efdb8f9f6e61479449458e44423ddab3 oa:hasSelector _:a14fa6176cb05ebf5cdb24247e5009ba .
+_:aaab4f9e538b63645e01e8a7cf713d82 oa:hasTarget _:efdb8f9f6e61479449458e44423ddab3 ;
+	sh:resultSeverity sh:Warning ;
+	a oa:Annotation ;
+	oa:hasBody fhirr4:resourceTypeNotMapped ;
+	oa:motivatedBy oa:classifying ;
+	sh:value "Medication" .
+_:a2eb42fb74668d41e867893417cf7601 a oa:FragmentSelector ;
+	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/entry/8" .
+_:dd1c90acb0a165c595f1178f3d4b3a7 oa:hasSource <../in/bundle-medication-dispense-prescriptions-not-named.json> .
+_:a2eb42fb74668d41e867893417cf7601 oa:refinedBy _:db19c2d78ed1eaf0fa4d27fd7fbdb13 .
+_:db19c2d78ed1eaf0fa4d27fd7fbdb13 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/authorizingPrescription/0/reference" .
-_:aee6f135ec7dadc5fe48cfa65984558a oa:hasSelector _:db515ed94a6c389dde36be24c827bf2d .
-_:b4f746172c08344bd483dfd0de443f2b oa:hasTarget _:aee6f135ec7dadc5fe48cfa65984558a ;
+_:dd1c90acb0a165c595f1178f3d4b3a7 oa:hasSelector _:a2eb42fb74668d41e867893417cf7601 .
+_:cf20136837f42d1df79191260f6fbf34 oa:hasTarget _:dd1c90acb0a165c595f1178f3d4b3a7 ;
 	sh:resultSeverity sh:Warning ;
 	a oa:Annotation ;
 	oa:hasBody fhirr4:authorizingPrescriptionNotNamed ;

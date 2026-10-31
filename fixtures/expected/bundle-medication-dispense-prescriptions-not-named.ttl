@@ -8,69 +8,101 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;LFmYz4Uo4kmnuruPOQEH0RobQ8NAiZfmvaulKGLtork> foaf:familyName "Rivera" ;
+<ni:///sha-256;lL2-pl5l_pVqFdun05ikgFTK28qJbtX4x8_gKmUGuxk> foaf:familyName "Rivera" ;
 	foaf:givenName "Alex" ;
 	cascade:dateOfBirth "1985-03-15"^^xsd:date ;
 	cascade:administrativeGender "female" .
-<urn:uuid:f9298172-ecc8-83d2-8d5a-4abc994f6ca0> a cascade:PatientProfile ;
+<urn:uuid:7ab25679-5713-87e3-a4d3-ebd63dff1240> a cascade:PatientProfile ;
 	cascade:sourceRecordId "pat-urn-1" .
-<ni:///sha-256;LFmYz4Uo4kmnuruPOQEH0RobQ8NAiZfmvaulKGLtork> prov:specializationOf <urn:uuid:f9298172-ecc8-83d2-8d5a-4abc994f6ca0> .
-_:8c66e81e0185222ad809261f250cca75 bridge:arrivedAs <ni:///sha-256;LFmYz4Uo4kmnuruPOQEH0RobQ8NAiZfmvaulKGLtork> ;
-	oa:hasSelector _:7c4dea0ea062909e2a916fbe998513ec ;
-	oa:hasSource <ni:///sha-256;uY6rLp-iH3Hj_rj2-aclJYQQYS0OrjdUa5gbEi9E02w> ;
-	prov:wasDerivedFrom <ni:///sha-256;uY6rLp-iH3Hj_rj2-aclJYQQYS0OrjdUa5gbEi9E02w> ;
-	prov:wasGeneratedBy _:fd68947b39085016d4b88168843583ac .
-_:7c4dea0ea062909e2a916fbe998513ec a oa:FragmentSelector ;
+<ni:///sha-256;lL2-pl5l_pVqFdun05ikgFTK28qJbtX4x8_gKmUGuxk> prov:specializationOf <urn:uuid:7ab25679-5713-87e3-a4d3-ebd63dff1240> .
+_:44450066e3b574ecf6f6e4b24571a65a bridge:arrivedAs <ni:///sha-256;lL2-pl5l_pVqFdun05ikgFTK28qJbtX4x8_gKmUGuxk> ;
+	oa:hasSelector _:ed6ce672808c5cf62e74434a0a09bf77 ;
+	oa:hasSource <ni:///sha-256;r8K35Jc_BwXlBOPWrZJmtPGiTqogPJJOoSsCVuS5YjE> ;
+	prov:wasDerivedFrom <ni:///sha-256;r8K35Jc_BwXlBOPWrZJmtPGiTqogPJJOoSsCVuS5YjE> ;
+	prov:wasGeneratedBy _:63772d6113c608deb30d73f671f15b45 .
+_:ed6ce672808c5cf62e74434a0a09bf77 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/0" .
-<ni:///sha-256;K3GlRiKtcz12twCtAcIGP-HBX9q5f-nAqlTR5kkcwmM> cascade:prescribedOrReported "prescribed" ;
+<ni:///sha-256;ipM9O4h9ePfwNL4ufPPLe9Y-9LwNdqzI-NHEO1_GR5A> cascade:prescribedOrReported "prescribed" ;
 	cascade:drugName "Lisinopril 10 mg tablet" ;
 	cascade:workflowStatus "active" ;
 	cascade:medicationRequestIntent "order" .
-<urn:uuid:08f24f2b-3168-8058-9b7b-e818017da7ce> a cascade:PrescribedOrReportedMedication ;
+<urn:uuid:c405e46e-555c-8b79-8115-37b88fd4a76b> a cascade:PrescribedOrReportedMedication ;
 	cascade:sourceRecordId "medrx-held-under-urn" .
-<ni:///sha-256;K3GlRiKtcz12twCtAcIGP-HBX9q5f-nAqlTR5kkcwmM> prov:specializationOf <urn:uuid:08f24f2b-3168-8058-9b7b-e818017da7ce> ;
-	cascade:patient <urn:uuid:f9298172-ecc8-83d2-8d5a-4abc994f6ca0> .
-_:ffde110627694f8da4d7c1591ac011f5 bridge:arrivedAs <ni:///sha-256;K3GlRiKtcz12twCtAcIGP-HBX9q5f-nAqlTR5kkcwmM> ;
-	oa:hasSelector _:93a65917e769e45e1efcde00e6dcbec9 ;
-	oa:hasSource <ni:///sha-256;uY6rLp-iH3Hj_rj2-aclJYQQYS0OrjdUa5gbEi9E02w> ;
-	prov:wasDerivedFrom <ni:///sha-256;uY6rLp-iH3Hj_rj2-aclJYQQYS0OrjdUa5gbEi9E02w> ;
-	prov:wasGeneratedBy _:fd68947b39085016d4b88168843583ac .
-_:93a65917e769e45e1efcde00e6dcbec9 a oa:FragmentSelector ;
+<ni:///sha-256;ipM9O4h9ePfwNL4ufPPLe9Y-9LwNdqzI-NHEO1_GR5A> prov:specializationOf <urn:uuid:c405e46e-555c-8b79-8115-37b88fd4a76b> ;
+	cascade:patient <urn:uuid:7ab25679-5713-87e3-a4d3-ebd63dff1240> .
+_:fb074d313b1a595ba6648b987c8c8f03 bridge:arrivedAs <ni:///sha-256;ipM9O4h9ePfwNL4ufPPLe9Y-9LwNdqzI-NHEO1_GR5A> ;
+	oa:hasSelector _:e684df6c8e45c80e7affba6f6c42edbb ;
+	oa:hasSource <ni:///sha-256;r8K35Jc_BwXlBOPWrZJmtPGiTqogPJJOoSsCVuS5YjE> ;
+	prov:wasDerivedFrom <ni:///sha-256;r8K35Jc_BwXlBOPWrZJmtPGiTqogPJJOoSsCVuS5YjE> ;
+	prov:wasGeneratedBy _:63772d6113c608deb30d73f671f15b45 .
+_:e684df6c8e45c80e7affba6f6c42edbb a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/1" .
-<ni:///sha-256;UFhxFL3GpfV1sqKlVwE0OB_TmlQ4dEqMGQSqcSZDFHY> cascade:prescribedOrReported "prescribed" ;
+<ni:///sha-256;xdduQYCzckrKyTcmiJsPcxBBpOQyKa0smC681dI14aI> cascade:prescribedOrReported "prescribed" ;
 	cascade:drugName "Lisinopril 10 mg tablet" ;
 	cascade:workflowStatus "active" ;
 	cascade:medicationRequestIntent "order" .
-<urn:uuid:6d1b13bb-4bf1-8da1-a76f-11a03aae40d4> a cascade:PrescribedOrReportedMedication ;
+<urn:uuid:55a35e8c-bde9-8510-99a0-1bdbc6f6eb07> a cascade:PrescribedOrReportedMedication ;
 	cascade:sourceRecordId "medrx-twice" .
-<ni:///sha-256;UFhxFL3GpfV1sqKlVwE0OB_TmlQ4dEqMGQSqcSZDFHY> prov:specializationOf <urn:uuid:6d1b13bb-4bf1-8da1-a76f-11a03aae40d4> ;
+<ni:///sha-256;xdduQYCzckrKyTcmiJsPcxBBpOQyKa0smC681dI14aI> prov:specializationOf <urn:uuid:55a35e8c-bde9-8510-99a0-1bdbc6f6eb07> ;
 	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
-_:fb2713ff5ef31b77d16042863c769768 bridge:arrivedAs <ni:///sha-256;UFhxFL3GpfV1sqKlVwE0OB_TmlQ4dEqMGQSqcSZDFHY> ;
-	oa:hasSelector _:be9f432917c9e6ce9570904595dd2ce3 ;
-	oa:hasSource <ni:///sha-256;uY6rLp-iH3Hj_rj2-aclJYQQYS0OrjdUa5gbEi9E02w> ;
-	prov:wasDerivedFrom <ni:///sha-256;uY6rLp-iH3Hj_rj2-aclJYQQYS0OrjdUa5gbEi9E02w> ;
-	prov:wasGeneratedBy _:fd68947b39085016d4b88168843583ac .
-_:be9f432917c9e6ce9570904595dd2ce3 a oa:FragmentSelector ;
+_:fc89d207d809d3cc8089bb896e204d18 bridge:arrivedAs <ni:///sha-256;xdduQYCzckrKyTcmiJsPcxBBpOQyKa0smC681dI14aI> ;
+	oa:hasSelector _:c6394b46ac2ac2ba0ae0e18f4f763efe ;
+	oa:hasSource <ni:///sha-256;r8K35Jc_BwXlBOPWrZJmtPGiTqogPJJOoSsCVuS5YjE> ;
+	prov:wasDerivedFrom <ni:///sha-256;r8K35Jc_BwXlBOPWrZJmtPGiTqogPJJOoSsCVuS5YjE> ;
+	prov:wasGeneratedBy _:63772d6113c608deb30d73f671f15b45 .
+_:c6394b46ac2ac2ba0ae0e18f4f763efe a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/2" .
-<ni:///sha-256;U29Z_gork1kAi3otr1LXWbMuQ7InNpsF0sgYJKLXYdU> cascade:prescribedOrReported "prescribed" ;
+<ni:///sha-256;qXsewVsQOqDfEXsqqcFvGArJWbdCnSvGb50aKoaQLr0> cascade:prescribedOrReported "prescribed" ;
 	cascade:drugName "Lisinopril 10 mg tablet" ;
 	cascade:workflowStatus "active" ;
 	cascade:medicationRequestIntent "order" .
-<urn:uuid:17967ad5-6a9d-83c7-b23d-9f18994b36e6> a cascade:PrescribedOrReportedMedication ;
+<urn:uuid:1b316802-9050-8f81-8f4b-591f1d93dc02> a cascade:PrescribedOrReportedMedication ;
 	cascade:sourceRecordId "medrx-twice" .
-<ni:///sha-256;U29Z_gork1kAi3otr1LXWbMuQ7InNpsF0sgYJKLXYdU> prov:specializationOf <urn:uuid:17967ad5-6a9d-83c7-b23d-9f18994b36e6> ;
+<ni:///sha-256;qXsewVsQOqDfEXsqqcFvGArJWbdCnSvGb50aKoaQLr0> prov:specializationOf <urn:uuid:1b316802-9050-8f81-8f4b-591f1d93dc02> ;
 	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
-_:95a52e3d1d8fbdcbb2dba8549f668112 bridge:arrivedAs <ni:///sha-256;U29Z_gork1kAi3otr1LXWbMuQ7InNpsF0sgYJKLXYdU> ;
-	oa:hasSelector _:99a38aecfb053d2d4f36b6a2f4167c73 ;
-	oa:hasSource <ni:///sha-256;uY6rLp-iH3Hj_rj2-aclJYQQYS0OrjdUa5gbEi9E02w> ;
-	prov:wasDerivedFrom <ni:///sha-256;uY6rLp-iH3Hj_rj2-aclJYQQYS0OrjdUa5gbEi9E02w> ;
-	prov:wasGeneratedBy _:fd68947b39085016d4b88168843583ac .
-_:99a38aecfb053d2d4f36b6a2f4167c73 a oa:FragmentSelector ;
+_:ebc5df2f1f38c2886247093cd8f6b558 bridge:arrivedAs <ni:///sha-256;qXsewVsQOqDfEXsqqcFvGArJWbdCnSvGb50aKoaQLr0> ;
+	oa:hasSelector _:f0c45b8b8ed022adbdae2003521746d9 ;
+	oa:hasSource <ni:///sha-256;r8K35Jc_BwXlBOPWrZJmtPGiTqogPJJOoSsCVuS5YjE> ;
+	prov:wasDerivedFrom <ni:///sha-256;r8K35Jc_BwXlBOPWrZJmtPGiTqogPJJOoSsCVuS5YjE> ;
+	prov:wasGeneratedBy _:63772d6113c608deb30d73f671f15b45 .
+_:f0c45b8b8ed022adbdae2003521746d9 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/3" .
+<ni:///sha-256;W_kIE61KJ9V16WB3tqbxt8DhAtdrEGri2_dH3bkxyl8> cascade:prescribedOrReported "prescribed" ;
+	cascade:drugName "Lisinopril 10 mg tablet" ;
+	cascade:workflowStatus "active" ;
+	cascade:medicationRequestIntent "order" .
+<urn:uuid:d0903ae7-2625-820b-98d9-412953112dcc> a cascade:PrescribedOrReportedMedication ;
+	cascade:sourceRecordId "medrx-urn-twice-1" .
+<ni:///sha-256;W_kIE61KJ9V16WB3tqbxt8DhAtdrEGri2_dH3bkxyl8> prov:specializationOf <urn:uuid:d0903ae7-2625-820b-98d9-412953112dcc> ;
+	cascade:patient <urn:uuid:7ab25679-5713-87e3-a4d3-ebd63dff1240> .
+_:e64515e16b3a3fa7935820c5223f592 bridge:arrivedAs <ni:///sha-256;W_kIE61KJ9V16WB3tqbxt8DhAtdrEGri2_dH3bkxyl8> ;
+	oa:hasSelector _:1df7c4d360bc0afc00d777e58e4c0984 ;
+	oa:hasSource <ni:///sha-256;r8K35Jc_BwXlBOPWrZJmtPGiTqogPJJOoSsCVuS5YjE> ;
+	prov:wasDerivedFrom <ni:///sha-256;r8K35Jc_BwXlBOPWrZJmtPGiTqogPJJOoSsCVuS5YjE> ;
+	prov:wasGeneratedBy _:63772d6113c608deb30d73f671f15b45 .
+_:1df7c4d360bc0afc00d777e58e4c0984 a oa:FragmentSelector ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/entry/4" .
+<ni:///sha-256;M_6fAMWWq9Hx5Rqjpn1REShoAJcXVabIwJQPWnKcWUg> cascade:prescribedOrReported "prescribed" ;
+	cascade:drugName "Lisinopril 10 mg tablet" ;
+	cascade:workflowStatus "active" ;
+	cascade:medicationRequestIntent "order" .
+<urn:uuid:6198aa5e-be59-8dd4-8198-2e4ea51ca91a> a cascade:PrescribedOrReportedMedication ;
+	cascade:sourceRecordId "medrx-urn-twice-2" .
+<ni:///sha-256;M_6fAMWWq9Hx5Rqjpn1REShoAJcXVabIwJQPWnKcWUg> prov:specializationOf <urn:uuid:6198aa5e-be59-8dd4-8198-2e4ea51ca91a> ;
+	cascade:patient <urn:uuid:7ab25679-5713-87e3-a4d3-ebd63dff1240> .
+_:26b03a339bc7b2d68fc6613edcfba7e4 bridge:arrivedAs <ni:///sha-256;M_6fAMWWq9Hx5Rqjpn1REShoAJcXVabIwJQPWnKcWUg> ;
+	oa:hasSelector _:926021193380d026626af0c72efb5e76 ;
+	oa:hasSource <ni:///sha-256;r8K35Jc_BwXlBOPWrZJmtPGiTqogPJJOoSsCVuS5YjE> ;
+	prov:wasDerivedFrom <ni:///sha-256;r8K35Jc_BwXlBOPWrZJmtPGiTqogPJJOoSsCVuS5YjE> ;
+	prov:wasGeneratedBy _:63772d6113c608deb30d73f671f15b45 .
+_:926021193380d026626af0c72efb5e76 a oa:FragmentSelector ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/entry/5" .
 <ni:///sha-256;R7u0hVm5XO7u89yVnpAODnlbJTeBQQVai-uikvYG2mA> cascade:authorizingPrescription <urn:uuid:763c9279-cf08-8a95-8d89-89d1e9e47707> ;
 	cascade:dispenseHandedOverTime "2026-02-04"^^xsd:date ;
 	cascade:drugName "Lisinopril 10 mg tablet" ;
@@ -84,67 +116,67 @@ _:99a38aecfb053d2d4f36b6a2f4167c73 a oa:FragmentSelector ;
 	cascade:sourceRecordId "meddisp-unnamed-1" .
 <ni:///sha-256;R7u0hVm5XO7u89yVnpAODnlbJTeBQQVai-uikvYG2mA> prov:specializationOf <urn:uuid:4d1bacc7-c225-806d-b545-2f905abc2590> ;
 	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
-_:4f2da4185dad175a7d3cb682686a68d5 bridge:arrivedAs <ni:///sha-256;R7u0hVm5XO7u89yVnpAODnlbJTeBQQVai-uikvYG2mA> .
+_:133965cebb5353bbe1e573b98bce4763 bridge:arrivedAs <ni:///sha-256;R7u0hVm5XO7u89yVnpAODnlbJTeBQQVai-uikvYG2mA> .
 <urn:uuid:763c9279-cf08-8a95-8d89-89d1e9e47707> a cascade:PrescribedOrReportedMedication ;
 	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/MedicationDispense/meddisp-unnamed-1#rx-contained> ;
 	cascade:sourceRecordId "rx-contained" .
 <ni:///sha-256;brLh6Jg_sQct95IrjM2brBn0CGkcQWS4C62lrs1fx7g> prov:specializationOf <urn:uuid:763c9279-cf08-8a95-8d89-89d1e9e47707> ;
 	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
-_:a28331cca8fb465b30b0851e4489c55f bridge:arrivedAs <ni:///sha-256;brLh6Jg_sQct95IrjM2brBn0CGkcQWS4C62lrs1fx7g> ;
-	oa:hasSelector _:a54b2790f61c55c45fc689b425e4049e .
-_:a54b2790f61c55c45fc689b425e4049e a oa:FragmentSelector ;
+_:a2e7cab8710e41b54d26c1f503ffc30e bridge:arrivedAs <ni:///sha-256;brLh6Jg_sQct95IrjM2brBn0CGkcQWS4C62lrs1fx7g> ;
+	oa:hasSelector _:a70b8d3d5f2dec55f179c908050d75c6 .
+_:a70b8d3d5f2dec55f179c908050d75c6 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/entry/5/resource/contained/0" .
-_:4f2da4185dad175a7d3cb682686a68d5 oa:hasSelector _:ee47bc0021928f1fbe51d0c4e8540e7f ;
-	oa:hasSource <ni:///sha-256;uY6rLp-iH3Hj_rj2-aclJYQQYS0OrjdUa5gbEi9E02w> ;
-	prov:wasDerivedFrom <ni:///sha-256;uY6rLp-iH3Hj_rj2-aclJYQQYS0OrjdUa5gbEi9E02w> ;
-	prov:wasGeneratedBy _:fd68947b39085016d4b88168843583ac .
-_:a28331cca8fb465b30b0851e4489c55f oa:hasSource <ni:///sha-256;uY6rLp-iH3Hj_rj2-aclJYQQYS0OrjdUa5gbEi9E02w> ;
-	prov:wasDerivedFrom <ni:///sha-256;uY6rLp-iH3Hj_rj2-aclJYQQYS0OrjdUa5gbEi9E02w> ;
-	prov:wasGeneratedBy _:fd68947b39085016d4b88168843583ac .
-_:ee47bc0021928f1fbe51d0c4e8540e7f a oa:FragmentSelector ;
+	rdf:value "/entry/7/resource/contained/0" .
+_:133965cebb5353bbe1e573b98bce4763 oa:hasSelector _:caa4370a660dbc9f7b25140c8a8031b3 ;
+	oa:hasSource <ni:///sha-256;r8K35Jc_BwXlBOPWrZJmtPGiTqogPJJOoSsCVuS5YjE> ;
+	prov:wasDerivedFrom <ni:///sha-256;r8K35Jc_BwXlBOPWrZJmtPGiTqogPJJOoSsCVuS5YjE> ;
+	prov:wasGeneratedBy _:63772d6113c608deb30d73f671f15b45 .
+_:a2e7cab8710e41b54d26c1f503ffc30e oa:hasSource <ni:///sha-256;r8K35Jc_BwXlBOPWrZJmtPGiTqogPJJOoSsCVuS5YjE> ;
+	prov:wasDerivedFrom <ni:///sha-256;r8K35Jc_BwXlBOPWrZJmtPGiTqogPJJOoSsCVuS5YjE> ;
+	prov:wasGeneratedBy _:63772d6113c608deb30d73f671f15b45 .
+_:caa4370a660dbc9f7b25140c8a8031b3 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/entry/5" .
-<ni:///sha-256;rO_qF7MEWuqwcnl6l0JOTxrMv2SRyL3HLkpzTRgPulQ> cascade:authorizingPrescription <urn:uuid:08f24f2b-3168-8058-9b7b-e818017da7ce> ;
+	rdf:value "/entry/7" .
+<ni:///sha-256;LdtOGKGw1nSvHD7ENeOtiDPOexE4TLtdqx8Y5W20_3Q> cascade:authorizingPrescription <urn:uuid:c405e46e-555c-8b79-8115-37b88fd4a76b> ;
 	cascade:dispenseHandedOverTime "2026-02-05"^^xsd:date ;
 	cascade:drugName "Lisinopril 10 mg tablet" ;
 	cascade:workflowStatus "completed" .
-<urn:uuid:25961362-7ce4-8fc0-9dfb-e86ba82a953d> a cascade:MedicationDispense ;
+<urn:uuid:8ea7c661-33cf-8912-a6fc-57d2efc721f1> a cascade:MedicationDispense ;
 	cascade:sourceRecordId "meddisp-unnamed-2" .
-<ni:///sha-256;rO_qF7MEWuqwcnl6l0JOTxrMv2SRyL3HLkpzTRgPulQ> prov:specializationOf <urn:uuid:25961362-7ce4-8fc0-9dfb-e86ba82a953d> ;
-	cascade:patient <urn:uuid:f9298172-ecc8-83d2-8d5a-4abc994f6ca0> .
-_:f0a3d677998f64c12b46d45b0ccee65a bridge:arrivedAs <ni:///sha-256;rO_qF7MEWuqwcnl6l0JOTxrMv2SRyL3HLkpzTRgPulQ> ;
-	oa:hasSelector _:1ae5fb766be142e4367ea6d4af792908 ;
-	oa:hasSource <ni:///sha-256;uY6rLp-iH3Hj_rj2-aclJYQQYS0OrjdUa5gbEi9E02w> ;
-	prov:wasDerivedFrom <ni:///sha-256;uY6rLp-iH3Hj_rj2-aclJYQQYS0OrjdUa5gbEi9E02w> ;
-	prov:wasGeneratedBy _:fd68947b39085016d4b88168843583ac .
-_:1ae5fb766be142e4367ea6d4af792908 a oa:FragmentSelector ;
+<ni:///sha-256;LdtOGKGw1nSvHD7ENeOtiDPOexE4TLtdqx8Y5W20_3Q> prov:specializationOf <urn:uuid:8ea7c661-33cf-8912-a6fc-57d2efc721f1> ;
+	cascade:patient <urn:uuid:7ab25679-5713-87e3-a4d3-ebd63dff1240> .
+_:f36752d6d4666e601f79ff0b083de8ca bridge:arrivedAs <ni:///sha-256;LdtOGKGw1nSvHD7ENeOtiDPOexE4TLtdqx8Y5W20_3Q> ;
+	oa:hasSelector _:7d8156c43e76ba3c3bc945d4cff398b6 ;
+	oa:hasSource <ni:///sha-256;r8K35Jc_BwXlBOPWrZJmtPGiTqogPJJOoSsCVuS5YjE> ;
+	prov:wasDerivedFrom <ni:///sha-256;r8K35Jc_BwXlBOPWrZJmtPGiTqogPJJOoSsCVuS5YjE> ;
+	prov:wasGeneratedBy _:63772d6113c608deb30d73f671f15b45 .
+_:7d8156c43e76ba3c3bc945d4cff398b6 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/entry/6" .
-<ni:///sha-256;uY6rLp-iH3Hj_rj2-aclJYQQYS0OrjdUa5gbEi9E02w> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
+	rdf:value "/entry/8" .
+<ni:///sha-256;r8K35Jc_BwXlBOPWrZJmtPGiTqogPJJOoSsCVuS5YjE> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
 	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
-_:6f533ba1a1114cb007f70539d87efb37 prov:agent _:2cfa5c19630acb8efd53aaa09064c568 .
-_:2cfa5c19630acb8efd53aaa09064c568 <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
-_:6f533ba1a1114cb007f70539d87efb37 prov:hadRole cascade:AuthorRole .
-<ni:///sha-256;uY6rLp-iH3Hj_rj2-aclJYQQYS0OrjdUa5gbEi9E02w> prov:qualifiedAttribution _:6f533ba1a1114cb007f70539d87efb37 .
-_:e8ba1e4df0bae23dbaf6427cde255603 prov:agent _:f9d7fcab49a5d7eb41180f67d4ae3dcd .
-_:f9d7fcab49a5d7eb41180f67d4ae3dcd <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
-_:e8ba1e4df0bae23dbaf6427cde255603 prov:hadRole cascade:TransmitterRole .
-<ni:///sha-256;uY6rLp-iH3Hj_rj2-aclJYQQYS0OrjdUa5gbEi9E02w> prov:qualifiedAttribution _:e8ba1e4df0bae23dbaf6427cde255603 ;
+_:8378e7ab2a649c0c482be933dc2ad3dc prov:agent _:7cfe6abd81ea1e30e59c5a70fc6201c6 .
+_:7cfe6abd81ea1e30e59c5a70fc6201c6 <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:8378e7ab2a649c0c482be933dc2ad3dc prov:hadRole cascade:AuthorRole .
+<ni:///sha-256;r8K35Jc_BwXlBOPWrZJmtPGiTqogPJJOoSsCVuS5YjE> prov:qualifiedAttribution _:8378e7ab2a649c0c482be933dc2ad3dc .
+_:4fe5545db57e7cf42b497f08ead77376 prov:agent _:8da528065caa58c6fbfbda25d1439610 .
+_:8da528065caa58c6fbfbda25d1439610 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
+_:4fe5545db57e7cf42b497f08ead77376 prov:hadRole cascade:TransmitterRole .
+<ni:///sha-256;r8K35Jc_BwXlBOPWrZJmtPGiTqogPJJOoSsCVuS5YjE> prov:qualifiedAttribution _:4fe5545db57e7cf42b497f08ead77376 ;
 	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
 	cascade:authenticatedAsProxy false ;
 	cascade:sourceFormatVersion "4.0.1" .
-_:fd68947b39085016d4b88168843583ac <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
+_:63772d6113c608deb30d73f671f15b45 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
 	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
-<ni:///sha-256;uY6rLp-iH3Hj_rj2-aclJYQQYS0OrjdUa5gbEi9E02w> a prov:Entity .
-_:fd68947b39085016d4b88168843583ac a prov:Activity ;
-	prov:used <ni:///sha-256;uY6rLp-iH3Hj_rj2-aclJYQQYS0OrjdUa5gbEi9E02w> ;
-	prov:qualifiedAssociation _:8b5d5ff65d3679420adfc01a2e7c2418 .
-_:8b5d5ff65d3679420adfc01a2e7c2418 prov:hadPlan _:1189968b4d1f31405318ac07ada7cfdb .
-_:1189968b4d1f31405318ac07ada7cfdb a prov:Plan ;
+<ni:///sha-256;r8K35Jc_BwXlBOPWrZJmtPGiTqogPJJOoSsCVuS5YjE> a prov:Entity .
+_:63772d6113c608deb30d73f671f15b45 a prov:Activity ;
+	prov:used <ni:///sha-256;r8K35Jc_BwXlBOPWrZJmtPGiTqogPJJOoSsCVuS5YjE> ;
+	prov:qualifiedAssociation _:991bfb6345247449abecf366a73e4ded .
+_:991bfb6345247449abecf366a73e4ded prov:hadPlan _:d6f6adfd615ae484181ff87bb0e3fe1 .
+_:d6f6adfd615ae484181ff87bb0e3fe1 a prov:Plan ;
 	<http://www.w3.org/2000/01/rdf-schema#label> "fhir-r4" ;
 	pav:version "0.1.0" .
-_:8b5d5ff65d3679420adfc01a2e7c2418 prov:agent _:66978ebba567cfcd2af1ad0b69fd59de .
-_:66978ebba567cfcd2af1ad0b69fd59de a prov:SoftwareAgent ;
+_:991bfb6345247449abecf366a73e4ded prov:agent _:466628646514f5e6c5706a607bf4a8ca .
+_:466628646514f5e6c5706a607bf4a8ca a prov:SoftwareAgent ;
 	<http://www.w3.org/2000/01/rdf-schema#label> "Cascade Bridge for Rust" ;
 	pav:version "0.1.0" .

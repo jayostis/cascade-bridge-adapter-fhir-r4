@@ -162,6 +162,8 @@
     <#medication-dispense-partial-times>
     <#medication-dispense-times-absent-for-reason>
     <#bundle-medication-dispense-supply-not-carried>
+    <#medication-dispense-prescription-without-server>
+    <#bundle-medication-dispense-repeated-id-and-patient-not-held>
     <#medication-dispense-codings-not-carried>
     <#medication-dispense-elements-not-carried>
     <#bundle-medication-dispense-prescriptions-not-named>
@@ -2255,7 +2257,7 @@
 
 <#bundle-medication-dispense-prescriptions-not-named> a bridge:IsomorphicConversionTest ;
   mf:name "bundle-medication-dispense-prescriptions-not-named" ;
-  rdfs:comment "A Bundle of a Patient and two MedicationRequests held under their server URL with one id, one under a urn:uuid and a ServiceRequest under another, and two dispenses naming prescriptions that name no record: a reference to a contained MedicationRequest, which names it; a urn:uuid no entry holds; a relative reference to a MedicationRequest held under a urn:uuid, and to one whose id two entries hold; one on another server; a urn:uuid held by a ServiceRequest, and a ServiceRequest; one with a display and no reference; and, from an entry under a urn:uuid, a relative reference, and a urn:uuid a MedicationRequest holds, which names it. Each that names none is a finding." ;
+  rdfs:comment "A Bundle of a Patient, MedicationRequests and a ServiceRequest, and two dispenses naming prescriptions that name no record, among prescriptions that do: a reference to a contained MedicationRequest names one, and to a contained Medication none; a urn:uuid an entry holds names one, and none that no entry holds, that two entries hold, or that a ServiceRequest holds; a relative reference to a MedicationRequest held under a urn:uuid, to one whose id two entries hold, and to a ServiceRequest names none; one on another server names none; one with a display and no reference is no finding of this kind; and from an entry under a urn:uuid a relative reference names none. Each that names none is a finding." ;
   mf:action [
     bridge:input <in/bundle-medication-dispense-prescriptions-not-named.json> ;
     bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
@@ -2264,4 +2266,30 @@
   mf:result [
     bridge:expectedGraph <expected/bundle-medication-dispense-prescriptions-not-named.ttl> ;
     bridge:expectedFindings <findings/bundle-medication-dispense-prescriptions-not-named.ttl>
+  ] .
+
+<#medication-dispense-prescription-without-server> a bridge:IsomorphicConversionTest ;
+  mf:name "medication-dispense-prescription-without-server" ;
+  rdfs:comment "A MedicationDispense in a document from no known server, whose prescription is a reference relative to a server: it names no record, since a relative reference means nothing without its server, and is a finding." ;
+  mf:action [
+    bridge:input <in/medication-dispense-prescription-without-server.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/no-server.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/medication-dispense-prescription-without-server.ttl> ;
+    bridge:expectedFindings <findings/medication-dispense-prescription-without-server.ttl>
+  ] .
+
+<#bundle-medication-dispense-repeated-id-and-patient-not-held> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-medication-dispense-repeated-id-and-patient-not-held" ;
+  rdfs:comment "A Bundle of three MedicationDispenses: two of one id, which a reference to that id cannot tell apart, so each is a finding and each is named from the document; and one whose subject is a urn:uuid no entry holds, which names no patient and is a finding." ;
+  mf:action [
+    bridge:input <in/bundle-medication-dispense-repeated-id-and-patient-not-held.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-medication-dispense-repeated-id-and-patient-not-held.ttl> ;
+    bridge:expectedFindings <findings/bundle-medication-dispense-repeated-id-and-patient-not-held.ttl>
   ] .

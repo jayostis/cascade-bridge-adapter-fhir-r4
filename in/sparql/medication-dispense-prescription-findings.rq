@@ -64,37 +64,35 @@ WHERE {
   BIND (IF(BOUND(?server) && STRSTARTS(?unversioned, CONCAT(?server, "/")), STRAFTER(?unversioned, CONCAT(?server, "/")),
            ?unversioned) AS ?relative)
   OPTIONAL {
-    {
-      SELECT ?key (COUNT(DISTINCT ?keySelector) AS ?heldAtKey) (MIN(?keySelector) AS ?heldSelector)
-      WHERE {
-        ?held fhirr4:heldAt ?keySelector ;
-          fhirr4:fullUrl ?key .
-        FILTER (STRSTARTS(?key, "urn:uuid:"))
-      }
-      GROUP BY ?key
+    ?held fhirr4:fullUrl ?written ;
+      fhirr4:heldAt ?heldSelector .
+    FILTER (STRSTARTS(?written, "urn:uuid:"))
+    FILTER NOT EXISTS {
+      ?rival fhirr4:fullUrl ?written ;
+        fhirr4:heldAt ?rivalSelector .
+      FILTER (?rivalSelector != ?heldSelector)
     }
-    FILTER (?key = ?written)
   }
-  BIND (IF(BOUND(?heldAtKey), IF(?heldAtKey = 1, ?heldSelector, 1/0),
+  BIND (IF(STRSTARTS(?written, "urn:uuid:"), COALESCE(?heldSelector, 1/0),
            IF(BOUND(?server) && !STRSTARTS(COALESCE(?fullUrl, ""), "urn:uuid:")
               && REGEX(?relative, "^MedicationRequest/[A-Za-z0-9.-]{1,64}$"), "", 1/0)) AS ?target)
   BIND (STRAFTER(?relative, "MedicationRequest/") AS ?requestId)
   BIND (?namesContained || (BOUND(?target) && IF(?target != "",
              EXISTS { ?request fhirr4:heldAt ?target ; fhirr4:resourceType "MedicationRequest" },
              NOT EXISTS {
-               ?urnHeld fhirr4:resourceType "MedicationRequest" ;
-                 fhirr4:resourceId ?urnId ;
+               ?urnHeld fhirr4:resourceId ?requestId ;
+                 fhirr4:resourceType "MedicationRequest" ;
                  fhirr4:fullUrl ?urnUrl .
-               FILTER (STRSTARTS(?urnUrl, "urn:uuid:") && ?urnId = ?requestId)
+               FILTER (STRSTARTS(?urnUrl, "urn:uuid:"))
              }
              && NOT EXISTS {
-               ?onceHeld fhirr4:resourceType "MedicationRequest" ;
-                 fhirr4:resourceId ?onceId ;
+               ?onceHeld fhirr4:resourceId ?requestId ;
+                 fhirr4:resourceType "MedicationRequest" ;
                  fhirr4:heldAt ?onceAt .
-               ?twiceHeld fhirr4:resourceType "MedicationRequest" ;
-                 fhirr4:resourceId ?twiceId ;
+               ?twiceHeld fhirr4:resourceId ?requestId ;
+                 fhirr4:resourceType "MedicationRequest" ;
                  fhirr4:heldAt ?twiceAt .
-               FILTER (?onceId = ?requestId && ?twiceId = ?requestId && ?onceAt != ?twiceAt)
+               FILTER (?onceAt != ?twiceAt)
              })) AS ?namesRecord)
   FILTER (!?namesRecord)
   BIND (CONCAT(?topStep, ?containedStep, "/authorizingPrescription/", STR(xsd:integer(STRAFTER(STR(?prescriptionSlot), "#_")) - 1), "/reference")

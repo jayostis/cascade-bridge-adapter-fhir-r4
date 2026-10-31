@@ -65,6 +65,36 @@
       }
     },
     {
+      "fullUrl": "urn:uuid:5d7f9b1c-3e4a-4c60-8b2d-6a8c0e2f4b71",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "medrx-urn-twice-1",
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "text": "Lisinopril 10 mg tablet"
+        },
+        "subject": {
+          "reference": "urn:uuid:1a3c5e70-9b2d-4f48-8a6c-0d2f4b6a8c19"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:5d7f9b1c-3e4a-4c60-8b2d-6a8c0e2f4b71",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "medrx-urn-twice-2",
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "text": "Lisinopril 10 mg tablet"
+        },
+        "subject": {
+          "reference": "urn:uuid:1a3c5e70-9b2d-4f48-8a6c-0d2f4b6a8c19"
+        }
+      }
+    },
+    {
       "fullUrl": "urn:uuid:e4a6c8d0-2f1b-4a37-8c59-0d7b3e1f6a28",
       "resource": {
         "resourceType": "ServiceRequest",
@@ -92,6 +122,13 @@
             },
             "subject": {
               "reference": "Patient/pat-conformance-1"
+            }
+          },
+          {
+            "resourceType": "Medication",
+            "id": "med-c",
+            "code": {
+              "text": "Lisinopril 10 mg tablet"
             }
           }
         ],
@@ -123,6 +160,12 @@
           },
           {
             "reference": "ServiceRequest/sr-1"
+          },
+          {
+            "reference": "urn:uuid:5d7f9b1c-3e4a-4c60-8b2d-6a8c0e2f4b71"
+          },
+          {
+            "reference": "#med-c"
           },
           {
             "display": "A prescription with no reference"
