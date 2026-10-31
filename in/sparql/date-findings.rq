@@ -1,0 +1,96 @@
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX sh:      <http://www.w3.org/ns/shacl#>
+PREFIX oa:      <http://www.w3.org/ns/oa#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX fx:      <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:     <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:  <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+PREFIX cascade: <https://ns.cascadeprotocol.org/cascade#>
+
+# The date a mapping reads from a patient, an allergy, a condition, an
+# immunization, a procedure, a document reference, a diagnostic report or a
+# laboratory or interpretation Observation and writes as no value, because
+# it matches none of the forms of FHIR's date and dateTime: a day the calendar
+# lacks, month 00 or 13, year 0000, hour 24 or a leap second, or a time with no
+# zone. The test is the mappings' own, written once in each of them; a birth
+# date may hold no time. medication-findings.rq and
+# medication-dispense-findings.rq make it for a medication.
+
+CONSTRUCT {
+  [] a oa:Annotation ;
+    oa:hasTarget [
+      oa:hasSource bridge:thisRecord ;
+      oa:hasSelector [
+        a oa:FragmentSelector ;
+        dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+        rdf:value ?pointer
+      ]
+    ] ;
+    oa:hasBody fhirr4:dateNotCarried ;
+    oa:motivatedBy oa:classifying ;
+    sh:value ?value .
+}
+WHERE {
+  FILTER NOT EXISTS {
+    bridge:thisDocument cascade:sourceFormatVersion ?stated .
+    FILTER (!STRSTARTS(?stated, "4.0."))
+  }
+  bridge:thisRecord bridge:selector ?recordSelector .
+  ?root a fx:root .
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  { BIND ("" AS ?containedStep) }
+  UNION
+  {
+    ?top xyz:contained ?containedList .
+    ?containedList ?containedSlot ?contained .
+    ?contained xyz:resourceType ?containedType .
+    BIND (CONCAT("/contained/", STR(xsd:integer(STRAFTER(STR(?containedSlot), "#_")) - 1)) AS ?containedStep)
+  }
+  BIND (COALESCE(?contained, ?top) AS ?resource)
+  ?resource xyz:resourceType ?type .
+  {
+    VALUES (?type ?scope ?member ?step) {
+      ("Patient"            "" xyz:birthDate          "/birthDate")
+      ("Patient"            "" xyz:deceasedDateTime   "/deceasedDateTime")
+      ("AllergyIntolerance" "" xyz:onsetDateTime      "/onsetDateTime")
+      ("Condition"          "" xyz:onsetDateTime      "/onsetDateTime")
+      ("Condition"          "" xyz:abatementDateTime  "/abatementDateTime")
+      ("Immunization"       "" xyz:occurrenceDateTime "/occurrenceDateTime")
+      ("Procedure"          "" xyz:performedDateTime  "/performedDateTime")
+      ("DocumentReference"  "" xyz:date               "/date")
+      ("DiagnosticReport"   "" xyz:effectiveDateTime  "/effectiveDateTime")
+      ("DiagnosticReport"   "" xyz:issued             "/issued")
+      ("Observation" "lab" xyz:effectiveDateTime      "/effectiveDateTime")
+      ("Observation" "lab" xyz:effectiveInstant       "/effectiveInstant")
+      ("Observation" "interpretation" xyz:issued            "/issued")
+      ("Observation" "interpretation" xyz:effectiveDateTime "/effectiveDateTime")
+      ("Observation" "interpretation" xyz:effectiveInstant  "/effectiveInstant")
+    }
+    ?resource ?member ?value .
+  }
+  UNION
+  {
+    VALUES (?type ?scope) {
+      ("DiagnosticReport" "")
+      ("Observation" "lab")
+      ("Observation" "interpretation")
+    }
+    ?resource xyz:effectivePeriod ?period . ?period xyz:start ?value .
+    BIND ("/effectivePeriod/start" AS ?step)
+  }
+  FILTER (?scope = "" || EXISTS {
+    VALUES (?scope ?table) {
+      ("lab" fhirr4:labResultAt)
+      ("interpretation" fhirr4:interpretationAt)
+    }
+    ?known ?table ?knownPointer .
+    FILTER (?knownPointer = CONCAT(?recordSelector, ?topStep, ?containedStep))
+  })
+  BIND (STR(?value) AS ?written)
+  FILTER (IF(?step = "/birthDate", !REGEX(?written, "^(([0-9]{3}[1-9]|[0-9]{2}[1-9]0|[0-9][1-9]00|[1-9]000)(-(0[1-9]|1[0-2])|-((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01])|(0[469]|11)-(0[1-9]|[12][0-9]|30)|02-(0[1-9]|1[0-9]|2[0-8])))?|([0-9]{2}(0[48]|[2468][048]|[13579][26])|(0[48]|[2468][048]|[13579][26])00)-02-29)$"), !REGEX(?written, "^(([0-9]{3}[1-9]|[0-9]{2}[1-9]0|[0-9][1-9]00|[1-9]000)(-(0[1-9]|1[0-2])|-((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01])|(0[469]|11)-(0[1-9]|[12][0-9]|30)|02-(0[1-9]|1[0-9]|2[0-8]))(T([01][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9]([.][0-9]+)?)?(Z|[+-]((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?|([0-9]{2}(0[48]|[2468][048]|[13579][26])|(0[48]|[2468][048]|[13579][26])00)-02-29(T([01][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9]([.][0-9]+)?)?(Z|[+-]((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)$")))
+  BIND (CONCAT(?topStep, ?containedStep, ?step) AS ?pointer)
+}

@@ -311,8 +311,8 @@ fhirr4:medicationNumberNotCarried a skos:Concept ;
   skos:broader bridge:carriedWithLoss ;
   sh:resultSeverity sh:Warning .
 
-fhirr4:medicationDateNotCarried a skos:Concept ;
-  skos:prefLabel "A date or time of a medication, a prescription's, a use's, a dosage bound's or a dispense's, is a date that does not exist or in no form FHIR's date, dateTime or instant allows, so it is not carried."@en ;
+fhirr4:dateNotCarried a skos:Concept ;
+  skos:prefLabel "A date or time a mapping reads is one FHIR does not allow, such as a day the calendar lacks, month 00 or 13, year 0000, hour 24 or a time with no zone, or one FHIR allows that no xsd:date or xsd:dateTime carries, a leap second, so it is not carried."@en ;
   skos:inScheme fhirr4:gaps ;
   skos:broader bridge:carriedWithLoss ;
   sh:resultSeverity sh:Warning .

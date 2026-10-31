@@ -242,7 +242,7 @@ UCUM's seven units of time, as FHIR's `Duration` allows, and otherwise in none
 (`fhirr4:dispenseDaysSupplyNotInUnitOfTime`). A quantity or days' supply with a
 comparator, which `SimpleQuantity` forbids, and one whose number is no decimal
 (`fhirr4:medicationNumberNotCarried`) write no node. A time that is no date, such as
-2026-02-30 or month 13, writes none either (`fhirr4:medicationDateNotCarried`).
+2026-02-30 or month 13, writes none either (`fhirr4:dateNotCarried`).
 
 Each `authorizingPrescription`, a reference to a `MedicationRequest`, is
 `cascade:authorizingPrescription` of the version: the IRI of that request's
@@ -408,11 +408,19 @@ says, read on 2026-10-24:
   writes one though R4 asks for seconds: it is held padded to the second,
   `2023-05-31T14:00:00-05:00`, beside a `cascade:PaddedDateTime` node
   `<version>#padded-` and the property's local name keeping what was written.
-- **A medication's date that does not exist is no value.** A day the calendar lacks, such as
-  2026-02-30 or 2025-02-29, a month outside 01 to 12, or a time outside the clock, on a
-  prescription's `authoredOn`, a use's `effective[x]`, a dosage bound or a dispense's time, is not
-  typed by its precision and is carried as nothing, and a finding,
-  `fhirr4:medicationDateNotCarried`. A schema violation may report the same date as well.
+- **A date FHIR does not allow, or that no `xsd:date` or `xsd:dateTime` carries, is no value.** One test, FHIR's
+  own pattern for `date` and `dateTime` ([datatypes](https://hl7.org/fhir/R4/datatypes.html)), is written in each
+  mapping that reads a date and in its findings: a year from 0001, a month 01 to 12, a day the month has in that year
+  (February 29 only in a leap year), a time of hour 00 to 23, minute 00 to 59 and second 00 to 59, with an offset
+  of up to 13:59 either side of UTC, or 14:00, or `Z`. A day the calendar lacks, such as 2026-02-30 or 2025-02-29, a month 00 or
+  13, year 0000, hour 24, a time with no zone, and a leap second, `23:59:60Z`, which FHIR allows and no
+  `xsd:dateTime` carries, are not typed by their precision. They are carried as nothing, and a finding,
+  `fhirr4:dateNotCarried`, reports each: on a patient's birth and death, an allergy's or a condition's onset or
+  abatement, an immunization's occurrence, a procedure's performance, a document reference's date, a report's
+  effective time and `issued`, a laboratory result's or an interpretation's time, a prescription's `authoredOn`, a
+  use's `effective[x]`, a dosage bound and a dispense's time. A birth date holds no time. A schema violation may
+  report the same date as well. A time to the minute is the one form held though FHIR asks for seconds, as above, and
+  needs its zone.
 - **A lab result's `dataAbsentReason`** stands for its value, which obs-6 says
   it has none of ([Observation](https://hl7.org/fhir/R4/observation-definitions.html)),
   and is a `cascade:ValueAbsentForReason` node of the version naming

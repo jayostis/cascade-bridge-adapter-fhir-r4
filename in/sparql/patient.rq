@@ -63,9 +63,10 @@ WHERE {
   {
     ?resource xyz:birthDate ?birthDate .
     BIND (cascade:dateOfBirth AS ?p)
-    BIND (IF(REGEX(?birthDate, "^[0-9]{4}$"), STRDT(?birthDate, xsd:gYear),
-             IF(REGEX(?birthDate, "^[0-9]{4}-[0-9]{2}$"), STRDT(?birthDate, xsd:gYearMonth),
-             IF(REGEX(?birthDate, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"), STRDT(?birthDate, xsd:date), 1/0))) AS ?o)
+    BIND (IF(!REGEX(?birthDate, "^(([0-9]{3}[1-9]|[0-9]{2}[1-9]0|[0-9][1-9]00|[1-9]000)(-(0[1-9]|1[0-2])|-((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01])|(0[469]|11)-(0[1-9]|[12][0-9]|30)|02-(0[1-9]|1[0-9]|2[0-8])))?|([0-9]{2}(0[48]|[2468][048]|[13579][26])|(0[48]|[2468][048]|[13579][26])00)-02-29)$"), 1/0,
+             IF(STRLEN(?birthDate) = 4, STRDT(?birthDate, xsd:gYear),
+             IF(STRLEN(?birthDate) = 7, STRDT(?birthDate, xsd:gYearMonth),
+                STRDT(?birthDate, xsd:date)))) AS ?o)
   }
   UNION
   {
@@ -90,12 +91,12 @@ WHERE {
   {
     ?resource xyz:deceasedDateTime ?when .
     BIND (cascade:dateOfDeath AS ?p)
-    BIND (IF(REGEX(?when, "^[0-9]{4}$"), STRDT(?when, xsd:gYear),
-             IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}$"), STRDT(?when, xsd:gYearMonth),
-             IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"), STRDT(?when, xsd:date),
-             IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(Z|[+-][0-9]{2}:[0-9]{2})?$"), STRDT(CONCAT(SUBSTR(?when, 1, 16), ":00", SUBSTR(?when, 17)), xsd:dateTime),
-             IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T"), STRDT(?when, xsd:dateTime), 1/0))))) AS ?o)
-    BIND (IF(REGEX(?when, "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(Z|[+-][0-9]{2}:[0-9]{2})?$"), ?when, 1/0) AS ?writtenTime)
+    BIND (IF(!REGEX(?when, "^(([0-9]{3}[1-9]|[0-9]{2}[1-9]0|[0-9][1-9]00|[1-9]000)(-(0[1-9]|1[0-2])|-((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01])|(0[469]|11)-(0[1-9]|[12][0-9]|30)|02-(0[1-9]|1[0-9]|2[0-8]))(T([01][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9]([.][0-9]+)?)?(Z|[+-]((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?|([0-9]{2}(0[48]|[2468][048]|[13579][26])|(0[48]|[2468][048]|[13579][26])00)-02-29(T([01][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9]([.][0-9]+)?)?(Z|[+-]((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)$"), 1/0,
+             IF(STRLEN(?when) = 4, STRDT(?when, xsd:gYear),
+             IF(STRLEN(?when) = 7, STRDT(?when, xsd:gYearMonth),
+             IF(STRLEN(?when) = 10, STRDT(?when, xsd:date),
+                STRDT(CONCAT(SUBSTR(?when, 1, 16), IF(SUBSTR(?when, 17, 1) = ":", "", ":00"), SUBSTR(?when, 17)), xsd:dateTime))))) AS ?o)
+    BIND (IF(BOUND(?o) && STRLEN(?when) > 10 && SUBSTR(?when, 17, 1) != ":", ?when, 1/0) AS ?writtenTime)
   }
   BIND (IF(BOUND(?writtenTime), IRI(CONCAT(STR(?version), "#padded-", STRAFTER(STR(?p), "#"))), 1/0) AS ?paddedNode)
 }
