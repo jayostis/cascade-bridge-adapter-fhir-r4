@@ -2,18 +2,18 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:c2412fd8090907de439522ccb19e39fb a oa:FragmentSelector ;
+_:bb194a073227fd735e94b9429f32821a a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:a737086e43fb3cc0505b9fc647396f8c oa:hasSource <../in/lab-value-absent-reason-text-only.json> .
-_:c2412fd8090907de439522ccb19e39fb oa:refinedBy _:a59b1ca6dfbb9f57f135f09ecad15304 .
-_:a59b1ca6dfbb9f57f135f09ecad15304 a oa:FragmentSelector ;
+_:ce785de51ae22cbfc4659fdf7fcc2273 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/dataAbsentReason/text" .
-_:a737086e43fb3cc0505b9fc647396f8c oa:hasSelector _:c2412fd8090907de439522ccb19e39fb .
-_:ad0b5b016007cba710e3c077002224f8 oa:hasTarget _:a737086e43fb3cc0505b9fc647396f8c ;
-	sh:resultSeverity sh:Info ;
-	a oa:Annotation ;
-	oa:hasBody fhirr4:absentReasonNotCarried ;
+_:bb194a073227fd735e94b9429f32821a oa:refinedBy _:ce785de51ae22cbfc4659fdf7fcc2273 .
+_:c16908992bdfef6c5aa98a30b247975e a oa:Annotation ;
+	oa:hasTarget _:c67989f3efcca95a111293d26a6684e9 .
+_:c67989f3efcca95a111293d26a6684e9 oa:hasSource <../in/lab-value-absent-reason-text-only.json> ;
+	oa:hasSelector _:bb194a073227fd735e94b9429f32821a .
+_:c16908992bdfef6c5aa98a30b247975e oa:hasBody fhirr4:codedValueText ;
 	oa:motivatedBy oa:classifying ;
-	sh:value "Specimen haemolysed" .
+	sh:value "/dataAbsentReason/text" ;
+	sh:resultSeverity sh:Info .

@@ -70,7 +70,7 @@ under either. A path is relative to the record, so the envelopes' paths differ.
   that writes it, not from the path's name, and a node is made for a resource type only when FHIR R4 defines the
   element on it **and** a query writes the term from it. What the specification's
   [check](https://github.com/jayostis/cascade-bridge-spec/blob/main/adapter/validation.md) catches is not a reason to
-  rely on it: it passes a wrong class for a property with no domain.
+  rely on it.
 - A gap no entry names is a rule about an absence, a construct the judged
   inputs do not carry, or a path whose verdict is not a gap at all. Which one it
   is goes in the pull request, never into a gap minted to close the join.

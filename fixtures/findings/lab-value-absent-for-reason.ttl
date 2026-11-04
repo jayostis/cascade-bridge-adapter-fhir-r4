@@ -2,16 +2,31 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:f12072bda30b04a5978bbcb8a1b42fc7 a oa:FragmentSelector ;
+_:fadd53206373995ceceb7de69ebb0b47 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:ebb087ff9f2c5aaca8fedba1e482a939 oa:hasSource <../in/lab-value-absent-for-reason.json> .
-_:f12072bda30b04a5978bbcb8a1b42fc7 oa:refinedBy _:ec40f1e84322635666341a7404e8628d .
-_:ec40f1e84322635666341a7404e8628d a oa:FragmentSelector ;
+_:b39f113f1de5629fba759c89c960f32b a oa:FragmentSelector ;
+	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/dataAbsentReason/text" .
+_:fadd53206373995ceceb7de69ebb0b47 oa:refinedBy _:b39f113f1de5629fba759c89c960f32b .
+_:b6a4b8d8e9cf3cc43749cfe44749602d a oa:Annotation ;
+	oa:hasTarget _:d114ecb0bae0ef75c33ce8d44fd91734 .
+_:d114ecb0bae0ef75c33ce8d44fd91734 oa:hasSource <../in/lab-value-absent-for-reason.json> ;
+	oa:hasSelector _:fadd53206373995ceceb7de69ebb0b47 .
+_:b6a4b8d8e9cf3cc43749cfe44749602d oa:hasBody fhirr4:codedValueText ;
+	oa:motivatedBy oa:classifying ;
+	sh:value "/dataAbsentReason/text" ;
+	sh:resultSeverity sh:Info .
+_:da92451151d06ff7feef62e6dc7374ef a oa:FragmentSelector ;
+	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "" .
+_:f787393306b71e969e00c50b1dfaf88c oa:hasSource <../in/lab-value-absent-for-reason.json> .
+_:da92451151d06ff7feef62e6dc7374ef oa:refinedBy _:e18c9933ed4c50dc02b97be11ec51148 .
+_:e18c9933ed4c50dc02b97be11ec51148 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/dataAbsentReason/coding/2" .
-_:ebb087ff9f2c5aaca8fedba1e482a939 oa:hasSelector _:f12072bda30b04a5978bbcb8a1b42fc7 .
-_:e19a098a90e369327ff706d255b9852f oa:hasTarget _:ebb087ff9f2c5aaca8fedba1e482a939 ;
+_:f787393306b71e969e00c50b1dfaf88c oa:hasSelector _:da92451151d06ff7feef62e6dc7374ef .
+_:a0a9633c666644c1e5ecc61e0307e58e oa:hasTarget _:f787393306b71e969e00c50b1dfaf88c ;
 	sh:resultSeverity sh:Info ;
 	a oa:Annotation ;
 	oa:hasBody fhirr4:absentReasonNotCarried ;
