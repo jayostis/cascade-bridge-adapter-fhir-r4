@@ -3135,6 +3135,9 @@
   bridge:sourcePath "/contained/medicationCodeableConcept/coding/system" ;
   bridge:verdict bridge:carried ;
   bridge:carriedAs
+    [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:userSelectedCode ] ,
+    [ bridge:inSourceRecordType "MedicationStatement" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:userSelectedCode ] ,
+    [ bridge:inSourceRecordType "MedicationDispense" ; bridge:inRecordClass cascade:MedicationDispense ; bridge:asProperty cascade:userSelectedCode ] ,
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:rxNormCode ] ,
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:ndcCode ] ,
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:medicationCodeInOtherSystem ] ,
@@ -4130,6 +4133,30 @@
   bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/valueRatio/denominator/code" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultUnitCodeOutsideUcum ;
+  bridge:carriedAs
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:ucumUnit ] .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/valueRatio/denominator/comparator" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultNumberRefused ;
+  bridge:carriedAs
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:quantityComparator ] .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/valueRatio/denominator/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/valueRatio/denominator/unit" ;
+  bridge:verdict bridge:carried ;
+  bridge:carriedAs
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:unitText ] .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/contained/valueRatio/denominator/value" ;
   bridge:verdict bridge:carriedInPart ;
   bridge:namesGap fhirr4:labResultNumberRefused ;
@@ -4141,6 +4168,30 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/valueRatio/numerator" ;
   bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/valueRatio/numerator/code" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultUnitCodeOutsideUcum ;
+  bridge:carriedAs
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:ucumUnit ] .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/valueRatio/numerator/comparator" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultNumberRefused ;
+  bridge:carriedAs
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:quantityComparator ] .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/valueRatio/numerator/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/valueRatio/numerator/unit" ;
+  bridge:verdict bridge:carried ;
+  bridge:carriedAs
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:unitText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/valueRatio/numerator/value" ;
@@ -6447,6 +6498,9 @@
   bridge:sourcePath "/medicationCodeableConcept/coding/system" ;
   bridge:verdict bridge:carried ;
   bridge:carriedAs
+    [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:userSelectedCode ] ,
+    [ bridge:inSourceRecordType "MedicationStatement" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:userSelectedCode ] ,
+    [ bridge:inSourceRecordType "MedicationDispense" ; bridge:inRecordClass cascade:MedicationDispense ; bridge:asProperty cascade:userSelectedCode ] ,
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:rxNormCode ] ,
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:ndcCode ] ,
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:medicationCodeInOtherSystem ] ,
@@ -10115,6 +10169,9 @@
   bridge:sourcePath "/resource/contained/medicationCodeableConcept/coding/system" ;
   bridge:verdict bridge:carried ;
   bridge:carriedAs
+    [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:userSelectedCode ] ,
+    [ bridge:inSourceRecordType "MedicationStatement" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:userSelectedCode ] ,
+    [ bridge:inSourceRecordType "MedicationDispense" ; bridge:inRecordClass cascade:MedicationDispense ; bridge:asProperty cascade:userSelectedCode ] ,
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:rxNormCode ] ,
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:ndcCode ] ,
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:medicationCodeInOtherSystem ] ,
@@ -11110,6 +11167,30 @@
   bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/valueRatio/denominator/code" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultUnitCodeOutsideUcum ;
+  bridge:carriedAs
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:ucumUnit ] .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/valueRatio/denominator/comparator" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultNumberRefused ;
+  bridge:carriedAs
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:quantityComparator ] .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/valueRatio/denominator/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/valueRatio/denominator/unit" ;
+  bridge:verdict bridge:carried ;
+  bridge:carriedAs
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:unitText ] .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/valueRatio/denominator/value" ;
   bridge:verdict bridge:carriedInPart ;
   bridge:namesGap fhirr4:labResultNumberRefused ;
@@ -11121,6 +11202,30 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/valueRatio/numerator" ;
   bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/valueRatio/numerator/code" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultUnitCodeOutsideUcum ;
+  bridge:carriedAs
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:ucumUnit ] .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/valueRatio/numerator/comparator" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultNumberRefused ;
+  bridge:carriedAs
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:quantityComparator ] .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/valueRatio/numerator/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/valueRatio/numerator/unit" ;
+  bridge:verdict bridge:carried ;
+  bridge:carriedAs
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:unitText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/valueRatio/numerator/value" ;
@@ -13423,6 +13528,9 @@
   bridge:sourcePath "/resource/medicationCodeableConcept/coding/system" ;
   bridge:verdict bridge:carried ;
   bridge:carriedAs
+    [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:userSelectedCode ] ,
+    [ bridge:inSourceRecordType "MedicationStatement" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:userSelectedCode ] ,
+    [ bridge:inSourceRecordType "MedicationDispense" ; bridge:inRecordClass cascade:MedicationDispense ; bridge:asProperty cascade:userSelectedCode ] ,
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:rxNormCode ] ,
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:ndcCode ] ,
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:medicationCodeInOtherSystem ] ,
@@ -14421,6 +14529,30 @@
   bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/valueRatio/denominator/code" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultUnitCodeOutsideUcum ;
+  bridge:carriedAs
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:ucumUnit ] .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/valueRatio/denominator/comparator" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultNumberRefused ;
+  bridge:carriedAs
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:quantityComparator ] .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/valueRatio/denominator/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/valueRatio/denominator/unit" ;
+  bridge:verdict bridge:carried ;
+  bridge:carriedAs
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:unitText ] .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/valueRatio/denominator/value" ;
   bridge:verdict bridge:carriedInPart ;
   bridge:namesGap fhirr4:labResultNumberRefused ;
@@ -14432,6 +14564,30 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/valueRatio/numerator" ;
   bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/valueRatio/numerator/code" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultUnitCodeOutsideUcum ;
+  bridge:carriedAs
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:ucumUnit ] .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/valueRatio/numerator/comparator" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultNumberRefused ;
+  bridge:carriedAs
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:quantityComparator ] .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/valueRatio/numerator/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/valueRatio/numerator/unit" ;
+  bridge:verdict bridge:carried ;
+  bridge:carriedAs
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:unitText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/valueRatio/numerator/value" ;
@@ -14955,6 +15111,30 @@
   bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/valueRatio/denominator/code" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultUnitCodeOutsideUcum ;
+  bridge:carriedAs
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:ucumUnit ] .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/valueRatio/denominator/comparator" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultNumberRefused ;
+  bridge:carriedAs
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:quantityComparator ] .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/valueRatio/denominator/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/valueRatio/denominator/unit" ;
+  bridge:verdict bridge:carried ;
+  bridge:carriedAs
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:unitText ] .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/valueRatio/denominator/value" ;
   bridge:verdict bridge:carriedInPart ;
   bridge:namesGap fhirr4:labResultNumberRefused ;
@@ -14966,6 +15146,30 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/valueRatio/numerator" ;
   bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/valueRatio/numerator/code" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultUnitCodeOutsideUcum ;
+  bridge:carriedAs
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:ucumUnit ] .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/valueRatio/numerator/comparator" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:namesGap fhirr4:labResultNumberRefused ;
+  bridge:carriedAs
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:quantityComparator ] .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/valueRatio/numerator/system" ;
+  bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/valueRatio/numerator/unit" ;
+  bridge:verdict bridge:carried ;
+  bridge:carriedAs
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:unitText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/valueRatio/numerator/value" ;
