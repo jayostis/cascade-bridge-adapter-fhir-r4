@@ -926,10 +926,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/courseOfTherapyType/text" ;
-  bridge:verdict bridge:carriedInPart ;
-  bridge:namesGap fhirr4:courseOfTherapyTypeNotMapped ;
-  bridge:carriedAs
-    [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:courseOfTherapyType ] .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:codedValueText .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/criticality" ;
@@ -3068,10 +3066,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/interpretation/text" ;
-  bridge:verdict bridge:carriedInPart ;
-  bridge:namesGap fhirr4:labResultInterpretationNotCarried ;
-  bridge:carriedAs
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultInterpretationCode ] .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:codedValueText .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/issued" ;
@@ -4285,10 +4281,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/courseOfTherapyType/text" ;
-  bridge:verdict bridge:carriedInPart ;
-  bridge:namesGap fhirr4:courseOfTherapyTypeNotMapped ;
-  bridge:carriedAs
-    [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:courseOfTherapyType ] .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:codedValueText .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/criticality" ;
@@ -6431,10 +6425,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/interpretation/text" ;
-  bridge:verdict bridge:carriedInPart ;
-  bridge:namesGap fhirr4:labResultInterpretationNotCarried ;
-  bridge:carriedAs
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultInterpretationCode ] .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:codedValueText .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/issued" ;
@@ -7960,10 +7952,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/courseOfTherapyType/text" ;
-  bridge:verdict bridge:carriedInPart ;
-  bridge:namesGap fhirr4:courseOfTherapyTypeNotMapped ;
-  bridge:carriedAs
-    [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:courseOfTherapyType ] .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:codedValueText .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/criticality" ;
@@ -10102,10 +10092,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/interpretation/text" ;
-  bridge:verdict bridge:carriedInPart ;
-  bridge:namesGap fhirr4:labResultInterpretationNotCarried ;
-  bridge:carriedAs
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultInterpretationCode ] .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:codedValueText .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/issued" ;
@@ -11319,10 +11307,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/courseOfTherapyType/text" ;
-  bridge:verdict bridge:carriedInPart ;
-  bridge:namesGap fhirr4:courseOfTherapyTypeNotMapped ;
-  bridge:carriedAs
-    [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:courseOfTherapyType ] .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:codedValueText .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/criticality" ;
@@ -13461,10 +13447,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/interpretation/text" ;
-  bridge:verdict bridge:carriedInPart ;
-  bridge:namesGap fhirr4:labResultInterpretationNotCarried ;
-  bridge:carriedAs
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultInterpretationCode ] .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:codedValueText .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/issued" ;
@@ -15491,10 +15475,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dataAbsentReason/text" ;
-  bridge:verdict bridge:carriedInPart ;
-  bridge:namesGap fhirr4:absentReasonNotCarried ;
-  bridge:carriedAs
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:absentReasonCode ] .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:codedValueText .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/_birthDate" ;
@@ -15677,10 +15659,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dataAbsentReason/text" ;
-  bridge:verdict bridge:carriedInPart ;
-  bridge:namesGap fhirr4:absentReasonNotCarried ;
-  bridge:carriedAs
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:absentReasonCode ] .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:codedValueText .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/_birthDate" ;
@@ -15863,10 +15843,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dataAbsentReason/text" ;
-  bridge:verdict bridge:carriedInPart ;
-  bridge:namesGap fhirr4:absentReasonNotCarried ;
-  bridge:carriedAs
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:absentReasonCode ] .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:codedValueText .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/_birthDate" ;
@@ -16049,10 +16027,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dataAbsentReason/text" ;
-  bridge:verdict bridge:carriedInPart ;
-  bridge:namesGap fhirr4:absentReasonNotCarried ;
-  bridge:carriedAs
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:absentReasonCode ] .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:codedValueText .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/_birthDate" ;
