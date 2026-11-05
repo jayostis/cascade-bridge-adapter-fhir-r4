@@ -65,6 +65,12 @@ under either. A path is relative to the record, so the envelopes' paths differ.
   against `../in/sparql/`, not against the name.
 - Several entries may name one gap: a gap is a kind of problem, and the paths
   that open it are as many as the source has.
+- An entry whose verdict is `carried` or `carriedInPart` names in `bridge:carriedAs` each term it becomes, one node
+  for each resource type and property, the same nodes on the four forms of a path. A term is read from the query
+  that writes it, not from the path's name, and a node is made for a resource type only when FHIR R4 defines the
+  element on it **and** a query writes the term from it. What the specification's
+  [check](https://github.com/jayostis/cascade-bridge-spec/blob/main/adapter/validation.md) catches is not a reason to
+  rely on it.
 - A gap no entry names is a rule about an absence, a construct the judged
   inputs do not carry, or a path whose verdict is not a gap at all. Which one it
   is goes in the pull request, never into a gap minted to close the join.

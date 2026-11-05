@@ -2,63 +2,63 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:ed2d46f1140cd7a678df870e5d9fd5b0 a oa:FragmentSelector ;
+_:a9e80ae4a6442724d382a757e8fabb67 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:cf6a28870a8135ff4d8b1562113662e2 oa:hasSource <../in/lab-troponin-below-detection.json> .
-_:ed2d46f1140cd7a678df870e5d9fd5b0 oa:refinedBy _:efc22d867ade8591e672f110b1ac2e99 .
-_:efc22d867ade8591e672f110b1ac2e99 a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/effectivePeriod/end" .
-_:cf6a28870a8135ff4d8b1562113662e2 oa:hasSelector _:ed2d46f1140cd7a678df870e5d9fd5b0 .
-_:a97d260db32f0922a7bd9e90601fa51b oa:hasTarget _:cf6a28870a8135ff4d8b1562113662e2 .
-_:faab6d83478ed936187b155f96ed5490 a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "" .
-_:d10ff1899f93a3d4a93cfdd9ce24f48b oa:hasSource <../in/lab-troponin-below-detection.json> .
-_:faab6d83478ed936187b155f96ed5490 oa:refinedBy _:ac9456138f58968c963c80065d480deb .
-_:ac9456138f58968c963c80065d480deb a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/referenceRange/1/text" .
-_:d10ff1899f93a3d4a93cfdd9ce24f48b oa:hasSelector _:faab6d83478ed936187b155f96ed5490 .
-_:e12cd42b4cb6ea7e4a028fd496f78ac6 oa:hasTarget _:d10ff1899f93a3d4a93cfdd9ce24f48b .
-_:da8b365487720f474d9b8153a60bc668 a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "" .
-_:eab770bdfe2712be7c0f2af017370c39 oa:hasSource <../in/lab-troponin-below-detection.json> .
-_:da8b365487720f474d9b8153a60bc668 oa:refinedBy _:e90b0512b4bcdce0641f2c931127665c .
-_:e90b0512b4bcdce0641f2c931127665c a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/referenceRange/1/high/value" .
-_:eab770bdfe2712be7c0f2af017370c39 oa:hasSelector _:da8b365487720f474d9b8153a60bc668 .
-_:b9b9684e031ae41fc3ba6b706616cb3e oa:hasTarget _:eab770bdfe2712be7c0f2af017370c39 .
-_:d83374bc85759ee1d0a10419bbd179a4 a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "" .
-_:c49b5dd5f91b9da68fd59b9dff5053fe oa:hasSource <../in/lab-troponin-below-detection.json> .
-_:d83374bc85759ee1d0a10419bbd179a4 oa:refinedBy _:b3620aed85a49e21109be12dae5059a2 .
-_:b3620aed85a49e21109be12dae5059a2 a oa:FragmentSelector ;
+_:e1aaf49a8dcbc46ace01d631d030c19a a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/interpretation/1/text" .
-_:c49b5dd5f91b9da68fd59b9dff5053fe oa:hasSelector _:d83374bc85759ee1d0a10419bbd179a4 .
-_:c783ac6b0d2ff954e76b4655847e4e7b oa:hasTarget _:c49b5dd5f91b9da68fd59b9dff5053fe .
-_:a97d260db32f0922a7bd9e90601fa51b sh:resultSeverity sh:Info .
-_:e12cd42b4cb6ea7e4a028fd496f78ac6 sh:resultSeverity sh:Warning .
-_:b9b9684e031ae41fc3ba6b706616cb3e sh:resultSeverity sh:Warning .
-_:c783ac6b0d2ff954e76b4655847e4e7b sh:resultSeverity sh:Info .
-_:a97d260db32f0922a7bd9e90601fa51b a oa:Annotation ;
+_:a9e80ae4a6442724d382a757e8fabb67 oa:refinedBy _:e1aaf49a8dcbc46ace01d631d030c19a .
+_:e26cd4c91146cfee9ac55a9d8d87a38b a oa:Annotation ;
+	oa:hasTarget _:cf769d0ebd29026ef30f35c30a8bd0b1 .
+_:cf769d0ebd29026ef30f35c30a8bd0b1 oa:hasSource <../in/lab-troponin-below-detection.json> ;
+	oa:hasSelector _:a9e80ae4a6442724d382a757e8fabb67 .
+_:e26cd4c91146cfee9ac55a9d8d87a38b oa:hasBody fhirr4:codedValueText ;
+	oa:motivatedBy oa:classifying ;
+	sh:value "/interpretation/text" ;
+	sh:resultSeverity sh:Info .
+_:ff6245fe779ac4b27574a79dd90724ff a oa:FragmentSelector ;
+	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "" .
+_:fd9ffb724d7eb3e4c16b5f3bdd1eb731 oa:hasSource <../in/lab-troponin-below-detection.json> .
+_:ff6245fe779ac4b27574a79dd90724ff oa:refinedBy _:aba867e34a49c8ec476bed316aa76be .
+_:aba867e34a49c8ec476bed316aa76be a oa:FragmentSelector ;
+	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/effectivePeriod/end" .
+_:fd9ffb724d7eb3e4c16b5f3bdd1eb731 oa:hasSelector _:ff6245fe779ac4b27574a79dd90724ff .
+_:e5cb8244ec0796dbb5fef1edda2f5ed8 oa:hasTarget _:fd9ffb724d7eb3e4c16b5f3bdd1eb731 .
+_:fee47228c2897a6e216f476256b92f70 a oa:FragmentSelector ;
+	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "" .
+_:e1b4e8acf2dfa3e6fd8030e591ec8c oa:hasSource <../in/lab-troponin-below-detection.json> .
+_:fee47228c2897a6e216f476256b92f70 oa:refinedBy _:a187336eb99c8997e705271960df4f58 .
+_:a187336eb99c8997e705271960df4f58 a oa:FragmentSelector ;
+	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/referenceRange/1/text" .
+_:e1b4e8acf2dfa3e6fd8030e591ec8c oa:hasSelector _:fee47228c2897a6e216f476256b92f70 .
+_:fcbfb6ee843114c30f3340da3bfb4938 oa:hasTarget _:e1b4e8acf2dfa3e6fd8030e591ec8c .
+_:f1d9449129dfa6d4757d2783994db99 a oa:FragmentSelector ;
+	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "" .
+_:bf702612024707e1ab0a9011704a0a40 oa:hasSource <../in/lab-troponin-below-detection.json> .
+_:f1d9449129dfa6d4757d2783994db99 oa:refinedBy _:af66b1c7849402cbc64cdadcc3671afe .
+_:af66b1c7849402cbc64cdadcc3671afe a oa:FragmentSelector ;
+	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/referenceRange/1/high/value" .
+_:bf702612024707e1ab0a9011704a0a40 oa:hasSelector _:f1d9449129dfa6d4757d2783994db99 .
+_:e394437aaad2a0766346ad5b18d435f2 oa:hasTarget _:bf702612024707e1ab0a9011704a0a40 .
+_:e5cb8244ec0796dbb5fef1edda2f5ed8 sh:resultSeverity sh:Info .
+_:fcbfb6ee843114c30f3340da3bfb4938 sh:resultSeverity sh:Warning .
+_:e394437aaad2a0766346ad5b18d435f2 sh:resultSeverity sh:Warning .
+_:e5cb8244ec0796dbb5fef1edda2f5ed8 a oa:Annotation ;
 	oa:hasBody fhirr4:labResultPeriodEnd ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "2026-05-02T07:55:00-04:00" .
-_:e12cd42b4cb6ea7e4a028fd496f78ac6 a oa:Annotation ;
+_:fcbfb6ee843114c30f3340da3bfb4938 a oa:Annotation ;
 	oa:hasBody fhirr4:labResultRangeRepeated ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "Women: up to 0.03 ng/mL" .
-_:b9b9684e031ae41fc3ba6b706616cb3e a oa:Annotation ;
+_:e394437aaad2a0766346ad5b18d435f2 a oa:Annotation ;
 	oa:hasBody fhirr4:labResultRangeRepeated ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "0.03" .
-_:c783ac6b0d2ff954e76b4655847e4e7b a oa:Annotation ;
-	oa:hasBody fhirr4:labResultInterpretationNotCarried ;
-	oa:motivatedBy oa:classifying ;
-	sh:value "Below the limit of detection" .
