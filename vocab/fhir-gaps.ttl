@@ -295,7 +295,7 @@ fhirr4:expectedSupplyDurationBound a skos:Concept ;
   sh:resultSeverity sh:Warning .
 
 fhirr4:courseOfTherapyTypeNotMapped a skos:Concept ;
-  skos:prefLabel "A prescription's course of therapy is a coding in a system other than FHIR's medicationrequest-course-of-therapy, a code that system does not define, a second coding in that system or a second coding in that system (a course holds one, the first), so it is not carried."@en ;
+  skos:prefLabel "A prescription's course of therapy is a coding in a system other than FHIR's medicationrequest-course-of-therapy, a code that system does not define, or a second coding in that system (a course holds one, the first), so it is not carried."@en ;
   skos:inScheme fhirr4:gaps ;
   skos:broader bridge:valueNotMapped ;
   sh:resultSeverity sh:Warning .
