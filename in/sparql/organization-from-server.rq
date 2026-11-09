@@ -19,14 +19,17 @@ PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # Like every record from a server, it states its address on the server and its
 # id, as record.rq writes them.
 # A document's Composition naming it as custodian or author names its record
-# once in each role.
+# once in each role, as organization.rq writes it: the role on an association of
+# an act that generated the document, and the record as what it was attributed to.
 
 CONSTRUCT {
   ?organization a cascade:Organization ;
     cascade:sourceUrl ?sourceUrl ;
     cascade:sourceRecordId ?input3 .
-  ?attributing prov:qualifiedAttribution ?attribution .
-  ?attribution prov:agent ?organization ;
+  ?attributing prov:wasGeneratedBy ?writing ;
+    prov:wasAttributedTo ?organization .
+  ?writing prov:qualifiedAssociation ?association .
+  ?association prov:agent ?organization ;
     prov:hadRole ?role .
   ?version prov:specializationOf ?organization ;
     foaf:name ?name ;
@@ -136,7 +139,8 @@ WHERE {
   }
   FILTER (COALESCE(?branch, "") != "attribution" || ?roleAt = ?pointer)
   BIND (IF(?branch = "attribution", IRI(?sha256), 1/0) AS ?attributing)
-  BIND (IF(BOUND(?attributing), BNODE(), 1/0) AS ?attribution)
+  BIND (IF(BOUND(?attributing), BNODE(), 1/0) AS ?writing)
+  BIND (IF(BOUND(?attributing), BNODE(), 1/0) AS ?association)
   BIND (IF(COALESCE(?branch, "") != "attribution" && COALESCE(?branch, "") != "record", ?resourceVersion, 1/0) AS ?version)
   BIND (IF(?branch = "arrival", BNODE(), 1/0) AS ?arrival)
   BIND (IF(BOUND(?arrival), ?writtenVersionId, 1/0) AS ?versionId)

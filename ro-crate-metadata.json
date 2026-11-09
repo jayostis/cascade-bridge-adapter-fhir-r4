@@ -2226,24 +2226,24 @@
       "@type": "File",
       "name": "Mapping: an Organization a document names",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "9117",
-      "sha256": "aee3e835bb1f2e479b4bc1d3fd2401a3961bcb2bbe8dd07c4ed19790b621bfa1",
+      "contentSize": "9450",
+      "sha256": "f2dd002e816622d95525142f459795df992701eed3bc9ce5afbd35dd2ec452ec",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "An Organization the document's Composition names as custodian or author, or a Diagnostic Implication names as its performer, as a record named by cascade:OrganizationNamingRule from the identifier organization-table.rq picks, with one version of each record, from the Organization a custodian names, else the first in the document, carrying its name, identifiers and addresses, and the document's prov:qualifiedAttribution naming it once in each role, cascade:CustodianRole or cascade:AuthorRole."
+      "description": "An Organization the document's Composition names as custodian or author, or a Diagnostic Implication names as its performer, as a record named by cascade:OrganizationNamingRule from the identifier organization-table.rq picks, with one version of each record, from the Organization a custodian names, else the first in the document, carrying its name, identifiers and addresses, and the document's prov:wasGeneratedBy act, a blank node, carrying a prov:qualifiedAssociation naming it once in each role, cascade:CustodianRole or cascade:AuthorRole, with the document prov:wasAttributedTo it."
     },
     {
       "@id": "in/sparql/organization-from-server.rq",
       "@type": "File",
       "name": "Mapping: an Organization from a server",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "6704",
-      "sha256": "0a976962fd5bc091ee7ed4852f4f25c634ab5d8c0171fd112bf1161924babd4f",
+      "contentSize": "6989",
+      "sha256": "1593b2372c603df87f861b1fd8f65c73259b179ac5a2224a7475cf252152a49a",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "An Organization at the top of an entry of a document whose server is known, with an id and a fullUrl that is no urn:uuid, as a record named by cascade:OrganizationNamingRule from the server and its id, unless another entry holds an Organization with that id; its version carries its name, identifiers and addresses as organization.rq writes them, its arrival its version id and change time, the record its cascade:sourceUrl and cascade:sourceRecordId as record.rq writes them, and the document's prov:qualifiedAttribution names it once in each role a Composition gives it."
+      "description": "An Organization at the top of an entry of a document whose server is known, with an id and a fullUrl that is no urn:uuid, as a record named by cascade:OrganizationNamingRule from the server and its id, unless another entry holds an Organization with that id; its version carries its name, identifiers and addresses as organization.rq writes them, its arrival its version id and change time, the record its cascade:sourceUrl and cascade:sourceRecordId as record.rq writes them, and the document's prov:wasGeneratedBy act, a blank node, names it on a prov:qualifiedAssociation once in each role a Composition gives it, with the document prov:wasAttributedTo it."
     },
     {
       "@id": "in/sparql/lab-result.rq",
@@ -4082,8 +4082,8 @@
       "@type": "File",
       "name": "Expected graph for patient-deceased-date",
       "encodingFormat": "text/turtle",
-      "contentSize": "3460",
-      "sha256": "e3ff5a40635e458e3c3bfe6290d18684ac51ccfb9a368ef03a02bd7c77f623ab",
+      "contentSize": "3459",
+      "sha256": "e24af75de684a76f99c4b93d307f3b72c8cf30fcc07ebb5fc79ca9ed4db4cad9",
       "about": {
         "@id": "fixtures/in/patient-deceased-date.json"
       },
@@ -4098,8 +4098,8 @@
       "@type": "File",
       "name": "Expected graph for patient-deceased-boolean",
       "encodingFormat": "text/turtle",
-      "contentSize": "3415",
-      "sha256": "8fba41d756c497746e77243aba55aa39aa535fb5b4a1740a4bcda54f6bac2984",
+      "contentSize": "3414",
+      "sha256": "b9d46f9bc11112a762be2442cae0a5b10065c001cf7edd22ea1173d48445f085",
       "about": {
         "@id": "fixtures/in/patient-deceased-boolean.json"
       },
@@ -4114,8 +4114,8 @@
       "@type": "File",
       "name": "Expected graph for patient-gender-absent-for-reason",
       "encodingFormat": "text/turtle",
-      "contentSize": "3777",
-      "sha256": "a464ba10806181513ef71327cd772d358bcfcbb58027fab95efa4875e432d364",
+      "contentSize": "3776",
+      "sha256": "18aeb9e8b6864f40862752b3077795eaa603d6a27bfedf4d2edfb38f53e646a4",
       "about": {
         "@id": "fixtures/in/patient-gender-absent-for-reason.json"
       },
@@ -4131,7 +4131,7 @@
       "name": "Expected graph for patient-gender-not-a-code",
       "encodingFormat": "text/turtle",
       "contentSize": "3347",
-      "sha256": "8971950350332da92a936d1f0e46031dc495ad1a32aca230999c8f265057d6d3",
+      "sha256": "ed8af373558719d9149a74a1bf3cb786051fdba68b6545e1bc86fd5e67592a2c",
       "about": {
         "@id": "fixtures/in/patient-gender-not-a-code.json"
       },
@@ -4146,8 +4146,8 @@
       "@type": "File",
       "name": "Expected graph for medication-request-reported-and-proposal",
       "encodingFormat": "text/turtle",
-      "contentSize": "6123",
-      "sha256": "889e1e631e179be113241a4f08457b65a9ced5baddd8bd36de845e2fe0204fe2",
+      "contentSize": "6122",
+      "sha256": "f8f539331c44d54e11218d404f8c5bcb6cb371ca4395860937ec93b59680a9a7",
       "about": {
         "@id": "fixtures/in/medication-request-reported-and-proposal.json"
       },
@@ -4162,8 +4162,8 @@
       "@type": "File",
       "name": "Expected graph for medication-request-intent-not-a-code",
       "encodingFormat": "text/turtle",
-      "contentSize": "3635",
-      "sha256": "b4ee1f1be6100b66561dbcc5ab013bfccb99f35e3b90169373997574ea315041",
+      "contentSize": "3634",
+      "sha256": "d08da6a5b04bee2e7037e4bba0ecebc40f33da557bbc8f3e9df6fcebc0cf7cb6",
       "about": {
         "@id": "fixtures/in/medication-request-intent-not-a-code.json"
       },
@@ -5051,8 +5051,8 @@
       "@type": "File",
       "name": "Expected graph for allergy-no-id-penicillin",
       "encodingFormat": "text/turtle",
-      "contentSize": "3419",
-      "sha256": "8cf399dba636ab0f017be66a1cf77d5e177d30c264446690fce3371ad1553b59",
+      "contentSize": "3422",
+      "sha256": "6a03117def25b942cc5f356f603949d0d998d9782a806cd392c78ba9d2cfa231",
       "about": {
         "@id": "fixtures/in/allergy-no-id-penicillin.json"
       },
@@ -5083,8 +5083,8 @@
       "@type": "File",
       "name": "Expected graph for allergy-no-id-penicillin-compact",
       "encodingFormat": "text/turtle",
-      "contentSize": "3279",
-      "sha256": "3c10ce1583337df3ef26d65de2dc4e8bc9f0f0b83daa4589072b6c098036a53f",
+      "contentSize": "3284",
+      "sha256": "a47f2b13f8707fe74f05f4b2306aeec1e69c98f40e1cd6fb8140ce15888be1f4",
       "about": {
         "@id": "fixtures/in/allergy-no-id-penicillin-compact.json"
       },
@@ -5115,8 +5115,8 @@
       "@type": "File",
       "name": "Expected graph for allergy-no-id-sulfa",
       "encodingFormat": "text/turtle",
-      "contentSize": "3426",
-      "sha256": "30c78873ec17cc6b658db11fd5aa6af55ff41145c133e40caf3804015455cb11",
+      "contentSize": "3430",
+      "sha256": "ca9218c8cc469c8f8a88a55ae04e18ab5122ba9471f59f4f8ef3fe22de9c9fa9",
       "about": {
         "@id": "fixtures/in/allergy-no-id-sulfa.json"
       },
@@ -5147,8 +5147,8 @@
       "@type": "File",
       "name": "Expected graph for allergy-with-id",
       "encodingFormat": "text/turtle",
-      "contentSize": "3647",
-      "sha256": "0d3a70e7a150e9d3f903dd8c122804ecb750d21f07e5828180bbbdce3aea326b",
+      "contentSize": "3651",
+      "sha256": "ffe82c99d7c7032ffe767541294eb6b29169a72c53efe2ecc21cac2f670feb27",
       "about": {
         "@id": "fixtures/in/allergy-with-id.json"
       },
@@ -5179,8 +5179,8 @@
       "@type": "File",
       "name": "Expected graph for allergy-every-mapped-element",
       "encodingFormat": "text/turtle",
-      "contentSize": "4035",
-      "sha256": "66d0299476de336c866188079c8965a20fdae420a78cc1ae51a203eb195dfd54",
+      "contentSize": "4039",
+      "sha256": "b9222f9d963a051814521908e8afc2f8d1282b06442c79edd5834b23a4765f17",
       "about": {
         "@id": "fixtures/in/allergy-every-mapped-element.json"
       },
@@ -5211,8 +5211,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-repeated-condition-id",
       "encodingFormat": "text/turtle",
-      "contentSize": "4675",
-      "sha256": "1cb06d8ee38c22c8afa646cfe894379120df5f5f7ef07ba1683bebc22de8ef50",
+      "contentSize": "4641",
+      "sha256": "b049467a3d5eccaa058666f7f7d35e024f173d26ed22b22a003ca3ff90f4c7de",
       "about": {
         "@id": "fixtures/in/bundle-repeated-condition-id.json"
       },
@@ -5243,8 +5243,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-two-identical-id-less-allergies",
       "encodingFormat": "text/turtle",
-      "contentSize": "4479",
-      "sha256": "2875375dc8562373e4a3bcc6eb53a383badebcfcff714e2f1317a716a5c09de6",
+      "contentSize": "4445",
+      "sha256": "bed598c21d51ca278f851a20727d36513392fec1bd0ce8a9e6ceb95f9b7934ac",
       "about": {
         "@id": "fixtures/in/bundle-two-identical-id-less-allergies.json"
       },
@@ -5275,8 +5275,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-urn-uuid-full-urls",
       "encodingFormat": "text/turtle",
-      "contentSize": "4412",
-      "sha256": "1d0395bd4f4b4e9192bc3dcaa0787629fec6cc6d640d291060e564b19f79c547",
+      "contentSize": "4411",
+      "sha256": "6e95c47d3e0f7ae4905c972a1e1ce74014c04530f3531a3f57d91dca7968c23c",
       "about": {
         "@id": "fixtures/in/bundle-urn-uuid-full-urls.json"
       },
@@ -5307,8 +5307,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-document-custodian-and-authors",
       "encodingFormat": "text/turtle",
-      "contentSize": "6917",
-      "sha256": "b620a064e4b7bcdf6e7af8230b1d31ed7241a7e31aa95b0eccd2564cd86b0680",
+      "contentSize": "7244",
+      "sha256": "89a01ce9c3d0634146d70e8835e529ffdcf87cb3a9b5c180c8c275284c5910fc",
       "about": {
         "@id": "fixtures/in/bundle-document-custodian-and-authors.json"
       },
@@ -5339,8 +5339,8 @@
       "@type": "File",
       "name": "Expected graph for documentreference-contained-custodian",
       "encodingFormat": "text/turtle",
-      "contentSize": "3572",
-      "sha256": "eff1fc4d16eb43d0beafe2c3937fd2b92fb57d04fe0a6601632657f77bee2f1f",
+      "contentSize": "3571",
+      "sha256": "44da6dee61cf1cd14ebcf8bcce2bc3a8a64a113b459a54885c8026f804becc04",
       "about": {
         "@id": "fixtures/in/documentreference-contained-custodian.json"
       },
@@ -6043,8 +6043,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-document-without-custodian",
       "encodingFormat": "text/turtle",
-      "contentSize": "4285",
-      "sha256": "c683cf594bd4104b65f2131526e13a480a8beae83e4ddf8d363b38f7bddb58d6",
+      "contentSize": "4284",
+      "sha256": "59a27dc291fb64f61b04db10cacba62d189de07e17c571cccd9ae42c2deea2af",
       "about": {
         "@id": "fixtures/in/bundle-document-without-custodian.json"
       },
@@ -6059,8 +6059,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-document-organizations-one-npi",
       "encodingFormat": "text/turtle",
-      "contentSize": "6192",
-      "sha256": "ed7c9b5a04b3b080b785f6149c040f7964d2d9816c8807dfe1f32b1e06514e83",
+      "contentSize": "6611",
+      "sha256": "ee19e7893727d3a5009294afdf556de41a9f73b8fc05bf3e5cfcfbda8b9dc9f5",
       "about": {
         "@id": "fixtures/in/bundle-document-organizations-one-npi.json"
       },
@@ -6075,8 +6075,8 @@
       "@type": "File",
       "name": "Expected graph for composition-contained-custodian",
       "encodingFormat": "text/turtle",
-      "contentSize": "3917",
-      "sha256": "b31aa94baacf01d27c964992b2d75195c40613fda5f9a27eb6f106bc3f6b765e",
+      "contentSize": "4211",
+      "sha256": "3cc558561ea68669b70ab2ec5454fcf2d8082b2325521f723f178c98923bd275",
       "about": {
         "@id": "fixtures/in/composition-contained-custodian.json"
       },
@@ -6139,8 +6139,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-patient-reference-urn-not-held",
       "encodingFormat": "text/turtle",
-      "contentSize": "3308",
-      "sha256": "fdc01de5dd07f1caadeeade03da9195f75097fb3f709dc7b695139a998d40623",
+      "contentSize": "3312",
+      "sha256": "64f90bd7e476c5fd43e54581edefd8b0e396b93860904ceccbe175b10532c9ab",
       "about": {
         "@id": "fixtures/in/bundle-patient-reference-urn-not-held.json"
       },
@@ -6171,8 +6171,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-patient-reference-relative-to-urn",
       "encodingFormat": "text/turtle",
-      "contentSize": "5387",
-      "sha256": "3d2f697fe11c09a51f3dadb066e0d45f7b11dad30d7a8cbbdfb22ed56dd6b67f",
+      "contentSize": "5315",
+      "sha256": "772b328dca7d89ffb86660e6d8e5fae4ef7e89a5c6cd1fe0b93c5622a67e2592",
       "about": {
         "@id": "fixtures/in/bundle-patient-reference-relative-to-urn.json"
       },
@@ -6203,8 +6203,8 @@
       "@type": "File",
       "name": "Expected graph for condition-no-id-narrative-breast-cancer",
       "encodingFormat": "text/turtle",
-      "contentSize": "3146",
-      "sha256": "6e396bd4465e39cccf33f5746ce3087187eeed0b1d068e61a87f99bfa8de7a05",
+      "contentSize": "3150",
+      "sha256": "6ea6ecb4da1547c8bfe21abcdd11ec121db8299290c3302e91e2a1dd4bbf86c3",
       "about": {
         "@id": "fixtures/in/condition-no-id-narrative-breast-cancer.json"
       },
@@ -6235,8 +6235,8 @@
       "@type": "File",
       "name": "Expected graph for condition-no-id-narrative-diabetes",
       "encodingFormat": "text/turtle",
-      "contentSize": "3146",
-      "sha256": "689acc62eecc0186632545f990456b254fd38057c26be21bc56a2417dca51bbd",
+      "contentSize": "3150",
+      "sha256": "e1d98202ea2d260f2e2185f54237a2538b725857d9f7c7d06673804eaab057c0",
       "about": {
         "@id": "fixtures/in/condition-no-id-narrative-diabetes.json"
       },
@@ -6267,8 +6267,8 @@
       "@type": "File",
       "name": "Expected graph for condition-no-id-structured-diabetes",
       "encodingFormat": "text/turtle",
-      "contentSize": "3423",
-      "sha256": "7e304ce98321811ec2bbf02acfc08026a075e26d0f437b0d0c5870a712b42779",
+      "contentSize": "3427",
+      "sha256": "4d511f3119652cd71f7d6d7ef67423920bdd5c9fdb1af4198b3660d957d067e6",
       "about": {
         "@id": "fixtures/in/condition-no-id-structured-diabetes.json"
       },
@@ -6299,8 +6299,8 @@
       "@type": "File",
       "name": "Expected graph for condition-no-id-structured-hypertension",
       "encodingFormat": "text/turtle",
-      "contentSize": "3421",
-      "sha256": "3843cd08a205d2feb8de58f17f52bd99735fb98cc7d7c27b47864c392c64d66f",
+      "contentSize": "3425",
+      "sha256": "0d512ed9c3c68c230067c14025324b1d8f5d87f836aa50a359ccba62a5dc1a91",
       "about": {
         "@id": "fixtures/in/condition-no-id-structured-hypertension.json"
       },
@@ -6331,8 +6331,8 @@
       "@type": "File",
       "name": "Expected graph for condition-with-id",
       "encodingFormat": "text/turtle",
-      "contentSize": "3630",
-      "sha256": "117a5913d96467b6447c998331692d1fdea431c49e3b1a2f453165cff550c3db",
+      "contentSize": "3634",
+      "sha256": "839e395b1f10ddd07647130fb5073e62310e4082a602c5bc422265cc181c3fe4",
       "about": {
         "@id": "fixtures/in/condition-with-id.json"
       },
@@ -6363,8 +6363,8 @@
       "@type": "File",
       "name": "Expected graph for condition-every-mapped-element",
       "encodingFormat": "text/turtle",
-      "contentSize": "3839",
-      "sha256": "dc22b557ad6141664ddba78c5232d7c1cfe57cc1f9329aa8bc73fbc697de7f56",
+      "contentSize": "3842",
+      "sha256": "321a0cc6bb8ef7ec433a1908568009f2fe9cea7b9d11ef1ab516eb1917d63f44",
       "about": {
         "@id": "fixtures/in/condition-every-mapped-element.json"
       },
@@ -6395,8 +6395,8 @@
       "@type": "File",
       "name": "Expected graph for condition-with-id-meta-fetch-a",
       "encodingFormat": "text/turtle",
-      "contentSize": "3708",
-      "sha256": "611f37d687292975fd876396fac5b339794ea992a6ab62d452f6de861eb118ea",
+      "contentSize": "3712",
+      "sha256": "40f1be963054852193147cdbc2105d5185b9430c5ef2c0d7d7b7804f3b438ae4",
       "about": {
         "@id": "fixtures/in/condition-with-id-meta-fetch-a.json"
       },
@@ -6427,8 +6427,8 @@
       "@type": "File",
       "name": "Expected graph for condition-with-id-meta-fetch-b",
       "encodingFormat": "text/turtle",
-      "contentSize": "3709",
-      "sha256": "3749d05110abed64a058400cbd9e70778058f82f357655d75c48422468635af3",
+      "contentSize": "3713",
+      "sha256": "d9bb85964fa4560036ec6f8489f7b318f1c6cf777fec967e48dfd277bddc2ea3",
       "about": {
         "@id": "fixtures/in/condition-with-id-meta-fetch-b.json"
       },
@@ -6459,8 +6459,8 @@
       "@type": "File",
       "name": "Expected graph for condition-patient-reference-default-port",
       "encodingFormat": "text/turtle",
-      "contentSize": "3576",
-      "sha256": "d92e171c074b59eee809bc8d13aa7bf6ac05d541cd4e0c1f49e30e4b78d1ff49",
+      "contentSize": "3580",
+      "sha256": "89145b9e12ad77a86aae020b93de2bda295e0e1e6f2e62da0857b8d7be3f20a5",
       "about": {
         "@id": "fixtures/in/condition-patient-reference-default-port.json"
       },
@@ -6491,8 +6491,8 @@
       "@type": "File",
       "name": "Expected graph for condition-patient-reference-userinfo",
       "encodingFormat": "text/turtle",
-      "contentSize": "3509",
-      "sha256": "671eb03a783ecf4e8cea49d7f080412f0398d0642ee8a283c194b1dc2d3ed534",
+      "contentSize": "3514",
+      "sha256": "5970745691b3fdfd5e9bd3b8ffddd60d4e15a902f85d075a4fd91232de6709d3",
       "about": {
         "@id": "fixtures/in/condition-patient-reference-userinfo.json"
       },
@@ -6523,8 +6523,8 @@
       "@type": "File",
       "name": "Expected graph for encounter-with-id",
       "encodingFormat": "text/turtle",
-      "contentSize": "2308",
-      "sha256": "77eac22a7dcf5e496b311657ea4aec8f63277d635f5a630a760037be3c59966e",
+      "contentSize": "2306",
+      "sha256": "4b93ac4dccc71f03a9ab07a368a2c2f0cb352cbc43aba63d1ac0fde042ed7e6e",
       "about": {
         "@id": "fixtures/in/encounter-with-id.json"
       },
@@ -6555,8 +6555,8 @@
       "@type": "File",
       "name": "Expected graph for immunization-no-id-2024",
       "encodingFormat": "text/turtle",
-      "contentSize": "3472",
-      "sha256": "90cb544f82edaae5872e3dd8df29b44ea85e46c09fb4249f892a9ddb7b1cc54d",
+      "contentSize": "3478",
+      "sha256": "20228e2108cd98e06e85c8a4f06f55b398f7fcf9c0a1aedfa1bc3b7ab9abbc11",
       "about": {
         "@id": "fixtures/in/immunization-no-id-2024.json"
       },
@@ -6587,8 +6587,8 @@
       "@type": "File",
       "name": "Expected graph for immunization-no-id-2025",
       "encodingFormat": "text/turtle",
-      "contentSize": "3478",
-      "sha256": "c966c1f88e3d4ed256e204e291663597a8695e93bcf736000900ee3a9e822ddf",
+      "contentSize": "3480",
+      "sha256": "7d3ce0431ac63662eb35b3aa78c23bb308a802343605b4f4dc422e03a173cd41",
       "about": {
         "@id": "fixtures/in/immunization-no-id-2025.json"
       },
@@ -6619,8 +6619,8 @@
       "@type": "File",
       "name": "Expected graph for immunization-with-id",
       "encodingFormat": "text/turtle",
-      "contentSize": "3701",
-      "sha256": "3d0054acb939e1a7cb8feb961fd00bf65c6711ca0f503eac0da7a720be3401ce",
+      "contentSize": "3705",
+      "sha256": "56588419971cab0736617b0ccbc18d204b7f93a1292b255aca281b2b3360f980",
       "about": {
         "@id": "fixtures/in/immunization-with-id.json"
       },
@@ -6651,8 +6651,8 @@
       "@type": "File",
       "name": "Expected graph for immunization-every-mapped-element",
       "encodingFormat": "text/turtle",
-      "contentSize": "3790",
-      "sha256": "740b2e57517a2cb2a40b59f6b7bba0a066a7024afd23e7e72c5428c9f91bc701",
+      "contentSize": "3794",
+      "sha256": "ebd57581f1cc71458281b494c35490d1020a7b435daccf1f2caabd0c82fc29f3",
       "about": {
         "@id": "fixtures/in/immunization-every-mapped-element.json"
       },
@@ -6683,8 +6683,8 @@
       "@type": "File",
       "name": "Expected graph for lab-glucose-fasting",
       "encodingFormat": "text/turtle",
-      "contentSize": "4071",
-      "sha256": "065b3005de7951d62144700bee343029ccd4dbcf116475afd9c79d9cab6ebb74",
+      "contentSize": "4107",
+      "sha256": "02b52efd66a8b3750c4e969238743cbdb5e43630f995c616c07cf9eb9312ca11",
       "about": {
         "@id": "fixtures/in/lab-glucose-fasting.json"
       },
@@ -6715,8 +6715,8 @@
       "@type": "File",
       "name": "Expected graph for lab-every-mapped-element",
       "encodingFormat": "text/turtle",
-      "contentSize": "4991",
-      "sha256": "f1c0eaa3e73e03b511c658a51707f0b1c37f443ffd51af95c345fadb8bde9964",
+      "contentSize": "4990",
+      "sha256": "6ea9ccc9e46e1473643041510ad37b86e7576c86e95b1041b0d632e9f60151dd",
       "about": {
         "@id": "fixtures/in/lab-every-mapped-element.json"
       },
@@ -6747,8 +6747,8 @@
       "@type": "File",
       "name": "Expected graph for lab-no-category-potassium",
       "encodingFormat": "text/turtle",
-      "contentSize": "3825",
-      "sha256": "f7353cb56df89a7af0dee878d8667376dab7055c4f2c3c9de42f8421aad3ba27",
+      "contentSize": "3863",
+      "sha256": "d04d151d65fd95b870ecabfe102cd61426a3326ed355870f8dca14ae0b79991d",
       "about": {
         "@id": "fixtures/in/lab-no-category-potassium.json"
       },
@@ -6779,8 +6779,8 @@
       "@type": "File",
       "name": "Expected graph for vital-heartrate-with-id",
       "encodingFormat": "text/turtle",
-      "contentSize": "2313",
-      "sha256": "f1ea2d422ca22099e24d084e60d2af605d8dddec6ecc2be69aa680aa7d6cb110",
+      "contentSize": "2312",
+      "sha256": "9a8424559df456d0fb1b8e12923ee42088f6ec187005bb3b647017c5df42492a",
       "about": {
         "@id": "fixtures/in/vital-heartrate-with-id.json"
       },
@@ -6811,8 +6811,8 @@
       "@type": "File",
       "name": "Expected graph for vital-no-category-heart-rate",
       "encodingFormat": "text/turtle",
-      "contentSize": "2223",
-      "sha256": "76541c6aeafe9c56c13dce0562367c2e3f98f832696ea234d7b29be93f5c9061",
+      "contentSize": "2222",
+      "sha256": "d93b3daa306e3377183c5ef4746aa08ae3ae4f67fe836ae037addd2c17c12e79",
       "about": {
         "@id": "fixtures/in/vital-no-category-heart-rate.json"
       },
@@ -6843,8 +6843,8 @@
       "@type": "File",
       "name": "Expected graph for medication-with-id",
       "encodingFormat": "text/turtle",
-      "contentSize": "3784",
-      "sha256": "5c31b412099c67fdcd16111db4721017f255fdd4a4a678442d441fcc7cefc6b8",
+      "contentSize": "3788",
+      "sha256": "5dc1205b3107bb1566f9bbe9887ba5ab7b13a54ebd8f35501ef29c4fef40d626",
       "about": {
         "@id": "fixtures/in/medication-with-id.json"
       },
@@ -6875,8 +6875,8 @@
       "@type": "File",
       "name": "Expected graph for medication-no-id-bare",
       "encodingFormat": "text/turtle",
-      "contentSize": "3259",
-      "sha256": "b7a09578e97c536fc77b9c01647b2e73486b90fc309405cc7278bfed09dbc837",
+      "contentSize": "3263",
+      "sha256": "4f7805236ba2286d89f63e2727b6a2bb0187d7fee1ff52caf28137084875a222",
       "about": {
         "@id": "fixtures/in/medication-no-id-bare.json"
       },
@@ -6907,8 +6907,8 @@
       "@type": "File",
       "name": "Expected graph for medication-no-id-note-only",
       "encodingFormat": "text/turtle",
-      "contentSize": "3261",
-      "sha256": "9bd4e38dc9a46bf96e43a9028942922178242fd1c10cd8f1270fe0b7b0a26ff7",
+      "contentSize": "3265",
+      "sha256": "53fa796db40c0fe023a27668f900b71e9b89700cd152d18852c9605da87aca7e",
       "about": {
         "@id": "fixtures/in/medication-no-id-note-only.json"
       },
@@ -6940,7 +6940,7 @@
       "name": "Expected graph for medication-request-every-mapped-element",
       "encodingFormat": "text/turtle",
       "contentSize": "4740",
-      "sha256": "6f9350442fba0b5bd48f5f62e5c26f6d45d9f98ef4f0107216d66fca3df5ce39",
+      "sha256": "b88f47b97aeb0380db6076fc4b8da9e95215b58dbe44647007fc9e0034c54379",
       "about": {
         "@id": "fixtures/in/medication-request-every-mapped-element.json"
       },
@@ -6971,8 +6971,8 @@
       "@type": "File",
       "name": "Expected graph for medication-statement-every-mapped-element",
       "encodingFormat": "text/turtle",
-      "contentSize": "4030",
-      "sha256": "3bd4ca6d23cd5030573e2b67c0d82db3a3fcf01e4e6d1157578a3fe08041a103",
+      "contentSize": "4029",
+      "sha256": "86a8b82937da3f58ca4c3e1597bb3c7d1dd57a12bbef5029be3b159e5776bf25",
       "about": {
         "@id": "fixtures/in/medication-statement-every-mapped-element.json"
       },
@@ -7003,8 +7003,8 @@
       "@type": "File",
       "name": "Expected graph for medication-request-contained-medication",
       "encodingFormat": "text/turtle",
-      "contentSize": "3843",
-      "sha256": "d8ca9fc202a7df5d4356b63403da9cc9fee08cf2feea029706d3c579a489ed3e",
+      "contentSize": "3842",
+      "sha256": "498a19913308373a3f4ceaa679c2858bf9cd9919a862f1c3107a1e0dc51515b4",
       "about": {
         "@id": "fixtures/in/medication-request-contained-medication.json"
       },
@@ -7035,8 +7035,8 @@
       "@type": "File",
       "name": "Expected graph for medication-request-reference-outside",
       "encodingFormat": "text/turtle",
-      "contentSize": "3764",
-      "sha256": "2c90d79400a3fb42725efce5ba78d45658565ad27aaf546e9cda3ebe702c93c5",
+      "contentSize": "3763",
+      "sha256": "0d2c1b5a4541f9929d3698ad15e500c16cf920def758567f9255233a13b4c745",
       "about": {
         "@id": "fixtures/in/medication-request-reference-outside.json"
       },
@@ -7067,8 +7067,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-medication-request-and-medication",
       "encodingFormat": "text/turtle",
-      "contentSize": "3746",
-      "sha256": "ccf854c20bb2cb422997b5d2aed80f42fd86586670c767b5b55a867659ae1b5b",
+      "contentSize": "3745",
+      "sha256": "f1ca101e51df2220e59ca84be0348281fca0bbe7b11a914e5de9bab0af144b84",
       "about": {
         "@id": "fixtures/in/bundle-medication-request-and-medication.json"
       },
@@ -7099,8 +7099,8 @@
       "@type": "File",
       "name": "Expected graph for lab-troponin-below-detection",
       "encodingFormat": "text/turtle",
-      "contentSize": "4362",
-      "sha256": "1555061e77c0e1f8904875fb4b1d35f825cde8ba3977e2e67b12abf1c1fb877d",
+      "contentSize": "4359",
+      "sha256": "038cddf5891e561b63e87654946086af67b6cd518abbf08d31a7b05adca1bed1",
       "about": {
         "@id": "fixtures/in/lab-troponin-below-detection.json"
       },
@@ -7115,8 +7115,8 @@
       "@type": "File",
       "name": "Expected graph for lab-potassium-approximate",
       "encodingFormat": "text/turtle",
-      "contentSize": "3706",
-      "sha256": "656b92e054fd6c57b7b7638f70292ce19daae7da55dd368ecdbc263c8018d6f5",
+      "contentSize": "3744",
+      "sha256": "3a0b6e3fb8a7f3bfec3f6a97910045920fbb357539fdeec69f089e674ec0906d",
       "about": {
         "@id": "fixtures/in/lab-potassium-approximate.json"
       },
@@ -7131,8 +7131,8 @@
       "@type": "File",
       "name": "Expected graph for condition-onset-absent-for-reason",
       "encodingFormat": "text/turtle",
-      "contentSize": "3900",
-      "sha256": "389ddbbd11722419ea25de4d234518ba4f449fbaecaef5cb2a6ddd53f77bdcad",
+      "contentSize": "3938",
+      "sha256": "fe886dcdfc39ee3059827740b53fc4eb57328946a09bbca6d15422d8c3db4e66",
       "about": {
         "@id": "fixtures/in/condition-onset-absent-for-reason.json"
       },
@@ -7147,8 +7147,8 @@
       "@type": "File",
       "name": "Expected graph for lab-value-absent-for-reason",
       "encodingFormat": "text/turtle",
-      "contentSize": "4039",
-      "sha256": "24f80548db5e0643c131f1ef1a7d5b92ef00461858a5aac183b9f558a6fbc5ab",
+      "contentSize": "4075",
+      "sha256": "8b673ad04b3502d89bf728f962132e5095aaf7fdc68f0893a1a13d95e492a711",
       "about": {
         "@id": "fixtures/in/lab-value-absent-for-reason.json"
       },
@@ -7163,8 +7163,8 @@
       "@type": "File",
       "name": "Expected graph for lab-value-absent-reason-text-only",
       "encodingFormat": "text/turtle",
-      "contentSize": "3633",
-      "sha256": "6f18453104a6f5bdc939a9e166fcce0feaed131ee4b5424920ce5608a37fc6fb",
+      "contentSize": "3632",
+      "sha256": "626ffa38a25352c5f88bcd98201e794d2b4a02ea7c60bd5dc8bd34c142f3d9dc",
       "about": {
         "@id": "fixtures/in/lab-value-absent-reason-text-only.json"
       },
@@ -7179,8 +7179,8 @@
       "@type": "File",
       "name": "Expected graph for patient-birth-year-and-month",
       "encodingFormat": "text/turtle",
-      "contentSize": "3449",
-      "sha256": "93c86b7c7703785f7ad24040575daa601971f30ef5abbe9fa1cf08130ef686cd",
+      "contentSize": "3487",
+      "sha256": "2f6653ea3c5c98d6ca0c928d419d9c39ba7361ac88279bc2246afe6365a0ffa3",
       "about": {
         "@id": "fixtures/in/patient-birth-year-and-month.json"
       },
@@ -7195,8 +7195,8 @@
       "@type": "File",
       "name": "Expected graph for condition-onset-year-abatement-month",
       "encodingFormat": "text/turtle",
-      "contentSize": "3619",
-      "sha256": "295958a45a7d9d7e1fd759e0867c657b95ed3638ab7af3c4abf68a7230cf31e5",
+      "contentSize": "3657",
+      "sha256": "d2eff3141e03ec2f320a608e18a8033bb26976b91076f70d66775c1e7b052aa5",
       "about": {
         "@id": "fixtures/in/condition-onset-year-abatement-month.json"
       },
@@ -7211,8 +7211,8 @@
       "@type": "File",
       "name": "Expected graph for condition-onset-to-the-minute",
       "encodingFormat": "text/turtle",
-      "contentSize": "4035",
-      "sha256": "24f4d64d9c6d7dd811e874fe549463c0a0206e05b2ef367f3e6d044c2e2816c4",
+      "contentSize": "4034",
+      "sha256": "2a22a2247e7b27d078f21174139acce5b7f88113f7bf6f664d9ca662b86f9efd",
       "about": {
         "@id": "fixtures/in/condition-onset-to-the-minute.json"
       },
@@ -7227,8 +7227,8 @@
       "@type": "File",
       "name": "Expected graph for lab-titre-ratio",
       "encodingFormat": "text/turtle",
-      "contentSize": "4226",
-      "sha256": "af8153c7defa794e5925c4c66056d10874611b125871ce6e5b4875ed2d26ecba",
+      "contentSize": "4264",
+      "sha256": "a7bf1ecb61ca3042861cd95527d985fd3b1adfe410f22d360f572df67afaf4c0",
       "about": {
         "@id": "fixtures/in/lab-titre-ratio.json"
       },
@@ -7243,8 +7243,8 @@
       "@type": "File",
       "name": "Expected graph for lab-urine-leukocytes-range",
       "encodingFormat": "text/turtle",
-      "contentSize": "4333",
-      "sha256": "a591221928bd080a3f67e0b030720d3e721d7fb61a752936ce2942116269f754",
+      "contentSize": "4371",
+      "sha256": "421d0e8f3363f3c1a753e8d58acfc31f9087eda8963400d8d64a36d75f0551c7",
       "about": {
         "@id": "fixtures/in/lab-urine-leukocytes-range.json"
       },
@@ -7259,8 +7259,8 @@
       "@type": "File",
       "name": "Expected graph for lab-hepatitis-b-surface-antigen-coded",
       "encodingFormat": "text/turtle",
-      "contentSize": "3720",
-      "sha256": "4e041e0ba16d3a8fdf0af010485b846cf27722590b534c071ba8eb3000665ca1",
+      "contentSize": "3758",
+      "sha256": "cd82461f37860a8489c342630bab3ed0cbcf697a10ae06763c944b164a304e2e",
       "about": {
         "@id": "fixtures/in/lab-hepatitis-b-surface-antigen-coded.json"
       },
@@ -7275,8 +7275,8 @@
       "@type": "File",
       "name": "Expected graph for lab-leukocytes-exponent-and-ranges",
       "encodingFormat": "text/turtle",
-      "contentSize": "4021",
-      "sha256": "d53cbf8f440fb2b480be503e9b02f88350d6bb08cb23447aa78a7958ad9b09f9",
+      "contentSize": "4059",
+      "sha256": "23042d8946029045cc523aaf63778db4a1c25f776dcdceda9dbfa78f4c31080b",
       "about": {
         "@id": "fixtures/in/lab-leukocytes-exponent-and-ranges.json"
       },
@@ -7291,8 +7291,8 @@
       "@type": "File",
       "name": "Expected graph for lab-potassium-identifiers",
       "encodingFormat": "text/turtle",
-      "contentSize": "4235",
-      "sha256": "31d9b7e682437add04db8129172b91093ecd1d85b754c4fbfb60a88f95b18ae3",
+      "contentSize": "4234",
+      "sha256": "2834887adad37f48191b82a0609f2502016c68ec6cd10439ee288d4042798ee0",
       "about": {
         "@id": "fixtures/in/lab-potassium-identifiers.json"
       },
@@ -7515,8 +7515,8 @@
       "@type": "File",
       "name": "Expected graph for medication-request-two-rxnorm-codes",
       "encodingFormat": "text/turtle",
-      "contentSize": "4100",
-      "sha256": "8af3ab9b042ff52a2d3627353facfa97a6db977ff76b295ebefa38e459a02774",
+      "contentSize": "4097",
+      "sha256": "be62909044f86fda9c16614c81a94eba4468b2f94bc276557148c577b62a13e6",
       "about": {
         "@id": "fixtures/in/medication-request-two-rxnorm-codes.json"
       },
@@ -7547,8 +7547,8 @@
       "@type": "File",
       "name": "Expected graph for medication-request-ndc-forms",
       "encodingFormat": "text/turtle",
-      "contentSize": "4068",
-      "sha256": "be43b91f49ecf37b78002f979604e3967866e33a8802168ebaec9977b96b9589",
+      "contentSize": "4065",
+      "sha256": "27d5fcda02752d7cac7adfb5bbc018c189570b6cb87f5846c50e960dfb01e15c",
       "about": {
         "@id": "fixtures/in/medication-request-ndc-forms.json"
       },
@@ -7579,8 +7579,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-medication-versioned-reference",
       "encodingFormat": "text/turtle",
-      "contentSize": "3822",
-      "sha256": "b6786c15a530c324b9c6696b37c1d0d457d78c58b0c7f7edbe92d7b68b617aeb",
+      "contentSize": "3821",
+      "sha256": "dadef90b9551bf137c264c068a4e6494734cbb5657e19e210c75bf4cdbbf58c9",
       "about": {
         "@id": "fixtures/in/bundle-medication-versioned-reference.json"
       },
@@ -7611,8 +7611,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-medication-repeated-id",
       "encodingFormat": "text/turtle",
-      "contentSize": "3621",
-      "sha256": "4ce1a68f5a3d36d80aed165c4a57a80524779ce5bf459d161707ee6828156d25",
+      "contentSize": "3620",
+      "sha256": "ecb684f7b899a0e8af3884a91e2caa32168df43a5f248e17ee8d663502bf2c50",
       "about": {
         "@id": "fixtures/in/bundle-medication-repeated-id.json"
       },
@@ -7787,8 +7787,8 @@
       "@type": "File",
       "name": "Expected graph for Bundle-bundle-compound-heterozygote",
       "encodingFormat": "text/turtle",
-      "contentSize": "5368",
-      "sha256": "056d3f294dd641666e4bfd5e7e780df11fee2d61739875879d5a2ac1ea978933",
+      "contentSize": "5367",
+      "sha256": "44f2b29c259e173136c49c83fdab708ec66a9784f193c63db905271e2ad6bca4",
       "about": {
         "@id": "fixtures/in/Bundle-bundle-compound-heterozygote.input.json"
       },
@@ -7803,8 +7803,8 @@
       "@type": "File",
       "name": "Expected graph for Bundle-bundle-oncology-diagnostic",
       "encodingFormat": "text/turtle",
-      "contentSize": "8823",
-      "sha256": "ff60ac5aae18d703af79816d874e7dfc5e0eb60fd7a9179db8ae9aed7ae48978",
+      "contentSize": "8822",
+      "sha256": "42b4dc50cb861960173914b3fcea10458074c5e9c56b3991b13bad99f3f7d07e",
       "about": {
         "@id": "fixtures/in/Bundle-bundle-oncology-diagnostic.input.json"
       },
@@ -7819,8 +7819,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-genomics-variants",
       "encodingFormat": "text/turtle",
-      "contentSize": "14008",
-      "sha256": "aebdc5fa4c6350f9fe4141ee228533be5889fbb50716a7dcb6afdb3df728447c",
+      "contentSize": "13968",
+      "sha256": "055131f5174d036d7715f8dc8c63cb0d954fb081f35460bbf3f9930d8525e911",
       "about": {
         "@id": "fixtures/in/bundle-genomics-variants.json"
       },
@@ -7835,8 +7835,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-genomics-interpretations",
       "encodingFormat": "text/turtle",
-      "contentSize": "15676",
-      "sha256": "d4ab0fdf7d0293184696edacd302498a47fefe7e38c5b09c74863a509be36026",
+      "contentSize": "15675",
+      "sha256": "3a4f1daa24f6e5ec1de7d2fd08a5071bf82dc45ce3da95983213da96c9294aa7",
       "about": {
         "@id": "fixtures/in/bundle-genomics-interpretations.json"
       },
@@ -7851,8 +7851,8 @@
       "@type": "File",
       "name": "Expected graph for martin-okafor-harbourline-panel-2022-with-lab",
       "encodingFormat": "text/turtle",
-      "contentSize": "11993",
-      "sha256": "fe6e92535469439c38b48776ba22b3964995eaaa7c4999962c0412d3c2b01308",
+      "contentSize": "12051",
+      "sha256": "830e304e46e6ee8dfbfcc915d80105775fe437964b475dc96b9fe9738160e5f1",
       "about": {
         "@id": "fixtures/in/martin-okafor-harbourline-panel-2022-with-lab.json"
       },
@@ -7867,8 +7867,8 @@
       "@type": "File",
       "name": "Expected graph for martin-okafor-st-columba-exome-2024-with-lab",
       "encodingFormat": "text/turtle",
-      "contentSize": "17821",
-      "sha256": "50a23019493dd317983ca8336ec4a4201a9eb432cab5c2d86e9eef25c563d36a",
+      "contentSize": "17879",
+      "sha256": "c1f212bb4c7d2a98456d563cdf97d91ae5609959f011ee8f6b77d34dca3c83bf",
       "about": {
         "@id": "fixtures/in/martin-okafor-st-columba-exome-2024-with-lab.json"
       },
@@ -8123,8 +8123,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-interpretation-relative-reference-to-urn",
       "encodingFormat": "text/turtle",
-      "contentSize": "5229",
-      "sha256": "144d4e56d0fac7b7fc2efef4ede338a32cdc60b644d302cb2645710baf5a3144",
+      "contentSize": "5259",
+      "sha256": "7f9a1bf281365cad2f8808ef56fb9ffe7ad0f415a01d769d9ef3c74ed1a741fb",
       "about": {
         "@id": "fixtures/in/bundle-interpretation-relative-reference-to-urn.json"
       },
@@ -8139,8 +8139,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-interpretation-performers",
       "encodingFormat": "text/turtle",
-      "contentSize": "7218",
-      "sha256": "27e6f5de69e9da60efebffca2983583f750aa8d70078aad5a63e552b918422bb",
+      "contentSize": "7240",
+      "sha256": "4e933d98f80433f8c4f03071d9d9f4459ee91f3ae7e856ad3d10af2de2965edd",
       "about": {
         "@id": "fixtures/in/bundle-interpretation-performers.json"
       },
@@ -8155,8 +8155,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-interpretation-performer-is-custodian",
       "encodingFormat": "text/turtle",
-      "contentSize": "6944",
-      "sha256": "b348c2e6c23d99a35a45f3b026909f7135c15b06f88902f468b7480666d321bc",
+      "contentSize": "7195",
+      "sha256": "7b2b39dbf0a4be426713f1e3d785c729768595bdbe3fda7218d10758f866156c",
       "about": {
         "@id": "fixtures/in/bundle-interpretation-performer-is-custodian.json"
       },
@@ -8251,8 +8251,8 @@
       "@type": "File",
       "name": "Expected graph for patient-no-id",
       "encodingFormat": "text/turtle",
-      "contentSize": "3393",
-      "sha256": "25f939e5a86574deda1e309bed3cac133ced5c324fb597d5fdc3be7bc6752cf5",
+      "contentSize": "3392",
+      "sha256": "bbd9bde55d44b204db7034847eeb4a7713b6faa99f829f559ee294fed0cd89b3",
       "about": {
         "@id": "fixtures/in/patient-no-id.json"
       },
@@ -8283,8 +8283,8 @@
       "@type": "File",
       "name": "Expected graph for patient-with-id",
       "encodingFormat": "text/turtle",
-      "contentSize": "3617",
-      "sha256": "7121d7873adc008b03902e122415e029117f70451c6c14bea4ff9b87908a0a2b",
+      "contentSize": "3615",
+      "sha256": "5eed60b7a18bb0055ae827897b6cb9bce57ce041665a656f658bca33a7b1e51b",
       "about": {
         "@id": "fixtures/in/patient-with-id.json"
       },
@@ -8315,8 +8315,8 @@
       "@type": "File",
       "name": "Expected graph for procedure-no-id-colonoscopy",
       "encodingFormat": "text/turtle",
-      "contentSize": "3448",
-      "sha256": "5817583d9cbf9981aa794f4c1583e4478ecb58cc29832431fb98339511732f19",
+      "contentSize": "3452",
+      "sha256": "2660110da16a4a0cecb121210fa927cb2c8efd3cb5b7cbb6dcd1d954357c02f3",
       "about": {
         "@id": "fixtures/in/procedure-no-id-colonoscopy.json"
       },
@@ -8347,8 +8347,8 @@
       "@type": "File",
       "name": "Expected graph for procedure-no-id-echocardiogram",
       "encodingFormat": "text/turtle",
-      "contentSize": "3455",
-      "sha256": "bb97dc7513b64f32a3642a2ec52a027ee9372a6c5ba30d83bf01a0cefe85a88b",
+      "contentSize": "3459",
+      "sha256": "961f0a24f7890951a1fb09495911ce76dd4ee1b337a8c1834988729357f410fb",
       "about": {
         "@id": "fixtures/in/procedure-no-id-echocardiogram.json"
       },
@@ -8379,8 +8379,8 @@
       "@type": "File",
       "name": "Expected graph for procedure-with-contained-condition",
       "encodingFormat": "text/turtle",
-      "contentSize": "4797",
-      "sha256": "000aa3e442061fe910025871688e151b8eb0dda65fe0d9bf75b01cba48a487ee",
+      "contentSize": "4831",
+      "sha256": "e633c5d6ca6262ad642292dab512b4675a69adb2f6fd14421f10a1117b7735da",
       "about": {
         "@id": "fixtures/in/procedure-with-contained-condition.json"
       },
@@ -8411,8 +8411,8 @@
       "@type": "File",
       "name": "Expected graph for procedure-contained-empty-version-id",
       "encodingFormat": "text/turtle",
-      "contentSize": "4872",
-      "sha256": "82880ccb54895dc02c21b8d0cf932145e774931dfb080805c74b66bb53506c61",
+      "contentSize": "4906",
+      "sha256": "dc17e46eeae033f394370a71e3f08d38d26db3ace58bcc2f9569dfc05ec76efd",
       "about": {
         "@id": "fixtures/in/procedure-contained-empty-version-id.json"
       },
@@ -8443,8 +8443,8 @@
       "@type": "File",
       "name": "Expected graph for procedure-with-id",
       "encodingFormat": "text/turtle",
-      "contentSize": "3682",
-      "sha256": "f6b85d01b1facade30a7f25dfecdbdb992ead9ac460870776d6af3a8c7ba8765",
+      "contentSize": "3684",
+      "sha256": "e0f31fc6a4e89939c79ee6aaba021ee2a0206adecfc0ae8f4aa5805d2c94c50c",
       "about": {
         "@id": "fixtures/in/procedure-with-id.json"
       },
@@ -8459,8 +8459,8 @@
       "@type": "File",
       "name": "Expected graph for lab-b12-local-code-only",
       "encodingFormat": "text/turtle",
-      "contentSize": "4035",
-      "sha256": "843cac1a142fc41b23b48e5ec90cb47a8f3988e5ea1319367caaecc35bd00189",
+      "contentSize": "4034",
+      "sha256": "9637d3015bba91ed7f597fa414ad87fd3c31631583415c2b053cea641840e938",
       "about": {
         "@id": "fixtures/in/lab-b12-local-code-only.json"
       },
@@ -8475,8 +8475,8 @@
       "@type": "File",
       "name": "Expected graph for lab-test-code-in-snomed-ct",
       "encodingFormat": "text/turtle",
-      "contentSize": "4001",
-      "sha256": "cd352f8ed4e871a1cb2b0f2ebff293e6e07d3db6edf6eba8b86c1cc9bae63dd7",
+      "contentSize": "3998",
+      "sha256": "e7342fd49f8f5f4a0b6115c5398a35ee42c91dfbc6951c4fec151113ade89b8b",
       "about": {
         "@id": "fixtures/in/lab-test-code-in-snomed-ct.json"
       },
@@ -8491,8 +8491,8 @@
       "@type": "File",
       "name": "Expected graph for lab-mcv-two-interpretations",
       "encodingFormat": "text/turtle",
-      "contentSize": "4142",
-      "sha256": "34297ad47ffc4a982ef52261d0778fff6c93b0887f32e739fff548049a306b6a",
+      "contentSize": "4141",
+      "sha256": "f6f87431a6eca9a632b8aea1aefea93a6da936934b2bb0f3fcba78b7af023c78",
       "about": {
         "@id": "fixtures/in/lab-mcv-two-interpretations.json"
       },
@@ -8507,8 +8507,8 @@
       "@type": "File",
       "name": "Expected graph for lab-interpretation-flag-systems",
       "encodingFormat": "text/turtle",
-      "contentSize": "4071",
-      "sha256": "42c8d586281db649631f813d3c237bb78c36ea67f134fd753040ebd4fac691f1",
+      "contentSize": "4069",
+      "sha256": "3e1bda0981798c5ecba223e17cfa0140ddc0d6014f69dc1dce19979f9caf1c3d",
       "about": {
         "@id": "fixtures/in/lab-interpretation-flag-systems.json"
       },
@@ -8523,8 +8523,8 @@
       "@type": "File",
       "name": "Expected graph for condition-codes-under-other-system-names",
       "encodingFormat": "text/turtle",
-      "contentSize": "3710",
-      "sha256": "d055780792e2e830f714f85695a98aaef068a737196c797ab1ff87c0eda0cd11",
+      "contentSize": "3709",
+      "sha256": "05080c1598f4fa4bcf91c4faf66dd7cf066adf0000e9a66d69d05f0032401ec0",
       "about": {
         "@id": "fixtures/in/condition-codes-under-other-system-names.json"
       },
@@ -8539,8 +8539,8 @@
       "@type": "File",
       "name": "Expected graph for condition-codings-not-carried",
       "encodingFormat": "text/turtle",
-      "contentSize": "3494",
-      "sha256": "32268e6e0a9d27e2d9c57bec3f4236997d799baf50983e798491a880b7bbc5a6",
+      "contentSize": "3493",
+      "sha256": "a18da4c5f453ecd6959e0b9bab998ca5fbcba9e6216f99aaa364d17f3abc39c1",
       "about": {
         "@id": "fixtures/in/condition-codings-not-carried.json"
       },
@@ -8555,8 +8555,8 @@
       "@type": "File",
       "name": "Expected graph for procedure-hcpcs-code",
       "encodingFormat": "text/turtle",
-      "contentSize": "3775",
-      "sha256": "d27873030e385279ec8ad2a45c39b4e359b5ae3ea72ef1bdad546ff848e2a777",
+      "contentSize": "3774",
+      "sha256": "49d1545b2bc3b9eb69e0ab50405429da69eb38d24d2f0044b8bfb3c84170c1c2",
       "about": {
         "@id": "fixtures/in/procedure-hcpcs-code.json"
       },
@@ -8571,8 +8571,8 @@
       "@type": "File",
       "name": "Expected graph for procedure-two-cpt-codes",
       "encodingFormat": "text/turtle",
-      "contentSize": "3621",
-      "sha256": "6bb5fa41d0113f8a2da58f03735f420a5e20fd79f785491bd25c4f4eb469f4d6",
+      "contentSize": "3620",
+      "sha256": "ba684a1699004f0bfcd42b38e503832f68b45e1a28494acefa0820ee46d7ffb1",
       "about": {
         "@id": "fixtures/in/procedure-two-cpt-codes.json"
       },
@@ -8587,8 +8587,8 @@
       "@type": "File",
       "name": "Expected graph for medication-request-formulary-code",
       "encodingFormat": "text/turtle",
-      "contentSize": "3841",
-      "sha256": "1d69fbf40dcc32d08f1198af2eb1cfe76cee0ae2996d9eaeba35ec83a911db2f",
+      "contentSize": "3840",
+      "sha256": "9fbddfa18932a63a09b42b195fbd7af2f0dee4ff0daf1e0adf72e2768672b3bd",
       "about": {
         "@id": "fixtures/in/medication-request-formulary-code.json"
       },
@@ -8603,8 +8603,8 @@
       "@type": "File",
       "name": "Expected graph for medication-request-us-core-supply-only",
       "encodingFormat": "text/turtle",
-      "contentSize": "4161",
-      "sha256": "37edd39806a1f61ccfc9b0b6ca6df7daa2a64ec6440dc665a0505e453d7fab7f",
+      "contentSize": "4160",
+      "sha256": "1caa832e7bcad0558c44a3cacd515a4972948b0bef7afd9f2e22292adfb1ef24",
       "about": {
         "@id": "fixtures/in/medication-request-us-core-supply-only.json"
       },
@@ -8619,8 +8619,8 @@
       "@type": "File",
       "name": "Expected graph for medication-request-supply-and-dosages",
       "encodingFormat": "text/turtle",
-      "contentSize": "5994",
-      "sha256": "64d6f728ea986e46724273dd4d5e64f618a9d33f4203609f741f6c67c3bed4e9",
+      "contentSize": "5993",
+      "sha256": "35c125855f36c0c70a59f8cbf2cdd6dd86f60d01bd572ff684b25f726a54a933",
       "about": {
         "@id": "fixtures/in/medication-request-supply-and-dosages.json"
       },
@@ -8635,8 +8635,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-medication-supply-not-carried",
       "encodingFormat": "text/turtle",
-      "contentSize": "5505",
-      "sha256": "cb622d673490a0feaac8a85b57a9bea8c3e614320c7ac24ac234ce84cd1777d5",
+      "contentSize": "5504",
+      "sha256": "ad7212107220bb82ae21724f44a6ac89cc0ae85a9d9ac6cee9eb6ec7ac48e01f",
       "about": {
         "@id": "fixtures/in/bundle-medication-supply-not-carried.json"
       },
@@ -8651,8 +8651,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-codings-without-system",
       "encodingFormat": "text/turtle",
-      "contentSize": "5342",
-      "sha256": "4b4a447ef98dac569ae27099b74755d39c39902abf584c4d76bab9b97957c44d",
+      "contentSize": "5340",
+      "sha256": "c6927ddadfde95361549ecbc993b7c0edd5533e3f28cce8182cc2decc3df2ce2",
       "about": {
         "@id": "fixtures/in/bundle-codings-without-system.json"
       },
@@ -8667,8 +8667,8 @@
       "@type": "File",
       "name": "Expected graph for medication-request-dose-quantity-not-carried",
       "encodingFormat": "text/turtle",
-      "contentSize": "4402",
-      "sha256": "0d3a3e63ad0d7d42b81d1e31bfec87708c99cff5705f33332b91e7ff6752c007",
+      "contentSize": "4401",
+      "sha256": "83cae30544fb31d419c99eb93d8080777526328a9b75b4d851bf877eb43581ad",
       "about": {
         "@id": "fixtures/in/medication-request-dose-quantity-not-carried.json"
       },
@@ -8683,8 +8683,8 @@
       "@type": "File",
       "name": "Expected graph for medication-request-supply-and-timing-values-not-carried",
       "encodingFormat": "text/turtle",
-      "contentSize": "3885",
-      "sha256": "f58b54405e78ab8f3d22620cb335ae54841622c8ca773ac7a817b28068f85dff",
+      "contentSize": "3884",
+      "sha256": "7421095fabdb3c53d821e1efce4a7664ab91d62099ff7650546f5212ab1dba48",
       "about": {
         "@id": "fixtures/in/medication-request-supply-and-timing-values-not-carried.json"
       },
@@ -8699,8 +8699,8 @@
       "@type": "File",
       "name": "Expected graph for medication-dispense-completed",
       "encodingFormat": "text/turtle",
-      "contentSize": "4634",
-      "sha256": "951cab1cbcf63f82ed9a144f0420a63967d698a2113db66db4a06c279ba23ee6",
+      "contentSize": "4633",
+      "sha256": "40fb38fc6a2f283cf4dbcba740eab3fc287897880d9611e8bfbe5ba3164da07f",
       "about": {
         "@id": "fixtures/in/medication-dispense-completed.json"
       },
@@ -8715,8 +8715,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-medication-dispense-and-prescription",
       "encodingFormat": "text/turtle",
-      "contentSize": "7289",
-      "sha256": "7c1d21d0aa9854677522c2684eff7cb66d2738c883fb0f53fa3edef358531c19",
+      "contentSize": "7288",
+      "sha256": "5e1ee97f1d1d6db4bfe6076f15959ddecf5d500c89c1300286c3644699fc89ef",
       "about": {
         "@id": "fixtures/in/bundle-medication-dispense-and-prescription.json"
       },
@@ -8731,8 +8731,8 @@
       "@type": "File",
       "name": "Expected graph for medication-dispense-partial-times",
       "encodingFormat": "text/turtle",
-      "contentSize": "4030",
-      "sha256": "10feb03f216e782f5248ab71c1c7a9b6dfd2b151235d28d7dde983a518e86bff",
+      "contentSize": "4029",
+      "sha256": "e52753463af4640e60e89bc82eb3f7d9ff4bae1b32c1702e32a9a85abe7e109e",
       "about": {
         "@id": "fixtures/in/medication-dispense-partial-times.json"
       },
@@ -8747,8 +8747,8 @@
       "@type": "File",
       "name": "Expected graph for medication-dispense-times-absent-for-reason",
       "encodingFormat": "text/turtle",
-      "contentSize": "4375",
-      "sha256": "d4ae3cd714531e1e0317d9016e91ee680c079bcb166789da48089a201fc19f4a",
+      "contentSize": "4374",
+      "sha256": "896b5da9f40926c4ea94e3ec8baabdc94364299112597180fa05240bee3ff165",
       "about": {
         "@id": "fixtures/in/medication-dispense-times-absent-for-reason.json"
       },
@@ -8763,8 +8763,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-medication-dispense-supply-not-carried",
       "encodingFormat": "text/turtle",
-      "contentSize": "6040",
-      "sha256": "15cc1e520ea6be0e61a765567a01bb8479f6063717172765184501dda25751e9",
+      "contentSize": "6039",
+      "sha256": "5eb7dcd7c322d6c9bab03b09776835c4b05f13e4672aa164f8c361c7807618ea",
       "about": {
         "@id": "fixtures/in/bundle-medication-dispense-supply-not-carried.json"
       },
@@ -8779,8 +8779,8 @@
       "@type": "File",
       "name": "Expected graph for medication-dispense-prescription-without-server",
       "encodingFormat": "text/turtle",
-      "contentSize": "3272",
-      "sha256": "48984206eb5f08addbd3a5141eceb9f4ebc4d9fdeb635b0557a18717df4ef876",
+      "contentSize": "3271",
+      "sha256": "f162fe4b38ef6d8c8a913a9f1c3c477ceb9b299455a2ecc4c900a71d550ea397",
       "about": {
         "@id": "fixtures/in/medication-dispense-prescription-without-server.json"
       },
@@ -8795,8 +8795,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-medication-dispense-repeated-id-and-patient-not-held",
       "encodingFormat": "text/turtle",
-      "contentSize": "5607",
-      "sha256": "ed5195c086e4260f64ac09402ddd734d5cb066604be9295ada16796281e35b25",
+      "contentSize": "5606",
+      "sha256": "3806c80d4f79003e06871469ec92de60eefc38cbbef585de280293b95347a27d",
       "about": {
         "@id": "fixtures/in/bundle-medication-dispense-repeated-id-and-patient-not-held.json"
       },
@@ -8811,8 +8811,8 @@
       "@type": "File",
       "name": "Expected graph for medication-dispense-codings-not-carried",
       "encodingFormat": "text/turtle",
-      "contentSize": "3726",
-      "sha256": "6ac64fc2fb82d0e6ad921ba97ba8ecbb3e15b9d5b4889dc8890d524b1592d970",
+      "contentSize": "3725",
+      "sha256": "b5b7274e75f8348d5d7877bb3428963d2feb16df02f3786149a9ad7861de0c68",
       "about": {
         "@id": "fixtures/in/medication-dispense-codings-not-carried.json"
       },
@@ -8827,8 +8827,8 @@
       "@type": "File",
       "name": "Expected graph for medication-dispense-elements-not-carried",
       "encodingFormat": "text/turtle",
-      "contentSize": "3511",
-      "sha256": "70b31e34670ea7e1a0d2898a06edd659809717d4e0691039e231ee82ce795dc7",
+      "contentSize": "3508",
+      "sha256": "58263f46ee72b5cbfdc37d28626b45a58c6e5816f12944a73e7bc9cec0bef437",
       "about": {
         "@id": "fixtures/in/medication-dispense-elements-not-carried.json"
       },
@@ -8843,8 +8843,8 @@
       "@type": "File",
       "name": "Expected graph for bundle-medication-dispense-prescriptions-not-named",
       "encodingFormat": "text/turtle",
-      "contentSize": "12578",
-      "sha256": "64b23e31bee98b508b485dda9161dc2a1fdd399bb0f09fe99208961a3fe587e9",
+      "contentSize": "12576",
+      "sha256": "e2775de58218974abe8241f2b1222b3a39556cc8bdb1c49842b107c7e72391fb",
       "about": {
         "@id": "fixtures/in/bundle-medication-dispense-prescriptions-not-named.json"
       },
@@ -9696,8 +9696,8 @@
       "@type": "File",
       "name": "Facts supplied with a document fetched from the Meridian server",
       "encodingFormat": "text/turtle",
-      "contentSize": "952",
-      "sha256": "976543927b79b25949e291de6de9e1c2ab61addcaab4443581bf5283fed35a45",
+      "contentSize": "1069",
+      "sha256": "7a446ebfba9b247e95469727880eb2c0c477214b0b5cb3ecc627ab6c69c49a57",
       "dateCreated": "2026-09-27",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -9709,8 +9709,8 @@
       "@type": "File",
       "name": "Facts supplied with a document from no known server",
       "encodingFormat": "text/turtle",
-      "contentSize": "881",
-      "sha256": "000fec0acd0d33fb226a70d4f3f1fe21c2c47fa0f06552ba68e38f255418e33f",
+      "contentSize": "998",
+      "sha256": "3a04b9c485f64fd1e8379d614ca8392a82031c74c6420fac5d8d9757d170acc9",
       "dateCreated": "2026-09-27",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -9748,8 +9748,8 @@
       "@type": "File",
       "name": "Facts supplied with Martin Okafor's panel report",
       "encodingFormat": "text/turtle",
-      "contentSize": "698",
-      "sha256": "44ab0dd837d86bd17f2c84cd32805a50cd93b5a2f311896d035bd20ad1c4435f",
+      "contentSize": "790",
+      "sha256": "5c629b627767138447bf52b4d2363a336c5c8d091f3478ed39ff938fee092a5e",
       "dateCreated": "2026-10-13",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -9761,8 +9761,8 @@
       "@type": "File",
       "name": "Facts supplied with Martin Okafor's hospital export",
       "encodingFormat": "text/turtle",
-      "contentSize": "699",
-      "sha256": "ad830dd434c3757fd8aa1a7fe6b2a8777cdeec5babd32aa97e55e9e25d3605b9",
+      "contentSize": "791",
+      "sha256": "34a45511425ff1f51515d32ba46f2322d14972d10ca1726de2da9a621621fe71",
       "dateCreated": "2026-10-13",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -9774,8 +9774,8 @@
       "@type": "File",
       "name": "Facts supplied with AllergyIntolerance alg-pcn-1",
       "encodingFormat": "text/turtle",
-      "contentSize": "1047",
-      "sha256": "533cee84041eaad62c156df2f0f3ef9d35b6fdd76932c936205cb1baaa45372c",
+      "contentSize": "1164",
+      "sha256": "4f0f9a87b3459fb71044419a814a5dd1b57b61b28d35b75e5098521816ac9009",
       "dateCreated": "2026-09-27",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -9787,8 +9787,8 @@
       "@type": "File",
       "name": "Facts supplied with Condition cond-htn-1",
       "encodingFormat": "text/turtle",
-      "contentSize": "1039",
-      "sha256": "14375ae371529491dab2b59c045c9f3a0a4c59d55b5513c71c0e735f5b21ecc6",
+      "contentSize": "1156",
+      "sha256": "9a2abf9043d698ceeeb7bb07ef300b2761c35e5d76aca4e27b737ebca93d1e94",
       "dateCreated": "2026-09-27",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -9800,8 +9800,8 @@
       "@type": "File",
       "name": "Facts supplied with Condition cond-htn-1, retrieved again on 2026-09-08",
       "encodingFormat": "text/turtle",
-      "contentSize": "1039",
-      "sha256": "436e8ea209814019836dcc33526b6bab83e5d2a2f33309a9de2df7883d3bb3d1",
+      "contentSize": "1156",
+      "sha256": "a08331fd26ecce955de8111d2b10916ec5a4622f11c05814a59c6641ffda78bd",
       "dateCreated": "2026-09-27",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -9813,8 +9813,8 @@
       "@type": "File",
       "name": "Facts supplied with Immunization imm-flu-2025",
       "encodingFormat": "text/turtle",
-      "contentSize": "1044",
-      "sha256": "ca51da7ffb74edae3b72478b98271a02fe12e8c155007b50b58df937c54b635f",
+      "contentSize": "1161",
+      "sha256": "8e6fc0754454a605400706ae8685de880d7fe1bbba38e801731e17a0859de996",
       "dateCreated": "2026-09-27",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -9826,8 +9826,8 @@
       "@type": "File",
       "name": "Facts supplied with Procedure proc-colonoscopy-1",
       "encodingFormat": "text/turtle",
-      "contentSize": "1047",
-      "sha256": "6975dd0040fdf2854e38cd7bf2afbecf1e8ad75cf61c5ce613c17445c9e20a9a",
+      "contentSize": "1164",
+      "sha256": "40f23c1a769d6c4f8c8337b0547ec7395fb5cd5c2d8d5ea6328f194a573e036e",
       "dateCreated": "2026-09-27",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -9839,8 +9839,8 @@
       "@type": "File",
       "name": "Facts supplied with Procedure proc-echo-1",
       "encodingFormat": "text/turtle",
-      "contentSize": "1040",
-      "sha256": "04eed6647de80703d59d1168ede5460abb9996c222abd3445c20613cfd2ef1f7",
+      "contentSize": "1157",
+      "sha256": "80b41ef202c0212f90e9fbd3ce4da1fca1ffad4dbd516b703607300992d059db",
       "dateCreated": "2026-09-27",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -9852,8 +9852,8 @@
       "@type": "File",
       "name": "Facts supplied with Patient pat-conformance-1",
       "encodingFormat": "text/turtle",
-      "contentSize": "1044",
-      "sha256": "ee7b8feedfb1f560838d91d5682ed10db533181138e3ea6b3dc70ba11301a9ce",
+      "contentSize": "1161",
+      "sha256": "06d5cab613c3e96f01850bd64bf72f5c7d61edd54c718476af1c38dc4ac6926b",
       "dateCreated": "2026-09-27",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -9865,8 +9865,8 @@
       "@type": "File",
       "name": "Facts supplied with Encounter enc-visit-1",
       "encodingFormat": "text/turtle",
-      "contentSize": "1040",
-      "sha256": "1865e411a6b50740b7d914e4a79fb2bb9daa8a803bbdd158da26e72cb581a886",
+      "contentSize": "1157",
+      "sha256": "6238c4a1fdce66b203e891f508a15dc6017c9597e1133e155394e0e25aa1dd83",
       "dateCreated": "2026-09-27",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -9878,8 +9878,8 @@
       "@type": "File",
       "name": "Facts supplied with Observation obs-glucose-fasting",
       "encodingFormat": "text/turtle",
-      "contentSize": "1050",
-      "sha256": "a132b3f03ba4d722509a4b7e4ac95cda4064db330eccdd8764affb8d4159128e",
+      "contentSize": "1167",
+      "sha256": "c72a8bdea733fb496a29e3abf63fc5d1e19a6669c30ada07e659df195c0c2219",
       "dateCreated": "2026-09-27",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -9891,8 +9891,8 @@
       "@type": "File",
       "name": "Facts supplied with Observation obs-glucose-postprandial",
       "encodingFormat": "text/turtle",
-      "contentSize": "1055",
-      "sha256": "1478b4d638b682b96099cb694a94b99edc572181746d79afec64905fa1b5d2f1",
+      "contentSize": "1172",
+      "sha256": "d797c10e158c270aac66ffd1ef3ba82d6b2c01ee37b4a31d9a2142f4a6996535",
       "dateCreated": "2026-10-06",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -9904,8 +9904,8 @@
       "@type": "File",
       "name": "Facts supplied with Observation obs-hba1c-1",
       "encodingFormat": "text/turtle",
-      "contentSize": "1042",
-      "sha256": "440e1cce32b04708f12eb001f009ebf5077243308551f12c4194544c5325f5ed",
+      "contentSize": "1159",
+      "sha256": "89a2dfb7779722885ef97213cb29252231f8dbecd4645a7dab7bafde2509ec37",
       "dateCreated": "2026-10-06",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -9917,8 +9917,8 @@
       "@type": "File",
       "name": "Facts supplied with Observation obs-hr-morning",
       "encodingFormat": "text/turtle",
-      "contentSize": "1045",
-      "sha256": "47cbed2b2d7d8c444e21f28d7d1059dcb525a596c6f8db3036cb3bacef4e7e3c",
+      "contentSize": "1162",
+      "sha256": "d9b57f20a373677bba5f77d59b299e3e7f3b2f9ce612ac25af0aab4fbdd1128f",
       "dateCreated": "2026-10-06",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -9930,8 +9930,8 @@
       "@type": "File",
       "name": "Facts supplied with MedicationStatement med-lisinopril-1",
       "encodingFormat": "text/turtle",
-      "contentSize": "1055",
-      "sha256": "c3c6ac1d9d68c3ca78ce8f816f6e9dc4ef8f86f2ca443f2a2a4b06c90373f9de",
+      "contentSize": "1172",
+      "sha256": "829b403d95d07a224ec0ea50240f8e3cae4c9fd7ff85d97ec69bd782f3e02c88",
       "dateCreated": "2026-10-06",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -9943,8 +9943,8 @@
       "@type": "File",
       "name": "Facts supplied with MedicationStatement medst-ibuprofen-1",
       "encodingFormat": "text/turtle",
-      "contentSize": "1056",
-      "sha256": "e5ea7f197dd477b4705612d4bd6312ec0cd8287d9aa58ce3a38709f52025648f",
+      "contentSize": "1173",
+      "sha256": "0a249641b70db3a01e656925feba02b84694a31c599c1c2ccf887f093485697a",
       "dateCreated": "2026-10-06",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -9956,8 +9956,8 @@
       "@type": "File",
       "name": "Facts supplied with MedicationRequest medrx-atorvastatin-1",
       "encodingFormat": "text/turtle",
-      "contentSize": "1057",
-      "sha256": "80baece62ffb3f23ac1a62fa3db2fc209fac66f306baefe823cea72cb57f99b4",
+      "contentSize": "1174",
+      "sha256": "2d4011c95b05787e31055ba092e439cc651a9d460ecf577cc1e27542dc21ccd7",
       "dateCreated": "2026-10-06",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -9969,8 +9969,8 @@
       "@type": "File",
       "name": "Facts supplied with MedicationRequest medrx-amlodipine-1",
       "encodingFormat": "text/turtle",
-      "contentSize": "1055",
-      "sha256": "524491b1a3abd58db2b047ddf50248e962f67210bebfe404ad66390d52e5f60d",
+      "contentSize": "1172",
+      "sha256": "e571a81e68f6b366a54b5fea705d6129272e2b595d2619e40282f1e7d436fddd",
       "dateCreated": "2026-10-06",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -9982,8 +9982,8 @@
       "@type": "File",
       "name": "Facts supplied with MedicationRequest medrx-metformin-2",
       "encodingFormat": "text/turtle",
-      "contentSize": "1054",
-      "sha256": "d1a0a7d5cc7d1033087472695dee1dab6baf697dad66b2acb03a02b690a2c898",
+      "contentSize": "1171",
+      "sha256": "5bc369a4c33943834ed8f219e42436f8096af8245b863285295ecd51f017020e",
       "dateCreated": "2026-10-06",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"

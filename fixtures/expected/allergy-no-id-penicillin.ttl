@@ -3,36 +3,39 @@
 @prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
 <ni:///sha-256;CbAfIM5MRlhV4-4PWPYRrmeXyQx4ecrgr4eCea6D0H4> cascade:allergen "Penicillin G" ;
-	cascade:allergyCriticality "high" ;
-	cascade:allergenCode <https://ns.cascadeprotocol.org/codes/rxnorm/7980> .
-_:5bcdd334afcce35d021c1f58f8dd5998 bridge:arrivedAs <ni:///sha-256;CbAfIM5MRlhV4-4PWPYRrmeXyQx4ecrgr4eCea6D0H4> .
-<ni:///sha-256;CbAfIM5MRlhV4-4PWPYRrmeXyQx4ecrgr4eCea6D0H4> cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> ;
-	prov:specializationOf <urn:uuid:9456cb61-5ee7-8c56-9cfd-759accf4b08f> .
+	cascade:allergenCode <https://ns.cascadeprotocol.org/codes/rxnorm/7980> ;
+	cascade:allergyCriticality "high" .
 <urn:uuid:9456cb61-5ee7-8c56-9cfd-759accf4b08f> a cascade:AllergyOrIntolerance .
-_:5bcdd334afcce35d021c1f58f8dd5998 oa:hasSelector _:969d2c7e2e2f56ce3362ccdd23c88e80 ;
+<ni:///sha-256;CbAfIM5MRlhV4-4PWPYRrmeXyQx4ecrgr4eCea6D0H4> prov:specializationOf <urn:uuid:9456cb61-5ee7-8c56-9cfd-759accf4b08f> ;
+	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
+_:5bcdd334afcce35d021c1f58f8dd5998 bridge:arrivedAs <ni:///sha-256;CbAfIM5MRlhV4-4PWPYRrmeXyQx4ecrgr4eCea6D0H4> ;
+	oa:hasSelector _:969d2c7e2e2f56ce3362ccdd23c88e80 ;
 	oa:hasSource <ni:///sha-256;HA4Ugq9FeMqL8t3qrcu-jp9KSwD4dDf8RqWbM7B7-VA> ;
 	prov:wasDerivedFrom <ni:///sha-256;HA4Ugq9FeMqL8t3qrcu-jp9KSwD4dDf8RqWbM7B7-VA> ;
 	prov:wasGeneratedBy _:966bf8f3ecbe9c8a68b867e22bef5a68 .
 _:969d2c7e2e2f56ce3362ccdd23c88e80 a oa:FragmentSelector ;
-	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;HA4Ugq9FeMqL8t3qrcu-jp9KSwD4dDf8RqWbM7B7-VA> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
-	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
-_:18ca5e5bedbd5c97d02db9b7df9e3f7f prov:agent _:ecff10d8fac93b3d21729b135cfb2d3 .
-_:ecff10d8fac93b3d21729b135cfb2d3 <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
-_:18ca5e5bedbd5c97d02db9b7df9e3f7f prov:hadRole cascade:AuthorRole .
-<ni:///sha-256;HA4Ugq9FeMqL8t3qrcu-jp9KSwD4dDf8RqWbM7B7-VA> prov:qualifiedAttribution _:18ca5e5bedbd5c97d02db9b7df9e3f7f .
-_:41ebb704514bc8396ccab23c81f653d0 prov:agent _:e1138fedeb4a0814fd34b475cf9801f0 .
-_:e1138fedeb4a0814fd34b475cf9801f0 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
-_:41ebb704514bc8396ccab23c81f653d0 prov:hadRole cascade:TransmitterRole .
-<ni:///sha-256;HA4Ugq9FeMqL8t3qrcu-jp9KSwD4dDf8RqWbM7B7-VA> prov:qualifiedAttribution _:41ebb704514bc8396ccab23c81f653d0 ;
+	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
+	prov:wasGeneratedBy _:18ca5e5bedbd5c97d02db9b7df9e3f7f ;
+	prov:wasAttributedTo _:ecff10d8fac93b3d21729b135cfb2d3 ;
 	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
 	cascade:authenticatedAsProxy false ;
 	cascade:sourceFormatVersion "4.0.1" .
+_:41ebb704514bc8396ccab23c81f653d0 prov:agent _:ecff10d8fac93b3d21729b135cfb2d3 ;
+	prov:hadRole cascade:AuthorRole .
+_:18ca5e5bedbd5c97d02db9b7df9e3f7f prov:qualifiedAssociation _:41ebb704514bc8396ccab23c81f653d0 .
+_:e1138fedeb4a0814fd34b475cf9801f0 prov:agent _:d7db1ca92a7f3409a8ff3c5f7e9af743 ;
+	prov:hadRole cascade:TransmitterRole .
+_:18ca5e5bedbd5c97d02db9b7df9e3f7f prov:qualifiedAssociation _:e1138fedeb4a0814fd34b475cf9801f0 .
+_:ecff10d8fac93b3d21729b135cfb2d3 <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:d7db1ca92a7f3409a8ff3c5f7e9af743 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
 _:966bf8f3ecbe9c8a68b867e22bef5a68 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
 	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
 <ni:///sha-256;HA4Ugq9FeMqL8t3qrcu-jp9KSwD4dDf8RqWbM7B7-VA> a prov:Entity .

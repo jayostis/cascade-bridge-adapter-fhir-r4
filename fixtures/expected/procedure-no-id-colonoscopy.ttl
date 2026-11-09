@@ -3,37 +3,40 @@
 @prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;7pEF2D0Sv_anrdMJvXBZe5XUqZ4l7C9BdWsWaqfGubw> cascade:procedureDate "2025-02-18"^^xsd:date ;
-	cascade:procedureName "Colonoscopy" ;
+<ni:///sha-256;7pEF2D0Sv_anrdMJvXBZe5XUqZ4l7C9BdWsWaqfGubw> cascade:procedureName "Colonoscopy" ;
 	cascade:snomedCode <http://snomed.info/id/73761001> ;
+	cascade:procedureDate "2025-02-18"^^xsd:date ;
 	cascade:workflowStatus "completed" .
-_:158688944e9d68f6d27449b1e78bfa53 bridge:arrivedAs <ni:///sha-256;7pEF2D0Sv_anrdMJvXBZe5XUqZ4l7C9BdWsWaqfGubw> .
-<ni:///sha-256;7pEF2D0Sv_anrdMJvXBZe5XUqZ4l7C9BdWsWaqfGubw> cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> ;
-	prov:specializationOf <urn:uuid:00fd37ef-3c6b-8f05-8366-1b3fa9e1512f> .
 <urn:uuid:00fd37ef-3c6b-8f05-8366-1b3fa9e1512f> a cascade:MedicalProcedure .
-_:158688944e9d68f6d27449b1e78bfa53 oa:hasSelector _:19c8d288240ed1694661a04615aaca8d ;
+<ni:///sha-256;7pEF2D0Sv_anrdMJvXBZe5XUqZ4l7C9BdWsWaqfGubw> prov:specializationOf <urn:uuid:00fd37ef-3c6b-8f05-8366-1b3fa9e1512f> ;
+	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
+_:158688944e9d68f6d27449b1e78bfa53 bridge:arrivedAs <ni:///sha-256;7pEF2D0Sv_anrdMJvXBZe5XUqZ4l7C9BdWsWaqfGubw> ;
+	oa:hasSelector _:19c8d288240ed1694661a04615aaca8d ;
 	oa:hasSource <ni:///sha-256;ZHN_FGJQvJOqsoB3RyepI9wkaxX0ubMD5d1CKYDbAgY> ;
 	prov:wasDerivedFrom <ni:///sha-256;ZHN_FGJQvJOqsoB3RyepI9wkaxX0ubMD5d1CKYDbAgY> ;
 	prov:wasGeneratedBy _:349fc5376c5bef19d5bfe7bf844dd93f .
 _:19c8d288240ed1694661a04615aaca8d a oa:FragmentSelector ;
-	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;ZHN_FGJQvJOqsoB3RyepI9wkaxX0ubMD5d1CKYDbAgY> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
-	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
-_:4f881a2cf1860ca9ab1ba05fb9ef39d1 prov:agent _:b1efc9d7690430a525010d2b0be3e176 .
-_:b1efc9d7690430a525010d2b0be3e176 <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
-_:4f881a2cf1860ca9ab1ba05fb9ef39d1 prov:hadRole cascade:AuthorRole .
-<ni:///sha-256;ZHN_FGJQvJOqsoB3RyepI9wkaxX0ubMD5d1CKYDbAgY> prov:qualifiedAttribution _:4f881a2cf1860ca9ab1ba05fb9ef39d1 .
-_:bfcf220714d7a1482d0892e16c27ca82 prov:agent _:d306db041b196904897329c85dc29e3 .
-_:d306db041b196904897329c85dc29e3 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
-_:bfcf220714d7a1482d0892e16c27ca82 prov:hadRole cascade:TransmitterRole .
-<ni:///sha-256;ZHN_FGJQvJOqsoB3RyepI9wkaxX0ubMD5d1CKYDbAgY> prov:qualifiedAttribution _:bfcf220714d7a1482d0892e16c27ca82 ;
+	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
+	prov:wasGeneratedBy _:4f881a2cf1860ca9ab1ba05fb9ef39d1 ;
+	prov:wasAttributedTo _:b1efc9d7690430a525010d2b0be3e176 ;
 	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
 	cascade:authenticatedAsProxy false ;
 	cascade:sourceFormatVersion "4.0.1" .
+_:bfcf220714d7a1482d0892e16c27ca82 prov:agent _:b1efc9d7690430a525010d2b0be3e176 ;
+	prov:hadRole cascade:AuthorRole .
+_:4f881a2cf1860ca9ab1ba05fb9ef39d1 prov:qualifiedAssociation _:bfcf220714d7a1482d0892e16c27ca82 .
+_:d306db041b196904897329c85dc29e3 prov:agent _:aa279b1285e8b72cdc2956a20b754d04 ;
+	prov:hadRole cascade:TransmitterRole .
+_:4f881a2cf1860ca9ab1ba05fb9ef39d1 prov:qualifiedAssociation _:d306db041b196904897329c85dc29e3 .
+_:b1efc9d7690430a525010d2b0be3e176 <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:aa279b1285e8b72cdc2956a20b754d04 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
 _:349fc5376c5bef19d5bfe7bf844dd93f <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
 	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
 <ni:///sha-256;ZHN_FGJQvJOqsoB3RyepI9wkaxX0ubMD5d1CKYDbAgY> a prov:Entity .

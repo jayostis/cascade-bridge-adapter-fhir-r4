@@ -24,11 +24,14 @@ _:a40bc78231bccfd6a24c643b782812a9 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/1" .
 <urn:uuid:b272d9d2-08db-8fd9-9d33-eca1e48c75ba> a cascade:Organization .
-<ni:///sha-256;xZuPHRKpDqDS8n7OcfLr2E71XaSSno26wZmpXHkAqlU> prov:qualifiedAttribution _:caf94ffec516dd1018d26099a9cd5b42 .
-_:caf94ffec516dd1018d26099a9cd5b42 prov:agent <urn:uuid:b272d9d2-08db-8fd9-9d33-eca1e48c75ba> ;
+<ni:///sha-256;xZuPHRKpDqDS8n7OcfLr2E71XaSSno26wZmpXHkAqlU> prov:wasGeneratedBy _:e0b3c8d7d6751ea0b3fed9eb4873cb31 ;
+	prov:wasAttributedTo <urn:uuid:b272d9d2-08db-8fd9-9d33-eca1e48c75ba> .
+_:e0b3c8d7d6751ea0b3fed9eb4873cb31 prov:qualifiedAssociation _:b79503f39718516371d5aecfffce9032 .
+_:b79503f39718516371d5aecfffce9032 prov:agent <urn:uuid:b272d9d2-08db-8fd9-9d33-eca1e48c75ba> ;
 	prov:hadRole cascade:AuthorRole .
-<ni:///sha-256;xZuPHRKpDqDS8n7OcfLr2E71XaSSno26wZmpXHkAqlU> prov:qualifiedAttribution _:a3f164cf75181e0c34f0a8b45229965 .
-_:a3f164cf75181e0c34f0a8b45229965 prov:agent <urn:uuid:b272d9d2-08db-8fd9-9d33-eca1e48c75ba> ;
+<ni:///sha-256;xZuPHRKpDqDS8n7OcfLr2E71XaSSno26wZmpXHkAqlU> prov:wasGeneratedBy _:db3025e95692c6f45ac011b0d134d25 .
+_:db3025e95692c6f45ac011b0d134d25 prov:qualifiedAssociation _:f9a71b728ad0ba75f72214dc3d31198 .
+_:f9a71b728ad0ba75f72214dc3d31198 prov:agent <urn:uuid:b272d9d2-08db-8fd9-9d33-eca1e48c75ba> ;
 	prov:hadRole cascade:CustodianRole .
 <ni:///sha-256;Jf6npAUvTubaPLjRm0nG0-0Vv-jQShPdxChXqvOlATk> prov:specializationOf <urn:uuid:b272d9d2-08db-8fd9-9d33-eca1e48c75ba> .
 _:71837bb7fdbd6c885443cca6d976dc7 bridge:arrivedAs <ni:///sha-256;Jf6npAUvTubaPLjRm0nG0-0Vv-jQShPdxChXqvOlATk> .
@@ -69,18 +72,20 @@ _:54878fb23ceeff453a0f9d18ee339039 oa:hasSelector _:4a0c3652634b7cab0ecd1809c8a8
 _:4a0c3652634b7cab0ecd1809c8a840dd a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/4" .
-<ni:///sha-256;xZuPHRKpDqDS8n7OcfLr2E71XaSSno26wZmpXHkAqlU> pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
-_:693d1ed469fea36ca4e4f73a3f15d6a8 prov:agent _:edd53290529bac10aea1a5c088ea7f4d .
-_:edd53290529bac10aea1a5c088ea7f4d <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
-_:693d1ed469fea36ca4e4f73a3f15d6a8 prov:hadRole cascade:AuthorRole .
-<ni:///sha-256;xZuPHRKpDqDS8n7OcfLr2E71XaSSno26wZmpXHkAqlU> prov:qualifiedAttribution _:693d1ed469fea36ca4e4f73a3f15d6a8 .
-_:4aec23a8d730167da257e151f91fd615 prov:agent _:9228cec8c0703d64cba80a835d597669 .
-_:9228cec8c0703d64cba80a835d597669 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
-_:4aec23a8d730167da257e151f91fd615 prov:hadRole cascade:TransmitterRole .
-<ni:///sha-256;xZuPHRKpDqDS8n7OcfLr2E71XaSSno26wZmpXHkAqlU> prov:qualifiedAttribution _:4aec23a8d730167da257e151f91fd615 ;
+<ni:///sha-256;xZuPHRKpDqDS8n7OcfLr2E71XaSSno26wZmpXHkAqlU> pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
+	prov:wasGeneratedBy _:693d1ed469fea36ca4e4f73a3f15d6a8 ;
+	prov:wasAttributedTo _:edd53290529bac10aea1a5c088ea7f4d ;
 	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
 	cascade:authenticatedAsProxy false ;
 	cascade:sourceFormatVersion "4.0.1" .
+_:4aec23a8d730167da257e151f91fd615 prov:agent _:edd53290529bac10aea1a5c088ea7f4d ;
+	prov:hadRole cascade:AuthorRole .
+_:693d1ed469fea36ca4e4f73a3f15d6a8 prov:qualifiedAssociation _:4aec23a8d730167da257e151f91fd615 .
+_:9228cec8c0703d64cba80a835d597669 prov:agent _:c3df464b5fc61f859cf8dc9d12cf882 ;
+	prov:hadRole cascade:TransmitterRole .
+_:693d1ed469fea36ca4e4f73a3f15d6a8 prov:qualifiedAssociation _:9228cec8c0703d64cba80a835d597669 .
+_:edd53290529bac10aea1a5c088ea7f4d <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:c3df464b5fc61f859cf8dc9d12cf882 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
 _:d2d0a9f607d6d52b5e73684854984ffc <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
 	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
 <ni:///sha-256;xZuPHRKpDqDS8n7OcfLr2E71XaSSno26wZmpXHkAqlU> a prov:Entity .

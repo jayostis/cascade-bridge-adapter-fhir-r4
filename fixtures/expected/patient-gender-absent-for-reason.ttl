@@ -25,18 +25,20 @@ _:1b14a6d2a7626efaaa30377128c7e9d1 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;R4bYdrcLugpcxymI8wm108BNKYrCBs--LDH3YMOBZ3E> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
-	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
-_:100e8a8bcadce2db3ae821e4cfac566e prov:agent _:fcd73ca18acdaf8c50b1e8ec81e31155 .
-_:fcd73ca18acdaf8c50b1e8ec81e31155 <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
-_:100e8a8bcadce2db3ae821e4cfac566e prov:hadRole cascade:AuthorRole .
-<ni:///sha-256;R4bYdrcLugpcxymI8wm108BNKYrCBs--LDH3YMOBZ3E> prov:qualifiedAttribution _:100e8a8bcadce2db3ae821e4cfac566e .
-_:40345afd6cad7e6a59035e82e9f78ca2 prov:agent _:772306673095cf603c25c6777e04bc0b .
-_:772306673095cf603c25c6777e04bc0b <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
-_:40345afd6cad7e6a59035e82e9f78ca2 prov:hadRole cascade:TransmitterRole .
-<ni:///sha-256;R4bYdrcLugpcxymI8wm108BNKYrCBs--LDH3YMOBZ3E> prov:qualifiedAttribution _:40345afd6cad7e6a59035e82e9f78ca2 ;
+	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
+	prov:wasGeneratedBy _:100e8a8bcadce2db3ae821e4cfac566e ;
+	prov:wasAttributedTo _:fcd73ca18acdaf8c50b1e8ec81e31155 ;
 	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
 	cascade:authenticatedAsProxy false ;
 	cascade:sourceFormatVersion "4.0.1" .
+_:40345afd6cad7e6a59035e82e9f78ca2 prov:agent _:fcd73ca18acdaf8c50b1e8ec81e31155 ;
+	prov:hadRole cascade:AuthorRole .
+_:100e8a8bcadce2db3ae821e4cfac566e prov:qualifiedAssociation _:40345afd6cad7e6a59035e82e9f78ca2 .
+_:772306673095cf603c25c6777e04bc0b prov:agent _:4dfeaeaa3fdf48be010b742e935eb928 ;
+	prov:hadRole cascade:TransmitterRole .
+_:100e8a8bcadce2db3ae821e4cfac566e prov:qualifiedAssociation _:772306673095cf603c25c6777e04bc0b .
+_:fcd73ca18acdaf8c50b1e8ec81e31155 <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:4dfeaeaa3fdf48be010b742e935eb928 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
 _:6d427bea4335865bd1fb71a6829919a2 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
 	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
 <ni:///sha-256;R4bYdrcLugpcxymI8wm108BNKYrCBs--LDH3YMOBZ3E> a prov:Entity .
