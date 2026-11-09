@@ -23,7 +23,9 @@ PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # from the one a custodian names, else from the first in the document, as the
 # C-CDA adapter reads it from its custodian before its authors; the document
 # names the record once in each role, from the first Organization named in it,
-# and a performer names it in none.
+# and a performer names it in none. A role is the hadRole of an association of
+# an act that generated the document; as every role here is an author's or a
+# custodian's, the record is also what the document was attributed to.
 #
 # Its version carries its name, every identifier with a value, typed by its
 # system where it states one, a system urn:oid: and the NPI's OID as the NPI's
@@ -32,8 +34,10 @@ PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 
 CONSTRUCT {
   ?organization a cascade:Organization .
-  ?attributing prov:qualifiedAttribution ?attribution .
-  ?attribution prov:agent ?organization ;
+  ?attributing prov:wasGeneratedBy ?writing ;
+    prov:wasAttributedTo ?organization .
+  ?writing prov:qualifiedAssociation ?association .
+  ?association prov:agent ?organization ;
     prov:hadRole ?role .
   ?version prov:specializationOf ?organization ;
     foaf:name ?name ;
@@ -184,7 +188,8 @@ WHERE {
     FILTER (STRLEN(?address) > 0)
   }
   BIND (IF(?branch = "attribution" && STRAFTER(?firstInRole, " ") = ?pointer, ?document, 1/0) AS ?attributing)
-  BIND (IF(BOUND(?attributing), BNODE(), 1/0) AS ?attribution)
+  BIND (IF(BOUND(?attributing), BNODE(), 1/0) AS ?writing)
+  BIND (IF(BOUND(?attributing), BNODE(), 1/0) AS ?association)
   BIND (IF(?givesVersion && COALESCE(?branch, "") != "attribution", ?resourceVersion, 1/0) AS ?version)
   BIND (IF(?givesVersion && ?branch = "arrival", BNODE(), 1/0) AS ?arrival)
   BIND (IF(BOUND(?arrival) && BOUND(?contained), BNODE(), 1/0) AS ?selectorNode)
