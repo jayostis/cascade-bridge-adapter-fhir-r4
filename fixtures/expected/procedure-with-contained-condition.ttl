@@ -3,31 +3,32 @@
 @prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
 <ni:///sha-256;xBBxx0I6b6XVPK2-IzZxM-r19EGl6AebiOZiYfsGvzU> cascade:conditionName "Bradycardia" ;
 	cascade:snomedCode <http://snomed.info/id/48867003> .
-<ni:///sha-256;rIg7q5T7qRIhQA729x7H5xKMduq-xGqoxDzHEsDbKCU> cascade:procedureDate "2025-06-11"^^xsd:date ;
-	cascade:procedureName "Echocardiography" ;
+<ni:///sha-256;rIg7q5T7qRIhQA729x7H5xKMduq-xGqoxDzHEsDbKCU> cascade:procedureName "Echocardiography" ;
 	cascade:snomedCode <http://snomed.info/id/40701008> ;
+	cascade:procedureDate "2025-06-11"^^xsd:date ;
 	cascade:workflowStatus "completed" .
-_:fbe3274524b7205d9636c0e20b2a9fa5 rdf:value "/contained/0" ;
-	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
-	a oa:FragmentSelector .
-_:c176fb5ee6b4de4893724c55e572aaca oa:hasSelector _:fbe3274524b7205d9636c0e20b2a9fa5 ;
-	bridge:arrivedAs <ni:///sha-256;xBBxx0I6b6XVPK2-IzZxM-r19EGl6AebiOZiYfsGvzU> .
-<ni:///sha-256;xBBxx0I6b6XVPK2-IzZxM-r19EGl6AebiOZiYfsGvzU> cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> ;
-	prov:specializationOf <urn:uuid:3b467c97-4486-877a-bec8-1943b38285b9> .
-<urn:uuid:3b467c97-4486-877a-bec8-1943b38285b9> cascade:sourceRecordId "reason" ;
-	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Procedure/proc-echo-1#reason> ;
-	a cascade:ProblemOrDiagnosis .
-_:85f9aa2ae3d23261a20d8844704e446d bridge:arrivedAs <ni:///sha-256;rIg7q5T7qRIhQA729x7H5xKMduq-xGqoxDzHEsDbKCU> .
-<ni:///sha-256;rIg7q5T7qRIhQA729x7H5xKMduq-xGqoxDzHEsDbKCU> cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> ;
-	prov:specializationOf <urn:uuid:86875af4-7cd3-86e8-84f4-3e774d5f2947> .
-<urn:uuid:86875af4-7cd3-86e8-84f4-3e774d5f2947> cascade:sourceRecordId "proc-echo-1" ;
+<urn:uuid:86875af4-7cd3-86e8-84f4-3e774d5f2947> a cascade:MedicalProcedure ;
 	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Procedure/proc-echo-1> ;
-	a cascade:MedicalProcedure .
+	cascade:sourceRecordId "proc-echo-1" .
+<ni:///sha-256;rIg7q5T7qRIhQA729x7H5xKMduq-xGqoxDzHEsDbKCU> prov:specializationOf <urn:uuid:86875af4-7cd3-86e8-84f4-3e774d5f2947> ;
+	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
+_:85f9aa2ae3d23261a20d8844704e446d bridge:arrivedAs <ni:///sha-256;rIg7q5T7qRIhQA729x7H5xKMduq-xGqoxDzHEsDbKCU> .
+<urn:uuid:3b467c97-4486-877a-bec8-1943b38285b9> a cascade:ProblemOrDiagnosis ;
+	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Procedure/proc-echo-1#reason> ;
+	cascade:sourceRecordId "reason" .
+<ni:///sha-256;xBBxx0I6b6XVPK2-IzZxM-r19EGl6AebiOZiYfsGvzU> prov:specializationOf <urn:uuid:3b467c97-4486-877a-bec8-1943b38285b9> ;
+	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
+_:c176fb5ee6b4de4893724c55e572aaca bridge:arrivedAs <ni:///sha-256;xBBxx0I6b6XVPK2-IzZxM-r19EGl6AebiOZiYfsGvzU> ;
+	oa:hasSelector _:be41c207a09760d7dd30e746589d3492 .
+_:be41c207a09760d7dd30e746589d3492 a oa:FragmentSelector ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/contained/0" .
 _:c176fb5ee6b4de4893724c55e572aaca oa:hasSource <ni:///sha-256;FUHhNx_AjRwxhuA4cENG_MWxSjqq_MFNlNiIacktiAE> ;
 	prov:wasDerivedFrom <ni:///sha-256;FUHhNx_AjRwxhuA4cENG_MWxSjqq_MFNlNiIacktiAE> ;
 	prov:wasGeneratedBy _:25c073fedacc1f2cdc7adc18b3d15479 .
@@ -36,22 +37,24 @@ _:85f9aa2ae3d23261a20d8844704e446d oa:hasSelector _:f6612b39678b2327f8da84a17f7d
 	prov:wasDerivedFrom <ni:///sha-256;FUHhNx_AjRwxhuA4cENG_MWxSjqq_MFNlNiIacktiAE> ;
 	prov:wasGeneratedBy _:25c073fedacc1f2cdc7adc18b3d15479 .
 _:f6612b39678b2327f8da84a17f7ddbaa a oa:FragmentSelector ;
-	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;FUHhNx_AjRwxhuA4cENG_MWxSjqq_MFNlNiIacktiAE> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
 	pav:retrievedFrom <https://FHIR.Meridian.example/api/FHIR/R4/Procedure/proc-echo-1> ;
-	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
-_:6b5bddde546b990da63943285798b422 prov:agent _:5281471d7bf0e9e4b7ebb8ec560666e7 .
-_:5281471d7bf0e9e4b7ebb8ec560666e7 <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
-_:6b5bddde546b990da63943285798b422 prov:hadRole cascade:AuthorRole .
-<ni:///sha-256;FUHhNx_AjRwxhuA4cENG_MWxSjqq_MFNlNiIacktiAE> prov:qualifiedAttribution _:6b5bddde546b990da63943285798b422 .
-_:74a60a500dee8472f6ce17529f5e1e59 prov:agent _:1d76c548bc66c365cfaaabc37114e401 .
-_:1d76c548bc66c365cfaaabc37114e401 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
-_:74a60a500dee8472f6ce17529f5e1e59 prov:hadRole cascade:TransmitterRole .
-<ni:///sha-256;FUHhNx_AjRwxhuA4cENG_MWxSjqq_MFNlNiIacktiAE> prov:qualifiedAttribution _:74a60a500dee8472f6ce17529f5e1e59 ;
+	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
+	prov:wasGeneratedBy _:6b5bddde546b990da63943285798b422 ;
+	prov:wasAttributedTo _:5281471d7bf0e9e4b7ebb8ec560666e7 ;
 	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
 	cascade:authenticatedAsProxy false ;
 	cascade:sourceFormatVersion "4.0.1" .
+_:74a60a500dee8472f6ce17529f5e1e59 prov:agent _:5281471d7bf0e9e4b7ebb8ec560666e7 ;
+	prov:hadRole cascade:AuthorRole .
+_:6b5bddde546b990da63943285798b422 prov:qualifiedAssociation _:74a60a500dee8472f6ce17529f5e1e59 .
+_:1d76c548bc66c365cfaaabc37114e401 prov:agent _:1112db9bbb06c085c176bcae926917b2 ;
+	prov:hadRole cascade:TransmitterRole .
+_:6b5bddde546b990da63943285798b422 prov:qualifiedAssociation _:1d76c548bc66c365cfaaabc37114e401 .
+_:5281471d7bf0e9e4b7ebb8ec560666e7 <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:1112db9bbb06c085c176bcae926917b2 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
 _:25c073fedacc1f2cdc7adc18b3d15479 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
 	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
 <ni:///sha-256;FUHhNx_AjRwxhuA4cENG_MWxSjqq_MFNlNiIacktiAE> a prov:Entity .

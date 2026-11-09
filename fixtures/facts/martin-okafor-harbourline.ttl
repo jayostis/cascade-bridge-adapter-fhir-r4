@@ -7,9 +7,14 @@
 
 bridge:thisDocument
   pav:retrievedOn "2022-06-15T09:00:00Z"^^xsd:dateTime ;
-  prov:qualifiedAttribution
-    [ prov:agent [ rdfs:label "Harbourline Genetics" ] ; prov:hadRole cascade:AuthorRole ] ;
+  prov:wasGeneratedBy _:writing ;
+  prov:wasAttributedTo _:author ;
   cascade:sourceFormatVersion "4.0.1" .
+
+_:writing prov:qualifiedAssociation
+  [ prov:agent _:author ; prov:hadRole cascade:AuthorRole ] .
+
+_:author rdfs:label "Harbourline Genetics" .
 
 bridge:thisImport
   rdfs:label "Harbourline Genetics panel report" ;

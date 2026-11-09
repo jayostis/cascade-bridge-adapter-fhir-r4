@@ -3,40 +3,43 @@
 @prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;10geMLsHp2Lfhr7fzI78Variv7MCENkDg6QCbfSznOU> cascade:vaccinationOccurrenceTime "2025-10-15"^^xsd:date ;
+<ni:///sha-256;10geMLsHp2Lfhr7fzI78Variv7MCENkDg6QCbfSznOU> cascade:vaccineName "Influenza, seasonal" ;
 	cascade:vaccineCode <https://ns.cascadeprotocol.org/codes/cvx/141> ;
-	cascade:vaccineName "Influenza, seasonal" ;
+	cascade:vaccinationOccurrenceTime "2025-10-15"^^xsd:date ;
 	cascade:workflowStatus "completed" .
-_:47c4c2dc9066c76f122505492d18c07c bridge:arrivedAs <ni:///sha-256;10geMLsHp2Lfhr7fzI78Variv7MCENkDg6QCbfSznOU> .
-<ni:///sha-256;10geMLsHp2Lfhr7fzI78Variv7MCENkDg6QCbfSznOU> cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> ;
-	prov:specializationOf <urn:uuid:7d77d9e0-5457-86f2-8d9d-827c65c11b21> .
-<urn:uuid:7d77d9e0-5457-86f2-8d9d-827c65c11b21> cascade:sourceRecordId "imm-flu-2025" ;
+<urn:uuid:7d77d9e0-5457-86f2-8d9d-827c65c11b21> a cascade:Vaccination ;
 	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Immunization/imm-flu-2025> ;
-	a cascade:Vaccination .
-_:47c4c2dc9066c76f122505492d18c07c oa:hasSelector _:ef31f43aa2612b85a0dac099921ede3b ;
+	cascade:sourceRecordId "imm-flu-2025" .
+<ni:///sha-256;10geMLsHp2Lfhr7fzI78Variv7MCENkDg6QCbfSznOU> prov:specializationOf <urn:uuid:7d77d9e0-5457-86f2-8d9d-827c65c11b21> ;
+	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
+_:47c4c2dc9066c76f122505492d18c07c bridge:arrivedAs <ni:///sha-256;10geMLsHp2Lfhr7fzI78Variv7MCENkDg6QCbfSznOU> ;
+	oa:hasSelector _:ef31f43aa2612b85a0dac099921ede3b ;
 	oa:hasSource <ni:///sha-256;sPCsccvfrztW7kWXN69nzk8lPIyUjrQNN2ckqczhrLg> ;
 	prov:wasDerivedFrom <ni:///sha-256;sPCsccvfrztW7kWXN69nzk8lPIyUjrQNN2ckqczhrLg> ;
 	prov:wasGeneratedBy _:62142cb6ca6eca62227a21583ac396e1 .
 _:ef31f43aa2612b85a0dac099921ede3b a oa:FragmentSelector ;
-	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;sPCsccvfrztW7kWXN69nzk8lPIyUjrQNN2ckqczhrLg> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
 	pav:retrievedFrom <https://FHIR.Meridian.example/api/FHIR/R4/Immunization/imm-flu-2025> ;
-	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
-_:acd4ed5534eca41fe51162b176b122bc prov:agent _:ca071b2344aa7935825ae4089d1ab280 .
-_:ca071b2344aa7935825ae4089d1ab280 <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
-_:acd4ed5534eca41fe51162b176b122bc prov:hadRole cascade:AuthorRole .
-<ni:///sha-256;sPCsccvfrztW7kWXN69nzk8lPIyUjrQNN2ckqczhrLg> prov:qualifiedAttribution _:acd4ed5534eca41fe51162b176b122bc .
-_:307ceda99a689bfa260ad0d4784f83c1 prov:agent _:c0c630064c605a4b36e9f1d7874949ba .
-_:c0c630064c605a4b36e9f1d7874949ba <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
-_:307ceda99a689bfa260ad0d4784f83c1 prov:hadRole cascade:TransmitterRole .
-<ni:///sha-256;sPCsccvfrztW7kWXN69nzk8lPIyUjrQNN2ckqczhrLg> prov:qualifiedAttribution _:307ceda99a689bfa260ad0d4784f83c1 ;
+	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
+	prov:wasGeneratedBy _:acd4ed5534eca41fe51162b176b122bc ;
+	prov:wasAttributedTo _:ca071b2344aa7935825ae4089d1ab280 ;
 	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
 	cascade:authenticatedAsProxy false ;
 	cascade:sourceFormatVersion "4.0.1" .
+_:307ceda99a689bfa260ad0d4784f83c1 prov:agent _:ca071b2344aa7935825ae4089d1ab280 ;
+	prov:hadRole cascade:AuthorRole .
+_:acd4ed5534eca41fe51162b176b122bc prov:qualifiedAssociation _:307ceda99a689bfa260ad0d4784f83c1 .
+_:c0c630064c605a4b36e9f1d7874949ba prov:agent _:55bca28d5a1b8ed4548d62e3375afc21 ;
+	prov:hadRole cascade:TransmitterRole .
+_:acd4ed5534eca41fe51162b176b122bc prov:qualifiedAssociation _:c0c630064c605a4b36e9f1d7874949ba .
+_:ca071b2344aa7935825ae4089d1ab280 <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:55bca28d5a1b8ed4548d62e3375afc21 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
 _:62142cb6ca6eca62227a21583ac396e1 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
 	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
 <ni:///sha-256;sPCsccvfrztW7kWXN69nzk8lPIyUjrQNN2ckqczhrLg> a prov:Entity .

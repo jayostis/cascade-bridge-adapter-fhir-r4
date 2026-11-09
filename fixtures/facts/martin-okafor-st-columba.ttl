@@ -7,9 +7,14 @@
 
 bridge:thisDocument
   pav:retrievedOn "2024-03-22T09:00:00Z"^^xsd:dateTime ;
-  prov:qualifiedAttribution
-    [ prov:agent [ rdfs:label "St Columba's Hospital" ] ; prov:hadRole cascade:AuthorRole ] ;
+  prov:wasGeneratedBy _:writing ;
+  prov:wasAttributedTo _:author ;
   cascade:sourceFormatVersion "4.0.1" .
+
+_:writing prov:qualifiedAssociation
+  [ prov:agent _:author ; prov:hadRole cascade:AuthorRole ] .
+
+_:author rdfs:label "St Columba's Hospital" .
 
 bridge:thisImport
   rdfs:label "St Columba's Hospital FHIR export" ;

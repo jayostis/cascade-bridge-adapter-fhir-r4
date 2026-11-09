@@ -3,37 +3,40 @@
 @prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;sA74RYSAtax1myABGwlE3_YPnVaufbmW4FTnuuhdqGU> cascade:vaccinationOccurrenceTime "2025-10-15"^^xsd:date ;
+<ni:///sha-256;sA74RYSAtax1myABGwlE3_YPnVaufbmW4FTnuuhdqGU> cascade:vaccineName "Influenza, seasonal" ;
 	cascade:vaccineCode <https://ns.cascadeprotocol.org/codes/cvx/141> ;
-	cascade:vaccineName "Influenza, seasonal" ;
+	cascade:vaccinationOccurrenceTime "2025-10-15"^^xsd:date ;
 	cascade:workflowStatus "completed" .
-_:c7eb8e9fbb16e117d537f90998cdb60f bridge:arrivedAs <ni:///sha-256;sA74RYSAtax1myABGwlE3_YPnVaufbmW4FTnuuhdqGU> .
-<ni:///sha-256;sA74RYSAtax1myABGwlE3_YPnVaufbmW4FTnuuhdqGU> cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> ;
-	prov:specializationOf <urn:uuid:d3b30d1e-00c2-898b-80d7-26b480a11680> .
 <urn:uuid:d3b30d1e-00c2-898b-80d7-26b480a11680> a cascade:Vaccination .
-_:c7eb8e9fbb16e117d537f90998cdb60f oa:hasSelector _:589fed542497c0d62db4bbd22b14b8b1 ;
+<ni:///sha-256;sA74RYSAtax1myABGwlE3_YPnVaufbmW4FTnuuhdqGU> prov:specializationOf <urn:uuid:d3b30d1e-00c2-898b-80d7-26b480a11680> ;
+	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
+_:c7eb8e9fbb16e117d537f90998cdb60f bridge:arrivedAs <ni:///sha-256;sA74RYSAtax1myABGwlE3_YPnVaufbmW4FTnuuhdqGU> ;
+	oa:hasSelector _:589fed542497c0d62db4bbd22b14b8b1 ;
 	oa:hasSource <ni:///sha-256;C_TTWP7C6GGVKDvVpkzmLy7wCn5SReB6mJyz23p8gyM> ;
 	prov:wasDerivedFrom <ni:///sha-256;C_TTWP7C6GGVKDvVpkzmLy7wCn5SReB6mJyz23p8gyM> ;
 	prov:wasGeneratedBy _:87210c751aaa075a7451ac819dc3a132 .
 _:589fed542497c0d62db4bbd22b14b8b1 a oa:FragmentSelector ;
-	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;C_TTWP7C6GGVKDvVpkzmLy7wCn5SReB6mJyz23p8gyM> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
-	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
-_:5c1fed9e213eff857ad3f4b103e7c0d7 prov:agent _:f0357ba1b5c89c8a199cb562c65043b2 .
-_:f0357ba1b5c89c8a199cb562c65043b2 <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
-_:5c1fed9e213eff857ad3f4b103e7c0d7 prov:hadRole cascade:AuthorRole .
-<ni:///sha-256;C_TTWP7C6GGVKDvVpkzmLy7wCn5SReB6mJyz23p8gyM> prov:qualifiedAttribution _:5c1fed9e213eff857ad3f4b103e7c0d7 .
-_:66930e204fb114568ebe5258953313bc prov:agent _:fda974c23778c1c06649aa2b6965536e .
-_:fda974c23778c1c06649aa2b6965536e <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
-_:66930e204fb114568ebe5258953313bc prov:hadRole cascade:TransmitterRole .
-<ni:///sha-256;C_TTWP7C6GGVKDvVpkzmLy7wCn5SReB6mJyz23p8gyM> prov:qualifiedAttribution _:66930e204fb114568ebe5258953313bc ;
+	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
+	prov:wasGeneratedBy _:5c1fed9e213eff857ad3f4b103e7c0d7 ;
+	prov:wasAttributedTo _:f0357ba1b5c89c8a199cb562c65043b2 ;
 	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
 	cascade:authenticatedAsProxy false ;
 	cascade:sourceFormatVersion "4.0.1" .
+_:66930e204fb114568ebe5258953313bc prov:agent _:f0357ba1b5c89c8a199cb562c65043b2 ;
+	prov:hadRole cascade:AuthorRole .
+_:5c1fed9e213eff857ad3f4b103e7c0d7 prov:qualifiedAssociation _:66930e204fb114568ebe5258953313bc .
+_:fda974c23778c1c06649aa2b6965536e prov:agent _:d12491b5efe4bb98bf3aece32102c95 ;
+	prov:hadRole cascade:TransmitterRole .
+_:5c1fed9e213eff857ad3f4b103e7c0d7 prov:qualifiedAssociation _:fda974c23778c1c06649aa2b6965536e .
+_:f0357ba1b5c89c8a199cb562c65043b2 <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:d12491b5efe4bb98bf3aece32102c95 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
 _:87210c751aaa075a7451ac819dc3a132 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
 	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
 <ni:///sha-256;C_TTWP7C6GGVKDvVpkzmLy7wCn5SReB6mJyz23p8gyM> a prov:Entity .

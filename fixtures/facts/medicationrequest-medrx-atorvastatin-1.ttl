@@ -9,12 +9,19 @@ bridge:thisDocument
   cascade:serverBaseUrl "https://FHIR.Meridian.example/api/FHIR/R4/" ;
   pav:retrievedFrom <https://FHIR.Meridian.example/api/FHIR/R4/MedicationRequest/medrx-atorvastatin-1> ;
   pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
-  prov:qualifiedAttribution
-    [ prov:agent [ rdfs:label "Meridian Health System" ] ; prov:hadRole cascade:AuthorRole ] ,
-    [ prov:agent [ rdfs:label "Apple Health" ] ; prov:hadRole cascade:TransmitterRole ] ;
+  prov:wasGeneratedBy _:writing ;
+  prov:wasAttributedTo _:author ;
   cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
   cascade:authenticatedAsProxy false ;
   cascade:sourceFormatVersion "4.0.1" .
+
+_:writing prov:qualifiedAssociation
+  [ prov:agent _:author ; prov:hadRole cascade:AuthorRole ] ,
+  [ prov:agent _:transmitter ; prov:hadRole cascade:TransmitterRole ] .
+
+_:author rdfs:label "Meridian Health System" .
+
+_:transmitter rdfs:label "Apple Health" .
 
 bridge:thisImport
   rdfs:label "Apple Health export" ;

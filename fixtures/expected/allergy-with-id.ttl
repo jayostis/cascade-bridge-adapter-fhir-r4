@@ -3,39 +3,42 @@
 @prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
 <ni:///sha-256;XVwsXptFr9GP4zmJugy7jHeMNI5egxTudHGOj0Uinh0> cascade:allergen "Penicillin G" ;
-	cascade:allergyCriticality "high" ;
-	cascade:allergenCode <https://ns.cascadeprotocol.org/codes/rxnorm/7980> .
-_:6c842247c2665ec22ea98929ecb82710 bridge:arrivedAs <ni:///sha-256;XVwsXptFr9GP4zmJugy7jHeMNI5egxTudHGOj0Uinh0> .
-<ni:///sha-256;XVwsXptFr9GP4zmJugy7jHeMNI5egxTudHGOj0Uinh0> cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> ;
-	prov:specializationOf <urn:uuid:69961a65-6383-84b7-96f1-0a88fb755c9c> .
-<urn:uuid:69961a65-6383-84b7-96f1-0a88fb755c9c> cascade:sourceRecordId "alg-pcn-1" ;
+	cascade:allergenCode <https://ns.cascadeprotocol.org/codes/rxnorm/7980> ;
+	cascade:allergyCriticality "high" .
+<urn:uuid:69961a65-6383-84b7-96f1-0a88fb755c9c> a cascade:AllergyOrIntolerance ;
 	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/AllergyIntolerance/alg-pcn-1> ;
-	a cascade:AllergyOrIntolerance .
-_:6c842247c2665ec22ea98929ecb82710 oa:hasSelector _:bde250e24c7905a2140594cd9a546414 ;
+	cascade:sourceRecordId "alg-pcn-1" .
+<ni:///sha-256;XVwsXptFr9GP4zmJugy7jHeMNI5egxTudHGOj0Uinh0> prov:specializationOf <urn:uuid:69961a65-6383-84b7-96f1-0a88fb755c9c> ;
+	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
+_:6c842247c2665ec22ea98929ecb82710 bridge:arrivedAs <ni:///sha-256;XVwsXptFr9GP4zmJugy7jHeMNI5egxTudHGOj0Uinh0> ;
+	oa:hasSelector _:bde250e24c7905a2140594cd9a546414 ;
 	oa:hasSource <ni:///sha-256;0re2flaEf5oTKzdsN9gHZwLdHi3wsjfjpSumJxM4VWk> ;
 	prov:wasDerivedFrom <ni:///sha-256;0re2flaEf5oTKzdsN9gHZwLdHi3wsjfjpSumJxM4VWk> ;
 	prov:wasGeneratedBy _:474903082410a5d6ffa58af04088eb38 .
 _:bde250e24c7905a2140594cd9a546414 a oa:FragmentSelector ;
-	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;0re2flaEf5oTKzdsN9gHZwLdHi3wsjfjpSumJxM4VWk> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
 	pav:retrievedFrom <https://FHIR.Meridian.example/api/FHIR/R4/AllergyIntolerance/alg-pcn-1> ;
-	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
-_:dc42eba364a6d3d3c2fa05c17122ca47 prov:agent _:b8e8f29a67e5e8cfc5ba1a79888d1edd .
-_:b8e8f29a67e5e8cfc5ba1a79888d1edd <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
-_:dc42eba364a6d3d3c2fa05c17122ca47 prov:hadRole cascade:AuthorRole .
-<ni:///sha-256;0re2flaEf5oTKzdsN9gHZwLdHi3wsjfjpSumJxM4VWk> prov:qualifiedAttribution _:dc42eba364a6d3d3c2fa05c17122ca47 .
-_:e61a00138c7443a086522aee7aa3eaab prov:agent _:e03c2a7dfe06215ed865e3ecf07b787a .
-_:e03c2a7dfe06215ed865e3ecf07b787a <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
-_:e61a00138c7443a086522aee7aa3eaab prov:hadRole cascade:TransmitterRole .
-<ni:///sha-256;0re2flaEf5oTKzdsN9gHZwLdHi3wsjfjpSumJxM4VWk> prov:qualifiedAttribution _:e61a00138c7443a086522aee7aa3eaab ;
+	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
+	prov:wasGeneratedBy _:dc42eba364a6d3d3c2fa05c17122ca47 ;
+	prov:wasAttributedTo _:b8e8f29a67e5e8cfc5ba1a79888d1edd ;
 	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
 	cascade:authenticatedAsProxy false ;
 	cascade:sourceFormatVersion "4.0.1" .
+_:e61a00138c7443a086522aee7aa3eaab prov:agent _:b8e8f29a67e5e8cfc5ba1a79888d1edd ;
+	prov:hadRole cascade:AuthorRole .
+_:dc42eba364a6d3d3c2fa05c17122ca47 prov:qualifiedAssociation _:e61a00138c7443a086522aee7aa3eaab .
+_:e03c2a7dfe06215ed865e3ecf07b787a prov:agent _:12e351703337be328ad9cd571616019e ;
+	prov:hadRole cascade:TransmitterRole .
+_:dc42eba364a6d3d3c2fa05c17122ca47 prov:qualifiedAssociation _:e03c2a7dfe06215ed865e3ecf07b787a .
+_:b8e8f29a67e5e8cfc5ba1a79888d1edd <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:12e351703337be328ad9cd571616019e <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
 _:474903082410a5d6ffa58af04088eb38 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
 	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
 <ni:///sha-256;0re2flaEf5oTKzdsN9gHZwLdHi3wsjfjpSumJxM4VWk> a prov:Entity .

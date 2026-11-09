@@ -3,39 +3,42 @@
 @prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;QcoEHxi-E35NV68jsQ0T2ufGZWlIOMrGPX5nflQD8Do> cascade:onsetDate "2021-04-02"^^xsd:date ;
-	cascade:conditionName "Essential hypertension" ;
-	cascade:snomedCode <http://snomed.info/id/38341003> .
-_:94391a9f9212421fd69797e205a66c8f bridge:arrivedAs <ni:///sha-256;QcoEHxi-E35NV68jsQ0T2ufGZWlIOMrGPX5nflQD8Do> .
-<ni:///sha-256;QcoEHxi-E35NV68jsQ0T2ufGZWlIOMrGPX5nflQD8Do> cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> ;
-	prov:specializationOf <urn:uuid:e3889c3a-faa3-8a4f-a9f6-84d1dd1d85a4> .
-<urn:uuid:e3889c3a-faa3-8a4f-a9f6-84d1dd1d85a4> cascade:sourceRecordId "cond-htn-1" ;
+<ni:///sha-256;QcoEHxi-E35NV68jsQ0T2ufGZWlIOMrGPX5nflQD8Do> cascade:conditionName "Essential hypertension" ;
+	cascade:snomedCode <http://snomed.info/id/38341003> ;
+	cascade:onsetDate "2021-04-02"^^xsd:date .
+<urn:uuid:e3889c3a-faa3-8a4f-a9f6-84d1dd1d85a4> a cascade:ProblemOrDiagnosis ;
 	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Condition/cond-htn-1> ;
-	a cascade:ProblemOrDiagnosis .
-_:94391a9f9212421fd69797e205a66c8f oa:hasSelector _:c3dbfe6882f35e51abc311d880fbb8a ;
+	cascade:sourceRecordId "cond-htn-1" .
+<ni:///sha-256;QcoEHxi-E35NV68jsQ0T2ufGZWlIOMrGPX5nflQD8Do> prov:specializationOf <urn:uuid:e3889c3a-faa3-8a4f-a9f6-84d1dd1d85a4> ;
+	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
+_:94391a9f9212421fd69797e205a66c8f bridge:arrivedAs <ni:///sha-256;QcoEHxi-E35NV68jsQ0T2ufGZWlIOMrGPX5nflQD8Do> ;
+	oa:hasSelector _:c3dbfe6882f35e51abc311d880fbb8a ;
 	oa:hasSource <ni:///sha-256;R2Gp3vTQRh4cm8S40Hm3CmuWm6SHTdU8XSgI7uR5bpI> ;
 	prov:wasDerivedFrom <ni:///sha-256;R2Gp3vTQRh4cm8S40Hm3CmuWm6SHTdU8XSgI7uR5bpI> ;
 	prov:wasGeneratedBy _:318d733d1b574a36e8977debd55c9c44 .
 _:c3dbfe6882f35e51abc311d880fbb8a a oa:FragmentSelector ;
-	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;R2Gp3vTQRh4cm8S40Hm3CmuWm6SHTdU8XSgI7uR5bpI> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
 	pav:retrievedFrom <https://FHIR.Meridian.example/api/FHIR/R4/Condition/cond-htn-1> ;
-	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
-_:8721e78a2d7e7151ba6f1117d8a27059 prov:agent _:e0c77ca1e82f20f5342da9fef0d8f11d .
-_:e0c77ca1e82f20f5342da9fef0d8f11d <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
-_:8721e78a2d7e7151ba6f1117d8a27059 prov:hadRole cascade:AuthorRole .
-<ni:///sha-256;R2Gp3vTQRh4cm8S40Hm3CmuWm6SHTdU8XSgI7uR5bpI> prov:qualifiedAttribution _:8721e78a2d7e7151ba6f1117d8a27059 .
-_:c2377fe6ac0e3833cc0ca4dd679bd5c7 prov:agent _:61acba56d214556f5504e0f9d6bb029f .
-_:61acba56d214556f5504e0f9d6bb029f <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
-_:c2377fe6ac0e3833cc0ca4dd679bd5c7 prov:hadRole cascade:TransmitterRole .
-<ni:///sha-256;R2Gp3vTQRh4cm8S40Hm3CmuWm6SHTdU8XSgI7uR5bpI> prov:qualifiedAttribution _:c2377fe6ac0e3833cc0ca4dd679bd5c7 ;
+	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
+	prov:wasGeneratedBy _:8721e78a2d7e7151ba6f1117d8a27059 ;
+	prov:wasAttributedTo _:e0c77ca1e82f20f5342da9fef0d8f11d ;
 	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
 	cascade:authenticatedAsProxy false ;
 	cascade:sourceFormatVersion "4.0.1" .
+_:c2377fe6ac0e3833cc0ca4dd679bd5c7 prov:agent _:e0c77ca1e82f20f5342da9fef0d8f11d ;
+	prov:hadRole cascade:AuthorRole .
+_:8721e78a2d7e7151ba6f1117d8a27059 prov:qualifiedAssociation _:c2377fe6ac0e3833cc0ca4dd679bd5c7 .
+_:61acba56d214556f5504e0f9d6bb029f prov:agent _:871e1d1ac555cb04a02aa743f46113a0 ;
+	prov:hadRole cascade:TransmitterRole .
+_:8721e78a2d7e7151ba6f1117d8a27059 prov:qualifiedAssociation _:61acba56d214556f5504e0f9d6bb029f .
+_:e0c77ca1e82f20f5342da9fef0d8f11d <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:871e1d1ac555cb04a02aa743f46113a0 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
 _:318d733d1b574a36e8977debd55c9c44 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
 	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
 <ni:///sha-256;R2Gp3vTQRh4cm8S40Hm3CmuWm6SHTdU8XSgI7uR5bpI> a prov:Entity .

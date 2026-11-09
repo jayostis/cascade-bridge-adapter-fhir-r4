@@ -3,37 +3,40 @@
 @prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;kjwZi7OAAlDWHYskCgWtOgJ5MU_JmKk_ky0wmhhb5pE> cascade:procedureDate "2025-03-22"^^xsd:date ;
-	cascade:procedureName "Echocardiography" ;
+<ni:///sha-256;kjwZi7OAAlDWHYskCgWtOgJ5MU_JmKk_ky0wmhhb5pE> cascade:procedureName "Echocardiography" ;
 	cascade:snomedCode <http://snomed.info/id/40701008> ;
+	cascade:procedureDate "2025-03-22"^^xsd:date ;
 	cascade:workflowStatus "completed" .
-_:31f0e45719079cfb9697fa22da5e1e19 bridge:arrivedAs <ni:///sha-256;kjwZi7OAAlDWHYskCgWtOgJ5MU_JmKk_ky0wmhhb5pE> .
-<ni:///sha-256;kjwZi7OAAlDWHYskCgWtOgJ5MU_JmKk_ky0wmhhb5pE> cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> ;
-	prov:specializationOf <urn:uuid:68588854-ae5f-8fad-9f57-ccea46d71910> .
 <urn:uuid:68588854-ae5f-8fad-9f57-ccea46d71910> a cascade:MedicalProcedure .
-_:31f0e45719079cfb9697fa22da5e1e19 oa:hasSelector _:8ae9536794a771e0569dcdf0d6395cef ;
+<ni:///sha-256;kjwZi7OAAlDWHYskCgWtOgJ5MU_JmKk_ky0wmhhb5pE> prov:specializationOf <urn:uuid:68588854-ae5f-8fad-9f57-ccea46d71910> ;
+	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
+_:31f0e45719079cfb9697fa22da5e1e19 bridge:arrivedAs <ni:///sha-256;kjwZi7OAAlDWHYskCgWtOgJ5MU_JmKk_ky0wmhhb5pE> ;
+	oa:hasSelector _:8ae9536794a771e0569dcdf0d6395cef ;
 	oa:hasSource <ni:///sha-256;fP7-nmZmuPjbS4FZkOnNG9_xR6Z3AuBPoeCynNGNoh8> ;
 	prov:wasDerivedFrom <ni:///sha-256;fP7-nmZmuPjbS4FZkOnNG9_xR6Z3AuBPoeCynNGNoh8> ;
 	prov:wasGeneratedBy _:abd973ea2507fb6e7096675049a19202 .
 _:8ae9536794a771e0569dcdf0d6395cef a oa:FragmentSelector ;
-	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;fP7-nmZmuPjbS4FZkOnNG9_xR6Z3AuBPoeCynNGNoh8> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
-	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime .
-_:2b20b3192d1841d68c6ad5b36c34ce76 prov:agent _:738b218562ef4536dc9d7e0bd6582570 .
-_:738b218562ef4536dc9d7e0bd6582570 <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
-_:2b20b3192d1841d68c6ad5b36c34ce76 prov:hadRole cascade:AuthorRole .
-<ni:///sha-256;fP7-nmZmuPjbS4FZkOnNG9_xR6Z3AuBPoeCynNGNoh8> prov:qualifiedAttribution _:2b20b3192d1841d68c6ad5b36c34ce76 .
-_:5b77cd0d79e206191063c179b9a3465c prov:agent _:aad6d23cfc2d8e711403f6c337ebf1bf .
-_:aad6d23cfc2d8e711403f6c337ebf1bf <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
-_:5b77cd0d79e206191063c179b9a3465c prov:hadRole cascade:TransmitterRole .
-<ni:///sha-256;fP7-nmZmuPjbS4FZkOnNG9_xR6Z3AuBPoeCynNGNoh8> prov:qualifiedAttribution _:5b77cd0d79e206191063c179b9a3465c ;
+	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
+	prov:wasGeneratedBy _:2b20b3192d1841d68c6ad5b36c34ce76 ;
+	prov:wasAttributedTo _:738b218562ef4536dc9d7e0bd6582570 ;
 	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
 	cascade:authenticatedAsProxy false ;
 	cascade:sourceFormatVersion "4.0.1" .
+_:5b77cd0d79e206191063c179b9a3465c prov:agent _:738b218562ef4536dc9d7e0bd6582570 ;
+	prov:hadRole cascade:AuthorRole .
+_:2b20b3192d1841d68c6ad5b36c34ce76 prov:qualifiedAssociation _:5b77cd0d79e206191063c179b9a3465c .
+_:aad6d23cfc2d8e711403f6c337ebf1bf prov:agent _:a79ef7d1aa6d3586a3d34185b749f20e ;
+	prov:hadRole cascade:TransmitterRole .
+_:2b20b3192d1841d68c6ad5b36c34ce76 prov:qualifiedAssociation _:aad6d23cfc2d8e711403f6c337ebf1bf .
+_:738b218562ef4536dc9d7e0bd6582570 <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:a79ef7d1aa6d3586a3d34185b749f20e <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
 _:abd973ea2507fb6e7096675049a19202 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
 	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
 <ni:///sha-256;fP7-nmZmuPjbS4FZkOnNG9_xR6Z3AuBPoeCynNGNoh8> a prov:Entity .

@@ -28,11 +28,11 @@ _:81375104bc6b67e3b4b91c284e059ae a oa:FragmentSelector ;
 	cascade:patient <urn:uuid:e92ce3a3-3394-8f1e-8aac-eaf036a95638> .
 _:6c13d3d3e3255e23bf73d7292220a658 bridge:arrivedAs <ni:///sha-256;i6mpsq7at9W7DgRmK1jmt2bfhQ74j1r3VMeZqrdcilI> .
 <ni:///sha-256;i6mpsq7at9W7DgRmK1jmt2bfhQ74j1r3VMeZqrdcilI> obo:RO_0002351 <urn:uuid:268320ba-ca47-8d7e-9e03-9b346a57c604> , <urn:uuid:f737af56-cb3c-831a-9339-6b618f429b98> , <urn:uuid:55a4a593-3ada-8f4d-bc07-d6ce0209fb38> , <urn:uuid:072bc795-3e58-8761-9c95-fda460ca7b1b> , <urn:uuid:8edb977f-1f25-8754-ba66-3092516ca403> , <urn:uuid:f15c3e70-dda1-8b63-bf74-cdeeba5ffe3b> ;
-	cascade:workflowStatus "final" ;
+	cascade:reportName "Genetic analysis report" ;
 	cascade:reportIssuedTime "2022-06-14T10:15:00-07:00"^^xsd:dateTime ;
-	cascade:reportCategory "GE"^^<http://terminology.hl7.org/CodeSystem/v2-0074> ;
+	cascade:workflowStatus "final" ;
 	cascade:reportCode <http://loinc.org/rdf/51969-4> ;
-	cascade:reportName "Genetic analysis report" .
+	cascade:reportCategory "GE"^^<http://terminology.hl7.org/CodeSystem/v2-0074> .
 _:6c13d3d3e3255e23bf73d7292220a658 oa:hasSelector _:e9e0c20c4272ceb1f8ce5e327c742f25 ;
 	oa:hasSource <ni:///sha-256;PoyKMPHUii6EQ-Cw9qXaHOcPhzm4bHQINk8uzzZKGt4> ;
 	prov:wasDerivedFrom <ni:///sha-256;PoyKMPHUii6EQ-Cw9qXaHOcPhzm4bHQINk8uzzZKGt4> ;
@@ -143,12 +143,14 @@ _:17028fc94586399448c6083c7fd8a87a oa:hasSelector _:7dae453f568462123f3bbd328999
 _:7dae453f568462123f3bbd32899916b2 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/8" .
-<ni:///sha-256;PoyKMPHUii6EQ-Cw9qXaHOcPhzm4bHQINk8uzzZKGt4> pav:retrievedOn "2022-06-15T09:00:00Z"^^xsd:dateTime .
-_:ca9ecf36837032cdc3b4af1f642e9a4e prov:agent _:3455ef949fc519769f0a13599aa8932f .
-_:3455ef949fc519769f0a13599aa8932f <http://www.w3.org/2000/01/rdf-schema#label> "Harbourline Genetics" .
-_:ca9ecf36837032cdc3b4af1f642e9a4e prov:hadRole cascade:AuthorRole .
-<ni:///sha-256;PoyKMPHUii6EQ-Cw9qXaHOcPhzm4bHQINk8uzzZKGt4> prov:qualifiedAttribution _:ca9ecf36837032cdc3b4af1f642e9a4e ;
+<ni:///sha-256;PoyKMPHUii6EQ-Cw9qXaHOcPhzm4bHQINk8uzzZKGt4> pav:retrievedOn "2022-06-15T09:00:00Z"^^xsd:dateTime ;
+	prov:wasGeneratedBy _:ca9ecf36837032cdc3b4af1f642e9a4e ;
+	prov:wasAttributedTo _:3455ef949fc519769f0a13599aa8932f ;
 	cascade:sourceFormatVersion "4.0.1" .
+_:c919ea620e2b0d3466f7538d061def6c prov:agent _:3455ef949fc519769f0a13599aa8932f ;
+	prov:hadRole cascade:AuthorRole .
+_:ca9ecf36837032cdc3b4af1f642e9a4e prov:qualifiedAssociation _:c919ea620e2b0d3466f7538d061def6c .
+_:3455ef949fc519769f0a13599aa8932f <http://www.w3.org/2000/01/rdf-schema#label> "Harbourline Genetics" .
 _:29751bd9911c5aec569d5f0a0b73a94 <http://www.w3.org/2000/01/rdf-schema#label> "Harbourline Genetics panel report" ;
 	prov:startedAtTime "2022-06-15T09:00:04Z"^^xsd:dateTime .
 <ni:///sha-256;PoyKMPHUii6EQ-Cw9qXaHOcPhzm4bHQINk8uzzZKGt4> a prov:Entity .
