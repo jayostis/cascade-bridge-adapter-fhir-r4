@@ -14,6 +14,9 @@
       "bridge:docRootMemberName": "bridge:docRootMemberName",
       "bridge:docRootMemberValue": "bridge:docRootMemberValue",
       "bridge:jsonPathOfEachRecord": "bridge:jsonPathOfEachRecord",
+      "bridge:pathOfContentInRecord": "bridge:pathOfContentInRecord",
+      "bridge:pathOfContainedContentBelowContent": "bridge:pathOfContainedContentBelowContent",
+      "bridge:pathOfRecordKindBelowContent": "bridge:pathOfRecordKindBelowContent",
       "bridge:testManifest": "bridge:testManifest",
       "bridge:detectQuery": "bridge:detectQuery",
       "bridge:mapping": "bridge:mapping",
@@ -1912,6 +1915,9 @@
       "bridge:docRootMemberName": "resourceType",
       "bridge:docRootMemberValue": "Bundle",
       "bridge:jsonPathOfEachRecord": "$.entry[*]",
+      "bridge:pathOfContentInRecord": "/resource",
+      "bridge:pathOfContainedContentBelowContent": "/contained",
+      "bridge:pathOfRecordKindBelowContent": "/resourceType",
       "description": "A Bundle: each entry is a record, so its fullUrl stays with its resource; docs/format.md, \"The two envelopes\".",
       "bridge:sourceSchema": {
         "@id": "schema/fhir.schema.json#/definitions/Bundle_Entry"
@@ -1923,6 +1929,9 @@
       "name": "resource",
       "bridge:docRootMemberName": "resourceType",
       "bridge:jsonPathOfEachRecord": "$",
+      "bridge:pathOfContentInRecord": "",
+      "bridge:pathOfContainedContentBelowContent": "/contained",
+      "bridge:pathOfRecordKindBelowContent": "/resourceType",
       "description": "A resource alone: the document is the record.",
       "bridge:sourceSchema": {
         "@id": "schema/fhir.schema.json"
@@ -10002,8 +10011,8 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "What a record is, reports and notes, medication dispenses, the two envelopes, how a record is named, JSON as FHIR writes it, the schema, the versions in and out of scope, and what is known about the committed inputs. Read from hl7.org/fhir/R4/ on 2026-09-27, reports and notes on 2026-10-30, medication dispenses on 2026-10-31.",
-      "contentSize": "35900",
-      "sha256": "5a62e4a64a709e2cc6a8dafacfeee5db4ef8396956455d1054fe2921499ff4a2"
+      "contentSize": "36292",
+      "sha256": "46d35d5c90a4992bc168ce203eb3951eeb6c1a3fa25b86fd74d7890876ca2d38"
     },
     {
       "@id": "CONTRIBUTING.md",
