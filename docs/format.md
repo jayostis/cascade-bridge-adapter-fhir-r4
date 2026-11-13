@@ -342,6 +342,11 @@ has no server address yet. A reference elsewhere in the Bundle may name an
 entry by that `urn:uuid:`. The record is the entry, not the resource inside
 it, so the `fullUrl` stays with the resource it names.
 
+The crate declares, on each envelope, where the resource stands in its record (`/resource` in an entry, nothing for
+a resource alone), where a resource contained in it stands below that (`/contained`) and which member names the
+resource's type (`/resourceType`). A path is one place in each of its four forms: `/code`, `/resource/code`,
+`/contained/code` and `/resource/contained/code`.
+
 ## Names
 
 A record's name is one of cascade-vocabulary's naming rules, each the body of
