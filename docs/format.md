@@ -344,7 +344,7 @@ it, so the `fullUrl` stays with the resource it names.
 
 The crate declares, on each envelope, where the resource stands in its record (`/resource` in an entry, nothing for
 a resource alone), where a resource contained in it stands below that (`/contained`) and which member names the
-resource's type (`/resourceType`). A path is one place in each of its four forms: `/code`, `/resource/code`,
+resource's type (`/resourceType`). A path is one place in each form it is written in: `/code`, `/resource/code`,
 `/contained/code` and `/resource/contained/code`.
 
 ## Names
