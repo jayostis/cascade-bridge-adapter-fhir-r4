@@ -3033,6 +3033,11 @@
     [ bridge:inSourceRecordType "Organization" ; bridge:inRecordClass cascade:Organization ; bridge:asProperty org:identifier ] .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/identifier/use" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Whether an identifier is official, usual or temporary: the mappings that write an identifier read its value and system, and no Cascade predicate carries its use." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/contained/intent" ;
   bridge:verdict bridge:carried ;
   bridge:carriedAs
@@ -3480,6 +3485,11 @@
   bridge:verdict bridge:carried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "AllergyIntolerance" ; bridge:inRecordClass cascade:AllergyOrIntolerance ; bridge:asProperty cascade:reactionManifestationCode ] .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/reaction/manifestation/coding/display" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/contained/reaction/manifestation/coding/code" .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/reaction/manifestation/coding/system" ;
@@ -6392,6 +6402,11 @@
     [ bridge:inSourceRecordType "Organization" ; bridge:inRecordClass cascade:Organization ; bridge:asProperty org:identifier ] .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/identifier/use" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Whether an identifier is official, usual or temporary: the mappings that write an identifier read its value and system, and no Cascade predicate carries its use." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/intent" ;
   bridge:verdict bridge:carried ;
   bridge:carriedAs
@@ -6841,6 +6856,11 @@
   bridge:verdict bridge:carried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "AllergyIntolerance" ; bridge:inRecordClass cascade:AllergyOrIntolerance ; bridge:asProperty cascade:reactionManifestationCode ] .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/reaction/manifestation/coding/display" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/reaction/manifestation/coding/code" .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/reaction/manifestation/coding/system" ;
@@ -10059,6 +10079,11 @@
     [ bridge:inSourceRecordType "Organization" ; bridge:inRecordClass cascade:Organization ; bridge:asProperty org:identifier ] .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/identifier/use" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Whether an identifier is official, usual or temporary: the mappings that write an identifier read its value and system, and no Cascade predicate carries its use." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/intent" ;
   bridge:verdict bridge:carried ;
   bridge:carriedAs
@@ -10506,6 +10531,11 @@
   bridge:verdict bridge:carried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "AllergyIntolerance" ; bridge:inRecordClass cascade:AllergyOrIntolerance ; bridge:asProperty cascade:reactionManifestationCode ] .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/reaction/manifestation/coding/display" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/resource/contained/reaction/manifestation/coding/code" .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/reaction/manifestation/coding/system" ;
@@ -13414,6 +13444,11 @@
     [ bridge:inSourceRecordType "Organization" ; bridge:inRecordClass cascade:Organization ; bridge:asProperty org:identifier ] .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/identifier/use" ;
+  bridge:verdict bridge:ignored ;
+  bridge:because "Whether an identifier is official, usual or temporary: the mappings that write an identifier read its value and system, and no Cascade predicate carries its use." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/intent" ;
   bridge:verdict bridge:carried ;
   bridge:carriedAs
@@ -13863,6 +13898,11 @@
   bridge:verdict bridge:carried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "AllergyIntolerance" ; bridge:inRecordClass cascade:AllergyOrIntolerance ; bridge:asProperty cascade:reactionManifestationCode ] .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/reaction/manifestation/coding/display" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:sameFactAs "/resource/reaction/manifestation/coding/code" .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/reaction/manifestation/coding/system" ;
