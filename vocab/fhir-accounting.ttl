@@ -672,7 +672,6 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/birthDate" ;
   bridge:verdict bridge:carried ;
-  bridge:concern bridge:concernIdentity ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Patient" ; bridge:inRecordClass cascade:PatientProfile ; bridge:asProperty cascade:dateOfBirth ] .
 
@@ -1112,14 +1111,12 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/deceasedBoolean" ;
   bridge:verdict bridge:carried ;
-  bridge:concern bridge:concernIdentity ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Patient" ; bridge:inRecordClass cascade:PatientProfile ; bridge:asProperty cascade:deceased ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/deceasedDateTime" ;
   bridge:verdict bridge:carried ;
-  bridge:concern bridge:concernIdentity ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Patient" ; bridge:inRecordClass cascade:PatientProfile ; bridge:asProperty cascade:dateOfDeath ] ,
     [ bridge:inSourceRecordType "Patient" ; bridge:inRecordClass cascade:PatientProfile ; bridge:asProperty cascade:deceased ] .
@@ -3367,7 +3364,6 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/gender" ;
   bridge:verdict bridge:carried ;
-  bridge:concern bridge:concernIdentity ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Patient" ; bridge:inRecordClass cascade:PatientProfile ; bridge:asProperty cascade:administrativeGender ] .
 
@@ -3710,28 +3706,24 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/name/family" ;
   bridge:verdict bridge:carried ;
-  bridge:concern bridge:concernIdentity ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Patient" ; bridge:inRecordClass cascade:PatientProfile ; bridge:asProperty foaf:familyName ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/name/given" ;
   bridge:verdict bridge:carried ;
-  bridge:concern bridge:concernIdentity ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Patient" ; bridge:inRecordClass cascade:PatientProfile ; bridge:asProperty foaf:givenName ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/name/text" ;
   bridge:verdict bridge:carried ;
-  bridge:concern bridge:concernIdentity ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Patient" ; bridge:inRecordClass cascade:PatientProfile ; bridge:asProperty foaf:name ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/name/use" ;
   bridge:verdict bridge:ignored ;
-  bridge:concern bridge:concernIdentity ;
   bridge:because "Whether a name is official or usual: foaf has no predicate for it." .
 
 [] a bridge:PathEntry ;
@@ -7251,7 +7243,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/identifier" ;
   bridge:verdict bridge:carriedInPart ;
-  bridge:concern bridge:concernIdentity ;
+  bridge:concern bridge:concernReferences ;
   bridge:namesGap fhirr4:identifierCarriedForLabResultsAndOrganizationsOnly ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty dct:identifier ] ,
@@ -7260,7 +7252,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/identifier/value" ;
   bridge:verdict bridge:carriedInPart ;
-  bridge:concern bridge:concernIdentity ;
+  bridge:concern bridge:concernReferences ;
   bridge:namesGap fhirr4:identifierCarriedForLabResultsAndOrganizationsOnly ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty dct:identifier ] ,
@@ -7269,7 +7261,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/identifier/use" ;
   bridge:verdict bridge:ignored ;
-  bridge:concern bridge:concernIdentity ;
+  bridge:concern bridge:concernReferences ;
   bridge:because "Whether an identifier is official, usual or temporary: the mappings that write an identifier read its value and system, and no Cascade predicate carries its use." .
 
 [] a bridge:PathEntry ;
@@ -8667,7 +8659,6 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/birthDate" ;
   bridge:verdict bridge:carried ;
-  bridge:concern bridge:concernIdentity ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Patient" ; bridge:inRecordClass cascade:PatientProfile ; bridge:asProperty cascade:dateOfBirth ] .
 
@@ -9107,14 +9098,12 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/deceasedBoolean" ;
   bridge:verdict bridge:carried ;
-  bridge:concern bridge:concernIdentity ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Patient" ; bridge:inRecordClass cascade:PatientProfile ; bridge:asProperty cascade:deceased ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/deceasedDateTime" ;
   bridge:verdict bridge:carried ;
-  bridge:concern bridge:concernIdentity ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Patient" ; bridge:inRecordClass cascade:PatientProfile ; bridge:asProperty cascade:dateOfDeath ] ,
     [ bridge:inSourceRecordType "Patient" ; bridge:inRecordClass cascade:PatientProfile ; bridge:asProperty cascade:deceased ] .
@@ -11362,7 +11351,6 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/gender" ;
   bridge:verdict bridge:carried ;
-  bridge:concern bridge:concernIdentity ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Patient" ; bridge:inRecordClass cascade:PatientProfile ; bridge:asProperty cascade:administrativeGender ] .
 
@@ -11705,28 +11693,24 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/name/family" ;
   bridge:verdict bridge:carried ;
-  bridge:concern bridge:concernIdentity ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Patient" ; bridge:inRecordClass cascade:PatientProfile ; bridge:asProperty foaf:familyName ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/name/given" ;
   bridge:verdict bridge:carried ;
-  bridge:concern bridge:concernIdentity ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Patient" ; bridge:inRecordClass cascade:PatientProfile ; bridge:asProperty foaf:givenName ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/name/text" ;
   bridge:verdict bridge:carried ;
-  bridge:concern bridge:concernIdentity ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Patient" ; bridge:inRecordClass cascade:PatientProfile ; bridge:asProperty foaf:name ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/name/use" ;
   bridge:verdict bridge:ignored ;
-  bridge:concern bridge:concernIdentity ;
   bridge:because "Whether a name is official or usual: foaf has no predicate for it." .
 
 [] a bridge:PathEntry ;
@@ -15242,7 +15226,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/identifier" ;
   bridge:verdict bridge:carriedInPart ;
-  bridge:concern bridge:concernIdentity ;
+  bridge:concern bridge:concernReferences ;
   bridge:namesGap fhirr4:identifierCarriedForLabResultsAndOrganizationsOnly ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty dct:identifier ] ,
@@ -15251,7 +15235,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/identifier/value" ;
   bridge:verdict bridge:carriedInPart ;
-  bridge:concern bridge:concernIdentity ;
+  bridge:concern bridge:concernReferences ;
   bridge:namesGap fhirr4:identifierCarriedForLabResultsAndOrganizationsOnly ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty dct:identifier ] ,
@@ -15260,7 +15244,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/identifier/use" ;
   bridge:verdict bridge:ignored ;
-  bridge:concern bridge:concernIdentity ;
+  bridge:concern bridge:concernReferences ;
   bridge:because "Whether an identifier is official, usual or temporary: the mappings that write an identifier read its value and system, and no Cascade predicate carries its use." .
 
 [] a bridge:PathEntry ;
@@ -17548,7 +17532,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/identifier/system" ;
   bridge:verdict bridge:carriedInPart ;
-  bridge:concern bridge:concernIdentity ;
+  bridge:concern bridge:concernReferences ;
   bridge:namesGap fhirr4:identifierCarriedForLabResultsAndOrganizationsOnly ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty dct:identifier ] ,
@@ -17557,7 +17541,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/identifier/system" ;
   bridge:verdict bridge:carriedInPart ;
-  bridge:concern bridge:concernIdentity ;
+  bridge:concern bridge:concernReferences ;
   bridge:namesGap fhirr4:identifierCarriedForLabResultsAndOrganizationsOnly ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty dct:identifier ] ,
@@ -17830,46 +17814,38 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/_birthDate" ;
-  bridge:verdict bridge:consumed ;
-  bridge:concern bridge:concernIdentity .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/_birthDate/extension" ;
-  bridge:verdict bridge:consumed ;
-  bridge:concern bridge:concernIdentity .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/_birthDate/extension/url" ;
-  bridge:verdict bridge:consumed ;
-  bridge:concern bridge:concernIdentity .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/_birthDate/extension/valueCode" ;
   bridge:verdict bridge:carriedInPart ;
-  bridge:concern bridge:concernIdentity ;
   bridge:namesGap fhirr4:absentReasonNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Patient" ; bridge:inRecordClass cascade:PatientProfile ; bridge:asProperty cascade:absentReasonCode ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/_gender" ;
-  bridge:verdict bridge:consumed ;
-  bridge:concern bridge:concernIdentity .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/_gender/extension" ;
-  bridge:verdict bridge:consumed ;
-  bridge:concern bridge:concernIdentity .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/_gender/extension/url" ;
-  bridge:verdict bridge:consumed ;
-  bridge:concern bridge:concernIdentity .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/_gender/extension/valueCode" ;
   bridge:verdict bridge:carriedInPart ;
-  bridge:concern bridge:concernIdentity ;
   bridge:namesGap fhirr4:absentReasonNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Patient" ; bridge:inRecordClass cascade:PatientProfile ; bridge:asProperty cascade:absentReasonCode ] .
@@ -18274,46 +18250,38 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/_birthDate" ;
-  bridge:verdict bridge:consumed ;
-  bridge:concern bridge:concernIdentity .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/_birthDate/extension" ;
-  bridge:verdict bridge:consumed ;
-  bridge:concern bridge:concernIdentity .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/_birthDate/extension/url" ;
-  bridge:verdict bridge:consumed ;
-  bridge:concern bridge:concernIdentity .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/_birthDate/extension/valueCode" ;
   bridge:verdict bridge:carriedInPart ;
-  bridge:concern bridge:concernIdentity ;
   bridge:namesGap fhirr4:absentReasonNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Patient" ; bridge:inRecordClass cascade:PatientProfile ; bridge:asProperty cascade:absentReasonCode ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/_gender" ;
-  bridge:verdict bridge:consumed ;
-  bridge:concern bridge:concernIdentity .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/_gender/extension" ;
-  bridge:verdict bridge:consumed ;
-  bridge:concern bridge:concernIdentity .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/_gender/extension/url" ;
-  bridge:verdict bridge:consumed ;
-  bridge:concern bridge:concernIdentity .
+  bridge:verdict bridge:consumed .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/_gender/extension/valueCode" ;
   bridge:verdict bridge:carriedInPart ;
-  bridge:concern bridge:concernIdentity ;
   bridge:namesGap fhirr4:absentReasonNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Patient" ; bridge:inRecordClass cascade:PatientProfile ; bridge:asProperty cascade:absentReasonCode ] .
@@ -18703,33 +18671,39 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/masterIdentifier" ;
-  bridge:verdict bridge:consumed .
+  bridge:verdict bridge:consumed ;
+  bridge:concern bridge:concernReferences .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/masterIdentifier/system" ;
   bridge:verdict bridge:carried ;
+  bridge:concern bridge:concernReferences ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "DocumentReference" ; bridge:inRecordClass cascade:ClinicalNoteOrDocument ; bridge:asProperty cascade:noteOrDocumentMasterIdentifier ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/masterIdentifier/value" ;
   bridge:verdict bridge:carried ;
+  bridge:concern bridge:concernReferences ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "DocumentReference" ; bridge:inRecordClass cascade:ClinicalNoteOrDocument ; bridge:asProperty cascade:noteOrDocumentMasterIdentifier ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/masterIdentifier" ;
-  bridge:verdict bridge:consumed .
+  bridge:verdict bridge:consumed ;
+  bridge:concern bridge:concernReferences .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/masterIdentifier/system" ;
   bridge:verdict bridge:carried ;
+  bridge:concern bridge:concernReferences ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "DocumentReference" ; bridge:inRecordClass cascade:ClinicalNoteOrDocument ; bridge:asProperty cascade:noteOrDocumentMasterIdentifier ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/masterIdentifier/value" ;
   bridge:verdict bridge:carried ;
+  bridge:concern bridge:concernReferences ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "DocumentReference" ; bridge:inRecordClass cascade:ClinicalNoteOrDocument ; bridge:asProperty cascade:noteOrDocumentMasterIdentifier ] .
 
