@@ -64,6 +64,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/address" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernIdentity ;
   bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Organization" ; bridge:inRecordClass cascade:Organization ; bridge:asProperty cascade:organizationAddress ] .
@@ -71,6 +72,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/address/city" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernIdentity ;
   bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Organization" ; bridge:inRecordClass cascade:Organization ; bridge:asProperty cascade:organizationAddress ] .
@@ -78,6 +80,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/address/country" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernIdentity ;
   bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Organization" ; bridge:inRecordClass cascade:Organization ; bridge:asProperty cascade:organizationAddress ] .
@@ -85,6 +88,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/address/line" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernIdentity ;
   bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Organization" ; bridge:inRecordClass cascade:Organization ; bridge:asProperty cascade:organizationAddress ] .
@@ -92,6 +96,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/address/postalCode" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernIdentity ;
   bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Organization" ; bridge:inRecordClass cascade:Organization ; bridge:asProperty cascade:organizationAddress ] .
@@ -99,6 +104,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/address/state" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernIdentity ;
   bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Organization" ; bridge:inRecordClass cascade:Organization ; bridge:asProperty cascade:organizationAddress ] .
@@ -106,7 +112,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/address/text" ;
   bridge:verdict bridge:carriedInPart ;
-  bridge:concern bridge:concernText ;
+  bridge:concern bridge:concernIdentity ;
   bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Organization" ; bridge:inRecordClass cascade:Organization ; bridge:asProperty cascade:organizationAddress ] .
@@ -114,16 +120,19 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/address/type" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernIdentity ;
   bridge:because "An address's type and use, which say only what kind of address it is and what it is for." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/address/use" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernIdentity ;
   bridge:because "An address's type and use, which say only what kind of address it is and what it is for." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/alias" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernText ;
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
@@ -468,6 +477,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/component/valueString" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernText ;
   bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
 
 [] a bridge:PathEntry ;
@@ -618,6 +628,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/alias" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernText ;
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
@@ -962,6 +973,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/component/valueString" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernText ;
   bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
 
 [] a bridge:PathEntry ;
@@ -1196,6 +1208,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dispenseRequest/dispenseInterval" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dispenseRequestElementNotCarried .
 
 [] a bridge:PathEntry ;
@@ -1207,6 +1220,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dispenseRequest/dispenseInterval/comparator" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dispense request element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -1218,16 +1232,19 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dispenseRequest/dispenseInterval/unit" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dispense request element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dispenseRequest/dispenseInterval/value" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dispense request element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dispenseRequest/expectedSupplyDuration" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:expectedSupplyDurationNotInUnitOfTime ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:expectedSupplyDuration ] .
@@ -1242,6 +1259,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dispenseRequest/expectedSupplyDuration/comparator" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:expectedSupplyDurationBound ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:quantityComparator ] .
@@ -1256,12 +1274,14 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dispenseRequest/expectedSupplyDuration/unit" ;
   bridge:verdict bridge:carried ;
+  bridge:concern bridge:concernDates ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:unitText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dispenseRequest/expectedSupplyDuration/value" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:medicationNumberNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:decimalValue ] ,
@@ -1275,6 +1295,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dispenseRequest/initialFill/duration" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dispense request element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -1286,6 +1307,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dispenseRequest/initialFill/duration/comparator" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dispense request element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -1297,11 +1319,13 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dispenseRequest/initialFill/duration/unit" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dispense request element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dispenseRequest/initialFill/duration/value" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dispense request element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -2062,7 +2086,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosage/timing" ;
-  bridge:verdict bridge:consumed .
+  bridge:verdict bridge:consumed ;
+  bridge:concern bridge:concernDates .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosage/timing/code" ;
@@ -2108,11 +2133,13 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosage/timing/repeat" ;
-  bridge:verdict bridge:consumed .
+  bridge:verdict bridge:consumed ;
+  bridge:concern bridge:concernDates .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosage/timing/repeat/boundsDuration" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
@@ -2124,6 +2151,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosage/timing/repeat/boundsDuration/comparator" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -2135,11 +2163,13 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosage/timing/repeat/boundsDuration/unit" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosage/timing/repeat/boundsDuration/value" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -2164,11 +2194,13 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosage/timing/repeat/boundsRange" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosage/timing/repeat/boundsRange/high" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -2186,16 +2218,19 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosage/timing/repeat/boundsRange/high/unit" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosage/timing/repeat/boundsRange/high/value" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosage/timing/repeat/boundsRange/low" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -2213,46 +2248,55 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosage/timing/repeat/boundsRange/low/unit" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosage/timing/repeat/boundsRange/low/value" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosage/timing/repeat/count" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosage/timing/repeat/countMax" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosage/timing/repeat/dayOfWeek" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosage/timing/repeat/duration" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosage/timing/repeat/durationMax" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosage/timing/repeat/durationUnit" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosage/timing/repeat/frequency" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:medicationNumberNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationStatement" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosageRepeatFrequency ] .
@@ -2260,16 +2304,19 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosage/timing/repeat/frequencyMax" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosage/timing/repeat/offset" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosage/timing/repeat/period" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:medicationNumberNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationStatement" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosageRepeatPeriod ] .
@@ -2277,11 +2324,13 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosage/timing/repeat/periodMax" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosage/timing/repeat/periodUnit" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageRepeatPeriodUnitNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationStatement" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosageRepeatPeriodUnit ] .
@@ -2295,6 +2344,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosage/timing/repeat/when" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
@@ -2928,7 +2978,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosageInstruction/timing" ;
-  bridge:verdict bridge:consumed .
+  bridge:verdict bridge:consumed ;
+  bridge:concern bridge:concernDates .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosageInstruction/timing/code" ;
@@ -2974,11 +3025,13 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosageInstruction/timing/repeat" ;
-  bridge:verdict bridge:consumed .
+  bridge:verdict bridge:consumed ;
+  bridge:concern bridge:concernDates .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosageInstruction/timing/repeat/boundsDuration" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
@@ -2990,6 +3043,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosageInstruction/timing/repeat/boundsDuration/comparator" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -3001,11 +3055,13 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosageInstruction/timing/repeat/boundsDuration/unit" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosageInstruction/timing/repeat/boundsDuration/value" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -3030,11 +3086,13 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosageInstruction/timing/repeat/boundsRange" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosageInstruction/timing/repeat/boundsRange/high" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -3052,16 +3110,19 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosageInstruction/timing/repeat/boundsRange/high/unit" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosageInstruction/timing/repeat/boundsRange/high/value" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosageInstruction/timing/repeat/boundsRange/low" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -3079,46 +3140,55 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosageInstruction/timing/repeat/boundsRange/low/unit" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosageInstruction/timing/repeat/boundsRange/low/value" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosageInstruction/timing/repeat/count" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosageInstruction/timing/repeat/countMax" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosageInstruction/timing/repeat/dayOfWeek" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosageInstruction/timing/repeat/duration" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosageInstruction/timing/repeat/durationMax" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosageInstruction/timing/repeat/durationUnit" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosageInstruction/timing/repeat/frequency" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:medicationNumberNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosageRepeatFrequency ] .
@@ -3126,16 +3196,19 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosageInstruction/timing/repeat/frequencyMax" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosageInstruction/timing/repeat/offset" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosageInstruction/timing/repeat/period" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:medicationNumberNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosageRepeatPeriod ] .
@@ -3143,11 +3216,13 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosageInstruction/timing/repeat/periodMax" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosageInstruction/timing/repeat/periodUnit" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageRepeatPeriodUnitNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosageRepeatPeriodUnit ] .
@@ -3161,6 +3236,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosageInstruction/timing/repeat/when" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
@@ -3913,6 +3989,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/reasonCode" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernCodes ;
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
@@ -4700,6 +4777,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/valueString" ;
   bridge:verdict bridge:carried ;
+  bridge:concern bridge:concernText ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
 
@@ -4936,6 +5014,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dispenseRequest/dispenseInterval" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dispenseRequestElementNotCarried .
 
 [] a bridge:PathEntry ;
@@ -4947,6 +5026,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dispenseRequest/dispenseInterval/comparator" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dispense request element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -4958,16 +5038,19 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dispenseRequest/dispenseInterval/unit" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dispense request element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dispenseRequest/dispenseInterval/value" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dispense request element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dispenseRequest/expectedSupplyDuration" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:expectedSupplyDurationNotInUnitOfTime ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:expectedSupplyDuration ] .
@@ -4982,6 +5065,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dispenseRequest/expectedSupplyDuration/comparator" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:expectedSupplyDurationBound ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:quantityComparator ] .
@@ -4996,12 +5080,14 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dispenseRequest/expectedSupplyDuration/unit" ;
   bridge:verdict bridge:carried ;
+  bridge:concern bridge:concernDates ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:unitText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dispenseRequest/expectedSupplyDuration/value" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:medicationNumberNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:decimalValue ] ,
@@ -5015,6 +5101,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dispenseRequest/initialFill/duration" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dispense request element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -5026,6 +5113,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dispenseRequest/initialFill/duration/comparator" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dispense request element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -5037,11 +5125,13 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dispenseRequest/initialFill/duration/unit" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dispense request element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dispenseRequest/initialFill/duration/value" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dispense request element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -5808,7 +5898,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosage/timing" ;
-  bridge:verdict bridge:consumed .
+  bridge:verdict bridge:consumed ;
+  bridge:concern bridge:concernDates .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosage/timing/code" ;
@@ -5854,11 +5945,13 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosage/timing/repeat" ;
-  bridge:verdict bridge:consumed .
+  bridge:verdict bridge:consumed ;
+  bridge:concern bridge:concernDates .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosage/timing/repeat/boundsDuration" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
@@ -5870,6 +5963,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosage/timing/repeat/boundsDuration/comparator" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -5881,11 +5975,13 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosage/timing/repeat/boundsDuration/unit" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosage/timing/repeat/boundsDuration/value" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -5910,11 +6006,13 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosage/timing/repeat/boundsRange" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosage/timing/repeat/boundsRange/high" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -5932,16 +6030,19 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosage/timing/repeat/boundsRange/high/unit" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosage/timing/repeat/boundsRange/high/value" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosage/timing/repeat/boundsRange/low" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -5959,46 +6060,55 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosage/timing/repeat/boundsRange/low/unit" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosage/timing/repeat/boundsRange/low/value" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosage/timing/repeat/count" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosage/timing/repeat/countMax" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosage/timing/repeat/dayOfWeek" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosage/timing/repeat/duration" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosage/timing/repeat/durationMax" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosage/timing/repeat/durationUnit" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosage/timing/repeat/frequency" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:medicationNumberNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationStatement" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosageRepeatFrequency ] .
@@ -6006,16 +6116,19 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosage/timing/repeat/frequencyMax" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosage/timing/repeat/offset" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosage/timing/repeat/period" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:medicationNumberNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationStatement" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosageRepeatPeriod ] .
@@ -6023,11 +6136,13 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosage/timing/repeat/periodMax" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosage/timing/repeat/periodUnit" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageRepeatPeriodUnitNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationStatement" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosageRepeatPeriodUnit ] .
@@ -6041,6 +6156,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosage/timing/repeat/when" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
@@ -6674,7 +6790,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosageInstruction/timing" ;
-  bridge:verdict bridge:consumed .
+  bridge:verdict bridge:consumed ;
+  bridge:concern bridge:concernDates .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosageInstruction/timing/code" ;
@@ -6720,11 +6837,13 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosageInstruction/timing/repeat" ;
-  bridge:verdict bridge:consumed .
+  bridge:verdict bridge:consumed ;
+  bridge:concern bridge:concernDates .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosageInstruction/timing/repeat/boundsDuration" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
@@ -6736,6 +6855,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosageInstruction/timing/repeat/boundsDuration/comparator" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -6747,11 +6867,13 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosageInstruction/timing/repeat/boundsDuration/unit" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosageInstruction/timing/repeat/boundsDuration/value" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -6776,11 +6898,13 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosageInstruction/timing/repeat/boundsRange" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosageInstruction/timing/repeat/boundsRange/high" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -6798,16 +6922,19 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosageInstruction/timing/repeat/boundsRange/high/unit" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosageInstruction/timing/repeat/boundsRange/high/value" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosageInstruction/timing/repeat/boundsRange/low" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -6825,46 +6952,55 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosageInstruction/timing/repeat/boundsRange/low/unit" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosageInstruction/timing/repeat/boundsRange/low/value" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosageInstruction/timing/repeat/count" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosageInstruction/timing/repeat/countMax" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosageInstruction/timing/repeat/dayOfWeek" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosageInstruction/timing/repeat/duration" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosageInstruction/timing/repeat/durationMax" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosageInstruction/timing/repeat/durationUnit" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosageInstruction/timing/repeat/frequency" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:medicationNumberNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosageRepeatFrequency ] .
@@ -6872,16 +7008,19 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosageInstruction/timing/repeat/frequencyMax" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosageInstruction/timing/repeat/offset" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosageInstruction/timing/repeat/period" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:medicationNumberNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosageRepeatPeriod ] .
@@ -6889,11 +7028,13 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosageInstruction/timing/repeat/periodMax" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosageInstruction/timing/repeat/periodUnit" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageRepeatPeriodUnitNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosageRepeatPeriodUnit ] .
@@ -6907,6 +7048,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosageInstruction/timing/repeat/when" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
@@ -7109,6 +7251,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/identifier" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernIdentity ;
   bridge:namesGap fhirr4:identifierCarriedForLabResultsAndOrganizationsOnly ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty dct:identifier ] ,
@@ -7117,6 +7260,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/identifier/value" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernIdentity ;
   bridge:namesGap fhirr4:identifierCarriedForLabResultsAndOrganizationsOnly ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty dct:identifier ] ,
@@ -7125,6 +7269,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/identifier/use" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernIdentity ;
   bridge:because "Whether an identifier is official, usual or temporary: the mappings that write an identifier read its value and system, and no Cascade predicate carries its use." .
 
 [] a bridge:PathEntry ;
@@ -7665,6 +7810,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/reasonCode" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernCodes ;
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
@@ -7913,6 +8059,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/address" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernIdentity ;
   bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Organization" ; bridge:inRecordClass cascade:Organization ; bridge:asProperty cascade:organizationAddress ] .
@@ -7920,6 +8067,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/address/city" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernIdentity ;
   bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Organization" ; bridge:inRecordClass cascade:Organization ; bridge:asProperty cascade:organizationAddress ] .
@@ -7927,6 +8075,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/address/country" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernIdentity ;
   bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Organization" ; bridge:inRecordClass cascade:Organization ; bridge:asProperty cascade:organizationAddress ] .
@@ -7934,6 +8083,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/address/line" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernIdentity ;
   bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Organization" ; bridge:inRecordClass cascade:Organization ; bridge:asProperty cascade:organizationAddress ] .
@@ -7941,6 +8091,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/address/postalCode" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernIdentity ;
   bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Organization" ; bridge:inRecordClass cascade:Organization ; bridge:asProperty cascade:organizationAddress ] .
@@ -7948,6 +8099,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/address/state" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernIdentity ;
   bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Organization" ; bridge:inRecordClass cascade:Organization ; bridge:asProperty cascade:organizationAddress ] .
@@ -7955,7 +8107,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/address/text" ;
   bridge:verdict bridge:carriedInPart ;
-  bridge:concern bridge:concernText ;
+  bridge:concern bridge:concernIdentity ;
   bridge:namesGap fhirr4:addressCarriedForOrganizationsOnly ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Organization" ; bridge:inRecordClass cascade:Organization ; bridge:asProperty cascade:organizationAddress ] .
@@ -7963,16 +8115,19 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/address/type" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernIdentity ;
   bridge:because "An address's type and use, which say only what kind of address it is and what it is for." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/address/use" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernIdentity ;
   bridge:because "An address's type and use, which say only what kind of address it is and what it is for." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/alias" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernText ;
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
@@ -8317,6 +8472,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/component/valueString" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernText ;
   bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
 
 [] a bridge:PathEntry ;
@@ -8467,6 +8623,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/alias" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernText ;
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
@@ -8811,6 +8968,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/component/valueString" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernText ;
   bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
 
 [] a bridge:PathEntry ;
@@ -9045,6 +9203,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dispenseRequest/dispenseInterval" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dispenseRequestElementNotCarried .
 
 [] a bridge:PathEntry ;
@@ -9056,6 +9215,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dispenseRequest/dispenseInterval/comparator" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dispense request element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -9067,16 +9227,19 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dispenseRequest/dispenseInterval/unit" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dispense request element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dispenseRequest/dispenseInterval/value" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dispense request element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dispenseRequest/expectedSupplyDuration" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:expectedSupplyDurationNotInUnitOfTime ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:expectedSupplyDuration ] .
@@ -9091,6 +9254,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dispenseRequest/expectedSupplyDuration/comparator" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:expectedSupplyDurationBound ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:quantityComparator ] .
@@ -9105,12 +9269,14 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dispenseRequest/expectedSupplyDuration/unit" ;
   bridge:verdict bridge:carried ;
+  bridge:concern bridge:concernDates ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:unitText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dispenseRequest/expectedSupplyDuration/value" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:medicationNumberNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:decimalValue ] ,
@@ -9124,6 +9290,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dispenseRequest/initialFill/duration" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dispense request element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -9135,6 +9302,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dispenseRequest/initialFill/duration/comparator" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dispense request element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -9146,11 +9314,13 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dispenseRequest/initialFill/duration/unit" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dispense request element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dispenseRequest/initialFill/duration/value" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dispense request element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -9911,7 +10081,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosage/timing" ;
-  bridge:verdict bridge:consumed .
+  bridge:verdict bridge:consumed ;
+  bridge:concern bridge:concernDates .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosage/timing/code" ;
@@ -9957,11 +10128,13 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosage/timing/repeat" ;
-  bridge:verdict bridge:consumed .
+  bridge:verdict bridge:consumed ;
+  bridge:concern bridge:concernDates .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosage/timing/repeat/boundsDuration" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
@@ -9973,6 +10146,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosage/timing/repeat/boundsDuration/comparator" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -9984,11 +10158,13 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosage/timing/repeat/boundsDuration/unit" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosage/timing/repeat/boundsDuration/value" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -10013,11 +10189,13 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosage/timing/repeat/boundsRange" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosage/timing/repeat/boundsRange/high" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -10035,16 +10213,19 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosage/timing/repeat/boundsRange/high/unit" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosage/timing/repeat/boundsRange/high/value" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosage/timing/repeat/boundsRange/low" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -10062,46 +10243,55 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosage/timing/repeat/boundsRange/low/unit" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosage/timing/repeat/boundsRange/low/value" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosage/timing/repeat/count" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosage/timing/repeat/countMax" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosage/timing/repeat/dayOfWeek" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosage/timing/repeat/duration" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosage/timing/repeat/durationMax" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosage/timing/repeat/durationUnit" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosage/timing/repeat/frequency" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:medicationNumberNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationStatement" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosageRepeatFrequency ] .
@@ -10109,16 +10299,19 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosage/timing/repeat/frequencyMax" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosage/timing/repeat/offset" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosage/timing/repeat/period" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:medicationNumberNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationStatement" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosageRepeatPeriod ] .
@@ -10126,11 +10319,13 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosage/timing/repeat/periodMax" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosage/timing/repeat/periodUnit" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageRepeatPeriodUnitNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationStatement" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosageRepeatPeriodUnit ] .
@@ -10144,6 +10339,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosage/timing/repeat/when" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
@@ -10777,7 +10973,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosageInstruction/timing" ;
-  bridge:verdict bridge:consumed .
+  bridge:verdict bridge:consumed ;
+  bridge:concern bridge:concernDates .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosageInstruction/timing/code" ;
@@ -10823,11 +11020,13 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosageInstruction/timing/repeat" ;
-  bridge:verdict bridge:consumed .
+  bridge:verdict bridge:consumed ;
+  bridge:concern bridge:concernDates .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosageInstruction/timing/repeat/boundsDuration" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
@@ -10839,6 +11038,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosageInstruction/timing/repeat/boundsDuration/comparator" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -10850,11 +11050,13 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosageInstruction/timing/repeat/boundsDuration/unit" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosageInstruction/timing/repeat/boundsDuration/value" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -10879,11 +11081,13 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosageInstruction/timing/repeat/boundsRange" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosageInstruction/timing/repeat/boundsRange/high" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -10901,16 +11105,19 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosageInstruction/timing/repeat/boundsRange/high/unit" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosageInstruction/timing/repeat/boundsRange/high/value" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosageInstruction/timing/repeat/boundsRange/low" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -10928,46 +11135,55 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosageInstruction/timing/repeat/boundsRange/low/unit" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosageInstruction/timing/repeat/boundsRange/low/value" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosageInstruction/timing/repeat/count" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosageInstruction/timing/repeat/countMax" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosageInstruction/timing/repeat/dayOfWeek" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosageInstruction/timing/repeat/duration" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosageInstruction/timing/repeat/durationMax" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosageInstruction/timing/repeat/durationUnit" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosageInstruction/timing/repeat/frequency" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:medicationNumberNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosageRepeatFrequency ] .
@@ -10975,16 +11191,19 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosageInstruction/timing/repeat/frequencyMax" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosageInstruction/timing/repeat/offset" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosageInstruction/timing/repeat/period" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:medicationNumberNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosageRepeatPeriod ] .
@@ -10992,11 +11211,13 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosageInstruction/timing/repeat/periodMax" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosageInstruction/timing/repeat/periodUnit" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageRepeatPeriodUnitNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosageRepeatPeriodUnit ] .
@@ -11010,6 +11231,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosageInstruction/timing/repeat/when" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
@@ -11762,6 +11984,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/reasonCode" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernCodes ;
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
@@ -12549,6 +12772,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/valueString" ;
   bridge:verdict bridge:carried ;
+  bridge:concern bridge:concernText ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
 
@@ -12791,6 +13015,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dispenseRequest/dispenseInterval" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dispenseRequestElementNotCarried .
 
 [] a bridge:PathEntry ;
@@ -12802,6 +13027,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dispenseRequest/dispenseInterval/comparator" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dispense request element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -12813,16 +13039,19 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dispenseRequest/dispenseInterval/unit" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dispense request element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dispenseRequest/dispenseInterval/value" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dispense request element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dispenseRequest/expectedSupplyDuration" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:expectedSupplyDurationNotInUnitOfTime ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:expectedSupplyDuration ] .
@@ -12837,6 +13066,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dispenseRequest/expectedSupplyDuration/comparator" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:expectedSupplyDurationBound ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:quantityComparator ] .
@@ -12851,12 +13081,14 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dispenseRequest/expectedSupplyDuration/unit" ;
   bridge:verdict bridge:carried ;
+  bridge:concern bridge:concernDates ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:unitText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dispenseRequest/expectedSupplyDuration/value" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:medicationNumberNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:decimalValue ] ,
@@ -12870,6 +13102,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dispenseRequest/initialFill/duration" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dispense request element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -12881,6 +13114,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dispenseRequest/initialFill/duration/comparator" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dispense request element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -12892,11 +13126,13 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dispenseRequest/initialFill/duration/unit" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dispense request element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dispenseRequest/initialFill/duration/value" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dispense request element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -13657,7 +13893,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosage/timing" ;
-  bridge:verdict bridge:consumed .
+  bridge:verdict bridge:consumed ;
+  bridge:concern bridge:concernDates .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosage/timing/code" ;
@@ -13703,11 +13940,13 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosage/timing/repeat" ;
-  bridge:verdict bridge:consumed .
+  bridge:verdict bridge:consumed ;
+  bridge:concern bridge:concernDates .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosage/timing/repeat/boundsDuration" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
@@ -13719,6 +13958,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosage/timing/repeat/boundsDuration/comparator" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -13730,11 +13970,13 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosage/timing/repeat/boundsDuration/unit" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosage/timing/repeat/boundsDuration/value" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -13759,11 +14001,13 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosage/timing/repeat/boundsRange" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosage/timing/repeat/boundsRange/high" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -13781,16 +14025,19 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosage/timing/repeat/boundsRange/high/unit" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosage/timing/repeat/boundsRange/high/value" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosage/timing/repeat/boundsRange/low" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -13808,46 +14055,55 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosage/timing/repeat/boundsRange/low/unit" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosage/timing/repeat/boundsRange/low/value" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosage/timing/repeat/count" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosage/timing/repeat/countMax" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosage/timing/repeat/dayOfWeek" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosage/timing/repeat/duration" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosage/timing/repeat/durationMax" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosage/timing/repeat/durationUnit" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosage/timing/repeat/frequency" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:medicationNumberNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationStatement" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosageRepeatFrequency ] .
@@ -13855,16 +14111,19 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosage/timing/repeat/frequencyMax" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosage/timing/repeat/offset" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosage/timing/repeat/period" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:medicationNumberNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationStatement" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosageRepeatPeriod ] .
@@ -13872,11 +14131,13 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosage/timing/repeat/periodMax" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosage/timing/repeat/periodUnit" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageRepeatPeriodUnitNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationStatement" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosageRepeatPeriodUnit ] .
@@ -13890,6 +14151,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosage/timing/repeat/when" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
@@ -14523,7 +14785,8 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosageInstruction/timing" ;
-  bridge:verdict bridge:consumed .
+  bridge:verdict bridge:consumed ;
+  bridge:concern bridge:concernDates .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosageInstruction/timing/code" ;
@@ -14569,11 +14832,13 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosageInstruction/timing/repeat" ;
-  bridge:verdict bridge:consumed .
+  bridge:verdict bridge:consumed ;
+  bridge:concern bridge:concernDates .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosageInstruction/timing/repeat/boundsDuration" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
@@ -14585,6 +14850,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosageInstruction/timing/repeat/boundsDuration/comparator" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -14596,11 +14862,13 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosageInstruction/timing/repeat/boundsDuration/unit" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosageInstruction/timing/repeat/boundsDuration/value" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -14625,11 +14893,13 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosageInstruction/timing/repeat/boundsRange" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosageInstruction/timing/repeat/boundsRange/high" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -14647,16 +14917,19 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosageInstruction/timing/repeat/boundsRange/high/unit" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosageInstruction/timing/repeat/boundsRange/high/value" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosageInstruction/timing/repeat/boundsRange/low" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
@@ -14674,46 +14947,55 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosageInstruction/timing/repeat/boundsRange/low/unit" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosageInstruction/timing/repeat/boundsRange/low/value" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
   bridge:because "Part of a dosage element no Cascade predicate carries, reported at its container." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosageInstruction/timing/repeat/count" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosageInstruction/timing/repeat/countMax" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosageInstruction/timing/repeat/dayOfWeek" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosageInstruction/timing/repeat/duration" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosageInstruction/timing/repeat/durationMax" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosageInstruction/timing/repeat/durationUnit" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosageInstruction/timing/repeat/frequency" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:medicationNumberNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosageRepeatFrequency ] .
@@ -14721,16 +15003,19 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosageInstruction/timing/repeat/frequencyMax" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosageInstruction/timing/repeat/offset" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosageInstruction/timing/repeat/period" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:medicationNumberNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosageRepeatPeriod ] .
@@ -14738,11 +15023,13 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosageInstruction/timing/repeat/periodMax" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosageInstruction/timing/repeat/periodUnit" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageRepeatPeriodUnitNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosageRepeatPeriodUnit ] .
@@ -14756,6 +15043,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosageInstruction/timing/repeat/when" ;
   bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
   bridge:namesGap fhirr4:dosageElementNotCarried .
 
 [] a bridge:PathEntry ;
@@ -14954,6 +15242,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/identifier" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernIdentity ;
   bridge:namesGap fhirr4:identifierCarriedForLabResultsAndOrganizationsOnly ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty dct:identifier ] ,
@@ -14962,6 +15251,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/identifier/value" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernIdentity ;
   bridge:namesGap fhirr4:identifierCarriedForLabResultsAndOrganizationsOnly ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty dct:identifier ] ,
@@ -14970,6 +15260,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/identifier/use" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernIdentity ;
   bridge:because "Whether an identifier is official, usual or temporary: the mappings that write an identifier read its value and system, and no Cascade predicate carries its use." .
 
 [] a bridge:PathEntry ;
@@ -15510,6 +15801,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/reasonCode" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernCodes ;
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
@@ -15971,26 +16263,31 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/telecom" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernIdentity ;
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/telecom/rank" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernIdentity ;
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/telecom/system" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernIdentity ;
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/telecom/use" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernIdentity ;
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/telecom/value" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernIdentity ;
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
@@ -16298,6 +16595,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/valueString" ;
   bridge:verdict bridge:carried ;
+  bridge:concern bridge:concernText ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
 
@@ -16626,26 +16924,31 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/telecom" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernIdentity ;
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/telecom/rank" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernIdentity ;
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/telecom/system" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernIdentity ;
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/telecom/use" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernIdentity ;
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/telecom/value" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernIdentity ;
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
@@ -16953,6 +17256,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/valueString" ;
   bridge:verdict bridge:carried ;
+  bridge:concern bridge:concernText ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
 
@@ -17106,6 +17410,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/title" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernText ;
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
@@ -17146,6 +17451,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/content/attachment/title" ;
   bridge:verdict bridge:carried ;
+  bridge:concern bridge:concernText ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "DocumentReference" ; bridge:inRecordClass cascade:ClinicalNoteOrDocument ; bridge:asProperty cascade:attachmentTitle ] .
 
@@ -17188,6 +17494,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/title" ;
   bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernText ;
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
@@ -17228,6 +17535,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/content/attachment/title" ;
   bridge:verdict bridge:carried ;
+  bridge:concern bridge:concernText ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "DocumentReference" ; bridge:inRecordClass cascade:ClinicalNoteOrDocument ; bridge:asProperty cascade:attachmentTitle ] .
 
@@ -17240,6 +17548,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/identifier/system" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernIdentity ;
   bridge:namesGap fhirr4:identifierCarriedForLabResultsAndOrganizationsOnly ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty dct:identifier ] ,
@@ -17248,6 +17557,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/identifier/system" ;
   bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernIdentity ;
   bridge:namesGap fhirr4:identifierCarriedForLabResultsAndOrganizationsOnly ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty dct:identifier ] ,
@@ -18188,6 +18498,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/presentedForm/title" ;
   bridge:verdict bridge:carried ;
+  bridge:concern bridge:concernText ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "DiagnosticReport" ; bridge:inRecordClass cascade:DiagnosticReport ; bridge:asProperty cascade:attachmentTitle ] .
 
@@ -18256,6 +18567,7 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/presentedForm/title" ;
   bridge:verdict bridge:carried ;
+  bridge:concern bridge:concernText ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "DiagnosticReport" ; bridge:inRecordClass cascade:DiagnosticReport ; bridge:asProperty cascade:attachmentTitle ] .
 
