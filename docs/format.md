@@ -450,9 +450,9 @@ procedure is carried, so that a result coded only by its lab's own code keeps it
 A coding in a system its kind has a term for is that term's IRI: LOINC and
 SNOMED CT for a test, RxNorm and NDC for a drug, and for a condition and a
 procedure every system [`vocab/fhir-code-systems.ttl`](../vocab/fhir-code-systems.ttl)
-gives an IRI stem (a procedure's first CPT code only). A coding in any
+gives an IRI stem, every CPT code of a procedure among them. A coding in any
 other system is a literal on the kind's `…CodeInOtherSystem` term, the code
-typed by the system, ICD-9-CM, HCPCS and a formulary's code among them; a
+typed by the system, HCPCS and a formulary's code among them; a
 SNOMED CT drug code stays a literal while how drug codes are matched is open. A
 system is read as
 [`in/sparql/coding-system-table.rq`](../in/sparql/coding-system-table.rq) reads
@@ -461,8 +461,7 @@ lists as not preferred are read as the system's URI, the rows of
 [`vocab/fhir-code-systems.ttl`](../vocab/fhir-code-systems.ttl) the C-CDA
 adapter holds too, so one code from either adapter is one term; an OID no row
 holds is `urn:oid:` and the OID. A coding with no system, a system that is no
-absolute URI, or no code is a finding, `fhirr4:codingNotCarried`; a later CPT code is
-`fhirr4:procedureCptCodeRepeated`. A lab result's interpretation is carried as every coding in HL7's
+absolute URI, or no code is a finding, `fhirr4:codingNotCarried`. A lab result's interpretation is carried as every coding in HL7's
 [v3 ObservationInterpretation](https://terminology.hl7.org/CodeSystem-v3-ObservationInterpretation.html),
 the code kept as written
 ([cascade-vocabulary#298](https://github.com/jayostis/cascade-vocabulary/issues/298));

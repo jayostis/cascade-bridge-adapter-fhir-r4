@@ -1794,7 +1794,7 @@
 
 <#procedure-hcpcs-code> a bridge:IsomorphicConversionTest ;
   mf:name "procedure-hcpcs-code" ;
-  rdfs:comment "A Procedure coded in HCPCS Level II, CPT and SNOMED CT: the HCPCS code is a cascade:procedureCodeInOtherSystem literal, the CPT code a cascade:cptCode IRI and the SNOMED CT code a cascade:snomedCode IRI." ;
+  rdfs:comment "A Procedure coded in HCPCS Level II, CPT and SNOMED CT: the HCPCS code is a cascade:procedureCodeInOtherSystem literal, the CPT code and the SNOMED CT code each a cascade:procedureCode IRI." ;
   mf:action [
     bridge:input <in/procedure-hcpcs-code.json> ;
     bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
@@ -1807,7 +1807,7 @@
 
 <#procedure-two-cpt-codes> a bridge:IsomorphicConversionTest ;
   mf:name "procedure-two-cpt-codes" ;
-  rdfs:comment "A Procedure with two CPT codes: the first is its cascade:cptCode, the second a fhirr4:procedureCptCodeRepeated finding." ;
+  rdfs:comment "A Procedure with two CPT codes: both are cascade:procedureCode IRIs under the CPT stem, and nothing is a finding." ;
   mf:action [
     bridge:input <in/procedure-two-cpt-codes.json> ;
     bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
