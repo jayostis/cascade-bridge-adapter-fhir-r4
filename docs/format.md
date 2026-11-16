@@ -441,6 +441,12 @@ says, read on 2026-10-24:
   `_effectiveDateTime`, `_authoredOn`, `_whenPrepared`, `_whenHandedOver`) or of a Patient's `_gender`, where the
   value itself is absent, is such a node naming the value's property; a code its
   CodeSystem does not define is a finding.
+- **A Condition's or a Procedure's `code`** given only in those two CodeSystems, or only
+  the data-absent-reason extension, has no `cascade:conditionCode` or
+  `cascade:procedureCode`: the reason is a `cascade:ValueAbsentForReason` node
+  naming that property, one `cascade:absentReasonCode` for each such coding, a code the
+  CodeSystem does not define being a finding. Beside a coding in any other system those
+  codings are dropped, since a code of the condition is not a reason it has none.
 
 ## Codes
 
@@ -450,7 +456,8 @@ procedure is carried, so that a result coded only by its lab's own code keeps it
 A coding in a system its kind has a term for is that term's IRI: LOINC and
 SNOMED CT for a test, RxNorm and NDC for a drug, and for a condition and a
 procedure every system [`vocab/fhir-code-systems.ttl`](../vocab/fhir-code-systems.ttl)
-gives an IRI stem, every CPT code of a procedure among them. A coding in any
+gives an IRI stem, every CPT code of a procedure among them, but not data-absent-reason
+and v3 NullFlavor, whose codes are [reasons a code is absent](#dates-and-values-absent-for-a-reason). A coding in any
 other system is a literal on the kind's `…CodeInOtherSystem` term, the code
 typed by the system, HCPCS and a formulary's code among them; a
 SNOMED CT drug code stays a literal while how drug codes are matched is open. A

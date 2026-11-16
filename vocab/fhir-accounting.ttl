@@ -279,6 +279,8 @@
     [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:conditionCodeInOtherSystem ] ,
     [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:procedureCode ] ,
     [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:procedureCodeInOtherSystem ] ,
+    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:absentReasonCode ] ,
+    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:absentReasonCode ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:testCode ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:testCodeInOtherSystem ] ,
     [ bridge:inSourceRecordType "DiagnosticReport" ; bridge:inRecordClass cascade:DiagnosticReport ; bridge:asProperty cascade:reportCode ] ,
@@ -306,6 +308,8 @@
     [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:conditionCodeInOtherSystem ] ,
     [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:procedureCode ] ,
     [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:procedureCodeInOtherSystem ] ,
+    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:absentReasonCode ] ,
+    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:absentReasonCode ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:testCode ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:testCodeInOtherSystem ] ,
     [ bridge:inSourceRecordType "DiagnosticReport" ; bridge:inRecordClass cascade:DiagnosticReport ; bridge:asProperty cascade:reportCode ] ,
@@ -317,6 +321,25 @@
     [ bridge:inSourceRecordType "Medication" ; bridge:inRecordClass cascade:MedicationDispense ; bridge:asProperty cascade:rxNormCode ] ,
     [ bridge:inSourceRecordType "Medication" ; bridge:inRecordClass cascade:MedicationDispense ; bridge:asProperty cascade:ndcCode ] ,
     [ bridge:inSourceRecordType "Medication" ; bridge:inRecordClass cascade:MedicationDispense ; bridge:asProperty cascade:medicationCodeInOtherSystem ] .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/code/extension" ;
+  bridge:verdict bridge:consumed ;
+  bridge:concern bridge:concernCodes .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/code/extension/url" ;
+  bridge:verdict bridge:consumed ;
+  bridge:concern bridge:concernCodes .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/code/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernCodes ;
+  bridge:namesGap fhirr4:absentReasonNotCarried ;
+  bridge:carriedAs
+    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:absentReasonCode ] ,
+    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:absentReasonCode ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/code/text" ;
@@ -770,6 +793,8 @@
     [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:conditionCodeInOtherSystem ] ,
     [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:procedureCode ] ,
     [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:procedureCodeInOtherSystem ] ,
+    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:absentReasonCode ] ,
+    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:absentReasonCode ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:testCode ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:testCodeInOtherSystem ] ,
     [ bridge:inSourceRecordType "DiagnosticReport" ; bridge:inRecordClass cascade:DiagnosticReport ; bridge:asProperty cascade:reportCode ] ,
@@ -797,6 +822,8 @@
     [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:conditionCodeInOtherSystem ] ,
     [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:procedureCode ] ,
     [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:procedureCodeInOtherSystem ] ,
+    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:absentReasonCode ] ,
+    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:absentReasonCode ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:testCode ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:testCodeInOtherSystem ] ,
     [ bridge:inSourceRecordType "DiagnosticReport" ; bridge:inRecordClass cascade:DiagnosticReport ; bridge:asProperty cascade:reportCode ] ,
@@ -808,6 +835,25 @@
     [ bridge:inSourceRecordType "Medication" ; bridge:inRecordClass cascade:MedicationDispense ; bridge:asProperty cascade:rxNormCode ] ,
     [ bridge:inSourceRecordType "Medication" ; bridge:inRecordClass cascade:MedicationDispense ; bridge:asProperty cascade:ndcCode ] ,
     [ bridge:inSourceRecordType "Medication" ; bridge:inRecordClass cascade:MedicationDispense ; bridge:asProperty cascade:medicationCodeInOtherSystem ] .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/code/extension" ;
+  bridge:verdict bridge:consumed ;
+  bridge:concern bridge:concernCodes .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/code/extension/url" ;
+  bridge:verdict bridge:consumed ;
+  bridge:concern bridge:concernCodes .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/code/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernCodes ;
+  bridge:namesGap fhirr4:absentReasonNotCarried ;
+  bridge:carriedAs
+    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:absentReasonCode ] ,
+    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:absentReasonCode ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/code/text" ;
@@ -8258,6 +8304,8 @@
     [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:conditionCodeInOtherSystem ] ,
     [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:procedureCode ] ,
     [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:procedureCodeInOtherSystem ] ,
+    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:absentReasonCode ] ,
+    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:absentReasonCode ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:testCode ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:testCodeInOtherSystem ] ,
     [ bridge:inSourceRecordType "DiagnosticReport" ; bridge:inRecordClass cascade:DiagnosticReport ; bridge:asProperty cascade:reportCode ] ,
@@ -8285,6 +8333,8 @@
     [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:conditionCodeInOtherSystem ] ,
     [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:procedureCode ] ,
     [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:procedureCodeInOtherSystem ] ,
+    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:absentReasonCode ] ,
+    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:absentReasonCode ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:testCode ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:testCodeInOtherSystem ] ,
     [ bridge:inSourceRecordType "DiagnosticReport" ; bridge:inRecordClass cascade:DiagnosticReport ; bridge:asProperty cascade:reportCode ] ,
@@ -8296,6 +8346,25 @@
     [ bridge:inSourceRecordType "Medication" ; bridge:inRecordClass cascade:MedicationDispense ; bridge:asProperty cascade:rxNormCode ] ,
     [ bridge:inSourceRecordType "Medication" ; bridge:inRecordClass cascade:MedicationDispense ; bridge:asProperty cascade:ndcCode ] ,
     [ bridge:inSourceRecordType "Medication" ; bridge:inRecordClass cascade:MedicationDispense ; bridge:asProperty cascade:medicationCodeInOtherSystem ] .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/code/extension" ;
+  bridge:verdict bridge:consumed ;
+  bridge:concern bridge:concernCodes .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/code/extension/url" ;
+  bridge:verdict bridge:consumed ;
+  bridge:concern bridge:concernCodes .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/code/extension/valueCode" ;
+  bridge:verdict bridge:carriedInPart ;
+  bridge:concern bridge:concernCodes ;
+  bridge:namesGap fhirr4:absentReasonNotCarried ;
+  bridge:carriedAs
+    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:absentReasonCode ] ,
+    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:absentReasonCode ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/code/text" ;

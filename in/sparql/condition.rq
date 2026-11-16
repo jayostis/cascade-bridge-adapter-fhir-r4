@@ -15,7 +15,9 @@ PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # literal typed by the system. A coding's
 # system is read as coding-system-table.rq reads it, and its code trimmed of
 # leading and trailing whitespace; one with no system, a system no row reads,
-# or no code is not carried, and code-findings.rq reports it.
+# or no code is not carried, and code-findings.rq reports it. A coding in FHIR's
+# data-absent-reason or v3 NullFlavor is why the code is absent, not a code, and
+# absent-reasons.rq carries it where no other coding is.
 # A date is typed by the precision FHIR wrote it to: a year is an xsd:gYear, a
 # year and month an xsd:gYearMonth, a day an xsd:date, a time an xsd:dateTime.
 # A time written to the minute, as C-CDA on FHIR writes one, is padded to the
@@ -72,6 +74,7 @@ WHERE {
       xyz:code ?codeWritten .
     ?systemRow fhirr4:systemWritten ?systemWritten ;
       fhirr4:systemRead ?system .
+    FILTER (?system NOT IN ("http://terminology.hl7.org/CodeSystem/data-absent-reason", "http://terminology.hl7.org/CodeSystem/v3-NullFlavor"))
     BIND (REPLACE(STR(?codeWritten), "^\\s+|\\s+$", "") AS ?code)
     FILTER (?code != "")
     OPTIONAL {
