@@ -713,6 +713,21 @@
           "@id": "fixtures/in/condition-onset-absent-for-reason.json"
         },
         {
+          "@id": "fixtures/in/procedure-coded-only-in-absent-reason-systems.json"
+        },
+        {
+          "@id": "fixtures/in/condition-code-only-in-an-undefined-absent-reason.json"
+        },
+        {
+          "@id": "fixtures/in/condition-real-code-beside-absent-reason-coding.json"
+        },
+        {
+          "@id": "fixtures/in/condition-code-data-absent-reason-extension.json"
+        },
+        {
+          "@id": "fixtures/in/condition-coded-only-in-absent-reason-systems.json"
+        },
+        {
           "@id": "fixtures/in/lab-value-absent-for-reason.json"
         },
         {
@@ -1430,6 +1445,21 @@
           "@id": "fixtures/expected/condition-onset-absent-for-reason.ttl"
         },
         {
+          "@id": "fixtures/expected/procedure-coded-only-in-absent-reason-systems.ttl"
+        },
+        {
+          "@id": "fixtures/expected/condition-code-only-in-an-undefined-absent-reason.ttl"
+        },
+        {
+          "@id": "fixtures/expected/condition-real-code-beside-absent-reason-coding.ttl"
+        },
+        {
+          "@id": "fixtures/expected/condition-code-data-absent-reason-extension.ttl"
+        },
+        {
+          "@id": "fixtures/expected/condition-coded-only-in-absent-reason-systems.ttl"
+        },
+        {
           "@id": "fixtures/expected/lab-value-absent-for-reason.ttl"
         },
         {
@@ -1467,6 +1497,21 @@
         },
         {
           "@id": "fixtures/findings/condition-onset-absent-for-reason.ttl"
+        },
+        {
+          "@id": "fixtures/findings/procedure-coded-only-in-absent-reason-systems.ttl"
+        },
+        {
+          "@id": "fixtures/findings/condition-code-only-in-an-undefined-absent-reason.ttl"
+        },
+        {
+          "@id": "fixtures/findings/condition-real-code-beside-absent-reason-coding.ttl"
+        },
+        {
+          "@id": "fixtures/findings/condition-code-data-absent-reason-extension.ttl"
+        },
+        {
+          "@id": "fixtures/findings/condition-coded-only-in-absent-reason-systems.ttl"
         },
         {
           "@id": "fixtures/findings/lab-value-absent-for-reason.ttl"
@@ -3863,6 +3908,71 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "A Condition of unspecified asthma (ICD-10-CM J45.909), id cond-asthma-onset-unknown-1, whose onsetDateTime and abatementDateTime are absent, each _element carrying the data-absent-reason extension: asked-unknown for the onset, and never-said, which the CodeSystem does not define, for the abatement. Authored here on 2026-10-24, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/procedure-coded-only-in-absent-reason-systems.json",
+      "@type": "File",
+      "name": "Procedure coded only in absent-reason systems",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "551",
+      "sha256": "ccd504843cfcbd6f910a5a09c27ec00210bf12c6b863787731eefb5bd1d2a843",
+      "dateCreated": "2026-11-16",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Procedure, id proc-unknown-1, whose code is a coding unknown in FHIR data-absent-reason and a coding UNK in v3 NullFlavor, with the text Unknown procedure, and performedDateTime 2025-02-18 (both CodeSystems read on terminology.hl7.org, 2026-11-16). Authored here on 2026-11-16, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/condition-code-only-in-an-undefined-absent-reason.json",
+      "@type": "File",
+      "name": "Condition coded only with a code its absent-reason system does not define",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "384",
+      "sha256": "dc58811fb52f0d90d51770af2b3fb9720b61821e10331c2d8e39869084114984",
+      "dateCreated": "2026-11-16",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Condition, id cond-unknown-3, whose code is the one coding never-said in FHIR data-absent-reason, which the CodeSystem does not define, with the text Unknown problem, and onsetDateTime 2025-03-27 (read on terminology.hl7.org, 2026-11-16). Authored here on 2026-11-16, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/condition-real-code-beside-absent-reason-coding.json",
+      "@type": "File",
+      "name": "Condition coded ICD-10-CM beside a data-absent-reason coding",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "522",
+      "sha256": "70afd4af76adf358fec65bfe9c1fb10e7cea8a48825934e94b1ec7c71f246095",
+      "dateCreated": "2026-11-16",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Condition of unspecified asthma (ICD-10-CM J45.909), id cond-asthma-1, whose code has a second coding unknown in FHIR data-absent-reason, and onsetDateTime 2025-03-27 (read on terminology.hl7.org, 2026-11-16). Authored here on 2026-11-16, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/condition-code-data-absent-reason-extension.json",
+      "@type": "File",
+      "name": "Condition whose code carries the data-absent-reason extension",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "355",
+      "sha256": "a75fa7ea89e3ae4bb8ff654416689f35b0914dcaf9dd0183ff0a13a1be2854c1",
+      "dateCreated": "2026-11-16",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Condition, id cond-unknown-2, whose code has no coding, only the data-absent-reason extension with the valueCode unknown and the text Unknown problem, and onsetDateTime 2025-03-27 (read on terminology.hl7.org, 2026-11-16). Authored here on 2026-11-16, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/condition-coded-only-in-absent-reason-systems.json",
+      "@type": "File",
+      "name": "Condition coded only in absent-reason systems",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "536",
+      "sha256": "ab928f3f4658b6e50fdc473c5a626856ca2ddab09db0f41f5313ebcd3ed3e8bb",
+      "dateCreated": "2026-11-16",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Condition, id cond-unknown-1, whose code is a coding asked-unknown in FHIR data-absent-reason and a coding UNK in v3 NullFlavor, with the text Unknown problem, and onsetDateTime 2025-03-27 (both CodeSystems read on terminology.hl7.org, 2026-11-16). Authored here on 2026-11-16, for a case the conformance corpus does not hold."
     },
     {
       "@id": "fixtures/in/lab-value-absent-for-reason.json",
@@ -7209,6 +7319,86 @@
       "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
+      "@id": "fixtures/expected/procedure-coded-only-in-absent-reason-systems.ttl",
+      "@type": "File",
+      "name": "Expected graph for procedure-coded-only-in-absent-reason-systems",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3993",
+      "sha256": "c2f3b92056168cf58b39453ae8f7a743de6109ac75f96d7a805727b3bb5c4334",
+      "about": {
+        "@id": "fixtures/in/procedure-coded-only-in-absent-reason-systems.json"
+      },
+      "dateCreated": "2026-11-16",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/condition-code-only-in-an-undefined-absent-reason.ttl",
+      "@type": "File",
+      "name": "Expected graph for condition-code-only-in-an-undefined-absent-reason",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3495",
+      "sha256": "f9b6b20bee2c49142bd6860cce94d0b9af3c9d547c97d8e90a01b93817d48a24",
+      "about": {
+        "@id": "fixtures/in/condition-code-only-in-an-undefined-absent-reason.json"
+      },
+      "dateCreated": "2026-11-16",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/condition-real-code-beside-absent-reason-coding.ttl",
+      "@type": "File",
+      "name": "Expected graph for condition-real-code-beside-absent-reason-coding",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3562",
+      "sha256": "aaa40694fd0a21a6395e44af8b42548d79b2a6823b67bb7a4109deb998a8a73a",
+      "about": {
+        "@id": "fixtures/in/condition-real-code-beside-absent-reason-coding.json"
+      },
+      "dateCreated": "2026-11-16",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/condition-code-data-absent-reason-extension.ttl",
+      "@type": "File",
+      "name": "Expected graph for condition-code-data-absent-reason-extension",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3893",
+      "sha256": "931bfa3e733e9e172a6764fce3ef57b9969cb23679fd2cbfb9ed233be70dfa16",
+      "about": {
+        "@id": "fixtures/in/condition-code-data-absent-reason-extension.json"
+      },
+      "dateCreated": "2026-11-16",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/condition-coded-only-in-absent-reason-systems.ttl",
+      "@type": "File",
+      "name": "Expected graph for condition-coded-only-in-absent-reason-systems",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3957",
+      "sha256": "531ecd9fe0c8f65b5d6cf85bd9d09ebeeda068ef3d0c8b238065a6771e39fb06",
+      "about": {
+        "@id": "fixtures/in/condition-coded-only-in-absent-reason-systems.json"
+      },
+      "dateCreated": "2026-11-16",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
       "@id": "fixtures/expected/lab-value-absent-for-reason.ttl",
       "@type": "File",
       "name": "Expected graph for lab-value-absent-for-reason",
@@ -7411,6 +7601,86 @@
         "@id": "fixtures/in/condition-onset-absent-for-reason.json"
       },
       "dateCreated": "2026-10-24",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/procedure-coded-only-in-absent-reason-systems.ttl",
+      "@type": "File",
+      "name": "Expected findings for procedure-coded-only-in-absent-reason-systems",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/procedure-coded-only-in-absent-reason-systems.json"
+      },
+      "dateCreated": "2026-11-16",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/condition-code-only-in-an-undefined-absent-reason.ttl",
+      "@type": "File",
+      "name": "Expected findings for condition-code-only-in-an-undefined-absent-reason",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1070",
+      "sha256": "077214c84e369d1193dd55cba9cfa1d783e43f9a037570db81e4ce444261fca9",
+      "about": {
+        "@id": "fixtures/in/condition-code-only-in-an-undefined-absent-reason.json"
+      },
+      "dateCreated": "2026-11-16",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/condition-real-code-beside-absent-reason-coding.ttl",
+      "@type": "File",
+      "name": "Expected findings for condition-real-code-beside-absent-reason-coding",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/condition-real-code-beside-absent-reason-coding.json"
+      },
+      "dateCreated": "2026-11-16",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/condition-code-data-absent-reason-extension.ttl",
+      "@type": "File",
+      "name": "Expected findings for condition-code-data-absent-reason-extension",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/condition-code-data-absent-reason-extension.json"
+      },
+      "dateCreated": "2026-11-16",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/condition-coded-only-in-absent-reason-systems.ttl",
+      "@type": "File",
+      "name": "Expected findings for condition-coded-only-in-absent-reason-systems",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/condition-coded-only-in-absent-reason-systems.json"
+      },
+      "dateCreated": "2026-11-16",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -9754,8 +10024,8 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "contentSize": "121433",
-      "sha256": "14b2579b157741232c63e96b7111bc4c62c9a9e42bffc3c725b12c3af5dc5c86"
+      "contentSize": "125713",
+      "sha256": "dd5bad8c8ac0d26daed59b362577ca01fda6b0801fb0b9c3c6bbe00ffbfbdab8"
     },
     {
       "@id": "fixtures/facts/meridian.ttl",
