@@ -7,24 +7,24 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;1U8EBaHumA5hCd3JrNegcxmxNr910rE7zsX_YbC_PJg> cascade:testCode <http://loinc.org/rdf/2823-3> ;
+<ni:///sha-256;78QV8w5NtWClMu6eaiXGkj8jqrTpnyeKLx1mKRrtqCU> cascade:testCode <http://loinc.org/rdf/2823-3> ;
 	cascade:testName "Potassium" ;
 	cascade:resultValueKind cascade:TextResultValue ;
-	cascade:resultValue "~4.1" ;
-	cascade:resultUnit "mmol/L" ;
+	cascade:resultValueText "~4.1" ;
+	cascade:resultUnitText "mmol/L" ;
 	cascade:resultClinicallyRelevantTime "2026-08-04T08:15:00Z"^^xsd:dateTime ;
 	cascade:workflowStatus "final" .
 <urn:uuid:48e4b93e-9ec7-8de2-8b49-ee7b8f70507d> a cascade:LaboratoryTestResult ;
 	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Observation/obs-potassium-approximate-1> ;
 	cascade:sourceRecordId "obs-potassium-approximate-1" .
-<ni:///sha-256;1U8EBaHumA5hCd3JrNegcxmxNr910rE7zsX_YbC_PJg> prov:specializationOf <urn:uuid:48e4b93e-9ec7-8de2-8b49-ee7b8f70507d> ;
+<ni:///sha-256;78QV8w5NtWClMu6eaiXGkj8jqrTpnyeKLx1mKRrtqCU> prov:specializationOf <urn:uuid:48e4b93e-9ec7-8de2-8b49-ee7b8f70507d> ;
 	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
-_:3d65eff4976024390a6a9b3c4651740f bridge:arrivedAs <ni:///sha-256;1U8EBaHumA5hCd3JrNegcxmxNr910rE7zsX_YbC_PJg> ;
-	oa:hasSelector _:4af208af85c340c2dc88916fd4ef0b13 ;
+_:4c974fa3a24471740f224baf7b303db5 bridge:arrivedAs <ni:///sha-256;78QV8w5NtWClMu6eaiXGkj8jqrTpnyeKLx1mKRrtqCU> ;
+	oa:hasSelector _:ae39d9ac618bef4b75f8cd2065079e57 ;
 	oa:hasSource <ni:///sha-256;DHG4SZt2bj7_lQXOaFQFqjRCypm40YRMCBtIXBSW7Zg> ;
 	prov:wasDerivedFrom <ni:///sha-256;DHG4SZt2bj7_lQXOaFQFqjRCypm40YRMCBtIXBSW7Zg> ;
 	prov:wasGeneratedBy _:e6767a18e3e2e965d1b903a5d98019ef .
-_:4af208af85c340c2dc88916fd4ef0b13 a oa:FragmentSelector ;
+_:ae39d9ac618bef4b75f8cd2065079e57 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;DHG4SZt2bj7_lQXOaFQFqjRCypm40YRMCBtIXBSW7Zg> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;

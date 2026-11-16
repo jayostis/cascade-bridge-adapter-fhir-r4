@@ -7,25 +7,25 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;jRP8oqyuCSCAm9AUJ-teYUAuaQX6LSEhTYfbdkiZ_oM> cascade:attachment <ni:///sha-256;jRP8oqyuCSCAm9AUJ-teYUAuaQX6LSEhTYfbdkiZ_oM#attachment-1> .
-<ni:///sha-256;jRP8oqyuCSCAm9AUJ-teYUAuaQX6LSEhTYfbdkiZ_oM#attachment-1> cascade:attachmentContentType "text/plain" .
-<ni:///sha-256;jRP8oqyuCSCAm9AUJ-teYUAuaQX6LSEhTYfbdkiZ_oM> cascade:narrativeText "Seen for follow-up of a low vitamin B12." ;
+<ni:///sha-256;AIOK_Xt7KdKppWluV34K7mQp5u4ojcPLm9EY3WjoDWA> cascade:attachment <ni:///sha-256;AIOK_Xt7KdKppWluV34K7mQp5u4ojcPLm9EY3WjoDWA#attachment-1> .
+<ni:///sha-256;AIOK_Xt7KdKppWluV34K7mQp5u4ojcPLm9EY3WjoDWA#attachment-1> cascade:attachmentContentType "text/plain" .
+<ni:///sha-256;AIOK_Xt7KdKppWluV34K7mQp5u4ojcPLm9EY3WjoDWA> cascade:narrativeText "Seen for follow-up of a low vitamin B12." ;
 	cascade:noteOrDocumentTypeName "Progress report" ;
 	cascade:workflowStatus "current" ;
 	cascade:noteOrDocumentDate "2026-08-20T14:05:00Z"^^xsd:dateTime ;
-	cascade:noteOrDocumentTypeInOtherSystem "pn"^^<https://clinic.example/note-types> , "371532007"^^<http://snomed.info/sct> ;
-	cascade:noteOrDocumentType <http://loinc.org/rdf/11506-3> .
+	cascade:noteOrDocumentTypeCodeInOtherSystem "pn"^^<https://clinic.example/note-types> , "371532007"^^<http://snomed.info/sct> ;
+	cascade:noteOrDocumentTypeCode <http://loinc.org/rdf/11506-3> .
 <urn:uuid:2077ef57-8ca1-87cc-ae00-0f9722fb4224> a cascade:ClinicalNoteOrDocument ;
 	cascade:sourceUrl <http://example.org/fhir/DocumentReference/two-authors> ;
 	cascade:sourceRecordId "two-authors" .
-<ni:///sha-256;jRP8oqyuCSCAm9AUJ-teYUAuaQX6LSEhTYfbdkiZ_oM> prov:specializationOf <urn:uuid:2077ef57-8ca1-87cc-ae00-0f9722fb4224> ;
+<ni:///sha-256;AIOK_Xt7KdKppWluV34K7mQp5u4ojcPLm9EY3WjoDWA> prov:specializationOf <urn:uuid:2077ef57-8ca1-87cc-ae00-0f9722fb4224> ;
 	cascade:patient <urn:uuid:1cc3cbf1-3a8f-8691-923b-e87de6e5c3a3> .
-_:21c48a0cede97454c8dcfe380b9975f5 bridge:arrivedAs <ni:///sha-256;jRP8oqyuCSCAm9AUJ-teYUAuaQX6LSEhTYfbdkiZ_oM> ;
-	oa:hasSelector _:f24a57184fa5168d14fa8f6ee8a91f75 ;
+_:143b57adbc9a426aba084f6c79a4d729 bridge:arrivedAs <ni:///sha-256;AIOK_Xt7KdKppWluV34K7mQp5u4ojcPLm9EY3WjoDWA> ;
+	oa:hasSelector _:95001aaa8cc06966f246a26d5eb8ebf7 ;
 	oa:hasSource <ni:///sha-256;5qnzlNdwMvlJX5QOeWDMaidcDNHfurtVmOkEtfbSZXc> ;
 	prov:wasDerivedFrom <ni:///sha-256;5qnzlNdwMvlJX5QOeWDMaidcDNHfurtVmOkEtfbSZXc> ;
 	prov:wasGeneratedBy _:1eb7479aaec21a67ff77272fb6342532 .
-_:f24a57184fa5168d14fa8f6ee8a91f75 a oa:FragmentSelector ;
+_:95001aaa8cc06966f246a26d5eb8ebf7 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;5qnzlNdwMvlJX5QOeWDMaidcDNHfurtVmOkEtfbSZXc> cascade:serverBaseUrl "http://example.org/fhir" ;

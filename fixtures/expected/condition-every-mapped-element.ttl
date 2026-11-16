@@ -7,26 +7,25 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;CRiiHe8IJpwLBUgkWsUHEjy5lB89aiFJrXUMhRKCzwg> cascade:conditionName "Acute bronchitis" ;
-	cascade:icd10Code <https://ns.cascadeprotocol.org/codes/icd10cm/J20.9> ;
-	cascade:snomedCode <http://snomed.info/id/10509002> ;
+<ni:///sha-256;XwH_X3Te20fiCTfzkGk4ReH4vRztfkoW19lplL7Js9U> cascade:conditionName "Acute bronchitis" ;
+	cascade:conditionCode <https://ns.cascadeprotocol.org/codes/icd10cm/J20.9> , <http://snomed.info/id/10509002> ;
 	cascade:clinicalStatus "resolved" ;
 	cascade:verificationStatus "confirmed" ;
 	cascade:conditionCategory "problem-list-item" ;
 	cascade:onsetDate "2026-02-03"^^xsd:date ;
 	cascade:abatementDate "2026-02-24"^^xsd:date ;
-	cascade:notes "Resolved after three weeks." .
+	cascade:addedNoteText "Resolved after three weeks." .
 <urn:uuid:37a1c655-1b6a-8648-b9ea-b13f5dfeac1f> a cascade:ProblemOrDiagnosis ;
 	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Condition/cond-bronch-2> ;
 	cascade:sourceRecordId "cond-bronch-2" .
-<ni:///sha-256;CRiiHe8IJpwLBUgkWsUHEjy5lB89aiFJrXUMhRKCzwg> prov:specializationOf <urn:uuid:37a1c655-1b6a-8648-b9ea-b13f5dfeac1f> ;
+<ni:///sha-256;XwH_X3Te20fiCTfzkGk4ReH4vRztfkoW19lplL7Js9U> prov:specializationOf <urn:uuid:37a1c655-1b6a-8648-b9ea-b13f5dfeac1f> ;
 	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
-_:8db03b2c87554b27ce55436eb8901039 bridge:arrivedAs <ni:///sha-256;CRiiHe8IJpwLBUgkWsUHEjy5lB89aiFJrXUMhRKCzwg> ;
-	oa:hasSelector _:3f72e16083e24dacb501673503aa6637 ;
+_:8fb04f711bb2b9355b2dee6e5098aae8 bridge:arrivedAs <ni:///sha-256;XwH_X3Te20fiCTfzkGk4ReH4vRztfkoW19lplL7Js9U> ;
+	oa:hasSelector _:d9926cda703a868e6f5db8a3f81008e7 ;
 	oa:hasSource <ni:///sha-256;ROjIUupU-t-oD5JBYkdVvTw5hWH4PKYgbPAyV1Pdyh4> ;
 	prov:wasDerivedFrom <ni:///sha-256;ROjIUupU-t-oD5JBYkdVvTw5hWH4PKYgbPAyV1Pdyh4> ;
 	prov:wasGeneratedBy _:f1ab8b5659c1a348678eb6e0136500c1 .
-_:3f72e16083e24dacb501673503aa6637 a oa:FragmentSelector ;
+_:d9926cda703a868e6f5db8a3f81008e7 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;ROjIUupU-t-oD5JBYkdVvTw5hWH4PKYgbPAyV1Pdyh4> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;

@@ -7,27 +7,27 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;VEyLniKdccW3S4NrNsUUueNdojXtWcay4TTDSkDw25U> cascade:attachment <ni:///sha-256;VEyLniKdccW3S4NrNsUUueNdojXtWcay4TTDSkDw25U#attachment-1> .
-<ni:///sha-256;VEyLniKdccW3S4NrNsUUueNdojXtWcay4TTDSkDw25U#attachment-1> cascade:attachmentContentType "text/plain" .
-<ni:///sha-256;VEyLniKdccW3S4NrNsUUueNdojXtWcay4TTDSkDw25U> cascade:narrativeText "Seen for follow-up of a low vitamin B12." ;
+<ni:///sha-256;mH1mhjnb-HmOk9NhF2g7AjDCsILCPlR1LQaX01nQ58E> cascade:attachment <ni:///sha-256;mH1mhjnb-HmOk9NhF2g7AjDCsILCPlR1LQaX01nQ58E#attachment-1> .
+<ni:///sha-256;mH1mhjnb-HmOk9NhF2g7AjDCsILCPlR1LQaX01nQ58E#attachment-1> cascade:attachmentContentType "text/plain" .
+<ni:///sha-256;mH1mhjnb-HmOk9NhF2g7AjDCsILCPlR1LQaX01nQ58E> cascade:narrativeText "Seen for follow-up of a low vitamin B12." ;
 	cascade:noteOrDocumentTypeName "Clinic progress note" ;
 	cascade:workflowStatus "current" ;
 	cascade:noteOrDocumentDate "2026-08-20T14:05:00Z"^^xsd:dateTime ;
-	cascade:paddedDateTime <ni:///sha-256;VEyLniKdccW3S4NrNsUUueNdojXtWcay4TTDSkDw25U#padded-noteOrDocumentDate> .
-<ni:///sha-256;VEyLniKdccW3S4NrNsUUueNdojXtWcay4TTDSkDw25U#padded-noteOrDocumentDate> cascade:paddedDateTimeProperty cascade:noteOrDocumentDate ;
-	cascade:writtenDate "2026-08-20T14:05Z" .
-<ni:///sha-256;VEyLniKdccW3S4NrNsUUueNdojXtWcay4TTDSkDw25U> cascade:noteOrDocumentTypeInOtherSystem "371532007"^^<http://snomed.info/sct> .
+	cascade:paddedDateTime <ni:///sha-256;mH1mhjnb-HmOk9NhF2g7AjDCsILCPlR1LQaX01nQ58E#padded-noteOrDocumentDate> .
+<ni:///sha-256;mH1mhjnb-HmOk9NhF2g7AjDCsILCPlR1LQaX01nQ58E#padded-noteOrDocumentDate> cascade:paddedDateTimeProperty cascade:noteOrDocumentDate ;
+	cascade:timeAsWritten "2026-08-20T14:05Z" .
+<ni:///sha-256;mH1mhjnb-HmOk9NhF2g7AjDCsILCPlR1LQaX01nQ58E> cascade:noteOrDocumentTypeCodeInOtherSystem "371532007"^^<http://snomed.info/sct> .
 <urn:uuid:22eb6160-8669-8aa1-b91e-d22909f36dd4> a cascade:ClinicalNoteOrDocument ;
 	cascade:sourceUrl <http://example.org/fhir/DocumentReference/type-codings> ;
 	cascade:sourceRecordId "type-codings" .
-<ni:///sha-256;VEyLniKdccW3S4NrNsUUueNdojXtWcay4TTDSkDw25U> prov:specializationOf <urn:uuid:22eb6160-8669-8aa1-b91e-d22909f36dd4> ;
+<ni:///sha-256;mH1mhjnb-HmOk9NhF2g7AjDCsILCPlR1LQaX01nQ58E> prov:specializationOf <urn:uuid:22eb6160-8669-8aa1-b91e-d22909f36dd4> ;
 	cascade:patient <urn:uuid:1cc3cbf1-3a8f-8691-923b-e87de6e5c3a3> .
-_:9f7d75a4b1c552bd1da6fa6a1ce6542a bridge:arrivedAs <ni:///sha-256;VEyLniKdccW3S4NrNsUUueNdojXtWcay4TTDSkDw25U> ;
-	oa:hasSelector _:6d1d7c3e83fcc8ebdfdfb05af704cb3c ;
+_:eccf2ebaf476c8f4abac518ba2be37d2 bridge:arrivedAs <ni:///sha-256;mH1mhjnb-HmOk9NhF2g7AjDCsILCPlR1LQaX01nQ58E> ;
+	oa:hasSelector _:31aaf839243965bac4cb3df55a2c1a27 ;
 	oa:hasSource <ni:///sha-256;PYY_C085XBozZrymC-HmaLVhKH9Wei-9K8nLYUJWl4o> ;
 	prov:wasDerivedFrom <ni:///sha-256;PYY_C085XBozZrymC-HmaLVhKH9Wei-9K8nLYUJWl4o> ;
 	prov:wasGeneratedBy _:9bbd296d5fade80074772a4b026e1f81 .
-_:6d1d7c3e83fcc8ebdfdfb05af704cb3c a oa:FragmentSelector ;
+_:31aaf839243965bac4cb3df55a2c1a27 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;PYY_C085XBozZrymC-HmaLVhKH9Wei-9K8nLYUJWl4o> cascade:serverBaseUrl "http://example.org/fhir" ;

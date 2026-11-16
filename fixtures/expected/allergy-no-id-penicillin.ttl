@@ -7,18 +7,18 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;CbAfIM5MRlhV4-4PWPYRrmeXyQx4ecrgr4eCea6D0H4> cascade:allergen "Penicillin G" ;
+<ni:///sha-256;oeR7WmEldIDogLJRO4Pfv0REAxIfziY2Rsb84ofdKWo> cascade:allergenName "Penicillin G" ;
 	cascade:allergenCode <https://ns.cascadeprotocol.org/codes/rxnorm/7980> ;
 	cascade:allergyCriticality "high" .
 <urn:uuid:9456cb61-5ee7-8c56-9cfd-759accf4b08f> a cascade:AllergyOrIntolerance .
-<ni:///sha-256;CbAfIM5MRlhV4-4PWPYRrmeXyQx4ecrgr4eCea6D0H4> prov:specializationOf <urn:uuid:9456cb61-5ee7-8c56-9cfd-759accf4b08f> ;
+<ni:///sha-256;oeR7WmEldIDogLJRO4Pfv0REAxIfziY2Rsb84ofdKWo> prov:specializationOf <urn:uuid:9456cb61-5ee7-8c56-9cfd-759accf4b08f> ;
 	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
-_:5bcdd334afcce35d021c1f58f8dd5998 bridge:arrivedAs <ni:///sha-256;CbAfIM5MRlhV4-4PWPYRrmeXyQx4ecrgr4eCea6D0H4> ;
-	oa:hasSelector _:969d2c7e2e2f56ce3362ccdd23c88e80 ;
+_:2779dc443e1c763cbf9326eff0024623 bridge:arrivedAs <ni:///sha-256;oeR7WmEldIDogLJRO4Pfv0REAxIfziY2Rsb84ofdKWo> ;
+	oa:hasSelector _:d35f001c033c41d23b5ff79f6c76a70 ;
 	oa:hasSource <ni:///sha-256;HA4Ugq9FeMqL8t3qrcu-jp9KSwD4dDf8RqWbM7B7-VA> ;
 	prov:wasDerivedFrom <ni:///sha-256;HA4Ugq9FeMqL8t3qrcu-jp9KSwD4dDf8RqWbM7B7-VA> ;
 	prov:wasGeneratedBy _:966bf8f3ecbe9c8a68b867e22bef5a68 .
-_:969d2c7e2e2f56ce3362ccdd23c88e80 a oa:FragmentSelector ;
+_:d35f001c033c41d23b5ff79f6c76a70 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;HA4Ugq9FeMqL8t3qrcu-jp9KSwD4dDf8RqWbM7B7-VA> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;

@@ -69,6 +69,7 @@
     <#bundle-patient-reference-urn-not-held>
     <#bundle-patient-reference-relative-to-urn>
     <#bundle-repeated-condition-id>
+    <#bundle-procedures-same-cpt-code-a-year-apart>
     <#encounter-with-id>
     <#lab-glucose-fasting>
     <#lab-every-mapped-element>
@@ -701,6 +702,19 @@
   mf:result [
     bridge:expectedGraph <expected/bundle-repeated-condition-id.ttl> ;
     bridge:expectedFindings <findings/bundle-repeated-condition-id.ttl>
+  ] .
+
+<#bundle-procedures-same-cpt-code-a-year-apart> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-procedures-same-cpt-code-a-year-apart" ;
+  rdfs:comment "Two Procedures with CPT 36415 a year apart: each is carried as a cascade:procedureCode CPT IRI on its own record, so the code alone never makes one of them." ;
+  mf:action [
+    bridge:input <in/bundle-procedures-same-cpt-code-a-year-apart.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-procedures-same-cpt-code-a-year-apart.ttl> ;
+    bridge:expectedFindings <findings/bundle-procedures-same-cpt-code-a-year-apart.ttl>
   ] .
 
 <#encounter-with-id> a bridge:IsomorphicConversionTest ;

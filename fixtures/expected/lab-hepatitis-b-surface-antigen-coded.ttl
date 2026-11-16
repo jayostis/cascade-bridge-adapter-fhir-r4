@@ -7,24 +7,24 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;LgxSL29riUbHW7qIUWBAWA1M6XF5AfkOhh-oIkfqF88> cascade:testCode <http://loinc.org/rdf/5196-1> ;
+<ni:///sha-256;KZHCBzJZZAVet8sZHKqe1p4uqsyJPzOzLf29wdRXLJo> cascade:testCode <http://loinc.org/rdf/5196-1> ;
 	cascade:testName "Hepatitis B surface antigen" ;
 	cascade:resultValueKind cascade:CodedResultValue ;
-	cascade:resultValue "Negative" ;
-	cascade:resultCode <http://loinc.org/rdf/LA6577-6> ;
+	cascade:resultValueText "Negative" ;
+	cascade:resultValueCode <http://loinc.org/rdf/LA6577-6> ;
 	cascade:resultClinicallyRelevantTime "2026-08-03T09:25:00Z"^^xsd:dateTime ;
 	cascade:workflowStatus "final" .
 <urn:uuid:08ac15f0-c3b0-8837-a45c-b4df0a59eea9> a cascade:LaboratoryTestResult ;
 	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Observation/obs-hbsag-1> ;
 	cascade:sourceRecordId "obs-hbsag-1" .
-<ni:///sha-256;LgxSL29riUbHW7qIUWBAWA1M6XF5AfkOhh-oIkfqF88> prov:specializationOf <urn:uuid:08ac15f0-c3b0-8837-a45c-b4df0a59eea9> ;
+<ni:///sha-256;KZHCBzJZZAVet8sZHKqe1p4uqsyJPzOzLf29wdRXLJo> prov:specializationOf <urn:uuid:08ac15f0-c3b0-8837-a45c-b4df0a59eea9> ;
 	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
-_:7b6ad9d9ce5b9b64bbb4df2c7df0a1d3 bridge:arrivedAs <ni:///sha-256;LgxSL29riUbHW7qIUWBAWA1M6XF5AfkOhh-oIkfqF88> ;
-	oa:hasSelector _:42e2cdfddeffb94975ffd468b1989040 ;
+_:7d1437cb46f880f55e861d2ae82e2597 bridge:arrivedAs <ni:///sha-256;KZHCBzJZZAVet8sZHKqe1p4uqsyJPzOzLf29wdRXLJo> ;
+	oa:hasSelector _:9d69f387badd5be03e303abfcd3628e6 ;
 	oa:hasSource <ni:///sha-256;KotTT_MLS-yFk2ZpMmJnurV5cJBwk0sHUYJIrWIdRhY> ;
 	prov:wasDerivedFrom <ni:///sha-256;KotTT_MLS-yFk2ZpMmJnurV5cJBwk0sHUYJIrWIdRhY> ;
 	prov:wasGeneratedBy _:866104d6ba15a31ee5659c777ee89e1f .
-_:42e2cdfddeffb94975ffd468b1989040 a oa:FragmentSelector ;
+_:9d69f387badd5be03e303abfcd3628e6 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;KotTT_MLS-yFk2ZpMmJnurV5cJBwk0sHUYJIrWIdRhY> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;

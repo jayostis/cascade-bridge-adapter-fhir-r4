@@ -7,21 +7,21 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;1B2ELOFdcaBS-Mt4karZAUb4T5JXbCovJwCgby9Y6s4> cascade:procedureName "Colonoscopy with biopsy" ;
-	cascade:cptCode <https://ns.cascadeprotocol.org/codes/cpt/45378> ;
+<ni:///sha-256;NVK-ZTz0sfqFglvl20zJNhqae8LQfqGQPR3D5Cl0xvk> cascade:procedureName "Colonoscopy with biopsy" ;
+	cascade:procedureCode <https://ns.cascadeprotocol.org/codes/cpt/45378> ;
 	cascade:procedureDate "2026-02-18"^^xsd:date ;
 	cascade:workflowStatus "completed" .
 <urn:uuid:2687df56-9eef-8249-a485-4d98401af9ec> a cascade:MedicalProcedure ;
 	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Procedure/proc-colonoscopy-3> ;
 	cascade:sourceRecordId "proc-colonoscopy-3" .
-<ni:///sha-256;1B2ELOFdcaBS-Mt4karZAUb4T5JXbCovJwCgby9Y6s4> prov:specializationOf <urn:uuid:2687df56-9eef-8249-a485-4d98401af9ec> ;
+<ni:///sha-256;NVK-ZTz0sfqFglvl20zJNhqae8LQfqGQPR3D5Cl0xvk> prov:specializationOf <urn:uuid:2687df56-9eef-8249-a485-4d98401af9ec> ;
 	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
-_:aadb81bc4c40ddb1791eb89915684b22 bridge:arrivedAs <ni:///sha-256;1B2ELOFdcaBS-Mt4karZAUb4T5JXbCovJwCgby9Y6s4> ;
-	oa:hasSelector _:1e89869b766208ea64fb0ed9567395e3 ;
+_:96d34927c628ccc287a5e8e4145dfead bridge:arrivedAs <ni:///sha-256;NVK-ZTz0sfqFglvl20zJNhqae8LQfqGQPR3D5Cl0xvk> ;
+	oa:hasSelector _:e5e9dcb72b69cf6046ee4060bd99dcec ;
 	oa:hasSource <ni:///sha-256;dBrh9q-wBz6lO7THpF6sifdBjQWpO7PwPyBjY5mlXFk> ;
 	prov:wasDerivedFrom <ni:///sha-256;dBrh9q-wBz6lO7THpF6sifdBjQWpO7PwPyBjY5mlXFk> ;
 	prov:wasGeneratedBy _:568e485f86d45cdef0379a7dbc2e4363 .
-_:1e89869b766208ea64fb0ed9567395e3 a oa:FragmentSelector ;
+_:e5e9dcb72b69cf6046ee4060bd99dcec a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;dBrh9q-wBz6lO7THpF6sifdBjQWpO7PwPyBjY5mlXFk> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;

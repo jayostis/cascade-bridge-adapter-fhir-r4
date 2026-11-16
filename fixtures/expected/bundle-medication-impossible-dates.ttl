@@ -7,24 +7,24 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;QBJxiydWVPDlI1A_SE_grS_9tFbX56XDpy4htre44Pg> cascade:structuredDosage <ni:///sha-256;QBJxiydWVPDlI1A_SE_grS_9tFbX56XDpy4htre44Pg#dosage-1> .
-<ni:///sha-256;QBJxiydWVPDlI1A_SE_grS_9tFbX56XDpy4htre44Pg#dosage-1> cascade:dosageBoundsPeriodStart "2024-02-29"^^xsd:date .
-<ni:///sha-256;QBJxiydWVPDlI1A_SE_grS_9tFbX56XDpy4htre44Pg> cascade:prescribedOrReported "prescribed" ;
+<ni:///sha-256;8bIYfIvrMMxmLdd7o_NysZDZSzO2AhtfuyUfIzBuyd0> cascade:structuredDosage <ni:///sha-256;8bIYfIvrMMxmLdd7o_NysZDZSzO2AhtfuyUfIzBuyd0#dosage-1> .
+<ni:///sha-256;8bIYfIvrMMxmLdd7o_NysZDZSzO2AhtfuyUfIzBuyd0#dosage-1> cascade:dosageBoundsPeriodStart "2024-02-29"^^xsd:date .
+<ni:///sha-256;8bIYfIvrMMxmLdd7o_NysZDZSzO2AhtfuyUfIzBuyd0> cascade:prescribedOrReported "prescribed" ;
 	cascade:drugName "Lisinopril 10 mg tablet" ;
 	cascade:workflowStatus "active" ;
 	cascade:medicationRequestIntent "order" ;
-	cascade:dosage "One tablet daily" .
+	cascade:dosageInstructionText "One tablet daily" .
 <urn:uuid:02fe7b47-87bc-83b8-888b-954934e10351> a cascade:PrescribedOrReportedMedication ;
 	cascade:sourceUrl <http://example.org/fhir/MedicationRequest/rx-dates> ;
 	cascade:sourceRecordId "rx-dates" .
-<ni:///sha-256;QBJxiydWVPDlI1A_SE_grS_9tFbX56XDpy4htre44Pg> prov:specializationOf <urn:uuid:02fe7b47-87bc-83b8-888b-954934e10351> ;
+<ni:///sha-256;8bIYfIvrMMxmLdd7o_NysZDZSzO2AhtfuyUfIzBuyd0> prov:specializationOf <urn:uuid:02fe7b47-87bc-83b8-888b-954934e10351> ;
 	cascade:patient <urn:uuid:1cc3cbf1-3a8f-8691-923b-e87de6e5c3a3> .
-_:e43a4729c10befd60d1a33ab6b9cf56d bridge:arrivedAs <ni:///sha-256;QBJxiydWVPDlI1A_SE_grS_9tFbX56XDpy4htre44Pg> ;
-	oa:hasSelector _:d3f6a03f9a2446dc45c5848114bc4ee5 ;
+_:eba82a54322771ad68aaaf412ee5cc06 bridge:arrivedAs <ni:///sha-256;8bIYfIvrMMxmLdd7o_NysZDZSzO2AhtfuyUfIzBuyd0> ;
+	oa:hasSelector _:6ee1861b9f4bf9c8f77afe53bcac06c1 ;
 	oa:hasSource <ni:///sha-256;WzSCObKWGcJeG2GuYnGUOgcg4WONkC8piwm9dcEacok> ;
 	prov:wasDerivedFrom <ni:///sha-256;WzSCObKWGcJeG2GuYnGUOgcg4WONkC8piwm9dcEacok> ;
 	prov:wasGeneratedBy _:95dfc1839eceab9787efd091ed29d444 .
-_:d3f6a03f9a2446dc45c5848114bc4ee5 a oa:FragmentSelector ;
+_:6ee1861b9f4bf9c8f77afe53bcac06c1 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/0" .
 <ni:///sha-256;Q5dOpNm2ISKqLQNLOWqoMOie6xHAULf4eal06YwyLGw> cascade:prescribedOrReported "reportedUse" ;
@@ -43,23 +43,23 @@ _:50fc2c931080623e2c43e6e42cf00d2d bridge:arrivedAs <ni:///sha-256;Q5dOpNm2ISKqL
 _:477bb36d2d9d843b797ed265417f26d6 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/1" .
-<ni:///sha-256;GR4S0zCC69-wZuom1M6S-6El53yNsr4xcw37WKoHyto> cascade:dispenseHandedOverTime "2026-01-12T09:30:00-05:00"^^xsd:dateTime ;
-	cascade:paddedDateTime <ni:///sha-256;GR4S0zCC69-wZuom1M6S-6El53yNsr4xcw37WKoHyto#padded-dispenseHandedOverTime> .
-<ni:///sha-256;GR4S0zCC69-wZuom1M6S-6El53yNsr4xcw37WKoHyto#padded-dispenseHandedOverTime> cascade:paddedDateTimeProperty cascade:dispenseHandedOverTime ;
-	cascade:writtenDate "2026-01-12T09:30-05:00" .
-<ni:///sha-256;GR4S0zCC69-wZuom1M6S-6El53yNsr4xcw37WKoHyto> cascade:drugName "Lisinopril 10 mg tablet" ;
+<ni:///sha-256;vlpA2rdoRV7uvRek2t50e2SNL2D_UT3zzaZj6GxgY7U> cascade:dispenseHandedOverTime "2026-01-12T09:30:00-05:00"^^xsd:dateTime ;
+	cascade:paddedDateTime <ni:///sha-256;vlpA2rdoRV7uvRek2t50e2SNL2D_UT3zzaZj6GxgY7U#padded-dispenseHandedOverTime> .
+<ni:///sha-256;vlpA2rdoRV7uvRek2t50e2SNL2D_UT3zzaZj6GxgY7U#padded-dispenseHandedOverTime> cascade:paddedDateTimeProperty cascade:dispenseHandedOverTime ;
+	cascade:timeAsWritten "2026-01-12T09:30-05:00" .
+<ni:///sha-256;vlpA2rdoRV7uvRek2t50e2SNL2D_UT3zzaZj6GxgY7U> cascade:drugName "Lisinopril 10 mg tablet" ;
 	cascade:workflowStatus "completed" .
 <urn:uuid:c11b3e26-88a1-8907-960e-58ddfc7c8b6c> a cascade:MedicationDispense ;
 	cascade:sourceUrl <http://example.org/fhir/MedicationDispense/md-dates> ;
 	cascade:sourceRecordId "md-dates" .
-<ni:///sha-256;GR4S0zCC69-wZuom1M6S-6El53yNsr4xcw37WKoHyto> prov:specializationOf <urn:uuid:c11b3e26-88a1-8907-960e-58ddfc7c8b6c> ;
+<ni:///sha-256;vlpA2rdoRV7uvRek2t50e2SNL2D_UT3zzaZj6GxgY7U> prov:specializationOf <urn:uuid:c11b3e26-88a1-8907-960e-58ddfc7c8b6c> ;
 	cascade:patient <urn:uuid:1cc3cbf1-3a8f-8691-923b-e87de6e5c3a3> .
-_:8d21c07a01aacbef435ad81e33522247 bridge:arrivedAs <ni:///sha-256;GR4S0zCC69-wZuom1M6S-6El53yNsr4xcw37WKoHyto> ;
-	oa:hasSelector _:a4a099601672298021137caf40926a5 ;
+_:fb001444617fa6e9b87bc9ee1e3573ea bridge:arrivedAs <ni:///sha-256;vlpA2rdoRV7uvRek2t50e2SNL2D_UT3zzaZj6GxgY7U> ;
+	oa:hasSelector _:40503021f91d58097765af80507f2d0a ;
 	oa:hasSource <ni:///sha-256;WzSCObKWGcJeG2GuYnGUOgcg4WONkC8piwm9dcEacok> ;
 	prov:wasDerivedFrom <ni:///sha-256;WzSCObKWGcJeG2GuYnGUOgcg4WONkC8piwm9dcEacok> ;
 	prov:wasGeneratedBy _:95dfc1839eceab9787efd091ed29d444 .
-_:a4a099601672298021137caf40926a5 a oa:FragmentSelector ;
+_:40503021f91d58097765af80507f2d0a a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/2" .
 <ni:///sha-256;WzSCObKWGcJeG2GuYnGUOgcg4WONkC8piwm9dcEacok> cascade:serverBaseUrl "http://example.org/fhir" ;

@@ -7,22 +7,22 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;QcoEHxi-E35NV68jsQ0T2ufGZWlIOMrGPX5nflQD8Do> cascade:conditionName "Essential hypertension" ;
-	cascade:snomedCode <http://snomed.info/id/38341003> ;
+<ni:///sha-256;5-f1oGKHd9IBRNUN410jbxeORprkmJNMH7AasEULVy0> cascade:conditionName "Essential hypertension" ;
+	cascade:conditionCode <http://snomed.info/id/38341003> ;
 	cascade:onsetDate "2021-04-02"^^xsd:date .
 <urn:uuid:e3889c3a-faa3-8a4f-a9f6-84d1dd1d85a4> a cascade:ProblemOrDiagnosis ;
 	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Condition/cond-htn-1> ;
 	cascade:sourceRecordId "cond-htn-1" .
-<ni:///sha-256;QcoEHxi-E35NV68jsQ0T2ufGZWlIOMrGPX5nflQD8Do> prov:specializationOf <urn:uuid:e3889c3a-faa3-8a4f-a9f6-84d1dd1d85a4> ;
+<ni:///sha-256;5-f1oGKHd9IBRNUN410jbxeORprkmJNMH7AasEULVy0> prov:specializationOf <urn:uuid:e3889c3a-faa3-8a4f-a9f6-84d1dd1d85a4> ;
 	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
-_:e5fa31b67ce6253859d471fbeeaac9bd bridge:arrivedAs <ni:///sha-256;QcoEHxi-E35NV68jsQ0T2ufGZWlIOMrGPX5nflQD8Do> ;
+_:6bfc9489e3ca24e229f13fd472294516 bridge:arrivedAs <ni:///sha-256;5-f1oGKHd9IBRNUN410jbxeORprkmJNMH7AasEULVy0> ;
 	pav:version "3" ;
 	pav:lastUpdateOn "2026-01-02T09:00:00Z"^^xsd:dateTime ;
-	oa:hasSelector _:6b9f36b45f1109861a90f5947c44fc8b ;
+	oa:hasSelector _:cf58cf157a0c27255bf228480b1d2a93 ;
 	oa:hasSource <ni:///sha-256;T-Ph80RNbl14gRBkf_xhgHyCWgQ2JPby_xKxZVyLlBM> ;
 	prov:wasDerivedFrom <ni:///sha-256;T-Ph80RNbl14gRBkf_xhgHyCWgQ2JPby_xKxZVyLlBM> ;
 	prov:wasGeneratedBy _:9367b160efd3739517c04c61e702a722 .
-_:6b9f36b45f1109861a90f5947c44fc8b a oa:FragmentSelector ;
+_:cf58cf157a0c27255bf228480b1d2a93 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;T-Ph80RNbl14gRBkf_xhgHyCWgQ2JPby_xKxZVyLlBM> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;

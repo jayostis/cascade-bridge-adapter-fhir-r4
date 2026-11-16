@@ -7,26 +7,26 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;cMw0hGnB0BJliokNTJpkjwqj3OdSbHgssqftTEOjVO4> cascade:valueAbsentForReason <ni:///sha-256;cMw0hGnB0BJliokNTJpkjwqj3OdSbHgssqftTEOjVO4#absent-noteOrDocumentDate> .
-<ni:///sha-256;cMw0hGnB0BJliokNTJpkjwqj3OdSbHgssqftTEOjVO4#absent-noteOrDocumentDate> cascade:absentValueProperty cascade:noteOrDocumentDate ;
+<ni:///sha-256;LOPIZ06-tQZpLvMu1wV-LLVBCK6eCLhX17OKxAPimIw> cascade:valueAbsentForReason <ni:///sha-256;LOPIZ06-tQZpLvMu1wV-LLVBCK6eCLhX17OKxAPimIw#absent-noteOrDocumentDate> .
+<ni:///sha-256;LOPIZ06-tQZpLvMu1wV-LLVBCK6eCLhX17OKxAPimIw#absent-noteOrDocumentDate> cascade:absentValueProperty cascade:noteOrDocumentDate ;
 	cascade:absentReasonCode <https://ns.cascadeprotocol.org/codes/data-absent-reason/unknown> .
-<ni:///sha-256;cMw0hGnB0BJliokNTJpkjwqj3OdSbHgssqftTEOjVO4> cascade:attachment <ni:///sha-256;cMw0hGnB0BJliokNTJpkjwqj3OdSbHgssqftTEOjVO4#attachment-1> .
-<ni:///sha-256;cMw0hGnB0BJliokNTJpkjwqj3OdSbHgssqftTEOjVO4#attachment-1> cascade:attachmentContentType "application/pdf" ;
+<ni:///sha-256;LOPIZ06-tQZpLvMu1wV-LLVBCK6eCLhX17OKxAPimIw> cascade:attachment <ni:///sha-256;LOPIZ06-tQZpLvMu1wV-LLVBCK6eCLhX17OKxAPimIw#attachment-1> .
+<ni:///sha-256;LOPIZ06-tQZpLvMu1wV-LLVBCK6eCLhX17OKxAPimIw#attachment-1> cascade:attachmentContentType "application/pdf" ;
 	cascade:attachmentUrl "Binary/progress-note-date-absent"^^xsd:anyURI .
-<ni:///sha-256;cMw0hGnB0BJliokNTJpkjwqj3OdSbHgssqftTEOjVO4> cascade:noteOrDocumentType <http://loinc.org/rdf/11506-3> ;
+<ni:///sha-256;LOPIZ06-tQZpLvMu1wV-LLVBCK6eCLhX17OKxAPimIw> cascade:noteOrDocumentTypeName "Progress note" ;
 	cascade:workflowStatus "current" ;
-	cascade:noteOrDocumentTypeName "Progress note" .
+	cascade:noteOrDocumentTypeCode <http://loinc.org/rdf/11506-3> .
 <urn:uuid:11ff43a0-8e90-891f-a9c3-3739466588ad> a cascade:ClinicalNoteOrDocument ;
 	cascade:sourceUrl <http://example.org/fhir/DocumentReference/progress-note-date-absent> ;
 	cascade:sourceRecordId "progress-note-date-absent" .
-<ni:///sha-256;cMw0hGnB0BJliokNTJpkjwqj3OdSbHgssqftTEOjVO4> prov:specializationOf <urn:uuid:11ff43a0-8e90-891f-a9c3-3739466588ad> ;
+<ni:///sha-256;LOPIZ06-tQZpLvMu1wV-LLVBCK6eCLhX17OKxAPimIw> prov:specializationOf <urn:uuid:11ff43a0-8e90-891f-a9c3-3739466588ad> ;
 	cascade:patient <urn:uuid:1cc3cbf1-3a8f-8691-923b-e87de6e5c3a3> .
-_:3b93add7a3f55e004cc34dc52fd854d8 bridge:arrivedAs <ni:///sha-256;cMw0hGnB0BJliokNTJpkjwqj3OdSbHgssqftTEOjVO4> ;
-	oa:hasSelector _:6e14f05b95d17ce347ebccc072e3e80f ;
+_:e45ba7de86ade038c3794943c82f1684 bridge:arrivedAs <ni:///sha-256;LOPIZ06-tQZpLvMu1wV-LLVBCK6eCLhX17OKxAPimIw> ;
+	oa:hasSelector _:1738f386c4228231ea1b6fe02a2f7401 ;
 	oa:hasSource <ni:///sha-256;owyiTvsi1TgFWHKhIxGyQWKt-QoQGF-1w8SQP5jU5RM> ;
 	prov:wasDerivedFrom <ni:///sha-256;owyiTvsi1TgFWHKhIxGyQWKt-QoQGF-1w8SQP5jU5RM> ;
 	prov:wasGeneratedBy _:28f2f10bf7bfb6dc301cb3903b0fb36a .
-_:6e14f05b95d17ce347ebccc072e3e80f a oa:FragmentSelector ;
+_:1738f386c4228231ea1b6fe02a2f7401 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;owyiTvsi1TgFWHKhIxGyQWKt-QoQGF-1w8SQP5jU5RM> cascade:serverBaseUrl "http://example.org/fhir" ;

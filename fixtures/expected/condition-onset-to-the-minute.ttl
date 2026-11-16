@@ -7,25 +7,25 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;5qZeCoWKzQoLn5a44NrwYdrLkCAyYXEHU85pzDEa7PI> cascade:conditionName "Asthma" ;
-	cascade:icd10Code <https://ns.cascadeprotocol.org/codes/icd10cm/J45.909> ;
+<ni:///sha-256;QO0QEx2JwyibracKON4hdRi5kTg1XLHIjfRwzKTkxzc> cascade:conditionName "Asthma" ;
+	cascade:conditionCode <https://ns.cascadeprotocol.org/codes/icd10cm/J45.909> ;
 	cascade:clinicalStatus "resolved" ;
 	cascade:onsetDate "2023-05-31T14:00:00-05:00"^^xsd:dateTime ;
-	cascade:paddedDateTime <ni:///sha-256;5qZeCoWKzQoLn5a44NrwYdrLkCAyYXEHU85pzDEa7PI#padded-onsetDate> .
-<ni:///sha-256;5qZeCoWKzQoLn5a44NrwYdrLkCAyYXEHU85pzDEa7PI#padded-onsetDate> cascade:paddedDateTimeProperty cascade:onsetDate ;
-	cascade:writtenDate "2023-05-31T14:00-05:00" .
-<ni:///sha-256;5qZeCoWKzQoLn5a44NrwYdrLkCAyYXEHU85pzDEa7PI> cascade:abatementDate "2023-06-02T09:30:15-05:00"^^xsd:dateTime .
+	cascade:paddedDateTime <ni:///sha-256;QO0QEx2JwyibracKON4hdRi5kTg1XLHIjfRwzKTkxzc#padded-onsetDate> .
+<ni:///sha-256;QO0QEx2JwyibracKON4hdRi5kTg1XLHIjfRwzKTkxzc#padded-onsetDate> cascade:paddedDateTimeProperty cascade:onsetDate ;
+	cascade:timeAsWritten "2023-05-31T14:00-05:00" .
+<ni:///sha-256;QO0QEx2JwyibracKON4hdRi5kTg1XLHIjfRwzKTkxzc> cascade:abatementDate "2023-06-02T09:30:15-05:00"^^xsd:dateTime .
 <urn:uuid:ec38582d-814b-83f6-a98d-6bae7f8f4e22> a cascade:ProblemOrDiagnosis ;
 	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Condition/cond-asthma-minute-1> ;
 	cascade:sourceRecordId "cond-asthma-minute-1" .
-<ni:///sha-256;5qZeCoWKzQoLn5a44NrwYdrLkCAyYXEHU85pzDEa7PI> prov:specializationOf <urn:uuid:ec38582d-814b-83f6-a98d-6bae7f8f4e22> ;
+<ni:///sha-256;QO0QEx2JwyibracKON4hdRi5kTg1XLHIjfRwzKTkxzc> prov:specializationOf <urn:uuid:ec38582d-814b-83f6-a98d-6bae7f8f4e22> ;
 	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
-_:828cd4a9c408f185be4c29fe37a3b3e2 bridge:arrivedAs <ni:///sha-256;5qZeCoWKzQoLn5a44NrwYdrLkCAyYXEHU85pzDEa7PI> ;
-	oa:hasSelector _:9c7fcf0aa0bc173acf310db48675e72a ;
+_:84e55f38b06b0669c3834ecf4d372c95 bridge:arrivedAs <ni:///sha-256;QO0QEx2JwyibracKON4hdRi5kTg1XLHIjfRwzKTkxzc> ;
+	oa:hasSelector _:f9c00b185a517a26838da6dd6957d86d ;
 	oa:hasSource <ni:///sha-256;SbBeIwmaKnfp8Ljf0MMDp8LUOwL5oQlwe002ay4Upsc> ;
 	prov:wasDerivedFrom <ni:///sha-256;SbBeIwmaKnfp8Ljf0MMDp8LUOwL5oQlwe002ay4Upsc> ;
 	prov:wasGeneratedBy _:286cc54a59df15d207a93a97014a10f6 .
-_:9c7fcf0aa0bc173acf310db48675e72a a oa:FragmentSelector ;
+_:f9c00b185a517a26838da6dd6957d86d a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;SbBeIwmaKnfp8Ljf0MMDp8LUOwL5oQlwe002ay4Upsc> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;

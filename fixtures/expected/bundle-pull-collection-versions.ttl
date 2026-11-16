@@ -4,44 +4,45 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
 <ni:///sha-256;BBH6TpcNzB_ID0Ht-5Yjsg7xggFunDoYBh1ss5fXrCA> foaf:familyName "Okafor" ;
 	foaf:givenName "Ngozi" ;
 	cascade:dateOfBirth "1971-06-02"^^xsd:date .
-_:dadb4dcd069a7b11035391e6a5892eb0 pav:lastUpdateOn "2024-01-10T09:00:00Z"^^xsd:dateTime ;
-	pav:version "1" ;
-	bridge:arrivedAs <ni:///sha-256;BBH6TpcNzB_ID0Ht-5Yjsg7xggFunDoYBh1ss5fXrCA> .
-<ni:///sha-256;BBH6TpcNzB_ID0Ht-5Yjsg7xggFunDoYBh1ss5fXrCA> prov:specializationOf <urn:uuid:dccb6776-d640-88e5-a7b3-7e2e1b860abe> .
-<urn:uuid:dccb6776-d640-88e5-a7b3-7e2e1b860abe> cascade:sourceRecordId "pat-1" ;
+<urn:uuid:dccb6776-d640-88e5-a7b3-7e2e1b860abe> a cascade:PatientProfile ;
 	cascade:sourceUrl <https://fhir.example.org/r4/Patient/pat-1> ;
-	a cascade:PatientProfile .
-_:dadb4dcd069a7b11035391e6a5892eb0 oa:hasSelector _:6a0aa5c71645ea1763f8089df9601a74 ;
+	cascade:sourceRecordId "pat-1" .
+<ni:///sha-256;BBH6TpcNzB_ID0Ht-5Yjsg7xggFunDoYBh1ss5fXrCA> prov:specializationOf <urn:uuid:dccb6776-d640-88e5-a7b3-7e2e1b860abe> .
+_:dadb4dcd069a7b11035391e6a5892eb0 bridge:arrivedAs <ni:///sha-256;BBH6TpcNzB_ID0Ht-5Yjsg7xggFunDoYBh1ss5fXrCA> ;
+	pav:version "1" ;
+	pav:lastUpdateOn "2024-01-10T09:00:00Z"^^xsd:dateTime ;
+	oa:hasSelector _:6a0aa5c71645ea1763f8089df9601a74 ;
 	oa:hasSource <ni:///sha-256;MdbYDOP-iQsIdLtTPApZBb7yF5vNy6d7hEooj_cldKU> ;
 	prov:wasDerivedFrom <ni:///sha-256;MdbYDOP-iQsIdLtTPApZBb7yF5vNy6d7hEooj_cldKU> ;
 	prov:wasGeneratedBy _:6ad5fdf6de578904a7aafb6a53ca311c .
 _:6a0aa5c71645ea1763f8089df9601a74 a oa:FragmentSelector ;
-	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/0" .
-<ni:///sha-256;zLyxaSNPArm6WamlYqiVWXswxDYz7E3sv6N0AU4y5XM> cascade:clinicalStatus "active" ;
-	cascade:onsetDate "2019-08-20"^^xsd:date ;
-	cascade:conditionName "Type 2 diabetes mellitus" ;
-	cascade:snomedCode <http://snomed.info/id/44054006> .
-_:d13ba8dfa13f01f42e703e1c86e62ae1 pav:lastUpdateOn "2024-03-05T14:30:00Z"^^xsd:dateTime ;
-	pav:version "2" ;
-	bridge:arrivedAs <ni:///sha-256;zLyxaSNPArm6WamlYqiVWXswxDYz7E3sv6N0AU4y5XM> .
-<ni:///sha-256;zLyxaSNPArm6WamlYqiVWXswxDYz7E3sv6N0AU4y5XM> cascade:patient <urn:uuid:dccb6776-d640-88e5-a7b3-7e2e1b860abe> ;
-	prov:specializationOf <urn:uuid:ccae52d2-3ebb-8c94-a910-fa11501c6474> .
-<urn:uuid:ccae52d2-3ebb-8c94-a910-fa11501c6474> cascade:sourceRecordId "cond-1" ;
+<ni:///sha-256;X3ee1WUUllX0aQXYMB9wkZcXPS9hhuhnmpOxypWAbwo> cascade:conditionName "Type 2 diabetes mellitus" ;
+	cascade:conditionCode <http://snomed.info/id/44054006> ;
+	cascade:clinicalStatus "active" ;
+	cascade:onsetDate "2019-08-20"^^xsd:date .
+<urn:uuid:ccae52d2-3ebb-8c94-a910-fa11501c6474> a cascade:ProblemOrDiagnosis ;
 	cascade:sourceUrl <https://fhir.example.org/r4/Condition/cond-1> ;
-	a cascade:ProblemOrDiagnosis .
-_:d13ba8dfa13f01f42e703e1c86e62ae1 oa:hasSelector _:433322e17037de2d89deab7a7032d949 ;
+	cascade:sourceRecordId "cond-1" .
+<ni:///sha-256;X3ee1WUUllX0aQXYMB9wkZcXPS9hhuhnmpOxypWAbwo> prov:specializationOf <urn:uuid:ccae52d2-3ebb-8c94-a910-fa11501c6474> ;
+	cascade:patient <urn:uuid:dccb6776-d640-88e5-a7b3-7e2e1b860abe> .
+_:7a31b473f127ed86446dcb6a14e84731 bridge:arrivedAs <ni:///sha-256;X3ee1WUUllX0aQXYMB9wkZcXPS9hhuhnmpOxypWAbwo> ;
+	pav:version "2" ;
+	pav:lastUpdateOn "2024-03-05T14:30:00Z"^^xsd:dateTime ;
+	oa:hasSelector _:6d158190746eb915a29ae1ad15e8844b ;
 	oa:hasSource <ni:///sha-256;MdbYDOP-iQsIdLtTPApZBb7yF5vNy6d7hEooj_cldKU> ;
 	prov:wasDerivedFrom <ni:///sha-256;MdbYDOP-iQsIdLtTPApZBb7yF5vNy6d7hEooj_cldKU> ;
 	prov:wasGeneratedBy _:6ad5fdf6de578904a7aafb6a53ca311c .
-_:433322e17037de2d89deab7a7032d949 a oa:FragmentSelector ;
-	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+_:6d158190746eb915a29ae1ad15e8844b a oa:FragmentSelector ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/1" .
 <ni:///sha-256;quGOrVgDRJIH1EAtdgyMlm5M3tw4gJsJfybcixNSBjw> cascade:prescribedOrReported "reportedUse" ;
 	cascade:drugName "metformin hydrochloride 500 MG Oral Tablet" ;
@@ -49,20 +50,20 @@ _:433322e17037de2d89deab7a7032d949 a oa:FragmentSelector ;
 	cascade:workflowStatus "completed" ;
 	cascade:medicationUseStartDate "2022-03-01"^^xsd:date ;
 	cascade:medicationUseEndDate "2024-04-15"^^xsd:date .
-_:26c59807fa4e4c4335d49d64349f162a pav:lastUpdateOn "2024-04-15T16:00:00Z"^^xsd:dateTime ;
-	pav:version "2" ;
-	bridge:arrivedAs <ni:///sha-256;quGOrVgDRJIH1EAtdgyMlm5M3tw4gJsJfybcixNSBjw> .
-<ni:///sha-256;quGOrVgDRJIH1EAtdgyMlm5M3tw4gJsJfybcixNSBjw> cascade:patient <urn:uuid:dccb6776-d640-88e5-a7b3-7e2e1b860abe> ;
-	prov:specializationOf <urn:uuid:e417d677-68a7-8a18-9ce2-d0903fe593de> .
-<urn:uuid:e417d677-68a7-8a18-9ce2-d0903fe593de> cascade:sourceRecordId "medst-1" ;
+<urn:uuid:e417d677-68a7-8a18-9ce2-d0903fe593de> a cascade:PrescribedOrReportedMedication ;
 	cascade:sourceUrl <https://fhir.example.org/r4/MedicationStatement/medst-1> ;
-	a cascade:PrescribedOrReportedMedication .
-_:26c59807fa4e4c4335d49d64349f162a oa:hasSelector _:43b3c920f84cbdc8a0c3974ec8f8779e ;
+	cascade:sourceRecordId "medst-1" .
+<ni:///sha-256;quGOrVgDRJIH1EAtdgyMlm5M3tw4gJsJfybcixNSBjw> prov:specializationOf <urn:uuid:e417d677-68a7-8a18-9ce2-d0903fe593de> ;
+	cascade:patient <urn:uuid:dccb6776-d640-88e5-a7b3-7e2e1b860abe> .
+_:26c59807fa4e4c4335d49d64349f162a bridge:arrivedAs <ni:///sha-256;quGOrVgDRJIH1EAtdgyMlm5M3tw4gJsJfybcixNSBjw> ;
+	pav:version "2" ;
+	pav:lastUpdateOn "2024-04-15T16:00:00Z"^^xsd:dateTime ;
+	oa:hasSelector _:43b3c920f84cbdc8a0c3974ec8f8779e ;
 	oa:hasSource <ni:///sha-256;MdbYDOP-iQsIdLtTPApZBb7yF5vNy6d7hEooj_cldKU> ;
 	prov:wasDerivedFrom <ni:///sha-256;MdbYDOP-iQsIdLtTPApZBb7yF5vNy6d7hEooj_cldKU> ;
 	prov:wasGeneratedBy _:6ad5fdf6de578904a7aafb6a53ca311c .
 _:43b3c920f84cbdc8a0c3974ec8f8779e a oa:FragmentSelector ;
-	dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/2" .
 <ni:///sha-256;MdbYDOP-iQsIdLtTPApZBb7yF5vNy6d7hEooj_cldKU> cascade:serverBaseUrl "https://fhir.example.org/r4" ;
 	pav:retrievedOn "2026-10-16T09:00:00Z"^^xsd:dateTime ;

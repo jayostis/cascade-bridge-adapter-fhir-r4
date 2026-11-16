@@ -7,22 +7,20 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;zW20YH4wa2YUBlaNDg-gSgku17Z3cSPDd5LOiifRYus> cascade:conditionName "Type 2 diabetes mellitus" ;
-	cascade:conditionCodeInOtherSystem "250.00"^^<http://hl7.org/fhir/sid/icd-9-cm> ;
-	cascade:icd10Code <https://ns.cascadeprotocol.org/codes/icd10cm/E11.9> ;
-	cascade:snomedCode <http://snomed.info/id/44054006> ;
+<ni:///sha-256;v4NI8PQm-TlskaSZnV67YxVHn7LSEwj3FhzPx09Jam4> cascade:conditionName "Type 2 diabetes mellitus" ;
+	cascade:conditionCode <https://ns.cascadeprotocol.org/codes/icd9cm/250.00> , <https://ns.cascadeprotocol.org/codes/icd10cm/E11.9> , <http://snomed.info/id/44054006> ;
 	cascade:onsetDate "2019-06-11"^^xsd:date .
 <urn:uuid:81f4fb30-c0ab-804a-9d76-5340450f970d> a cascade:ProblemOrDiagnosis ;
 	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Condition/cond-dm2-1> ;
 	cascade:sourceRecordId "cond-dm2-1" .
-<ni:///sha-256;zW20YH4wa2YUBlaNDg-gSgku17Z3cSPDd5LOiifRYus> prov:specializationOf <urn:uuid:81f4fb30-c0ab-804a-9d76-5340450f970d> ;
+<ni:///sha-256;v4NI8PQm-TlskaSZnV67YxVHn7LSEwj3FhzPx09Jam4> prov:specializationOf <urn:uuid:81f4fb30-c0ab-804a-9d76-5340450f970d> ;
 	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
-_:82f70e2af95ba4955b6a78adc9ad7382 bridge:arrivedAs <ni:///sha-256;zW20YH4wa2YUBlaNDg-gSgku17Z3cSPDd5LOiifRYus> ;
-	oa:hasSelector _:1e8524c49f2ab242644ae3eaadaaa9ff ;
+_:b13cd3ae6eeda9e9e0ed8395d3d2930c bridge:arrivedAs <ni:///sha-256;v4NI8PQm-TlskaSZnV67YxVHn7LSEwj3FhzPx09Jam4> ;
+	oa:hasSelector _:bfd1e16a763387d8c6a2ee68818b37cb ;
 	oa:hasSource <ni:///sha-256;oqqiYeRw6kP-J6z-wffNFVBnXPLdZmV5WACZOroohH8> ;
 	prov:wasDerivedFrom <ni:///sha-256;oqqiYeRw6kP-J6z-wffNFVBnXPLdZmV5WACZOroohH8> ;
 	prov:wasGeneratedBy _:5583cf16dba818579ade7733b17f585d .
-_:1e8524c49f2ab242644ae3eaadaaa9ff a oa:FragmentSelector ;
+_:bfd1e16a763387d8c6a2ee68818b37cb a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;oqqiYeRw6kP-J6z-wffNFVBnXPLdZmV5WACZOroohH8> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;

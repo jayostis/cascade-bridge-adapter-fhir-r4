@@ -7,22 +7,22 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;yQgfzwLp7PZwDE5shp6kzacuKcpuhTdYOz-NZrKq7a8> cascade:conditionName "Asthma" ;
-	cascade:icd10Code <https://ns.cascadeprotocol.org/codes/icd10cm/J45.909> ;
+<ni:///sha-256;1mHZHD7mlGPaaAt17d9sbDm1MAB4eq1QjrUDJqetV90> cascade:conditionName "Asthma" ;
+	cascade:conditionCode <https://ns.cascadeprotocol.org/codes/icd10cm/J45.909> ;
 	cascade:clinicalStatus "resolved" ;
 	cascade:onsetDate "2019"^^xsd:gYear ;
 	cascade:abatementDate "2020-03"^^xsd:gYearMonth .
 <urn:uuid:0c9b9890-2a9a-8ab5-9ef5-9830214f4014> a cascade:ProblemOrDiagnosis ;
 	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Condition/cond-asthma-partial-1> ;
 	cascade:sourceRecordId "cond-asthma-partial-1" .
-<ni:///sha-256;yQgfzwLp7PZwDE5shp6kzacuKcpuhTdYOz-NZrKq7a8> prov:specializationOf <urn:uuid:0c9b9890-2a9a-8ab5-9ef5-9830214f4014> ;
+<ni:///sha-256;1mHZHD7mlGPaaAt17d9sbDm1MAB4eq1QjrUDJqetV90> prov:specializationOf <urn:uuid:0c9b9890-2a9a-8ab5-9ef5-9830214f4014> ;
 	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
-_:9d93cecff340ccd57a00d2d88cd9b72c bridge:arrivedAs <ni:///sha-256;yQgfzwLp7PZwDE5shp6kzacuKcpuhTdYOz-NZrKq7a8> ;
-	oa:hasSelector _:47fd885921b4079c2d2d7b3bd3db896c ;
+_:d517acb7ee7140c4fc857d77aa486dc8 bridge:arrivedAs <ni:///sha-256;1mHZHD7mlGPaaAt17d9sbDm1MAB4eq1QjrUDJqetV90> ;
+	oa:hasSelector _:12329549718c3d6f946b626f7a5e9924 ;
 	oa:hasSource <ni:///sha-256;IxrYUAdSqWdsau6vsPp0nEVKsonUxS6Sz4VXQzaNDes> ;
 	prov:wasDerivedFrom <ni:///sha-256;IxrYUAdSqWdsau6vsPp0nEVKsonUxS6Sz4VXQzaNDes> ;
 	prov:wasGeneratedBy _:5a3d27fb548ada6e6c32ebf6ee81b05 .
-_:47fd885921b4079c2d2d7b3bd3db896c a oa:FragmentSelector ;
+_:12329549718c3d6f946b626f7a5e9924 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;IxrYUAdSqWdsau6vsPp0nEVKsonUxS6Sz4VXQzaNDes> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;

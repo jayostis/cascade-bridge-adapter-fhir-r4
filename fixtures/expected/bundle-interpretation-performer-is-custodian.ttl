@@ -24,15 +24,15 @@ _:a40bc78231bccfd6a24c643b782812a9 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/1" .
 <urn:uuid:b272d9d2-08db-8fd9-9d33-eca1e48c75ba> a cascade:Organization .
-<ni:///sha-256;xZuPHRKpDqDS8n7OcfLr2E71XaSSno26wZmpXHkAqlU> prov:wasGeneratedBy _:e0b3c8d7d6751ea0b3fed9eb4873cb31 ;
+<ni:///sha-256;xZuPHRKpDqDS8n7OcfLr2E71XaSSno26wZmpXHkAqlU> prov:wasGeneratedBy _:ffb6dd3b26ce7669170ef434ee9b3eeb ;
 	prov:wasAttributedTo <urn:uuid:b272d9d2-08db-8fd9-9d33-eca1e48c75ba> .
-_:e0b3c8d7d6751ea0b3fed9eb4873cb31 prov:qualifiedAssociation _:b79503f39718516371d5aecfffce9032 .
-_:b79503f39718516371d5aecfffce9032 prov:agent <urn:uuid:b272d9d2-08db-8fd9-9d33-eca1e48c75ba> ;
-	prov:hadRole cascade:AuthorRole .
-<ni:///sha-256;xZuPHRKpDqDS8n7OcfLr2E71XaSSno26wZmpXHkAqlU> prov:wasGeneratedBy _:db3025e95692c6f45ac011b0d134d25 .
-_:db3025e95692c6f45ac011b0d134d25 prov:qualifiedAssociation _:f9a71b728ad0ba75f72214dc3d31198 .
-_:f9a71b728ad0ba75f72214dc3d31198 prov:agent <urn:uuid:b272d9d2-08db-8fd9-9d33-eca1e48c75ba> ;
+_:ffb6dd3b26ce7669170ef434ee9b3eeb prov:qualifiedAssociation _:a862420ccc32dad5c80996fa489cc0cf .
+_:a862420ccc32dad5c80996fa489cc0cf prov:agent <urn:uuid:b272d9d2-08db-8fd9-9d33-eca1e48c75ba> ;
 	prov:hadRole cascade:CustodianRole .
+<ni:///sha-256;xZuPHRKpDqDS8n7OcfLr2E71XaSSno26wZmpXHkAqlU> prov:wasGeneratedBy _:c9f762d1d8ee9b7e50395cb928fe3e0a .
+_:c9f762d1d8ee9b7e50395cb928fe3e0a prov:qualifiedAssociation _:d5f6f6695e136317dde1494ef0bbdd2d .
+_:d5f6f6695e136317dde1494ef0bbdd2d prov:agent <urn:uuid:b272d9d2-08db-8fd9-9d33-eca1e48c75ba> ;
+	prov:hadRole cascade:AuthorRole .
 <ni:///sha-256;Jf6npAUvTubaPLjRm0nG0-0Vv-jQShPdxChXqvOlATk> prov:specializationOf <urn:uuid:b272d9d2-08db-8fd9-9d33-eca1e48c75ba> .
 _:71837bb7fdbd6c885443cca6d976dc7 bridge:arrivedAs <ni:///sha-256;Jf6npAUvTubaPLjRm0nG0-0Vv-jQShPdxChXqvOlATk> .
 <ni:///sha-256;Jf6npAUvTubaPLjRm0nG0-0Vv-jQShPdxChXqvOlATk> foaf:name "Kestrel Genomics Laboratory" ;
@@ -58,18 +58,18 @@ _:58e9fdb04a7db2ec0159485ca3756cec a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/3" .
 <urn:uuid:2abbbe4f-0dc4-8dee-ade7-4897530093d2> a cascade:VariantInterpretation .
-<ni:///sha-256;lgsYA3FZU2KJ1mLNuHw07x6jc_IKdcSIAQ9SQbmJa6M> prov:specializationOf <urn:uuid:2abbbe4f-0dc4-8dee-ade7-4897530093d2> ;
+<ni:///sha-256;VrkhmfvQqGoXYXp-NgRFybNxlq4zAq8BsrCqESiRXQY> prov:specializationOf <urn:uuid:2abbbe4f-0dc4-8dee-ade7-4897530093d2> ;
 	cascade:patient <urn:uuid:c9851730-7f75-8333-b0d3-4d7a0d92a182> .
-_:54878fb23ceeff453a0f9d18ee339039 bridge:arrivedAs <ni:///sha-256;lgsYA3FZU2KJ1mLNuHw07x6jc_IKdcSIAQ9SQbmJa6M> .
-<ni:///sha-256;lgsYA3FZU2KJ1mLNuHw07x6jc_IKdcSIAQ9SQbmJa6M> cascade:acmgClassification cascade:LikelyPathogenic ;
-	cascade:variantInterpreted <urn:uuid:693781e8-0087-87ff-9240-394319e9b4d5> ;
+_:e2e6c4202d23e0595250f15e7821fee2 bridge:arrivedAs <ni:///sha-256;VrkhmfvQqGoXYXp-NgRFybNxlq4zAq8BsrCqESiRXQY> .
+<ni:///sha-256;VrkhmfvQqGoXYXp-NgRFybNxlq4zAq8BsrCqESiRXQY> cascade:acmgClassification cascade:LikelyPathogenic ;
+	cascade:subjectVariant <urn:uuid:693781e8-0087-87ff-9240-394319e9b4d5> ;
 	cascade:workflowStatus "final" ;
 	prov:wasAttributedTo <urn:uuid:b272d9d2-08db-8fd9-9d33-eca1e48c75ba> .
-_:54878fb23ceeff453a0f9d18ee339039 oa:hasSelector _:4a0c3652634b7cab0ecd1809c8a840dd ;
+_:e2e6c4202d23e0595250f15e7821fee2 oa:hasSelector _:e820fbd1e669d0e6c761f08fc6a5fa7 ;
 	oa:hasSource <ni:///sha-256;xZuPHRKpDqDS8n7OcfLr2E71XaSSno26wZmpXHkAqlU> ;
 	prov:wasDerivedFrom <ni:///sha-256;xZuPHRKpDqDS8n7OcfLr2E71XaSSno26wZmpXHkAqlU> ;
 	prov:wasGeneratedBy _:d2d0a9f607d6d52b5e73684854984ffc .
-_:4a0c3652634b7cab0ecd1809c8a840dd a oa:FragmentSelector ;
+_:e820fbd1e669d0e6c761f08fc6a5fa7 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/4" .
 <ni:///sha-256;xZuPHRKpDqDS8n7OcfLr2E71XaSSno26wZmpXHkAqlU> pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;

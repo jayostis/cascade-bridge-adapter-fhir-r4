@@ -7,25 +7,25 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;pI707pmKf8qE7fe1_maqFzoHv_Jja3Ft-aqkHDagjIU> cascade:attachment <ni:///sha-256;pI707pmKf8qE7fe1_maqFzoHv_Jja3Ft-aqkHDagjIU#attachment-2> .
-<ni:///sha-256;pI707pmKf8qE7fe1_maqFzoHv_Jja3Ft-aqkHDagjIU#attachment-2> cascade:attachmentContentType "text/plain" .
-<ni:///sha-256;pI707pmKf8qE7fe1_maqFzoHv_Jja3Ft-aqkHDagjIU> cascade:attachment <ni:///sha-256;pI707pmKf8qE7fe1_maqFzoHv_Jja3Ft-aqkHDagjIU#attachment-1> .
-<ni:///sha-256;pI707pmKf8qE7fe1_maqFzoHv_Jja3Ft-aqkHDagjIU#attachment-1> cascade:attachmentContentType "application/pdf" .
-<ni:///sha-256;pI707pmKf8qE7fe1_maqFzoHv_Jja3Ft-aqkHDagjIU> cascade:narrativeText "Discharge summary, in the PDF" ;
+<ni:///sha-256;9Hj5WkKd7p0OXxxNoH5PDoI4FVZ9STu_93P2G4yfqkI> cascade:attachment <ni:///sha-256;9Hj5WkKd7p0OXxxNoH5PDoI4FVZ9STu_93P2G4yfqkI#attachment-2> .
+<ni:///sha-256;9Hj5WkKd7p0OXxxNoH5PDoI4FVZ9STu_93P2G4yfqkI#attachment-2> cascade:attachmentContentType "text/plain" .
+<ni:///sha-256;9Hj5WkKd7p0OXxxNoH5PDoI4FVZ9STu_93P2G4yfqkI> cascade:attachment <ni:///sha-256;9Hj5WkKd7p0OXxxNoH5PDoI4FVZ9STu_93P2G4yfqkI#attachment-1> .
+<ni:///sha-256;9Hj5WkKd7p0OXxxNoH5PDoI4FVZ9STu_93P2G4yfqkI#attachment-1> cascade:attachmentContentType "application/pdf" .
+<ni:///sha-256;9Hj5WkKd7p0OXxxNoH5PDoI4FVZ9STu_93P2G4yfqkI> cascade:narrativeText "Discharge summary, in the PDF" ;
 	cascade:noteOrDocumentTypeName "Discharge summary" ;
 	cascade:workflowStatus "current" ;
-	cascade:noteOrDocumentType <http://loinc.org/rdf/18842-5> .
+	cascade:noteOrDocumentTypeCode <http://loinc.org/rdf/18842-5> .
 <urn:uuid:5447b638-74ff-87d0-84df-8884fcb0935b> a cascade:ClinicalNoteOrDocument ;
 	cascade:sourceUrl <http://example.org/fhir/DocumentReference/inline-pdf> ;
 	cascade:sourceRecordId "inline-pdf" .
-<ni:///sha-256;pI707pmKf8qE7fe1_maqFzoHv_Jja3Ft-aqkHDagjIU> prov:specializationOf <urn:uuid:5447b638-74ff-87d0-84df-8884fcb0935b> ;
+<ni:///sha-256;9Hj5WkKd7p0OXxxNoH5PDoI4FVZ9STu_93P2G4yfqkI> prov:specializationOf <urn:uuid:5447b638-74ff-87d0-84df-8884fcb0935b> ;
 	cascade:patient <urn:uuid:1cc3cbf1-3a8f-8691-923b-e87de6e5c3a3> .
-_:dd3970f7cd7ac6cff90470cc6606c85d bridge:arrivedAs <ni:///sha-256;pI707pmKf8qE7fe1_maqFzoHv_Jja3Ft-aqkHDagjIU> ;
-	oa:hasSelector _:9c9e87c724b6bc69fe30e3cc529095f0 ;
+_:107926707c8d793b2d0d4d7535ea703e bridge:arrivedAs <ni:///sha-256;9Hj5WkKd7p0OXxxNoH5PDoI4FVZ9STu_93P2G4yfqkI> ;
+	oa:hasSelector _:ec7e8fc823f511981a53e1af229c3420 ;
 	oa:hasSource <ni:///sha-256;_r70mmoYtvt90RKnzGXTo-jUiWBRzZLDZs4C0MkjRPQ> ;
 	prov:wasDerivedFrom <ni:///sha-256;_r70mmoYtvt90RKnzGXTo-jUiWBRzZLDZs4C0MkjRPQ> ;
 	prov:wasGeneratedBy _:bc78e9da59cc34106f8e2fa91516f5c8 .
-_:9c9e87c724b6bc69fe30e3cc529095f0 a oa:FragmentSelector ;
+_:ec7e8fc823f511981a53e1af229c3420 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;_r70mmoYtvt90RKnzGXTo-jUiWBRzZLDZs4C0MkjRPQ> cascade:serverBaseUrl "http://example.org/fhir" ;

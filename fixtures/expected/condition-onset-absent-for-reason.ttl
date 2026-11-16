@@ -7,22 +7,22 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;Sct1y9lX9s2EySS0eZ0Vds51c_R87w186AV62Wgvem8> cascade:valueAbsentForReason <ni:///sha-256;Sct1y9lX9s2EySS0eZ0Vds51c_R87w186AV62Wgvem8#absent-onsetDate> .
-<ni:///sha-256;Sct1y9lX9s2EySS0eZ0Vds51c_R87w186AV62Wgvem8#absent-onsetDate> cascade:absentValueProperty cascade:onsetDate ;
+<ni:///sha-256;ykg1mg5f8A01ohit0kEjIyjMgSrIk-PUEOeBfSRpCic> cascade:valueAbsentForReason <ni:///sha-256;ykg1mg5f8A01ohit0kEjIyjMgSrIk-PUEOeBfSRpCic#absent-onsetDate> .
+<ni:///sha-256;ykg1mg5f8A01ohit0kEjIyjMgSrIk-PUEOeBfSRpCic#absent-onsetDate> cascade:absentValueProperty cascade:onsetDate ;
 	cascade:absentReasonCode <https://ns.cascadeprotocol.org/codes/data-absent-reason/asked-unknown> .
-<ni:///sha-256;Sct1y9lX9s2EySS0eZ0Vds51c_R87w186AV62Wgvem8> cascade:conditionName "Asthma" ;
-	cascade:icd10Code <https://ns.cascadeprotocol.org/codes/icd10cm/J45.909> .
+<ni:///sha-256;ykg1mg5f8A01ohit0kEjIyjMgSrIk-PUEOeBfSRpCic> cascade:conditionName "Asthma" ;
+	cascade:conditionCode <https://ns.cascadeprotocol.org/codes/icd10cm/J45.909> .
 <urn:uuid:af1c1ffe-a91f-81ed-a8fe-faa256d517a9> a cascade:ProblemOrDiagnosis ;
 	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Condition/cond-asthma-onset-unknown-1> ;
 	cascade:sourceRecordId "cond-asthma-onset-unknown-1" .
-<ni:///sha-256;Sct1y9lX9s2EySS0eZ0Vds51c_R87w186AV62Wgvem8> prov:specializationOf <urn:uuid:af1c1ffe-a91f-81ed-a8fe-faa256d517a9> ;
+<ni:///sha-256;ykg1mg5f8A01ohit0kEjIyjMgSrIk-PUEOeBfSRpCic> prov:specializationOf <urn:uuid:af1c1ffe-a91f-81ed-a8fe-faa256d517a9> ;
 	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
-_:e894d923d5d94e7c4dc7fd0f41c28e1f bridge:arrivedAs <ni:///sha-256;Sct1y9lX9s2EySS0eZ0Vds51c_R87w186AV62Wgvem8> ;
-	oa:hasSelector _:6dbaff38ae1aefc9fcd5143e7a98c8ea ;
+_:b4046748ff50aff0ae35dd1d843b80ab bridge:arrivedAs <ni:///sha-256;ykg1mg5f8A01ohit0kEjIyjMgSrIk-PUEOeBfSRpCic> ;
+	oa:hasSelector _:9d19108161cc7dc89ea7655ed0e8e813 ;
 	oa:hasSource <ni:///sha-256;KsAoQOaZFml2JZhaGG5IH44Ilu3adomUAYtY4Zu1h1U> ;
 	prov:wasDerivedFrom <ni:///sha-256;KsAoQOaZFml2JZhaGG5IH44Ilu3adomUAYtY4Zu1h1U> ;
 	prov:wasGeneratedBy _:138fb974a065bfe887baf7721eb7fffc .
-_:6dbaff38ae1aefc9fcd5143e7a98c8ea a oa:FragmentSelector ;
+_:9d19108161cc7dc89ea7655ed0e8e813 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;KsAoQOaZFml2JZhaGG5IH44Ilu3adomUAYtY4Zu1h1U> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
