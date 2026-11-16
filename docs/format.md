@@ -446,7 +446,9 @@ says, read on 2026-10-24:
   `cascade:procedureCode`: the reason is a `cascade:ValueAbsentForReason` node
   naming that property, one `cascade:absentReasonCode` for each such coding, a code the
   CodeSystem does not define being a finding. Beside a coding in any other system those
-  codings are dropped, since a code of the condition is not a reason it has none.
+  codings are dropped, since a code of the condition is not a reason it has none. An
+  absent-reason coding beside a real code is dropped with no finding, so only the real codes are written, and
+  that coding is not carried by `/code/coding/code`.
 
 ## Codes
 
