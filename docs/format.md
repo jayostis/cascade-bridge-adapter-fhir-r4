@@ -198,7 +198,7 @@ A dose quantity is carried as a UCUM unit only where its system is UCUM's
 (`fhirr4:doseUnitCodeOutsideUcum`), and one with a comparator, which FHIR's
 SimpleQuantity forbids, writes no node and is `fhirr4:dosageElementNotCarried`.
 Every other dosage element, a later dose and a later dosage's text are findings;
-the first dosage's text is the version's `cascade:dosage`.
+the first dosage's text is the version's `cascade:dosageInstructionText`.
 
 A `Patient`'s `gender` is carried as one of the four codes of
 [administrative-gender](https://hl7.org/fhir/R4/valueset-administrative-gender.html),
@@ -448,8 +448,9 @@ Every coding of a lab result's test, a medication's drug, a condition and a
 procedure is carried, so that a result coded only by its lab's own code keeps it
 ([cascade-vocabulary#290](https://github.com/jayostis/cascade-vocabulary/issues/290)).
 A coding in a system its kind has a term for is that term's IRI: LOINC and
-SNOMED CT for a test, RxNorm and NDC for a drug, SNOMED CT and ICD-10-CM for a
-condition, SNOMED CT and the first CPT code for a procedure. A coding in any
+SNOMED CT for a test, RxNorm and NDC for a drug, and for a condition and a
+procedure every system [`vocab/fhir-code-systems.ttl`](../vocab/fhir-code-systems.ttl)
+gives an IRI stem (a procedure's first CPT code only). A coding in any
 other system is a literal on the kind's `…CodeInOtherSystem` term, the code
 typed by the system, ICD-9-CM, HCPCS and a formulary's code among them; a
 SNOMED CT drug code stays a literal while how drug codes are matched is open. A

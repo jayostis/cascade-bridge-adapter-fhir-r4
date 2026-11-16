@@ -19,7 +19,7 @@ CONSTRUCT {
   ?version ?p ?o .
   ?version cascade:paddedDateTime ?paddedNode .
   ?paddedNode cascade:paddedDateTimeProperty ?p ;
-    cascade:writtenDate ?writtenTime .
+    cascade:timeAsWritten ?writtenTime .
 }
 WHERE {
   FILTER NOT EXISTS {
@@ -88,19 +88,19 @@ WHERE {
   UNION
   {
     ?resource xyz:lotNumber ?o .
-    BIND (cascade:lotNumber AS ?p)
+    BIND (cascade:vaccineLotNumber AS ?p)
   }
   UNION
   {
     ?resource xyz:doseQuantity ?dose . ?dose xyz:value ?amount .
     OPTIONAL { ?dose xyz:unit ?unit }
-    BIND (cascade:doseQuantity AS ?p)
+    BIND (cascade:vaccineDoseQuantityText AS ?p)
     BIND (IF(BOUND(?unit), CONCAT(?amount, " ", ?unit), ?amount) AS ?o)
   }
   UNION
   {
     ?resource xyz:route ?concept . ?concept xyz:text ?o .
-    BIND (cascade:routeOfAdministration AS ?p)
+    BIND (cascade:vaccinationRouteText AS ?p)
   }
   UNION
   {
@@ -111,12 +111,12 @@ WHERE {
       ?codings ?earlierSlot ?earlier . ?earlier xyz:display ?earlierDisplay .
       FILTER (xsd:integer(STRAFTER(STR(?earlierSlot), "#_")) < xsd:integer(STRAFTER(STR(?codingSlot), "#_")))
     }
-    BIND (cascade:routeOfAdministration AS ?p)
+    BIND (cascade:vaccinationRouteText AS ?p)
   }
   UNION
   {
     ?resource xyz:site ?concept . ?concept xyz:text ?o .
-    BIND (cascade:administrationSite AS ?p)
+    BIND (cascade:vaccinationBodySiteText AS ?p)
   }
   UNION
   {
@@ -127,12 +127,12 @@ WHERE {
       ?codings ?earlierSlot ?earlier . ?earlier xyz:display ?earlierDisplay .
       FILTER (xsd:integer(STRAFTER(STR(?earlierSlot), "#_")) < xsd:integer(STRAFTER(STR(?codingSlot), "#_")))
     }
-    BIND (cascade:administrationSite AS ?p)
+    BIND (cascade:vaccinationBodySiteText AS ?p)
   }
   UNION
   {
     ?resource xyz:note ?notes . ?notes ?noteSlot ?note . ?note xyz:text ?o .
-    BIND (cascade:notes AS ?p)
+    BIND (cascade:addedNoteText AS ?p)
   }
   BIND (IF(BOUND(?writtenTime), IRI(CONCAT(STR(?version), "#padded-", STRAFTER(STR(?p), "#"))), 1/0) AS ?paddedNode)
 }

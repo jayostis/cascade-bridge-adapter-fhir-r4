@@ -10,8 +10,8 @@ PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # Which DocumentReference is a note or document is note-or-document-table.rq's
 # to say. Its version, each part in a branch of its own so that one does not
 # multiply the others: its type's name, the type's text, else its first coding's
-# display; each coding of its type, in LOINC a cascade:noteOrDocumentType IRI,
-# in any other system a cascade:noteOrDocumentTypeInOtherSystem literal typed by
+# display; each coding of its type, in LOINC a cascade:noteOrDocumentTypeCode IRI,
+# in any other system a cascade:noteOrDocumentTypeCodeInOtherSystem literal typed by
 # the system read; its description as its title; its status; its docStatus,
 # the status of its content, as cascade:noteOrDocumentContentStatus; its
 # masterIdentifier, the
@@ -29,7 +29,7 @@ CONSTRUCT {
   ?version ?p ?o .
   ?version cascade:paddedDateTime ?padded .
   ?padded cascade:paddedDateTimeProperty cascade:noteOrDocumentDate ;
-    cascade:writtenDate ?written .
+    cascade:timeAsWritten ?written .
 }
 WHERE {
   FILTER NOT EXISTS {
@@ -137,7 +137,7 @@ WHERE {
         void:uriSpace ?stem .
       FILTER (STR(?listedSystem) = ?system)
     }
-    BIND (IF(BOUND(?stem), cascade:noteOrDocumentType, cascade:noteOrDocumentTypeInOtherSystem) AS ?p)
+    BIND (IF(BOUND(?stem), cascade:noteOrDocumentTypeCode, cascade:noteOrDocumentTypeCodeInOtherSystem) AS ?p)
     BIND (IF(BOUND(?stem), IRI(CONCAT(?stem, ENCODE_FOR_URI(?code))), STRDT(?code, IRI(?system))) AS ?o)
   }
   BIND (IF(BOUND(?written), IRI(CONCAT(STR(?version), "#padded-noteOrDocumentDate")), 1/0) AS ?padded)

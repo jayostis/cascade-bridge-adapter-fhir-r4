@@ -19,7 +19,7 @@ CONSTRUCT {
   ?version ?p ?o .
   ?version cascade:paddedDateTime ?paddedNode .
   ?paddedNode cascade:paddedDateTimeProperty ?p ;
-    cascade:writtenDate ?writtenTime .
+    cascade:timeAsWritten ?writtenTime .
 }
 WHERE {
   FILTER NOT EXISTS {
@@ -45,7 +45,7 @@ WHERE {
 
   {
     ?resource xyz:code ?concept . ?concept xyz:text ?o .
-    BIND (cascade:allergen AS ?p)
+    BIND (cascade:allergenName AS ?p)
   }
   UNION
   {
@@ -56,7 +56,7 @@ WHERE {
       ?codings ?earlierSlot ?earlier . ?earlier xyz:display ?earlierDisplay .
       FILTER (xsd:integer(STRAFTER(STR(?earlierSlot), "#_")) < xsd:integer(STRAFTER(STR(?codingSlot), "#_")))
     }
-    BIND (cascade:allergen AS ?p)
+    BIND (cascade:allergenName AS ?p)
   }
   UNION
   {
@@ -150,7 +150,7 @@ WHERE {
   UNION
   {
     ?resource xyz:note ?notes . ?notes ?noteSlot ?note . ?note xyz:text ?o .
-    BIND (cascade:notes AS ?p)
+    BIND (cascade:addedNoteText AS ?p)
   }
   BIND (IF(BOUND(?writtenTime), IRI(CONCAT(STR(?version), "#padded-", STRAFTER(STR(?p), "#"))), 1/0) AS ?paddedNode)
 }

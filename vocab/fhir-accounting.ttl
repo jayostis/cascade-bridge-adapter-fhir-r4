@@ -275,11 +275,9 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernCodes ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:snomedCode ] ,
-    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:icd10Code ] ,
+    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:conditionCode ] ,
     [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:conditionCodeInOtherSystem ] ,
-    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:snomedCode ] ,
-    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:cptCode ] ,
+    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:procedureCode ] ,
     [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:procedureCodeInOtherSystem ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:testCode ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:testCodeInOtherSystem ] ,
@@ -304,11 +302,9 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernCodes ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:snomedCode ] ,
-    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:icd10Code ] ,
+    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:conditionCode ] ,
     [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:conditionCodeInOtherSystem ] ,
-    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:snomedCode ] ,
-    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:cptCode ] ,
+    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:procedureCode ] ,
     [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:procedureCodeInOtherSystem ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:testCode ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:testCodeInOtherSystem ] ,
@@ -333,7 +329,7 @@
     [ bridge:inSourceRecordType "Medication" ; bridge:inRecordClass cascade:MedicationDispense ; bridge:asProperty cascade:drugName ] ,
     [ bridge:inSourceRecordType "DiagnosticReport" ; bridge:inRecordClass cascade:DiagnosticReport ; bridge:asProperty cascade:reportName ] ,
     [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:conditionName ] ,
-    [ bridge:inSourceRecordType "AllergyIntolerance" ; bridge:inRecordClass cascade:AllergyOrIntolerance ; bridge:asProperty cascade:allergen ] .
+    [ bridge:inSourceRecordType "AllergyIntolerance" ; bridge:inRecordClass cascade:AllergyOrIntolerance ; bridge:asProperty cascade:allergenName ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/collection" ;
@@ -770,11 +766,9 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernCodes ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:snomedCode ] ,
-    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:icd10Code ] ,
+    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:conditionCode ] ,
     [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:conditionCodeInOtherSystem ] ,
-    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:snomedCode ] ,
-    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:cptCode ] ,
+    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:procedureCode ] ,
     [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:procedureCodeInOtherSystem ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:testCode ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:testCodeInOtherSystem ] ,
@@ -799,11 +793,9 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernCodes ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:snomedCode ] ,
-    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:icd10Code ] ,
+    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:conditionCode ] ,
     [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:conditionCodeInOtherSystem ] ,
-    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:snomedCode ] ,
-    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:cptCode ] ,
+    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:procedureCode ] ,
     [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:procedureCodeInOtherSystem ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:testCode ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:testCodeInOtherSystem ] ,
@@ -828,7 +820,7 @@
     [ bridge:inSourceRecordType "Medication" ; bridge:inRecordClass cascade:MedicationDispense ; bridge:asProperty cascade:drugName ] ,
     [ bridge:inSourceRecordType "DiagnosticReport" ; bridge:inRecordClass cascade:DiagnosticReport ; bridge:asProperty cascade:reportName ] ,
     [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:conditionName ] ,
-    [ bridge:inSourceRecordType "AllergyIntolerance" ; bridge:inRecordClass cascade:AllergyOrIntolerance ; bridge:asProperty cascade:allergen ] .
+    [ bridge:inSourceRecordType "AllergyIntolerance" ; bridge:inRecordClass cascade:AllergyOrIntolerance ; bridge:asProperty cascade:allergenName ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/collection" ;
@@ -1156,7 +1148,7 @@
   bridge:concern bridge:concernReferences ;
   bridge:namesGap fhirr4:interpretationVariantLink ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:variantInterpreted ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:subjectVariant ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/derivedFrom/type" ;
@@ -1443,14 +1435,14 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernDates ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dispenseValidityPeriodEnd ] .
+    [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dispenseRequestValidityPeriodEnd ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dispenseRequest/validityPeriod/start" ;
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernDates ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dispenseValidityPeriodStart ] .
+    [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dispenseRequestValidityPeriodStart ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosage" ;
@@ -2079,7 +2071,7 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernText ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "MedicationStatement" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosage ] .
+    [ bridge:inSourceRecordType "MedicationStatement" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosageInstructionText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosage/timing" ;
@@ -2971,7 +2963,7 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernText ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosage ] .
+    [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosageInstructionText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/dosageInstruction/timing" ;
@@ -3244,13 +3236,13 @@
   bridge:sourcePath "/contained/doseQuantity/unit" ;
   bridge:verdict bridge:carried ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:doseQuantity ] .
+    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:vaccineDoseQuantityText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/doseQuantity/value" ;
   bridge:verdict bridge:carried ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:doseQuantity ] .
+    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:vaccineDoseQuantityText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/effectiveDateTime" ;
@@ -3261,7 +3253,7 @@
     [ bridge:inSourceRecordType "DiagnosticReport" ; bridge:inRecordClass cascade:DiagnosticReport ; bridge:asProperty cascade:reportEffectiveTime ] ,
     [ bridge:inSourceRecordType "MedicationStatement" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:medicationUseStartDate ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultClinicallyRelevantTime ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:interpretedDate ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:variantInterpretationDate ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/effectiveInstant" ;
@@ -3270,7 +3262,7 @@
   bridge:namesGap fhirr4:variantTimeNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultClinicallyRelevantTime ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:interpretedDate ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:variantInterpretationDate ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/effectivePeriod" ;
@@ -3293,7 +3285,7 @@
     [ bridge:inSourceRecordType "DiagnosticReport" ; bridge:inRecordClass cascade:DiagnosticReport ; bridge:asProperty cascade:reportEffectiveTime ] ,
     [ bridge:inSourceRecordType "MedicationStatement" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:medicationUseStartDate ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultClinicallyRelevantTime ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:interpretedDate ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:variantInterpretationDate ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/eventHistory" ;
@@ -3499,7 +3491,7 @@
   bridge:namesGap fhirr4:issuedNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "DiagnosticReport" ; bridge:inRecordClass cascade:DiagnosticReport ; bridge:asProperty cascade:reportIssuedTime ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:interpretedDate ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:variantInterpretationDate ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/location" ;
@@ -3522,7 +3514,7 @@
   bridge:sourcePath "/contained/lotNumber" ;
   bridge:verdict bridge:carried ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:lotNumber ] .
+    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:vaccineLotNumber ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/medicationCodeableConcept" ;
@@ -3736,10 +3728,10 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernText ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "AllergyIntolerance" ; bridge:inRecordClass cascade:AllergyOrIntolerance ; bridge:asProperty cascade:notes ] ,
-    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:notes ] ,
-    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:notes ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:notes ] .
+    [ bridge:inSourceRecordType "AllergyIntolerance" ; bridge:inRecordClass cascade:AllergyOrIntolerance ; bridge:asProperty cascade:addedNoteText ] ,
+    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:addedNoteText ] ,
+    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:addedNoteText ] ,
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:addedNoteText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/occurrenceDateTime" ;
@@ -4050,7 +4042,7 @@
   bridge:verdict bridge:carried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:unitText ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRange ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRangeText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/referenceRange/high/value" ;
@@ -4059,7 +4051,7 @@
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:decimalValue ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:writtenValue ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRange ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRangeText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/referenceRange/low" ;
@@ -4088,7 +4080,7 @@
   bridge:verdict bridge:carried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:unitText ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRange ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRangeText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/referenceRange/low/value" ;
@@ -4097,14 +4089,14 @@
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:decimalValue ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:writtenValue ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRange ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRangeText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/referenceRange/text" ;
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernText ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRange ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRangeText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/referenceRange/type" ;
@@ -4198,7 +4190,7 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernText ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:routeOfAdministration ] .
+    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:vaccinationRouteText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/site" ;
@@ -4221,7 +4213,7 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernText ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:administrationSite ] .
+    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:vaccinationBodySiteText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/specimen" ;
@@ -4543,7 +4535,7 @@
   bridge:concern bridge:concernCodes ;
   bridge:namesGap fhirr4:labResultValueCode ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultCode ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueCode ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/valueCodeableConcept/coding/display" ;
@@ -4561,7 +4553,7 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernText ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/valueInteger" ;
@@ -4570,7 +4562,7 @@
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:decimalValue ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:writtenValue ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/valueQuantity" ;
@@ -4583,7 +4575,7 @@
   bridge:namesGap fhirr4:labResultUnitCodeOutsideUcum ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:ucumUnit ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultUnit ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultUnitText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/valueQuantity/comparator" ;
@@ -4591,7 +4583,7 @@
   bridge:namesGap fhirr4:labResultNumberRefused ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:quantityComparator ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/valueQuantity/system" ;
@@ -4603,7 +4595,7 @@
   bridge:verdict bridge:carried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:unitText ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultUnit ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultUnitText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/valueQuantity/value" ;
@@ -4612,7 +4604,7 @@
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:decimalValue ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:writtenValue ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/valueRange" ;
@@ -4640,7 +4632,7 @@
   bridge:verdict bridge:carried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:unitText ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/valueRange/high/value" ;
@@ -4649,7 +4641,7 @@
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:decimalValue ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:writtenValue ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/valueRange/low" ;
@@ -4673,7 +4665,7 @@
   bridge:verdict bridge:carried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:unitText ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/valueRange/low/value" ;
@@ -4682,7 +4674,7 @@
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:decimalValue ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:writtenValue ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/valueRatio" ;
@@ -4725,7 +4717,7 @@
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:decimalValue ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:writtenValue ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/valueRatio/numerator" ;
@@ -4764,14 +4756,14 @@
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:decimalValue ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:writtenValue ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/valueString" ;
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernText ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/verificationStatus" ;
@@ -4963,7 +4955,7 @@
   bridge:concern bridge:concernReferences ;
   bridge:namesGap fhirr4:interpretationVariantLink ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:variantInterpreted ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:subjectVariant ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/destination" ;
@@ -5244,14 +5236,14 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernDates ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dispenseValidityPeriodEnd ] .
+    [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dispenseRequestValidityPeriodEnd ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dispenseRequest/validityPeriod/start" ;
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernDates ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dispenseValidityPeriodStart ] .
+    [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dispenseRequestValidityPeriodStart ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosage" ;
@@ -5886,7 +5878,7 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernText ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "MedicationStatement" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosage ] .
+    [ bridge:inSourceRecordType "MedicationStatement" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosageInstructionText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosage/timing" ;
@@ -6778,7 +6770,7 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernText ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosage ] .
+    [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosageInstructionText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/dosageInstruction/timing" ;
@@ -7051,13 +7043,13 @@
   bridge:sourcePath "/doseQuantity/unit" ;
   bridge:verdict bridge:carried ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:doseQuantity ] .
+    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:vaccineDoseQuantityText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/doseQuantity/value" ;
   bridge:verdict bridge:carried ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:doseQuantity ] .
+    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:vaccineDoseQuantityText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/effectiveDateTime" ;
@@ -7068,7 +7060,7 @@
     [ bridge:inSourceRecordType "DiagnosticReport" ; bridge:inRecordClass cascade:DiagnosticReport ; bridge:asProperty cascade:reportEffectiveTime ] ,
     [ bridge:inSourceRecordType "MedicationStatement" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:medicationUseStartDate ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultClinicallyRelevantTime ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:interpretedDate ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:variantInterpretationDate ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/effectiveInstant" ;
@@ -7077,7 +7069,7 @@
   bridge:namesGap fhirr4:variantTimeNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultClinicallyRelevantTime ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:interpretedDate ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:variantInterpretationDate ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/effectivePeriod" ;
@@ -7100,7 +7092,7 @@
     [ bridge:inSourceRecordType "DiagnosticReport" ; bridge:inRecordClass cascade:DiagnosticReport ; bridge:asProperty cascade:reportEffectiveTime ] ,
     [ bridge:inSourceRecordType "MedicationStatement" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:medicationUseStartDate ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultClinicallyRelevantTime ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:interpretedDate ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:variantInterpretationDate ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/eventHistory" ;
@@ -7314,7 +7306,7 @@
   bridge:namesGap fhirr4:issuedNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "DiagnosticReport" ; bridge:inRecordClass cascade:DiagnosticReport ; bridge:asProperty cascade:reportIssuedTime ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:interpretedDate ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:variantInterpretationDate ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/location" ;
@@ -7337,7 +7329,7 @@
   bridge:sourcePath "/lotNumber" ;
   bridge:verdict bridge:carried ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:lotNumber ] .
+    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:vaccineLotNumber ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/medicationCodeableConcept" ;
@@ -7555,10 +7547,10 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernText ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "AllergyIntolerance" ; bridge:inRecordClass cascade:AllergyOrIntolerance ; bridge:asProperty cascade:notes ] ,
-    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:notes ] ,
-    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:notes ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:notes ] .
+    [ bridge:inSourceRecordType "AllergyIntolerance" ; bridge:inRecordClass cascade:AllergyOrIntolerance ; bridge:asProperty cascade:addedNoteText ] ,
+    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:addedNoteText ] ,
+    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:addedNoteText ] ,
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:addedNoteText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/occurrenceDateTime" ;
@@ -7871,7 +7863,7 @@
   bridge:verdict bridge:carried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:unitText ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRange ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRangeText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/referenceRange/high/value" ;
@@ -7880,7 +7872,7 @@
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:decimalValue ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:writtenValue ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRange ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRangeText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/referenceRange/low" ;
@@ -7909,7 +7901,7 @@
   bridge:verdict bridge:carried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:unitText ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRange ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRangeText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/referenceRange/low/value" ;
@@ -7918,14 +7910,14 @@
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:decimalValue ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:writtenValue ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRange ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRangeText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/referenceRange/text" ;
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernText ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRange ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRangeText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/referenceRange/type" ;
@@ -8262,11 +8254,9 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernCodes ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:snomedCode ] ,
-    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:icd10Code ] ,
+    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:conditionCode ] ,
     [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:conditionCodeInOtherSystem ] ,
-    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:snomedCode ] ,
-    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:cptCode ] ,
+    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:procedureCode ] ,
     [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:procedureCodeInOtherSystem ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:testCode ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:testCodeInOtherSystem ] ,
@@ -8291,11 +8281,9 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernCodes ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:snomedCode ] ,
-    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:icd10Code ] ,
+    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:conditionCode ] ,
     [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:conditionCodeInOtherSystem ] ,
-    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:snomedCode ] ,
-    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:cptCode ] ,
+    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:procedureCode ] ,
     [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:procedureCodeInOtherSystem ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:testCode ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:testCodeInOtherSystem ] ,
@@ -8320,7 +8308,7 @@
     [ bridge:inSourceRecordType "Medication" ; bridge:inRecordClass cascade:MedicationDispense ; bridge:asProperty cascade:drugName ] ,
     [ bridge:inSourceRecordType "DiagnosticReport" ; bridge:inRecordClass cascade:DiagnosticReport ; bridge:asProperty cascade:reportName ] ,
     [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:conditionName ] ,
-    [ bridge:inSourceRecordType "AllergyIntolerance" ; bridge:inRecordClass cascade:AllergyOrIntolerance ; bridge:asProperty cascade:allergen ] .
+    [ bridge:inSourceRecordType "AllergyIntolerance" ; bridge:inRecordClass cascade:AllergyOrIntolerance ; bridge:asProperty cascade:allergenName ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/collection" ;
@@ -8757,11 +8745,9 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernCodes ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:snomedCode ] ,
-    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:icd10Code ] ,
+    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:conditionCode ] ,
     [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:conditionCodeInOtherSystem ] ,
-    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:snomedCode ] ,
-    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:cptCode ] ,
+    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:procedureCode ] ,
     [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:procedureCodeInOtherSystem ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:testCode ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:testCodeInOtherSystem ] ,
@@ -8786,11 +8772,9 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernCodes ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:snomedCode ] ,
-    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:icd10Code ] ,
+    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:conditionCode ] ,
     [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:conditionCodeInOtherSystem ] ,
-    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:snomedCode ] ,
-    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:cptCode ] ,
+    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:procedureCode ] ,
     [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:procedureCodeInOtherSystem ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:testCode ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:testCodeInOtherSystem ] ,
@@ -8815,7 +8799,7 @@
     [ bridge:inSourceRecordType "Medication" ; bridge:inRecordClass cascade:MedicationDispense ; bridge:asProperty cascade:drugName ] ,
     [ bridge:inSourceRecordType "DiagnosticReport" ; bridge:inRecordClass cascade:DiagnosticReport ; bridge:asProperty cascade:reportName ] ,
     [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:conditionName ] ,
-    [ bridge:inSourceRecordType "AllergyIntolerance" ; bridge:inRecordClass cascade:AllergyOrIntolerance ; bridge:asProperty cascade:allergen ] .
+    [ bridge:inSourceRecordType "AllergyIntolerance" ; bridge:inRecordClass cascade:AllergyOrIntolerance ; bridge:asProperty cascade:allergenName ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/collection" ;
@@ -9143,7 +9127,7 @@
   bridge:concern bridge:concernReferences ;
   bridge:namesGap fhirr4:interpretationVariantLink ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:variantInterpreted ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:subjectVariant ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/derivedFrom/type" ;
@@ -9430,14 +9414,14 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernDates ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dispenseValidityPeriodEnd ] .
+    [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dispenseRequestValidityPeriodEnd ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dispenseRequest/validityPeriod/start" ;
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernDates ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dispenseValidityPeriodStart ] .
+    [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dispenseRequestValidityPeriodStart ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosage" ;
@@ -10066,7 +10050,7 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernText ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "MedicationStatement" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosage ] .
+    [ bridge:inSourceRecordType "MedicationStatement" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosageInstructionText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosage/timing" ;
@@ -10958,7 +10942,7 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernText ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosage ] .
+    [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosageInstructionText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/dosageInstruction/timing" ;
@@ -11231,13 +11215,13 @@
   bridge:sourcePath "/resource/contained/doseQuantity/unit" ;
   bridge:verdict bridge:carried ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:doseQuantity ] .
+    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:vaccineDoseQuantityText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/doseQuantity/value" ;
   bridge:verdict bridge:carried ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:doseQuantity ] .
+    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:vaccineDoseQuantityText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/effectiveDateTime" ;
@@ -11248,7 +11232,7 @@
     [ bridge:inSourceRecordType "DiagnosticReport" ; bridge:inRecordClass cascade:DiagnosticReport ; bridge:asProperty cascade:reportEffectiveTime ] ,
     [ bridge:inSourceRecordType "MedicationStatement" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:medicationUseStartDate ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultClinicallyRelevantTime ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:interpretedDate ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:variantInterpretationDate ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/effectiveInstant" ;
@@ -11257,7 +11241,7 @@
   bridge:namesGap fhirr4:variantTimeNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultClinicallyRelevantTime ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:interpretedDate ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:variantInterpretationDate ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/effectivePeriod" ;
@@ -11280,7 +11264,7 @@
     [ bridge:inSourceRecordType "DiagnosticReport" ; bridge:inRecordClass cascade:DiagnosticReport ; bridge:asProperty cascade:reportEffectiveTime ] ,
     [ bridge:inSourceRecordType "MedicationStatement" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:medicationUseStartDate ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultClinicallyRelevantTime ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:interpretedDate ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:variantInterpretationDate ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/eventHistory" ;
@@ -11486,7 +11470,7 @@
   bridge:namesGap fhirr4:issuedNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "DiagnosticReport" ; bridge:inRecordClass cascade:DiagnosticReport ; bridge:asProperty cascade:reportIssuedTime ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:interpretedDate ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:variantInterpretationDate ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/location" ;
@@ -11509,7 +11493,7 @@
   bridge:sourcePath "/resource/contained/lotNumber" ;
   bridge:verdict bridge:carried ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:lotNumber ] .
+    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:vaccineLotNumber ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/medicationCodeableConcept" ;
@@ -11723,10 +11707,10 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernText ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "AllergyIntolerance" ; bridge:inRecordClass cascade:AllergyOrIntolerance ; bridge:asProperty cascade:notes ] ,
-    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:notes ] ,
-    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:notes ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:notes ] .
+    [ bridge:inSourceRecordType "AllergyIntolerance" ; bridge:inRecordClass cascade:AllergyOrIntolerance ; bridge:asProperty cascade:addedNoteText ] ,
+    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:addedNoteText ] ,
+    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:addedNoteText ] ,
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:addedNoteText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/occurrenceDateTime" ;
@@ -12037,7 +12021,7 @@
   bridge:verdict bridge:carried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:unitText ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRange ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRangeText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/referenceRange/high/value" ;
@@ -12046,7 +12030,7 @@
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:decimalValue ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:writtenValue ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRange ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRangeText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/referenceRange/low" ;
@@ -12075,7 +12059,7 @@
   bridge:verdict bridge:carried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:unitText ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRange ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRangeText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/referenceRange/low/value" ;
@@ -12084,14 +12068,14 @@
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:decimalValue ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:writtenValue ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRange ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRangeText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/referenceRange/text" ;
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernText ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRange ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRangeText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/referenceRange/type" ;
@@ -12185,7 +12169,7 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernText ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:routeOfAdministration ] .
+    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:vaccinationRouteText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/site" ;
@@ -12208,7 +12192,7 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernText ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:administrationSite ] .
+    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:vaccinationBodySiteText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/specimen" ;
@@ -12530,7 +12514,7 @@
   bridge:concern bridge:concernCodes ;
   bridge:namesGap fhirr4:labResultValueCode ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultCode ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueCode ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/valueCodeableConcept/coding/display" ;
@@ -12548,7 +12532,7 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernText ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/valueInteger" ;
@@ -12557,7 +12541,7 @@
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:decimalValue ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:writtenValue ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/valueQuantity" ;
@@ -12570,7 +12554,7 @@
   bridge:namesGap fhirr4:labResultUnitCodeOutsideUcum ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:ucumUnit ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultUnit ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultUnitText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/valueQuantity/comparator" ;
@@ -12578,7 +12562,7 @@
   bridge:namesGap fhirr4:labResultNumberRefused ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:quantityComparator ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/valueQuantity/system" ;
@@ -12590,7 +12574,7 @@
   bridge:verdict bridge:carried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:unitText ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultUnit ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultUnitText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/valueQuantity/value" ;
@@ -12599,7 +12583,7 @@
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:decimalValue ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:writtenValue ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/valueRange" ;
@@ -12627,7 +12611,7 @@
   bridge:verdict bridge:carried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:unitText ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/valueRange/high/value" ;
@@ -12636,7 +12620,7 @@
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:decimalValue ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:writtenValue ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/valueRange/low" ;
@@ -12660,7 +12644,7 @@
   bridge:verdict bridge:carried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:unitText ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/valueRange/low/value" ;
@@ -12669,7 +12653,7 @@
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:decimalValue ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:writtenValue ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/valueRatio" ;
@@ -12712,7 +12696,7 @@
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:decimalValue ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:writtenValue ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/valueRatio/numerator" ;
@@ -12751,14 +12735,14 @@
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:decimalValue ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:writtenValue ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/valueString" ;
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernText ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/verificationStatus" ;
@@ -12950,7 +12934,7 @@
   bridge:concern bridge:concernReferences ;
   bridge:namesGap fhirr4:interpretationVariantLink ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:variantInterpreted ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:subjectVariant ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/derivedFrom/type" ;
@@ -13237,14 +13221,14 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernDates ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dispenseValidityPeriodEnd ] .
+    [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dispenseRequestValidityPeriodEnd ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dispenseRequest/validityPeriod/start" ;
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernDates ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dispenseValidityPeriodStart ] .
+    [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dispenseRequestValidityPeriodStart ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosage" ;
@@ -13873,7 +13857,7 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernText ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "MedicationStatement" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosage ] .
+    [ bridge:inSourceRecordType "MedicationStatement" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosageInstructionText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosage/timing" ;
@@ -14765,7 +14749,7 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernText ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosage ] .
+    [ bridge:inSourceRecordType "MedicationRequest" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:dosageInstructionText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/dosageInstruction/timing" ;
@@ -15038,13 +15022,13 @@
   bridge:sourcePath "/resource/doseQuantity/unit" ;
   bridge:verdict bridge:carried ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:doseQuantity ] .
+    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:vaccineDoseQuantityText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/doseQuantity/value" ;
   bridge:verdict bridge:carried ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:doseQuantity ] .
+    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:vaccineDoseQuantityText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/effectiveDateTime" ;
@@ -15055,7 +15039,7 @@
     [ bridge:inSourceRecordType "DiagnosticReport" ; bridge:inRecordClass cascade:DiagnosticReport ; bridge:asProperty cascade:reportEffectiveTime ] ,
     [ bridge:inSourceRecordType "MedicationStatement" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:medicationUseStartDate ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultClinicallyRelevantTime ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:interpretedDate ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:variantInterpretationDate ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/effectiveInstant" ;
@@ -15064,7 +15048,7 @@
   bridge:namesGap fhirr4:variantTimeNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultClinicallyRelevantTime ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:interpretedDate ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:variantInterpretationDate ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/effectivePeriod" ;
@@ -15087,7 +15071,7 @@
     [ bridge:inSourceRecordType "DiagnosticReport" ; bridge:inRecordClass cascade:DiagnosticReport ; bridge:asProperty cascade:reportEffectiveTime ] ,
     [ bridge:inSourceRecordType "MedicationStatement" ; bridge:inRecordClass cascade:PrescribedOrReportedMedication ; bridge:asProperty cascade:medicationUseStartDate ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultClinicallyRelevantTime ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:interpretedDate ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:variantInterpretationDate ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/eventHistory" ;
@@ -15297,7 +15281,7 @@
   bridge:namesGap fhirr4:issuedNotCarried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "DiagnosticReport" ; bridge:inRecordClass cascade:DiagnosticReport ; bridge:asProperty cascade:reportIssuedTime ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:interpretedDate ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:variantInterpretationDate ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/location" ;
@@ -15320,7 +15304,7 @@
   bridge:sourcePath "/resource/lotNumber" ;
   bridge:verdict bridge:carried ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:lotNumber ] .
+    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:vaccineLotNumber ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/medicationCodeableConcept" ;
@@ -15538,10 +15522,10 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernText ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "AllergyIntolerance" ; bridge:inRecordClass cascade:AllergyOrIntolerance ; bridge:asProperty cascade:notes ] ,
-    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:notes ] ,
-    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:notes ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:notes ] .
+    [ bridge:inSourceRecordType "AllergyIntolerance" ; bridge:inRecordClass cascade:AllergyOrIntolerance ; bridge:asProperty cascade:addedNoteText ] ,
+    [ bridge:inSourceRecordType "Condition" ; bridge:inRecordClass cascade:ProblemOrDiagnosis ; bridge:asProperty cascade:addedNoteText ] ,
+    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:addedNoteText ] ,
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:addedNoteText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/occurrenceDateTime" ;
@@ -15854,7 +15838,7 @@
   bridge:verdict bridge:carried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:unitText ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRange ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRangeText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/referenceRange/high/value" ;
@@ -15863,7 +15847,7 @@
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:decimalValue ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:writtenValue ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRange ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRangeText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/referenceRange/low" ;
@@ -15892,7 +15876,7 @@
   bridge:verdict bridge:carried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:unitText ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRange ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRangeText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/referenceRange/low/value" ;
@@ -15901,14 +15885,14 @@
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:decimalValue ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:writtenValue ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRange ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRangeText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/referenceRange/text" ;
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernText ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRange ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:referenceRangeText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/referenceRange/type" ;
@@ -16003,7 +15987,7 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernText ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:routeOfAdministration ] .
+    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:vaccinationRouteText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/site" ;
@@ -16026,7 +16010,7 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernText ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:administrationSite ] .
+    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:vaccinationBodySiteText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/specimen" ;
@@ -16353,7 +16337,7 @@
   bridge:concern bridge:concernCodes ;
   bridge:namesGap fhirr4:labResultValueCode ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultCode ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueCode ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/valueCodeableConcept/coding/display" ;
@@ -16371,7 +16355,7 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernText ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/valueInteger" ;
@@ -16380,7 +16364,7 @@
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:decimalValue ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:writtenValue ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/valueQuantity" ;
@@ -16393,7 +16377,7 @@
   bridge:namesGap fhirr4:labResultUnitCodeOutsideUcum ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:ucumUnit ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultUnit ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultUnitText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/valueQuantity/comparator" ;
@@ -16401,7 +16385,7 @@
   bridge:namesGap fhirr4:labResultNumberRefused ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:quantityComparator ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/valueQuantity/system" ;
@@ -16413,7 +16397,7 @@
   bridge:verdict bridge:carried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:unitText ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultUnit ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultUnitText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/valueQuantity/value" ;
@@ -16422,7 +16406,7 @@
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:decimalValue ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:writtenValue ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/valueRange" ;
@@ -16450,7 +16434,7 @@
   bridge:verdict bridge:carried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:unitText ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/valueRange/high/value" ;
@@ -16459,7 +16443,7 @@
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:decimalValue ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:writtenValue ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/valueRange/low" ;
@@ -16483,7 +16467,7 @@
   bridge:verdict bridge:carried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:unitText ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/valueRange/low/value" ;
@@ -16492,7 +16476,7 @@
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:decimalValue ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:writtenValue ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/valueRatio" ;
@@ -16535,7 +16519,7 @@
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:decimalValue ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:writtenValue ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/valueRatio/numerator" ;
@@ -16574,14 +16558,14 @@
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:decimalValue ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:writtenValue ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/valueString" ;
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernText ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/verificationStatus" ;
@@ -16664,7 +16648,7 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernText ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:routeOfAdministration ] .
+    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:vaccinationRouteText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/site" ;
@@ -16687,7 +16671,7 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernText ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:administrationSite ] .
+    [ bridge:inSourceRecordType "Immunization" ; bridge:inRecordClass cascade:Vaccination ; bridge:asProperty cascade:vaccinationBodySiteText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/specimen" ;
@@ -17014,7 +16998,7 @@
   bridge:concern bridge:concernCodes ;
   bridge:namesGap fhirr4:labResultValueCode ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultCode ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueCode ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/valueCodeableConcept/coding/display" ;
@@ -17032,7 +17016,7 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernText ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/valueInteger" ;
@@ -17041,7 +17025,7 @@
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:decimalValue ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:writtenValue ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/valueQuantity" ;
@@ -17054,7 +17038,7 @@
   bridge:namesGap fhirr4:labResultUnitCodeOutsideUcum ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:ucumUnit ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultUnit ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultUnitText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/valueQuantity/comparator" ;
@@ -17062,7 +17046,7 @@
   bridge:namesGap fhirr4:labResultNumberRefused ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:quantityComparator ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/valueQuantity/system" ;
@@ -17074,7 +17058,7 @@
   bridge:verdict bridge:carried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:unitText ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultUnit ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultUnitText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/valueQuantity/value" ;
@@ -17083,7 +17067,7 @@
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:decimalValue ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:writtenValue ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/valueRange" ;
@@ -17111,7 +17095,7 @@
   bridge:verdict bridge:carried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:unitText ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/valueRange/high/value" ;
@@ -17120,7 +17104,7 @@
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:decimalValue ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:writtenValue ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/valueRange/low" ;
@@ -17144,7 +17128,7 @@
   bridge:verdict bridge:carried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:unitText ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/valueRange/low/value" ;
@@ -17153,7 +17137,7 @@
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:decimalValue ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:writtenValue ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/valueRatio" ;
@@ -17196,7 +17180,7 @@
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:decimalValue ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:writtenValue ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/valueRatio/numerator" ;
@@ -17235,14 +17219,14 @@
   bridge:carriedAs
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:decimalValue ] ,
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:writtenValue ] ,
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/valueString" ;
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernText ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValue ] .
+    [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:LaboratoryTestResult ; bridge:asProperty cascade:resultValueText ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/verificationStatus" ;
@@ -17407,16 +17391,16 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernCodes ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "DocumentReference" ; bridge:inRecordClass cascade:ClinicalNoteOrDocument ; bridge:asProperty cascade:noteOrDocumentType ] ,
-    [ bridge:inSourceRecordType "DocumentReference" ; bridge:inRecordClass cascade:ClinicalNoteOrDocument ; bridge:asProperty cascade:noteOrDocumentTypeInOtherSystem ] .
+    [ bridge:inSourceRecordType "DocumentReference" ; bridge:inRecordClass cascade:ClinicalNoteOrDocument ; bridge:asProperty cascade:noteOrDocumentTypeCode ] ,
+    [ bridge:inSourceRecordType "DocumentReference" ; bridge:inRecordClass cascade:ClinicalNoteOrDocument ; bridge:asProperty cascade:noteOrDocumentTypeCodeInOtherSystem ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/type/coding/system" ;
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernCodes ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "DocumentReference" ; bridge:inRecordClass cascade:ClinicalNoteOrDocument ; bridge:asProperty cascade:noteOrDocumentType ] ,
-    [ bridge:inSourceRecordType "DocumentReference" ; bridge:inRecordClass cascade:ClinicalNoteOrDocument ; bridge:asProperty cascade:noteOrDocumentTypeInOtherSystem ] .
+    [ bridge:inSourceRecordType "DocumentReference" ; bridge:inRecordClass cascade:ClinicalNoteOrDocument ; bridge:asProperty cascade:noteOrDocumentTypeCode ] ,
+    [ bridge:inSourceRecordType "DocumentReference" ; bridge:inRecordClass cascade:ClinicalNoteOrDocument ; bridge:asProperty cascade:noteOrDocumentTypeCodeInOtherSystem ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/content" ;
@@ -17491,16 +17475,16 @@
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernCodes ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "DocumentReference" ; bridge:inRecordClass cascade:ClinicalNoteOrDocument ; bridge:asProperty cascade:noteOrDocumentType ] ,
-    [ bridge:inSourceRecordType "DocumentReference" ; bridge:inRecordClass cascade:ClinicalNoteOrDocument ; bridge:asProperty cascade:noteOrDocumentTypeInOtherSystem ] .
+    [ bridge:inSourceRecordType "DocumentReference" ; bridge:inRecordClass cascade:ClinicalNoteOrDocument ; bridge:asProperty cascade:noteOrDocumentTypeCode ] ,
+    [ bridge:inSourceRecordType "DocumentReference" ; bridge:inRecordClass cascade:ClinicalNoteOrDocument ; bridge:asProperty cascade:noteOrDocumentTypeCodeInOtherSystem ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/type/coding/system" ;
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernCodes ;
   bridge:carriedAs
-    [ bridge:inSourceRecordType "DocumentReference" ; bridge:inRecordClass cascade:ClinicalNoteOrDocument ; bridge:asProperty cascade:noteOrDocumentType ] ,
-    [ bridge:inSourceRecordType "DocumentReference" ; bridge:inRecordClass cascade:ClinicalNoteOrDocument ; bridge:asProperty cascade:noteOrDocumentTypeInOtherSystem ] .
+    [ bridge:inSourceRecordType "DocumentReference" ; bridge:inRecordClass cascade:ClinicalNoteOrDocument ; bridge:asProperty cascade:noteOrDocumentTypeCode ] ,
+    [ bridge:inSourceRecordType "DocumentReference" ; bridge:inRecordClass cascade:ClinicalNoteOrDocument ; bridge:asProperty cascade:noteOrDocumentTypeCodeInOtherSystem ] .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/content" ;

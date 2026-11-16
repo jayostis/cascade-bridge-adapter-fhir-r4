@@ -54,16 +54,16 @@ CONSTRUCT {
     cascade:medicationUseStartDate ?startDate ;
     cascade:prescriptionWrittenDate ?writtenDate ;
     cascade:medicationUseEndDate ?endDate ;
-    cascade:dosage ?dosage .
+    cascade:dosageInstructionText ?dosage .
   ?version cascade:paddedDateTime ?startDatePadded .
   ?startDatePadded cascade:paddedDateTimeProperty cascade:medicationUseStartDate ;
-    cascade:writtenDate ?startDateWritten .
+    cascade:timeAsWritten ?startDateWritten .
   ?version cascade:paddedDateTime ?authoredDatePadded .
   ?authoredDatePadded cascade:paddedDateTimeProperty cascade:prescriptionWrittenDate ;
-    cascade:writtenDate ?authoredDateWritten .
+    cascade:timeAsWritten ?authoredDateWritten .
   ?version cascade:paddedDateTime ?endDatePadded .
   ?endDatePadded cascade:paddedDateTimeProperty cascade:medicationUseEndDate ;
-    cascade:writtenDate ?endDateWritten .
+    cascade:timeAsWritten ?endDateWritten .
 }
 WHERE {
   FILTER NOT EXISTS {

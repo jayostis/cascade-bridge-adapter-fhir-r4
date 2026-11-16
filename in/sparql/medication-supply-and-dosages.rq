@@ -34,7 +34,7 @@ CONSTRUCT {
   ?subject ?p ?o .
   ?subject cascade:paddedDateTime ?paddedNode .
   ?paddedNode cascade:paddedDateTimeProperty ?p ;
-    cascade:writtenDate ?writtenTime .
+    cascade:timeAsWritten ?writtenTime .
   ?quantityNode cascade:decimalValue ?decimal ;
     cascade:writtenValue ?written ;
     cascade:quantityComparator ?comparator ;
@@ -154,8 +154,8 @@ WHERE {
       ?dateRequest xyz:validityPeriod ?validity .
       ?validity ?dateSide ?when .
       VALUES (?dateSide ?p) {
-        (xyz:start cascade:dispenseValidityPeriodStart)
-        (xyz:end cascade:dispenseValidityPeriodEnd)
+        (xyz:start cascade:dispenseRequestValidityPeriodStart)
+        (xyz:end cascade:dispenseRequestValidityPeriodEnd)
       }
       BIND ("" AS ?suffix)
     }

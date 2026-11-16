@@ -22,7 +22,7 @@ CONSTRUCT {
   ?version ?p ?o .
   ?version cascade:paddedDateTime ?padded .
   ?padded cascade:paddedDateTimeProperty ?p ;
-    cascade:writtenDate ?writtenTime .
+    cascade:timeAsWritten ?writtenTime .
   ?quantityNode cascade:decimalValue ?canonical ;
     cascade:writtenValue ?number ;
     cascade:ucumUnit ?quantityUcum ;
