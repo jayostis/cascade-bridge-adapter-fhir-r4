@@ -198,7 +198,7 @@ A dose quantity is carried as a UCUM unit only where its system is UCUM's
 (`fhirr4:doseUnitCodeOutsideUcum`), and one with a comparator, which FHIR's
 SimpleQuantity forbids, writes no node and is `fhirr4:dosageElementNotCarried`.
 Every other dosage element, a later dose and a later dosage's text are findings;
-the first dosage's text is the version's `cascade:dosage`.
+the first dosage's text is the version's `cascade:dosageInstructionText`.
 
 A `Patient`'s `gender` is carried as one of the four codes of
 [administrative-gender](https://hl7.org/fhir/R4/valueset-administrative-gender.html),
@@ -441,6 +441,14 @@ says, read on 2026-10-24:
   `_effectiveDateTime`, `_authoredOn`, `_whenPrepared`, `_whenHandedOver`) or of a Patient's `_gender`, where the
   value itself is absent, is such a node naming the value's property; a code its
   CodeSystem does not define is a finding.
+- **A Condition's or a Procedure's `code`** given only in those two CodeSystems, or only
+  the data-absent-reason extension, has no `cascade:conditionCode` or
+  `cascade:procedureCode`: the reason is a `cascade:ValueAbsentForReason` node
+  naming that property, one `cascade:absentReasonCode` for each such coding, a code the
+  CodeSystem does not define being a finding. Beside a coding in any other system those
+  codings are dropped, since a code of the condition is not a reason it has none. An
+  absent-reason coding beside a real code is dropped with no finding, so only the real codes are written, and
+  that coding is not carried by `/code/coding/code`.
 
 ## Codes
 
@@ -448,10 +456,12 @@ Every coding of a lab result's test, a medication's drug, a condition and a
 procedure is carried, so that a result coded only by its lab's own code keeps it
 ([cascade-vocabulary#290](https://github.com/jayostis/cascade-vocabulary/issues/290)).
 A coding in a system its kind has a term for is that term's IRI: LOINC and
-SNOMED CT for a test, RxNorm and NDC for a drug, SNOMED CT and ICD-10-CM for a
-condition, SNOMED CT and the first CPT code for a procedure. A coding in any
+SNOMED CT for a test, RxNorm and NDC for a drug, and for a condition and a
+procedure every system [`vocab/fhir-code-systems.ttl`](../vocab/fhir-code-systems.ttl)
+gives an IRI stem, every CPT code of a procedure among them, but not data-absent-reason
+and v3 NullFlavor, whose codes are [reasons a code is absent](#dates-and-values-absent-for-a-reason). A coding in any
 other system is a literal on the kind's `…CodeInOtherSystem` term, the code
-typed by the system, ICD-9-CM, HCPCS and a formulary's code among them; a
+typed by the system, HCPCS and a formulary's code among them; a
 SNOMED CT drug code stays a literal while how drug codes are matched is open. A
 system is read as
 [`in/sparql/coding-system-table.rq`](../in/sparql/coding-system-table.rq) reads
@@ -460,8 +470,7 @@ lists as not preferred are read as the system's URI, the rows of
 [`vocab/fhir-code-systems.ttl`](../vocab/fhir-code-systems.ttl) the C-CDA
 adapter holds too, so one code from either adapter is one term; an OID no row
 holds is `urn:oid:` and the OID. A coding with no system, a system that is no
-absolute URI, or no code is a finding, `fhirr4:codingNotCarried`; a later CPT code is
-`fhirr4:procedureCptCodeRepeated`. A lab result's interpretation is carried as every coding in HL7's
+absolute URI, or no code is a finding, `fhirr4:codingNotCarried`. A lab result's interpretation is carried as every coding in HL7's
 [v3 ObservationInterpretation](https://terminology.hl7.org/CodeSystem-v3-ObservationInterpretation.html),
 the code kept as written
 ([cascade-vocabulary#298](https://github.com/jayostis/cascade-vocabulary/issues/298));

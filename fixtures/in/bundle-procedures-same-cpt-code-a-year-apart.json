@@ -1,0 +1,48 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "proc-venipuncture-1",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "36415",
+              "display": "Collection of venous blood by venipuncture"
+            }
+          ],
+          "text": "Blood draw"
+        },
+        "subject": {
+          "reference": "Patient/pat-conformance-1"
+        },
+        "performedDateTime": "2024-03-12"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "proc-venipuncture-2",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.ama-assn.org/go/cpt",
+              "code": "36415",
+              "display": "Collection of venous blood by venipuncture"
+            }
+          ],
+          "text": "Blood draw"
+        },
+        "subject": {
+          "reference": "Patient/pat-conformance-1"
+        },
+        "performedDateTime": "2025-03-11"
+      }
+    }
+  ]
+}

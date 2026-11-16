@@ -7,24 +7,24 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;CdXcDxo68jGjrGUV66oxHaoFGUy6rzJMerBZPSTyFqs> cascade:dispenseHandedOverTime "2026-01-12T09:30:00-05:00"^^xsd:dateTime ;
-	cascade:paddedDateTime <ni:///sha-256;CdXcDxo68jGjrGUV66oxHaoFGUy6rzJMerBZPSTyFqs#padded-dispenseHandedOverTime> .
-<ni:///sha-256;CdXcDxo68jGjrGUV66oxHaoFGUy6rzJMerBZPSTyFqs#padded-dispenseHandedOverTime> cascade:paddedDateTimeProperty cascade:dispenseHandedOverTime ;
-	cascade:writtenDate "2026-01-12T09:30-05:00" .
-<ni:///sha-256;CdXcDxo68jGjrGUV66oxHaoFGUy6rzJMerBZPSTyFqs> cascade:dispensePreparedTime "2026-01"^^xsd:gYearMonth ;
+<ni:///sha-256;rUWD9JPZx4zPUruV9xUO-LOOHKXjAEezoeAWU7srZ9o> cascade:dispenseHandedOverTime "2026-01-12T09:30:00-05:00"^^xsd:dateTime ;
+	cascade:paddedDateTime <ni:///sha-256;rUWD9JPZx4zPUruV9xUO-LOOHKXjAEezoeAWU7srZ9o#padded-dispenseHandedOverTime> .
+<ni:///sha-256;rUWD9JPZx4zPUruV9xUO-LOOHKXjAEezoeAWU7srZ9o#padded-dispenseHandedOverTime> cascade:paddedDateTimeProperty cascade:dispenseHandedOverTime ;
+	cascade:timeAsWritten "2026-01-12T09:30-05:00" .
+<ni:///sha-256;rUWD9JPZx4zPUruV9xUO-LOOHKXjAEezoeAWU7srZ9o> cascade:dispensePreparedTime "2026-01"^^xsd:gYearMonth ;
 	cascade:drugName "Atorvastatin 10 mg tablet" ;
 	cascade:workflowStatus "completed" .
 <urn:uuid:1626334c-3412-8bd0-a987-e96614b99c7b> a cascade:MedicationDispense ;
 	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/MedicationDispense/meddisp-atorvastatin-1> ;
 	cascade:sourceRecordId "meddisp-atorvastatin-1" .
-<ni:///sha-256;CdXcDxo68jGjrGUV66oxHaoFGUy6rzJMerBZPSTyFqs> prov:specializationOf <urn:uuid:1626334c-3412-8bd0-a987-e96614b99c7b> ;
+<ni:///sha-256;rUWD9JPZx4zPUruV9xUO-LOOHKXjAEezoeAWU7srZ9o> prov:specializationOf <urn:uuid:1626334c-3412-8bd0-a987-e96614b99c7b> ;
 	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
-_:a1004a563e7af5afba399b868e91d920 bridge:arrivedAs <ni:///sha-256;CdXcDxo68jGjrGUV66oxHaoFGUy6rzJMerBZPSTyFqs> ;
-	oa:hasSelector _:e421b24469df5ce683b77c8ffa59a057 ;
+_:69e1bc6419133c373d4910570863c8c3 bridge:arrivedAs <ni:///sha-256;rUWD9JPZx4zPUruV9xUO-LOOHKXjAEezoeAWU7srZ9o> ;
+	oa:hasSelector _:29a249b1d2361e0c1e77ae623b28774 ;
 	oa:hasSource <ni:///sha-256;8LSQO6EavAFG9qthdMbkkIFt5RQ_ycChpEMA0dq8i3U> ;
 	prov:wasDerivedFrom <ni:///sha-256;8LSQO6EavAFG9qthdMbkkIFt5RQ_ycChpEMA0dq8i3U> ;
 	prov:wasGeneratedBy _:9c2cd866d70a5faab8347b392ca2f8b7 .
-_:e421b24469df5ce683b77c8ffa59a057 a oa:FragmentSelector ;
+_:29a249b1d2361e0c1e77ae623b28774 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;8LSQO6EavAFG9qthdMbkkIFt5RQ_ycChpEMA0dq8i3U> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;

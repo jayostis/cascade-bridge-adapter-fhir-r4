@@ -7,19 +7,19 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;7pEF2D0Sv_anrdMJvXBZe5XUqZ4l7C9BdWsWaqfGubw> cascade:procedureName "Colonoscopy" ;
-	cascade:snomedCode <http://snomed.info/id/73761001> ;
+<ni:///sha-256;DX-OauQG-Eysg-NuZMPnwnZ2Lyy8eC_KqPf_O_qpKIU> cascade:procedureName "Colonoscopy" ;
+	cascade:procedureCode <http://snomed.info/id/73761001> ;
 	cascade:procedureDate "2025-02-18"^^xsd:date ;
 	cascade:workflowStatus "completed" .
 <urn:uuid:00fd37ef-3c6b-8f05-8366-1b3fa9e1512f> a cascade:MedicalProcedure .
-<ni:///sha-256;7pEF2D0Sv_anrdMJvXBZe5XUqZ4l7C9BdWsWaqfGubw> prov:specializationOf <urn:uuid:00fd37ef-3c6b-8f05-8366-1b3fa9e1512f> ;
+<ni:///sha-256;DX-OauQG-Eysg-NuZMPnwnZ2Lyy8eC_KqPf_O_qpKIU> prov:specializationOf <urn:uuid:00fd37ef-3c6b-8f05-8366-1b3fa9e1512f> ;
 	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
-_:158688944e9d68f6d27449b1e78bfa53 bridge:arrivedAs <ni:///sha-256;7pEF2D0Sv_anrdMJvXBZe5XUqZ4l7C9BdWsWaqfGubw> ;
-	oa:hasSelector _:19c8d288240ed1694661a04615aaca8d ;
+_:501e248d52ca03d0209e8195fb38192f bridge:arrivedAs <ni:///sha-256;DX-OauQG-Eysg-NuZMPnwnZ2Lyy8eC_KqPf_O_qpKIU> ;
+	oa:hasSelector _:d343bfc9ef3c2b29316e028e39d7bb77 ;
 	oa:hasSource <ni:///sha-256;ZHN_FGJQvJOqsoB3RyepI9wkaxX0ubMD5d1CKYDbAgY> ;
 	prov:wasDerivedFrom <ni:///sha-256;ZHN_FGJQvJOqsoB3RyepI9wkaxX0ubMD5d1CKYDbAgY> ;
 	prov:wasGeneratedBy _:349fc5376c5bef19d5bfe7bf844dd93f .
-_:19c8d288240ed1694661a04615aaca8d a oa:FragmentSelector ;
+_:d343bfc9ef3c2b29316e028e39d7bb77 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;ZHN_FGJQvJOqsoB3RyepI9wkaxX0ubMD5d1CKYDbAgY> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;

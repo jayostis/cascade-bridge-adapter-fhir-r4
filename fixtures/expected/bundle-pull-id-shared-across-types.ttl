@@ -7,49 +7,49 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;QmXIZ5YgV5FdMaCKise6sd025rQleTGLjl3uOTKIyZc> cascade:conditionName "Hypertensive disorder" ;
-	cascade:snomedCode <http://snomed.info/id/38341003> .
+<ni:///sha-256;Nm5YSrC1A8gIzsRqm22eAVADDYDfWRAq7pXuVvr0bPs> cascade:conditionName "Hypertensive disorder" ;
+	cascade:conditionCode <http://snomed.info/id/38341003> .
 <urn:uuid:c1305954-8133-8eba-91b2-c9a6d25bf24c> a cascade:ProblemOrDiagnosis ;
 	cascade:sourceUrl <https://fhir.example.org/r4/Condition/x> ;
 	cascade:sourceRecordId "x" .
-<ni:///sha-256;QmXIZ5YgV5FdMaCKise6sd025rQleTGLjl3uOTKIyZc> prov:specializationOf <urn:uuid:c1305954-8133-8eba-91b2-c9a6d25bf24c> ;
+<ni:///sha-256;Nm5YSrC1A8gIzsRqm22eAVADDYDfWRAq7pXuVvr0bPs> prov:specializationOf <urn:uuid:c1305954-8133-8eba-91b2-c9a6d25bf24c> ;
 	cascade:patient <urn:uuid:dccb6776-d640-88e5-a7b3-7e2e1b860abe> .
-_:741f38a205882d853a4717ec6b5fcb21 bridge:arrivedAs <ni:///sha-256;QmXIZ5YgV5FdMaCKise6sd025rQleTGLjl3uOTKIyZc> ;
-	oa:hasSelector _:4c8f4d143aa5c33676d7a12c5420240d ;
+_:b3f14975430316898876334bd77d64ab bridge:arrivedAs <ni:///sha-256;Nm5YSrC1A8gIzsRqm22eAVADDYDfWRAq7pXuVvr0bPs> ;
+	oa:hasSelector _:7e0a3878417f69d02a23c25385942b14 ;
 	oa:hasSource <ni:///sha-256;SzF6-XEFLKjxbtd8aa3mN8JC3bdBYWiS1eHtBWyaTkk> ;
 	prov:wasDerivedFrom <ni:///sha-256;SzF6-XEFLKjxbtd8aa3mN8JC3bdBYWiS1eHtBWyaTkk> ;
 	prov:wasGeneratedBy _:45c8a17c5dd886b831e7b85ddf62ff1b .
-_:4c8f4d143aa5c33676d7a12c5420240d a oa:FragmentSelector ;
+_:7e0a3878417f69d02a23c25385942b14 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/0" .
-<ni:///sha-256;Ek6s_zrvGGEWnqA3yg5TjdzH8F5Vb1SGV0aI2pcQlXA> cascade:allergen "Penicillin" ;
+<ni:///sha-256;h3MdJKhfWmMJ2N3woerThB2qx7V8_oRLFDj0bOamQRI> cascade:allergenName "Penicillin" ;
 	cascade:allergenCode <http://snomed.info/id/373270004> .
 <urn:uuid:f290e266-4177-8c91-91a1-2aa88f880560> a cascade:AllergyOrIntolerance ;
 	cascade:sourceUrl <https://fhir.example.org/r4/AllergyIntolerance/x> ;
 	cascade:sourceRecordId "x" .
-<ni:///sha-256;Ek6s_zrvGGEWnqA3yg5TjdzH8F5Vb1SGV0aI2pcQlXA> prov:specializationOf <urn:uuid:f290e266-4177-8c91-91a1-2aa88f880560> ;
+<ni:///sha-256;h3MdJKhfWmMJ2N3woerThB2qx7V8_oRLFDj0bOamQRI> prov:specializationOf <urn:uuid:f290e266-4177-8c91-91a1-2aa88f880560> ;
 	cascade:patient <urn:uuid:dccb6776-d640-88e5-a7b3-7e2e1b860abe> .
-_:f317fbe33924ef45b2e45bf292ffd504 bridge:arrivedAs <ni:///sha-256;Ek6s_zrvGGEWnqA3yg5TjdzH8F5Vb1SGV0aI2pcQlXA> ;
-	oa:hasSelector _:821606ebe65900f9a74279fa3d0582c6 ;
+_:50b5c0055a4f7929920dfd680c98ab67 bridge:arrivedAs <ni:///sha-256;h3MdJKhfWmMJ2N3woerThB2qx7V8_oRLFDj0bOamQRI> ;
+	oa:hasSelector _:a1ef918ed3af2295c23ce8e10e347c5a ;
 	oa:hasSource <ni:///sha-256;SzF6-XEFLKjxbtd8aa3mN8JC3bdBYWiS1eHtBWyaTkk> ;
 	prov:wasDerivedFrom <ni:///sha-256;SzF6-XEFLKjxbtd8aa3mN8JC3bdBYWiS1eHtBWyaTkk> ;
 	prov:wasGeneratedBy _:45c8a17c5dd886b831e7b85ddf62ff1b .
-_:821606ebe65900f9a74279fa3d0582c6 a oa:FragmentSelector ;
+_:a1ef918ed3af2295c23ce8e10e347c5a a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/1" .
-<ni:///sha-256;8fBXIBznW71ijVrZs5r0Ew_ZYohGJBr4MY6qFWg-vrc> cascade:conditionName "Type 2 diabetes mellitus" ;
-	cascade:snomedCode <http://snomed.info/id/44054006> .
+<ni:///sha-256;fcLpaalIKMAzgrB0_apHZTqbWdR3vG_76mNvj9vnOC0> cascade:conditionName "Type 2 diabetes mellitus" ;
+	cascade:conditionCode <http://snomed.info/id/44054006> .
 <urn:uuid:056e9734-112a-8344-ba43-48b6a943846d> a cascade:ProblemOrDiagnosis ;
 	cascade:sourceUrl <https://fhir.example.org/r4/Condition/X> ;
 	cascade:sourceRecordId "X" .
-<ni:///sha-256;8fBXIBznW71ijVrZs5r0Ew_ZYohGJBr4MY6qFWg-vrc> prov:specializationOf <urn:uuid:056e9734-112a-8344-ba43-48b6a943846d> ;
+<ni:///sha-256;fcLpaalIKMAzgrB0_apHZTqbWdR3vG_76mNvj9vnOC0> prov:specializationOf <urn:uuid:056e9734-112a-8344-ba43-48b6a943846d> ;
 	cascade:patient <urn:uuid:dccb6776-d640-88e5-a7b3-7e2e1b860abe> .
-_:fc050eb8fd8817ee949f7941bb011efa bridge:arrivedAs <ni:///sha-256;8fBXIBznW71ijVrZs5r0Ew_ZYohGJBr4MY6qFWg-vrc> ;
-	oa:hasSelector _:d877427573d7dd42df40fefe9f12b2a5 ;
+_:30b0d99e8bee40e177d6056382128e4c bridge:arrivedAs <ni:///sha-256;fcLpaalIKMAzgrB0_apHZTqbWdR3vG_76mNvj9vnOC0> ;
+	oa:hasSelector _:c6d36c18e1ea44044f02ebecc7c29371 ;
 	oa:hasSource <ni:///sha-256;SzF6-XEFLKjxbtd8aa3mN8JC3bdBYWiS1eHtBWyaTkk> ;
 	prov:wasDerivedFrom <ni:///sha-256;SzF6-XEFLKjxbtd8aa3mN8JC3bdBYWiS1eHtBWyaTkk> ;
 	prov:wasGeneratedBy _:45c8a17c5dd886b831e7b85ddf62ff1b .
-_:d877427573d7dd42df40fefe9f12b2a5 a oa:FragmentSelector ;
+_:c6d36c18e1ea44044f02ebecc7c29371 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/2" .
 <ni:///sha-256;SzF6-XEFLKjxbtd8aa3mN8JC3bdBYWiS1eHtBWyaTkk> cascade:serverBaseUrl "https://fhir.example.org/r4" ;

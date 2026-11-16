@@ -7,7 +7,7 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;y9BV3hgUUV01DuiyCHN6DLAHJsOwunIJTfE_0Gjflsg> cascade:allergen "Codeine" ;
+<ni:///sha-256;mdqpPqRx5MXaUfhDnrEZwXmKseGvYEVWfB808AcIbqA> cascade:allergenName "Codeine" ;
 	cascade:allergenCode <https://ns.cascadeprotocol.org/codes/rxnorm/2670> ;
 	cascade:clinicalStatus "active" ;
 	cascade:verificationStatus "confirmed" ;
@@ -18,20 +18,20 @@
 	cascade:reactionManifestationText "Nausea" ;
 	cascade:reactionManifestationCode <http://snomed.info/id/422587007> ;
 	cascade:allergySeverity "mild" ;
-	cascade:notes "Nausea within an hour of each dose." .
+	cascade:addedNoteText "Nausea within an hour of each dose." .
 <urn:uuid:0ca3ee6b-a53e-8b1d-b8e7-8e38b82a7b59> a cascade:AllergyOrIntolerance ;
 	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/AllergyIntolerance/alg-codeine-2> ;
 	cascade:sourceRecordId "alg-codeine-2" .
-<ni:///sha-256;y9BV3hgUUV01DuiyCHN6DLAHJsOwunIJTfE_0Gjflsg> prov:specializationOf <urn:uuid:0ca3ee6b-a53e-8b1d-b8e7-8e38b82a7b59> ;
+<ni:///sha-256;mdqpPqRx5MXaUfhDnrEZwXmKseGvYEVWfB808AcIbqA> prov:specializationOf <urn:uuid:0ca3ee6b-a53e-8b1d-b8e7-8e38b82a7b59> ;
 	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
-_:c48369e62b1f587940790939db3583a9 bridge:arrivedAs <ni:///sha-256;y9BV3hgUUV01DuiyCHN6DLAHJsOwunIJTfE_0Gjflsg> ;
+_:9eb541b6dabef34badb88f52188b6185 bridge:arrivedAs <ni:///sha-256;mdqpPqRx5MXaUfhDnrEZwXmKseGvYEVWfB808AcIbqA> ;
 	pav:version "2" ;
 	pav:lastUpdateOn "2026-04-08T13:05:00Z"^^xsd:dateTime ;
-	oa:hasSelector _:4f4873f2b8bde36807100b0e8bd82272 ;
+	oa:hasSelector _:454a72549a5edc2ff46063406ea1fcf2 ;
 	oa:hasSource <ni:///sha-256;KLly4mX62LlsEmvV_5iguX1Wx9JWKzObJJJXAfAyKpE> ;
 	prov:wasDerivedFrom <ni:///sha-256;KLly4mX62LlsEmvV_5iguX1Wx9JWKzObJJJXAfAyKpE> ;
 	prov:wasGeneratedBy _:44f0224a69eb113632708a34624f0f5e .
-_:4f4873f2b8bde36807100b0e8bd82272 a oa:FragmentSelector ;
+_:454a72549a5edc2ff46063406ea1fcf2 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;KLly4mX62LlsEmvV_5iguX1Wx9JWKzObJJJXAfAyKpE> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;

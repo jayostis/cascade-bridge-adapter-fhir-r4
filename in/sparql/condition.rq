@@ -9,12 +9,15 @@ PREFIX skos:     <http://www.w3.org/2004/02/skos/core#>
 PREFIX void:     <http://rdfs.org/ns/void#>
 PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 
-# Every coding of a condition's code is carried: one in SNOMED CT or ICD-10-CM
-# as its IRI, one in any other system, ICD-9-CM among them, as a
-# cascade:conditionCodeInOtherSystem literal typed by the system. A coding's
+# Every coding of a condition's code is carried: one in a system the
+# vocabulary lists an IRI stem for as a cascade:conditionCode IRI, one in a
+# system it lists no IRI form for as a cascade:conditionCodeInOtherSystem
+# literal typed by the system. A coding's
 # system is read as coding-system-table.rq reads it, and its code trimmed of
 # leading and trailing whitespace; one with no system, a system no row reads,
-# or no code is not carried, and code-findings.rq reports it.
+# or no code is not carried, and code-findings.rq reports it. A coding in FHIR's
+# data-absent-reason or v3 NullFlavor is why the code is absent, not a code, and
+# absent-reasons.rq carries it where no other coding is.
 # A date is typed by the precision FHIR wrote it to: a year is an xsd:gYear, a
 # year and month an xsd:gYearMonth, a day an xsd:date, a time an xsd:dateTime.
 # A time written to the minute, as C-CDA on FHIR writes one, is padded to the
@@ -25,7 +28,7 @@ CONSTRUCT {
   ?version ?p ?o .
   ?version cascade:paddedDateTime ?paddedNode .
   ?paddedNode cascade:paddedDateTimeProperty ?p ;
-    cascade:writtenDate ?writtenTime .
+    cascade:timeAsWritten ?writtenTime .
 }
 WHERE {
   FILTER NOT EXISTS {
@@ -71,20 +74,17 @@ WHERE {
       xyz:code ?codeWritten .
     ?systemRow fhirr4:systemWritten ?systemWritten ;
       fhirr4:systemRead ?system .
+    FILTER (?system NOT IN ("http://terminology.hl7.org/CodeSystem/data-absent-reason", "http://terminology.hl7.org/CodeSystem/v3-NullFlavor"))
     BIND (REPLACE(STR(?codeWritten), "^\\s+|\\s+$", "") AS ?code)
     FILTER (?code != "")
     OPTIONAL {
-      VALUES (?system ?listedProperty) {
-        ("http://snomed.info/sct" cascade:snomedCode)
-        ("http://hl7.org/fhir/sid/icd-10-cm" cascade:icd10Code)
-      }
       ?codeSystem skos:inScheme fhirr4:codeSystems ;
         cascade:codingSystemUri ?listedSystem ;
         void:uriSpace ?stem .
       FILTER (STR(?listedSystem) = ?system)
     }
-    BIND (COALESCE(?listedProperty, cascade:conditionCodeInOtherSystem) AS ?p)
-    BIND (IF(BOUND(?listedProperty), IRI(CONCAT(?stem, ENCODE_FOR_URI(?code))), STRDT(?code, IRI(?system))) AS ?o)
+    BIND (IF(BOUND(?stem), cascade:conditionCode, cascade:conditionCodeInOtherSystem) AS ?p)
+    BIND (IF(BOUND(?stem), IRI(CONCAT(?stem, ENCODE_FOR_URI(?code))), STRDT(?code, IRI(?system))) AS ?o)
   }
   UNION
   {
@@ -135,7 +135,7 @@ WHERE {
   UNION
   {
     ?resource xyz:note ?notes . ?notes ?noteSlot ?note . ?note xyz:text ?o .
-    BIND (cascade:notes AS ?p)
+    BIND (cascade:addedNoteText AS ?p)
   }
   BIND (IF(BOUND(?writtenTime), IRI(CONCAT(STR(?version), "#padded-", STRAFTER(STR(?p), "#"))), 1/0) AS ?paddedNode)
 }

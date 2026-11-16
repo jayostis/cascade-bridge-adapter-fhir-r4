@@ -10,22 +10,22 @@
 <urn:uuid:f418f109-5d34-8b49-a785-89db3bd76796> a cascade:DiagnosticReport ;
 	cascade:sourceUrl <http://example.org/fhir/DiagnosticReport/codes> ;
 	cascade:sourceRecordId "codes" .
-<ni:///sha-256;HHBQDkI_8i6xAolPVcAMMXY83SbZ6Bp2-Gne75YwRPk> prov:specializationOf <urn:uuid:f418f109-5d34-8b49-a785-89db3bd76796> ;
+<ni:///sha-256;V1VAdjOVplmoL-uX4tOiZWlYsfBW2j4xQdIJFNldU5Y> prov:specializationOf <urn:uuid:f418f109-5d34-8b49-a785-89db3bd76796> ;
 	cascade:patient <urn:uuid:1cc3cbf1-3a8f-8691-923b-e87de6e5c3a3> .
-_:3d6340ec490fbb336f2bac5aa1c54f0 bridge:arrivedAs <ni:///sha-256;HHBQDkI_8i6xAolPVcAMMXY83SbZ6Bp2-Gne75YwRPk> .
-<ni:///sha-256;HHBQDkI_8i6xAolPVcAMMXY83SbZ6Bp2-Gne75YwRPk> cascade:reportName "Vitamin B12 test" ;
+_:61f8041a512f911057e230dedaa601c0 bridge:arrivedAs <ni:///sha-256;V1VAdjOVplmoL-uX4tOiZWlYsfBW2j4xQdIJFNldU5Y> .
+<ni:///sha-256;V1VAdjOVplmoL-uX4tOiZWlYsfBW2j4xQdIJFNldU5Y> cascade:reportName "Vitamin B12 test" ;
 	cascade:reportIssuedTime "2026-08-15T10:12:00.25Z"^^xsd:dateTime ;
 	cascade:workflowStatus "final" ;
 	cascade:reportEffectiveTime "2026-08-14T09:30:00Z"^^xsd:dateTime ;
-	cascade:paddedDateTime <ni:///sha-256;HHBQDkI_8i6xAolPVcAMMXY83SbZ6Bp2-Gne75YwRPk#padded-reportEffectiveTime> .
-<ni:///sha-256;HHBQDkI_8i6xAolPVcAMMXY83SbZ6Bp2-Gne75YwRPk#padded-reportEffectiveTime> cascade:paddedDateTimeProperty cascade:reportEffectiveTime ;
-	cascade:writtenDate "2026-08-14T09:30Z" .
-<ni:///sha-256;HHBQDkI_8i6xAolPVcAMMXY83SbZ6Bp2-Gne75YwRPk> cascade:reportCode <http://loinc.org/rdf/2132-9> , <http://snomed.info/id/271216009> .
-_:3d6340ec490fbb336f2bac5aa1c54f0 oa:hasSelector _:280902cbe77dbe269cf1b1b69e6dd1dd ;
+	cascade:paddedDateTime <ni:///sha-256;V1VAdjOVplmoL-uX4tOiZWlYsfBW2j4xQdIJFNldU5Y#padded-reportEffectiveTime> .
+<ni:///sha-256;V1VAdjOVplmoL-uX4tOiZWlYsfBW2j4xQdIJFNldU5Y#padded-reportEffectiveTime> cascade:paddedDateTimeProperty cascade:reportEffectiveTime ;
+	cascade:timeAsWritten "2026-08-14T09:30Z" .
+<ni:///sha-256;V1VAdjOVplmoL-uX4tOiZWlYsfBW2j4xQdIJFNldU5Y> cascade:reportCode <http://loinc.org/rdf/2132-9> , <http://snomed.info/id/271216009> .
+_:61f8041a512f911057e230dedaa601c0 oa:hasSelector _:a67c1a16ae654c3908fbcbac36d0fc9e ;
 	oa:hasSource <ni:///sha-256;8PlcHFI5dYj6YBgo-wQMYtecHERAWQrb4gUFZKe_Nls> ;
 	prov:wasDerivedFrom <ni:///sha-256;8PlcHFI5dYj6YBgo-wQMYtecHERAWQrb4gUFZKe_Nls> ;
 	prov:wasGeneratedBy _:8d0f145f57c5ed68b26c82d60373608d .
-_:280902cbe77dbe269cf1b1b69e6dd1dd a oa:FragmentSelector ;
+_:a67c1a16ae654c3908fbcbac36d0fc9e a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;8PlcHFI5dYj6YBgo-wQMYtecHERAWQrb4gUFZKe_Nls> cascade:serverBaseUrl "http://example.org/fhir" ;

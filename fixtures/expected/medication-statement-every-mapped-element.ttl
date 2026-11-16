@@ -7,25 +7,25 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;hQ_6keTMSyzizX5tXjq7XBH6g7JYZUpkrTUDavzhDoI> cascade:structuredDosage <ni:///sha-256;hQ_6keTMSyzizX5tXjq7XBH6g7JYZUpkrTUDavzhDoI#dosage-1> ;
+<ni:///sha-256;RuV4FrPso16J7_P9dJ6Vy89zX_mM03-EdW8oVnRiMJ0> cascade:structuredDosage <ni:///sha-256;RuV4FrPso16J7_P9dJ6Vy89zX_mM03-EdW8oVnRiMJ0#dosage-1> ;
 	cascade:prescribedOrReported "reportedUse" ;
 	cascade:drugName "ibuprofen 600 MG Oral Tablet" ;
 	cascade:rxNormCode <https://ns.cascadeprotocol.org/codes/rxnorm/197806> ;
 	cascade:workflowStatus "completed" ;
 	cascade:medicationUseStartDate "2026-01-10"^^xsd:date ;
 	cascade:medicationUseEndDate "2026-01-24"^^xsd:date ;
-	cascade:dosage "600 mg by mouth every 8 hours as needed for pain." .
+	cascade:dosageInstructionText "600 mg by mouth every 8 hours as needed for pain." .
 <urn:uuid:1f887932-37fa-8aa7-8516-1991ba5e841e> a cascade:PrescribedOrReportedMedication ;
 	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/MedicationStatement/medst-ibuprofen-1> ;
 	cascade:sourceRecordId "medst-ibuprofen-1" .
-<ni:///sha-256;hQ_6keTMSyzizX5tXjq7XBH6g7JYZUpkrTUDavzhDoI> prov:specializationOf <urn:uuid:1f887932-37fa-8aa7-8516-1991ba5e841e> ;
+<ni:///sha-256;RuV4FrPso16J7_P9dJ6Vy89zX_mM03-EdW8oVnRiMJ0> prov:specializationOf <urn:uuid:1f887932-37fa-8aa7-8516-1991ba5e841e> ;
 	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
-_:ac6934b7da7d309c6a323e28c16116c6 bridge:arrivedAs <ni:///sha-256;hQ_6keTMSyzizX5tXjq7XBH6g7JYZUpkrTUDavzhDoI> ;
-	oa:hasSelector _:54c9ed96cc6a74aead410ffbadb7b9b9 ;
+_:633cf066b86f63281e3196fb4d49e735 bridge:arrivedAs <ni:///sha-256;RuV4FrPso16J7_P9dJ6Vy89zX_mM03-EdW8oVnRiMJ0> ;
+	oa:hasSelector _:d6174aa81bccd0d89ae5dc5741aca9b9 ;
 	oa:hasSource <ni:///sha-256;OV_7fAF5tDwubnpXf9aSSZnLPeFhBrXteh22594a3BI> ;
 	prov:wasDerivedFrom <ni:///sha-256;OV_7fAF5tDwubnpXf9aSSZnLPeFhBrXteh22594a3BI> ;
 	prov:wasGeneratedBy _:9a936e97da681b7762eae5c1018f429b .
-_:54c9ed96cc6a74aead410ffbadb7b9b9 a oa:FragmentSelector ;
+_:d6174aa81bccd0d89ae5dc5741aca9b9 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;OV_7fAF5tDwubnpXf9aSSZnLPeFhBrXteh22594a3BI> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;

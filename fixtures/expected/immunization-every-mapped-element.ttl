@@ -7,26 +7,26 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;q_fDapoNep9JIsyKg9BJsnPpNsCXrAzVpmSDJPTwOrc> cascade:vaccineName "Tdap" ;
+<ni:///sha-256;NmYRV5h37dwRp9DlgXTG2rsBpw2IYqmEjOKbf2YH1Fw> cascade:vaccineName "Tdap" ;
 	cascade:vaccineCode <https://ns.cascadeprotocol.org/codes/cvx/115> ;
 	cascade:vaccinationOccurrenceTime "2024-05-06"^^xsd:date ;
 	cascade:workflowStatus "completed" ;
-	cascade:lotNumber "TD4471B" ;
-	cascade:doseQuantity "0.5 mL" ;
-	cascade:routeOfAdministration "Intramuscular" ;
-	cascade:administrationSite "Left deltoid" ;
-	cascade:notes "No reaction observed." .
+	cascade:vaccineLotNumber "TD4471B" ;
+	cascade:vaccineDoseQuantityText "0.5 mL" ;
+	cascade:vaccinationRouteText "Intramuscular" ;
+	cascade:vaccinationBodySiteText "Left deltoid" ;
+	cascade:addedNoteText "No reaction observed." .
 <urn:uuid:17a3831f-3277-8c8f-9511-a2ebb415326d> a cascade:Vaccination ;
 	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Immunization/imm-tdap-1> ;
 	cascade:sourceRecordId "imm-tdap-1" .
-<ni:///sha-256;q_fDapoNep9JIsyKg9BJsnPpNsCXrAzVpmSDJPTwOrc> prov:specializationOf <urn:uuid:17a3831f-3277-8c8f-9511-a2ebb415326d> ;
+<ni:///sha-256;NmYRV5h37dwRp9DlgXTG2rsBpw2IYqmEjOKbf2YH1Fw> prov:specializationOf <urn:uuid:17a3831f-3277-8c8f-9511-a2ebb415326d> ;
 	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
-_:b47e02ea009a43d6f42c26a153169877 bridge:arrivedAs <ni:///sha-256;q_fDapoNep9JIsyKg9BJsnPpNsCXrAzVpmSDJPTwOrc> ;
-	oa:hasSelector _:b86a4ab30cc2d28a3d0e4d9d384780f5 ;
+_:38c66ad571e47740006878d2c0a0fc51 bridge:arrivedAs <ni:///sha-256;NmYRV5h37dwRp9DlgXTG2rsBpw2IYqmEjOKbf2YH1Fw> ;
+	oa:hasSelector _:e50512490857a5d538b0f0f397fef146 ;
 	oa:hasSource <ni:///sha-256;Sh7hH9c2qAGX1bhtbgCNWgHiy0vmtNT8xTVgZ0RVX4g> ;
 	prov:wasDerivedFrom <ni:///sha-256;Sh7hH9c2qAGX1bhtbgCNWgHiy0vmtNT8xTVgZ0RVX4g> ;
 	prov:wasGeneratedBy _:2eeb73231ecfea2d6543c32d8920829e .
-_:b86a4ab30cc2d28a3d0e4d9d384780f5 a oa:FragmentSelector ;
+_:e50512490857a5d538b0f0f397fef146 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;Sh7hH9c2qAGX1bhtbgCNWgHiy0vmtNT8xTVgZ0RVX4g> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;

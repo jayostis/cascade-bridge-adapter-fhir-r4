@@ -69,6 +69,7 @@
     <#bundle-patient-reference-urn-not-held>
     <#bundle-patient-reference-relative-to-urn>
     <#bundle-repeated-condition-id>
+    <#bundle-procedures-same-cpt-code-a-year-apart>
     <#encounter-with-id>
     <#lab-glucose-fasting>
     <#lab-every-mapped-element>
@@ -76,6 +77,11 @@
     <#lab-troponin-below-detection>
     <#lab-potassium-approximate>
     <#condition-onset-absent-for-reason>
+    <#procedure-coded-only-in-absent-reason-systems>
+    <#condition-code-only-in-an-undefined-absent-reason>
+    <#condition-real-code-beside-absent-reason-coding>
+    <#condition-code-data-absent-reason-extension>
+    <#condition-coded-only-in-absent-reason-systems>
     <#lab-value-absent-for-reason>
     <#patient-birth-year-and-month>
     <#condition-onset-year-abatement-month>
@@ -701,6 +707,19 @@
   mf:result [
     bridge:expectedGraph <expected/bundle-repeated-condition-id.ttl> ;
     bridge:expectedFindings <findings/bundle-repeated-condition-id.ttl>
+  ] .
+
+<#bundle-procedures-same-cpt-code-a-year-apart> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-procedures-same-cpt-code-a-year-apart" ;
+  rdfs:comment "Two Procedures with CPT 36415 a year apart: each is carried as a cascade:procedureCode CPT IRI on its own record, so the code alone never makes one of them." ;
+  mf:action [
+    bridge:input <in/bundle-procedures-same-cpt-code-a-year-apart.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-procedures-same-cpt-code-a-year-apart.ttl> ;
+    bridge:expectedFindings <findings/bundle-procedures-same-cpt-code-a-year-apart.ttl>
   ] .
 
 <#encounter-with-id> a bridge:IsomorphicConversionTest ;
@@ -1661,6 +1680,71 @@
     bridge:expectedFindings <findings/condition-onset-absent-for-reason.ttl>
   ] .
 
+<#procedure-coded-only-in-absent-reason-systems> a bridge:IsomorphicConversionTest ;
+  mf:name "procedure-coded-only-in-absent-reason-systems" ;
+  rdfs:comment "A Procedure whose code has a coding in FHIR's data-absent-reason, unknown, and a coding in v3 NullFlavor, UNK, and no other: no cascade:procedureCode, and the version's #absent-procedureCode node names both as its cascade:absentReasonCode." ;
+  mf:action [
+    bridge:input <in/procedure-coded-only-in-absent-reason-systems.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/procedure-coded-only-in-absent-reason-systems.ttl> ;
+    bridge:expectedFindings <findings/procedure-coded-only-in-absent-reason-systems.ttl>
+  ] .
+
+<#condition-code-only-in-an-undefined-absent-reason> a bridge:IsomorphicConversionTest ;
+  mf:name "condition-code-only-in-an-undefined-absent-reason" ;
+  rdfs:comment "A Condition whose only coding is never-said in FHIR's data-absent-reason, which that CodeSystem does not define: no cascade:conditionCode and no #absent-conditionCode node, and the coding is a finding." ;
+  mf:action [
+    bridge:input <in/condition-code-only-in-an-undefined-absent-reason.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/condition-code-only-in-an-undefined-absent-reason.ttl> ;
+    bridge:expectedFindings <findings/condition-code-only-in-an-undefined-absent-reason.ttl>
+  ] .
+
+<#condition-real-code-beside-absent-reason-coding> a bridge:IsomorphicConversionTest ;
+  mf:name "condition-real-code-beside-absent-reason-coding" ;
+  rdfs:comment "A Condition whose code has an ICD-10-CM coding and a coding in FHIR's data-absent-reason, unknown: the ICD-10-CM code is the one cascade:conditionCode, and the version has no #absent-conditionCode node." ;
+  mf:action [
+    bridge:input <in/condition-real-code-beside-absent-reason-coding.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/condition-real-code-beside-absent-reason-coding.ttl> ;
+    bridge:expectedFindings <findings/condition-real-code-beside-absent-reason-coding.ttl>
+  ] .
+
+<#condition-code-data-absent-reason-extension> a bridge:IsomorphicConversionTest ;
+  mf:name "condition-code-data-absent-reason-extension" ;
+  rdfs:comment "A Condition whose code has no coding and carries the data-absent-reason extension, unknown: no cascade:conditionCode, and the version's #absent-conditionCode node names the data-absent-reason code unknown as its cascade:absentReasonCode." ;
+  mf:action [
+    bridge:input <in/condition-code-data-absent-reason-extension.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/condition-code-data-absent-reason-extension.ttl> ;
+    bridge:expectedFindings <findings/condition-code-data-absent-reason-extension.ttl>
+  ] .
+
+<#condition-coded-only-in-absent-reason-systems> a bridge:IsomorphicConversionTest ;
+  mf:name "condition-coded-only-in-absent-reason-systems" ;
+  rdfs:comment "A Condition whose code has a coding in FHIR's data-absent-reason, asked-unknown, and a coding in v3 NullFlavor, UNK, and no other: neither is a cascade:conditionCode, since each is why the code is absent, so the version's #absent-conditionCode node names both as its cascade:absentReasonCode." ;
+  mf:action [
+    bridge:input <in/condition-coded-only-in-absent-reason-systems.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/condition-coded-only-in-absent-reason-systems.ttl> ;
+    bridge:expectedFindings <findings/condition-coded-only-in-absent-reason-systems.ttl>
+  ] .
+
 <#lab-value-absent-reason-text-only> a bridge:IsomorphicConversionTest ;
   mf:name "lab-value-absent-reason-text-only" ;
   rdfs:comment "A laboratory Observation with no value and a dataAbsentReason of text alone: no reason is carried, and the text is a finding." ;
@@ -1780,7 +1864,7 @@
 
 <#procedure-hcpcs-code> a bridge:IsomorphicConversionTest ;
   mf:name "procedure-hcpcs-code" ;
-  rdfs:comment "A Procedure coded in HCPCS Level II, CPT and SNOMED CT: the HCPCS code is a cascade:procedureCodeInOtherSystem literal, the CPT code a cascade:cptCode IRI and the SNOMED CT code a cascade:snomedCode IRI." ;
+  rdfs:comment "A Procedure coded in HCPCS Level II, CPT and SNOMED CT: the HCPCS code is a cascade:procedureCodeInOtherSystem literal, the CPT code and the SNOMED CT code each a cascade:procedureCode IRI." ;
   mf:action [
     bridge:input <in/procedure-hcpcs-code.json> ;
     bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
@@ -1793,7 +1877,7 @@
 
 <#procedure-two-cpt-codes> a bridge:IsomorphicConversionTest ;
   mf:name "procedure-two-cpt-codes" ;
-  rdfs:comment "A Procedure with two CPT codes: the first is its cascade:cptCode, the second a fhirr4:procedureCptCodeRepeated finding." ;
+  rdfs:comment "A Procedure with two CPT codes: both are cascade:procedureCode IRIs under the CPT stem, and nothing is a finding." ;
   mf:action [
     bridge:input <in/procedure-two-cpt-codes.json> ;
     bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;

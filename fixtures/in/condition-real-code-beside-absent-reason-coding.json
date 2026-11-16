@@ -1,0 +1,23 @@
+{
+  "resourceType": "Condition",
+  "id": "cond-asthma-1",
+  "code": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/sid/icd-10-cm",
+        "code": "J45.909",
+        "display": "Unspecified asthma, uncomplicated"
+      },
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/data-absent-reason",
+        "code": "unknown",
+        "display": "Unknown"
+      }
+    ],
+    "text": "Asthma"
+  },
+  "subject": {
+    "reference": "Patient/pat-conformance-1"
+  },
+  "onsetDateTime": "2025-03-27"
+}

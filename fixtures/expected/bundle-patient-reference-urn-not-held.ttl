@@ -7,16 +7,16 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;fF0T3VrKpFMH51M21pMN7Wp9qTujDd6m2Rhn7AGNJCE> cascade:conditionName "Hypertension" ;
-	cascade:snomedCode <http://snomed.info/id/38341003> .
+<ni:///sha-256;gD2aUzRcCDKOuwivwFaiLhomPfUJjnj2h4dHnPATO24> cascade:conditionName "Hypertension" ;
+	cascade:conditionCode <http://snomed.info/id/38341003> .
 <urn:uuid:255c2546-93c9-87c6-93c9-64799c987f78> a cascade:ProblemOrDiagnosis .
-<ni:///sha-256;fF0T3VrKpFMH51M21pMN7Wp9qTujDd6m2Rhn7AGNJCE> prov:specializationOf <urn:uuid:255c2546-93c9-87c6-93c9-64799c987f78> .
-_:be8e4581882ee20e5162b03d13f33e2b bridge:arrivedAs <ni:///sha-256;fF0T3VrKpFMH51M21pMN7Wp9qTujDd6m2Rhn7AGNJCE> ;
-	oa:hasSelector _:1e67d625d30cde04fba4f1cee2d5ee3e ;
+<ni:///sha-256;gD2aUzRcCDKOuwivwFaiLhomPfUJjnj2h4dHnPATO24> prov:specializationOf <urn:uuid:255c2546-93c9-87c6-93c9-64799c987f78> .
+_:3bab3f88a5c16d03befb4009eda6d922 bridge:arrivedAs <ni:///sha-256;gD2aUzRcCDKOuwivwFaiLhomPfUJjnj2h4dHnPATO24> ;
+	oa:hasSelector _:81a4304f27e27151d07e9a386c132e63 ;
 	oa:hasSource <ni:///sha-256;nJfK6viUSRWrQ3WdP4vBDYK3PDN0sAqdDpoJmrKXL78> ;
 	prov:wasDerivedFrom <ni:///sha-256;nJfK6viUSRWrQ3WdP4vBDYK3PDN0sAqdDpoJmrKXL78> ;
 	prov:wasGeneratedBy _:23c93528710e9a1d0eae2ab1b7a095a8 .
-_:1e67d625d30cde04fba4f1cee2d5ee3e a oa:FragmentSelector ;
+_:81a4304f27e27151d07e9a386c132e63 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/0" .
 <ni:///sha-256;nJfK6viUSRWrQ3WdP4vBDYK3PDN0sAqdDpoJmrKXL78> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;

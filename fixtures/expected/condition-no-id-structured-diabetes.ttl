@@ -7,18 +7,18 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;13cNZFeKxsbd9SgCWg0d46C3-mCh6-4j6n-PNurX7rQ> cascade:conditionName "Type 2 diabetes mellitus" ;
-	cascade:snomedCode <http://snomed.info/id/44054006> ;
+<ni:///sha-256;KDGLwqeIwUH90-204o3DjHzrO_GMTtmzkj-izWY-if8> cascade:conditionName "Type 2 diabetes mellitus" ;
+	cascade:conditionCode <http://snomed.info/id/44054006> ;
 	cascade:onsetDate "2021-04-02"^^xsd:date .
 <urn:uuid:33f399d4-ccc8-8e23-a278-48a8f959c36e> a cascade:ProblemOrDiagnosis .
-<ni:///sha-256;13cNZFeKxsbd9SgCWg0d46C3-mCh6-4j6n-PNurX7rQ> prov:specializationOf <urn:uuid:33f399d4-ccc8-8e23-a278-48a8f959c36e> ;
+<ni:///sha-256;KDGLwqeIwUH90-204o3DjHzrO_GMTtmzkj-izWY-if8> prov:specializationOf <urn:uuid:33f399d4-ccc8-8e23-a278-48a8f959c36e> ;
 	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
-_:f3affd5130d8d07a01234cd4c3333144 bridge:arrivedAs <ni:///sha-256;13cNZFeKxsbd9SgCWg0d46C3-mCh6-4j6n-PNurX7rQ> ;
-	oa:hasSelector _:873db53e56f916a60121c0da9f166d65 ;
+_:ce987e73f08fa23b85a22a15233f07d0 bridge:arrivedAs <ni:///sha-256;KDGLwqeIwUH90-204o3DjHzrO_GMTtmzkj-izWY-if8> ;
+	oa:hasSelector _:2caf745588edb2887db165cc13ba2c05 ;
 	oa:hasSource <ni:///sha-256;4oS24TeT7PZHRGEdwhsoh9d4FFU8q6I0y2rHpOWSwNY> ;
 	prov:wasDerivedFrom <ni:///sha-256;4oS24TeT7PZHRGEdwhsoh9d4FFU8q6I0y2rHpOWSwNY> ;
 	prov:wasGeneratedBy _:6e099bc5b01431c0bd1056a9fd437abf .
-_:873db53e56f916a60121c0da9f166d65 a oa:FragmentSelector ;
+_:2caf745588edb2887db165cc13ba2c05 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;4oS24TeT7PZHRGEdwhsoh9d4FFU8q6I0y2rHpOWSwNY> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;

@@ -75,8 +75,8 @@ WHERE {
   {
     ?resource xyz:valueRange ?range . ?range ?part ?quantity . ?quantity xyz:value ?written .
     VALUES (?part ?role ?link) {
-      (xyz:low "range-low" cascade:resultRangeLow)
-      (xyz:high "range-high" cascade:resultRangeHigh)
+      (xyz:low "range-low" cascade:resultValueRangeLow)
+      (xyz:high "range-high" cascade:resultValueRangeHigh)
     }
     BIND (true AS ?bound)
   }

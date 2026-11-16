@@ -27,7 +27,7 @@ CONSTRUCT {
   ?version ?p ?o .
   ?version cascade:paddedDateTime ?padded .
   ?padded cascade:paddedDateTimeProperty cascade:reportEffectiveTime ;
-    cascade:writtenDate ?written .
+    cascade:timeAsWritten ?written .
 }
 WHERE {
   FILTER NOT EXISTS {

@@ -47,77 +47,77 @@ _:d9850e933b7003fea3527fa9c73c4ce0 oa:hasSelector _:2b77268c3be7689acb4e2ab2eba1
 _:2b77268c3be7689acb4e2ab2eba15986 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/2" .
-<ni:///sha-256;ZzY80v7PC8t7M3OhMsjfnm1mAaQJjQmQXRyKDCM6chw> cascade:testCode <http://loinc.org/rdf/84413-4> ;
+<ni:///sha-256;O32IPE68Rrn5WFznv08k7qNnWrKF4v4-qEbJlJ3HJlc> cascade:testCode <http://loinc.org/rdf/84413-4> ;
 	cascade:testName "Genotype display name" ;
 	cascade:resultValueKind cascade:CodedResultValue ;
-	cascade:resultValue "CYP2C9 *2/*5" ;
+	cascade:resultValueText "CYP2C9 *2/*5" ;
 	cascade:workflowStatus "final" .
 <urn:uuid:5c2ad37c-2f16-8df7-aedb-3c8134e0c9f4> a cascade:LaboratoryTestResult .
-<ni:///sha-256;ZzY80v7PC8t7M3OhMsjfnm1mAaQJjQmQXRyKDCM6chw> prov:specializationOf <urn:uuid:5c2ad37c-2f16-8df7-aedb-3c8134e0c9f4> ;
+<ni:///sha-256;O32IPE68Rrn5WFznv08k7qNnWrKF4v4-qEbJlJ3HJlc> prov:specializationOf <urn:uuid:5c2ad37c-2f16-8df7-aedb-3c8134e0c9f4> ;
 	cascade:patient <urn:uuid:17821d46-976b-8f24-8990-524c118d7160> .
-_:3585aabba341ff21308463379e531816 bridge:arrivedAs <ni:///sha-256;ZzY80v7PC8t7M3OhMsjfnm1mAaQJjQmQXRyKDCM6chw> ;
-	oa:hasSelector _:b805ae9476b566ec3ec4097ced265e9d ;
+_:29eeb3eabbdaf28a0cd919456ff224a1 bridge:arrivedAs <ni:///sha-256;O32IPE68Rrn5WFznv08k7qNnWrKF4v4-qEbJlJ3HJlc> ;
+	oa:hasSelector _:43bd644e6b7807bc020dbe97a7ed4909 ;
 	oa:hasSource <ni:///sha-256;EHEEuwO8uUs_nijTU9VlSikqlK644Yc3bjRkFotgN9E> ;
 	prov:wasDerivedFrom <ni:///sha-256;EHEEuwO8uUs_nijTU9VlSikqlK644Yc3bjRkFotgN9E> ;
 	prov:wasGeneratedBy _:3903ee1f1d2a0f7c9342d1d3fb9ee27f .
-_:b805ae9476b566ec3ec4097ced265e9d a oa:FragmentSelector ;
+_:43bd644e6b7807bc020dbe97a7ed4909 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/3" .
 <urn:uuid:2a5973fc-9ded-8822-a4c9-a3116423061e> a cascade:VariantInterpretation .
-<ni:///sha-256;hbkrVWTzpy0otf5pXpLx503AHNnGw1z70Os4eM8SBKU> prov:specializationOf <urn:uuid:2a5973fc-9ded-8822-a4c9-a3116423061e> ;
+<ni:///sha-256;PHt7hIHQ8MxCpxnrHpuuR06b862gjxznFyRMRFwF45I> prov:specializationOf <urn:uuid:2a5973fc-9ded-8822-a4c9-a3116423061e> ;
 	cascade:patient <urn:uuid:17821d46-976b-8f24-8990-524c118d7160> .
-_:e5554687dcdbff011e178bbcec0da737 bridge:arrivedAs <ni:///sha-256;hbkrVWTzpy0otf5pXpLx503AHNnGw1z70Os4eM8SBKU> .
-<ni:///sha-256;hbkrVWTzpy0otf5pXpLx503AHNnGw1z70Os4eM8SBKU> cascade:acmgClassification cascade:Pathogenic ;
-	cascade:variantInterpreted <urn:uuid:ce379cd5-db82-88df-98f8-ea7d9bfa81b1> ;
-	cascade:interpretedDate "2024-03-21"^^xsd:date ;
+_:5ddf3825417e4edb8c18892fbdf2fcd8 bridge:arrivedAs <ni:///sha-256;PHt7hIHQ8MxCpxnrHpuuR06b862gjxznFyRMRFwF45I> .
+<ni:///sha-256;PHt7hIHQ8MxCpxnrHpuuR06b862gjxznFyRMRFwF45I> cascade:acmgClassification cascade:Pathogenic ;
+	cascade:subjectVariant <urn:uuid:ce379cd5-db82-88df-98f8-ea7d9bfa81b1> ;
+	cascade:variantInterpretationDate "2024-03-21"^^xsd:date ;
 	cascade:workflowStatus "final" .
-_:e5554687dcdbff011e178bbcec0da737 oa:hasSelector _:41558ae48c143a6a1e51970fe116f016 ;
+_:5ddf3825417e4edb8c18892fbdf2fcd8 oa:hasSelector _:4fefaf46c39957a3f0c7aef6cc8193c ;
 	oa:hasSource <ni:///sha-256;EHEEuwO8uUs_nijTU9VlSikqlK644Yc3bjRkFotgN9E> ;
 	prov:wasDerivedFrom <ni:///sha-256;EHEEuwO8uUs_nijTU9VlSikqlK644Yc3bjRkFotgN9E> ;
 	prov:wasGeneratedBy _:3903ee1f1d2a0f7c9342d1d3fb9ee27f .
-_:41558ae48c143a6a1e51970fe116f016 a oa:FragmentSelector ;
+_:4fefaf46c39957a3f0c7aef6cc8193c a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/4" .
 <urn:uuid:79639b3d-2272-8502-ae07-932dfc8cce2e> a cascade:VariantInterpretation .
-<ni:///sha-256;BBabKeZd0z0zQ1KONxzQcO17sprUn6TDX-u3qTJeDxM> prov:specializationOf <urn:uuid:79639b3d-2272-8502-ae07-932dfc8cce2e> ;
+<ni:///sha-256;OntOibO9YVIo7govVjpgkExFCgJrQwhyWSHaRtpzx74> prov:specializationOf <urn:uuid:79639b3d-2272-8502-ae07-932dfc8cce2e> ;
 	cascade:patient <urn:uuid:17821d46-976b-8f24-8990-524c118d7160> .
-_:6867a75a59f56c604c7d2b91bfa2d25d bridge:arrivedAs <ni:///sha-256;BBabKeZd0z0zQ1KONxzQcO17sprUn6TDX-u3qTJeDxM> .
-<ni:///sha-256;BBabKeZd0z0zQ1KONxzQcO17sprUn6TDX-u3qTJeDxM> cascade:variantInterpreted <urn:uuid:ce379cd5-db82-88df-98f8-ea7d9bfa81b1> ;
-	cascade:interpretedDate "2019-03-05"^^xsd:date ;
+_:7de60256d8d3ae709a553f291d26921 bridge:arrivedAs <ni:///sha-256;OntOibO9YVIo7govVjpgkExFCgJrQwhyWSHaRtpzx74> .
+<ni:///sha-256;OntOibO9YVIo7govVjpgkExFCgJrQwhyWSHaRtpzx74> cascade:subjectVariant <urn:uuid:ce379cd5-db82-88df-98f8-ea7d9bfa81b1> ;
+	cascade:variantInterpretationDate "2019-03-05"^^xsd:date ;
 	cascade:workflowStatus "final" .
-_:6867a75a59f56c604c7d2b91bfa2d25d oa:hasSelector _:bd6366217cdc4c91b901045b4985fc48 ;
+_:7de60256d8d3ae709a553f291d26921 oa:hasSelector _:29d47ae25e4f3cbab6e26f6b2660e559 ;
 	oa:hasSource <ni:///sha-256;EHEEuwO8uUs_nijTU9VlSikqlK644Yc3bjRkFotgN9E> ;
 	prov:wasDerivedFrom <ni:///sha-256;EHEEuwO8uUs_nijTU9VlSikqlK644Yc3bjRkFotgN9E> ;
 	prov:wasGeneratedBy _:3903ee1f1d2a0f7c9342d1d3fb9ee27f .
-_:bd6366217cdc4c91b901045b4985fc48 a oa:FragmentSelector ;
+_:29d47ae25e4f3cbab6e26f6b2660e559 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/5" .
 <urn:uuid:edf7c8b6-e693-876f-b56e-b7e7cd7e8c12> a cascade:VariantInterpretation .
-<ni:///sha-256;nNudWm37jUVCgdELULjlR6XUvSZ__4NzihRo7hLNIqw> prov:specializationOf <urn:uuid:edf7c8b6-e693-876f-b56e-b7e7cd7e8c12> ;
+<ni:///sha-256;M-THZi_mK9Y6tEK3IvmwnnUb60tP6JNwIHpGMHXLEIU> prov:specializationOf <urn:uuid:edf7c8b6-e693-876f-b56e-b7e7cd7e8c12> ;
 	cascade:patient <urn:uuid:17821d46-976b-8f24-8990-524c118d7160> .
-_:b868f996380a26e8540f357b6f284933 bridge:arrivedAs <ni:///sha-256;nNudWm37jUVCgdELULjlR6XUvSZ__4NzihRo7hLNIqw> .
-<ni:///sha-256;nNudWm37jUVCgdELULjlR6XUvSZ__4NzihRo7hLNIqw> cascade:acmgClassification cascade:UncertainSignificance ;
-	cascade:interpretedDate "2019-03-05"^^xsd:date ;
+_:7d667f6da5995b302a21831de53a5f2a bridge:arrivedAs <ni:///sha-256;M-THZi_mK9Y6tEK3IvmwnnUb60tP6JNwIHpGMHXLEIU> .
+<ni:///sha-256;M-THZi_mK9Y6tEK3IvmwnnUb60tP6JNwIHpGMHXLEIU> cascade:acmgClassification cascade:UncertainSignificance ;
+	cascade:variantInterpretationDate "2019-03-05"^^xsd:date ;
 	cascade:workflowStatus "final" .
-_:b868f996380a26e8540f357b6f284933 oa:hasSelector _:932bf72799c1a983127ee7206b166f26 ;
+_:7d667f6da5995b302a21831de53a5f2a oa:hasSelector _:76b5db1063ad492686d7a6145ef81a20 ;
 	oa:hasSource <ni:///sha-256;EHEEuwO8uUs_nijTU9VlSikqlK644Yc3bjRkFotgN9E> ;
 	prov:wasDerivedFrom <ni:///sha-256;EHEEuwO8uUs_nijTU9VlSikqlK644Yc3bjRkFotgN9E> ;
 	prov:wasGeneratedBy _:3903ee1f1d2a0f7c9342d1d3fb9ee27f .
-_:932bf72799c1a983127ee7206b166f26 a oa:FragmentSelector ;
+_:76b5db1063ad492686d7a6145ef81a20 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/6" .
 <urn:uuid:07152db6-c655-8535-9b52-fec40e9a7394> a cascade:VariantInterpretation .
-<ni:///sha-256;8Hvr3IsazflHONPJkjux27ZhWHOhNauPb1RseOo2Duo> prov:specializationOf <urn:uuid:07152db6-c655-8535-9b52-fec40e9a7394> ;
+<ni:///sha-256;K3zy97OJyX-ztYY61mLix3mR1voit9g9Z58oAJvlmUc> prov:specializationOf <urn:uuid:07152db6-c655-8535-9b52-fec40e9a7394> ;
 	cascade:patient <urn:uuid:17821d46-976b-8f24-8990-524c118d7160> .
-_:e75f382e6d6f8fdd650ba228a223557c bridge:arrivedAs <ni:///sha-256;8Hvr3IsazflHONPJkjux27ZhWHOhNauPb1RseOo2Duo> .
-<ni:///sha-256;8Hvr3IsazflHONPJkjux27ZhWHOhNauPb1RseOo2Duo> cascade:acmgClassification cascade:Benign ;
-	cascade:interpretedDate "2019"^^xsd:gYear ;
+_:deeb18c8c4029281b6031f2875b596df bridge:arrivedAs <ni:///sha-256;K3zy97OJyX-ztYY61mLix3mR1voit9g9Z58oAJvlmUc> .
+<ni:///sha-256;K3zy97OJyX-ztYY61mLix3mR1voit9g9Z58oAJvlmUc> cascade:acmgClassification cascade:Benign ;
+	cascade:variantInterpretationDate "2019"^^xsd:gYear ;
 	cascade:workflowStatus "final" .
-_:e75f382e6d6f8fdd650ba228a223557c oa:hasSelector _:ee90ac44de62892a28d27a7faa72e6bd ;
+_:deeb18c8c4029281b6031f2875b596df oa:hasSelector _:463ff793d3b0ec6932022e3cba1cb503 ;
 	oa:hasSource <ni:///sha-256;EHEEuwO8uUs_nijTU9VlSikqlK644Yc3bjRkFotgN9E> ;
 	prov:wasDerivedFrom <ni:///sha-256;EHEEuwO8uUs_nijTU9VlSikqlK644Yc3bjRkFotgN9E> ;
 	prov:wasGeneratedBy _:3903ee1f1d2a0f7c9342d1d3fb9ee27f .
-_:ee90ac44de62892a28d27a7faa72e6bd a oa:FragmentSelector ;
+_:463ff793d3b0ec6932022e3cba1cb503 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/7" .
 <urn:uuid:1a527db5-155f-81ab-a01a-7e0a3bfcbd5a> a cascade:VariantInterpretation .
@@ -134,44 +134,44 @@ _:860123a3b25172279ccff5177d89ff33 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/8" .
 <urn:uuid:fc87a802-29c4-8a00-a458-ab2b1753de7e> a cascade:VariantInterpretation .
-<ni:///sha-256;Z9gkv8cxOXgLwgOBV2aQaIf5kBy8YHVVNSzKDjr7rxo> prov:specializationOf <urn:uuid:fc87a802-29c4-8a00-a458-ab2b1753de7e> ;
+<ni:///sha-256;cDvl_ZgGG10eYpBqFPd73Gak-UfyQ2kD6vCme2pLntM> prov:specializationOf <urn:uuid:fc87a802-29c4-8a00-a458-ab2b1753de7e> ;
 	cascade:patient <urn:uuid:17821d46-976b-8f24-8990-524c118d7160> .
-_:63e7988cfc8fd9f1143ecb9914328485 bridge:arrivedAs <ni:///sha-256;Z9gkv8cxOXgLwgOBV2aQaIf5kBy8YHVVNSzKDjr7rxo> .
-<ni:///sha-256;Z9gkv8cxOXgLwgOBV2aQaIf5kBy8YHVVNSzKDjr7rxo> cascade:acmgClassification cascade:LikelyBenign ;
-	cascade:interpretedDate "2024-05-02"^^xsd:date ;
+_:b610e3c1c02538cd6ac95428d4a0a2bf bridge:arrivedAs <ni:///sha-256;cDvl_ZgGG10eYpBqFPd73Gak-UfyQ2kD6vCme2pLntM> .
+<ni:///sha-256;cDvl_ZgGG10eYpBqFPd73Gak-UfyQ2kD6vCme2pLntM> cascade:acmgClassification cascade:LikelyBenign ;
+	cascade:variantInterpretationDate "2024-05-02"^^xsd:date ;
 	cascade:workflowStatus "final" .
-_:63e7988cfc8fd9f1143ecb9914328485 oa:hasSelector _:828a49c4d9d47ae19e6c6625012ab74c ;
+_:b610e3c1c02538cd6ac95428d4a0a2bf oa:hasSelector _:c7dc62f396b4bbe68feac984673d8cdb ;
 	oa:hasSource <ni:///sha-256;EHEEuwO8uUs_nijTU9VlSikqlK644Yc3bjRkFotgN9E> ;
 	prov:wasDerivedFrom <ni:///sha-256;EHEEuwO8uUs_nijTU9VlSikqlK644Yc3bjRkFotgN9E> ;
 	prov:wasGeneratedBy _:3903ee1f1d2a0f7c9342d1d3fb9ee27f .
-_:828a49c4d9d47ae19e6c6625012ab74c a oa:FragmentSelector ;
+_:c7dc62f396b4bbe68feac984673d8cdb a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/9" .
 <urn:uuid:9eed0c7c-d80d-882e-bc6d-8bff02d72c38> a cascade:VariantInterpretation .
-<ni:///sha-256;uoFvi6IaAUKG1evlGLq7pVCk33zaSMshwgtLcynla1A> prov:specializationOf <urn:uuid:9eed0c7c-d80d-882e-bc6d-8bff02d72c38> ;
+<ni:///sha-256;M_ybIr71D-7VPBU6e01szUtrzysaeeZU2oz6hnrfpHE> prov:specializationOf <urn:uuid:9eed0c7c-d80d-882e-bc6d-8bff02d72c38> ;
 	cascade:patient <urn:uuid:17821d46-976b-8f24-8990-524c118d7160> .
-_:14e2c699984865c490b1b5fe8c2ad589 bridge:arrivedAs <ni:///sha-256;uoFvi6IaAUKG1evlGLq7pVCk33zaSMshwgtLcynla1A> .
-<ni:///sha-256;uoFvi6IaAUKG1evlGLq7pVCk33zaSMshwgtLcynla1A> cascade:variantInterpreted <urn:uuid:b206d729-b832-897b-8880-1e9774f36d5d> ;
+_:d4d19f2044affc61147c7b21e8fe3275 bridge:arrivedAs <ni:///sha-256;M_ybIr71D-7VPBU6e01szUtrzysaeeZU2oz6hnrfpHE> .
+<ni:///sha-256;M_ybIr71D-7VPBU6e01szUtrzysaeeZU2oz6hnrfpHE> cascade:subjectVariant <urn:uuid:b206d729-b832-897b-8880-1e9774f36d5d> ;
 	cascade:workflowStatus "final" .
-_:14e2c699984865c490b1b5fe8c2ad589 oa:hasSelector _:74fb17e4f4a760403d766177f7319a49 ;
+_:d4d19f2044affc61147c7b21e8fe3275 oa:hasSelector _:112c863b2446d87315f1c009cbb9c81e ;
 	oa:hasSource <ni:///sha-256;EHEEuwO8uUs_nijTU9VlSikqlK644Yc3bjRkFotgN9E> ;
 	prov:wasDerivedFrom <ni:///sha-256;EHEEuwO8uUs_nijTU9VlSikqlK644Yc3bjRkFotgN9E> ;
 	prov:wasGeneratedBy _:3903ee1f1d2a0f7c9342d1d3fb9ee27f .
-_:74fb17e4f4a760403d766177f7319a49 a oa:FragmentSelector ;
+_:112c863b2446d87315f1c009cbb9c81e a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/10" .
 <urn:uuid:4e668f3f-0f6a-8523-97d7-cf17d884029e> a cascade:VariantInterpretation .
-<ni:///sha-256;fT7DfYkMUq7LFVJr8AhAvbjh8s2wScBWpb14BlrMNAc> prov:specializationOf <urn:uuid:4e668f3f-0f6a-8523-97d7-cf17d884029e> ;
+<ni:///sha-256;LVLB-P0aenFwLmolKeml7st7SCsquTRhmCKA2njti-4> prov:specializationOf <urn:uuid:4e668f3f-0f6a-8523-97d7-cf17d884029e> ;
 	cascade:patient <urn:uuid:17821d46-976b-8f24-8990-524c118d7160> .
-_:73d75a087a09f87e1ed1d371d4378c80 bridge:arrivedAs <ni:///sha-256;fT7DfYkMUq7LFVJr8AhAvbjh8s2wScBWpb14BlrMNAc> .
-<ni:///sha-256;fT7DfYkMUq7LFVJr8AhAvbjh8s2wScBWpb14BlrMNAc> cascade:acmgClassification cascade:Benign ;
-	cascade:variantInterpreted <urn:uuid:ce379cd5-db82-88df-98f8-ea7d9bfa81b1> ;
+_:46b7bb70bd5d8dca1d40300deaa58d9 bridge:arrivedAs <ni:///sha-256;LVLB-P0aenFwLmolKeml7st7SCsquTRhmCKA2njti-4> .
+<ni:///sha-256;LVLB-P0aenFwLmolKeml7st7SCsquTRhmCKA2njti-4> cascade:acmgClassification cascade:Benign ;
+	cascade:subjectVariant <urn:uuid:ce379cd5-db82-88df-98f8-ea7d9bfa81b1> ;
 	cascade:workflowStatus "final" .
-_:73d75a087a09f87e1ed1d371d4378c80 oa:hasSelector _:7073c34ae511372a81bb50c94a1b19b2 ;
+_:46b7bb70bd5d8dca1d40300deaa58d9 oa:hasSelector _:6130d495b158c3f990dcb45cc14395c4 ;
 	oa:hasSource <ni:///sha-256;EHEEuwO8uUs_nijTU9VlSikqlK644Yc3bjRkFotgN9E> ;
 	prov:wasDerivedFrom <ni:///sha-256;EHEEuwO8uUs_nijTU9VlSikqlK644Yc3bjRkFotgN9E> ;
 	prov:wasGeneratedBy _:3903ee1f1d2a0f7c9342d1d3fb9ee27f .
-_:7073c34ae511372a81bb50c94a1b19b2 a oa:FragmentSelector ;
+_:6130d495b158c3f990dcb45cc14395c4 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/11" .
 <urn:uuid:35b75121-ad2b-8a2f-b21d-5f8c9f96c236> a cascade:VariantInterpretation .

@@ -38,8 +38,8 @@ PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 
 CONSTRUCT {
   ?version cascade:acmgClassification ?classification ;
-    cascade:variantInterpreted ?variantRecord ;
-    cascade:interpretedDate ?interpretedDate ;
+    cascade:subjectVariant ?variantRecord ;
+    cascade:variantInterpretationDate ?interpretedDate ;
     cascade:workflowStatus ?status ;
     prov:wasAttributedTo ?lab .
 }

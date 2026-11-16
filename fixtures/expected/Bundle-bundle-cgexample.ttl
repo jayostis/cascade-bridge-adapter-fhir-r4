@@ -20,12 +20,12 @@
 _:1af60ac306bf4b97aec4e2244b0f3cd7 bridge:arrivedAs <ni:///sha-256;eft8jky9Fq6J2V6nmjYoEOAzDFMXQjxAx7cPpgEkwIA> .
 <ni:///sha-256;eft8jky9Fq6J2V6nmjYoEOAzDFMXQjxAx7cPpgEkwIA> prov:wasAttributedTo <urn:uuid:aa14ac09-843c-8ff4-8ea4-fb0df4295fff> ;
 	obo:RO_0002351 <urn:uuid:68530f82-14be-86d9-be9b-da03cd0d16ce> , <urn:uuid:c01357e6-99d9-82cb-b0a5-356a360b1340> , <urn:uuid:da7c3495-bc90-8e5c-894a-3959e48701a4> , <urn:uuid:4500af88-5e2d-8974-ba01-faf19df49032> , <urn:uuid:c73c3c72-9611-8100-9ef6-ba6a2d921254> , <urn:uuid:cc01d168-e795-8c4c-bd85-e037c82914e5> , <urn:uuid:dc583197-0fb3-8f76-988c-2bf7d538476c> , <urn:uuid:5a27263d-270b-8a7e-84aa-393ee6fb0eb1> ;
-	cascade:workflowStatus "final" ;
 	cascade:reportIssuedTime "2016-09-06T00:00:00-05:00"^^xsd:dateTime ;
-	cascade:reportCategory "GE"^^<http://terminology.hl7.org/CodeSystem/v2-0074> ;
+	cascade:workflowStatus "final" ;
+	cascade:reportEffectiveTime "2016"^^xsd:gYear ;
 	cascade:reportCode <http://loinc.org/rdf/51969-4> ;
-	cascade:reportConclusionCode <http://snomed.info/id/10828004> , <http://loinc.org/rdf/LA6576-8> ;
-	cascade:reportEffectiveTime "2016"^^xsd:gYear .
+	cascade:reportCategory "GE"^^<http://terminology.hl7.org/CodeSystem/v2-0074> ;
+	cascade:reportConclusionCode <http://snomed.info/id/10828004> , <http://loinc.org/rdf/LA6576-8> .
 _:1af60ac306bf4b97aec4e2244b0f3cd7 oa:hasSelector _:47c65418ce6e72fceffca61c34c27d7a ;
 	oa:hasSource <ni:///sha-256;uOCsRbuj3LdZzmRqIAmqgcrCuf0dnH_qp3oZKaOqFDo> ;
 	prov:wasDerivedFrom <ni:///sha-256;uOCsRbuj3LdZzmRqIAmqgcrCuf0dnH_qp3oZKaOqFDo> ;
@@ -76,19 +76,19 @@ _:454f69703330293c7aeebb2be8b0559a a oa:FragmentSelector ;
 	rdf:value "/entry/5" .
 <urn:uuid:dc583197-0fb3-8f76-988c-2bf7d538476c> a cascade:VariantInterpretation ;
 	cascade:sourceUrl <http://example.org/fhir/Observation/dis-path> .
-<ni:///sha-256;PWZrNq6uSvO40zzTC-3k_3BSiIBllz2afbAYPcvfSe4> prov:specializationOf <urn:uuid:dc583197-0fb3-8f76-988c-2bf7d538476c> ;
+<ni:///sha-256;Usd1C3BAdYem3qjt5OvfQtG0HOm77_P0QF492feKE2M> prov:specializationOf <urn:uuid:dc583197-0fb3-8f76-988c-2bf7d538476c> ;
 	cascade:patient <urn:uuid:578d95d0-f38a-8c54-95d4-3ab764e59f21> .
-_:9a632db89940dda0d5dd63673675bef3 bridge:arrivedAs <ni:///sha-256;PWZrNq6uSvO40zzTC-3k_3BSiIBllz2afbAYPcvfSe4> .
-<ni:///sha-256;PWZrNq6uSvO40zzTC-3k_3BSiIBllz2afbAYPcvfSe4> cascade:acmgClassification cascade:Pathogenic ;
-	cascade:variantInterpreted <urn:uuid:5a27263d-270b-8a7e-84aa-393ee6fb0eb1> ;
-	cascade:interpretedDate "2016-09-06"^^xsd:date ;
+_:1c77f7efa605f4deddcbe2136f2bec8 bridge:arrivedAs <ni:///sha-256;Usd1C3BAdYem3qjt5OvfQtG0HOm77_P0QF492feKE2M> .
+<ni:///sha-256;Usd1C3BAdYem3qjt5OvfQtG0HOm77_P0QF492feKE2M> cascade:acmgClassification cascade:Pathogenic ;
+	cascade:subjectVariant <urn:uuid:5a27263d-270b-8a7e-84aa-393ee6fb0eb1> ;
+	cascade:variantInterpretationDate "2016-09-06"^^xsd:date ;
 	cascade:workflowStatus "final" ;
 	prov:wasAttributedTo <urn:uuid:aa14ac09-843c-8ff4-8ea4-fb0df4295fff> .
-_:9a632db89940dda0d5dd63673675bef3 oa:hasSelector _:d27d1b1d259c9632ce01aa55ab8ec4d6 ;
+_:1c77f7efa605f4deddcbe2136f2bec8 oa:hasSelector _:b5e4ada9f2f2c820af98dbeea7289f77 ;
 	oa:hasSource <ni:///sha-256;uOCsRbuj3LdZzmRqIAmqgcrCuf0dnH_qp3oZKaOqFDo> ;
 	prov:wasDerivedFrom <ni:///sha-256;uOCsRbuj3LdZzmRqIAmqgcrCuf0dnH_qp3oZKaOqFDo> ;
 	prov:wasGeneratedBy _:7c8f578e0d5bf1cb55b40af00927dc86 .
-_:d27d1b1d259c9632ce01aa55ab8ec4d6 a oa:FragmentSelector ;
+_:b5e4ada9f2f2c820af98dbeea7289f77 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/6" .
 <urn:uuid:cc01d168-e795-8c4c-bd85-e037c82914e5> a cascade:GeneticVariantFinding ;
@@ -106,19 +106,19 @@ _:50005717cafd98e21f333a2cd82422a2 a oa:FragmentSelector ;
 	rdf:value "/entry/7" .
 <urn:uuid:c73c3c72-9611-8100-9ef6-ba6a2d921254> a cascade:VariantInterpretation ;
 	cascade:sourceUrl <http://example.org/fhir/Observation/complex-dis-path> .
-<ni:///sha-256;_z7qqCXxTvMHpQcHT3Ofn3U6d6QiBElSA5YV0d66qH8> prov:specializationOf <urn:uuid:c73c3c72-9611-8100-9ef6-ba6a2d921254> ;
+<ni:///sha-256;_-oxNLambgPdp203n2VxRVblect5VShRKhN-QBYj9pI> prov:specializationOf <urn:uuid:c73c3c72-9611-8100-9ef6-ba6a2d921254> ;
 	cascade:patient <urn:uuid:578d95d0-f38a-8c54-95d4-3ab764e59f21> .
-_:ad20fa86eefd5c58cef9de0a91618c58 bridge:arrivedAs <ni:///sha-256;_z7qqCXxTvMHpQcHT3Ofn3U6d6QiBElSA5YV0d66qH8> .
-<ni:///sha-256;_z7qqCXxTvMHpQcHT3Ofn3U6d6QiBElSA5YV0d66qH8> cascade:acmgClassification cascade:Pathogenic ;
-	cascade:variantInterpreted <urn:uuid:cc01d168-e795-8c4c-bd85-e037c82914e5> ;
-	cascade:interpretedDate "2016-09-06"^^xsd:date ;
+_:a367492a4bfcc2cf493e8fa6657b8752 bridge:arrivedAs <ni:///sha-256;_-oxNLambgPdp203n2VxRVblect5VShRKhN-QBYj9pI> .
+<ni:///sha-256;_-oxNLambgPdp203n2VxRVblect5VShRKhN-QBYj9pI> cascade:acmgClassification cascade:Pathogenic ;
+	cascade:subjectVariant <urn:uuid:cc01d168-e795-8c4c-bd85-e037c82914e5> ;
+	cascade:variantInterpretationDate "2016-09-06"^^xsd:date ;
 	cascade:workflowStatus "final" ;
 	prov:wasAttributedTo <urn:uuid:aa14ac09-843c-8ff4-8ea4-fb0df4295fff> .
-_:ad20fa86eefd5c58cef9de0a91618c58 oa:hasSelector _:2ec5e7f49d54c49da553a71ea6148ecb ;
+_:a367492a4bfcc2cf493e8fa6657b8752 oa:hasSelector _:42df45f9fefc00a9939d9b02c08a0154 ;
 	oa:hasSource <ni:///sha-256;uOCsRbuj3LdZzmRqIAmqgcrCuf0dnH_qp3oZKaOqFDo> ;
 	prov:wasDerivedFrom <ni:///sha-256;uOCsRbuj3LdZzmRqIAmqgcrCuf0dnH_qp3oZKaOqFDo> ;
 	prov:wasGeneratedBy _:7c8f578e0d5bf1cb55b40af00927dc86 .
-_:2ec5e7f49d54c49da553a71ea6148ecb a oa:FragmentSelector ;
+_:42df45f9fefc00a9939d9b02c08a0154 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/8" .
 <urn:uuid:382e8a87-8258-8f75-8744-a464ab3a4919> a cascade:GeneticVariantFinding ;
@@ -169,23 +169,23 @@ _:c03429481d06a6fea5d5de39c45911aa bridge:arrivedAs <ni:///sha-256;esbqyB8dYlJum
 _:d630627615b623a025d7f31b69e49da6 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/11" .
-<ni:///sha-256;wBoP0dHAPfFBZNpG-uuQnPYHILYyJ19V3q7obDR9ExA> cascade:testCode <http://loinc.org/rdf/84413-4> ;
+<ni:///sha-256;5xTCGk4UsPqhqweB6n98bPzbcf6gN0XpcVoA2qi0PPI> cascade:testCode <http://loinc.org/rdf/84413-4> ;
 	prov:wasAttributedTo <urn:uuid:aa14ac09-843c-8ff4-8ea4-fb0df4295fff> ;
 	cascade:resultValueKind cascade:CodedResultValue ;
-	cascade:resultValue "CYP2C9 *2/*5" ;
+	cascade:resultValueText "CYP2C9 *2/*5" ;
 	cascade:resultClinicallyRelevantTime "2016"^^xsd:gYear ;
 	cascade:workflowStatus "final" .
 <urn:uuid:da7c3495-bc90-8e5c-894a-3959e48701a4> a cascade:LaboratoryTestResult ;
 	cascade:sourceUrl <http://example.org/fhir/Observation/genotype> ;
 	cascade:sourceRecordId "genotype" .
-<ni:///sha-256;wBoP0dHAPfFBZNpG-uuQnPYHILYyJ19V3q7obDR9ExA> prov:specializationOf <urn:uuid:da7c3495-bc90-8e5c-894a-3959e48701a4> ;
+<ni:///sha-256;5xTCGk4UsPqhqweB6n98bPzbcf6gN0XpcVoA2qi0PPI> prov:specializationOf <urn:uuid:da7c3495-bc90-8e5c-894a-3959e48701a4> ;
 	cascade:patient <urn:uuid:578d95d0-f38a-8c54-95d4-3ab764e59f21> .
-_:d636df12fe94d8cb910d0c9270448ea7 bridge:arrivedAs <ni:///sha-256;wBoP0dHAPfFBZNpG-uuQnPYHILYyJ19V3q7obDR9ExA> ;
-	oa:hasSelector _:a1303a956a46beb8a346bc1c7557250 ;
+_:5e27c525d82aa0783efeb34574508761 bridge:arrivedAs <ni:///sha-256;5xTCGk4UsPqhqweB6n98bPzbcf6gN0XpcVoA2qi0PPI> ;
+	oa:hasSelector _:d6560d266b68e88f8e35c22b0758215 ;
 	oa:hasSource <ni:///sha-256;uOCsRbuj3LdZzmRqIAmqgcrCuf0dnH_qp3oZKaOqFDo> ;
 	prov:wasDerivedFrom <ni:///sha-256;uOCsRbuj3LdZzmRqIAmqgcrCuf0dnH_qp3oZKaOqFDo> ;
 	prov:wasGeneratedBy _:7c8f578e0d5bf1cb55b40af00927dc86 .
-_:a1303a956a46beb8a346bc1c7557250 a oa:FragmentSelector ;
+_:d6560d266b68e88f8e35c22b0758215 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/12" .
 <ni:///sha-256;f9hyvHfnyHrSDNTdZZPHE-1PfJJVlI4jsE0ASX9Jm58> cascade:testCodeInOtherSystem "therapeutic-implication"^^<http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs> ;

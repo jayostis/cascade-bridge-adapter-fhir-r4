@@ -13,7 +13,10 @@ PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 # value, of whatever kind, so it names cascade:resultValueKind; obs-6 lets it
 # stand only where the result has no value. The data-absent-reason extension
 # on a mapped date's or a gender's _element stands for that value, where the value
-# itself is absent. Each reason is the code's IRI in FHIR's data absent reasons or in v3
+# itself is absent. A condition's or a procedure's code in FHIR's data-absent-reason
+# or v3 NullFlavor, or carrying the data-absent-reason extension, is why the code is
+# absent: a cascade:conditionCode or cascade:procedureCode value is absent where
+# the code has no other coding. Each reason is the code's IRI in FHIR's data absent reasons or in v3
 # NullFlavor, as the source gave it, never mapped from one into the other, and
 # only a code its CodeSystem defines: a coding of another system, or a code its
 # system does not define, is not carried, and absent-reason-findings.rq
@@ -85,6 +88,34 @@ WHERE {
     FILTER NOT EXISTS { ?resource ?valueKey ?value }
     FILTER (!BOUND(?otherKey) || NOT EXISTS { ?resource ?otherKey ?other })
     BIND ("http://terminology.hl7.org/CodeSystem/data-absent-reason" AS ?system)
+  }
+  UNION
+  {
+    VALUES (?type ?property) {
+      ("Condition" cascade:conditionCode)
+      ("Procedure" cascade:procedureCode)
+    }
+    {
+      ?resource xyz:code ?concept . ?concept xyz:coding ?codings . ?codings ?codingSlot ?coding .
+      ?coding xyz:system ?systemWritten ; xyz:code ?codeWritten .
+      ?systemRow fhirr4:systemWritten ?systemWritten ; fhirr4:systemRead ?system .
+      FILTER (?system IN ("http://terminology.hl7.org/CodeSystem/data-absent-reason", "http://terminology.hl7.org/CodeSystem/v3-NullFlavor"))
+      BIND (REPLACE(STR(?codeWritten), "^\\s+|\\s+$", "") AS ?code)
+      FILTER (?code != "")
+    }
+    UNION
+    {
+      ?resource xyz:code ?concept . ?concept xyz:extension ?extensions . ?extensions ?extensionSlot ?extension .
+      ?extension xyz:url "http://hl7.org/fhir/StructureDefinition/data-absent-reason" ; xyz:valueCode ?code .
+      BIND ("http://terminology.hl7.org/CodeSystem/data-absent-reason" AS ?system)
+    }
+    FILTER NOT EXISTS {
+      ?resource xyz:code ?otherConcept . ?otherConcept xyz:coding ?otherCodings . ?otherCodings ?otherSlot ?otherCoding .
+      ?otherCoding xyz:system ?otherSystemWritten ; xyz:code ?otherCodeWritten .
+      ?otherRow fhirr4:systemWritten ?otherSystemWritten ; fhirr4:systemRead ?otherSystem .
+      FILTER (?otherSystem NOT IN ("http://terminology.hl7.org/CodeSystem/data-absent-reason", "http://terminology.hl7.org/CodeSystem/v3-NullFlavor"))
+      FILTER (REPLACE(STR(?otherCodeWritten), "^\\s+|\\s+$", "") != "")
+    }
   }
   ?codeSystem skos:inScheme fhirr4:codeSystems ;
     cascade:codingSystemUri ?systemUri ;

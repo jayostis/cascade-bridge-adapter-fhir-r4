@@ -34,16 +34,16 @@ PREFIX fhirr4:   <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 CONSTRUCT {
   ?version cascade:testName ?testName ;
     cascade:resultValueKind ?valueKind ;
-    cascade:resultValue ?resultValue ;
-    cascade:resultUnit ?resultUnit ;
-    cascade:resultCode ?resultCode ;
-    cascade:referenceRange ?referenceRange ;
+    cascade:resultValueText ?resultValue ;
+    cascade:resultUnitText ?resultUnit ;
+    cascade:resultValueCode ?resultCode ;
+    cascade:referenceRangeText ?referenceRange ;
     cascade:resultClinicallyRelevantTime ?performedDate ;
-    cascade:notes ?note ;
+    cascade:addedNoteText ?note ;
     cascade:workflowStatus ?status .
   ?version cascade:paddedDateTime ?performedDatePadded .
   ?performedDatePadded cascade:paddedDateTimeProperty cascade:resultClinicallyRelevantTime ;
-    cascade:writtenDate ?performedDateWritten .
+    cascade:timeAsWritten ?performedDateWritten .
 }
 WHERE {
   FILTER NOT EXISTS {

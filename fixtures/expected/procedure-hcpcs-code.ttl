@@ -7,23 +7,22 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;3IXE9oOMHxqKGeDnop2MF4Mj4ThUX6apnsZChbrhs1Y> cascade:procedureName "Screening colonoscopy" ;
-	cascade:snomedCode <http://snomed.info/id/73761001> ;
-	cascade:cptCode <https://ns.cascadeprotocol.org/codes/cpt/45378> ;
+<ni:///sha-256;R6dggQ2MSfWs-EOHsIkcEcDytwBdCWFgDd1DfAJzJ20> cascade:procedureName "Screening colonoscopy" ;
+	cascade:procedureCode <http://snomed.info/id/73761001> , <https://ns.cascadeprotocol.org/codes/cpt/45378> ;
 	cascade:procedureCodeInOtherSystem "G0121"^^<http://www.cms.gov/Medicare/Coding/HCPCSReleaseCodeSets> ;
 	cascade:procedureDate "2026-02-18"^^xsd:date ;
 	cascade:workflowStatus "completed" .
 <urn:uuid:c02411bb-e618-8f66-b9dd-c3989c34b657> a cascade:MedicalProcedure ;
 	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Procedure/proc-colonoscopy-2> ;
 	cascade:sourceRecordId "proc-colonoscopy-2" .
-<ni:///sha-256;3IXE9oOMHxqKGeDnop2MF4Mj4ThUX6apnsZChbrhs1Y> prov:specializationOf <urn:uuid:c02411bb-e618-8f66-b9dd-c3989c34b657> ;
+<ni:///sha-256;R6dggQ2MSfWs-EOHsIkcEcDytwBdCWFgDd1DfAJzJ20> prov:specializationOf <urn:uuid:c02411bb-e618-8f66-b9dd-c3989c34b657> ;
 	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
-_:2dfb8dec73ff4fd1cf11ec50428f48bd bridge:arrivedAs <ni:///sha-256;3IXE9oOMHxqKGeDnop2MF4Mj4ThUX6apnsZChbrhs1Y> ;
-	oa:hasSelector _:cbcda6b49d3643a68d87a6d6cfcd7de8 ;
+_:f9d457987bfbbfee22c1e62808657e74 bridge:arrivedAs <ni:///sha-256;R6dggQ2MSfWs-EOHsIkcEcDytwBdCWFgDd1DfAJzJ20> ;
+	oa:hasSelector _:e0372096ec840e9bfb6045e806364f0f ;
 	oa:hasSource <ni:///sha-256;FCtGePvrtubgSvxawXA82ux9yOMDDXuz8v_hygv_sNM> ;
 	prov:wasDerivedFrom <ni:///sha-256;FCtGePvrtubgSvxawXA82ux9yOMDDXuz8v_hygv_sNM> ;
 	prov:wasGeneratedBy _:35c00334bd11d9d23dd29a87e81c77fb .
-_:cbcda6b49d3643a68d87a6d6cfcd7de8 a oa:FragmentSelector ;
+_:e0372096ec840e9bfb6045e806364f0f a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
 <ni:///sha-256;FCtGePvrtubgSvxawXA82ux9yOMDDXuz8v_hygv_sNM> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;

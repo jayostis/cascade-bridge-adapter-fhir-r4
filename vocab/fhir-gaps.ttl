@@ -266,12 +266,6 @@ fhirr4:codingNotCarried a skos:Concept ;
   skos:inScheme fhirr4:gaps ;
   skos:broader bridge:carriedWithLoss .
 
-fhirr4:procedureCptCodeRepeated a skos:Concept ;
-  skos:prefLabel "A procedure carries more than one CPT code, and a procedure holds one, so only the first is carried."@en ;
-  skos:inScheme fhirr4:gaps ;
-  skos:broader bridge:carriedWithLoss ;
-  sh:resultSeverity sh:Warning .
-
 fhirr4:labResultInterpretationNotCarried a skos:Concept ;
   skos:prefLabel "A lab result's interpretation is a coding in a system other than HL7's v3 ObservationInterpretation, v2's table 0078 among them, or a coding with no system or no code, and it is not carried."@en ;
   skos:inScheme fhirr4:gaps ;
