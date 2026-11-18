@@ -2,76 +2,106 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:e623effdc555c59bbc5c19c8661754f9 a oa:FragmentSelector ;
+_:c3a1116d9e54b08c36eb75fe5d72a5a5 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:a10a8f86be09db2a5f5f1dc51ecfc3a4 a oa:FragmentSelector ;
+_:fe523ba3d393b6c4136658346c424fc6 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/component/0/valueQuantity/value" .
-_:e623effdc555c59bbc5c19c8661754f9 oa:refinedBy _:a10a8f86be09db2a5f5f1dc51ecfc3a4 .
-_:b6e6a417417058e4016672d26a51bb5f a oa:Annotation ;
-	oa:hasTarget _:ffb656adea1875cc853cd626c65ad7a8 .
-_:ffb656adea1875cc853cd626c65ad7a8 oa:hasSource <../in/observation-component-values-not-carried.json> ;
-	oa:hasSelector _:e623effdc555c59bbc5c19c8661754f9 .
-_:b6e6a417417058e4016672d26a51bb5f oa:hasBody fhirr4:observationComponentDataNotCarried ;
+_:c3a1116d9e54b08c36eb75fe5d72a5a5 oa:refinedBy _:fe523ba3d393b6c4136658346c424fc6 .
+_:cd69a00247d5daf604cb024ef710459 a oa:Annotation ;
+	oa:hasTarget _:bc4b9477c84d82ca0080d76968dfb819 .
+_:bc4b9477c84d82ca0080d76968dfb819 oa:hasSource <../in/observation-component-values-not-carried.json> ;
+	oa:hasSelector _:c3a1116d9e54b08c36eb75fe5d72a5a5 .
+_:cd69a00247d5daf604cb024ef710459 oa:hasBody fhirr4:observationComponentDataNotCarried ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "/component/valueQuantity/value" ;
 	sh:resultSeverity sh:Info .
-_:e010941031c4f1997af5b9cb7f8167a2 a oa:FragmentSelector ;
+_:a987f7a767d7d25bc88237885f37ca19 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:cb80548c2f2a032bdc607be653bcc235 a oa:FragmentSelector ;
+_:eb5a2aa431d8356533b653a7f12649d9 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/component/0/valueQuantity/system" .
-_:e010941031c4f1997af5b9cb7f8167a2 oa:refinedBy _:cb80548c2f2a032bdc607be653bcc235 .
-_:b9d0dd286d75b1871e9c4d1e30f66153 a oa:Annotation ;
-	oa:hasTarget _:acead6c9886d3fe1351a76ca2a6c8739 .
-_:acead6c9886d3fe1351a76ca2a6c8739 oa:hasSource <../in/observation-component-values-not-carried.json> ;
-	oa:hasSelector _:e010941031c4f1997af5b9cb7f8167a2 .
-_:b9d0dd286d75b1871e9c4d1e30f66153 oa:hasBody fhirr4:observationComponentDataNotCarried ;
+_:a987f7a767d7d25bc88237885f37ca19 oa:refinedBy _:eb5a2aa431d8356533b653a7f12649d9 .
+_:ab9b49b2f6675c019210a79969a7442c a oa:Annotation ;
+	oa:hasTarget _:e53a0816336153fec7a1a9a665b7163b .
+_:e53a0816336153fec7a1a9a665b7163b oa:hasSource <../in/observation-component-values-not-carried.json> ;
+	oa:hasSelector _:a987f7a767d7d25bc88237885f37ca19 .
+_:ab9b49b2f6675c019210a79969a7442c oa:hasBody fhirr4:observationComponentDataNotCarried ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "/component/valueQuantity/system" ;
 	sh:resultSeverity sh:Info .
-_:f5d5f28006e32ef962a70ffd1cbdfa7b a oa:FragmentSelector ;
+_:d3bcf8ec227dc34ea4dd52ccff723592 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:dd5c0cb9f7ed377cdbac0692001eb12a a oa:FragmentSelector ;
+_:d2e0fd17e199085a3fa1f70e22820ca0 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/component/0/valueQuantity/code" .
-_:f5d5f28006e32ef962a70ffd1cbdfa7b oa:refinedBy _:dd5c0cb9f7ed377cdbac0692001eb12a .
-_:cf1fcbf6d9ed111a75a4c7b68ed7777b a oa:Annotation ;
-	oa:hasTarget _:b377d80a3d2ee694b1d3def904e90a53 .
-_:b377d80a3d2ee694b1d3def904e90a53 oa:hasSource <../in/observation-component-values-not-carried.json> ;
-	oa:hasSelector _:f5d5f28006e32ef962a70ffd1cbdfa7b .
-_:cf1fcbf6d9ed111a75a4c7b68ed7777b oa:hasBody fhirr4:observationComponentDataNotCarried ;
+_:d3bcf8ec227dc34ea4dd52ccff723592 oa:refinedBy _:d2e0fd17e199085a3fa1f70e22820ca0 .
+_:b8734a50df0cde6070a536deed4cb5dd a oa:Annotation ;
+	oa:hasTarget _:ff558c17e1325a81dc1aec325e786ef6 .
+_:ff558c17e1325a81dc1aec325e786ef6 oa:hasSource <../in/observation-component-values-not-carried.json> ;
+	oa:hasSelector _:d3bcf8ec227dc34ea4dd52ccff723592 .
+_:b8734a50df0cde6070a536deed4cb5dd oa:hasBody fhirr4:observationComponentDataNotCarried ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "/component/valueQuantity/code" ;
 	sh:resultSeverity sh:Info .
-_:de062349d08789a4eb429fcd7c68fba5 a oa:FragmentSelector ;
+_:b1f3013a953a8313bd0209768707af75 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:c1e4fa26ed350dbc1cbbb2ce86a89a36 a oa:FragmentSelector ;
+_:ba2504cd13eabd4c04d637ab67e3c3fc a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/component/1/valueString" .
-_:de062349d08789a4eb429fcd7c68fba5 oa:refinedBy _:c1e4fa26ed350dbc1cbbb2ce86a89a36 .
-_:e5721c9e9e1ea9754c70880148c302be a oa:Annotation ;
-	oa:hasTarget _:c0d6181ffc00222be7c8b7a35a46e3de .
-_:c0d6181ffc00222be7c8b7a35a46e3de oa:hasSource <../in/observation-component-values-not-carried.json> ;
-	oa:hasSelector _:de062349d08789a4eb429fcd7c68fba5 .
-_:e5721c9e9e1ea9754c70880148c302be oa:hasBody fhirr4:observationComponentDataNotCarried ;
+_:b1f3013a953a8313bd0209768707af75 oa:refinedBy _:ba2504cd13eabd4c04d637ab67e3c3fc .
+_:d65a3ccb6b368eb6158a31f48ac74d70 a oa:Annotation ;
+	oa:hasTarget _:f04d334d51e62245eaab0994933e78de .
+_:f04d334d51e62245eaab0994933e78de oa:hasSource <../in/observation-component-values-not-carried.json> ;
+	oa:hasSelector _:b1f3013a953a8313bd0209768707af75 .
+_:d65a3ccb6b368eb6158a31f48ac74d70 oa:hasBody fhirr4:observationComponentDataNotCarried ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "/component/valueString" ;
 	sh:resultSeverity sh:Info .
-_:a44ee6b7c6b25083136444791e44aa7c a oa:FragmentSelector ;
+_:e938b054a933167080bfdd3470e77f98 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:b6e5086df99d5f264ffa2659715292d0 oa:hasSource <../in/observation-component-values-not-carried.json> .
-_:a44ee6b7c6b25083136444791e44aa7c oa:refinedBy _:fba0dd01a7d11cb54399b51e5ba1954b .
-_:fba0dd01a7d11cb54399b51e5ba1954b a oa:FragmentSelector ;
+_:e139c89f2d916fb6e2e2b62c65e8c93a oa:hasSource <../in/observation-component-values-not-carried.json> .
+_:e938b054a933167080bfdd3470e77f98 oa:refinedBy _:e35fd958e613a744258b3dc2c40f7727 .
+_:e35fd958e613a744258b3dc2c40f7727 a oa:FragmentSelector ;
+	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/component/1/code/coding/0/code" .
+_:e139c89f2d916fb6e2e2b62c65e8c93a oa:hasSelector _:e938b054a933167080bfdd3470e77f98 .
+_:bf7cb370730ce1b2866aa471209689f3 oa:hasTarget _:e139c89f2d916fb6e2e2b62c65e8c93a .
+_:ac7f431bbcada252bf37899ac9b07f45 a oa:FragmentSelector ;
+	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "" .
+_:f8691aa18bb7f012b48bcf375cbb2f7b oa:hasSource <../in/observation-component-values-not-carried.json> .
+_:ac7f431bbcada252bf37899ac9b07f45 oa:refinedBy _:d1fcdfb83ff94a8258451466a811e872 .
+_:d1fcdfb83ff94a8258451466a811e872 a oa:FragmentSelector ;
+	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "/component/0/code/coding/0/code" .
+_:f8691aa18bb7f012b48bcf375cbb2f7b oa:hasSelector _:ac7f431bbcada252bf37899ac9b07f45 .
+_:d20fb7acaa0ba8c888d8187fdfbac8cf oa:hasTarget _:f8691aa18bb7f012b48bcf375cbb2f7b .
+_:bf7cb370730ce1b2866aa471209689f3 sh:resultSeverity sh:Info .
+_:d20fb7acaa0ba8c888d8187fdfbac8cf sh:resultSeverity sh:Info .
+_:bf7cb370730ce1b2866aa471209689f3 a oa:Annotation ;
+	oa:hasBody fhirr4:observationComponentDataNotCarried ;
+	oa:motivatedBy oa:classifying ;
+	sh:value "8462-4" .
+_:d20fb7acaa0ba8c888d8187fdfbac8cf a oa:Annotation ;
+	oa:hasBody fhirr4:observationComponentDataNotCarried ;
+	oa:motivatedBy oa:classifying ;
+	sh:value "8480-6" .
+_:c664caf1fa82204cd3857b0c51db50a6 a oa:FragmentSelector ;
+	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "" .
+_:dfc4c65168dbda20e3fd098dc349a198 oa:hasSource <../in/observation-component-values-not-carried.json> .
+_:c664caf1fa82204cd3857b0c51db50a6 oa:refinedBy _:d2423929b28cf05322899884d3578833 .
+_:d2423929b28cf05322899884d3578833 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/category/0/coding/0/code" .
-_:b6e5086df99d5f264ffa2659715292d0 oa:hasSelector _:a44ee6b7c6b25083136444791e44aa7c .
-_:e29a4e90064093ab902b57404e65b253 oa:hasTarget _:b6e5086df99d5f264ffa2659715292d0 ;
+_:dfc4c65168dbda20e3fd098dc349a198 oa:hasSelector _:c664caf1fa82204cd3857b0c51db50a6 .
+_:f0eee2531eb74672ebdd995ef44becfe oa:hasTarget _:dfc4c65168dbda20e3fd098dc349a198 ;
 	sh:resultSeverity sh:Warning ;
 	a oa:Annotation ;
 	oa:hasBody fhirr4:observationNotLabResult ;

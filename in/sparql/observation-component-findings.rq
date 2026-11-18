@@ -1,0 +1,105 @@
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX sh:      <http://www.w3.org/ns/shacl#>
+PREFIX oa:      <http://www.w3.org/ns/oa#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX fx:      <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:     <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:  <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+PREFIX cascade: <https://ns.cascadeprotocol.org/cascade#>
+
+# What an Observation's components give that no mapping reads. A component's
+# code or coded answer given as text with no coding is reported as that text;
+# text beside a coding is that coding's label and is not. The codings of a
+# component's code and of its coded answer are read only by the mappings of a
+# variant (variant.rq) and of a diagnostic implication
+# (variant-interpretation.rq), so on any other Observation, and on a variant
+# whose value is not Present, which is no record, each coding's code, and a
+# coded answer's display, is reported. The rest of a component, its quantities,
+# ranges and string, is reported by its entries of the source accounting.
+
+CONSTRUCT {
+  [] a oa:Annotation ;
+    oa:hasTarget [
+      oa:hasSource bridge:thisRecord ;
+      oa:hasSelector [
+        a oa:FragmentSelector ;
+        dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+        rdf:value ?pointer
+      ]
+    ] ;
+    oa:hasBody fhirr4:observationComponentDataNotCarried ;
+    oa:motivatedBy oa:classifying ;
+    sh:value ?value .
+}
+WHERE {
+  FILTER NOT EXISTS {
+    bridge:thisDocument cascade:sourceFormatVersion ?stated .
+    FILTER (!STRSTARTS(?stated, "4.0."))
+  }
+  bridge:thisRecord bridge:selector ?recordSelector .
+  ?root a fx:root .
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  { BIND ("" AS ?containedStep) }
+  UNION
+  {
+    ?top xyz:contained ?containedList .
+    ?containedList ?containedSlot ?contained .
+    ?contained xyz:resourceType ?containedType .
+    BIND (CONCAT("/contained/", STR(xsd:integer(STRAFTER(STR(?containedSlot), "#_")) - 1)) AS ?containedStep)
+  }
+  BIND (COALESCE(?contained, ?top) AS ?resource)
+  ?resource xyz:resourceType "Observation" .
+  BIND (CONCAT(?topStep, ?containedStep) AS ?resourcePointer)
+  BIND (CONCAT(?recordSelector, ?resourcePointer) AS ?recordPointer)
+  ?resource xyz:component ?components .
+  ?components ?componentSlot ?component .
+  FILTER (STRSTARTS(STR(?componentSlot), STR(rdf:_)))
+  BIND (CONCAT(?resourcePointer, "/component/", STR(xsd:integer(STRAFTER(STR(?componentSlot), "#_")) - 1)) AS ?componentPointer)
+
+  {
+    ?component xyz:code ?concept .
+    ?concept xyz:text ?value .
+    FILTER NOT EXISTS { ?concept xyz:coding ?anyCoding }
+    BIND ("/code/text" AS ?step)
+  }
+  UNION
+  {
+    ?component xyz:valueCodeableConcept ?concept .
+    ?concept xyz:text ?value .
+    FILTER NOT EXISTS { ?concept xyz:coding ?anyCoding }
+    BIND ("/valueCodeableConcept/text" AS ?step)
+  }
+  UNION
+  {
+    {
+      ?component xyz:code ?concept .
+      BIND ("/code" AS ?conceptStep)
+      BIND (xyz:code AS ?member) BIND ("code" AS ?memberName)
+    }
+    UNION
+    {
+      ?component xyz:valueCodeableConcept ?concept .
+      BIND ("/valueCodeableConcept" AS ?conceptStep)
+      BIND (xyz:code AS ?member) BIND ("code" AS ?memberName)
+    }
+    UNION
+    {
+      ?component xyz:valueCodeableConcept ?concept .
+      BIND ("/valueCodeableConcept" AS ?conceptStep)
+      BIND (xyz:display AS ?member) BIND ("display" AS ?memberName)
+    }
+    ?concept xyz:coding ?codings .
+    ?codings ?codingSlot ?coding .
+    FILTER (STRSTARTS(STR(?codingSlot), STR(rdf:_)))
+    ?coding ?member ?value .
+    BIND (CONCAT(?conceptStep, "/coding/", STR(xsd:integer(STRAFTER(STR(?codingSlot), "#_")) - 1), "/",
+                 ?memberName) AS ?step)
+  }
+  FILTER (!BOUND(?conceptStep)
+          || !(EXISTS { ?variant fhirr4:variantAt ?recordPointer } || EXISTS { ?interpretation fhirr4:interpretationAt ?recordPointer }))
+  BIND (CONCAT(?componentPointer, ?step) AS ?pointer)
+}

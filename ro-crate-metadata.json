@@ -232,6 +232,9 @@
           "@id": "in/sparql/category-text-findings.rq"
         },
         {
+          "@id": "in/sparql/observation-component-findings.rq"
+        },
+        {
           "@id": "in/sparql/observation-findings.rq"
         },
         {
@@ -423,6 +426,9 @@
         },
         {
           "@id": "in/sparql/category-text-findings.rq"
+        },
+        {
+          "@id": "in/sparql/observation-component-findings.rq"
         },
         {
           "@id": "in/sparql/observation-findings.rq"
@@ -912,6 +918,15 @@
         },
         {
           "@id": "fixtures/in/observation-component-text-and-unit.json"
+        },
+        {
+          "@id": "fixtures/in/observation-component-text-beside-a-coding-and-alone.json"
+        },
+        {
+          "@id": "fixtures/in/observation-component-comparator-and-range-bounds.json"
+        },
+        {
+          "@id": "fixtures/in/observation-component-codings-of-an-observation-that-is-no-variant.json"
         },
         {
           "@id": "fixtures/in/medication-request-formulary-code.json"
@@ -1862,6 +1877,15 @@
           "@id": "fixtures/expected/observation-component-text-and-unit.ttl"
         },
         {
+          "@id": "fixtures/expected/observation-component-text-beside-a-coding-and-alone.ttl"
+        },
+        {
+          "@id": "fixtures/expected/observation-component-comparator-and-range-bounds.ttl"
+        },
+        {
+          "@id": "fixtures/expected/observation-component-codings-of-an-observation-that-is-no-variant.ttl"
+        },
+        {
           "@id": "fixtures/expected/medication-request-formulary-code.ttl"
         },
         {
@@ -1986,6 +2010,15 @@
         },
         {
           "@id": "fixtures/findings/observation-component-text-and-unit.ttl"
+        },
+        {
+          "@id": "fixtures/findings/observation-component-text-beside-a-coding-and-alone.ttl"
+        },
+        {
+          "@id": "fixtures/findings/observation-component-comparator-and-range-bounds.ttl"
+        },
+        {
+          "@id": "fixtures/findings/observation-component-codings-of-an-observation-that-is-no-variant.ttl"
         },
         {
           "@id": "fixtures/findings/medication-request-formulary-code.ttl"
@@ -2690,6 +2723,18 @@
       "description": "A finding for each category text of a condition, a diagnostic report, a medication request or statement, a procedure or a note or document that has no coding beside it, which no Cascade predicate carries."
     },
     {
+      "@id": "in/sparql/observation-component-findings.rq",
+      "@type": "File",
+      "name": "Findings: what an Observation's components give that no mapping reads",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "4222",
+      "sha256": "ec02e95951f395b6f0987b415465b16b5e48905197fc2fd31e74b2d43382f29a",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A finding for each component code or coded answer of an Observation given as text with no coding beside it, and for each coding code, and each coded answer coding display, of a component of an Observation that is no variant or diagnostic implication, which no Cascade predicate carries."
+    },
+    {
       "@id": "in/sparql/observation-findings.rq",
       "@type": "File",
       "name": "Findings: an Observation that is not a lab result",
@@ -2802,8 +2847,8 @@
       "@type": "File",
       "name": "FHIR R4 JSON source accounting",
       "encodingFormat": "text/turtle",
-      "contentSize": "923925",
-      "sha256": "63e13fccdad93b72e7515c066acba9e21926fe66962e46a923e9e2a998a1344d",
+      "contentSize": "931307",
+      "sha256": "6cc7b8f38f0ffd262996b28745b2d27cb0f4a648a5e2d96926609ed5a6a6b8c9",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2886,8 +2931,8 @@
       "@type": "File",
       "name": "FHIR R4 JSON gaps",
       "encodingFormat": "text/turtle",
-      "contentSize": "24107",
-      "sha256": "11b88f8ac1eaeadf8ce99c315a2c63dbf990c9554c49f4c7b08cd46ea8d1d1c9",
+      "contentSize": "24159",
+      "sha256": "906345edf3e9972ae4d1a57302e922c7d418891082ac4a44b6e4b8458dd46d6d",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -5109,6 +5154,45 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "An Observation of a blood pressure panel, id obs-bp-components-1, with one component, a systolic pressure of 118 mmHg with the text Systolic. Authored here on 2026-11-17, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/observation-component-text-beside-a-coding-and-alone.json",
+      "@type": "File",
+      "name": "Observation with component code and answer text alone and beside a coding",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "1460",
+      "sha256": "4273c4286891c90542dfd7a38ac8f1cb06ed60e193ea2bd270046079046f2eb5",
+      "dateCreated": "2026-11-18",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "An Observation of a blood pressure panel, id obs-component-text-1, with three components: a code and a coded answer each given as text alone (Posture, Sitting); a diastolic pressure whose code has the text Diastolic beside its LOINC coding; and a mean pressure whose coded answer has a SNOMED coding with the text Sitting beside it. Authored here on 2026-11-18, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/observation-component-comparator-and-range-bounds.json",
+      "@type": "File",
+      "name": "Observation with a component quantity comparator and range bounds",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "1523",
+      "sha256": "07fd89349e36d18df9bbedbcbf321d86194e28d00b9dba10efe6b6dcb8c9190c",
+      "dateCreated": "2026-11-18",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "An Observation of a blood pressure panel, id obs-component-range-1, with two components: a systolic pressure of less than 90 mmHg, and a diastolic pressure given as a range of 60 to 80 mmHg, each bound with its unit, code system and code. Authored here on 2026-11-18, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/observation-component-codings-of-an-observation-that-is-no-variant.json",
+      "@type": "File",
+      "name": "Observation, no variant, with codings in a component code and a coded answer",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "1227",
+      "sha256": "858c239fcb680118211bda29dcb2032717ed9397d19591dd292eee36d73c6bf8",
+      "dateCreated": "2026-11-18",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "An Observation of a blood pressure panel, id obs-component-codings-1, with one component whose code carries a LOINC and a SNOMED coding and whose coded answer carries a SNOMED coding with a display and a code system version. Authored here on 2026-11-18, for a case the conformance corpus does not hold."
     },
     {
       "@id": "fixtures/in/medication-request-formulary-code.json",
@@ -8663,8 +8747,8 @@
       "@type": "File",
       "name": "Expected findings for Bundle-bundle-cgexample",
       "encodingFormat": "text/turtle",
-      "contentSize": "29004",
-      "sha256": "a6dc57623d96edbd4e9962791afe113e79234c55645d9a65935f05bf4ddfc741",
+      "contentSize": "51860",
+      "sha256": "389384c5100da62aba7cd9b65f6e4cb8b21461b9e1b8a7d28df0664608eb1127",
       "about": {
         "@id": "fixtures/in/Bundle-bundle-cgexample.input.json"
       },
@@ -8695,8 +8779,8 @@
       "@type": "File",
       "name": "Expected findings for Bundle-bundle-oncology-diagnostic",
       "encodingFormat": "text/turtle",
-      "contentSize": "10709",
-      "sha256": "fa2c6cddc516043b6fa7a420b8d0211b9802b6a68b0b93cd9e8d2cc761ef216c",
+      "contentSize": "13596",
+      "sha256": "e8329d04e13fc41852750660e93298670a2c80e621de70b271ef2967188e9af8",
       "about": {
         "@id": "fixtures/in/Bundle-bundle-oncology-diagnostic.input.json"
       },
@@ -8711,8 +8795,8 @@
       "@type": "File",
       "name": "Expected findings for bundle-genomics-variants",
       "encodingFormat": "text/turtle",
-      "contentSize": "17876",
-      "sha256": "0ef790c777a46a8f999e346f08f1fbe81df1e644b3bf692baaf0d6e1d00aef78",
+      "contentSize": "19762",
+      "sha256": "66139cd0b50f0f33a39ec38586d8c8a9904784c521819597730372789c3dff2e",
       "about": {
         "@id": "fixtures/in/bundle-genomics-variants.json"
       },
@@ -8727,8 +8811,8 @@
       "@type": "File",
       "name": "Expected findings for bundle-genomics-interpretations",
       "encodingFormat": "text/turtle",
-      "contentSize": "8350",
-      "sha256": "856d5e64c97f0cfceaeee9192a58822d49ee8f643f6fbdd42551a413ce881f7f",
+      "contentSize": "8310",
+      "sha256": "bd3d9ebe480eba7fa189b4acf0902c5315b1c887ca999f23bc6a09a13b983298",
       "about": {
         "@id": "fixtures/in/bundle-genomics-interpretations.json"
       },
@@ -9379,6 +9463,54 @@
       "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
+      "@id": "fixtures/expected/observation-component-text-beside-a-coding-and-alone.ttl",
+      "@type": "File",
+      "name": "Expected graph for observation-component-text-beside-a-coding-and-alone",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2219",
+      "sha256": "a9d2177fea42d5de538a26cef9fc69b474b04a99dd7ad5f82424446844027fd0",
+      "about": {
+        "@id": "fixtures/in/observation-component-text-beside-a-coding-and-alone.json"
+      },
+      "dateCreated": "2026-11-18",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/observation-component-comparator-and-range-bounds.ttl",
+      "@type": "File",
+      "name": "Expected graph for observation-component-comparator-and-range-bounds",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2219",
+      "sha256": "f2bd24adcad85c3837930bcec3d213b6c40f05397d8b43780ba615ab63c2c944",
+      "about": {
+        "@id": "fixtures/in/observation-component-comparator-and-range-bounds.json"
+      },
+      "dateCreated": "2026-11-18",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/observation-component-codings-of-an-observation-that-is-no-variant.ttl",
+      "@type": "File",
+      "name": "Expected graph for observation-component-codings-of-an-observation-that-is-no-variant",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2222",
+      "sha256": "43d224b9181064ee721d2ceddb627a3b9a5201cb3f2193d7b3c58923d8f0f7e9",
+      "about": {
+        "@id": "fixtures/in/observation-component-codings-of-an-observation-that-is-no-variant.json"
+      },
+      "dateCreated": "2026-11-18",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
       "@id": "fixtures/expected/medication-request-formulary-code.ttl",
       "@type": "File",
       "name": "Expected graph for medication-request-formulary-code",
@@ -9959,8 +10091,8 @@
       "@type": "File",
       "name": "Expected findings for observation-component-values-not-carried",
       "encodingFormat": "text/turtle",
-      "contentSize": "4618",
-      "sha256": "93339de73277245b3c0dfd5c4d6202ce2e499334625a19afddd27376e4651e26",
+      "contentSize": "6480",
+      "sha256": "f38e2faa98f4fe87b07afd3ed2656dd041da72e6b9afa9bd3c3a1fd86de6222f",
       "about": {
         "@id": "fixtures/in/observation-component-values-not-carried.json"
       },
@@ -10039,12 +10171,60 @@
       "@type": "File",
       "name": "Expected findings for observation-component-text-and-unit",
       "encodingFormat": "text/turtle",
-      "contentSize": "5471",
-      "sha256": "2c2293a99e38974a4afa6ff3d925a5a2247a3a599d3764859118550d768edac8",
+      "contentSize": "5460",
+      "sha256": "8dc019c5dbcb79e0943cc9ccea494d6613ae928a0f56429c077eb4f0cc9b81c7",
       "about": {
         "@id": "fixtures/in/observation-component-text-and-unit.json"
       },
       "dateCreated": "2026-11-17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/observation-component-text-beside-a-coding-and-alone.ttl",
+      "@type": "File",
+      "name": "Expected findings for observation-component-text-beside-a-coding-and-alone",
+      "encodingFormat": "text/turtle",
+      "contentSize": "7696",
+      "sha256": "e995ff216f6eebbee05d7fced7f47e11c50c8223fbc8ba1598f98e477a0ff013",
+      "about": {
+        "@id": "fixtures/in/observation-component-text-beside-a-coding-and-alone.json"
+      },
+      "dateCreated": "2026-11-18",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/observation-component-comparator-and-range-bounds.ttl",
+      "@type": "File",
+      "name": "Expected findings for observation-component-comparator-and-range-bounds",
+      "encodingFormat": "text/turtle",
+      "contentSize": "14659",
+      "sha256": "3eb3bb179dd25a773cb15ef0468a0e33d0f35e826611b11962c138f4826a2f39",
+      "about": {
+        "@id": "fixtures/in/observation-component-comparator-and-range-bounds.json"
+      },
+      "dateCreated": "2026-11-18",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/observation-component-codings-of-an-observation-that-is-no-variant.ttl",
+      "@type": "File",
+      "name": "Expected findings for observation-component-codings-of-an-observation-that-is-no-variant",
+      "encodingFormat": "text/turtle",
+      "contentSize": "5925",
+      "sha256": "08d924eb33c0bc5c509489a5c32bfd25dc48d8c4443e285db6fcb5357999a22f",
+      "about": {
+        "@id": "fixtures/in/observation-component-codings-of-an-observation-that-is-no-variant.json"
+      },
+      "dateCreated": "2026-11-18",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -10692,8 +10872,8 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "contentSize": "135722",
-      "sha256": "c2d7b6b445b322c622500cd438f2bda264e1706c3602caf525530639b0e27429"
+      "contentSize": "138579",
+      "sha256": "efbf91a81cfb86aefd93c906300f652174e1540d6fe340670739d61e65f5bc01"
     },
     {
       "@id": "fixtures/facts/meridian.ttl",

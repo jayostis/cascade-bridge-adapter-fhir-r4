@@ -415,9 +415,9 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/component/code/text" ;
-  bridge:verdict bridge:noHome ;
+  bridge:verdict bridge:ignored ;
   bridge:concern bridge:concernText ;
-  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+  bridge:because "A component's code or coded answer as text beside the coding that carries it adds nothing to the coding; one given as text with no coding is reported by observation-component-findings.rq as fhirr4:observationComponentDataNotCarried." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/component/valueCodeableConcept" ;
@@ -460,9 +460,9 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/component/valueCodeableConcept/text" ;
-  bridge:verdict bridge:noHome ;
+  bridge:verdict bridge:ignored ;
   bridge:concern bridge:concernText ;
-  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+  bridge:because "A component's code or coded answer as text beside the coding that carries it adds nothing to the coding; one given as text with no coding is reported by observation-component-findings.rq as fhirr4:observationComponentDataNotCarried." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/component/valueQuantity" ;
@@ -473,6 +473,11 @@
   bridge:sourcePath "/component/valueQuantity/code" ;
   bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernCodes ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/component/valueQuantity/comparator" ;
+  bridge:verdict bridge:noHome ;
   bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
@@ -502,6 +507,23 @@
   bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/component/valueRange/high/code" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernCodes ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/component/valueRange/high/system" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernCodes ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/component/valueRange/high/unit" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/component/valueRange/high/value" ;
   bridge:verdict bridge:noHome ;
   bridge:namesGap fhirr4:observationComponentDataNotCarried .
@@ -510,6 +532,23 @@
   bridge:sourcePath "/component/valueRange/low" ;
   bridge:verdict bridge:ignored ;
   bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/component/valueRange/low/code" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernCodes ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/component/valueRange/low/system" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernCodes ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/component/valueRange/low/unit" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/component/valueRange/low/value" ;
@@ -1053,9 +1092,9 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/component/code/text" ;
-  bridge:verdict bridge:noHome ;
+  bridge:verdict bridge:ignored ;
   bridge:concern bridge:concernText ;
-  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+  bridge:because "A component's code or coded answer as text beside the coding that carries it adds nothing to the coding; one given as text with no coding is reported by observation-component-findings.rq as fhirr4:observationComponentDataNotCarried." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/component/valueCodeableConcept" ;
@@ -1098,9 +1137,9 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/component/valueCodeableConcept/text" ;
-  bridge:verdict bridge:noHome ;
+  bridge:verdict bridge:ignored ;
   bridge:concern bridge:concernText ;
-  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+  bridge:because "A component's code or coded answer as text beside the coding that carries it adds nothing to the coding; one given as text with no coding is reported by observation-component-findings.rq as fhirr4:observationComponentDataNotCarried." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/component/valueQuantity" ;
@@ -1111,6 +1150,11 @@
   bridge:sourcePath "/contained/component/valueQuantity/code" ;
   bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernCodes ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/component/valueQuantity/comparator" ;
+  bridge:verdict bridge:noHome ;
   bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
@@ -1140,6 +1184,23 @@
   bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/component/valueRange/high/code" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernCodes ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/component/valueRange/high/system" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernCodes ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/component/valueRange/high/unit" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/contained/component/valueRange/high/value" ;
   bridge:verdict bridge:noHome ;
   bridge:namesGap fhirr4:observationComponentDataNotCarried .
@@ -1148,6 +1209,23 @@
   bridge:sourcePath "/contained/component/valueRange/low" ;
   bridge:verdict bridge:ignored ;
   bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/component/valueRange/low/code" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernCodes ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/component/valueRange/low/system" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernCodes ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/component/valueRange/low/unit" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/component/valueRange/low/value" ;
@@ -8688,9 +8766,9 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/component/code/text" ;
-  bridge:verdict bridge:noHome ;
+  bridge:verdict bridge:ignored ;
   bridge:concern bridge:concernText ;
-  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+  bridge:because "A component's code or coded answer as text beside the coding that carries it adds nothing to the coding; one given as text with no coding is reported by observation-component-findings.rq as fhirr4:observationComponentDataNotCarried." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/component/valueCodeableConcept" ;
@@ -8733,9 +8811,9 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/component/valueCodeableConcept/text" ;
-  bridge:verdict bridge:noHome ;
+  bridge:verdict bridge:ignored ;
   bridge:concern bridge:concernText ;
-  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+  bridge:because "A component's code or coded answer as text beside the coding that carries it adds nothing to the coding; one given as text with no coding is reported by observation-component-findings.rq as fhirr4:observationComponentDataNotCarried." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/component/valueQuantity" ;
@@ -8746,6 +8824,11 @@
   bridge:sourcePath "/resource/component/valueQuantity/code" ;
   bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernCodes ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/component/valueQuantity/comparator" ;
+  bridge:verdict bridge:noHome ;
   bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
@@ -8775,6 +8858,23 @@
   bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/component/valueRange/high/code" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernCodes ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/component/valueRange/high/system" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernCodes ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/component/valueRange/high/unit" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/component/valueRange/high/value" ;
   bridge:verdict bridge:noHome ;
   bridge:namesGap fhirr4:observationComponentDataNotCarried .
@@ -8783,6 +8883,23 @@
   bridge:sourcePath "/resource/component/valueRange/low" ;
   bridge:verdict bridge:ignored ;
   bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/component/valueRange/low/code" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernCodes ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/component/valueRange/low/system" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernCodes ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/component/valueRange/low/unit" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/component/valueRange/low/value" ;
@@ -9303,9 +9420,9 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/component/code/text" ;
-  bridge:verdict bridge:noHome ;
+  bridge:verdict bridge:ignored ;
   bridge:concern bridge:concernText ;
-  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+  bridge:because "A component's code or coded answer as text beside the coding that carries it adds nothing to the coding; one given as text with no coding is reported by observation-component-findings.rq as fhirr4:observationComponentDataNotCarried." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/component/valueCodeableConcept" ;
@@ -9348,9 +9465,9 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/component/valueCodeableConcept/text" ;
-  bridge:verdict bridge:noHome ;
+  bridge:verdict bridge:ignored ;
   bridge:concern bridge:concernText ;
-  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+  bridge:because "A component's code or coded answer as text beside the coding that carries it adds nothing to the coding; one given as text with no coding is reported by observation-component-findings.rq as fhirr4:observationComponentDataNotCarried." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/component/valueQuantity" ;
@@ -9361,6 +9478,11 @@
   bridge:sourcePath "/resource/contained/component/valueQuantity/code" ;
   bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernCodes ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/component/valueQuantity/comparator" ;
+  bridge:verdict bridge:noHome ;
   bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
@@ -9390,6 +9512,23 @@
   bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/component/valueRange/high/code" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernCodes ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/component/valueRange/high/system" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernCodes ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/component/valueRange/high/unit" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/component/valueRange/high/value" ;
   bridge:verdict bridge:noHome ;
   bridge:namesGap fhirr4:observationComponentDataNotCarried .
@@ -9398,6 +9537,23 @@
   bridge:sourcePath "/resource/contained/component/valueRange/low" ;
   bridge:verdict bridge:ignored ;
   bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/component/valueRange/low/code" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernCodes ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/component/valueRange/low/system" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernCodes ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/component/valueRange/low/unit" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/component/valueRange/low/value" ;

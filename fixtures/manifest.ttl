@@ -167,6 +167,9 @@
     <#procedure-unreadable-performed-date-beside-a-period>
     <#condition-category-text-beside-a-coding-and-alone>
     <#observation-component-text-and-unit>
+    <#observation-component-text-beside-a-coding-and-alone>
+    <#observation-component-comparator-and-range-bounds>
+    <#observation-component-codings-of-an-observation-that-is-no-variant>
     <#medication-request-formulary-code>
     <#medication-request-us-core-supply-only>
     <#medication-request-supply-and-dosages>
@@ -2579,7 +2582,7 @@
 
 <#observation-component-text-and-unit> a bridge:IsomorphicConversionTest ;
   mf:name "observation-component-text-and-unit" ;
-  rdfs:comment "A blood pressure Observation whose component carries the text of its code and the unit of its quantity: neither has a Cascade predicate, and each is reported." ;
+  rdfs:comment "A blood pressure Observation whose component carries the text of its code beside the coding, and the unit of its quantity: the text is only the coding's label and is not reported, the unit has no Cascade predicate and is reported, as is the coding, which no mapping reads." ;
   mf:action [
     bridge:input <in/observation-component-text-and-unit.json> ;
     bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
@@ -2601,4 +2604,43 @@
   mf:result [
     bridge:expectedGraph <expected/observation-component-values-not-carried.ttl> ;
     bridge:expectedFindings <findings/observation-component-values-not-carried.ttl>
+  ] .
+
+<#observation-component-text-beside-a-coding-and-alone> a bridge:IsomorphicConversionTest ;
+  mf:name "observation-component-text-beside-a-coding-and-alone" ;
+  rdfs:comment "A blood pressure Observation, not a genetic variant, whose components give a code and a coded answer as text alone, reported as text, and beside a coding, where the text is only that coding's label and is not reported; each coding is reported by its code." ;
+  mf:action [
+    bridge:input <in/observation-component-text-beside-a-coding-and-alone.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/observation-component-text-beside-a-coding-and-alone.ttl> ;
+    bridge:expectedFindings <findings/observation-component-text-beside-a-coding-and-alone.ttl>
+  ] .
+
+<#observation-component-comparator-and-range-bounds> a bridge:IsomorphicConversionTest ;
+  mf:name "observation-component-comparator-and-range-bounds" ;
+  rdfs:comment "A blood pressure Observation, not a genetic variant, whose components carry a quantity with a comparator and a range whose bounds each carry a value, unit, code and code system: no Cascade predicate carries them, and each is reported." ;
+  mf:action [
+    bridge:input <in/observation-component-comparator-and-range-bounds.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/observation-component-comparator-and-range-bounds.ttl> ;
+    bridge:expectedFindings <findings/observation-component-comparator-and-range-bounds.ttl>
+  ] .
+
+<#observation-component-codings-of-an-observation-that-is-no-variant> a bridge:IsomorphicConversionTest ;
+  mf:name "observation-component-codings-of-an-observation-that-is-no-variant" ;
+  rdfs:comment "An Observation that is not a genetic variant, whose component code and coded answer carry codings, a code system version and a display: only a variant mapping reads them, so none is carried and each is reported." ;
+  mf:action [
+    bridge:input <in/observation-component-codings-of-an-observation-that-is-no-variant.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/observation-component-codings-of-an-observation-that-is-no-variant.ttl> ;
+    bridge:expectedFindings <findings/observation-component-codings-of-an-observation-that-is-no-variant.ttl>
   ] .
