@@ -935,6 +935,9 @@
           "@id": "fixtures/in/bundle-dates-that-do-not-exist.json"
         },
         {
+          "@id": "fixtures/in/bundle-lab-result-with-contained-not-a-list.json"
+        },
+        {
           "@id": "fixtures/in/bundle-condition-onsets-and-the-fhir-date-forms.json"
         },
         {
@@ -1847,6 +1850,9 @@
           "@id": "fixtures/expected/bundle-dates-that-do-not-exist.ttl"
         },
         {
+          "@id": "fixtures/expected/bundle-lab-result-with-contained-not-a-list.ttl"
+        },
+        {
           "@id": "fixtures/expected/bundle-condition-onsets-and-the-fhir-date-forms.ttl"
         },
         {
@@ -1935,6 +1941,9 @@
         },
         {
           "@id": "fixtures/findings/bundle-dates-that-do-not-exist.ttl"
+        },
+        {
+          "@id": "fixtures/findings/bundle-lab-result-with-contained-not-a-list.ttl"
         },
         {
           "@id": "fixtures/findings/bundle-condition-onsets-and-the-fhir-date-forms.ttl"
@@ -2160,8 +2169,8 @@
       "@type": "File",
       "name": "Document table query: the system each written Coding.system is read as",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "1873",
-      "sha256": "cb989279f262b913231f3c01174bd2457f7418c12aebef3fa54c19cb0195c4a4",
+      "contentSize": "1957",
+      "sha256": "2773baa4637b4f88409ff3179b39ba542a5378de727bcef7fcb3f9cd52ddf958",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2244,8 +2253,8 @@
       "@type": "File",
       "name": "Mapping: a MedicationRequest's or MedicationStatement's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "14258",
-      "sha256": "9a14b743eb2a84665783a5c57b7b4ec28102374df4c166379289889aeb13684c",
+      "contentSize": "14383",
+      "sha256": "565618b388cb05c64f2ad932b1c3c3a2550119e2733e8fbf826046591245dff3",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2424,8 +2433,8 @@
       "@type": "File",
       "name": "Mapping: the result records a DiagnosticReport names",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "9488",
-      "sha256": "2782515fcd7a2352a006d937014b6c908860bff0a702b830785f8089bef79e16",
+      "contentSize": "9449",
+      "sha256": "0194bab87ecfc7c6c5d0d1068082af86c969436510b1e5858887f9af1846bf7d",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2532,8 +2541,8 @@
       "@type": "File",
       "name": "Findings: a date no mapping can type",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "4884",
-      "sha256": "66056236fb3c32ee8e76aadffb21f213d1aee953b45e2690a312235da89d389c",
+      "contentSize": "4905",
+      "sha256": "bd0dddb7abc655f4473e0c151eb70fe7e3f14a1149f8cb82261a1ff628b5d923",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2712,8 +2721,8 @@
       "@type": "File",
       "name": "Findings: a report's result that names no record",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "5524",
-      "sha256": "72f9dfdecf964d55066cb600d2eb454b01bbeb3760c70b8a5c86ad2805c34fc7",
+      "contentSize": "5485",
+      "sha256": "826c06cb5de61a5d084755da43fdc43c86dec6f424b75305b693a2457694aa23",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -5100,6 +5109,19 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "A Bundle on the server http://example.org/fhir with one resource of each kind a mapping reads a date from, each with a day or month the calendar lacks: a Patient born 1985-02-30 who died 2026-04-31T10:00:00Z, an AllergyIntolerance with onsetDateTime 2024-06-31, a Condition with onsetDateTime 2023-02-29 and abatementDateTime 2024-13-10, an Immunization with occurrenceDateTime 2022-09-31T10:00:00Z, a Procedure with performedDateTime 2021-00-15, a DocumentReference dated 2026-11-31T08:00:00Z, a DiagnosticReport with effectiveDateTime 2026-02-30 and issued 2026-02-30T10:00:00Z, a laboratory Observation with effectiveDateTime 2026-06-31, and a Variant with its Diagnostic Implication issued 2025-02-29T12:00:00Z. Authored here on 2026-10-31, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/bundle-lab-result-with-contained-not-a-list.json",
+      "@type": "File",
+      "name": "Bundle of a laboratory result whose contained is an object, not a list",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "1446",
+      "sha256": "a6b87f61d4c77324b75f07b980335c43d0fe9a93c478673d4f222481ebdf2a6f",
+      "dateCreated": "2026-11-17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Bundle on the server http://example.org/fhir of a laboratory Observation with effectiveDateTime 2024-06-15 whose contained is an object keyed k, not a list, holding a laboratory Observation with effectiveDateTime 2026-02-31. Authored here on 2026-11-17, for a case the conformance corpus does not hold."
     },
     {
       "@id": "fixtures/in/bundle-condition-onsets-and-the-fhir-date-forms.json",
@@ -9239,6 +9261,22 @@
       "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
+      "@id": "fixtures/expected/bundle-lab-result-with-contained-not-a-list.ttl",
+      "@type": "File",
+      "name": "Expected graph for bundle-lab-result-with-contained-not-a-list",
+      "encodingFormat": "text/turtle",
+      "contentSize": "4053",
+      "sha256": "232a84064bcaad9b1c15228656593a35598df5441c6002a41018ec0cfb95fa84",
+      "about": {
+        "@id": "fixtures/in/bundle-lab-result-with-contained-not-a-list.json"
+      },
+      "dateCreated": "2026-11-17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
       "@id": "fixtures/expected/bundle-condition-onsets-and-the-fhir-date-forms.ttl",
       "@type": "File",
       "name": "Expected graph for bundle-condition-onsets-and-the-fhir-date-forms",
@@ -9719,6 +9757,22 @@
       "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
     },
     {
+      "@id": "fixtures/findings/bundle-lab-result-with-contained-not-a-list.ttl",
+      "@type": "File",
+      "name": "Expected findings for bundle-lab-result-with-contained-not-a-list",
+      "encodingFormat": "text/turtle",
+      "contentSize": "7561",
+      "sha256": "e53d88e2d2f668db516a501ae28f409bccdb15d76e8b7e29ad9146961d182088",
+      "about": {
+        "@id": "fixtures/in/bundle-lab-result-with-contained-not-a-list.json"
+      },
+      "dateCreated": "2026-11-17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
       "@id": "fixtures/findings/bundle-condition-onsets-and-the-fhir-date-forms.ttl",
       "@type": "File",
       "name": "Expected findings for bundle-condition-onsets-and-the-fhir-date-forms",
@@ -10024,8 +10078,8 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "contentSize": "125713",
-      "sha256": "dd5bad8c8ac0d26daed59b362577ca01fda6b0801fb0b9c3c6bbe00ffbfbdab8"
+      "contentSize": "127057",
+      "sha256": "5f6cba7911ed58e0ebd6d180d12f06d2724d760597ce5c14fd2bcd14229c13b1"
     },
     {
       "@id": "fixtures/facts/meridian.ttl",

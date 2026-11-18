@@ -22,17 +22,18 @@ WHERE {
   ?node xyz:system ?written .
   FILTER (isLiteral(?written) && REGEX(STR(?written), "^[A-Za-z][A-Za-z0-9+.-]*:[^\\s<>\"{}|\\\\^`]+$"))
   BIND (IF(REGEX(STR(?written), "^urn:oid:", "i"), CONCAT("urn:oid:", SUBSTR(STR(?written), 9)), STR(?written)) AS ?cased)
+  BIND (IF(STRSTARTS(?cased, "urn:oid:"), SUBSTR(?cased, 9), ?cased) AS ?oidWritten)
   OPTIONAL {
-    ?byOid skos:inScheme fhirr4:codeSystems ;
-      skos:notation ?oid ;
+    ?byOid skos:notation ?oidWritten ;
+      skos:inScheme ?oidScheme ;
       cascade:codingSystemUri ?oidSystem .
-    FILTER (CONCAT("urn:oid:", STR(?oid)) = ?cased)
+    FILTER (?oidScheme = fhirr4:codeSystems)
   }
   OPTIONAL {
-    ?byLabel skos:inScheme fhirr4:codeSystems ;
-      skos:hiddenLabel ?label ;
+    ?byLabel skos:hiddenLabel ?cased ;
+      skos:inScheme ?labelScheme ;
       cascade:codingSystemUri ?labelSystem .
-    FILTER (STR(?label) = ?cased)
+    FILTER (?labelScheme = fhirr4:codeSystems)
   }
   BIND (STR(COALESCE(?oidSystem, ?labelSystem, ?cased)) AS ?read)
   BIND (IRI(CONCAT("urn:cascade:system-written:", SHA256(STR(?written)))) AS ?row)

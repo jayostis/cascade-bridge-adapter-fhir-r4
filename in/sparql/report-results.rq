@@ -93,16 +93,13 @@ WHERE {
   BIND (IF(BOUND(?server) && STRSTARTS(?unversioned, CONCAT(?server, "/")), STRAFTER(?unversioned, CONCAT(?server, "/")),
            ?unversioned) AS ?relative)
   OPTIONAL {
-    {
-      SELECT ?key (COUNT(DISTINCT ?keySelector) AS ?heldAtKey) (MIN(?keySelector) AS ?heldSelector)
-      WHERE {
-        ?held fhirr4:heldAt ?keySelector ;
-          fhirr4:fullUrl ?key .
-        FILTER (STRSTARTS(?key, "urn:uuid:"))
-      }
-      GROUP BY ?key
+    SELECT ?written (COUNT(DISTINCT ?keySelector) AS ?heldAtKey) (MIN(?keySelector) AS ?heldSelector)
+    WHERE {
+      ?held fhirr4:heldAt ?keySelector ;
+        fhirr4:fullUrl ?written .
+      FILTER (STRSTARTS(?written, "urn:uuid:"))
     }
-    FILTER (?key = ?written)
+    GROUP BY ?written
   }
   BIND (IF(BOUND(?heldAtKey), IF(?heldAtKey = 1, CONCAT(?heldSelector, "/resource"), 1/0),
            IF(BOUND(?server) && (STRSTARTS(?unversioned, CONCAT(?server, "/")) || !STRSTARTS(COALESCE(?fullUrl, ""), "urn:uuid:"))
