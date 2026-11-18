@@ -1,0 +1,74 @@
+{
+  "resourceType": "Observation",
+  "id": "obs-component-text-1",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "85354-9",
+        "display": "Blood pressure panel"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/pat-conformance-1"
+  },
+  "effectiveDateTime": "2026-03-04T08:00:00-05:00",
+  "component": [
+    {
+      "code": {
+        "text": "Posture"
+      },
+      "valueCodeableConcept": {
+        "text": "Sitting"
+      }
+    },
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "8462-4",
+            "display": "Diastolic blood pressure"
+          }
+        ],
+        "text": "Diastolic"
+      },
+      "valueQuantity": {
+        "value": 76
+      }
+    },
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "8478-0",
+            "display": "Mean blood pressure"
+          }
+        ]
+      },
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "33586001",
+            "display": "Sitting position"
+          }
+        ],
+        "text": "Sitting"
+      }
+    }
+  ]
+}

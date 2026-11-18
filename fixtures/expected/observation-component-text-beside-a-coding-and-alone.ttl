@@ -1,0 +1,34 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix pav: <http://purl.org/pav/> .
+<ni:///sha-256;QnPEKGiRyQVC39ejisjxywbtYOGT6ivScARgeQRvLrU> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
+	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
+	prov:wasGeneratedBy _:9b9c925614d29d22aa51c7e4bc205c49 ;
+	prov:wasAttributedTo _:6b22eadab54e98207d7d2e670231403 ;
+	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
+	cascade:authenticatedAsProxy false ;
+	cascade:sourceFormatVersion "4.0.1" .
+_:a564270e707ba20c948e129362f80f42 prov:agent _:6b22eadab54e98207d7d2e670231403 ;
+	prov:hadRole cascade:AuthorRole .
+_:9b9c925614d29d22aa51c7e4bc205c49 prov:qualifiedAssociation _:a564270e707ba20c948e129362f80f42 .
+_:31943dd408d6dbbb5d691eda0d6bcc53 prov:agent _:fcc1c3001dae6012fad7386087f60c48 ;
+	prov:hadRole cascade:TransmitterRole .
+_:9b9c925614d29d22aa51c7e4bc205c49 prov:qualifiedAssociation _:31943dd408d6dbbb5d691eda0d6bcc53 .
+_:6b22eadab54e98207d7d2e670231403 <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:fcc1c3001dae6012fad7386087f60c48 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
+_:fb9adbfb3bb13416323de8f263c5eee0 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
+	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
+<ni:///sha-256;QnPEKGiRyQVC39ejisjxywbtYOGT6ivScARgeQRvLrU> a prov:Entity .
+_:fb9adbfb3bb13416323de8f263c5eee0 a prov:Activity ;
+	prov:used <ni:///sha-256;QnPEKGiRyQVC39ejisjxywbtYOGT6ivScARgeQRvLrU> ;
+	prov:qualifiedAssociation _:375d07bc5ea547276861f6e3da8f76b9 .
+_:375d07bc5ea547276861f6e3da8f76b9 prov:hadPlan _:795f0175c01a449048e84977a9e9d5d0 .
+_:795f0175c01a449048e84977a9e9d5d0 a prov:Plan ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "fhir-r4" ;
+	pav:version "0.1.0" .
+_:375d07bc5ea547276861f6e3da8f76b9 prov:agent _:cf1665f773afa9cebbc788f335b39b87 .
+_:cf1665f773afa9cebbc788f335b39b87 a prov:SoftwareAgent ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Cascade Bridge for Rust" ;
+	pav:version "0.1.0" .
