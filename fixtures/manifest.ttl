@@ -195,6 +195,7 @@
     <#bundle-dates-that-do-not-exist>
     <#bundle-lab-result-with-contained-not-a-list>
     <#bundle-condition-onsets-and-the-fhir-date-forms>
+    <#bundle-last-updates-short-of-an-instant>
   ) .
 
 <#allergy-with-id> a bridge:IsomorphicConversionTest ;
@@ -2685,4 +2686,17 @@
   mf:result [
     bridge:expectedGraph <expected/bundle-variant-components-with-unread-codings.ttl> ;
     bridge:expectedFindings <findings/bundle-variant-components-with-unread-codings.ttl>
+  ] .
+
+<#bundle-last-updates-short-of-an-instant> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-last-updates-short-of-an-instant" ;
+  rdfs:comment "A Bundle of Conditions whose meta.lastUpdated is a time with no zone, a date alone, and a time to the minute with an offset. FHIR's instant states its zone, and a pod compares change times across sources, so the first two are no pav:lastUpdateOn on their arrivals and each is a finding, fhirr4:dateNotCarried; the third is carried, padded to the second." ;
+  mf:action [
+    bridge:input <in/bundle-last-updates-short-of-an-instant.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/example-org.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-last-updates-short-of-an-instant.ttl> ;
+    bridge:expectedFindings <findings/bundle-last-updates-short-of-an-instant.ttl>
   ] .

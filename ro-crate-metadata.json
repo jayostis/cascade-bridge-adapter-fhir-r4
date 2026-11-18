@@ -1004,6 +1004,9 @@
           "@id": "fixtures/in/bundle-condition-onsets-and-the-fhir-date-forms.json"
         },
         {
+          "@id": "fixtures/in/bundle-last-updates-short-of-an-instant.json"
+        },
+        {
           "@id": "bench/manifest.json"
         },
         {
@@ -1970,6 +1973,9 @@
           "@id": "fixtures/expected/bundle-condition-onsets-and-the-fhir-date-forms.ttl"
         },
         {
+          "@id": "fixtures/expected/bundle-last-updates-short-of-an-instant.ttl"
+        },
+        {
           "@id": "fixtures/findings/procedure-with-id.ttl"
         },
         {
@@ -2112,6 +2118,9 @@
         },
         {
           "@id": "fixtures/findings/bundle-condition-onsets-and-the-fhir-date-forms.ttl"
+        },
+        {
+          "@id": "fixtures/findings/bundle-last-updates-short-of-an-instant.ttl"
         },
         {
           "@id": "views/allergies.rq"
@@ -2346,12 +2355,12 @@
       "@type": "File",
       "name": "Mapping: records, versions and arrivals",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "13516",
-      "sha256": "c7510bd0ea4a9528319a086e3a2ffb1d1724156dd37f06b96f5df9fb5327abd3",
+      "contentSize": "14137",
+      "sha256": "81280dfe3f2de14706c0b58899fe7be120ee086740609db91778d2e208d14d15",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "For each resource of a mapped type, the record's own and each it contains: the record, named by one of cascade-vocabulary's naming rules, its hashed text written as the rule's body in tests/vectors/naming writes it: RecordFromServerNamingRule from the server, type and id where the id is the only one of its type in the document, ContainedRecordNamingRule from the container's name, its meta.versionId, else its meta.lastUpdated, else nothing, and the local id, and RecordFromDocumentNamingRule from the document and the resource's selector otherwise; its class, its source URL where its name has one, and its source id where its class has a predicate for one; its version, the patient the version is about, and the version's arrival with the resource's meta.versionId and meta.lastUpdated, and a contained resource's selector. An Observation is a lab result, a cascade:GeneticVariantFinding or a cascade:VariantInterpretation, and a DocumentReference a cascade:ClinicalNoteOrDocument, by the document table that holds its pointer; a MedicationDispense is a cascade:MedicationDispense; a DiagnosticReport is always a cascade:DiagnosticReport."
+      "description": "For each resource of a mapped type, the record's own and each it contains: the record, named by one of cascade-vocabulary's naming rules, its hashed text written as the rule's body in tests/vectors/naming writes it: RecordFromServerNamingRule from the server, type and id where the id is the only one of its type in the document, ContainedRecordNamingRule from the container's name, its meta.versionId, else its meta.lastUpdated, else nothing, and the local id, and RecordFromDocumentNamingRule from the document and the resource's selector otherwise; its class, its source URL where its name has one, and its source id where its class has a predicate for one; its version, the patient the version is about, and the version's arrival with the resource's meta.versionId, its meta.lastUpdated where that is a date-time stating its zone, padded to the second, and a contained resource's selector. An Observation is a lab result, a cascade:GeneticVariantFinding or a cascade:VariantInterpretation, and a DocumentReference a cascade:ClinicalNoteOrDocument, by the document table that holds its pointer; a MedicationDispense is a cascade:MedicationDispense; a DiagnosticReport is always a cascade:DiagnosticReport."
     },
     {
       "@id": "in/sparql/allergy-intolerance.rq",
@@ -2478,12 +2487,12 @@
       "@type": "File",
       "name": "Mapping: an Organization from a server",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "6989",
-      "sha256": "1593b2372c603df87f861b1fd8f65c73259b179ac5a2224a7475cf252152a49a",
+      "contentSize": "7610",
+      "sha256": "ab5a00eca31467bb23857036960636c8ea3accad83f1905feb39d8a95410256b",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "An Organization at the top of an entry of a document whose server is known, with an id and a fullUrl that is no urn:uuid, as a record named by cascade:OrganizationNamingRule from the server and its id, unless another entry holds an Organization with that id; its version carries its name, identifiers and addresses as organization.rq writes them, its arrival its version id and change time, the record its cascade:sourceUrl and cascade:sourceRecordId as record.rq writes them, and the document's prov:wasGeneratedBy act, a blank node, names it on a prov:qualifiedAssociation once in each role a Composition gives it, with the document prov:wasAttributedTo it."
+      "description": "An Organization at the top of an entry of a document whose server is known, with an id and a fullUrl that is no urn:uuid, as a record named by cascade:OrganizationNamingRule from the server and its id, unless another entry holds an Organization with that id; its version carries its name, identifiers and addresses as organization.rq writes them, its arrival its version id and its change time as record.rq writes it, the record its cascade:sourceUrl and cascade:sourceRecordId as record.rq writes them, and the document's prov:wasGeneratedBy act, a blank node, names it on a prov:qualifiedAssociation once in each role a Composition gives it, with the document prov:wasAttributedTo it."
     },
     {
       "@id": "in/sparql/lab-result.rq",
@@ -2706,12 +2715,12 @@
       "@type": "File",
       "name": "Findings: a date no mapping can type",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "5262",
-      "sha256": "d32f9403040f91b0f82870b3eeb188091b586f48b25ab8cabd091137efd78cb4",
+      "contentSize": "5539",
+      "sha256": "2f8972f4a65b2da7a33e3d79785bb87134050b886c06fecc5730e04465fdebb5",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "A finding for each date of a patient, allergy, condition, immunization, procedure, document reference, diagnostic report, laboratory result or interpretation that matches none of the forms of FHIR's date and dateTime, as the mappings test it, so its mapping writes no value."
+      "description": "A finding for each date of a patient, allergy, condition, immunization, procedure, document reference, diagnostic report, laboratory result or interpretation that matches none of the forms of FHIR's date and dateTime, and for each resource's meta.lastUpdated that matches none or holds no time, as the mappings test it, so its mapping writes no value."
     },
     {
       "@id": "in/sparql/patient-findings.rq",
@@ -5545,6 +5554,19 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "A Bundle on the server http://example.org/fhir of fourteen Conditions whose onsetDateTime is, in order: a leap day, a leap day of a year divisible by 400, a year, a year and month, a time to the minute with an offset, a time with a fraction of a second, a time at the last second of a day, hour 24, year 0000, a leap second, a time with seconds and no zone, a time to the minute and no zone, February 29 of 1900, and minute 61. Authored here on 2026-10-31, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/bundle-last-updates-short-of-an-instant.json",
+      "@type": "File",
+      "name": "Bundle of three Conditions whose meta.lastUpdated is short of an instant or written to the minute",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "1773",
+      "sha256": "65fe447dcabb757c0279d20519c33aa6376c115f6104c51d5d57e7afe4c379d9",
+      "dateCreated": "2026-11-18",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Bundle on the server http://example.org/fhir of three Conditions whose meta.lastUpdated is, in order: a time with seconds and no zone, a date alone, and a time to the minute with an offset. Authored here on 2026-11-18, for a case the conformance corpus does not hold."
     },
     {
       "@id": "bench/manifest.json",
@@ -9977,6 +9999,22 @@
       "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
+      "@id": "fixtures/expected/bundle-last-updates-short-of-an-instant.ttl",
+      "@type": "File",
+      "name": "Expected graph for bundle-last-updates-short-of-an-instant",
+      "encodingFormat": "text/turtle",
+      "contentSize": "4802",
+      "sha256": "2edec82f618a05dc2ca44396ecfd7adac46dd888defe1ba96bc2875886bae665",
+      "about": {
+        "@id": "fixtures/in/bundle-last-updates-short-of-an-instant.json"
+      },
+      "dateCreated": "2026-11-18",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
       "@id": "fixtures/findings/procedure-with-id.ttl",
       "@type": "File",
       "name": "Expected findings for procedure-with-id",
@@ -10745,6 +10783,22 @@
       "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
     },
     {
+      "@id": "fixtures/findings/bundle-last-updates-short-of-an-instant.ttl",
+      "@type": "File",
+      "name": "Expected findings for bundle-last-updates-short-of-an-instant",
+      "encodingFormat": "text/turtle",
+      "contentSize": "4835",
+      "sha256": "0e389908a9a40fa5756401162ca3cf068a9feb83ef1644dd227f3f4b11076fab",
+      "about": {
+        "@id": "fixtures/in/bundle-last-updates-short-of-an-instant.json"
+      },
+      "dateCreated": "2026-11-18",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
       "@id": "views/allergies.rq",
       "@type": "File",
       "name": "View: allergies",
@@ -11034,8 +11088,8 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "contentSize": "142527",
-      "sha256": "cfc7aeaa5052688b1ccb3ee3aec3ac26892fbd9e748f145aa3a2c053e4e0029b"
+      "contentSize": "143462",
+      "sha256": "e10a828b99c53660fbcbcfca5af4dcd92a86321cf6c48d6d990dee0ec1223880"
     },
     {
       "@id": "fixtures/facts/meridian.ttl",

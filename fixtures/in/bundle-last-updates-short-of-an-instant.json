@@ -1,0 +1,75 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "http://example.org/fhir/Condition/cond-1",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-1",
+        "meta": {
+          "lastUpdated": "2024-03-05T14:30:00"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "38341003",
+              "display": "Essential hypertension"
+            }
+          ],
+          "text": "Essential hypertension"
+        },
+        "subject": {
+          "reference": "Patient/pat-1"
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.org/fhir/Condition/cond-2",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-2",
+        "meta": {
+          "lastUpdated": "2024-03-05"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "195967001",
+              "display": "Asthma"
+            }
+          ],
+          "text": "Asthma"
+        },
+        "subject": {
+          "reference": "Patient/pat-1"
+        }
+      }
+    },
+    {
+      "fullUrl": "http://example.org/fhir/Condition/cond-3",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cond-3",
+        "meta": {
+          "lastUpdated": "2024-03-05T14:30+01:00"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "44054006",
+              "display": "Diabetes mellitus type 2"
+            }
+          ],
+          "text": "Diabetes mellitus type 2"
+        },
+        "subject": {
+          "reference": "Patient/pat-1"
+        }
+      }
+    }
+  ]
+}
