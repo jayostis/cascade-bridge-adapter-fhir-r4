@@ -172,6 +172,7 @@
     <#observation-component-codings-of-an-observation-that-is-no-variant>
     <#observation-variant-and-interpretation-components-no-mapping-reads>
     <#bundle-variant-and-interpretation-components-no-mapping-reads>
+    <#bundle-variant-components-with-unread-codings>
     <#medication-request-formulary-code>
     <#medication-request-us-core-supply-only>
     <#medication-request-supply-and-dosages>
@@ -2671,4 +2672,17 @@
   mf:result [
     bridge:expectedGraph <expected/bundle-variant-and-interpretation-components-no-mapping-reads.ttl> ;
     bridge:expectedFindings <findings/bundle-variant-and-interpretation-components-no-mapping-reads.ttl>
+  ] .
+
+<#bundle-variant-components-with-unread-codings> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-variant-components-with-unread-codings" ;
+  rdfs:comment "A Bundle of a genetic variant and the diagnostic implication that derives from it, whose components the mappings read carry codings they do not: an HGVS component whose value has a coding of another system, and whose code has a coding beside the LOINC one; a ClinVar component with a coding of another system; a gene component with a coding of another system and an HGNC coding that has a display and one that has none; and a classification component whose answer has a coding of another system. Each coding or display no mapping reads and no variant finding reports is reported; the LOINC code of each component, the HGVS and ClinVar codes, the HGNC display, the HGNC code that has none and the classification code are not." ;
+  mf:action [
+    bridge:input <in/bundle-variant-components-with-unread-codings.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/no-server.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-variant-components-with-unread-codings.ttl> ;
+    bridge:expectedFindings <findings/bundle-variant-components-with-unread-codings.ttl>
   ] .
