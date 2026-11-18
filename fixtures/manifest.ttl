@@ -161,6 +161,7 @@
     <#procedure-performed-period-end-only>
     <#document-reference-context-and-displays>
     <#immunization-primary-source-and-encounter>
+    <#observation-component-values-not-carried>
     <#procedure-performed-date-and-period>
     <#procedure-performed-date-beside-an-unreadable-period-start>
     <#procedure-unreadable-performed-date-beside-a-period>
@@ -2587,4 +2588,17 @@
   mf:result [
     bridge:expectedGraph <expected/observation-component-text-and-unit.ttl> ;
     bridge:expectedFindings <findings/observation-component-text-and-unit.ttl>
+  ] .
+
+<#observation-component-values-not-carried> a bridge:IsomorphicConversionTest ;
+  mf:name "observation-component-values-not-carried" ;
+  rdfs:comment "A blood pressure Observation, not a genetic variant, whose components carry a quantity with its value, code and system, and a string: no Cascade predicate carries them, and each is reported." ;
+  mf:action [
+    bridge:input <in/observation-component-values-not-carried.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/observation-component-values-not-carried.ttl> ;
+    bridge:expectedFindings <findings/observation-component-values-not-carried.ttl>
   ] .

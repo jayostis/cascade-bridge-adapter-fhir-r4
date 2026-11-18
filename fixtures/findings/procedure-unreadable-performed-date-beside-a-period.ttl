@@ -2,33 +2,33 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:c1626d0f5033b86647dfc4d4472f12cb a oa:FragmentSelector ;
+_:c44279e7a592a17bfc6eb40d2a1ca43f a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:d2778645865741fff30ca9d7bd35f45 a oa:FragmentSelector ;
+_:c5a7f4299a3624378e2fe9ee45c65773 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/performedPeriod/end" .
-_:c1626d0f5033b86647dfc4d4472f12cb oa:refinedBy _:d2778645865741fff30ca9d7bd35f45 .
-_:d50001eeba99c849fec43bb49f95ff6e a oa:Annotation ;
-	oa:hasTarget _:ebf5872f31bc381fcb708be9893cc046 .
-_:ebf5872f31bc381fcb708be9893cc046 oa:hasSource <../in/procedure-unreadable-performed-date-beside-a-period.json> ;
-	oa:hasSelector _:c1626d0f5033b86647dfc4d4472f12cb .
-_:d50001eeba99c849fec43bb49f95ff6e oa:hasBody fhirr4:procedurePeriodEnd ;
+_:c44279e7a592a17bfc6eb40d2a1ca43f oa:refinedBy _:c5a7f4299a3624378e2fe9ee45c65773 .
+_:b72cd0408cd553319999c14e9f329b2e a oa:Annotation ;
+	oa:hasTarget _:f9ee85100b9b897128475931978c09ba .
+_:f9ee85100b9b897128475931978c09ba oa:hasSource <../in/procedure-unreadable-performed-date-beside-a-period.json> ;
+	oa:hasSelector _:c44279e7a592a17bfc6eb40d2a1ca43f .
+_:b72cd0408cd553319999c14e9f329b2e oa:hasBody fhirr4:procedurePeriodEnd ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "/performedPeriod/end" ;
 	sh:resultSeverity sh:Info .
-_:c3977bb3f1a143014a459c1a4b926f38 a oa:FragmentSelector ;
+_:bcd02603c0b01a5b958df3969c572298 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "" ;
-	oa:refinedBy _:a6c24474f402b27571650c700a233563 .
-_:d8d9b763b7b6403fecfa3215d7334c43 oa:hasSource <../in/procedure-unreadable-performed-date-beside-a-period.json> .
-_:a6c24474f402b27571650c700a233563 rdf:value "/performedDateTime" ;
+	rdf:value "" .
+_:d418d57519d797144ce228925001f0aa oa:hasSource <../in/procedure-unreadable-performed-date-beside-a-period.json> .
+_:bcd02603c0b01a5b958df3969c572298 oa:refinedBy _:aa15aea0d271ea9719ae1b0d421aa773 .
+_:aa15aea0d271ea9719ae1b0d421aa773 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	a oa:FragmentSelector .
-_:d8d9b763b7b6403fecfa3215d7334c43 oa:hasSelector _:c3977bb3f1a143014a459c1a4b926f38 .
-_:b555243c8cc573f93d5bb3fd906072e5 oa:hasTarget _:d8d9b763b7b6403fecfa3215d7334c43 ;
+	rdf:value "/performedDateTime" .
+_:d418d57519d797144ce228925001f0aa oa:hasSelector _:bcd02603c0b01a5b958df3969c572298 .
+_:c63a7e38de7caaab645a52f3b315f4ce oa:hasTarget _:d418d57519d797144ce228925001f0aa ;
 	sh:resultSeverity sh:Warning ;
-	sh:value "2026-02-30T09:00:00-05:00" ;
-	oa:motivatedBy oa:classifying ;
+	a oa:Annotation ;
 	oa:hasBody fhirr4:dateNotCarried ;
-	a oa:Annotation .
+	oa:motivatedBy oa:classifying ;
+	sh:value "2026-02-30T09:00:00-05:00" .

@@ -2,18 +2,18 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:f7ed688885a4a716a25afc20272212fe a oa:FragmentSelector ;
+_:db009e0b2755cce3ae279eb965264a6d a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "" ;
-	oa:refinedBy _:aa1464aee0d5580ad74f77b3233a9df2 .
-_:b48bb9d1d3c5ddd46b19c3909fb64e08 oa:hasSource <../in/condition-category-text-beside-a-coding-and-alone.json> .
-_:aa1464aee0d5580ad74f77b3233a9df2 rdf:value "/category/1/text" ;
+	rdf:value "" .
+_:eb8b3eeb044f7282c109fb44b5f779f6 oa:hasSource <../in/condition-category-text-beside-a-coding-and-alone.json> .
+_:db009e0b2755cce3ae279eb965264a6d oa:refinedBy _:e1da43ac6b161a8ce358ad6037126f48 .
+_:e1da43ac6b161a8ce358ad6037126f48 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	a oa:FragmentSelector .
-_:b48bb9d1d3c5ddd46b19c3909fb64e08 oa:hasSelector _:f7ed688885a4a716a25afc20272212fe .
-_:d5a3441216374c684490eec09f134bb6 oa:hasTarget _:b48bb9d1d3c5ddd46b19c3909fb64e08 ;
+	rdf:value "/category/1/text" .
+_:eb8b3eeb044f7282c109fb44b5f779f6 oa:hasSelector _:db009e0b2755cce3ae279eb965264a6d .
+_:d6ab42879635e29a1f37744e36e1ad3b oa:hasTarget _:eb8b3eeb044f7282c109fb44b5f779f6 ;
 	sh:resultSeverity sh:Info ;
-	sh:value "Chronic disease management" ;
-	oa:motivatedBy oa:classifying ;
+	a oa:Annotation ;
 	oa:hasBody fhirr4:categoryTextNotCarried ;
-	a oa:Annotation .
+	oa:motivatedBy oa:classifying ;
+	sh:value "Chronic disease management" .

@@ -223,7 +223,7 @@
   bridge:sourcePath "/category/text" ;
   bridge:verdict bridge:ignored ;
   bridge:concern bridge:concernText ;
-  bridge:because "A category's text, written beside the coding that carries the category where a Cascade term has one, a condition's and a report's; a prescription's category has no Cascade term." .
+  bridge:because "A category's text beside the coding that carries the category, where a Cascade term has one, a condition's and a report's, adds nothing to the coding; a category given as text with no coding is reported by category-text-findings.rq as fhirr4:categoryTextNotCarried, an Observation's by observation-findings.rq as what decides it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/class" ;
@@ -415,9 +415,9 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/component/code/text" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernText ;
-  bridge:because "A component no Cascade term carries: a variant's as fhirr4:variantComponentNotCarried, and any other Observation's, which no mapping reads." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/component/valueCodeableConcept" ;
@@ -454,73 +454,73 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/component/valueCodeableConcept/coding/version" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernCodes ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/component/valueCodeableConcept/text" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernText ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/component/valueQuantity" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/component/valueQuantity/code" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernCodes ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/component/valueQuantity/system" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernCodes ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/component/valueQuantity/unit" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries: a variant's as fhirr4:variantComponentNotCarried, and any other Observation's, which no mapping reads." .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/component/valueQuantity/value" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/component/valueRange" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/component/valueRange/high" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/component/valueRange/high/value" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/component/valueRange/low" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/component/valueRange/low/value" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/component/valueString" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernText ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/conclusionCode" ;
@@ -861,7 +861,7 @@
   bridge:sourcePath "/contained/category/text" ;
   bridge:verdict bridge:ignored ;
   bridge:concern bridge:concernText ;
-  bridge:because "A category's text, written beside the coding that carries the category where a Cascade term has one, a condition's and a report's; a prescription's category has no Cascade term." .
+  bridge:because "A category's text beside the coding that carries the category, where a Cascade term has one, a condition's and a report's, adds nothing to the coding; a category given as text with no coding is reported by category-text-findings.rq as fhirr4:categoryTextNotCarried, an Observation's by observation-findings.rq as what decides it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/class" ;
@@ -1053,9 +1053,9 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/component/code/text" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernText ;
-  bridge:because "A component no Cascade term carries: a variant's as fhirr4:variantComponentNotCarried, and any other Observation's, which no mapping reads." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/component/valueCodeableConcept" ;
@@ -1092,73 +1092,73 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/component/valueCodeableConcept/coding/version" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernCodes ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/component/valueCodeableConcept/text" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernText ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/component/valueQuantity" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/component/valueQuantity/code" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernCodes ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/component/valueQuantity/system" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernCodes ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/component/valueQuantity/unit" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries: a variant's as fhirr4:variantComponentNotCarried, and any other Observation's, which no mapping reads." .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/component/valueQuantity/value" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/component/valueRange" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/component/valueRange/high" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/component/valueRange/high/value" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/component/valueRange/low" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/component/valueRange/low/value" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/component/valueString" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernText ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/conclusionCode" ;
@@ -8496,7 +8496,7 @@
   bridge:sourcePath "/resource/category/text" ;
   bridge:verdict bridge:ignored ;
   bridge:concern bridge:concernText ;
-  bridge:because "A category's text, written beside the coding that carries the category where a Cascade term has one, a condition's and a report's; a prescription's category has no Cascade term." .
+  bridge:because "A category's text beside the coding that carries the category, where a Cascade term has one, a condition's and a report's, adds nothing to the coding; a category given as text with no coding is reported by category-text-findings.rq as fhirr4:categoryTextNotCarried, an Observation's by observation-findings.rq as what decides it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/class" ;
@@ -8688,9 +8688,9 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/component/code/text" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernText ;
-  bridge:because "A component no Cascade term carries: a variant's as fhirr4:variantComponentNotCarried, and any other Observation's, which no mapping reads." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/component/valueCodeableConcept" ;
@@ -8727,73 +8727,73 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/component/valueCodeableConcept/coding/version" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernCodes ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/component/valueCodeableConcept/text" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernText ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/component/valueQuantity" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/component/valueQuantity/code" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernCodes ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/component/valueQuantity/system" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernCodes ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/component/valueQuantity/unit" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries: a variant's as fhirr4:variantComponentNotCarried, and any other Observation's, which no mapping reads." .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/component/valueQuantity/value" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/component/valueRange" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/component/valueRange/high" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/component/valueRange/high/value" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/component/valueRange/low" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/component/valueRange/low/value" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/component/valueString" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernText ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/conclusionCode" ;
@@ -9134,7 +9134,7 @@
   bridge:sourcePath "/resource/contained/category/text" ;
   bridge:verdict bridge:ignored ;
   bridge:concern bridge:concernText ;
-  bridge:because "A category's text, written beside the coding that carries the category where a Cascade term has one, a condition's and a report's; a prescription's category has no Cascade term." .
+  bridge:because "A category's text beside the coding that carries the category, where a Cascade term has one, a condition's and a report's, adds nothing to the coding; a category given as text with no coding is reported by category-text-findings.rq as fhirr4:categoryTextNotCarried, an Observation's by observation-findings.rq as what decides it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/class" ;
@@ -9303,9 +9303,9 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/component/code/text" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernText ;
-  bridge:because "A component no Cascade term carries: a variant's as fhirr4:variantComponentNotCarried, and any other Observation's, which no mapping reads." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/component/valueCodeableConcept" ;
@@ -9342,73 +9342,73 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/component/valueCodeableConcept/coding/version" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernCodes ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/component/valueCodeableConcept/text" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernText ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/component/valueQuantity" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/component/valueQuantity/code" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernCodes ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/component/valueQuantity/system" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernCodes ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/component/valueQuantity/unit" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries: a variant's as fhirr4:variantComponentNotCarried, and any other Observation's, which no mapping reads." .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/component/valueQuantity/value" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/component/valueRange" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/component/valueRange/high" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/component/valueRange/high/value" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/component/valueRange/low" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/component/valueRange/low/value" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/component/valueString" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernText ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/conclusionCode" ;

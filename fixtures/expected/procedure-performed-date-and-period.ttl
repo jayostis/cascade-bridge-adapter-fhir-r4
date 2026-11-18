@@ -3,21 +3,28 @@
 @prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix pav: <http://purl.org/pav/> .
-<ni:///sha-256;lYXkD3rDrFWME0lUguepF0jvdyw3nE6UW6qLMShvdVw> cascade:procedureCode <http://snomed.info/id/73761001> ;
-	cascade:workflowStatus "completed" ;
-	cascade:procedureName "Colonoscopy" ;
-	cascade:procedureDate "2026-03-05T09:00:00-05:00"^^xsd:dateTime .
-_:9cefe745d49c116a84ec3a724af42ad8 bridge:arrivedAs <ni:///sha-256;lYXkD3rDrFWME0lUguepF0jvdyw3nE6UW6qLMShvdVw> .
-<ni:///sha-256;lYXkD3rDrFWME0lUguepF0jvdyw3nE6UW6qLMShvdVw> cascade:patient <urn:uuid:3aba8196-ebb7-8fb6-ae59-f84c56cbbac7> ;
-	prov:specializationOf <urn:uuid:2f9fbe19-fb92-8395-9393-622afd7878a6> .
-<urn:uuid:2f9fbe19-fb92-8395-9393-622afd7878a6> cascade:sourceRecordId "proc-both-1" ;
-	cascade:sourceUrl <https://FHIR.Meridian.example/api/FHIR/R4//Procedure/proc-both-1> ;
-	a cascade:MedicalProcedure .
-_:9cefe745d49c116a84ec3a724af42ad8 bridge:selector "" ;
+<ni:///sha-256;9f_PkPx9TrYEdH6Z28AhTpletpARP1n6SuEfuv-x3qc> cascade:procedureName "Colonoscopy" ;
+	cascade:procedureCode <http://snomed.info/id/73761001> ;
+	cascade:procedureDate "2026-03-05T09:00:00-05:00"^^xsd:dateTime ;
+	cascade:workflowStatus "completed" .
+<urn:uuid:f6f8134c-b346-8c9f-ae57-8313172e1de7> a cascade:MedicalProcedure ;
+	cascade:sourceUrl <https://fhir.meridian.example/api/FHIR/R4/Procedure/proc-both-1> ;
+	cascade:sourceRecordId "proc-both-1" .
+<ni:///sha-256;9f_PkPx9TrYEdH6Z28AhTpletpARP1n6SuEfuv-x3qc> prov:specializationOf <urn:uuid:f6f8134c-b346-8c9f-ae57-8313172e1de7> ;
+	cascade:patient <urn:uuid:7883c5a4-6c61-837c-9bf7-dbe1b37d89ff> .
+_:ad54748bcdb6b34faad01d355533e478 bridge:arrivedAs <ni:///sha-256;9f_PkPx9TrYEdH6Z28AhTpletpARP1n6SuEfuv-x3qc> ;
+	oa:hasSelector _:d777175907e263ac7f2cde87d9f43e04 ;
+	oa:hasSource <ni:///sha-256;Vm0IV5GbDA4QiWkUz1oGoLAZ-mVmFY_zCkf9vAKV-AU> ;
 	prov:wasDerivedFrom <ni:///sha-256;Vm0IV5GbDA4QiWkUz1oGoLAZ-mVmFY_zCkf9vAKV-AU> ;
 	prov:wasGeneratedBy _:5851c572f2c79436d8d82a492c2e23f .
-<ni:///sha-256;Vm0IV5GbDA4QiWkUz1oGoLAZ-mVmFY_zCkf9vAKV-AU> cascade:serverBaseUrl "https://FHIR.Meridian.example/api/FHIR/R4/" ;
+_:d777175907e263ac7f2cde87d9f43e04 a oa:FragmentSelector ;
+	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+	rdf:value "" .
+<ni:///sha-256;Vm0IV5GbDA4QiWkUz1oGoLAZ-mVmFY_zCkf9vAKV-AU> cascade:serverBaseUrl "https://fhir.meridian.example/api/FHIR/R4" ;
 	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
 	prov:wasGeneratedBy _:fb04f87c97a9ec88e30f9aa2ca1730ca ;
 	prov:wasAttributedTo _:a82ef4d040281f6b24d716632590ae54 ;

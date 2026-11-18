@@ -229,6 +229,9 @@
           "@id": "in/sparql/reference-display-findings.rq"
         },
         {
+          "@id": "in/sparql/category-text-findings.rq"
+        },
+        {
           "@id": "in/sparql/observation-findings.rq"
         },
         {
@@ -417,6 +420,9 @@
         },
         {
           "@id": "in/sparql/reference-display-findings.rq"
+        },
+        {
+          "@id": "in/sparql/category-text-findings.rq"
         },
         {
           "@id": "in/sparql/observation-findings.rq"
@@ -888,6 +894,9 @@
         },
         {
           "@id": "fixtures/in/immunization-primary-source-and-encounter.json"
+        },
+        {
+          "@id": "fixtures/in/observation-component-values-not-carried.json"
         },
         {
           "@id": "fixtures/in/procedure-performed-date-and-period.json"
@@ -1835,6 +1844,9 @@
           "@id": "fixtures/expected/immunization-primary-source-and-encounter.ttl"
         },
         {
+          "@id": "fixtures/expected/observation-component-values-not-carried.ttl"
+        },
+        {
           "@id": "fixtures/expected/procedure-performed-date-and-period.ttl"
         },
         {
@@ -1956,6 +1968,9 @@
         },
         {
           "@id": "fixtures/findings/immunization-primary-source-and-encounter.ttl"
+        },
+        {
+          "@id": "fixtures/findings/observation-component-values-not-carried.ttl"
         },
         {
           "@id": "fixtures/findings/procedure-performed-date-and-period.ttl"
@@ -2319,8 +2334,8 @@
       "@type": "File",
       "name": "Mapping: a Procedure's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "5655",
-      "sha256": "8024c2ebb24c7bf11b4e317536403830a406bfda0b6026a10f9d0af90b73d8ad",
+      "contentSize": "5853",
+      "sha256": "366576ec52d71733fc9df0291640442ca17364dd0107999d2251b3779e58582d",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2631,8 +2646,8 @@
       "@type": "File",
       "name": "Findings: a date no mapping can type",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "5084",
-      "sha256": "e65a4c8412e5d49a3e4f13e30248bc194e5a4b1731efc36fd830669bdc656c12",
+      "contentSize": "5262",
+      "sha256": "d32f9403040f91b0f82870b3eeb188091b586f48b25ab8cabd091137efd78cb4",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2661,6 +2676,18 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "A finding for each patient, subject, reason, result, authorizing prescription, author, custodian, performer or requester reference of a mapped resource that carries a display string, which no Cascade predicate carries."
+    },
+    {
+      "@id": "in/sparql/category-text-findings.rq",
+      "@type": "File",
+      "name": "Findings: a category given as text alone",
+      "encodingFormat": "application/sparql-query",
+      "contentSize": "3102",
+      "sha256": "c6b1abb7a3815bfa4c5068c46ab5d266d6bf405367e49d9954434dfcf7217579",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A finding for each category text of a condition, a diagnostic report, a medication request or statement, a procedure or a note or document that has no coding beside it, which no Cascade predicate carries."
     },
     {
       "@id": "in/sparql/observation-findings.rq",
@@ -2775,8 +2802,8 @@
       "@type": "File",
       "name": "FHIR R4 JSON source accounting",
       "encodingFormat": "text/turtle",
-      "contentSize": "930053",
-      "sha256": "081def3c1f27cefcf7d9bd2c9454e83770acc4245b9f0f2f5f482cc7b80d78e5",
+      "contentSize": "923925",
+      "sha256": "63e13fccdad93b72e7515c066acba9e21926fe66962e46a923e9e2a998a1344d",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2859,8 +2886,8 @@
       "@type": "File",
       "name": "FHIR R4 JSON gaps",
       "encodingFormat": "text/turtle",
-      "contentSize": "23581",
-      "sha256": "7f340b3125e80b4c756085418e439f9198c325b7e691306715713eb49064ccaa",
+      "contentSize": "24107",
+      "sha256": "11b88f8ac1eaeadf8ce99c315a2c63dbf990c9554c49f4c7b08cd46ea8d1d1c9",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -5004,6 +5031,19 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "An Immunization of an influenza vaccine, id imm-flu-2026, referencing its encounter and stating primarySource true. Authored here on 2026-11-17, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/observation-component-values-not-carried.json",
+      "@type": "File",
+      "name": "Observation with components carrying a quantity value and a string",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "1174",
+      "sha256": "1e2e27cf3a7f99e1fefe07da9ef50db1d37873cda5436efc80b42e04ca2f947a",
+      "dateCreated": "2026-11-17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "An Observation of a blood pressure panel, id obs-components-values-1, with a systolic component of 118 given as a quantity with a code and a system, and a diastolic component given as the string seventy-six. Authored here on 2026-11-17, for a case the conformance corpus does not hold."
     },
     {
       "@id": "fixtures/in/procedure-performed-date-and-period.json",
@@ -8623,8 +8663,8 @@
       "@type": "File",
       "name": "Expected findings for Bundle-bundle-cgexample",
       "encodingFormat": "text/turtle",
-      "contentSize": "20421",
-      "sha256": "27a12ba23a9cc3339a6da103b9b6462240360d43d4a6d81e443209dbb71301e3",
+      "contentSize": "29004",
+      "sha256": "a6dc57623d96edbd4e9962791afe113e79234c55645d9a65935f05bf4ddfc741",
       "about": {
         "@id": "fixtures/in/Bundle-bundle-cgexample.input.json"
       },
@@ -8655,8 +8695,8 @@
       "@type": "File",
       "name": "Expected findings for Bundle-bundle-oncology-diagnostic",
       "encodingFormat": "text/turtle",
-      "contentSize": "9785",
-      "sha256": "c1df6a2390623c71f08a68d5eaafaa4c89db2d0707f86edbf1c29c2ab80c26d1",
+      "contentSize": "10709",
+      "sha256": "fa2c6cddc516043b6fa7a420b8d0211b9802b6a68b0b93cd9e8d2cc761ef216c",
       "about": {
         "@id": "fixtures/in/Bundle-bundle-oncology-diagnostic.input.json"
       },
@@ -8671,8 +8711,8 @@
       "@type": "File",
       "name": "Expected findings for bundle-genomics-variants",
       "encodingFormat": "text/turtle",
-      "contentSize": "16951",
-      "sha256": "5ec8b6d5e8af9386de935ba725b6df79c5bccc6a45cf67375a149d7188b30971",
+      "contentSize": "17876",
+      "sha256": "0ef790c777a46a8f999e346f08f1fbe81df1e644b3bf692baaf0d6e1d00aef78",
       "about": {
         "@id": "fixtures/in/bundle-genomics-variants.json"
       },
@@ -8687,8 +8727,8 @@
       "@type": "File",
       "name": "Expected findings for bundle-genomics-interpretations",
       "encodingFormat": "text/turtle",
-      "contentSize": "7432",
-      "sha256": "e46d45b1b0421ef5f77f8cbd30cfe8de400fc189e865de5d7d81d49832e8b5d9",
+      "contentSize": "8350",
+      "sha256": "856d5e64c97f0cfceaeee9192a58822d49ee8f643f6fbdd42551a413ce881f7f",
       "about": {
         "@id": "fixtures/in/bundle-genomics-interpretations.json"
       },
@@ -9243,12 +9283,28 @@
       "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
+      "@id": "fixtures/expected/observation-component-values-not-carried.ttl",
+      "@type": "File",
+      "name": "Expected graph for observation-component-values-not-carried",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2222",
+      "sha256": "a07e6e1d7d95b1339f02d1b3b52ce3f9c2e4d51830223bca12a8c690a01ffefc",
+      "about": {
+        "@id": "fixtures/in/observation-component-values-not-carried.json"
+      },
+      "dateCreated": "2026-11-17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
       "@id": "fixtures/expected/procedure-performed-date-and-period.ttl",
       "@type": "File",
       "name": "Expected graph for procedure-performed-date-and-period",
       "encodingFormat": "text/turtle",
-      "contentSize": "3262",
-      "sha256": "f0ae63766492cff4fb3934bdb2f67f4e923351956c83d7d283273fa2c4df47d7",
+      "contentSize": "3598",
+      "sha256": "217d6359c81d09713cdaec1819d88fc754cdc276eb50f28d78719f487733b6c0",
       "about": {
         "@id": "fixtures/in/procedure-performed-date-and-period.json"
       },
@@ -9263,8 +9319,8 @@
       "@type": "File",
       "name": "Expected graph for procedure-performed-date-beside-an-unreadable-period-start",
       "encodingFormat": "text/turtle",
-      "contentSize": "3263",
-      "sha256": "2316608d78b12277ba8b5bb928c1f98d212a6bbcf1a767925faa98594611ed18",
+      "contentSize": "3602",
+      "sha256": "b07943201460a6c4539ab61d53e289940d5920fb72bc5a4fe822e6589b96d325",
       "about": {
         "@id": "fixtures/in/procedure-performed-date-beside-an-unreadable-period-start.json"
       },
@@ -9279,8 +9335,8 @@
       "@type": "File",
       "name": "Expected graph for procedure-unreadable-performed-date-beside-a-period",
       "encodingFormat": "text/turtle",
-      "contentSize": "3200",
-      "sha256": "89bfc70e982b4af7dd59c42f90256a738705792102f3a2325f4906d45a912663",
+      "contentSize": "3536",
+      "sha256": "b132d277fdd35546141b4f2dacd9cd4611badd8217c3b5ffe99bac6af07cf545",
       "about": {
         "@id": "fixtures/in/procedure-unreadable-performed-date-beside-a-period.json"
       },
@@ -9295,8 +9351,8 @@
       "@type": "File",
       "name": "Expected graph for condition-category-text-beside-a-coding-and-alone",
       "encodingFormat": "text/turtle",
-      "contentSize": "3279",
-      "sha256": "1d61d570ac5225862c8da2f2ae8ae041e14bfca09b4361c05ce3a84d17ab515c",
+      "contentSize": "3615",
+      "sha256": "c26d1d57a4c83f6e20332208e1a3c20bb4af7b99248bd67405f00b438c7f5c8a",
       "about": {
         "@id": "fixtures/in/condition-category-text-beside-a-coding-and-alone.json"
       },
@@ -9311,8 +9367,8 @@
       "@type": "File",
       "name": "Expected graph for observation-component-text-and-unit",
       "encodingFormat": "text/turtle",
-      "contentSize": "2220",
-      "sha256": "e9ca0141461e76d0ede8b8eb0364ac745342e15503d3d92f9999ff0b74d6025c",
+      "contentSize": "2219",
+      "sha256": "afcbb03fc449004a12f961e0351126a1558921962cac5441a1c48307c0e1a037",
       "about": {
         "@id": "fixtures/in/observation-component-text-and-unit.json"
       },
@@ -9899,12 +9955,28 @@
       "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
     },
     {
+      "@id": "fixtures/findings/observation-component-values-not-carried.ttl",
+      "@type": "File",
+      "name": "Expected findings for observation-component-values-not-carried",
+      "encodingFormat": "text/turtle",
+      "contentSize": "4618",
+      "sha256": "93339de73277245b3c0dfd5c4d6202ce2e499334625a19afddd27376e4651e26",
+      "about": {
+        "@id": "fixtures/in/observation-component-values-not-carried.json"
+      },
+      "dateCreated": "2026-11-17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
       "@id": "fixtures/findings/procedure-performed-date-and-period.ttl",
       "@type": "File",
       "name": "Expected findings for procedure-performed-date-and-period",
       "encodingFormat": "text/turtle",
-      "contentSize": "1065",
-      "sha256": "2c45d0ed77bb7b73c931c028aeee32039d009c91d4737920ae84a2bc6a508594",
+      "contentSize": "1069",
+      "sha256": "eda8031c793492c5aea76933363d1f30ae17d53e410a69350c78987065c1de06",
       "about": {
         "@id": "fixtures/in/procedure-performed-date-and-period.json"
       },
@@ -9920,7 +9992,7 @@
       "name": "Expected findings for procedure-performed-date-beside-an-unreadable-period-start",
       "encodingFormat": "text/turtle",
       "contentSize": "1092",
-      "sha256": "7ef03e1fe9543d44d6e398de91c4b7eeb6c035241bf131926f808a7b33a934b3",
+      "sha256": "eeab175a672ece3be003e451b89a8b864f6aa0f91bd58c697120c65ac49818c0",
       "about": {
         "@id": "fixtures/in/procedure-performed-date-beside-an-unreadable-period-start.json"
       },
@@ -9935,8 +10007,8 @@
       "@type": "File",
       "name": "Expected findings for procedure-unreadable-performed-date-beside-a-period",
       "encodingFormat": "text/turtle",
-      "contentSize": "1913",
-      "sha256": "5712b4bab6c93e5d00fafdfd91e66e49de911f77ad8c1f31ff6ab6b99ff1e53f",
+      "contentSize": "1949",
+      "sha256": "5b3ffdb8318df3ec9d874ef6c34c9b9664290f87cffc2a449b4983711aef35eb",
       "about": {
         "@id": "fixtures/in/procedure-unreadable-performed-date-beside-a-period.json"
       },
@@ -9951,8 +10023,8 @@
       "@type": "File",
       "name": "Expected findings for condition-category-text-beside-a-coding-and-alone",
       "encodingFormat": "text/turtle",
-      "contentSize": "1055",
-      "sha256": "15080debb6cb233ca89de2e27ab792af7d68c478e54ef400e367608b33424f70",
+      "contentSize": "1089",
+      "sha256": "1a34cab41289b663c9d59ac7f52ef57db2cc05782a93b845f76fa7fa7c1a7522",
       "about": {
         "@id": "fixtures/in/condition-category-text-beside-a-coding-and-alone.json"
       },
@@ -9967,8 +10039,8 @@
       "@type": "File",
       "name": "Expected findings for observation-component-text-and-unit",
       "encodingFormat": "text/turtle",
-      "contentSize": "2775",
-      "sha256": "800b76a52aec6b721e8d515d5ec3b824279e10020e8da3664b8bbbddc1969891",
+      "contentSize": "5471",
+      "sha256": "2c2293a99e38974a4afa6ff3d925a5a2247a3a599d3764859118550d768edac8",
       "about": {
         "@id": "fixtures/in/observation-component-text-and-unit.json"
       },
@@ -10620,8 +10692,8 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "contentSize": "134945",
-      "sha256": "79994ceeb310d07e11df7893f339c1da81d64f0c94e31bb7481feb7498373519"
+      "contentSize": "135722",
+      "sha256": "c2d7b6b445b322c622500cd438f2bda264e1706c3602caf525530639b0e27429"
     },
     {
       "@id": "fixtures/facts/meridian.ttl",

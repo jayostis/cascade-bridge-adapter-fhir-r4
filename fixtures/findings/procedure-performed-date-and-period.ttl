@@ -2,18 +2,18 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:c195362cea18aaf502c1b24c045528b3 a oa:FragmentSelector ;
+_:bbf2935f216c29cb0e566c73a7717db3 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "" .
-_:e50f76688d29a3d05eb2298005a16674 a oa:FragmentSelector ;
+_:b1f4ff0cdbe49950785afc5b9ba17c38 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/performedPeriod/end" .
-_:c195362cea18aaf502c1b24c045528b3 oa:refinedBy _:e50f76688d29a3d05eb2298005a16674 .
-_:e1caf7c24eda0cde859beeae68a085 a oa:Annotation ;
-	oa:hasTarget _:e13193d86665094d16274a9401af9189 .
-_:e13193d86665094d16274a9401af9189 oa:hasSource <../in/procedure-performed-date-and-period.json> ;
-	oa:hasSelector _:c195362cea18aaf502c1b24c045528b3 .
-_:e1caf7c24eda0cde859beeae68a085 oa:hasBody fhirr4:procedurePeriodEnd ;
+_:bbf2935f216c29cb0e566c73a7717db3 oa:refinedBy _:b1f4ff0cdbe49950785afc5b9ba17c38 .
+_:dd1d67e0898a79de38ce59ff1c1ceda1 a oa:Annotation ;
+	oa:hasTarget _:c538d47aeefc65cc2cdcc3c6d9d63688 .
+_:c538d47aeefc65cc2cdcc3c6d9d63688 oa:hasSource <../in/procedure-performed-date-and-period.json> ;
+	oa:hasSelector _:bbf2935f216c29cb0e566c73a7717db3 .
+_:dd1d67e0898a79de38ce59ff1c1ceda1 oa:hasBody fhirr4:procedurePeriodEnd ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "/performedPeriod/end" ;
 	sh:resultSeverity sh:Info .
