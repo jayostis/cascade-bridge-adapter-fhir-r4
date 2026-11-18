@@ -2650,7 +2650,7 @@
 
 <#observation-variant-and-interpretation-components-no-mapping-reads> a bridge:IsomorphicConversionTest ;
   mf:name "observation-variant-and-interpretation-components-no-mapping-reads" ;
-  rdfs:comment "A genetic variant Observation, with a diagnostic implication it contains, whose components include ones no mapping reads: an allelic state, a component of an unrecognised code, and a classification on the variant; and on the implication a level of evidence and an HGVS component. Each coding's code and each answer's display is reported; the HGVS component of the variant and the classification component of the implication, which the mappings read, are not." ;
+  rdfs:comment "A genetic variant Observation, with a diagnostic implication it contains, whose components include ones no mapping reads: an allelic state, a component of an unrecognised code, and a classification on the variant; and on the implication a level of evidence and an HGVS component. Each coding's code and each answer's display is reported, but the codes the mappings read: the LOINC codes of the HGVS and classification components, the HGVS code and the classification code." ;
   mf:action [
     bridge:input <in/observation-variant-and-interpretation-components-no-mapping-reads.json> ;
     bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
@@ -2663,7 +2663,7 @@
 
 <#bundle-variant-and-interpretation-components-no-mapping-reads> a bridge:IsomorphicConversionTest ;
   mf:name "bundle-variant-and-interpretation-components-no-mapping-reads" ;
-  rdfs:comment "The same as a Bundle entry: a variant entry with an allelic state and a component of an unrecognised code, and a diagnostic implication entry with a level of evidence and a component of an unrecognised code, which contains a variant whose allelic state and classification no mapping reads. The components the mappings read, a variant's HGVS and ClinVar and an implication's classification, are not reported." ;
+  rdfs:comment "The same as a Bundle entry: a variant entry with an allelic state and a component of an unrecognised code, and a diagnostic implication entry with a level of evidence and a component of an unrecognised code, which contains a variant whose allelic state and classification no mapping reads. The codes the mappings read, the LOINC codes of a variant's HGVS and ClinVar components and an implication's classification component, the ClinVar code and the classification code, are not reported." ;
   mf:action [
     bridge:input <in/bundle-variant-and-interpretation-components-no-mapping-reads.json> ;
     bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;

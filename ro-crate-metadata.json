@@ -2754,12 +2754,12 @@
       "@type": "File",
       "name": "Findings: what an Observation's components give that no mapping reads",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "5180",
-      "sha256": "db4217056684a6bf69b2f90ea40e017b8bb9730cef36faaa20873b3ebafdc98e",
+      "contentSize": "7514",
+      "sha256": "118e7b135a135f2af639b989b42bb33bbe94877769838097932d741fb280dc20",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "A finding for each component code or coded answer of an Observation given as text with no coding beside it, and for each coding code, and each coded answer coding display, of a component of an Observation that is no variant or diagnostic implication, and of each component of one that no mapping reads (all but the HGVS, ClinVar and gene components of a variant and the classification component of a diagnostic implication), which no Cascade predicate carries."
+      "description": "A finding for each component code or coded answer of an Observation given as text with no coding beside it, and for each coding code, and each coded answer coding display, of a component of an Observation which no Cascade predicate carries: all of them on an Observation that is no variant or diagnostic implication, and on a variant or a diagnostic implication all but the members its mappings read or its findings report (the LOINC code of the HGVS, ClinVar, gene and classification components, the HGVS and ClinVar codes, the HGNC display, and the classification code of one of the five answers)."
     },
     {
       "@id": "in/sparql/observation-findings.rq",
@@ -8813,8 +8813,8 @@
       "@type": "File",
       "name": "Expected findings for Bundle-bundle-cgexample",
       "encodingFormat": "text/turtle",
-      "contentSize": "92755",
-      "sha256": "4d7ce7e3440bb4a8d5e300853ce21178072a3c2e8885c8a56351a2ffa924b252",
+      "contentSize": "98612",
+      "sha256": "bab26f8ff5a9894ab073baea5e61c4dda85f1d87abdebc8cc2259333476db255",
       "about": {
         "@id": "fixtures/in/Bundle-bundle-cgexample.input.json"
       },
@@ -8829,8 +8829,8 @@
       "@type": "File",
       "name": "Expected findings for Bundle-bundle-compound-heterozygote",
       "encodingFormat": "text/turtle",
-      "contentSize": "13044",
-      "sha256": "12a25b7858ead08b7f2884bd883f85c0ca5971bccdd8e4b11241bfa431bcdeed",
+      "contentSize": "15003",
+      "sha256": "05119b256a0be99d061247ace10f15bb63ec2df4b6648a61a7d2ea401052384e",
       "about": {
         "@id": "fixtures/in/Bundle-bundle-compound-heterozygote.input.json"
       },
@@ -8845,8 +8845,8 @@
       "@type": "File",
       "name": "Expected findings for Bundle-bundle-oncology-diagnostic",
       "encodingFormat": "text/turtle",
-      "contentSize": "26228",
-      "sha256": "caa722db1e7eee6ea824f6ad3b9248b168a664c953f846a5b3afb3cae80b8835",
+      "contentSize": "29147",
+      "sha256": "998fa5dac5e466bf8b71265481c4ed81cd66d907a3f7f25974296706b095ddca",
       "about": {
         "@id": "fixtures/in/Bundle-bundle-oncology-diagnostic.input.json"
       },
@@ -8861,8 +8861,8 @@
       "@type": "File",
       "name": "Expected findings for bundle-genomics-variants",
       "encodingFormat": "text/turtle",
-      "contentSize": "21653",
-      "sha256": "666d37fb1711d298eaaa854cb11e3c52397615282b9307db16ffcedf485b6b17",
+      "contentSize": "26348",
+      "sha256": "7baf081aa51f822c84970153b645c783e38f2d335066e8d9140524466c612170",
       "about": {
         "@id": "fixtures/in/bundle-genomics-variants.json"
       },
@@ -8877,8 +8877,8 @@
       "@type": "File",
       "name": "Expected findings for bundle-genomics-interpretations",
       "encodingFormat": "text/turtle",
-      "contentSize": "8310",
-      "sha256": "bd3d9ebe480eba7fa189b4acf0902c5315b1c887ca999f23bc6a09a13b983298",
+      "contentSize": "16508",
+      "sha256": "ff3b61f1fcb64ab0ccbbf0854cebe77345d28ec9e476e63504fa9f9dc98bae00",
       "about": {
         "@id": "fixtures/in/bundle-genomics-interpretations.json"
       },
@@ -8941,8 +8941,8 @@
       "@type": "File",
       "name": "Expected findings for bundle-interpretation-relative-reference-to-urn",
       "encodingFormat": "text/turtle",
-      "contentSize": "1987",
-      "sha256": "132d535a6cacc8c00b413787744ed51032094f45b5d789ee80157ded5973cbea",
+      "contentSize": "3811",
+      "sha256": "0627a85099662b62d6fb791e566d315a2cfdc14dcb031593bb0c95d23b8f6e3e",
       "about": {
         "@id": "fixtures/in/bundle-interpretation-relative-reference-to-urn.json"
       },
@@ -8957,8 +8957,8 @@
       "@type": "File",
       "name": "Expected findings for bundle-interpretation-performers",
       "encodingFormat": "text/turtle",
-      "contentSize": "2186",
-      "sha256": "85a478bc0b6d43d45a14f91e73d554722ecca37e51251170175c1629482c5348",
+      "contentSize": "3988",
+      "sha256": "4e4aa9bbcd5b74d99ed693469144ac187127e52e9b6b4e70c5000e2f3a6f3743",
       "about": {
         "@id": "fixtures/in/bundle-interpretation-performers.json"
       },
@@ -8973,8 +8973,8 @@
       "@type": "File",
       "name": "Expected findings for bundle-interpretation-performer-is-custodian",
       "encodingFormat": "text/turtle",
-      "contentSize": "1085",
-      "sha256": "cfe7722eda24c2e90e2a8de8609308c392f2d2d36b127bcac8bf879d999d0aae",
+      "contentSize": "2000",
+      "sha256": "26d6e89d8589cfb18e1e6aeaf9e09ae2033953c798e623f1075714abfc40c37b",
       "about": {
         "@id": "fixtures/in/bundle-interpretation-performer-is-custodian.json"
       },
@@ -8989,8 +8989,8 @@
       "@type": "File",
       "name": "Expected findings for martin-okafor-harbourline-panel-2022-with-lab",
       "encodingFormat": "text/turtle",
-      "contentSize": "9848",
-      "sha256": "018922273823216388bbfeff8003d9836815ede16e26c38823666bc19ef0add1",
+      "contentSize": "15510",
+      "sha256": "c6418b503978ddbdc79ced041d92443f25194aeb9ec979f2a0a802dbb78cc20f",
       "about": {
         "@id": "fixtures/in/martin-okafor-harbourline-panel-2022-with-lab.json"
       },
@@ -9005,8 +9005,8 @@
       "@type": "File",
       "name": "Expected findings for martin-okafor-st-columba-exome-2024-with-lab",
       "encodingFormat": "text/turtle",
-      "contentSize": "8926",
-      "sha256": "4e5f00c5e58549513d82f61872ef31ff3cff454dc42aa9ed686463dd1be20f3e",
+      "contentSize": "14576",
+      "sha256": "fe4c7d54621028f114f7c48edd4325d6de185c3e8f62c1cb4cbcbb9ac096593e",
       "about": {
         "@id": "fixtures/in/martin-okafor-st-columba-exome-2024-with-lab.json"
       },
@@ -10349,8 +10349,8 @@
       "@type": "File",
       "name": "Expected findings for observation-variant-and-interpretation-components-no-mapping-reads",
       "encodingFormat": "text/turtle",
-      "contentSize": "13880",
-      "sha256": "836a289feef1efa83d5caa6d8b15b70ff8379eab4e7287806cf656d103049f68",
+      "contentSize": "14866",
+      "sha256": "2b421a2a719854cd1ecce6fe69d5b893739d0f2bfd157925f6680160ebf06962",
       "about": {
         "@id": "fixtures/in/observation-variant-and-interpretation-components-no-mapping-reads.json"
       },
@@ -10365,8 +10365,8 @@
       "@type": "File",
       "name": "Expected findings for bundle-variant-and-interpretation-components-no-mapping-reads",
       "encodingFormat": "text/turtle",
-      "contentSize": "17977",
-      "sha256": "dd2594c3837833e4b8164ad4eca62ca20c1a7f0308ff71e3b6ec291cbc9757f4",
+      "contentSize": "18963",
+      "sha256": "7bbe7fba5b584ac603ce408413fa5cff81ff00cc5a4c512dc3b7537377dae53b",
       "about": {
         "@id": "fixtures/in/bundle-variant-and-interpretation-components-no-mapping-reads.json"
       },
@@ -10380,8 +10380,8 @@
       "@type": "File",
       "name": "Expected findings for bundle-variant-components-with-unread-codings",
       "encodingFormat": "text/turtle",
-      "contentSize": "10702",
-      "sha256": "39ebfbf880ec85809930e376d0cfa750c6d4c517385c62d3b358c789f2fda967",
+      "contentSize": "14800",
+      "sha256": "c044962ac1105e244a1a72c9c20b2152bc60fb73eaf05537d692a5ff1999daf2",
       "about": {
         "@id": "fixtures/in/bundle-variant-components-with-unread-codings.json"
       },
@@ -10701,8 +10701,8 @@
       "@type": "File",
       "name": "Expected findings for bundle-dates-that-do-not-exist",
       "encodingFormat": "text/turtle",
-      "contentSize": "12514",
-      "sha256": "6848eadc60d42b2671bcb8d22a96447a911054270ee1378444a0cb05a7b62961",
+      "contentSize": "13404",
+      "sha256": "ffd3067abf5b588b1dde373329bedec03d8ce605ef5b201d70a9aa822c1f4a9f",
       "about": {
         "@id": "fixtures/in/bundle-dates-that-do-not-exist.json"
       },
@@ -11034,8 +11034,8 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "contentSize": "142239",
-      "sha256": "90ef737b88009a395d4ce53868334a09eefc0f96ca520f9322795323a7b81812"
+      "contentSize": "142334",
+      "sha256": "6472a7628f546aeb46b9f34170b33f197d3c3ef1d536d20a1903738b80de3240"
     },
     {
       "@id": "fixtures/facts/meridian.ttl",
