@@ -1,0 +1,54 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "docref-context-1",
+  "status": "current",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "11506-3",
+        "display": "Progress note"
+      }
+    ],
+    "text": "Progress note"
+  },
+  "subject": {
+    "reference": "Patient/pat-1"
+  },
+  "date": "2026-08-20T14:05:00Z",
+  "author": [
+    {
+      "reference": "Organization/clinic-1",
+      "display": "Riverside Clinic"
+    }
+  ],
+  "custodian": {
+    "reference": "Organization/clinic-1",
+    "display": "Riverside Clinic"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/plain",
+        "data": "U2VlbiBmb3IgZm9sbG93LXVwLg==",
+        "title": "Progress note"
+      },
+      "format": {
+        "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+        "display": "mimeType Sufficient"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-visit-1"
+      }
+    ],
+    "period": {
+      "start": "2026-08-20T13:30:00Z",
+      "end": "2026-08-20T14:00:00Z"
+    }
+  }
+}

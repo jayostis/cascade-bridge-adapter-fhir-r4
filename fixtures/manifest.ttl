@@ -156,6 +156,11 @@
     <#condition-codings-not-carried>
     <#procedure-hcpcs-code>
     <#procedure-two-cpt-codes>
+    <#procedure-performed-period>
+    <#procedure-performed-period-start-only>
+    <#procedure-performed-period-end-only>
+    <#document-reference-context-and-displays>
+    <#immunization-primary-source-and-encounter>
     <#medication-request-formulary-code>
     <#medication-request-us-core-supply-only>
     <#medication-request-supply-and-dosages>
@@ -2447,4 +2452,69 @@
   mf:result [
     bridge:expectedGraph <expected/bundle-medication-dispense-repeated-id-and-patient-not-held.ttl> ;
     bridge:expectedFindings <findings/bundle-medication-dispense-repeated-id-and-patient-not-held.ttl>
+  ] .
+
+<#procedure-performed-period> a bridge:IsomorphicConversionTest ;
+  mf:name "procedure-performed-period" ;
+  rdfs:comment "A Procedure performed over a period with a start and an end: its date is the period's start, as cascade:procedureDate, the vocabulary's procedure date taking the low of a C-CDA effectiveTime; the end has no Cascade predicate and is reported, as is the reference to its encounter." ;
+  mf:action [
+    bridge:input <in/procedure-performed-period.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/procedure-performed-period.ttl> ;
+    bridge:expectedFindings <findings/procedure-performed-period.ttl>
+  ] .
+
+<#procedure-performed-period-start-only> a bridge:IsomorphicConversionTest ;
+  mf:name "procedure-performed-period-start-only" ;
+  rdfs:comment "A Procedure performed over a period with only a start: its date is the start, and nothing of the period is reported." ;
+  mf:action [
+    bridge:input <in/procedure-performed-period-start-only.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/procedure-performed-period-start-only.ttl> ;
+    bridge:expectedFindings <findings/procedure-performed-period-start-only.ttl>
+  ] .
+
+<#procedure-performed-period-end-only> a bridge:IsomorphicConversionTest ;
+  mf:name "procedure-performed-period-end-only" ;
+  rdfs:comment "A Procedure performed over a period with only an end: it has no date, since the date is the period's start, and the end is reported." ;
+  mf:action [
+    bridge:input <in/procedure-performed-period-end-only.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/procedure-performed-period-end-only.ttl> ;
+    bridge:expectedFindings <findings/procedure-performed-period-end-only.ttl>
+  ] .
+
+<#document-reference-context-and-displays> a bridge:IsomorphicConversionTest ;
+  mf:name "document-reference-context-and-displays" ;
+  rdfs:comment "A DocumentReference with an encounter, a period of service, an author, a custodian and a content format: none has a Cascade predicate, the encounter, the period and the two displays being reported, and the format display carrying nothing its code does not." ;
+  mf:action [
+    bridge:input <in/document-reference-context-and-displays.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/document-reference-context-and-displays.ttl> ;
+    bridge:expectedFindings <findings/document-reference-context-and-displays.ttl>
+  ] .
+
+<#immunization-primary-source-and-encounter> a bridge:IsomorphicConversionTest ;
+  mf:name "immunization-primary-source-and-encounter" ;
+  rdfs:comment "An Immunization that says it is a primary source report and references its encounter: neither has a Cascade predicate, and both are reported." ;
+  mf:action [
+    bridge:input <in/immunization-primary-source-and-encounter.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/immunization-primary-source-and-encounter.ttl> ;
+    bridge:expectedFindings <findings/immunization-primary-source-and-encounter.ttl>
   ] .

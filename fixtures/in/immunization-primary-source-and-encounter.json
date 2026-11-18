@@ -1,0 +1,23 @@
+{
+  "resourceType": "Immunization",
+  "id": "imm-flu-2026",
+  "status": "completed",
+  "vaccineCode": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/sid/cvx",
+        "code": "141",
+        "display": "Influenza, seasonal"
+      }
+    ],
+    "text": "Influenza, seasonal"
+  },
+  "patient": {
+    "reference": "Patient/pat-conformance-1"
+  },
+  "encounter": {
+    "reference": "Encounter/enc-visit-1"
+  },
+  "occurrenceDateTime": "2026-10-15",
+  "primarySource": true
+}

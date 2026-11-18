@@ -875,6 +875,21 @@
           "@id": "fixtures/in/procedure-two-cpt-codes.json"
         },
         {
+          "@id": "fixtures/in/procedure-performed-period.json"
+        },
+        {
+          "@id": "fixtures/in/procedure-performed-period-start-only.json"
+        },
+        {
+          "@id": "fixtures/in/procedure-performed-period-end-only.json"
+        },
+        {
+          "@id": "fixtures/in/document-reference-context-and-displays.json"
+        },
+        {
+          "@id": "fixtures/in/immunization-primary-source-and-encounter.json"
+        },
+        {
           "@id": "fixtures/in/medication-request-formulary-code.json"
         },
         {
@@ -1790,6 +1805,21 @@
           "@id": "fixtures/expected/procedure-two-cpt-codes.ttl"
         },
         {
+          "@id": "fixtures/expected/procedure-performed-period.ttl"
+        },
+        {
+          "@id": "fixtures/expected/procedure-performed-period-start-only.ttl"
+        },
+        {
+          "@id": "fixtures/expected/procedure-performed-period-end-only.ttl"
+        },
+        {
+          "@id": "fixtures/expected/document-reference-context-and-displays.ttl"
+        },
+        {
+          "@id": "fixtures/expected/immunization-primary-source-and-encounter.ttl"
+        },
+        {
           "@id": "fixtures/expected/medication-request-formulary-code.ttl"
         },
         {
@@ -1881,6 +1911,21 @@
         },
         {
           "@id": "fixtures/findings/procedure-two-cpt-codes.ttl"
+        },
+        {
+          "@id": "fixtures/findings/procedure-performed-period.ttl"
+        },
+        {
+          "@id": "fixtures/findings/procedure-performed-period-start-only.ttl"
+        },
+        {
+          "@id": "fixtures/findings/procedure-performed-period-end-only.ttl"
+        },
+        {
+          "@id": "fixtures/findings/document-reference-context-and-displays.ttl"
+        },
+        {
+          "@id": "fixtures/findings/immunization-primary-source-and-encounter.ttl"
         },
         {
           "@id": "fixtures/findings/medication-request-formulary-code.ttl"
@@ -4849,6 +4894,71 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "A Procedure of a colonoscopy, id proc-colonoscopy-3, coded in CPT twice, 45378 and 45380, each read on tx.fhir.org on 2026-10-29. Authored here on 2026-10-29, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/procedure-performed-period.json",
+      "@type": "File",
+      "name": "Procedure performed over a period",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "508",
+      "sha256": "25d84d827a8b95f8384fe14324cde52de582cd6a03c9e98ae6612c8b5b7d6175",
+      "dateCreated": "2026-11-17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Procedure of a colonoscopy, id proc-period-1, performed over a period with a start and an end and referencing its encounter. Authored here on 2026-11-17, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/procedure-performed-period-start-only.json",
+      "@type": "File",
+      "name": "Procedure performed over a period with only a start",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "405",
+      "sha256": "cd007001fdf6012a1a86536936ea11d5edcbc6f56bd072bb531604a648f427ab",
+      "dateCreated": "2026-11-17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Procedure of a colonoscopy, id proc-period-2, performed over a period with a start and no end. Authored here on 2026-11-17, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/procedure-performed-period-end-only.json",
+      "@type": "File",
+      "name": "Procedure performed over a period with only an end",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "403",
+      "sha256": "137ecb0ff8e7cf73ce8020b69c668820adbab8683d9c22988cf06f6e2a7af393",
+      "dateCreated": "2026-11-17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Procedure of a colonoscopy, id proc-period-3, performed over a period with an end and no start. Authored here on 2026-11-17, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/document-reference-context-and-displays.json",
+      "@type": "File",
+      "name": "DocumentReference with a context and reference displays",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "1160",
+      "sha256": "e18492b942081c5787d5935ad5fd4ed315aedda45d44c56cfc1b2787f4bac1ec",
+      "dateCreated": "2026-11-17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A DocumentReference of a progress note, id docref-context-1, with an author and a custodian each carrying a display, a content format with a display, and a context holding an encounter and a period of service. Authored here on 2026-11-17, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/immunization-primary-source-and-encounter.json",
+      "@type": "File",
+      "name": "Immunization with a primary source flag and an encounter",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "487",
+      "sha256": "77146b127d7a0e28bfecd8e157b73f557cd447b2a00e9840f496079ab7e15c5e",
+      "dateCreated": "2026-11-17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "An Immunization of an influenza vaccine, id imm-flu-2026, referencing its encounter and stating primarySource true. Authored here on 2026-11-17, for a case the conformance corpus does not hold."
     },
     {
       "@id": "fixtures/in/medication-request-formulary-code.json",
@@ -8941,6 +9051,86 @@
       "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
+      "@id": "fixtures/expected/procedure-performed-period.ttl",
+      "@type": "File",
+      "name": "Expected graph for procedure-performed-period",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3604",
+      "sha256": "2f41b6040eb320de234b67c967f982d8ad572a9a39bca8fb4176af0f28a48b70",
+      "about": {
+        "@id": "fixtures/in/procedure-performed-period.json"
+      },
+      "dateCreated": "2026-11-17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/procedure-performed-period-start-only.ttl",
+      "@type": "File",
+      "name": "Expected graph for procedure-performed-period-start-only",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3598",
+      "sha256": "e7ce203959ce8d81083e48c3173f38d282b089c673fa7437d2b9e20bdb9cdcae",
+      "about": {
+        "@id": "fixtures/in/procedure-performed-period-start-only.json"
+      },
+      "dateCreated": "2026-11-17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/procedure-performed-period-end-only.ttl",
+      "@type": "File",
+      "name": "Expected graph for procedure-performed-period-end-only",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3540",
+      "sha256": "f166426c55322745e15cfe338128ab88c716e1442f932abf5b3f025472a61463",
+      "about": {
+        "@id": "fixtures/in/procedure-performed-period-end-only.json"
+      },
+      "dateCreated": "2026-11-17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/document-reference-context-and-displays.ttl",
+      "@type": "File",
+      "name": "Expected graph for document-reference-context-and-displays",
+      "encodingFormat": "text/turtle",
+      "contentSize": "4167",
+      "sha256": "6d89f772b279b13d5e12f4a51fb1ae91188f83454952aed5cee5d621f5e906f2",
+      "about": {
+        "@id": "fixtures/in/document-reference-context-and-displays.json"
+      },
+      "dateCreated": "2026-11-17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/immunization-primary-source-and-encounter.ttl",
+      "@type": "File",
+      "name": "Expected graph for immunization-primary-source-and-encounter",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3614",
+      "sha256": "83edbda36ea9a6d9797d5cf3108a2bea8c163374988d386bedcaf946addb0bcd",
+      "about": {
+        "@id": "fixtures/in/immunization-primary-source-and-encounter.json"
+      },
+      "dateCreated": "2026-11-17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
       "@id": "fixtures/expected/medication-request-formulary-code.ttl",
       "@type": "File",
       "name": "Expected graph for medication-request-formulary-code",
@@ -9431,6 +9621,86 @@
         "@id": "fixtures/in/procedure-two-cpt-codes.json"
       },
       "dateCreated": "2026-10-29",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/procedure-performed-period.ttl",
+      "@type": "File",
+      "name": "Expected findings for procedure-performed-period",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1920",
+      "sha256": "4fb8b6368824129f031574350c27ab77fcf38de101c2c00cb8a9aa102dffddac",
+      "about": {
+        "@id": "fixtures/in/procedure-performed-period.json"
+      },
+      "dateCreated": "2026-11-17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/procedure-performed-period-start-only.ttl",
+      "@type": "File",
+      "name": "Expected findings for procedure-performed-period-start-only",
+      "encodingFormat": "text/turtle",
+      "contentSize": "0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "about": {
+        "@id": "fixtures/in/procedure-performed-period-start-only.json"
+      },
+      "dateCreated": "2026-11-17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/procedure-performed-period-end-only.ttl",
+      "@type": "File",
+      "name": "Expected findings for procedure-performed-period-end-only",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1080",
+      "sha256": "c5867f46d1855a7549b780a3f8c4301e7e3dd6d83b17be31ee4e65c2285a8731",
+      "about": {
+        "@id": "fixtures/in/procedure-performed-period-end-only.json"
+      },
+      "dateCreated": "2026-11-17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/document-reference-context-and-displays.ttl",
+      "@type": "File",
+      "name": "Expected findings for document-reference-context-and-displays",
+      "encodingFormat": "text/turtle",
+      "contentSize": "4665",
+      "sha256": "8ef057eb2a4d7a2dde804b4df3fcdcf320df5a0b4aaa6be0c052d92e61a78264",
+      "about": {
+        "@id": "fixtures/in/document-reference-context-and-displays.json"
+      },
+      "dateCreated": "2026-11-17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/immunization-primary-source-and-encounter.ttl",
+      "@type": "File",
+      "name": "Expected findings for immunization-primary-source-and-encounter",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1945",
+      "sha256": "6512290059aa496b47b42c3736e7cf56a6acf431e9ea0c616528c7d3f31995ce",
+      "about": {
+        "@id": "fixtures/in/immunization-primary-source-and-encounter.json"
+      },
+      "dateCreated": "2026-11-17",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -10078,8 +10348,8 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "contentSize": "127057",
-      "sha256": "5f6cba7911ed58e0ebd6d180d12f06d2724d760597ce5c14fd2bcd14229c13b1"
+      "contentSize": "130784",
+      "sha256": "1a91ca9adb2fa728fec1f0efe32d911292e092f54d223bd6f2aa3d052635154a"
     },
     {
       "@id": "fixtures/facts/meridian.ttl",
