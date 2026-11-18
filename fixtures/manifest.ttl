@@ -176,6 +176,7 @@
     <#bundle-absolute-reference-from-urn-entry>
     <#bundle-medication-impossible-dates>
     <#bundle-dates-that-do-not-exist>
+    <#bundle-lab-result-with-contained-not-a-list>
     <#bundle-condition-onsets-and-the-fhir-date-forms>
   ) .
 
@@ -2393,6 +2394,19 @@
   mf:result [
     bridge:expectedGraph <expected/bundle-dates-that-do-not-exist.ttl> ;
     bridge:expectedFindings <findings/bundle-dates-that-do-not-exist.ttl>
+  ] .
+
+<#bundle-lab-result-with-contained-not-a-list> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-lab-result-with-contained-not-a-list" ;
+  rdfs:comment "A Bundle of a Patient and a laboratory Observation, written with a good effectiveDateTime, whose contained is an object keyed by a name, not a list of resources. The contained resource is not read as a resource, so its effectiveDateTime of 2026-02-31 is no date finding; the Observation's own date is carried." ;
+  mf:action [
+    bridge:input <in/bundle-lab-result-with-contained-not-a-list.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/example-org.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-lab-result-with-contained-not-a-list.ttl> ;
+    bridge:expectedFindings <findings/bundle-lab-result-with-contained-not-a-list.ttl>
   ] .
 
 <#bundle-condition-onsets-and-the-fhir-date-forms> a bridge:IsomorphicConversionTest ;

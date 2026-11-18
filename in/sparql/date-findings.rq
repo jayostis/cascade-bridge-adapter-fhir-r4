@@ -82,7 +82,7 @@ WHERE {
     ?resource xyz:effectivePeriod ?period . ?period xyz:start ?value .
     BIND ("/effectivePeriod/start" AS ?step)
   }
-  BIND (CONCAT(?recordSelector, ?topStep, ?containedStep) AS ?resourcePointer)
+  BIND (COALESCE(CONCAT(?recordSelector, ?topStep, ?containedStep), "none") AS ?resourcePointer)
   FILTER (?scope = "" || EXISTS {
     VALUES (?scope ?table) {
       ("lab" fhirr4:labResultAt)
