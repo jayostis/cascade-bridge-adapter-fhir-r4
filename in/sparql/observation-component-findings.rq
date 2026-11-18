@@ -166,5 +166,6 @@ WHERE {
                                          skos:notation ?answerKey .
                                        FILTER (?answerKey = LCASE(REPLACE(STR(?codeBesideDisplay), "^\\s+|\\s+$", ""))) })))
               ))
+  FILTER (!BOUND(?value) || ?value != "53034-5")
   BIND (CONCAT(?componentPointer, ?step) AS ?pointer)
 }

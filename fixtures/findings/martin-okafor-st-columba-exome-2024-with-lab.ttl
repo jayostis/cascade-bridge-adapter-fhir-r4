@@ -1,184 +1,123 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix fhirr4: <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix oa: <http://www.w3.org/ns/oa#> .
-_:fd142ff8a014b56f993560d6fc0d84d6 a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/entry/2" .
-_:e65e33a632270ba9a1807e32b8a26380 oa:hasSource <../in/martin-okafor-st-columba-exome-2024-with-lab.json> .
-_:fd142ff8a014b56f993560d6fc0d84d6 oa:refinedBy _:c61763000264aed20e9d9269e395a02a .
-_:c61763000264aed20e9d9269e395a02a a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/resource/component/3/code/coding/0/code" .
-_:e65e33a632270ba9a1807e32b8a26380 oa:hasSelector _:fd142ff8a014b56f993560d6fc0d84d6 .
-_:daedd55ed398b5ff513c79dbc2c8a3e5 oa:hasTarget _:e65e33a632270ba9a1807e32b8a26380 .
-_:d0c84a12c78d7b52727acbaa44262fbb a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/entry/2" .
-_:ab84fa4694cd528932b6bfd1541cab73 oa:hasSource <../in/martin-okafor-st-columba-exome-2024-with-lab.json> .
-_:d0c84a12c78d7b52727acbaa44262fbb oa:refinedBy _:f711e1d8e69af99c40b5ba6816c431cf .
-_:f711e1d8e69af99c40b5ba6816c431cf a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/resource/component/3/valueCodeableConcept/coding/0/code" .
-_:ab84fa4694cd528932b6bfd1541cab73 oa:hasSelector _:d0c84a12c78d7b52727acbaa44262fbb .
-_:dc9cb26a2f999520ebec5e8cc07f9106 oa:hasTarget _:ab84fa4694cd528932b6bfd1541cab73 .
-_:e114990e3fd6e32df1c3f6e4b3ccd46c a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/entry/2" .
-_:ce12c1b08e6fc0d269e944ac87d559e9 oa:hasSource <../in/martin-okafor-st-columba-exome-2024-with-lab.json> .
-_:e114990e3fd6e32df1c3f6e4b3ccd46c oa:refinedBy _:a69a21beb698041df7b613db5cfba296 .
-_:a69a21beb698041df7b613db5cfba296 a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/resource/component/3/valueCodeableConcept/coding/0/display" .
-_:ce12c1b08e6fc0d269e944ac87d559e9 oa:hasSelector _:e114990e3fd6e32df1c3f6e4b3ccd46c .
-_:b0ee237b8a4e09ead2ce310759db91a8 oa:hasTarget _:ce12c1b08e6fc0d269e944ac87d559e9 .
-_:d2acd8bffd3e22ff2f571a16d1da4545 a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/entry/2" .
-_:c88f0acf25406476d3295b6f77cd3264 oa:hasSource <../in/martin-okafor-st-columba-exome-2024-with-lab.json> .
-_:d2acd8bffd3e22ff2f571a16d1da4545 oa:refinedBy _:ce3fb5db2f1c96257277921f3a022264 .
-_:ce3fb5db2f1c96257277921f3a022264 a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/resource/component/2/valueCodeableConcept/coding/0/code" .
-_:c88f0acf25406476d3295b6f77cd3264 oa:hasSelector _:d2acd8bffd3e22ff2f571a16d1da4545 .
-_:ec3bc69fd7db1d12229031d57a64bae6 oa:hasTarget _:c88f0acf25406476d3295b6f77cd3264 .
-_:daedd55ed398b5ff513c79dbc2c8a3e5 sh:resultSeverity sh:Info .
-_:dc9cb26a2f999520ebec5e8cc07f9106 sh:resultSeverity sh:Info .
-_:b0ee237b8a4e09ead2ce310759db91a8 sh:resultSeverity sh:Info .
-_:ec3bc69fd7db1d12229031d57a64bae6 sh:resultSeverity sh:Info .
-_:daedd55ed398b5ff513c79dbc2c8a3e5 a oa:Annotation ;
-	oa:hasBody fhirr4:observationComponentDataNotCarried ;
-	oa:motivatedBy oa:classifying ;
-	sh:value "53034-5" .
-_:dc9cb26a2f999520ebec5e8cc07f9106 a oa:Annotation ;
-	oa:hasBody fhirr4:observationComponentDataNotCarried ;
-	oa:motivatedBy oa:classifying ;
-	sh:value "LA6706-1" .
-_:b0ee237b8a4e09ead2ce310759db91a8 a oa:Annotation ;
-	oa:hasBody fhirr4:observationComponentDataNotCarried ;
-	oa:motivatedBy oa:classifying ;
-	sh:value "Heterozygous" .
-_:ec3bc69fd7db1d12229031d57a64bae6 a oa:Annotation ;
-	oa:hasBody fhirr4:observationComponentDataNotCarried ;
-	oa:motivatedBy oa:classifying ;
-	sh:value "HGNC:7127" .
-_:ed718d4593eb832172caa0465040f025 a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/entry/4" .
-_:d038577178dd31de14575fb46f5dbf61 oa:hasSource <../in/martin-okafor-st-columba-exome-2024-with-lab.json> .
-_:ed718d4593eb832172caa0465040f025 oa:refinedBy _:f557b6e8b50e1084a418dda42d8a0f0e .
-_:f557b6e8b50e1084a418dda42d8a0f0e a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/resource/component/3/code/coding/0/code" .
-_:d038577178dd31de14575fb46f5dbf61 oa:hasSelector _:ed718d4593eb832172caa0465040f025 .
-_:aeb2fabb8ee77e16fe4e3c83c95292e9 oa:hasTarget _:d038577178dd31de14575fb46f5dbf61 .
-_:af52038764f28dbcafe05dddb61d3991 a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/entry/4" .
-_:eab9230893f0706a0dc348a64d288e8 oa:hasSource <../in/martin-okafor-st-columba-exome-2024-with-lab.json> .
-_:af52038764f28dbcafe05dddb61d3991 oa:refinedBy _:b62f7761a49aa80c376878531b9357dc .
-_:b62f7761a49aa80c376878531b9357dc a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/resource/component/3/valueCodeableConcept/coding/0/code" .
-_:eab9230893f0706a0dc348a64d288e8 oa:hasSelector _:af52038764f28dbcafe05dddb61d3991 .
-_:b5addefcb41b619a1d3a7b4999ea104c oa:hasTarget _:eab9230893f0706a0dc348a64d288e8 .
-_:ff8d998f25045612f1590730a5d0874e a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/entry/4" .
-_:a63f3ef5ba52a0ad97dc384fff639656 oa:hasSource <../in/martin-okafor-st-columba-exome-2024-with-lab.json> .
-_:ff8d998f25045612f1590730a5d0874e oa:refinedBy _:dd0ce0a6b1be562330405479ab1aec82 .
-_:dd0ce0a6b1be562330405479ab1aec82 a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/resource/component/3/valueCodeableConcept/coding/0/display" .
-_:a63f3ef5ba52a0ad97dc384fff639656 oa:hasSelector _:ff8d998f25045612f1590730a5d0874e .
-_:ab748ff420d8dddb38c2b605d81b08f7 oa:hasTarget _:a63f3ef5ba52a0ad97dc384fff639656 .
-_:c9ad6f1222fd029ef9e2e4dfb1bb70b a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/entry/4" .
-_:a3c7f29a790f24710bf8fb3aaf59baaa oa:hasSource <../in/martin-okafor-st-columba-exome-2024-with-lab.json> .
-_:c9ad6f1222fd029ef9e2e4dfb1bb70b oa:refinedBy _:dbf22b5429bae4d14f15ce4b34c50c06 .
-_:dbf22b5429bae4d14f15ce4b34c50c06 a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/resource/component/2/valueCodeableConcept/coding/0/code" .
-_:a3c7f29a790f24710bf8fb3aaf59baaa oa:hasSelector _:c9ad6f1222fd029ef9e2e4dfb1bb70b .
-_:a3f3553bc15e0947d67614a6de8d4feb oa:hasTarget _:a3c7f29a790f24710bf8fb3aaf59baaa .
-_:aeb2fabb8ee77e16fe4e3c83c95292e9 sh:resultSeverity sh:Info .
-_:b5addefcb41b619a1d3a7b4999ea104c sh:resultSeverity sh:Info .
-_:ab748ff420d8dddb38c2b605d81b08f7 sh:resultSeverity sh:Info .
-_:a3f3553bc15e0947d67614a6de8d4feb sh:resultSeverity sh:Info .
-_:aeb2fabb8ee77e16fe4e3c83c95292e9 a oa:Annotation ;
-	oa:hasBody fhirr4:observationComponentDataNotCarried ;
-	oa:motivatedBy oa:classifying ;
-	sh:value "53034-5" .
-_:b5addefcb41b619a1d3a7b4999ea104c a oa:Annotation ;
-	oa:hasBody fhirr4:observationComponentDataNotCarried ;
-	oa:motivatedBy oa:classifying ;
-	sh:value "LA6706-1" .
-_:ab748ff420d8dddb38c2b605d81b08f7 a oa:Annotation ;
-	oa:hasBody fhirr4:observationComponentDataNotCarried ;
-	oa:motivatedBy oa:classifying ;
-	sh:value "Heterozygous" .
-_:a3f3553bc15e0947d67614a6de8d4feb a oa:Annotation ;
-	oa:hasBody fhirr4:observationComponentDataNotCarried ;
-	oa:motivatedBy oa:classifying ;
-	sh:value "HGNC:7329" .
-_:a1082a51b6bc977b7a9bbbe5dd00fe0e a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/entry/6" .
-_:db49eadc383cface24aa09dd3b007580 oa:hasSource <../in/martin-okafor-st-columba-exome-2024-with-lab.json> .
-_:a1082a51b6bc977b7a9bbbe5dd00fe0e oa:refinedBy _:ca8a406d733857888d6141a5fca4be8d .
-_:ca8a406d733857888d6141a5fca4be8d a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/resource/component/2/code/coding/0/code" .
-_:db49eadc383cface24aa09dd3b007580 oa:hasSelector _:a1082a51b6bc977b7a9bbbe5dd00fe0e .
-_:bf534aef1bd9d1fe44cfe577c3b4ba09 oa:hasTarget _:db49eadc383cface24aa09dd3b007580 .
-_:da94e55f5d6d5ddfcb847221c4464f20 a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/entry/6" .
-_:cbea172492a385b1fa20a9bb103ec307 oa:hasSource <../in/martin-okafor-st-columba-exome-2024-with-lab.json> .
-_:da94e55f5d6d5ddfcb847221c4464f20 oa:refinedBy _:d69736ce0ecd815d5515f696d9cbbd1 .
-_:d69736ce0ecd815d5515f696d9cbbd1 a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/resource/component/2/valueCodeableConcept/coding/0/code" .
-_:cbea172492a385b1fa20a9bb103ec307 oa:hasSelector _:da94e55f5d6d5ddfcb847221c4464f20 .
-_:ae359a2deb51e4fbbd24087112794488 oa:hasTarget _:cbea172492a385b1fa20a9bb103ec307 .
-_:a98b684b2a0da2ee80dbd14db2519d8b a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/entry/6" .
-_:e1c9d3567b3512a57531d94419ebc12e oa:hasSource <../in/martin-okafor-st-columba-exome-2024-with-lab.json> .
-_:a98b684b2a0da2ee80dbd14db2519d8b oa:refinedBy _:c3adc7a889eb6d8b3a4692b630daf62d .
-_:c3adc7a889eb6d8b3a4692b630daf62d a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/resource/component/2/valueCodeableConcept/coding/0/display" .
-_:e1c9d3567b3512a57531d94419ebc12e oa:hasSelector _:a98b684b2a0da2ee80dbd14db2519d8b .
-_:f07aca24afa1ee2e089f5f7a1197313f oa:hasTarget _:e1c9d3567b3512a57531d94419ebc12e .
-_:d3636d1fcff25d01c8b2e8430868baa5 a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/entry/6" .
-_:ff4db08740a93c7c26c032d7a874640 oa:hasSource <../in/martin-okafor-st-columba-exome-2024-with-lab.json> .
-_:d3636d1fcff25d01c8b2e8430868baa5 oa:refinedBy _:f0e4fdc4886fa6807a57cb6ece6efdea .
-_:f0e4fdc4886fa6807a57cb6ece6efdea a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/resource/component/1/valueCodeableConcept/coding/0/code" .
-_:ff4db08740a93c7c26c032d7a874640 oa:hasSelector _:d3636d1fcff25d01c8b2e8430868baa5 .
-_:bcbbb31279492132927762c65671dde oa:hasTarget _:ff4db08740a93c7c26c032d7a874640 .
-_:bf534aef1bd9d1fe44cfe577c3b4ba09 sh:resultSeverity sh:Info .
-_:ae359a2deb51e4fbbd24087112794488 sh:resultSeverity sh:Info .
-_:f07aca24afa1ee2e089f5f7a1197313f sh:resultSeverity sh:Info .
-_:bcbbb31279492132927762c65671dde sh:resultSeverity sh:Info .
-_:bf534aef1bd9d1fe44cfe577c3b4ba09 a oa:Annotation ;
-	oa:hasBody fhirr4:observationComponentDataNotCarried ;
-	oa:motivatedBy oa:classifying ;
-	sh:value "53034-5" .
-_:ae359a2deb51e4fbbd24087112794488 a oa:Annotation ;
-	oa:hasBody fhirr4:observationComponentDataNotCarried ;
-	oa:motivatedBy oa:classifying ;
-	sh:value "LA6706-1" .
-_:f07aca24afa1ee2e089f5f7a1197313f a oa:Annotation ;
-	oa:hasBody fhirr4:observationComponentDataNotCarried ;
-	oa:motivatedBy oa:classifying ;
-	sh:value "Heterozygous" .
-_:bcbbb31279492132927762c65671dde a oa:Annotation ;
-	oa:hasBody fhirr4:observationComponentDataNotCarried ;
-	oa:motivatedBy oa:classifying ;
-	sh:value "HGNC:1101" .
+
+[] a oa:Annotation ;
+    oa:hasBody fhirr4:observationComponentDataNotCarried ;
+    oa:hasTarget [ oa:hasSelector [ a oa:FragmentSelector ;
+                    dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+                    rdf:value "/entry/2" ;
+                    oa:refinedBy [ a oa:FragmentSelector ;
+                            dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+                            rdf:value "/resource/component/3/valueCodeableConcept/coding/0/display" ] ] ;
+            oa:hasSource <file:///C:/dev/the-cascade-protocol/.worktrees/kit-gate/proof-fhir-r4/fixtures/in/martin-okafor-st-columba-exome-2024-with-lab.json> ] ;
+    oa:motivatedBy oa:classifying ;
+    sh:resultSeverity sh:Info ;
+    sh:value "Heterozygous" .
+
+[] a oa:Annotation ;
+    oa:hasBody fhirr4:observationComponentDataNotCarried ;
+    oa:hasTarget [ oa:hasSelector [ a oa:FragmentSelector ;
+                    dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+                    rdf:value "/entry/2" ;
+                    oa:refinedBy [ a oa:FragmentSelector ;
+                            dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+                            rdf:value "/resource/component/2/valueCodeableConcept/coding/0/code" ] ] ;
+            oa:hasSource <file:///C:/dev/the-cascade-protocol/.worktrees/kit-gate/proof-fhir-r4/fixtures/in/martin-okafor-st-columba-exome-2024-with-lab.json> ] ;
+    oa:motivatedBy oa:classifying ;
+    sh:resultSeverity sh:Info ;
+    sh:value "HGNC:7127" .
+
+[] a oa:Annotation ;
+    oa:hasBody fhirr4:observationComponentDataNotCarried ;
+    oa:hasTarget [ oa:hasSelector [ a oa:FragmentSelector ;
+                    dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+                    rdf:value "/entry/4" ;
+                    oa:refinedBy [ a oa:FragmentSelector ;
+                            dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+                            rdf:value "/resource/component/3/valueCodeableConcept/coding/0/code" ] ] ;
+            oa:hasSource <file:///C:/dev/the-cascade-protocol/.worktrees/kit-gate/proof-fhir-r4/fixtures/in/martin-okafor-st-columba-exome-2024-with-lab.json> ] ;
+    oa:motivatedBy oa:classifying ;
+    sh:resultSeverity sh:Info ;
+    sh:value "LA6706-1" .
+
+[] a oa:Annotation ;
+    oa:hasBody fhirr4:observationComponentDataNotCarried ;
+    oa:hasTarget [ oa:hasSelector [ a oa:FragmentSelector ;
+                    dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+                    rdf:value "/entry/4" ;
+                    oa:refinedBy [ a oa:FragmentSelector ;
+                            dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+                            rdf:value "/resource/component/3/valueCodeableConcept/coding/0/display" ] ] ;
+            oa:hasSource <file:///C:/dev/the-cascade-protocol/.worktrees/kit-gate/proof-fhir-r4/fixtures/in/martin-okafor-st-columba-exome-2024-with-lab.json> ] ;
+    oa:motivatedBy oa:classifying ;
+    sh:resultSeverity sh:Info ;
+    sh:value "Heterozygous" .
+
+[] a oa:Annotation ;
+    oa:hasBody fhirr4:observationComponentDataNotCarried ;
+    oa:hasTarget [ oa:hasSelector [ a oa:FragmentSelector ;
+                    dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+                    rdf:value "/entry/4" ;
+                    oa:refinedBy [ a oa:FragmentSelector ;
+                            dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+                            rdf:value "/resource/component/2/valueCodeableConcept/coding/0/code" ] ] ;
+            oa:hasSource <file:///C:/dev/the-cascade-protocol/.worktrees/kit-gate/proof-fhir-r4/fixtures/in/martin-okafor-st-columba-exome-2024-with-lab.json> ] ;
+    oa:motivatedBy oa:classifying ;
+    sh:resultSeverity sh:Info ;
+    sh:value "HGNC:7329" .
+
+[] a oa:Annotation ;
+    oa:hasBody fhirr4:observationComponentDataNotCarried ;
+    oa:hasTarget [ oa:hasSelector [ a oa:FragmentSelector ;
+                    dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+                    rdf:value "/entry/6" ;
+                    oa:refinedBy [ a oa:FragmentSelector ;
+                            dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+                            rdf:value "/resource/component/2/valueCodeableConcept/coding/0/code" ] ] ;
+            oa:hasSource <file:///C:/dev/the-cascade-protocol/.worktrees/kit-gate/proof-fhir-r4/fixtures/in/martin-okafor-st-columba-exome-2024-with-lab.json> ] ;
+    oa:motivatedBy oa:classifying ;
+    sh:resultSeverity sh:Info ;
+    sh:value "LA6706-1" .
+
+[] a oa:Annotation ;
+    oa:hasBody fhirr4:observationComponentDataNotCarried ;
+    oa:hasTarget [ oa:hasSelector [ a oa:FragmentSelector ;
+                    dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+                    rdf:value "/entry/6" ;
+                    oa:refinedBy [ a oa:FragmentSelector ;
+                            dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+                            rdf:value "/resource/component/2/valueCodeableConcept/coding/0/display" ] ] ;
+            oa:hasSource <file:///C:/dev/the-cascade-protocol/.worktrees/kit-gate/proof-fhir-r4/fixtures/in/martin-okafor-st-columba-exome-2024-with-lab.json> ] ;
+    oa:motivatedBy oa:classifying ;
+    sh:resultSeverity sh:Info ;
+    sh:value "Heterozygous" .
+
+[] a oa:Annotation ;
+    oa:hasBody fhirr4:observationComponentDataNotCarried ;
+    oa:hasTarget [ oa:hasSelector [ a oa:FragmentSelector ;
+                    dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+                    rdf:value "/entry/6" ;
+                    oa:refinedBy [ a oa:FragmentSelector ;
+                            dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+                            rdf:value "/resource/component/1/valueCodeableConcept/coding/0/code" ] ] ;
+            oa:hasSource <file:///C:/dev/the-cascade-protocol/.worktrees/kit-gate/proof-fhir-r4/fixtures/in/martin-okafor-st-columba-exome-2024-with-lab.json> ] ;
+    oa:motivatedBy oa:classifying ;
+    sh:resultSeverity sh:Info ;
+    sh:value "HGNC:1101" .
+
+[] a oa:Annotation ;
+    oa:hasBody fhirr4:observationComponentDataNotCarried ;
+    oa:hasTarget [ oa:hasSelector [ a oa:FragmentSelector ;
+                    dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+                    rdf:value "/entry/2" ;
+                    oa:refinedBy [ a oa:FragmentSelector ;
+                            dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+                            rdf:value "/resource/component/3/valueCodeableConcept/coding/0/code" ] ] ;
+            oa:hasSource <file:///C:/dev/the-cascade-protocol/.worktrees/kit-gate/proof-fhir-r4/fixtures/in/martin-okafor-st-columba-exome-2024-with-lab.json> ] ;
+    oa:motivatedBy oa:classifying ;
+    sh:resultSeverity sh:Info ;
+    sh:value "LA6706-1" .
+
