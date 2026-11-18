@@ -112,6 +112,9 @@ WHERE {
       FILTER (?rivalPointer != ?medicationPointer)
     }
   }
+  # A pointer is empty or starts with "/", so "none" matches no row of the table: the
+  # lookups below are keyed on a bound value, never on a filter over every row.
+  BIND (COALESCE(?medicationPointer, "none") AS ?heldMedicationAt)
 
   OPTIONAL {
     ?resource xyz:medicationCodeableConcept ?textConcept .
@@ -128,9 +131,8 @@ WHERE {
     }
   }
   OPTIONAL {
-    ?nameRow fhirr4:medicationAt ?namePointer ;
+    ?nameRow fhirr4:medicationAt ?heldMedicationAt ;
       fhirr4:medicationName ?heldName .
-    FILTER (?namePointer = ?medicationPointer)
   }
   OPTIONAL {
     ?resource xyz:medicationReference ?displayedReference .
@@ -149,11 +151,10 @@ WHERE {
     }
     UNION
     {
-      ?codeRow fhirr4:medicationAt ?codePointer ;
+      ?codeRow fhirr4:medicationAt ?heldMedicationAt ;
         fhirr4:medicationCodeSystem ?codedSystemWritten ;
         fhirr4:medicationCodeValue ?codedWritten .
     }
-    FILTER (!BOUND(?codePointer) || ?codePointer = ?medicationPointer)
     ?codedSystemRow fhirr4:systemWritten ?codedSystemWritten ;
       fhirr4:systemRead ?codedSystem .
     BIND (REPLACE(STR(?codedWritten), "^\\s+|\\s+$", "") AS ?codedValue)
