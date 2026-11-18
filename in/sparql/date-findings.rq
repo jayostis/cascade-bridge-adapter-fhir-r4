@@ -16,7 +16,8 @@ PREFIX cascade: <https://ns.cascadeprotocol.org/cascade#>
 # lacks, month 00 or 13, year 0000, hour 24 or a leap second, or a time with no
 # zone. The test is the mappings' own, written once in each of them; a birth
 # date may hold no time. medication-findings.rq and
-# medication-dispense-findings.rq make it for a medication.
+# medication-dispense-findings.rq make it for a medication. A procedure's period start
+# is read only where the procedure has no performedDateTime, as procedure.rq does.
 
 CONSTRUCT {
   [] a oa:Annotation ;
@@ -81,6 +82,13 @@ WHERE {
     }
     ?resource xyz:effectivePeriod ?period . ?period xyz:start ?value .
     BIND ("/effectivePeriod/start" AS ?step)
+  }
+  UNION
+  {
+    VALUES (?type ?scope) { ("Procedure" "") }
+    ?resource xyz:performedPeriod ?period . ?period xyz:start ?value .
+    FILTER NOT EXISTS { ?resource xyz:performedDateTime ?dateTime }
+    BIND ("/performedPeriod/start" AS ?step)
   }
   BIND (COALESCE(CONCAT(?recordSelector, ?topStep, ?containedStep), "none") AS ?resourcePointer)
   FILTER (?scope = "" || EXISTS {

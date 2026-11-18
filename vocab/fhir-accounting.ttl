@@ -136,6 +136,12 @@
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/author/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernReferences ;
+  bridge:because "A reference's display, which reference-display-findings.rq reports as fhirr4:referenceDisplay." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/authoredOn" ;
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernDates ;
@@ -212,6 +218,12 @@
   bridge:sourcePath "/category/coding/system" ;
   bridge:verdict bridge:consumed ;
   bridge:concern bridge:concernCodes .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/category/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernText ;
+  bridge:because "A category's text beside the coding that carries the category, where a Cascade term has one, a condition's and a report's, adds nothing to the coding; a category given as text with no coding is reported by category-text-findings.rq as fhirr4:categoryTextNotCarried, an Observation's by observation-findings.rq as what decides it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/class" ;
@@ -402,6 +414,12 @@
   bridge:concern bridge:concernCodes .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/component/code/text" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernText ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/component/valueCodeableConcept" ;
   bridge:verdict bridge:consumed ;
   bridge:concern bridge:concernCodes .
@@ -436,68 +454,73 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/component/valueCodeableConcept/coding/version" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernCodes ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/component/valueCodeableConcept/text" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernText ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/component/valueQuantity" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/component/valueQuantity/code" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernCodes ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/component/valueQuantity/system" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernCodes ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/component/valueQuantity/unit" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/component/valueQuantity/value" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/component/valueRange" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/component/valueRange/high" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/component/valueRange/high/value" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/component/valueRange/low" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/component/valueRange/low/value" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/component/valueString" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernText ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/conclusionCode" ;
@@ -530,6 +553,107 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained" ;
   bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/content/format/display" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:concern bridge:concernCodes ;
+  bridge:sameFactAs "/content/format/code" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/context/encounter" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernReferences ;
+  bridge:because "Holds nothing here but the reference, accounted for at its own path." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/context/encounter/reference" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernReferences ;
+  bridge:namesGap fhirr4:encounterNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/context/period" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
+  bridge:because "Holds nothing here but its start and end, accounted for at their own paths." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/context/period/end" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
+  bridge:namesGap fhirr4:documentServicePeriod .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/context/period/start" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
+  bridge:namesGap fhirr4:documentServicePeriod .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/custodian/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernReferences ;
+  bridge:because "A reference's display, which reference-display-findings.rq reports as fhirr4:referenceDisplay." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/encounter" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernReferences ;
+  bridge:because "Holds nothing here but the reference, accounted for at its own path." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/encounter/reference" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernReferences ;
+  bridge:namesGap fhirr4:encounterNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/performedPeriod" ;
+  bridge:verdict bridge:consumed ;
+  bridge:concern bridge:concernDates .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/performedPeriod/end" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
+  bridge:namesGap fhirr4:procedurePeriodEnd .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/performedPeriod/start" ;
+  bridge:verdict bridge:carried ;
+  bridge:concern bridge:concernDates ;
+  bridge:carriedAs
+    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:procedureDate ] .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/performer/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernReferences ;
+  bridge:because "A reference's display, which reference-display-findings.rq reports as fhirr4:referenceDisplay." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/primarySource" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:immunizationPrimarySource .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/reasonReference/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernReferences ;
+  bridge:because "A reference's display, which reference-display-findings.rq reports as fhirr4:referenceDisplay." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/recordedDate" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
+  bridge:because "The date an allergy or a condition was first recorded, which recorded-date-findings.rq reports as fhirr4:recordedDate." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/requester/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernReferences ;
+  bridge:because "A reference's display, which reference-display-findings.rq reports as fhirr4:referenceDisplay." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/_whenHandedOver" ;
@@ -651,6 +775,12 @@
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/author/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernReferences ;
+  bridge:because "A reference's display, which reference-display-findings.rq reports as fhirr4:referenceDisplay." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/contained/authoredOn" ;
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernDates ;
@@ -726,6 +856,12 @@
   bridge:sourcePath "/contained/category/coding/system" ;
   bridge:verdict bridge:consumed ;
   bridge:concern bridge:concernCodes .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/category/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernText ;
+  bridge:because "A category's text beside the coding that carries the category, where a Cascade term has one, a condition's and a report's, adds nothing to the coding; a category given as text with no coding is reported by category-text-findings.rq as fhirr4:categoryTextNotCarried, an Observation's by observation-findings.rq as what decides it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/class" ;
@@ -916,6 +1052,12 @@
   bridge:concern bridge:concernCodes .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/component/code/text" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernText ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/contained/component/valueCodeableConcept" ;
   bridge:verdict bridge:consumed ;
   bridge:concern bridge:concernCodes .
@@ -950,68 +1092,73 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/component/valueCodeableConcept/coding/version" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernCodes ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/component/valueCodeableConcept/text" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernText ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/component/valueQuantity" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/component/valueQuantity/code" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernCodes ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/component/valueQuantity/system" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernCodes ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/component/valueQuantity/unit" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/component/valueQuantity/value" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/component/valueRange" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/component/valueRange/high" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/component/valueRange/high/value" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/component/valueRange/low" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/component/valueRange/low/value" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/component/valueString" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernText ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/conclusionCode" ;
@@ -1044,6 +1191,12 @@
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/content/format/display" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:concern bridge:concernCodes ;
+  bridge:sameFactAs "/content/format/code" .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/contained/context" ;
   bridge:verdict bridge:consumed ;
   bridge:concern bridge:concernReferences .
@@ -1053,6 +1206,36 @@
   bridge:verdict bridge:ignored ;
   bridge:concern bridge:concernReferences ;
   bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/context/encounter" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernReferences ;
+  bridge:because "Holds nothing here but the reference, accounted for at its own path." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/context/encounter/reference" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernReferences ;
+  bridge:namesGap fhirr4:encounterNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/context/period" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
+  bridge:because "Holds nothing here but its start and end, accounted for at their own paths." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/context/period/end" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
+  bridge:namesGap fhirr4:documentServicePeriod .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/context/period/start" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
+  bridge:namesGap fhirr4:documentServicePeriod .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/context/reference" ;
@@ -1106,6 +1289,12 @@
   bridge:verdict bridge:carried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "AllergyIntolerance" ; bridge:inRecordClass cascade:AllergyOrIntolerance ; bridge:asProperty cascade:allergyCriticality ] .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/custodian/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernReferences ;
+  bridge:because "A reference's display, which reference-display-findings.rq reports as fhirr4:referenceDisplay." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/daysSupply" ;
@@ -3334,6 +3523,18 @@
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:variantInterpretationDate ] .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/encounter" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernReferences ;
+  bridge:because "Holds nothing here but the reference, accounted for at its own path." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/encounter/reference" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernReferences ;
+  bridge:namesGap fhirr4:encounterNotCarried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/contained/eventHistory" ;
   bridge:verdict bridge:consumed ;
   bridge:concern bridge:concernReferences .
@@ -3832,6 +4033,24 @@
     [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:procedureDate ] .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/performedPeriod" ;
+  bridge:verdict bridge:consumed ;
+  bridge:concern bridge:concernDates .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/performedPeriod/end" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
+  bridge:namesGap fhirr4:procedurePeriodEnd .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/performedPeriod/start" ;
+  bridge:verdict bridge:carried ;
+  bridge:concern bridge:concernDates ;
+  bridge:carriedAs
+    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:procedureDate ] .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/contained/performer" ;
   bridge:verdict bridge:consumed ;
   bridge:concern bridge:concernReferences .
@@ -3853,6 +4072,12 @@
   bridge:verdict bridge:ignored ;
   bridge:concern bridge:concernReferences ;
   bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/performer/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernReferences ;
+  bridge:because "A reference's display, which reference-display-findings.rq reports as fhirr4:referenceDisplay." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/performer/function" ;
@@ -3933,6 +4158,11 @@
   bridge:verdict bridge:ignored ;
   bridge:concern bridge:concernText ;
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/primarySource" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:immunizationPrimarySource .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/quantity" ;
@@ -4035,6 +4265,12 @@
   bridge:because "Holds nothing here but the reference, accounted for at its own path." .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/reasonReference/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernReferences ;
+  bridge:because "A reference's display, which reference-display-findings.rq reports as fhirr4:referenceDisplay." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/contained/reasonReference/reference" ;
   bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernReferences ;
@@ -4056,6 +4292,12 @@
   bridge:verdict bridge:ignored ;
   bridge:concern bridge:concernReferences ;
   bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/recordedDate" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
+  bridge:because "The date an allergy or a condition was first recorded, which recorded-date-findings.rq reports as fhirr4:recordedDate." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/referenceRange" ;
@@ -4186,6 +4428,12 @@
   bridge:verdict bridge:ignored ;
   bridge:concern bridge:concernReferences ;
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/contained/requester/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernReferences ;
+  bridge:because "A reference's display, which reference-display-findings.rq reports as fhirr4:referenceDisplay." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/contained/requester/reference" ;
@@ -8161,6 +8409,12 @@
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/author/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernReferences ;
+  bridge:because "A reference's display, which reference-display-findings.rq reports as fhirr4:referenceDisplay." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/authoredOn" ;
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernDates ;
@@ -8237,6 +8491,12 @@
   bridge:sourcePath "/resource/category/coding/system" ;
   bridge:verdict bridge:consumed ;
   bridge:concern bridge:concernCodes .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/category/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernText ;
+  bridge:because "A category's text beside the coding that carries the category, where a Cascade term has one, a condition's and a report's, adds nothing to the coding; a category given as text with no coding is reported by category-text-findings.rq as fhirr4:categoryTextNotCarried, an Observation's by observation-findings.rq as what decides it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/class" ;
@@ -8427,6 +8687,12 @@
   bridge:concern bridge:concernCodes .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/component/code/text" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernText ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/component/valueCodeableConcept" ;
   bridge:verdict bridge:consumed ;
   bridge:concern bridge:concernCodes .
@@ -8461,68 +8727,73 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/component/valueCodeableConcept/coding/version" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernCodes ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/component/valueCodeableConcept/text" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernText ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/component/valueQuantity" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/component/valueQuantity/code" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernCodes ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/component/valueQuantity/system" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernCodes ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/component/valueQuantity/unit" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/component/valueQuantity/value" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/component/valueRange" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/component/valueRange/high" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/component/valueRange/high/value" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/component/valueRange/low" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/component/valueRange/low/value" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/component/valueString" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernText ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/conclusionCode" ;
@@ -8555,6 +8826,107 @@
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained" ;
   bridge:verdict bridge:consumed .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/content/format/display" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:concern bridge:concernCodes ;
+  bridge:sameFactAs "/content/format/code" .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/context/encounter" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernReferences ;
+  bridge:because "Holds nothing here but the reference, accounted for at its own path." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/context/encounter/reference" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernReferences ;
+  bridge:namesGap fhirr4:encounterNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/context/period" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
+  bridge:because "Holds nothing here but its start and end, accounted for at their own paths." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/context/period/end" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
+  bridge:namesGap fhirr4:documentServicePeriod .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/context/period/start" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
+  bridge:namesGap fhirr4:documentServicePeriod .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/custodian/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernReferences ;
+  bridge:because "A reference's display, which reference-display-findings.rq reports as fhirr4:referenceDisplay." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/encounter" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernReferences ;
+  bridge:because "Holds nothing here but the reference, accounted for at its own path." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/encounter/reference" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernReferences ;
+  bridge:namesGap fhirr4:encounterNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/performedPeriod" ;
+  bridge:verdict bridge:consumed ;
+  bridge:concern bridge:concernDates .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/performedPeriod/end" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
+  bridge:namesGap fhirr4:procedurePeriodEnd .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/performedPeriod/start" ;
+  bridge:verdict bridge:carried ;
+  bridge:concern bridge:concernDates ;
+  bridge:carriedAs
+    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:procedureDate ] .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/performer/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernReferences ;
+  bridge:because "A reference's display, which reference-display-findings.rq reports as fhirr4:referenceDisplay." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/primarySource" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:immunizationPrimarySource .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/reasonReference/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernReferences ;
+  bridge:because "A reference's display, which reference-display-findings.rq reports as fhirr4:referenceDisplay." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/recordedDate" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
+  bridge:because "The date an allergy or a condition was first recorded, which recorded-date-findings.rq reports as fhirr4:recordedDate." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/requester/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernReferences ;
+  bridge:because "A reference's display, which reference-display-findings.rq reports as fhirr4:referenceDisplay." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/_whenHandedOver" ;
@@ -8676,6 +9048,12 @@
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/author/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernReferences ;
+  bridge:because "A reference's display, which reference-display-findings.rq reports as fhirr4:referenceDisplay." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/authoredOn" ;
   bridge:verdict bridge:carried ;
   bridge:concern bridge:concernDates ;
@@ -8751,6 +9129,12 @@
   bridge:sourcePath "/resource/contained/category/coding/system" ;
   bridge:verdict bridge:consumed ;
   bridge:concern bridge:concernCodes .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/category/text" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernText ;
+  bridge:because "A category's text beside the coding that carries the category, where a Cascade term has one, a condition's and a report's, adds nothing to the coding; a category given as text with no coding is reported by category-text-findings.rq as fhirr4:categoryTextNotCarried, an Observation's by observation-findings.rq as what decides it." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/class" ;
@@ -8918,6 +9302,12 @@
   bridge:concern bridge:concernCodes .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/component/code/text" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernText ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/component/valueCodeableConcept" ;
   bridge:verdict bridge:consumed ;
   bridge:concern bridge:concernCodes .
@@ -8952,68 +9342,73 @@
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/component/valueCodeableConcept/coding/version" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernCodes ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/component/valueCodeableConcept/text" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernText ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/component/valueQuantity" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/component/valueQuantity/code" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernCodes ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/component/valueQuantity/system" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernCodes ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/component/valueQuantity/unit" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/component/valueQuantity/value" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/component/valueRange" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/component/valueRange/high" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/component/valueRange/high/value" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/component/valueRange/low" ;
   bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:because "Holds no value of its own: what it holds is accounted for at its members." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/component/valueRange/low/value" ;
-  bridge:verdict bridge:ignored ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/component/valueString" ;
-  bridge:verdict bridge:ignored ;
+  bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernText ;
-  bridge:because "A component no Cascade term carries, as the genomic and protein HGVS, the allelic state, the predicted phenotype and the level of evidence: fhirr4:variantComponentNotCarried." .
+  bridge:namesGap fhirr4:observationComponentDataNotCarried .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/conclusionCode" ;
@@ -9046,6 +9441,12 @@
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/content/format/display" ;
+  bridge:verdict bridge:redundantWith ;
+  bridge:concern bridge:concernCodes ;
+  bridge:sameFactAs "/content/format/code" .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/context" ;
   bridge:verdict bridge:consumed ;
   bridge:concern bridge:concernReferences .
@@ -9055,6 +9456,36 @@
   bridge:verdict bridge:ignored ;
   bridge:concern bridge:concernReferences ;
   bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/context/encounter" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernReferences ;
+  bridge:because "Holds nothing here but the reference, accounted for at its own path." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/context/encounter/reference" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernReferences ;
+  bridge:namesGap fhirr4:encounterNotCarried .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/context/period" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
+  bridge:because "Holds nothing here but its start and end, accounted for at their own paths." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/context/period/end" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
+  bridge:namesGap fhirr4:documentServicePeriod .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/context/period/start" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
+  bridge:namesGap fhirr4:documentServicePeriod .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/context/reference" ;
@@ -9108,6 +9539,12 @@
   bridge:verdict bridge:carried ;
   bridge:carriedAs
     [ bridge:inSourceRecordType "AllergyIntolerance" ; bridge:inRecordClass cascade:AllergyOrIntolerance ; bridge:asProperty cascade:allergyCriticality ] .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/custodian/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernReferences ;
+  bridge:because "A reference's display, which reference-display-findings.rq reports as fhirr4:referenceDisplay." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/daysSupply" ;
@@ -11336,6 +11773,18 @@
     [ bridge:inSourceRecordType "Observation" ; bridge:inRecordClass cascade:VariantInterpretation ; bridge:asProperty cascade:variantInterpretationDate ] .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/encounter" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernReferences ;
+  bridge:because "Holds nothing here but the reference, accounted for at its own path." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/encounter/reference" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernReferences ;
+  bridge:namesGap fhirr4:encounterNotCarried .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/eventHistory" ;
   bridge:verdict bridge:consumed ;
   bridge:concern bridge:concernReferences .
@@ -11834,6 +12283,24 @@
     [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:procedureDate ] .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/performedPeriod" ;
+  bridge:verdict bridge:consumed ;
+  bridge:concern bridge:concernDates .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/performedPeriod/end" ;
+  bridge:verdict bridge:noHome ;
+  bridge:concern bridge:concernDates ;
+  bridge:namesGap fhirr4:procedurePeriodEnd .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/performedPeriod/start" ;
+  bridge:verdict bridge:carried ;
+  bridge:concern bridge:concernDates ;
+  bridge:carriedAs
+    [ bridge:inSourceRecordType "Procedure" ; bridge:inRecordClass cascade:MedicalProcedure ; bridge:asProperty cascade:procedureDate ] .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/performer" ;
   bridge:verdict bridge:consumed ;
   bridge:concern bridge:concernReferences .
@@ -11855,6 +12322,12 @@
   bridge:verdict bridge:ignored ;
   bridge:concern bridge:concernReferences ;
   bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/performer/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernReferences ;
+  bridge:because "A reference's display, which reference-display-findings.rq reports as fhirr4:referenceDisplay." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/performer/function" ;
@@ -11935,6 +12408,11 @@
   bridge:verdict bridge:ignored ;
   bridge:concern bridge:concernText ;
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/primarySource" ;
+  bridge:verdict bridge:noHome ;
+  bridge:namesGap fhirr4:immunizationPrimarySource .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/quantity" ;
@@ -12037,6 +12515,12 @@
   bridge:because "Holds nothing here but the reference, accounted for at its own path." .
 
 [] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/reasonReference/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernReferences ;
+  bridge:because "A reference's display, which reference-display-findings.rq reports as fhirr4:referenceDisplay." .
+
+[] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/reasonReference/reference" ;
   bridge:verdict bridge:noHome ;
   bridge:concern bridge:concernReferences ;
@@ -12058,6 +12542,12 @@
   bridge:verdict bridge:ignored ;
   bridge:concern bridge:concernReferences ;
   bridge:because "Part of an element of a MedicationDispense no Cascade predicate carries, reported at its container by medication-dispense-findings.rq." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/recordedDate" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernDates ;
+  bridge:because "The date an allergy or a condition was first recorded, which recorded-date-findings.rq reports as fhirr4:recordedDate." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/referenceRange" ;
@@ -12188,6 +12678,12 @@
   bridge:verdict bridge:ignored ;
   bridge:concern bridge:concernReferences ;
   bridge:because "An element of a resource of a type this release does not map: the resource yields fhirr4:resourceTypeNotMapped and no record." .
+
+[] a bridge:PathEntry ;
+  bridge:sourcePath "/resource/contained/requester/display" ;
+  bridge:verdict bridge:ignored ;
+  bridge:concern bridge:concernReferences ;
+  bridge:because "A reference's display, which reference-display-findings.rq reports as fhirr4:referenceDisplay." .
 
 [] a bridge:PathEntry ;
   bridge:sourcePath "/resource/contained/requester/reference" ;

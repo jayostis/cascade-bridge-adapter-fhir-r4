@@ -1,0 +1,38 @@
+{
+  "resourceType": "Condition",
+  "id": "cond-category-text-1",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active"
+      }
+    ]
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "problem-list-item"
+        }
+      ],
+      "text": "Problem"
+    },
+    {
+      "text": "Chronic disease management"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "44054006",
+        "display": "Type 2 diabetes mellitus"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/pat-conformance-1"
+  }
+}

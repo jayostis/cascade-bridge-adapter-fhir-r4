@@ -1,0 +1,75 @@
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX sh:      <http://www.w3.org/ns/shacl#>
+PREFIX oa:      <http://www.w3.org/ns/oa#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX fx:      <http://sparql.xyz/facade-x/ns/>
+PREFIX xyz:     <http://sparql.xyz/facade-x/data/>
+PREFIX bridge:  <https://ns.cascadeprotocol.org/bridge/v1-draft#>
+PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
+PREFIX cascade: <https://ns.cascadeprotocol.org/cascade#>
+
+# A category a resource gives as text alone, which no mapping reads: a mapping
+# reads a category's coding. Text beside a coding is that coding's label and is
+# not reported. An Observation's is reported by observation-findings.rq as what
+# decides it, a dispense's by medication-dispense-findings.rq with the rest of
+# its category. A category is a list on a condition, a report, a prescription and
+# a document, and one concept on a procedure and a medication statement.
+
+CONSTRUCT {
+  [] a oa:Annotation ;
+    oa:hasTarget [
+      oa:hasSource bridge:thisRecord ;
+      oa:hasSelector [
+        a oa:FragmentSelector ;
+        dcterms:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
+        rdf:value ?pointer
+      ]
+    ] ;
+    oa:hasBody fhirr4:categoryTextNotCarried ;
+    oa:motivatedBy oa:classifying ;
+    sh:value ?value .
+}
+WHERE {
+  FILTER NOT EXISTS {
+    bridge:thisDocument cascade:sourceFormatVersion ?stated .
+    FILTER (!STRSTARTS(?stated, "4.0."))
+  }
+  bridge:thisRecord bridge:selector ?recordSelector .
+  ?root a fx:root .
+  { ?root xyz:resourceType ?topType . BIND (?root AS ?top) BIND ("" AS ?topStep) }
+  UNION
+  { ?root xyz:resource ?top . ?top xyz:resourceType ?topType . BIND ("/resource" AS ?topStep) }
+  { BIND ("" AS ?containedStep) }
+  UNION
+  {
+    ?top xyz:contained ?containedList .
+    ?containedList ?containedSlot ?contained .
+    ?contained xyz:resourceType ?containedType .
+    BIND (CONCAT("/contained/", STR(xsd:integer(STRAFTER(STR(?containedSlot), "#_")) - 1)) AS ?containedStep)
+  }
+  BIND (COALESCE(?contained, ?top) AS ?resource)
+  BIND (CONCAT(?topStep, ?containedStep) AS ?resourcePointer)
+  ?resource xyz:resourceType ?type .
+  FILTER (?type IN ("Condition", "DiagnosticReport", "MedicationRequest", "MedicationStatement", "Procedure",
+                    "DocumentReference"))
+  FILTER (?type != "DocumentReference" || EXISTS {
+    ?note fhirr4:noteOrDocumentAt ?notePointer .
+    FILTER (?notePointer = CONCAT(?recordSelector, ?resourcePointer))
+  })
+  ?resource xyz:category ?categories .
+  {
+    ?categories ?categorySlot ?category .
+    FILTER (STRSTARTS(STR(?categorySlot), STR(rdf:_)))
+    ?category xyz:text ?value .
+    FILTER NOT EXISTS { ?category xyz:coding ?anyCoding }
+    BIND (CONCAT("/category/", STR(xsd:integer(STRAFTER(STR(?categorySlot), "#_")) - 1), "/text") AS ?step)
+  }
+  UNION
+  {
+    ?categories xyz:text ?value .
+    FILTER NOT EXISTS { ?categories xyz:coding ?anyCoding }
+    BIND ("/category/text" AS ?step)
+  }
+  BIND (CONCAT(?resourcePointer, ?step) AS ?pointer)
+}

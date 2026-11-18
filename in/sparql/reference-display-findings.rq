@@ -71,6 +71,24 @@ WHERE {
   }
   UNION
   {
+    ?resource ?member ?reference .
+    FILTER (?member IN (xyz:custodian, xyz:requester))
+    ?reference xyz:display ?value .
+    BIND (STRAFTER(STR(?member), "http://sparql.xyz/facade-x/data/") AS ?memberName)
+    BIND (CONCAT("/", ?memberName, "/display") AS ?step)
+  }
+  UNION
+  {
+    ?resource ?member ?references .
+    FILTER (?member IN (xyz:author, xyz:performer))
+    ?references ?referenceSlot ?reference .
+    FILTER (STRSTARTS(STR(?referenceSlot), STR(rdf:_)))
+    ?reference xyz:display ?value .
+    BIND (STRAFTER(STR(?member), "http://sparql.xyz/facade-x/data/") AS ?memberName)
+    BIND (CONCAT("/", ?memberName, "/", STR(xsd:integer(STRAFTER(STR(?referenceSlot), "#_")) - 1), "/display") AS ?step)
+  }
+  UNION
+  {
     ?resource xyz:authorizingPrescription ?prescriptions .
     ?prescriptions ?prescriptionSlot ?reference .
     ?reference xyz:display ?value .
