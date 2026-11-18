@@ -8,16 +8,26 @@ PREFIX xyz:     <http://sparql.xyz/facade-x/data/>
 PREFIX bridge:  <https://ns.cascadeprotocol.org/bridge/v1-draft#>
 PREFIX fhirr4:  <https://ns.cascadeprotocol.org/adapter/fhir-r4/v1-draft#>
 PREFIX cascade: <https://ns.cascadeprotocol.org/cascade#>
+PREFIX skos:    <http://www.w3.org/2004/02/skos/core#>
 
 # What an Observation's components give that no mapping reads. A component's
 # code or coded answer given as text with no coding is reported as that text;
-# text beside a coding is that coding's label and is not. The codings of a
-# component's code and of its coded answer are read only by the mappings of a
-# variant (variant.rq) and of a diagnostic implication
-# (variant-interpretation.rq), so on any other Observation, and on a variant
-# whose value is not Present, which is no record, each coding's code, and a
-# coded answer's display, is reported. The rest of a component, its quantities,
-# ranges and string, is reported by its entries of the source accounting.
+# text beside a coding is that coding's label and is not. Every coding's code,
+# and a coded answer's display, is reported but for the members that
+# variant.rq and variant-interpretation.rq read or variant-findings.rq and
+# variant-interpretation-findings.rq report, and the display beside a code that
+# is read, which is that code's label: on a variant whose value is Present, the
+# code of the LOINC coding of the code of an HGVS, ClinVar or gene component;
+# the code of an HGVS component's answer in HGVS's system, and of a ClinVar
+# component's answer in any system, with the display of the coding in HGVS's
+# system or in ClinVar's; the display of a gene component's answer in either
+# system HGNC is written with, and its code where it has no display. On a
+# diagnostic implication, the code of the LOINC coding of the classification
+# component's code, and of its answer's LOINC coding that is one of the five
+# answers, with the display of that coding. So another coding of those
+# components, a display beside a code that is not read, and any member of any
+# other component or Observation, is reported here. The rest of a component, its quantities, ranges and string, is
+# reported by its entries of the source accounting.
 
 CONSTRUCT {
   [] a oa:Annotation ;
@@ -99,7 +109,62 @@ WHERE {
     BIND (CONCAT(?conceptStep, "/coding/", STR(xsd:integer(STRAFTER(STR(?codingSlot), "#_")) - 1), "/",
                  ?memberName) AS ?step)
   }
+  BIND (BOUND(?conceptStep) && EXISTS { ?variant fhirr4:variantAt ?recordPointer } AS ?onVariant)
+  BIND (BOUND(?conceptStep) && EXISTS { ?interpretation fhirr4:interpretationAt ?recordPointer } AS ?onInterpretation)
+  BIND (?onVariant && EXISTS {
+         ?component xyz:code ?readConcept . ?readConcept xyz:coding ?readCodings .
+         ?readCodings ?readSlot ?readCoding .
+         ?readCoding xyz:system "http://loinc.org" ;
+           xyz:code "48004-6" .
+       } AS ?isHgvs)
+  BIND (?onVariant && EXISTS {
+         ?component xyz:code ?readConcept . ?readConcept xyz:coding ?readCodings .
+         ?readCodings ?readSlot ?readCoding .
+         ?readCoding xyz:system "http://loinc.org" ;
+           xyz:code "81252-9" .
+       } AS ?isClinvar)
+  BIND (?onVariant && EXISTS {
+         ?component xyz:code ?readConcept . ?readConcept xyz:coding ?readCodings .
+         ?readCodings ?readSlot ?readCoding .
+         ?readCoding xyz:system "http://loinc.org" ;
+           xyz:code "48018-6" .
+       } AS ?isGene)
+  BIND (?onInterpretation && EXISTS {
+         ?component xyz:code ?readConcept . ?readConcept xyz:coding ?readCodings .
+         ?readCodings ?readSlot ?readCoding .
+         ?readCoding xyz:system "http://loinc.org" ;
+           xyz:code "53037-8" .
+       } AS ?isClassification)
   FILTER (!BOUND(?conceptStep)
-          || !(EXISTS { ?variant fhirr4:variantAt ?recordPointer } || EXISTS { ?interpretation fhirr4:interpretationAt ?recordPointer }))
+          || !(
+               (?conceptStep = "/code"
+                && EXISTS { ?coding xyz:system "http://loinc.org" }
+                && ((?onVariant && ?value IN ("48004-6", "81252-9", "48018-6"))
+                    || (?onInterpretation && ?value = "53037-8")))
+               || (?conceptStep = "/valueCodeableConcept" && ?memberName = "code"
+                   && ((?isHgvs && EXISTS { ?coding xyz:system "http://varnomen.hgvs.org" })
+                       || (?isClinvar && EXISTS { ?coding xyz:system ?anySystem })
+                       || (?isGene
+                           && EXISTS { ?coding xyz:system ?geneSystem
+                                       FILTER (?geneSystem IN ("http://www.genenames.org/geneId", "http://www.genenames.org")) }
+                           && NOT EXISTS { ?coding xyz:display ?anyDisplay })
+                       || (?isClassification
+                           && EXISTS { ?coding xyz:system "http://loinc.org" .
+                                       ?answer skos:inScheme fhirr4:acmgClassifications ;
+                                         skos:notation ?answerKey .
+                                       FILTER (?answerKey = LCASE(REPLACE(STR(?value), "^\\s+|\\s+$", ""))) })))
+               || (?conceptStep = "/valueCodeableConcept" && ?memberName = "display"
+                   && ((?isGene
+                        && EXISTS { ?coding xyz:system ?geneSystem
+                                    FILTER (?geneSystem IN ("http://www.genenames.org/geneId", "http://www.genenames.org")) })
+                       || (?isHgvs && EXISTS { ?coding xyz:system "http://varnomen.hgvs.org" })
+                       || (?isClinvar && EXISTS { ?coding xyz:system "http://www.ncbi.nlm.nih.gov/clinvar" })
+                       || (?isClassification
+                           && EXISTS { ?coding xyz:system "http://loinc.org" ;
+                                         xyz:code ?codeBesideDisplay .
+                                       ?answer skos:inScheme fhirr4:acmgClassifications ;
+                                         skos:notation ?answerKey .
+                                       FILTER (?answerKey = LCASE(REPLACE(STR(?codeBesideDisplay), "^\\s+|\\s+$", ""))) })))
+              ))
   BIND (CONCAT(?componentPointer, ?step) AS ?pointer)
 }

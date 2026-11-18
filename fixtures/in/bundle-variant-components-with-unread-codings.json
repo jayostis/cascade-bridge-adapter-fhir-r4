@@ -1,0 +1,86 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:5b7e2d40-1c93-4a68-9f0d-6e84a3c1b701",
+      "resource": {
+        "resourceType": "Patient",
+        "name": [{ "family": "Okafor", "given": ["Martin"] }],
+        "birthDate": "1979-02-08"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:5b7e2d40-1c93-4a68-9f0d-6e84a3c1b711",
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "code": { "coding": [{ "system": "http://loinc.org", "code": "69548-6", "display": "Genetic variant assessment" }] },
+        "subject": { "reference": "urn:uuid:5b7e2d40-1c93-4a68-9f0d-6e84a3c1b701" },
+        "valueCodeableConcept": { "coding": [{ "system": "http://loinc.org", "code": "LA9633-4", "display": "Present" }] },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                { "system": "http://loinc.org", "code": "48004-6" },
+                { "system": "http://example.org/a-component-concept", "code": "dna-change" }
+              ]
+            },
+            "valueCodeableConcept": {
+              "coding": [
+                { "system": "http://varnomen.hgvs.org", "code": "NM_000249.4:c.2042C>T", "display": "c.2042C>T" },
+                { "system": "http://snomed.info/sct", "code": "123", "display": "A change in another system" }
+              ]
+            }
+          },
+          {
+            "code": { "coding": [{ "system": "http://loinc.org", "code": "81252-9" }] },
+            "valueCodeableConcept": {
+              "coding": [
+                { "system": "http://www.ncbi.nlm.nih.gov/clinvar", "code": "VCV000090011", "display": "ClinVar variation 90011" },
+                { "system": "http://example.org/a-variant-registry", "code": "REG-7", "display": "Registry seven" }
+              ]
+            }
+          },
+          {
+            "code": { "coding": [{ "system": "http://loinc.org", "code": "48018-6" }] },
+            "valueCodeableConcept": {
+              "coding": [
+                { "system": "http://www.genenames.org/geneId", "code": "HGNC:6893", "display": "MAPT" },
+                { "system": "http://www.genenames.org", "code": "HGNC:6893" },
+                { "system": "http://www.ncbi.nlm.nih.gov/gene", "code": "4137", "display": "MAPT gene" }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:5b7e2d40-1c93-4a68-9f0d-6e84a3c1b712",
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "code": { "coding": [{ "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs", "code": "diagnostic-implication" }] },
+        "subject": { "reference": "urn:uuid:5b7e2d40-1c93-4a68-9f0d-6e84a3c1b701" },
+        "effectiveDateTime": "2026-03-05T08:00:00-05:00",
+        "derivedFrom": [{ "reference": "urn:uuid:5b7e2d40-1c93-4a68-9f0d-6e84a3c1b711" }],
+        "component": [
+          {
+            "code": {
+              "coding": [
+                { "system": "http://loinc.org", "code": "53037-8" },
+                { "system": "http://example.org/a-component-concept", "code": "classification" }
+              ]
+            },
+            "valueCodeableConcept": {
+              "coding": [
+                { "system": "http://loinc.org", "code": "LA6668-3", "display": "Pathogenic" },
+                { "system": "http://snomed.info/sct", "code": "30807003", "display": "Pathogenic" }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

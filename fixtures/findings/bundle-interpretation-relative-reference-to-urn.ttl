@@ -2,31 +2,31 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:d760921f2d6be8643b7237060c6d2ab7 a oa:FragmentSelector ;
+_:c45a393c0617e018b5bc7c690aa49a9d a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/1" .
-_:e9882a8f29cfb960034cfcf6f47338b9 oa:hasSource <../in/bundle-interpretation-relative-reference-to-urn.json> .
-_:d760921f2d6be8643b7237060c6d2ab7 oa:refinedBy _:cd21add0112140ff657e200af8d154c8 .
-_:cd21add0112140ff657e200af8d154c8 a oa:FragmentSelector ;
+_:fc12edc6a545282aee9f1c32faa81e73 oa:hasSource <../in/bundle-interpretation-relative-reference-to-urn.json> .
+_:c45a393c0617e018b5bc7c690aa49a9d oa:refinedBy _:ddee86206e98f213e8cb6f41f30bcfdd .
+_:ddee86206e98f213e8cb6f41f30bcfdd a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/derivedFrom/0/reference" .
-_:e9882a8f29cfb960034cfcf6f47338b9 oa:hasSelector _:d760921f2d6be8643b7237060c6d2ab7 .
-_:e8ac2d88e2eb671f703f3f7627d56daa oa:hasTarget _:e9882a8f29cfb960034cfcf6f47338b9 ;
+_:fc12edc6a545282aee9f1c32faa81e73 oa:hasSelector _:c45a393c0617e018b5bc7c690aa49a9d .
+_:fd484f5009e33d78ce919d41f39797a oa:hasTarget _:fc12edc6a545282aee9f1c32faa81e73 ;
 	sh:resultSeverity sh:Warning ;
 	a oa:Annotation ;
 	oa:hasBody fhirr4:interpretationVariantLink ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "Observation/v1" .
-_:ad164c6c46cd658273fb4bc795183246 a oa:FragmentSelector ;
+_:f768b5c68d10040a136af93f2a2fae89 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/2" .
-_:d19fb9146d85027b43d57b6f94002c7c oa:hasSource <../in/bundle-interpretation-relative-reference-to-urn.json> .
-_:ad164c6c46cd658273fb4bc795183246 oa:refinedBy _:e05cb4b5cd609d917047b8d5971f072 .
-_:e05cb4b5cd609d917047b8d5971f072 a oa:FragmentSelector ;
+_:c4c8c56bc046e33d33a36ff1859c523e oa:hasSource <../in/bundle-interpretation-relative-reference-to-urn.json> .
+_:f768b5c68d10040a136af93f2a2fae89 oa:refinedBy _:ba256e8cfd793bbe2ce06b664d37cb88 .
+_:ba256e8cfd793bbe2ce06b664d37cb88 a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/derivedFrom/0/reference" .
-_:d19fb9146d85027b43d57b6f94002c7c oa:hasSelector _:ad164c6c46cd658273fb4bc795183246 .
-_:a147c470ece76c66b7dc4ce77cad4cdb oa:hasTarget _:d19fb9146d85027b43d57b6f94002c7c ;
+_:c4c8c56bc046e33d33a36ff1859c523e oa:hasSelector _:f768b5c68d10040a136af93f2a2fae89 .
+_:c949ea4719e4e3dfb0e5090e532a2100 oa:hasTarget _:c4c8c56bc046e33d33a36ff1859c523e ;
 	sh:resultSeverity sh:Warning ;
 	a oa:Annotation ;
 	oa:hasBody fhirr4:interpretationVariantLink ;

@@ -929,6 +929,15 @@
           "@id": "fixtures/in/observation-component-codings-of-an-observation-that-is-no-variant.json"
         },
         {
+          "@id": "fixtures/in/observation-variant-and-interpretation-components-no-mapping-reads.json"
+        },
+        {
+          "@id": "fixtures/in/bundle-variant-and-interpretation-components-no-mapping-reads.json"
+        },
+        {
+          "@id": "fixtures/in/bundle-variant-components-with-unread-codings.json"
+        },
+        {
           "@id": "fixtures/in/medication-request-formulary-code.json"
         },
         {
@@ -1886,6 +1895,15 @@
           "@id": "fixtures/expected/observation-component-codings-of-an-observation-that-is-no-variant.ttl"
         },
         {
+          "@id": "fixtures/expected/observation-variant-and-interpretation-components-no-mapping-reads.ttl"
+        },
+        {
+          "@id": "fixtures/expected/bundle-variant-and-interpretation-components-no-mapping-reads.ttl"
+        },
+        {
+          "@id": "fixtures/expected/bundle-variant-components-with-unread-codings.ttl"
+        },
+        {
           "@id": "fixtures/expected/medication-request-formulary-code.ttl"
         },
         {
@@ -2019,6 +2037,15 @@
         },
         {
           "@id": "fixtures/findings/observation-component-codings-of-an-observation-that-is-no-variant.ttl"
+        },
+        {
+          "@id": "fixtures/findings/observation-variant-and-interpretation-components-no-mapping-reads.ttl"
+        },
+        {
+          "@id": "fixtures/findings/bundle-variant-and-interpretation-components-no-mapping-reads.ttl"
+        },
+        {
+          "@id": "fixtures/findings/bundle-variant-components-with-unread-codings.ttl"
         },
         {
           "@id": "fixtures/findings/medication-request-formulary-code.ttl"
@@ -2727,12 +2754,12 @@
       "@type": "File",
       "name": "Findings: what an Observation's components give that no mapping reads",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "4222",
-      "sha256": "ec02e95951f395b6f0987b415465b16b5e48905197fc2fd31e74b2d43382f29a",
+      "contentSize": "8407",
+      "sha256": "05063c7cfa7ad8732e3447270d9ec20c0978f42f50ccca81fd7aa35e61f6d8d1",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "A finding for each component code or coded answer of an Observation given as text with no coding beside it, and for each coding code, and each coded answer coding display, of a component of an Observation that is no variant or diagnostic implication, which no Cascade predicate carries."
+      "description": "A finding for each component code or coded answer of an Observation given as text with no coding beside it, and for each coding code, and each coded answer coding display, of a component of an Observation which no Cascade predicate carries: all of them on an Observation that is no variant or diagnostic implication, and on a variant or a diagnostic implication all but the members its mappings read or its findings report (the LOINC code of the HGVS, ClinVar, gene and classification components, the HGVS and ClinVar codes, the HGNC display, and the classification code of one of the five answers)."
     },
     {
       "@id": "in/sparql/observation-findings.rq",
@@ -5194,6 +5221,45 @@
       },
       "description": "An Observation of a blood pressure panel, id obs-component-codings-1, with one component whose code carries a LOINC and a SNOMED coding and whose coded answer carries a SNOMED coding with a display and a code system version. Authored here on 2026-11-18, for a case the conformance corpus does not hold."
     },
+    {
+      "@id": "fixtures/in/observation-variant-and-interpretation-components-no-mapping-reads.json",
+      "@type": "File",
+      "name": "Observation, a variant and a contained diagnostic implication, with components no mapping reads",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "2782",
+      "sha256": "21b3535105297395d076ac065bde9506d2180fe5dc004824767540595ddf1dc4",
+      "dateCreated": "2026-11-18",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "An Observation that is a genetic variant, id obs-variant-unread-1, with an HGVS component the variant mapping reads and an allelic state, a component of an unrecognised code and a classification it does not, and a contained diagnostic implication whose classification component the mapping reads and whose level of evidence and HGVS components it does not. Authored here on 2026-11-18, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/bundle-variant-and-interpretation-components-no-mapping-reads.json",
+      "@type": "File",
+      "name": "Bundle, a variant and a diagnostic implication that contains a variant, with components no mapping reads",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "4418",
+      "sha256": "89a8f82e0fd0702aaa372913a31e0bb8cf4e49d7a856b12e84a5c6e8de317ca4",
+      "dateCreated": "2026-11-18",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Bundle of a Patient, a genetic variant entry with an HGVS component the variant mapping reads and an allelic state and a component of an unrecognised code it does not, and a diagnostic implication entry with a classification component the mapping reads and a level of evidence and a component of an unrecognised code it does not, which contains a variant with a ClinVar component the mapping reads and an allelic state and a classification it does not. Authored here on 2026-11-18, for a case the conformance corpus does not hold."
+    },    {
+      "@id": "fixtures/in/bundle-variant-components-with-unread-codings.json",
+      "@type": "File",
+      "name": "Bundle, a variant and a diagnostic implication, whose read components carry codings no mapping reads",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "3536",
+      "sha256": "5cb509812edc3533576bf98747c8d75fffaef9b8cab52ab41e2108b13ee0be11",
+      "dateCreated": "2026-11-18",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Bundle of a Patient, a genetic variant with an HGVS, a ClinVar and a gene component, and the diagnostic implication that derives from it with a classification component, each carrying codings the mappings do not read: another system beside the HGVS, ClinVar, HGNC and classification codings, a coding beside the LOINC one on the HGVS and classification component codes, a display no query reads and an HGNC coding with no display. Authored here on 2026-11-18, for a case the conformance corpus does not hold."
+    },
+
     {
       "@id": "fixtures/in/medication-request-formulary-code.json",
       "@type": "File",
@@ -8747,8 +8813,8 @@
       "@type": "File",
       "name": "Expected findings for Bundle-bundle-cgexample",
       "encodingFormat": "text/turtle",
-      "contentSize": "51860",
-      "sha256": "389384c5100da62aba7cd9b65f6e4cb8b21461b9e1b8a7d28df0664608eb1127",
+      "contentSize": "93741",
+      "sha256": "2e408d94b72cd80e6d391b54eb435d9034f4f42dc4fe3d8c7626fec00750edd0",
       "about": {
         "@id": "fixtures/in/Bundle-bundle-cgexample.input.json"
       },
@@ -8763,8 +8829,8 @@
       "@type": "File",
       "name": "Expected findings for Bundle-bundle-compound-heterozygote",
       "encodingFormat": "text/turtle",
-      "contentSize": "7256",
-      "sha256": "dba90fef0427708541d46f138b014ff00906081dba05507d4a5919062e8353d0",
+      "contentSize": "13044",
+      "sha256": "858f412f1fc574a7a522357e72fbc9878a1af0a2041c1594a4e66c70255f1e7a",
       "about": {
         "@id": "fixtures/in/Bundle-bundle-compound-heterozygote.input.json"
       },
@@ -8779,8 +8845,8 @@
       "@type": "File",
       "name": "Expected findings for Bundle-bundle-oncology-diagnostic",
       "encodingFormat": "text/turtle",
-      "contentSize": "13596",
-      "sha256": "e8329d04e13fc41852750660e93298670a2c80e621de70b271ef2967188e9af8",
+      "contentSize": "27198",
+      "sha256": "654e734eabe3648fd5b9236c352c9a3aeefce8ca64b049471202298d7d439a86",
       "about": {
         "@id": "fixtures/in/Bundle-bundle-oncology-diagnostic.input.json"
       },
@@ -8795,8 +8861,8 @@
       "@type": "File",
       "name": "Expected findings for bundle-genomics-variants",
       "encodingFormat": "text/turtle",
-      "contentSize": "19762",
-      "sha256": "66139cd0b50f0f33a39ec38586d8c8a9904784c521819597730372789c3dff2e",
+      "contentSize": "26348",
+      "sha256": "7baf081aa51f822c84970153b645c783e38f2d335066e8d9140524466c612170",
       "about": {
         "@id": "fixtures/in/bundle-genomics-variants.json"
       },
@@ -8811,8 +8877,8 @@
       "@type": "File",
       "name": "Expected findings for bundle-genomics-interpretations",
       "encodingFormat": "text/turtle",
-      "contentSize": "8310",
-      "sha256": "bd3d9ebe480eba7fa189b4acf0902c5315b1c887ca999f23bc6a09a13b983298",
+      "contentSize": "8324",
+      "sha256": "15de5f75ef745384acf91789af1f96fcaeef6b6cd310c539ebadaac253f70a2a",
       "about": {
         "@id": "fixtures/in/bundle-genomics-interpretations.json"
       },
@@ -8875,8 +8941,8 @@
       "@type": "File",
       "name": "Expected findings for bundle-interpretation-relative-reference-to-urn",
       "encodingFormat": "text/turtle",
-      "contentSize": "1987",
-      "sha256": "132d535a6cacc8c00b413787744ed51032094f45b5d789ee80157ded5973cbea",
+      "contentSize": "1988",
+      "sha256": "c6948cdf90b439a1a82b61af52ad9890ad358edf2a0960acc1431bb313e16b9c",
       "about": {
         "@id": "fixtures/in/bundle-interpretation-relative-reference-to-urn.json"
       },
@@ -8891,8 +8957,8 @@
       "@type": "File",
       "name": "Expected findings for bundle-interpretation-performers",
       "encodingFormat": "text/turtle",
-      "contentSize": "2186",
-      "sha256": "85a478bc0b6d43d45a14f91e73d554722ecca37e51251170175c1629482c5348",
+      "contentSize": "2189",
+      "sha256": "e9c28a8b78cf80c36bf80521a81a38bfa6a0be844d9bfe25bf6b07d1aebfa949",
       "about": {
         "@id": "fixtures/in/bundle-interpretation-performers.json"
       },
@@ -8908,7 +8974,7 @@
       "name": "Expected findings for bundle-interpretation-performer-is-custodian",
       "encodingFormat": "text/turtle",
       "contentSize": "1085",
-      "sha256": "cfe7722eda24c2e90e2a8de8609308c392f2d2d36b127bcac8bf879d999d0aae",
+      "sha256": "1548371e8c7d6d83d05048f8e40f025c99d569acb9d991d8ada0e9dc9d12e693",
       "about": {
         "@id": "fixtures/in/bundle-interpretation-performer-is-custodian.json"
       },
@@ -8923,8 +8989,8 @@
       "@type": "File",
       "name": "Expected findings for martin-okafor-harbourline-panel-2022-with-lab",
       "encodingFormat": "text/turtle",
-      "contentSize": "1133",
-      "sha256": "1e425deafdea817480d6ec500913d5d20d3fd7b7b9cf26e03938823ca7a1c4dd",
+      "contentSize": "12758",
+      "sha256": "1b12f52e5822da36599fce7b67a3b601398db35557d5020e482c0c9fb2492029",
       "about": {
         "@id": "fixtures/in/martin-okafor-harbourline-panel-2022-with-lab.json"
       },
@@ -8939,8 +9005,8 @@
       "@type": "File",
       "name": "Expected findings for martin-okafor-st-columba-exome-2024-with-lab",
       "encodingFormat": "text/turtle",
-      "contentSize": "0",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "contentSize": "11834",
+      "sha256": "03059fb954d5bc361415bf34f79205860b6345fc33ea3ec1a6b4afc56b1ac3e0",
       "about": {
         "@id": "fixtures/in/martin-okafor-st-columba-exome-2024-with-lab.json"
       },
@@ -9510,6 +9576,54 @@
       },
       "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
+    {
+      "@id": "fixtures/expected/observation-variant-and-interpretation-components-no-mapping-reads.ttl",
+      "@type": "File",
+      "name": "Expected graph for observation-variant-and-interpretation-components-no-mapping-reads",
+      "encodingFormat": "text/turtle",
+      "contentSize": "4747",
+      "sha256": "4ee675fb9d3c27899588c2eb7d965e40ab77e952698f8189031ae24f14be3b32",
+      "about": {
+        "@id": "fixtures/in/observation-variant-and-interpretation-components-no-mapping-reads.json"
+      },
+      "dateCreated": "2026-11-18",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/bundle-variant-and-interpretation-components-no-mapping-reads.ttl",
+      "@type": "File",
+      "name": "Expected graph for bundle-variant-and-interpretation-components-no-mapping-reads",
+      "encodingFormat": "text/turtle",
+      "contentSize": "6393",
+      "sha256": "e3e0f33bb2aa3052739a9757152bf0fec23bdbb7dc9dd198e484b1c9db71ab42",
+      "about": {
+        "@id": "fixtures/in/bundle-variant-and-interpretation-components-no-mapping-reads.json"
+      },
+      "dateCreated": "2026-11-18",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },    {
+      "@id": "fixtures/expected/bundle-variant-components-with-unread-codings.ttl",
+      "@type": "File",
+      "name": "Expected graph for bundle-variant-components-with-unread-codings",
+      "encodingFormat": "text/turtle",
+      "contentSize": "5467",
+      "sha256": "bbf071603c06257c0ef5ebd1493fa16d260782c5b72dbb469f3ce6d3c1a15928",
+      "about": {
+        "@id": "fixtures/in/bundle-variant-components-with-unread-codings.json"
+      },
+      "dateCreated": "2026-11-18",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+
     {
       "@id": "fixtures/expected/medication-request-formulary-code.ttl",
       "@type": "File",
@@ -10231,6 +10345,54 @@
       "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
     },
     {
+      "@id": "fixtures/findings/observation-variant-and-interpretation-components-no-mapping-reads.ttl",
+      "@type": "File",
+      "name": "Expected findings for observation-variant-and-interpretation-components-no-mapping-reads",
+      "encodingFormat": "text/turtle",
+      "contentSize": "13880",
+      "sha256": "e9e8f333e73389013aa4f79283eac9ca1e85e90c454e7783004f4b46ae9fe73b",
+      "about": {
+        "@id": "fixtures/in/observation-variant-and-interpretation-components-no-mapping-reads.json"
+      },
+      "dateCreated": "2026-11-18",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/bundle-variant-and-interpretation-components-no-mapping-reads.ttl",
+      "@type": "File",
+      "name": "Expected findings for bundle-variant-and-interpretation-components-no-mapping-reads",
+      "encodingFormat": "text/turtle",
+      "contentSize": "17977",
+      "sha256": "fef64e370e5ab1b4c796a424abd916a65dd180270453d6a1fc18350f77f15530",
+      "about": {
+        "@id": "fixtures/in/bundle-variant-and-interpretation-components-no-mapping-reads.json"
+      },
+      "dateCreated": "2026-11-18",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },    {
+      "@id": "fixtures/findings/bundle-variant-components-with-unread-codings.ttl",
+      "@type": "File",
+      "name": "Expected findings for bundle-variant-components-with-unread-codings",
+      "encodingFormat": "text/turtle",
+      "contentSize": "11857",
+      "sha256": "8c76e562e6efc8ad5fd7c612501e71acd8fad3ca41c43cf9df52c8cf2df19539",
+      "about": {
+        "@id": "fixtures/in/bundle-variant-components-with-unread-codings.json"
+      },
+      "dateCreated": "2026-11-18",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+
+    {
       "@id": "fixtures/findings/medication-request-formulary-code.ttl",
       "@type": "File",
       "name": "Expected findings for medication-request-formulary-code",
@@ -10539,8 +10701,8 @@
       "@type": "File",
       "name": "Expected findings for bundle-dates-that-do-not-exist",
       "encodingFormat": "text/turtle",
-      "contentSize": "12514",
-      "sha256": "6848eadc60d42b2671bcb8d22a96447a911054270ee1378444a0cb05a7b62961",
+      "contentSize": "12517",
+      "sha256": "0b61daa7fc6acee49dba27f7a970be00d1c0921e605f474e7c4e76aab9539eca",
       "about": {
         "@id": "fixtures/in/bundle-dates-that-do-not-exist.json"
       },
@@ -10872,8 +11034,8 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "contentSize": "138579",
-      "sha256": "efbf91a81cfb86aefd93c906300f652174e1540d6fe340670739d61e65f5bc01"
+      "contentSize": "142527",
+      "sha256": "cfc7aeaa5052688b1ccb3ee3aec3ac26892fbd9e748f145aa3a2c053e4e0029b"
     },
     {
       "@id": "fixtures/facts/meridian.ttl",
