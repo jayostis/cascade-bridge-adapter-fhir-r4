@@ -11,53 +11,52 @@
 	cascade:sourceUrl <http://example.org/fhir/Patient/pat-1> ;
 	cascade:sourceRecordId "pat-1" .
 <ni:///sha-256;zuUzAiX3qTm4div7HRmr_J98ZrKhI-WrsDDU1ZHTdek> prov:specializationOf <urn:uuid:1cc3cbf1-3a8f-8691-923b-e87de6e5c3a3> .
-_:3ebd19094a46bce01f42b3933cb77354 bridge:arrivedAs <ni:///sha-256;zuUzAiX3qTm4div7HRmr_J98ZrKhI-WrsDDU1ZHTdek> ;
-	oa:hasSelector _:88a79509107a2772733ddb9ce699eb3 ;
-	oa:hasSource <ni:///sha-256;Xb6yLYvJeciAfTJQDYk6cceC7HePoLHYlKB1wmffGSY> ;
-	prov:wasDerivedFrom <ni:///sha-256;Xb6yLYvJeciAfTJQDYk6cceC7HePoLHYlKB1wmffGSY> ;
-	prov:wasGeneratedBy _:ffd9fb75f5a27883f139f67a965f43d1 .
-_:88a79509107a2772733ddb9ce699eb3 a oa:FragmentSelector ;
+_:221dca3ecd63d951848697d8274e6584 bridge:arrivedAs <ni:///sha-256;zuUzAiX3qTm4div7HRmr_J98ZrKhI-WrsDDU1ZHTdek> ;
+	oa:hasSelector _:2dd169b4f456d0550d325e5704234958 ;
+	oa:hasSource <ni:///sha-256;prh_YdTHcyS3Xwe5gDNcQ9D-mpPEeGc9TyIkgevfKm8> ;
+	prov:wasDerivedFrom <ni:///sha-256;prh_YdTHcyS3Xwe5gDNcQ9D-mpPEeGc9TyIkgevfKm8> ;
+	prov:wasGeneratedBy _:6c1870bfba2ae7c525f077a94c8633f4 .
+_:2dd169b4f456d0550d325e5704234958 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/0" .
-<ni:///sha-256;8POyPPSvV_nGvDfj36UP-Xuqd4FrW4yrijxPru8btFo> cascade:testCode <http://loinc.org/rdf/2345-7> ;
-	cascade:resultQuantity <ni:///sha-256;8POyPPSvV_nGvDfj36UP-Xuqd4FrW4yrijxPru8btFo#value> .
-<ni:///sha-256;8POyPPSvV_nGvDfj36UP-Xuqd4FrW4yrijxPru8btFo#value> cascade:decimalValue "5"^^xsd:decimal ;
+<ni:///sha-256;Rb4yxj7DvOp5m36kWhZ7kLLJ7GVIsC5oovlaH7EH-RU> cascade:testCode <http://loinc.org/rdf/2345-7> ;
+	cascade:resultQuantity <ni:///sha-256;Rb4yxj7DvOp5m36kWhZ7kLLJ7GVIsC5oovlaH7EH-RU#value> .
+<ni:///sha-256;Rb4yxj7DvOp5m36kWhZ7kLLJ7GVIsC5oovlaH7EH-RU#value> cascade:decimalValue "5"^^xsd:decimal ;
 	cascade:writtenValue "5" ;
 	cascade:unitText "mg/dL" .
-<ni:///sha-256;8POyPPSvV_nGvDfj36UP-Xuqd4FrW4yrijxPru8btFo> cascade:testName "Glucose" ;
+<ni:///sha-256;Rb4yxj7DvOp5m36kWhZ7kLLJ7GVIsC5oovlaH7EH-RU> cascade:testName "Glucose" ;
 	cascade:resultValueKind cascade:QuantityResultValue ;
 	cascade:resultClinicallyRelevantTime "2024-06-15"^^xsd:date ;
 	cascade:workflowStatus "final" .
 <urn:uuid:f7a46896-cab1-8b47-8091-667c14fc7673> a cascade:LaboratoryTestResult ;
 	cascade:sourceUrl <http://example.org/fhir/Observation/obs-1> ;
 	cascade:sourceRecordId "obs-1" .
-<ni:///sha-256;8POyPPSvV_nGvDfj36UP-Xuqd4FrW4yrijxPru8btFo> prov:specializationOf <urn:uuid:f7a46896-cab1-8b47-8091-667c14fc7673> ;
-	cascade:patient <urn:uuid:1cc3cbf1-3a8f-8691-923b-e87de6e5c3a3> .
-_:d724251abd374abaeee09fee3f1bfed8 bridge:arrivedAs <ni:///sha-256;8POyPPSvV_nGvDfj36UP-Xuqd4FrW4yrijxPru8btFo> .
-_:dafdc1f361830d184d85f26140ec3e8e oa:hasSelector _:f7580970fb430a8dcd0a26d202996c02 .
-_:f7580970fb430a8dcd0a26d202996c02 a oa:FragmentSelector ;
+<ni:///sha-256;Rb4yxj7DvOp5m36kWhZ7kLLJ7GVIsC5oovlaH7EH-RU> prov:specializationOf <urn:uuid:f7a46896-cab1-8b47-8091-667c14fc7673> .
+_:bdcff4c3882c60a97ceb304d1915efe6 bridge:arrivedAs <ni:///sha-256;Rb4yxj7DvOp5m36kWhZ7kLLJ7GVIsC5oovlaH7EH-RU> .
+_:c3c7b4ca487faafa763f4dc6eba23959 oa:hasSelector _:e1e39e6427b54153fc7c5274c372705a .
+_:e1e39e6427b54153fc7c5274c372705a a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> .
-_:d724251abd374abaeee09fee3f1bfed8 oa:hasSelector _:b92c11e97ea689c0903f3021ddd691bb ;
-	oa:hasSource <ni:///sha-256;Xb6yLYvJeciAfTJQDYk6cceC7HePoLHYlKB1wmffGSY> ;
-	prov:wasDerivedFrom <ni:///sha-256;Xb6yLYvJeciAfTJQDYk6cceC7HePoLHYlKB1wmffGSY> ;
-	prov:wasGeneratedBy _:ffd9fb75f5a27883f139f67a965f43d1 .
-_:b92c11e97ea689c0903f3021ddd691bb a oa:FragmentSelector ;
+_:bdcff4c3882c60a97ceb304d1915efe6 oa:hasSelector _:3404a712e0b1725e39986518af442f92 ;
+	oa:hasSource <ni:///sha-256;prh_YdTHcyS3Xwe5gDNcQ9D-mpPEeGc9TyIkgevfKm8> ;
+	prov:wasDerivedFrom <ni:///sha-256;prh_YdTHcyS3Xwe5gDNcQ9D-mpPEeGc9TyIkgevfKm8> ;
+	prov:wasGeneratedBy _:6c1870bfba2ae7c525f077a94c8633f4 .
+_:3404a712e0b1725e39986518af442f92 a oa:FragmentSelector ;
 	dct:conformsTo <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/1" .
-<ni:///sha-256;Xb6yLYvJeciAfTJQDYk6cceC7HePoLHYlKB1wmffGSY> cascade:serverBaseUrl "http://example.org/fhir" ;
+<ni:///sha-256;prh_YdTHcyS3Xwe5gDNcQ9D-mpPEeGc9TyIkgevfKm8> cascade:serverBaseUrl "http://example.org/fhir" ;
 	pav:retrievedOn "2026-10-13T09:00:00Z"^^xsd:dateTime ;
 	cascade:sourceFormatVersion "4.0.1" .
-_:ffd9fb75f5a27883f139f67a965f43d1 <http://www.w3.org/2000/01/rdf-schema#label> "Example server export" ;
+_:6c1870bfba2ae7c525f077a94c8633f4 <http://www.w3.org/2000/01/rdf-schema#label> "Example server export" ;
 	prov:startedAtTime "2026-10-13T09:00:04Z"^^xsd:dateTime .
-<ni:///sha-256;Xb6yLYvJeciAfTJQDYk6cceC7HePoLHYlKB1wmffGSY> a prov:Entity .
-_:ffd9fb75f5a27883f139f67a965f43d1 a prov:Activity ;
-	prov:used <ni:///sha-256;Xb6yLYvJeciAfTJQDYk6cceC7HePoLHYlKB1wmffGSY> ;
-	prov:qualifiedAssociation _:c70794a28233fddb0375b9ca20f6584e .
-_:c70794a28233fddb0375b9ca20f6584e prov:hadPlan _:2d93dded259252dbd796bbae3978143a .
-_:2d93dded259252dbd796bbae3978143a a prov:Plan ;
+<ni:///sha-256;prh_YdTHcyS3Xwe5gDNcQ9D-mpPEeGc9TyIkgevfKm8> a prov:Entity .
+_:6c1870bfba2ae7c525f077a94c8633f4 a prov:Activity ;
+	prov:used <ni:///sha-256;prh_YdTHcyS3Xwe5gDNcQ9D-mpPEeGc9TyIkgevfKm8> ;
+	prov:qualifiedAssociation _:e84a6fff915c19b8589651f7b794a418 .
+_:e84a6fff915c19b8589651f7b794a418 prov:hadPlan _:daa019b84e0ddcc23b69d881d0e75b71 .
+_:daa019b84e0ddcc23b69d881d0e75b71 a prov:Plan ;
 	<http://www.w3.org/2000/01/rdf-schema#label> "fhir-r4" ;
 	pav:version "0.1.0" .
-_:c70794a28233fddb0375b9ca20f6584e prov:agent _:b37ab922fcc0476b99650964ac96bbd4 .
-_:b37ab922fcc0476b99650964ac96bbd4 a prov:SoftwareAgent ;
+_:e84a6fff915c19b8589651f7b794a418 prov:agent _:c6fdfe8079ba60fc1d5e39fcfc19136c .
+_:c6fdfe8079ba60fc1d5e39fcfc19136c a prov:SoftwareAgent ;
 	<http://www.w3.org/2000/01/rdf-schema#label> "Cascade Bridge for Rust" ;
 	pav:version "0.1.0" .
