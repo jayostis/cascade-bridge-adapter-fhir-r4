@@ -2650,7 +2650,7 @@
 
 <#observation-variant-and-interpretation-components-no-mapping-reads> a bridge:IsomorphicConversionTest ;
   mf:name "observation-variant-and-interpretation-components-no-mapping-reads" ;
-  rdfs:comment "A genetic variant Observation, with a diagnostic implication it contains, whose components include ones no mapping reads: an allelic state, a component of an unrecognised code, and a classification on the variant; and on the implication a level of evidence and an HGVS component. Each coding's code and each answer's display is reported, but the codes the mappings read: the LOINC codes of the HGVS and classification components, the HGVS code and the classification code." ;
+  rdfs:comment "A genetic variant Observation, with a diagnostic implication it contains, whose components include ones no mapping reads: an allelic state, a component of an unrecognised code, and a classification on the variant; and on the implication a level of evidence and an HGVS component. Each coding's code and each answer's display is reported, but the codes the mappings read and the displays beside them: the LOINC codes of the HGVS and classification components, the HGVS code and the classification code with their displays." ;
   mf:action [
     bridge:input <in/observation-variant-and-interpretation-components-no-mapping-reads.json> ;
     bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
@@ -2676,7 +2676,7 @@
 
 <#bundle-variant-components-with-unread-codings> a bridge:IsomorphicConversionTest ;
   mf:name "bundle-variant-components-with-unread-codings" ;
-  rdfs:comment "A Bundle of a genetic variant and the diagnostic implication that derives from it, whose components the mappings read carry codings they do not: an HGVS component whose value has a coding of another system, and whose code has a coding beside the LOINC one; a ClinVar component with a coding of another system; a gene component with a coding of another system and an HGNC coding that has a display and one that has none; and a classification component whose answer has a coding of another system. Each coding or display no mapping reads and no variant finding reports is reported; the LOINC code of each component, the HGVS and ClinVar codes, the HGNC display, the HGNC code that has none and the classification code are not." ;
+  rdfs:comment "A Bundle of a genetic variant and the diagnostic implication that derives from it, whose components the mappings read carry codings they do not: an HGVS component whose value has a coding of another system, and whose code has a coding beside the LOINC one; a ClinVar component with a coding of another system; a gene component with a coding of another system and an HGNC coding that has a display and one that has none; and a classification component whose answer has a coding of another system. Each coding or display no mapping reads and no variant finding reports is reported; the LOINC code of each component, the HGVS and ClinVar codes, the HGNC display, the HGNC code that has none and the classification code are not, nor is the display beside the HGVS, ClinVar or classification code, which is that code's label; a display beside a coding of another system is." ;
   mf:action [
     bridge:input <in/bundle-variant-components-with-unread-codings.json> ;
     bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;

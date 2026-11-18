@@ -2,33 +2,18 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
-_:fffc36e5350d9893877c6a5f93c0b64b a oa:FragmentSelector ;
+_:c64286f96dfe110c72979b0c5bd6952b a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/entry/0" .
-_:ae3dbcbadcf15d6f5f4f33940e44ff8d oa:hasSource <../in/bundle-interpretation-performer-is-custodian.json> .
-_:fffc36e5350d9893877c6a5f93c0b64b oa:refinedBy _:ab4da5d7799ce87aff1c4f3eb55a27ca .
-_:ab4da5d7799ce87aff1c4f3eb55a27ca a oa:FragmentSelector ;
+_:dce00dd86ece830826f1b9a112a50b7f oa:hasSource <../adapter/fixtures/in/bundle-interpretation-performer-is-custodian.json> .
+_:c64286f96dfe110c72979b0c5bd6952b oa:refinedBy _:d38c0a25274760a25dd7b08290c0a91d .
+_:d38c0a25274760a25dd7b08290c0a91d a oa:FragmentSelector ;
 	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
 	rdf:value "/resource/resourceType" .
-_:ae3dbcbadcf15d6f5f4f33940e44ff8d oa:hasSelector _:fffc36e5350d9893877c6a5f93c0b64b .
-_:aa7cdbb4994451e3fb0738a9e7979c15 oa:hasTarget _:ae3dbcbadcf15d6f5f4f33940e44ff8d ;
+_:dce00dd86ece830826f1b9a112a50b7f oa:hasSelector _:c64286f96dfe110c72979b0c5bd6952b .
+_:a1831b502f90d8611bd2267e76f6f210 oa:hasTarget _:dce00dd86ece830826f1b9a112a50b7f ;
 	sh:resultSeverity sh:Warning ;
 	a oa:Annotation ;
 	oa:hasBody fhirr4:resourceTypeNotMapped ;
 	oa:motivatedBy oa:classifying ;
 	sh:value "Composition" .
-_:fb6b32cccfe7f5fe375d0eed04d07889 a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/entry/4" .
-_:de4310f8a68027058627fca37dc26779 oa:hasSource <../in/bundle-interpretation-performer-is-custodian.json> .
-_:fb6b32cccfe7f5fe375d0eed04d07889 oa:refinedBy _:a613f1fe493534e0af28b4d3159f77fb .
-_:a613f1fe493534e0af28b4d3159f77fb a oa:FragmentSelector ;
-	<http://purl.org/dc/terms/conformsTo> <https://www.rfc-editor.org/rfc/rfc6901> ;
-	rdf:value "/resource/component/0/valueCodeableConcept/coding/0/display" .
-_:de4310f8a68027058627fca37dc26779 oa:hasSelector _:fb6b32cccfe7f5fe375d0eed04d07889 .
-_:eda5718c868d6a8589509d089b5259fc oa:hasTarget _:de4310f8a68027058627fca37dc26779 ;
-	sh:resultSeverity sh:Info ;
-	a oa:Annotation ;
-	oa:hasBody fhirr4:observationComponentDataNotCarried ;
-	oa:motivatedBy oa:classifying ;
-	sh:value "Likely pathogenic" .
