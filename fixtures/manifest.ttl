@@ -170,6 +170,8 @@
     <#observation-component-text-beside-a-coding-and-alone>
     <#observation-component-comparator-and-range-bounds>
     <#observation-component-codings-of-an-observation-that-is-no-variant>
+    <#observation-variant-and-interpretation-components-no-mapping-reads>
+    <#bundle-variant-and-interpretation-components-no-mapping-reads>
     <#medication-request-formulary-code>
     <#medication-request-us-core-supply-only>
     <#medication-request-supply-and-dosages>
@@ -2643,4 +2645,30 @@
   mf:result [
     bridge:expectedGraph <expected/observation-component-codings-of-an-observation-that-is-no-variant.ttl> ;
     bridge:expectedFindings <findings/observation-component-codings-of-an-observation-that-is-no-variant.ttl>
+  ] .
+
+<#observation-variant-and-interpretation-components-no-mapping-reads> a bridge:IsomorphicConversionTest ;
+  mf:name "observation-variant-and-interpretation-components-no-mapping-reads" ;
+  rdfs:comment "A genetic variant Observation, with a diagnostic implication it contains, whose components include ones no mapping reads: an allelic state, a component of an unrecognised code, and a classification on the variant; and on the implication a level of evidence and an HGVS component. Each coding's code and each answer's display is reported; the HGVS component of the variant and the classification component of the implication, which the mappings read, are not." ;
+  mf:action [
+    bridge:input <in/observation-variant-and-interpretation-components-no-mapping-reads.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/observation-variant-and-interpretation-components-no-mapping-reads.ttl> ;
+    bridge:expectedFindings <findings/observation-variant-and-interpretation-components-no-mapping-reads.ttl>
+  ] .
+
+<#bundle-variant-and-interpretation-components-no-mapping-reads> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-variant-and-interpretation-components-no-mapping-reads" ;
+  rdfs:comment "The same as a Bundle entry: a variant entry with an allelic state and a component of an unrecognised code, and a diagnostic implication entry with a level of evidence and a component of an unrecognised code, which contains a variant whose allelic state and classification no mapping reads. The components the mappings read, a variant's HGVS and ClinVar and an implication's classification, are not reported." ;
+  mf:action [
+    bridge:input <in/bundle-variant-and-interpretation-components-no-mapping-reads.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/no-server.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-variant-and-interpretation-components-no-mapping-reads.ttl> ;
+    bridge:expectedFindings <findings/bundle-variant-and-interpretation-components-no-mapping-reads.ttl>
   ] .

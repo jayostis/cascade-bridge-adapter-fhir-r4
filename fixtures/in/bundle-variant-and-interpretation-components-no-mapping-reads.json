@@ -1,0 +1,87 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:9a4c3e10-6d2b-4f57-8c1e-3b7a5d0f2c01",
+      "resource": {
+        "resourceType": "Patient",
+        "name": [{ "family": "Okafor", "given": ["Martin"] }],
+        "birthDate": "1979-02-08"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:9a4c3e10-6d2b-4f57-8c1e-3b7a5d0f2c11",
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "code": { "coding": [{ "system": "http://loinc.org", "code": "69548-6", "display": "Genetic variant assessment" }] },
+        "subject": { "reference": "urn:uuid:9a4c3e10-6d2b-4f57-8c1e-3b7a5d0f2c01" },
+        "valueCodeableConcept": { "coding": [{ "system": "http://loinc.org", "code": "LA9633-4", "display": "Present" }] },
+        "component": [
+          {
+            "code": { "coding": [{ "system": "http://loinc.org", "code": "48004-6" }] },
+            "valueCodeableConcept": { "coding": [{ "system": "http://varnomen.hgvs.org", "code": "NM_000249.4:c.2042C>T" }] }
+          },
+          {
+            "code": { "coding": [{ "system": "http://loinc.org", "code": "53034-5", "display": "Allelic state" }] },
+            "valueCodeableConcept": { "coding": [{ "system": "http://loinc.org", "code": "LA6706-1", "display": "Heterozygous" }] }
+          },
+          {
+            "code": { "coding": [{ "system": "http://example.org/an-unrecognised-component", "code": "zz-1" }] },
+            "valueCodeableConcept": { "coding": [{ "system": "http://example.org/an-unrecognised-component", "code": "zz-answer", "display": "Zed" }] }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:9a4c3e10-6d2b-4f57-8c1e-3b7a5d0f2c12",
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "code": { "coding": [{ "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs", "code": "diagnostic-implication" }] },
+        "subject": { "reference": "urn:uuid:9a4c3e10-6d2b-4f57-8c1e-3b7a5d0f2c01" },
+        "effectiveDateTime": "2026-03-05T08:00:00-05:00",
+        "derivedFrom": [{ "reference": "urn:uuid:9a4c3e10-6d2b-4f57-8c1e-3b7a5d0f2c11" }],
+        "component": [
+          {
+            "code": { "coding": [{ "system": "http://loinc.org", "code": "53037-8" }] },
+            "valueCodeableConcept": { "coding": [{ "system": "http://loinc.org", "code": "LA6668-3", "display": "Pathogenic" }] }
+          },
+          {
+            "code": { "coding": [{ "system": "http://loinc.org", "code": "93044-6", "display": "Level of evidence" }] },
+            "valueCodeableConcept": { "coding": [{ "system": "http://loinc.org", "code": "LA30200-8", "display": "Level 1" }] }
+          },
+          {
+            "code": { "coding": [{ "system": "http://example.org/an-unrecognised-component", "code": "zz-1" }] },
+            "valueCodeableConcept": { "coding": [{ "system": "http://example.org/an-unrecognised-component", "code": "zz-answer", "display": "Zed" }] }
+          }
+        ],
+        "contained": [
+          {
+            "resourceType": "Observation",
+            "id": "variant-unread-2",
+            "status": "final",
+            "code": { "coding": [{ "system": "http://loinc.org", "code": "69548-6", "display": "Genetic variant assessment" }] },
+            "subject": { "reference": "urn:uuid:9a4c3e10-6d2b-4f57-8c1e-3b7a5d0f2c01" },
+            "valueCodeableConcept": { "coding": [{ "system": "http://loinc.org", "code": "LA9633-4", "display": "Present" }] },
+            "component": [
+              {
+                "code": { "coding": [{ "system": "http://loinc.org", "code": "81252-9" }] },
+                "valueCodeableConcept": { "coding": [{ "system": "http://www.ncbi.nlm.nih.gov/clinvar", "code": "VCV000090011" }] }
+              },
+              {
+                "code": { "coding": [{ "system": "http://loinc.org", "code": "53034-5", "display": "Allelic state" }] },
+                "valueCodeableConcept": { "coding": [{ "system": "http://loinc.org", "code": "LA6706-1", "display": "Heterozygous" }] }
+              },
+              {
+                "code": { "coding": [{ "system": "http://loinc.org", "code": "53037-8" }] },
+                "valueCodeableConcept": { "coding": [{ "system": "http://loinc.org", "code": "LA6668-3", "display": "Pathogenic" }] }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
