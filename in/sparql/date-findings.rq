@@ -82,6 +82,12 @@ WHERE {
     ?resource xyz:effectivePeriod ?period . ?period xyz:start ?value .
     BIND ("/effectivePeriod/start" AS ?step)
   }
+  UNION
+  {
+    VALUES (?type ?scope) { ("Procedure" "") }
+    ?resource xyz:performedPeriod ?period . ?period xyz:start ?value .
+    BIND ("/performedPeriod/start" AS ?step)
+  }
   BIND (COALESCE(CONCAT(?recordSelector, ?topStep, ?containedStep), "none") AS ?resourcePointer)
   FILTER (?scope = "" || EXISTS {
     VALUES (?scope ?table) {

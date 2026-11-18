@@ -366,3 +366,23 @@ fhirr4:textAttachmentNotCarried a skos:Concept ;
   skos:prefLabel "A report or a note gives more than one text attachment, and only the first is carried as its text: FHIR reads its attachments as renditions of one content."@en ;
   skos:inScheme fhirr4:gaps ;
   skos:broader bridge:carriedWithLoss .
+
+fhirr4:procedurePeriodEnd a skos:Concept ;
+  skos:prefLabel "A procedure carries the end of the period it was performed over, and no Cascade predicate carries it."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:noPredicate .
+
+fhirr4:encounterNotCarried a skos:Concept ;
+  skos:prefLabel "A resource references the encounter it was recorded at, and no Cascade predicate carries the link."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:noPredicate .
+
+fhirr4:documentServicePeriod a skos:Concept ;
+  skos:prefLabel "A document reference carries the period of the service it documents, and no Cascade predicate carries it."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:noPredicate .
+
+fhirr4:immunizationPrimarySource a skos:Concept ;
+  skos:prefLabel "An immunization says whether its information is the first-hand report of the person who gave it, and no Cascade predicate carries that."@en ;
+  skos:inScheme fhirr4:gaps ;
+  skos:broader bridge:noPredicate .

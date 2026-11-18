@@ -2274,12 +2274,12 @@
       "@type": "File",
       "name": "Mapping: a Procedure's version",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "5370",
-      "sha256": "62ea7ad4b6c8f3e818be0d039bb7b7ae672943e4de8df5b1eade8db024b0cf34",
+      "contentSize": "5655",
+      "sha256": "8024c2ebb24c7bf11b4e317536403830a406bfda0b6026a10f9d0af90b73d8ad",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "What a Procedure says, written on the version record.rq names: name, every code, in a system the vocabulary lists an IRI stem for as a cascade:procedureCode IRI (CPT's first code only, under https://ns.cascadeprotocol.org/codes/cpt/) and in any other system, HCPCS's among them, as a cascade:procedureCodeInOtherSystem literal typed by the system coding-system-table.rq reads (https://github.com/jayostis/cascade-vocabulary/issues/290), date and status."
+      "description": "What a Procedure says, written on the version record.rq names: name, every code, in a system the vocabulary lists an IRI stem for as a cascade:procedureCode IRI (CPT's first code only, under https://ns.cascadeprotocol.org/codes/cpt/) and in any other system, HCPCS's among them, as a cascade:procedureCodeInOtherSystem literal typed by the system coding-system-table.rq reads (https://github.com/jayostis/cascade-vocabulary/issues/290), date, the performed date or else the start of the performed period, and status."
     },
     {
       "@id": "in/sparql/patient.rq",
@@ -2586,8 +2586,8 @@
       "@type": "File",
       "name": "Findings: a date no mapping can type",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "4905",
-      "sha256": "bd0dddb7abc655f4473e0c151eb70fe7e3f14a1149f8cb82261a1ff628b5d923",
+      "contentSize": "5084",
+      "sha256": "e65a4c8412e5d49a3e4f13e30248bc194e5a4b1731efc36fd830669bdc656c12",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2610,12 +2610,12 @@
       "@type": "File",
       "name": "Findings: a reference's display",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "3459",
-      "sha256": "7fa471f43748d0881bc25988275f4c45087436589bbf5c5f0fead59a312384ee",
+      "contentSize": "4189",
+      "sha256": "d162f9b41ccbfd24f232be008870eecbaa98603a278d5d034fe6948679cec4d3",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "A finding for each patient, subject, reason, result or authorizing prescription reference of a mapped resource that carries a display string, which no Cascade predicate carries."
+      "description": "A finding for each patient, subject, reason, result, authorizing prescription, author, custodian, performer or requester reference of a mapped resource that carries a display string, which no Cascade predicate carries."
     },
     {
       "@id": "in/sparql/observation-findings.rq",
@@ -2730,8 +2730,8 @@
       "@type": "File",
       "name": "FHIR R4 JSON source accounting",
       "encodingFormat": "text/turtle",
-      "contentSize": "909435",
-      "sha256": "b7996970e31dbb7264b6b630e701bcbaac2d0bb587d91166c423d58975f50968",
+      "contentSize": "930053",
+      "sha256": "081def3c1f27cefcf7d9bd2c9454e83770acc4245b9f0f2f5f482cc7b80d78e5",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2814,8 +2814,8 @@
       "@type": "File",
       "name": "FHIR R4 JSON gaps",
       "encodingFormat": "text/turtle",
-      "contentSize": "22591",
-      "sha256": "f4d4eeb0ec5c71089ee82b4f1b5ead28f22096ec9ad1942ad8f8b8088a813d49",
+      "contentSize": "23581",
+      "sha256": "7f340b3125e80b4c756085418e439f9198c325b7e691306715713eb49064ccaa",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
