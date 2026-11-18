@@ -14,9 +14,12 @@ PREFIX cascade: <https://ns.cascadeprotocol.org/cascade#>
 # text beside a coding is that coding's label and is not. The codings of a
 # component's code and of its coded answer are read only by the mappings of a
 # variant (variant.rq) and of a diagnostic implication
-# (variant-interpretation.rq), so on any other Observation, and on a variant
-# whose value is not Present, which is no record, each coding's code, and a
-# coded answer's display, is reported. The rest of a component, its quantities,
+# (variant-interpretation.rq), and only of the components they name: the HGVS,
+# ClinVar and gene components of a variant, the classification component of a
+# diagnostic implication. So on any other Observation, on a variant whose value
+# is not Present, which is no record, and on any other component of a variant
+# or of a diagnostic implication, each coding's code, and a coded answer's
+# display, is reported. The rest of a component, its quantities,
 # ranges and string, is reported by its entries of the source accounting.
 
 CONSTRUCT {
@@ -100,6 +103,20 @@ WHERE {
                  ?memberName) AS ?step)
   }
   FILTER (!BOUND(?conceptStep)
-          || !(EXISTS { ?variant fhirr4:variantAt ?recordPointer } || EXISTS { ?interpretation fhirr4:interpretationAt ?recordPointer }))
+          || !((EXISTS { ?variant fhirr4:variantAt ?recordPointer }
+                && EXISTS {
+                     ?component xyz:code ?readConcept . ?readConcept xyz:coding ?readCodings .
+                     ?readCodings ?readSlot ?readCoding .
+                     ?readCoding xyz:system "http://loinc.org" ;
+                       xyz:code ?readCode .
+                     FILTER (?readCode IN ("48004-6", "81252-9", "48018-6"))
+                   })
+               || (EXISTS { ?interpretation fhirr4:interpretationAt ?recordPointer }
+                   && EXISTS {
+                        ?component xyz:code ?readConcept . ?readConcept xyz:coding ?readCodings .
+                        ?readCodings ?readSlot ?readCoding .
+                        ?readCoding xyz:system "http://loinc.org" ;
+                          xyz:code "53037-8" .
+                      })))
   BIND (CONCAT(?componentPointer, ?step) AS ?pointer)
 }

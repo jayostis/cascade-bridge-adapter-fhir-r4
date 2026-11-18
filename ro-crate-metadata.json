@@ -2745,12 +2745,12 @@
       "@type": "File",
       "name": "Findings: what an Observation's components give that no mapping reads",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "4222",
-      "sha256": "ec02e95951f395b6f0987b415465b16b5e48905197fc2fd31e74b2d43382f29a",
+      "contentSize": "5180",
+      "sha256": "db4217056684a6bf69b2f90ea40e017b8bb9730cef36faaa20873b3ebafdc98e",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "A finding for each component code or coded answer of an Observation given as text with no coding beside it, and for each coding code, and each coded answer coding display, of a component of an Observation that is no variant or diagnostic implication, which no Cascade predicate carries."
+      "description": "A finding for each component code or coded answer of an Observation given as text with no coding beside it, and for each coding code, and each coded answer coding display, of a component of an Observation that is no variant or diagnostic implication, and of each component of one that no mapping reads (all but the HGVS, ClinVar and gene components of a variant and the classification component of a diagnostic implication), which no Cascade predicate carries."
     },
     {
       "@id": "in/sparql/observation-findings.rq",
@@ -8791,8 +8791,8 @@
       "@type": "File",
       "name": "Expected findings for Bundle-bundle-cgexample",
       "encodingFormat": "text/turtle",
-      "contentSize": "51860",
-      "sha256": "389384c5100da62aba7cd9b65f6e4cb8b21461b9e1b8a7d28df0664608eb1127",
+      "contentSize": "92755",
+      "sha256": "4d7ce7e3440bb4a8d5e300853ce21178072a3c2e8885c8a56351a2ffa924b252",
       "about": {
         "@id": "fixtures/in/Bundle-bundle-cgexample.input.json"
       },
@@ -8807,8 +8807,8 @@
       "@type": "File",
       "name": "Expected findings for Bundle-bundle-compound-heterozygote",
       "encodingFormat": "text/turtle",
-      "contentSize": "7256",
-      "sha256": "dba90fef0427708541d46f138b014ff00906081dba05507d4a5919062e8353d0",
+      "contentSize": "13044",
+      "sha256": "12a25b7858ead08b7f2884bd883f85c0ca5971bccdd8e4b11241bfa431bcdeed",
       "about": {
         "@id": "fixtures/in/Bundle-bundle-compound-heterozygote.input.json"
       },
@@ -8823,8 +8823,8 @@
       "@type": "File",
       "name": "Expected findings for Bundle-bundle-oncology-diagnostic",
       "encodingFormat": "text/turtle",
-      "contentSize": "13596",
-      "sha256": "e8329d04e13fc41852750660e93298670a2c80e621de70b271ef2967188e9af8",
+      "contentSize": "26228",
+      "sha256": "caa722db1e7eee6ea824f6ad3b9248b168a664c953f846a5b3afb3cae80b8835",
       "about": {
         "@id": "fixtures/in/Bundle-bundle-oncology-diagnostic.input.json"
       },
@@ -8839,8 +8839,8 @@
       "@type": "File",
       "name": "Expected findings for bundle-genomics-variants",
       "encodingFormat": "text/turtle",
-      "contentSize": "19762",
-      "sha256": "66139cd0b50f0f33a39ec38586d8c8a9904784c521819597730372789c3dff2e",
+      "contentSize": "21653",
+      "sha256": "666d37fb1711d298eaaa854cb11e3c52397615282b9307db16ffcedf485b6b17",
       "about": {
         "@id": "fixtures/in/bundle-genomics-variants.json"
       },
@@ -8967,8 +8967,8 @@
       "@type": "File",
       "name": "Expected findings for martin-okafor-harbourline-panel-2022-with-lab",
       "encodingFormat": "text/turtle",
-      "contentSize": "1133",
-      "sha256": "1e425deafdea817480d6ec500913d5d20d3fd7b7b9cf26e03938823ca7a1c4dd",
+      "contentSize": "9848",
+      "sha256": "018922273823216388bbfeff8003d9836815ede16e26c38823666bc19ef0add1",
       "about": {
         "@id": "fixtures/in/martin-okafor-harbourline-panel-2022-with-lab.json"
       },
@@ -8983,8 +8983,8 @@
       "@type": "File",
       "name": "Expected findings for martin-okafor-st-columba-exome-2024-with-lab",
       "encodingFormat": "text/turtle",
-      "contentSize": "0",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "contentSize": "8926",
+      "sha256": "4e5f00c5e58549513d82f61872ef31ff3cff454dc42aa9ed686463dd1be20f3e",
       "about": {
         "@id": "fixtures/in/martin-okafor-st-columba-exome-2024-with-lab.json"
       },
