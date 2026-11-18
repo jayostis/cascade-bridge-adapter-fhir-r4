@@ -1,0 +1,47 @@
+@prefix bridge: <https://ns.cascadeprotocol.org/bridge/v1-draft#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix pav: <http://purl.org/pav/> .
+<ni:///sha-256;UEadromC50nojE-W_o4Y7frwsFDxW7SJrGhwXthODAY> cascade:procedureCode <http://snomed.info/id/73761001> ;
+	cascade:workflowStatus "completed" ;
+	cascade:procedureName "Colonoscopy" .
+_:f1a7b9d220e7ab8c22f5655f14c4a1a8 bridge:arrivedAs <ni:///sha-256;UEadromC50nojE-W_o4Y7frwsFDxW7SJrGhwXthODAY> .
+<ni:///sha-256;UEadromC50nojE-W_o4Y7frwsFDxW7SJrGhwXthODAY> cascade:patient <urn:uuid:3aba8196-ebb7-8fb6-ae59-f84c56cbbac7> ;
+	prov:specializationOf <urn:uuid:66eb8cf0-6a56-8d24-b20e-e54bf0c54f76> .
+<urn:uuid:66eb8cf0-6a56-8d24-b20e-e54bf0c54f76> cascade:sourceRecordId "proc-both-3" ;
+	cascade:sourceUrl <https://FHIR.Meridian.example/api/FHIR/R4//Procedure/proc-both-3> ;
+	a cascade:MedicalProcedure .
+_:f1a7b9d220e7ab8c22f5655f14c4a1a8 bridge:selector "" ;
+	prov:wasDerivedFrom <ni:///sha-256;CIcxi4B7t79E83ZMB3lkPAPxX4MB2Vo1tKtLOHPh-sg> ;
+	prov:wasGeneratedBy _:24824123114546dac450d7d32c2c12f5 .
+<ni:///sha-256;CIcxi4B7t79E83ZMB3lkPAPxX4MB2Vo1tKtLOHPh-sg> cascade:serverBaseUrl "https://FHIR.Meridian.example/api/FHIR/R4/" ;
+	pav:retrievedOn "2026-09-01T10:00:00Z"^^xsd:dateTime ;
+	prov:wasGeneratedBy _:d5358c39dd65a15eb921f38c1357f450 ;
+	prov:wasAttributedTo _:2dfa4e4d0d852ddb6dd7b3ec2f3d8517 ;
+	cascade:authenticatedPatient "Patient/eM5vN8qTz2Hc4Rk7Jw0Pb3" ;
+	cascade:authenticatedAsProxy false ;
+	cascade:sourceFormatVersion "4.0.1" .
+_:635033a5c43c3c722d4fb1e8cdeb1337 prov:agent _:2dfa4e4d0d852ddb6dd7b3ec2f3d8517 ;
+	prov:hadRole cascade:AuthorRole .
+_:d5358c39dd65a15eb921f38c1357f450 prov:qualifiedAssociation _:635033a5c43c3c722d4fb1e8cdeb1337 .
+_:ea378819535bfe986541917d542f3ed0 prov:agent _:48236fe3c66a71261a02fb55652cbb4f ;
+	prov:hadRole cascade:TransmitterRole .
+_:d5358c39dd65a15eb921f38c1357f450 prov:qualifiedAssociation _:ea378819535bfe986541917d542f3ed0 .
+_:2dfa4e4d0d852ddb6dd7b3ec2f3d8517 <http://www.w3.org/2000/01/rdf-schema#label> "Meridian Health System" .
+_:48236fe3c66a71261a02fb55652cbb4f <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health" .
+_:24824123114546dac450d7d32c2c12f5 <http://www.w3.org/2000/01/rdf-schema#label> "Apple Health export" ;
+	prov:startedAtTime "2026-09-01T10:00:04Z"^^xsd:dateTime .
+<ni:///sha-256;CIcxi4B7t79E83ZMB3lkPAPxX4MB2Vo1tKtLOHPh-sg> a prov:Entity .
+_:24824123114546dac450d7d32c2c12f5 a prov:Activity ;
+	prov:used <ni:///sha-256;CIcxi4B7t79E83ZMB3lkPAPxX4MB2Vo1tKtLOHPh-sg> ;
+	prov:qualifiedAssociation _:78b715e47075c861f1234a47631136e3 .
+_:78b715e47075c861f1234a47631136e3 prov:hadPlan _:1f9cd48ee0c3b2d01800f6ff3e5cd970 .
+_:1f9cd48ee0c3b2d01800f6ff3e5cd970 a prov:Plan ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "fhir-r4" ;
+	pav:version "0.1.0" .
+_:78b715e47075c861f1234a47631136e3 prov:agent _:daaa0c5905394d220ce8ffd812ffa6d6 .
+_:daaa0c5905394d220ce8ffd812ffa6d6 a prov:SoftwareAgent ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Cascade Bridge for Rust" ;
+	pav:version "0.1.0" .

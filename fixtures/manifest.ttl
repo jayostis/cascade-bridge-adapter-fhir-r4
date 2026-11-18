@@ -161,6 +161,11 @@
     <#procedure-performed-period-end-only>
     <#document-reference-context-and-displays>
     <#immunization-primary-source-and-encounter>
+    <#procedure-performed-date-and-period>
+    <#procedure-performed-date-beside-an-unreadable-period-start>
+    <#procedure-unreadable-performed-date-beside-a-period>
+    <#condition-category-text-beside-a-coding-and-alone>
+    <#observation-component-text-and-unit>
     <#medication-request-formulary-code>
     <#medication-request-us-core-supply-only>
     <#medication-request-supply-and-dosages>
@@ -2517,4 +2522,69 @@
   mf:result [
     bridge:expectedGraph <expected/immunization-primary-source-and-encounter.ttl> ;
     bridge:expectedFindings <findings/immunization-primary-source-and-encounter.ttl>
+  ] .
+
+<#procedure-performed-date-and-period> a bridge:IsomorphicConversionTest ;
+  mf:name "procedure-performed-date-and-period" ;
+  rdfs:comment "A Procedure that states both a performedDateTime and a performedPeriod, which FHIR allows only one of and real feeds send: its date is the performedDateTime alone, one cascade:procedureDate, and the period start is not a second one; the period end is reported." ;
+  mf:action [
+    bridge:input <in/procedure-performed-date-and-period.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/procedure-performed-date-and-period.ttl> ;
+    bridge:expectedFindings <findings/procedure-performed-date-and-period.ttl>
+  ] .
+
+<#procedure-performed-date-beside-an-unreadable-period-start> a bridge:IsomorphicConversionTest ;
+  mf:name "procedure-performed-date-beside-an-unreadable-period-start" ;
+  rdfs:comment "A Procedure with a readable performedDateTime and a performedPeriod whose start is a day the calendar lacks: the date is the performedDateTime, and the unused start is not reported as a date no mapping can type." ;
+  mf:action [
+    bridge:input <in/procedure-performed-date-beside-an-unreadable-period-start.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/procedure-performed-date-beside-an-unreadable-period-start.ttl> ;
+    bridge:expectedFindings <findings/procedure-performed-date-beside-an-unreadable-period-start.ttl>
+  ] .
+
+<#procedure-unreadable-performed-date-beside-a-period> a bridge:IsomorphicConversionTest ;
+  mf:name "procedure-unreadable-performed-date-beside-a-period" ;
+  rdfs:comment "A Procedure whose performedDateTime is a day the calendar lacks, beside a performedPeriod with a readable start: the performedDateTime is the date the source states, so the procedure has none and the date is reported; the period start does not stand in for it." ;
+  mf:action [
+    bridge:input <in/procedure-unreadable-performed-date-beside-a-period.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/procedure-unreadable-performed-date-beside-a-period.ttl> ;
+    bridge:expectedFindings <findings/procedure-unreadable-performed-date-beside-a-period.ttl>
+  ] .
+
+<#condition-category-text-beside-a-coding-and-alone> a bridge:IsomorphicConversionTest ;
+  mf:name "condition-category-text-beside-a-coding-and-alone" ;
+  rdfs:comment "A Condition with two categories, one a coding with text beside it and one text alone: only the text alone is reported, since text beside a coding is that coding's label." ;
+  mf:action [
+    bridge:input <in/condition-category-text-beside-a-coding-and-alone.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/condition-category-text-beside-a-coding-and-alone.ttl> ;
+    bridge:expectedFindings <findings/condition-category-text-beside-a-coding-and-alone.ttl>
+  ] .
+
+<#observation-component-text-and-unit> a bridge:IsomorphicConversionTest ;
+  mf:name "observation-component-text-and-unit" ;
+  rdfs:comment "A blood pressure Observation whose component carries the text of its code and the unit of its quantity: neither has a Cascade predicate, and each is reported." ;
+  mf:action [
+    bridge:input <in/observation-component-text-and-unit.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-resource> ;
+    bridge:facts <facts/meridian.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/observation-component-text-and-unit.ttl> ;
+    bridge:expectedFindings <findings/observation-component-text-and-unit.ttl>
   ] .

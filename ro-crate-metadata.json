@@ -890,6 +890,21 @@
           "@id": "fixtures/in/immunization-primary-source-and-encounter.json"
         },
         {
+          "@id": "fixtures/in/procedure-performed-date-and-period.json"
+        },
+        {
+          "@id": "fixtures/in/procedure-performed-date-beside-an-unreadable-period-start.json"
+        },
+        {
+          "@id": "fixtures/in/procedure-unreadable-performed-date-beside-a-period.json"
+        },
+        {
+          "@id": "fixtures/in/condition-category-text-beside-a-coding-and-alone.json"
+        },
+        {
+          "@id": "fixtures/in/observation-component-text-and-unit.json"
+        },
+        {
           "@id": "fixtures/in/medication-request-formulary-code.json"
         },
         {
@@ -1820,6 +1835,21 @@
           "@id": "fixtures/expected/immunization-primary-source-and-encounter.ttl"
         },
         {
+          "@id": "fixtures/expected/procedure-performed-date-and-period.ttl"
+        },
+        {
+          "@id": "fixtures/expected/procedure-performed-date-beside-an-unreadable-period-start.ttl"
+        },
+        {
+          "@id": "fixtures/expected/procedure-unreadable-performed-date-beside-a-period.ttl"
+        },
+        {
+          "@id": "fixtures/expected/condition-category-text-beside-a-coding-and-alone.ttl"
+        },
+        {
+          "@id": "fixtures/expected/observation-component-text-and-unit.ttl"
+        },
+        {
           "@id": "fixtures/expected/medication-request-formulary-code.ttl"
         },
         {
@@ -1926,6 +1956,21 @@
         },
         {
           "@id": "fixtures/findings/immunization-primary-source-and-encounter.ttl"
+        },
+        {
+          "@id": "fixtures/findings/procedure-performed-date-and-period.ttl"
+        },
+        {
+          "@id": "fixtures/findings/procedure-performed-date-beside-an-unreadable-period-start.ttl"
+        },
+        {
+          "@id": "fixtures/findings/procedure-unreadable-performed-date-beside-a-period.ttl"
+        },
+        {
+          "@id": "fixtures/findings/condition-category-text-beside-a-coding-and-alone.ttl"
+        },
+        {
+          "@id": "fixtures/findings/observation-component-text-and-unit.ttl"
         },
         {
           "@id": "fixtures/findings/medication-request-formulary-code.ttl"
@@ -4961,6 +5006,71 @@
       "description": "An Immunization of an influenza vaccine, id imm-flu-2026, referencing its encounter and stating primarySource true. Authored here on 2026-11-17, for a case the conformance corpus does not hold."
     },
     {
+      "@id": "fixtures/in/procedure-performed-date-and-period.json",
+      "@type": "File",
+      "name": "Procedure with a performed date and a performed period",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "495",
+      "sha256": "566d0857919b0c0e10896914cf5a06a0b019fa6566158ff30a47fdbc0295f805",
+      "dateCreated": "2026-11-17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Procedure of a colonoscopy, id proc-both-1, with a performedDateTime and a performedPeriod whose start differs from it. Authored here on 2026-11-17, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/procedure-performed-date-beside-an-unreadable-period-start.json",
+      "@type": "File",
+      "name": "Procedure with a performed date and a performed period starting at an impossible day",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "495",
+      "sha256": "828c85a4c54df8cc5d944414bef96b85c73f2c16ddccd5aff1a9f50a81c9b5b4",
+      "dateCreated": "2026-11-17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Procedure of a colonoscopy, id proc-both-2, with a performedDateTime and a performedPeriod starting at 2026-02-30. Authored here on 2026-11-17, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/procedure-unreadable-performed-date-beside-a-period.json",
+      "@type": "File",
+      "name": "Procedure with an impossible performed date and a performed period",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "495",
+      "sha256": "0887318b807bb7bf44f3764c0779643c03f15f8301d95a35b4ab4b3873e1fac8",
+      "dateCreated": "2026-11-17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Procedure of a colonoscopy, id proc-both-3, with a performedDateTime of 2026-02-30 and a performedPeriod with a readable start. Authored here on 2026-11-17, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/condition-category-text-beside-a-coding-and-alone.json",
+      "@type": "File",
+      "name": "Condition with a category text beside a coding and a category text alone",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "750",
+      "sha256": "bb2ff9a2294a6313b0b50e1024525568c8bfacf853006d18d12214acba5ce33f",
+      "dateCreated": "2026-11-17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "A Condition of type 2 diabetes mellitus, id cond-category-text-1, with a category coded problem-list-item with the text Problem, and a category of the text Chronic disease management alone. Authored here on 2026-11-17, for a case the conformance corpus does not hold."
+    },
+    {
+      "@id": "fixtures/in/observation-component-text-and-unit.json",
+      "@type": "File",
+      "name": "Observation with a component carrying a code text and a quantity unit",
+      "encodingFormat": "application/fhir+json",
+      "contentSize": "973",
+      "sha256": "cab7f15eee244225940c1f4673b767d25aa8005f55c7d21cf36c0abaf57f40a8",
+      "dateCreated": "2026-11-17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "An Observation of a blood pressure panel, id obs-bp-components-1, with one component, a systolic pressure of 118 mmHg with the text Systolic. Authored here on 2026-11-17, for a case the conformance corpus does not hold."
+    },
+    {
       "@id": "fixtures/in/medication-request-formulary-code.json",
       "@type": "File",
       "name": "MedicationRequest coded by a formulary and by RxNorm",
@@ -5255,7 +5365,9 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The inputs a benchmark harness runs on this adapter, in the shape of bench/manifest.schema.json in cascade-bridge-spec. Each input's sha256 and bytes are of its gunzipped document; the crate's are of the committed file."
+      "description": "The inputs a benchmark harness runs on this adapter, in the shape of bench/manifest.schema.json in cascade-bridge-spec. Each input's sha256 and bytes are of its gunzipped document; the crate's are of the committed file.",
+      "contentSize": "1739",
+      "sha256": "12b4d8d85d5fc42647c7156016325c0fb6643e4fac8dd2ece1919e0116d1cd01"
     },
     {
       "@id": "bench/syn-c521b4f4b8f5b303.json.gz",
@@ -9131,6 +9243,86 @@
       "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
     },
     {
+      "@id": "fixtures/expected/procedure-performed-date-and-period.ttl",
+      "@type": "File",
+      "name": "Expected graph for procedure-performed-date-and-period",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3262",
+      "sha256": "f0ae63766492cff4fb3934bdb2f67f4e923351956c83d7d283273fa2c4df47d7",
+      "about": {
+        "@id": "fixtures/in/procedure-performed-date-and-period.json"
+      },
+      "dateCreated": "2026-11-17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/procedure-performed-date-beside-an-unreadable-period-start.ttl",
+      "@type": "File",
+      "name": "Expected graph for procedure-performed-date-beside-an-unreadable-period-start",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3263",
+      "sha256": "2316608d78b12277ba8b5bb928c1f98d212a6bbcf1a767925faa98594611ed18",
+      "about": {
+        "@id": "fixtures/in/procedure-performed-date-beside-an-unreadable-period-start.json"
+      },
+      "dateCreated": "2026-11-17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/procedure-unreadable-performed-date-beside-a-period.ttl",
+      "@type": "File",
+      "name": "Expected graph for procedure-unreadable-performed-date-beside-a-period",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3200",
+      "sha256": "89bfc70e982b4af7dd59c42f90256a738705792102f3a2325f4906d45a912663",
+      "about": {
+        "@id": "fixtures/in/procedure-unreadable-performed-date-beside-a-period.json"
+      },
+      "dateCreated": "2026-11-17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/condition-category-text-beside-a-coding-and-alone.ttl",
+      "@type": "File",
+      "name": "Expected graph for condition-category-text-beside-a-coding-and-alone",
+      "encodingFormat": "text/turtle",
+      "contentSize": "3279",
+      "sha256": "1d61d570ac5225862c8da2f2ae8ae041e14bfca09b4361c05ce3a84d17ab515c",
+      "about": {
+        "@id": "fixtures/in/condition-category-text-beside-a-coding-and-alone.json"
+      },
+      "dateCreated": "2026-11-17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
+      "@id": "fixtures/expected/observation-component-text-and-unit.ttl",
+      "@type": "File",
+      "name": "Expected graph for observation-component-text-and-unit",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2220",
+      "sha256": "e9ca0141461e76d0ede8b8eb0364ac745342e15503d3d92f9999ff0b74d6025c",
+      "about": {
+        "@id": "fixtures/in/observation-component-text-and-unit.json"
+      },
+      "dateCreated": "2026-11-17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "The records layer cascade-bridge-rs convert --out produces from the input it is about and the facts its test entry supplies, regenerated by the Bridge and committed unedited, never written by hand; its record names recomputed from each rule's inputs by cascade-vocabulary's tests/naming.py, and its version names checked against the hash of their own triples."
+    },
+    {
       "@id": "fixtures/expected/medication-request-formulary-code.ttl",
       "@type": "File",
       "name": "Expected graph for medication-request-formulary-code",
@@ -9699,6 +9891,86 @@
       "sha256": "f2dc8587b0ed176ec441989ca30ccfb72122194a09f27fb9b12ff8624e4bdb1b",
       "about": {
         "@id": "fixtures/in/immunization-primary-source-and-encounter.json"
+      },
+      "dateCreated": "2026-11-17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/procedure-performed-date-and-period.ttl",
+      "@type": "File",
+      "name": "Expected findings for procedure-performed-date-and-period",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1065",
+      "sha256": "2c45d0ed77bb7b73c931c028aeee32039d009c91d4737920ae84a2bc6a508594",
+      "about": {
+        "@id": "fixtures/in/procedure-performed-date-and-period.json"
+      },
+      "dateCreated": "2026-11-17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/procedure-performed-date-beside-an-unreadable-period-start.ttl",
+      "@type": "File",
+      "name": "Expected findings for procedure-performed-date-beside-an-unreadable-period-start",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1092",
+      "sha256": "7ef03e1fe9543d44d6e398de91c4b7eeb6c035241bf131926f808a7b33a934b3",
+      "about": {
+        "@id": "fixtures/in/procedure-performed-date-beside-an-unreadable-period-start.json"
+      },
+      "dateCreated": "2026-11-17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/procedure-unreadable-performed-date-beside-a-period.ttl",
+      "@type": "File",
+      "name": "Expected findings for procedure-unreadable-performed-date-beside-a-period",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1913",
+      "sha256": "5712b4bab6c93e5d00fafdfd91e66e49de911f77ad8c1f31ff6ab6b99ff1e53f",
+      "about": {
+        "@id": "fixtures/in/procedure-unreadable-performed-date-beside-a-period.json"
+      },
+      "dateCreated": "2026-11-17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/condition-category-text-beside-a-coding-and-alone.ttl",
+      "@type": "File",
+      "name": "Expected findings for condition-category-text-beside-a-coding-and-alone",
+      "encodingFormat": "text/turtle",
+      "contentSize": "1055",
+      "sha256": "15080debb6cb233ca89de2e27ab792af7d68c478e54ef400e367608b33424f70",
+      "about": {
+        "@id": "fixtures/in/condition-category-text-beside-a-coding-and-alone.json"
+      },
+      "dateCreated": "2026-11-17",
+      "license": {
+        "@id": "https://spdx.org/licenses/Apache-2.0"
+      },
+      "description": "cascade-bridge-rs convert --findings over the input it is about, with the facts its test entry supplies, committed unedited; each finding reviewed against in/sparql/ and the gap scheme."
+    },
+    {
+      "@id": "fixtures/findings/observation-component-text-and-unit.ttl",
+      "@type": "File",
+      "name": "Expected findings for observation-component-text-and-unit",
+      "encodingFormat": "text/turtle",
+      "contentSize": "2775",
+      "sha256": "800b76a52aec6b721e8d515d5ec3b824279e10020e8da3664b8bbbddc1969891",
+      "about": {
+        "@id": "fixtures/in/observation-component-text-and-unit.json"
       },
       "dateCreated": "2026-11-17",
       "license": {
@@ -10348,8 +10620,8 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "contentSize": "130784",
-      "sha256": "1a91ca9adb2fa728fec1f0efe32d911292e092f54d223bd6f2aa3d052635154a"
+      "contentSize": "134945",
+      "sha256": "79994ceeb310d07e11df7893f339c1da81d64f0c94e31bb7481feb7498373519"
     },
     {
       "@id": "fixtures/facts/meridian.ttl",
@@ -10682,7 +10954,9 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "How the fixtures are treated: every byte is recorded, an input is copied or authored here and never edited, an expected graph or findings file is the Bridge's output committed unedited, and the checks the specification's lint cannot run: copied inputs against conformance, and each expected version's name against the hash of its own triples."
+      "description": "How the fixtures are treated: every byte is recorded, an input is copied or authored here and never edited, an expected graph or findings file is the Bridge's output committed unedited, and the checks the specification's lint cannot run: copied inputs against conformance, and each expected version's name against the hash of its own triples.",
+      "contentSize": "3775",
+      "sha256": "189d7ff2fc1f153318a296bfbda4fc37c7dd66bacf4f9c2afc3d6394fe27357a"
     },
     {
       "@id": "in/CLAUDE.md",
@@ -10692,7 +10966,9 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "That a name's text is the vocabulary's naming rule body, copied, and the check that every rule body in in/sparql/ is still the body of cascade-vocabulary's tests/vectors/naming/, which the specification's lint cannot run."
+      "description": "That a name's text is the vocabulary's naming rule body, copied, and the check that every rule body in in/sparql/ is still the body of cascade-vocabulary's tests/vectors/naming/, which the specification's lint cannot run.",
+      "contentSize": "2721",
+      "sha256": "e4d3c4c75d4178a723ce01e82b501a38cbf1056df365204b78b5764f39447848"
     },
     {
       "@id": "schema/CLAUDE.md",
@@ -10702,7 +10978,9 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The schema is HL7's verbatim copy, and how it is changed."
+      "description": "The schema is HL7's verbatim copy, and how it is changed.",
+      "contentSize": "412",
+      "sha256": "f1b62594d31a8a4a8a598687b467202194854ddffd9fafeca75311ce8338cefe"
     },
     {
       "@id": "vocab/CLAUDE.md",
@@ -10712,7 +10990,9 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "What a lookup table is and how its rows are written, what a gap is and is not, what changes with it when a gap is added, removed or renamed, and how a path of the source gets its verdict."
+      "description": "What a lookup table is and how its rows are written, what a gap is and is not, what changes with it when a gap is added, removed or renamed, and how a path of the source gets its verdict.",
+      "contentSize": "4467",
+      "sha256": "9753288f900ed12514f7640d090061ac0f4c0d9794c2aa6324c079159ecf23d8"
     },
     {
       "@id": "https://github.com/jayostis/conformance/tree/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir",
