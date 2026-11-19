@@ -1,0 +1,22 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cascade: <https://ns.cascadeprotocol.org/cascade#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix pav: <http://purl.org/pav/> .
+<ni:///sha-256;sEe1hgsgJ8ypq7AmzFEvcsEJDJLRU7iJ3Oxet6VwzhY> cascade:serverBaseUrl "http://example.org/fhir" ;
+	pav:retrievedOn "2026-10-13T09:00:00Z"^^xsd:dateTime ;
+	cascade:sourceFormatVersion "4.0.1" .
+_:dc415404487e56a9a140536854ac3df7 <http://www.w3.org/2000/01/rdf-schema#label> "Example server export" ;
+	prov:startedAtTime "2026-10-13T09:00:04Z"^^xsd:dateTime .
+<ni:///sha-256;sEe1hgsgJ8ypq7AmzFEvcsEJDJLRU7iJ3Oxet6VwzhY> a prov:Entity .
+_:dc415404487e56a9a140536854ac3df7 a prov:Activity ;
+	prov:used <ni:///sha-256;sEe1hgsgJ8ypq7AmzFEvcsEJDJLRU7iJ3Oxet6VwzhY> ;
+	prov:qualifiedAssociation _:a7993c8e16873999beea75023896cf7f .
+_:a7993c8e16873999beea75023896cf7f prov:hadPlan _:7bb6f0e7d4caa9b5de50965e6b433955 .
+_:7bb6f0e7d4caa9b5de50965e6b433955 a prov:Plan ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "fhir-r4" ;
+	pav:version "0.1.0" .
+_:a7993c8e16873999beea75023896cf7f prov:agent _:7b9b5e2f9a92fb8c18616faa27aad9c5 .
+_:7b9b5e2f9a92fb8c18616faa27aad9c5 a prov:SoftwareAgent ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Cascade Bridge for Rust" ;
+	pav:version "0.1.0" .
