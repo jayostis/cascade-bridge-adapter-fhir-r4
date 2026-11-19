@@ -196,6 +196,7 @@
     <#bundle-lab-result-with-contained-not-a-list>
     <#bundle-condition-onsets-and-the-fhir-date-forms>
     <#bundle-last-updates-short-of-an-instant>
+    <#bundle-last-updates-of-resources-nothing-maps>
   ) .
 
 <#allergy-with-id> a bridge:IsomorphicConversionTest ;
@@ -2690,7 +2691,7 @@
 
 <#bundle-last-updates-short-of-an-instant> a bridge:IsomorphicConversionTest ;
   mf:name "bundle-last-updates-short-of-an-instant" ;
-  rdfs:comment "A Bundle of Conditions whose meta.lastUpdated is a time with no zone, a date alone, and a time to the minute with an offset. FHIR's instant states its zone, and a pod compares change times across sources, so the first two are no pav:lastUpdateOn on their arrivals and each is a finding, fhirr4:dateNotCarried; the third is carried, padded to the second." ;
+  rdfs:comment "A Bundle of Conditions whose meta.lastUpdated is a time with no zone, a date alone, and a time to the minute with an offset. FHIR's instant states its zone, and a pod compares change times across sources, so the first two are no pav:lastUpdateOn on their arrivals and each is a finding, fhirr4:dateNotCarried; the third is carried, padded to the second, though FHIR's instant states its seconds, so the value is not valid FHIR and the schema finding reports it." ;
   mf:action [
     bridge:input <in/bundle-last-updates-short-of-an-instant.json> ;
     bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
@@ -2699,4 +2700,17 @@
   mf:result [
     bridge:expectedGraph <expected/bundle-last-updates-short-of-an-instant.ttl> ;
     bridge:expectedFindings <findings/bundle-last-updates-short-of-an-instant.ttl>
+  ] .
+
+<#bundle-last-updates-of-resources-nothing-maps> a bridge:IsomorphicConversionTest ;
+  mf:name "bundle-last-updates-of-resources-nothing-maps" ;
+  rdfs:comment "A Bundle of an Encounter and a vital-signs Observation whose meta.lastUpdated is a time with no zone and a date alone. The mapping writes no arrival of either, so neither last update is a finding." ;
+  mf:action [
+    bridge:input <in/bundle-last-updates-of-resources-nothing-maps.json> ;
+    bridge:envelope <../ro-crate-metadata.json#envelope-bundle> ;
+    bridge:facts <facts/example-org.ttl>
+  ] ;
+  mf:result [
+    bridge:expectedGraph <expected/bundle-last-updates-of-resources-nothing-maps.ttl> ;
+    bridge:expectedFindings <findings/bundle-last-updates-of-resources-nothing-maps.ttl>
   ] .
