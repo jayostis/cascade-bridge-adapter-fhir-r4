@@ -1,0 +1,3703 @@
+{
+  "env": {
+    "os": "Ubuntu 26.04.1 LTS",
+    "runner": "github-hosted",
+    "cpus": 4,
+    "node": "22.23.5",
+    "host": "node",
+    "profile": "wasm",
+    "cpu": "AMD EPYC 7763 64-Core Processor"
+  },
+  "commit": {
+    "cascade-bridge-adapter-fhir-r4": "bbaa314e9438da8c08e8d3bf233e25702b665f30",
+    "cascade-vocabulary": "c9fb5cd1ce85f0a9ef2360ea6e9d1d80f97594ed",
+    "cascade-bridge-rs": "23bbe7009eee5d035e5668f85f20b764e8b49e76"
+  },
+  "results": [
+    {
+      "name": "fhir-r4-lab-pull-3000/convert/first",
+      "unit": "s",
+      "value": 9.056362,
+      "kind": "clock",
+      "samples": 3,
+      "range": "8.906851-9.180981",
+      "extra": "Seconds the first convert of a fresh process takes, timed without the step-by-step breakdown. A caller that opens an adapter and converts once also waits for the engine to start (the boot rows) and the adapter to load (the load rows), which this does not count. A pull of 3,000 lab results in one FHIR R4 searchset Bundle. sha256 69b4daac45fd32449b8c290be9a7551566b537a6171218e8125169e94ca5882b, 2760035 bytes"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/convert/second",
+      "unit": "s",
+      "value": 8.167215,
+      "kind": "clock",
+      "samples": 3,
+      "range": "8.095102-8.431214",
+      "extra": "Seconds a second convert of the same document takes in the same process, timed without the step-by-step breakdown: the warm cost."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/convert/profiled",
+      "unit": "s",
+      "value": 8.692805,
+      "kind": "clock",
+      "samples": 1,
+      "range": "8.692805-8.692805",
+      "extra": "Seconds of the one convert run with the step-by-step breakdown on, from which the stage and query rows are read. The breakdown makes it slower than a plain convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/memory.grow/first",
+      "unit": "{count}",
+      "value": 4,
+      "kind": "cost",
+      "samples": 3,
+      "range": "4-4",
+      "extra": "How many times the engine's memory grew during the first convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/memory.grow/second",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "cost",
+      "samples": 3,
+      "range": "0-0",
+      "extra": "How many times the engine's memory grew during the second convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/wasm-memory/first",
+      "unit": "By",
+      "value": 136511488,
+      "kind": "cost",
+      "samples": 3,
+      "range": "136511488-136511488",
+      "extra": "Bytes of memory the engine holds once the first convert is done."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/wasm-memory/second",
+      "unit": "By",
+      "value": 136511488,
+      "kind": "cost",
+      "samples": 3,
+      "range": "136511488-136511488",
+      "extra": "Bytes of memory the engine holds once the second convert is done."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/rss",
+      "unit": "By",
+      "value": 416292864,
+      "kind": "clock",
+      "samples": 3,
+      "range": "399855616-461193216",
+      "extra": "Peak memory the whole process held in RAM, in bytes: the engine's start, the adapter's load and both converts all count."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/records",
+      "unit": "{count}",
+      "value": 3004,
+      "kind": "output",
+      "extra": "Source records the Bridge found in the document and converted. A pull of 3,000 lab results in one FHIR R4 searchset Bundle."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/triples",
+      "unit": "{count}",
+      "value": 63025,
+      "kind": "output",
+      "extra": "Distinct triples in the output graph."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/findings",
+      "unit": "{count}",
+      "value": 3006,
+      "kind": "output",
+      "extra": "Findings the conversion wrote."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/output-bytes/graph",
+      "unit": "By",
+      "value": 4356620,
+      "kind": "output",
+      "extra": "Bytes of the output graph as Turtle."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/output-bytes/findings",
+      "unit": "By",
+      "value": 2892023,
+      "kind": "output",
+      "extra": "Bytes of the findings as Turtle."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/fallbacks",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Record executions the general evaluator answered because a query was not compiled or a compiled plan gave up. The detect query, which runs once, is not counted."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/coding-system-table.rq",
+      "unit": "s",
+      "value": 0.082712,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.082712-0.082712",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/document-table.rq",
+      "unit": "s",
+      "value": 0.013182,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.013182-0.013182",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/lab-result-table.rq",
+      "unit": "s",
+      "value": 0.026468,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.026468-0.026468",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/medication-table.rq",
+      "unit": "s",
+      "value": 0.014277,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.014277-0.014277",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/note-or-document-table.rq",
+      "unit": "s",
+      "value": 0.007455,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.007455-0.007455",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/organization-table.rq",
+      "unit": "s",
+      "value": 0.025207,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.025207-0.025207",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/variant-interpretation-table.rq",
+      "unit": "s",
+      "value": 0.010965,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.010965-0.010965",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/variant-table.rq",
+      "unit": "s",
+      "value": 0.011905,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.011905-0.011905",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/absent-reasons.rq",
+      "unit": "s",
+      "value": 0.077659,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.077659-0.077659",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/allergy-intolerance.rq",
+      "unit": "s",
+      "value": 0.01346,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.01346-0.01346",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/attachments.rq",
+      "unit": "s",
+      "value": 0.014044,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.014044-0.014044",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/condition.rq",
+      "unit": "s",
+      "value": 0.011549,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.011549-0.011549",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/immunization.rq",
+      "unit": "s",
+      "value": 0.010338,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.010338-0.010338",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/lab-result-codes.rq",
+      "unit": "s",
+      "value": 0.126894,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.126894-0.126894",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/lab-result-identifiers.rq",
+      "unit": "s",
+      "value": 0.0299,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.0299-0.0299",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/lab-result-performer.rq",
+      "unit": "s",
+      "value": 0.005198,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.005198-0.005198",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/lab-result-quantities.rq",
+      "unit": "s",
+      "value": 0.138208,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.138208-0.138208",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/lab-result.rq",
+      "unit": "s",
+      "value": 0.1499,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.1499-0.1499",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/medication-dispense-prescription.rq",
+      "unit": "s",
+      "value": 0.016371,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.016371-0.016371",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/medication-dispense.rq",
+      "unit": "s",
+      "value": 0.010677,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.010677-0.010677",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/medication-supply-and-dosages.rq",
+      "unit": "s",
+      "value": 0.012988,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.012988-0.012988",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/medication.rq",
+      "unit": "s",
+      "value": 0.011996,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.011996-0.011996",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/narrative-text.rq",
+      "unit": "s",
+      "value": 0.038452,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.038452-0.038452",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/note-or-document.rq",
+      "unit": "s",
+      "value": 0.009954,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.009954-0.009954",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/organization-from-server.rq",
+      "unit": "s",
+      "value": 0.006388,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.006388-0.006388",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/organization.rq",
+      "unit": "s",
+      "value": 0.015366,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.015366-0.015366",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/patient.rq",
+      "unit": "s",
+      "value": 0.011284,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.011284-0.011284",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/procedure.rq",
+      "unit": "s",
+      "value": 0.010256,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.010256-0.010256",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/record.rq",
+      "unit": "s",
+      "value": 0.345624,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.345624-0.345624",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/report-and-note-performer.rq",
+      "unit": "s",
+      "value": 0.00531,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.00531-0.00531",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/report-results.rq",
+      "unit": "s",
+      "value": 0.015029,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.015029-0.015029",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/report.rq",
+      "unit": "s",
+      "value": 0.010494,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.010494-0.010494",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/variant-interpretation.rq",
+      "unit": "s",
+      "value": 0.01451,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.01451-0.01451",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/variant.rq",
+      "unit": "s",
+      "value": 0.012698,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.012698-0.012698",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/absent-reason-findings.rq",
+      "unit": "s",
+      "value": 0.051329,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.051329-0.051329",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/category-text-findings.rq",
+      "unit": "s",
+      "value": 0.016,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.016-0.016",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/code-findings.rq",
+      "unit": "s",
+      "value": 0.011353,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.011353-0.011353",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/date-findings.rq",
+      "unit": "s",
+      "value": 0.050655,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.050655-0.050655",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/document-version-findings.rq",
+      "unit": "s",
+      "value": 0.001802,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.001802-0.001802",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/lab-result-findings.rq",
+      "unit": "s",
+      "value": 0.098139,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.098139-0.098139",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/medication-dispense-findings.rq",
+      "unit": "s",
+      "value": 0.011776,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.011776-0.011776",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/medication-dispense-prescription-findings.rq",
+      "unit": "s",
+      "value": 0.013116,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.013116-0.013116",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/medication-findings.rq",
+      "unit": "s",
+      "value": 0.083316,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.083316-0.083316",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/narrative-findings.rq",
+      "unit": "s",
+      "value": 0.008533,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.008533-0.008533",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/observation-component-findings.rq",
+      "unit": "s",
+      "value": 0.01315,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.01315-0.01315",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/observation-findings.rq",
+      "unit": "s",
+      "value": 0.082826,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.082826-0.082826",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/organization-findings.rq",
+      "unit": "s",
+      "value": 0.011415,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.011415-0.011415",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/patient-findings.rq",
+      "unit": "s",
+      "value": 0.009332,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.009332-0.009332",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/patient-reference-findings.rq",
+      "unit": "s",
+      "value": 0.068551,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.068551-0.068551",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/recorded-date-findings.rq",
+      "unit": "s",
+      "value": 0.012711,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.012711-0.012711",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/reference-display-findings.rq",
+      "unit": "s",
+      "value": 0.045813,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.045813-0.045813",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/reference-without-server-findings.rq",
+      "unit": "s",
+      "value": 0.052486,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.052486-0.052486",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/repeated-id-findings.rq",
+      "unit": "s",
+      "value": 0.033081,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.033081-0.033081",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/report-and-note-findings.rq",
+      "unit": "s",
+      "value": 0.016237,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.016237-0.016237",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/report-result-findings.rq",
+      "unit": "s",
+      "value": 0.014868,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.014868-0.014868",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/resource-type-findings.rq",
+      "unit": "s",
+      "value": 0.016399,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.016399-0.016399",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/variant-findings.rq",
+      "unit": "s",
+      "value": 0.024029,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.024029-0.024029",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/variant-interpretation-findings.rq",
+      "unit": "s",
+      "value": 0.014825,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.014825-0.014825",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-time/detect.rq",
+      "unit": "s",
+      "value": 0.009882,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.009882-0.009882",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/coding-system-table.rq",
+      "unit": "{count}",
+      "value": 18006,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/document-table.rq",
+      "unit": "{count}",
+      "value": 12014,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/lab-result-table.rq",
+      "unit": "{count}",
+      "value": 3000,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/medication-table.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/note-or-document-table.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/organization-table.rq",
+      "unit": "{count}",
+      "value": 48,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/variant-interpretation-table.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/variant-table.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/absent-reasons.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/allergy-intolerance.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/attachments.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/condition.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/immunization.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/lab-result-codes.rq",
+      "unit": "{count}",
+      "value": 3000,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/lab-result-identifiers.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/lab-result-performer.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/lab-result-quantities.rq",
+      "unit": "{count}",
+      "value": 15000,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/lab-result.rq",
+      "unit": "{count}",
+      "value": 12000,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/medication-dispense-prescription.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/medication-dispense.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/medication-supply-and-dosages.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/medication.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/narrative-text.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/note-or-document.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/organization-from-server.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/organization.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/patient.rq",
+      "unit": "{count}",
+      "value": 3,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/procedure.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/record.rq",
+      "unit": "{count}",
+      "value": 12003,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/report-and-note-performer.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/report-results.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/report.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/variant-interpretation.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/variant.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/absent-reason-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/category-text-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/code-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/date-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/document-version-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/lab-result-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/medication-dispense-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/medication-dispense-prescription-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/medication-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/narrative-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/observation-component-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/observation-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/organization-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/patient-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/patient-reference-findings.rq",
+      "unit": "{count}",
+      "value": 10,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/recorded-date-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/reference-display-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/reference-without-server-findings.rq",
+      "unit": "{count}",
+      "value": 30000,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/repeated-id-findings.rq",
+      "unit": "{count}",
+      "value": 20,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/report-and-note-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/report-result-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/resource-type-findings.rq",
+      "unit": "{count}",
+      "value": 30,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/variant-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/variant-interpretation-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 3004"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/query-rows/detect.rq",
+      "unit": "{count}",
+      "value": 1,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 1"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/stage/document-table",
+      "unit": "s",
+      "value": 0.245205,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.245205-0.245205",
+      "extra": "Running the adapter's document-table query on every record of the document, to link a record to any other record, in the document or not. (Specification stage: link records.)"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/stage/lift",
+      "unit": "s",
+      "value": 0.482441,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.482441-0.482441",
+      "extra": "Reading the source document into the triples the adapter's queries can ask about, one record at a time. (Specification stage: read and chunk.)"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/stage/source-validation",
+      "unit": "s",
+      "value": 1.400225,
+      "kind": "clock",
+      "samples": 1,
+      "range": "1.400225-1.400225",
+      "extra": "Checking each source record, and the document as a whole where the adapter gives a document schema, against the adapter's schema (XSD or JSON Schema). A failure is a finding, never a refusal. (Specification stage: check, validate.)"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/stage/accounting",
+      "unit": "s",
+      "value": 0.020757,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.020757-0.020757",
+      "extra": "Working out, against the adapter's accounting file, what became of each part of each source record."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/stage/dataset",
+      "unit": "s",
+      "value": 0.012302,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.012302-0.012302",
+      "extra": "Putting the facts about a record into the store its queries run over."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/stage/index",
+      "unit": "s",
+      "value": 0.25602,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.25602-0.25602",
+      "extra": "Building the lookup structure that compiled queries read, from a record's triples. A query the general evaluator answers needs none."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/stage/mapping",
+      "unit": "s",
+      "value": 1.167616,
+      "kind": "clock",
+      "samples": 1,
+      "range": "1.167616-1.167616",
+      "extra": "Running the adapter's mapping queries on each record, without the time of building their lookup structure. (Specification stage: transform.)"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/stage/records",
+      "unit": "s",
+      "value": 0.262528,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.262528-0.262528",
+      "extra": "Turning what the mapping produced into each record's graph: naming its versions, keeping one where the mapping wrote several, and writing their arrivals. (Specification stage: name versions, write arrivals.)"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/stage/output-validation",
+      "unit": "s",
+      "value": 3.299695,
+      "kind": "clock",
+      "samples": 1,
+      "range": "3.299695-3.299695",
+      "extra": "Checking each record's output against the vocabulary's SHACL shapes."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/stage/findings",
+      "unit": "s",
+      "value": 1.005446,
+      "kind": "clock",
+      "samples": 1,
+      "range": "1.005446-1.005446",
+      "extra": "Running the adapter's findings queries to find what the source record got wrong or left out. (Specification stage: findings.)"
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/stage/unresolved-addresses",
+      "unit": "s",
+      "value": 0.04104,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.04104-0.04104",
+      "extra": "Finding the references to records the document does not hold, which keep their computed names."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/stage/detect",
+      "unit": "s",
+      "value": 0.009941,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.009941-0.009941",
+      "extra": "Running the adapter's detect query, which reports whether the adapter reads this document. The Bridge converts every record whatever the answer; it never routes."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/stage/summary",
+      "unit": "s",
+      "value": 0.019161,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.019161-0.019161",
+      "extra": "Counting the graph's distinct triples and the findings once every record is done."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/stage/serialising",
+      "unit": "s",
+      "value": 0.205904,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.205904-0.205904",
+      "extra": "Writing the graph and the findings out as Turtle or N-Triples."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/stage/unaccounted",
+      "unit": "s",
+      "value": 0.264523,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.264523-0.264523",
+      "extra": "Seconds of the profiled convert that none of the stages accounts for, such as writing the document and the import into the graph."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/output/graph",
+      "unit": "{count}",
+      "value": 63025,
+      "kind": "output",
+      "sha256": "37ddd3ff45eedcca686486482a5dd0ea90120d791c04352fb96a41e20d5fe7ac",
+      "extra": "Distinct triples in the output graph, with a SHA-256 fingerprint of the output that is the same whenever the content is the same, whatever order the engine wrote it in and whatever it named its blank nodes."
+    },
+    {
+      "name": "fhir-r4-lab-pull-3000/output/findings",
+      "unit": "{count}",
+      "value": 45090,
+      "kind": "output",
+      "sha256": "21239a39a4729ba969bd423ee6088a728e8605fcfbcd31a1c9d285695c6251e5",
+      "extra": "Distinct triples in the findings, with a SHA-256 fingerprint of them that is the same whenever the content is the same, whatever order the engine wrote them in and whatever it named its blank nodes."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/convert/first",
+      "unit": "s",
+      "value": 3.121394,
+      "kind": "clock",
+      "samples": 3,
+      "range": "3.113115-3.242267",
+      "extra": "Seconds the first convert of a fresh process takes, timed without the step-by-step breakdown. A caller that opens an adapter and converts once also waits for the engine to start (the boot rows) and the adapter to load (the load rows), which this does not count. The trimmed ten-year Synthea record of the demo hospitals, as a FHIR R4 Bundle. sha256 2703dc1e7e920fa1e45d16c58f8338ef13b3cc1916ee40ffa461112d54dce5de, 1098812 bytes"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/convert/second",
+      "unit": "s",
+      "value": 2.736497,
+      "kind": "clock",
+      "samples": 3,
+      "range": "2.68402-2.769296",
+      "extra": "Seconds a second convert of the same document takes in the same process, timed without the step-by-step breakdown: the warm cost."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/convert/profiled",
+      "unit": "s",
+      "value": 3.36974,
+      "kind": "clock",
+      "samples": 1,
+      "range": "3.36974-3.36974",
+      "extra": "Seconds of the one convert run with the step-by-step breakdown on, from which the stage and query rows are read. The breakdown makes it slower than a plain convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/memory.grow/first",
+      "unit": "{count}",
+      "value": 1,
+      "kind": "cost",
+      "samples": 3,
+      "range": "0-1",
+      "extra": "How many times the engine's memory grew during the first convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/memory.grow/second",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "cost",
+      "samples": 3,
+      "range": "0-0",
+      "extra": "How many times the engine's memory grew during the second convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/wasm-memory/first",
+      "unit": "By",
+      "value": 86179840,
+      "kind": "cost",
+      "samples": 3,
+      "range": "69402624-86179840",
+      "extra": "Bytes of memory the engine holds once the first convert is done."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/wasm-memory/second",
+      "unit": "By",
+      "value": 86179840,
+      "kind": "cost",
+      "samples": 3,
+      "range": "69402624-86179840",
+      "extra": "Bytes of memory the engine holds once the second convert is done."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/rss",
+      "unit": "By",
+      "value": 370225152,
+      "kind": "clock",
+      "samples": 3,
+      "range": "354213888-386928640",
+      "extra": "Peak memory the whole process held in RAM, in bytes: the engine's start, the adapter's load and both converts all count."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/records",
+      "unit": "{count}",
+      "value": 647,
+      "kind": "output",
+      "extra": "Source records the Bridge found in the document and converted. The trimmed ten-year Synthea record of the demo hospitals, as a FHIR R4 Bundle."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/triples",
+      "unit": "{count}",
+      "value": 12654,
+      "kind": "output",
+      "extra": "Distinct triples in the output graph."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/findings",
+      "unit": "{count}",
+      "value": 2256,
+      "kind": "output",
+      "extra": "Findings the conversion wrote."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/output-bytes/graph",
+      "unit": "By",
+      "value": 860516,
+      "kind": "output",
+      "extra": "Bytes of the output graph as Turtle."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/output-bytes/findings",
+      "unit": "By",
+      "value": 2254483,
+      "kind": "output",
+      "extra": "Bytes of the findings as Turtle."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/coding-system-table.rq",
+      "unit": "s",
+      "value": 0.02734,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.02734-0.02734",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/document-table.rq",
+      "unit": "s",
+      "value": 0.004362,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.004362-0.004362",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/lab-result-table.rq",
+      "unit": "s",
+      "value": 0.005984,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.005984-0.005984",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/medication-table.rq",
+      "unit": "s",
+      "value": 0.004203,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.004203-0.004203",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/note-or-document-table.rq",
+      "unit": "s",
+      "value": 0.002618,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.002618-0.002618",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/organization-table.rq",
+      "unit": "s",
+      "value": 0.006289,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.006289-0.006289",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/variant-interpretation-table.rq",
+      "unit": "s",
+      "value": 0.002886,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.002886-0.002886",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/variant-table.rq",
+      "unit": "s",
+      "value": 0.003063,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.003063-0.003063",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/absent-reasons.rq",
+      "unit": "s",
+      "value": 0.026589,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.026589-0.026589",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/allergy-intolerance.rq",
+      "unit": "s",
+      "value": 0.00556,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.00556-0.00556",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/attachments.rq",
+      "unit": "s",
+      "value": 0.005406,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.005406-0.005406",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/condition.rq",
+      "unit": "s",
+      "value": 0.011082,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.011082-0.011082",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/immunization.rq",
+      "unit": "s",
+      "value": 0.004456,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.004456-0.004456",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/lab-result-codes.rq",
+      "unit": "s",
+      "value": 0.025125,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.025125-0.025125",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/lab-result-identifiers.rq",
+      "unit": "s",
+      "value": 0.007212,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.007212-0.007212",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/lab-result-performer.rq",
+      "unit": "s",
+      "value": 0.001677,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.001677-0.001677",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/lab-result-quantities.rq",
+      "unit": "s",
+      "value": 0.025701,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.025701-0.025701",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/lab-result.rq",
+      "unit": "s",
+      "value": 0.032345,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.032345-0.032345",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/medication-dispense-prescription.rq",
+      "unit": "s",
+      "value": 0.00504,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.00504-0.00504",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/medication-dispense.rq",
+      "unit": "s",
+      "value": 0.003525,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.003525-0.003525",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/medication-supply-and-dosages.rq",
+      "unit": "s",
+      "value": 0.011759,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.011759-0.011759",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/medication.rq",
+      "unit": "s",
+      "value": 0.012031,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.012031-0.012031",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/narrative-text.rq",
+      "unit": "s",
+      "value": 0.013795,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.013795-0.013795",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/note-or-document.rq",
+      "unit": "s",
+      "value": 0.003878,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.003878-0.003878",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/organization-from-server.rq",
+      "unit": "s",
+      "value": 0.002328,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.002328-0.002328",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/organization.rq",
+      "unit": "s",
+      "value": 0.005023,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.005023-0.005023",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/patient.rq",
+      "unit": "s",
+      "value": 0.003936,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.003936-0.003936",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/procedure.rq",
+      "unit": "s",
+      "value": 0.007796,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.007796-0.007796",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/record.rq",
+      "unit": "s",
+      "value": 0.09844,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.09844-0.09844",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/report-and-note-performer.rq",
+      "unit": "s",
+      "value": 0.001837,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.001837-0.001837",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/report-results.rq",
+      "unit": "s",
+      "value": 0.00469,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.00469-0.00469",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/report.rq",
+      "unit": "s",
+      "value": 0.003596,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.003596-0.003596",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/variant-interpretation.rq",
+      "unit": "s",
+      "value": 0.004595,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.004595-0.004595",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/variant.rq",
+      "unit": "s",
+      "value": 0.00392,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.00392-0.00392",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/absent-reason-findings.rq",
+      "unit": "s",
+      "value": 0.017194,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.017194-0.017194",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/category-text-findings.rq",
+      "unit": "s",
+      "value": 0.005866,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.005866-0.005866",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/code-findings.rq",
+      "unit": "s",
+      "value": 0.005091,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.005091-0.005091",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/date-findings.rq",
+      "unit": "s",
+      "value": 0.021149,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.021149-0.021149",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/document-version-findings.rq",
+      "unit": "s",
+      "value": 0.000536,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.000536-0.000536",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/lab-result-findings.rq",
+      "unit": "s",
+      "value": 0.027867,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.027867-0.027867",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/medication-dispense-findings.rq",
+      "unit": "s",
+      "value": 0.003889,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.003889-0.003889",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/medication-dispense-prescription-findings.rq",
+      "unit": "s",
+      "value": 0.004848,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.004848-0.004848",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/medication-findings.rq",
+      "unit": "s",
+      "value": 0.03831,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.03831-0.03831",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/narrative-findings.rq",
+      "unit": "s",
+      "value": 0.003101,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.003101-0.003101",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/observation-component-findings.rq",
+      "unit": "s",
+      "value": 0.004462,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.004462-0.004462",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/observation-findings.rq",
+      "unit": "s",
+      "value": 0.01889,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.01889-0.01889",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/organization-findings.rq",
+      "unit": "s",
+      "value": 0.003458,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.003458-0.003458",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/patient-findings.rq",
+      "unit": "s",
+      "value": 0.00303,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.00303-0.00303",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/patient-reference-findings.rq",
+      "unit": "s",
+      "value": 0.023683,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.023683-0.023683",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/recorded-date-findings.rq",
+      "unit": "s",
+      "value": 0.004595,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.004595-0.004595",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/reference-display-findings.rq",
+      "unit": "s",
+      "value": 0.013605,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.013605-0.013605",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/reference-without-server-findings.rq",
+      "unit": "s",
+      "value": 0.014284,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.014284-0.014284",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/repeated-id-findings.rq",
+      "unit": "s",
+      "value": 0.008871,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.008871-0.008871",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/report-and-note-findings.rq",
+      "unit": "s",
+      "value": 0.005153,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.005153-0.005153",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/report-result-findings.rq",
+      "unit": "s",
+      "value": 0.004876,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.004876-0.004876",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/resource-type-findings.rq",
+      "unit": "s",
+      "value": 0.004571,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.004571-0.004571",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/variant-findings.rq",
+      "unit": "s",
+      "value": 0.006557,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.006557-0.006557",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/variant-interpretation-findings.rq",
+      "unit": "s",
+      "value": 0.004434,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.004434-0.004434",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-time/detect.rq",
+      "unit": "s",
+      "value": 0.010047,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.010047-0.010047",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/coding-system-table.rq",
+      "unit": "{count}",
+      "value": 3768,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/document-table.rq",
+      "unit": "{count}",
+      "value": 2588,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/lab-result-table.rq",
+      "unit": "{count}",
+      "value": 410,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/medication-table.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/note-or-document-table.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/organization-table.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/variant-interpretation-table.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/variant-table.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/absent-reasons.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/allergy-intolerance.rq",
+      "unit": "{count}",
+      "value": 23,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/attachments.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/condition.rq",
+      "unit": "{count}",
+      "value": 295,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/immunization.rq",
+      "unit": "{count}",
+      "value": 12,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/lab-result-codes.rq",
+      "unit": "{count}",
+      "value": 410,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/lab-result-identifiers.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/lab-result-performer.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/lab-result-quantities.rq",
+      "unit": "{count}",
+      "value": 1720,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/lab-result.rq",
+      "unit": "{count}",
+      "value": 1772,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/medication-dispense-prescription.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/medication-dispense.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/medication-supply-and-dosages.rq",
+      "unit": "{count}",
+      "value": 322,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/medication.rq",
+      "unit": "{count}",
+      "value": 425,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/narrative-text.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/note-or-document.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/organization-from-server.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/organization.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/patient.rq",
+      "unit": "{count}",
+      "value": 4,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/procedure.rq",
+      "unit": "{count}",
+      "value": 184,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/record.rq",
+      "unit": "{count}",
+      "value": 3450,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/report-and-note-performer.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/report-results.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/report.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/variant-interpretation.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/variant.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/absent-reason-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/category-text-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/code-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/date-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/document-version-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/lab-result-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/medication-dispense-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/medication-dispense-prescription-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/medication-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/narrative-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/observation-component-findings.rq",
+      "unit": "{count}",
+      "value": 120,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/observation-findings.rq",
+      "unit": "{count}",
+      "value": 420,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/organization-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/patient-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/patient-reference-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/recorded-date-findings.rq",
+      "unit": "{count}",
+      "value": 470,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/reference-display-findings.rq",
+      "unit": "{count}",
+      "value": 1200,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/reference-without-server-findings.rq",
+      "unit": "{count}",
+      "value": 5740,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/repeated-id-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/report-and-note-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/report-result-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/resource-type-findings.rq",
+      "unit": "{count}",
+      "value": 300,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/variant-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/variant-interpretation-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 647"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/query-rows/detect.rq",
+      "unit": "{count}",
+      "value": 1,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 1"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/stage/document-table",
+      "unit": "s",
+      "value": 0.073242,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.073242-0.073242",
+      "extra": "Running the adapter's document-table query on every record of the document, to link a record to any other record, in the document or not. (Specification stage: link records.)"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/stage/lift",
+      "unit": "s",
+      "value": 0.160806,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.160806-0.160806",
+      "extra": "Reading the source document into the triples the adapter's queries can ask about, one record at a time. (Specification stage: read and chunk.)"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/stage/source-validation",
+      "unit": "s",
+      "value": 0.52109,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.52109-0.52109",
+      "extra": "Checking each source record, and the document as a whole where the adapter gives a document schema, against the adapter's schema (XSD or JSON Schema). A failure is a finding, never a refusal. (Specification stage: check, validate.)"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/stage/accounting",
+      "unit": "s",
+      "value": 0.03446,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.03446-0.03446",
+      "extra": "Working out, against the adapter's accounting file, what became of each part of each source record."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/stage/dataset",
+      "unit": "s",
+      "value": 0.003978,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.003978-0.003978",
+      "extra": "Putting the facts about a record into the store its queries run over."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/stage/index",
+      "unit": "s",
+      "value": 0.085718,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.085718-0.085718",
+      "extra": "Building the lookup structure that compiled queries read, from a record's triples. A query the general evaluator answers needs none."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/stage/mapping",
+      "unit": "s",
+      "value": 0.344626,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.344626-0.344626",
+      "extra": "Running the adapter's mapping queries on each record, without the time of building their lookup structure. (Specification stage: transform.)"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/stage/records",
+      "unit": "s",
+      "value": 0.759181,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.759181-0.759181",
+      "extra": "Turning what the mapping produced into each record's graph: naming its versions, keeping one where the mapping wrote several, and writing their arrivals. (Specification stage: name versions, write arrivals.)"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/stage/output-validation",
+      "unit": "s",
+      "value": 0.857261,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.857261-0.857261",
+      "extra": "Checking each record's output against the vocabulary's SHACL shapes."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/stage/findings",
+      "unit": "s",
+      "value": 0.319676,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.319676-0.319676",
+      "extra": "Running the adapter's findings queries to find what the source record got wrong or left out. (Specification stage: findings.)"
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/stage/unresolved-addresses",
+      "unit": "s",
+      "value": 0.01316,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.01316-0.01316",
+      "extra": "Finding the references to records the document does not hold, which keep their computed names."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/stage/detect",
+      "unit": "s",
+      "value": 0.010117,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.010117-0.010117",
+      "extra": "Running the adapter's detect query, which reports whether the adapter reads this document. The Bridge converts every record whatever the answer; it never routes."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/stage/summary",
+      "unit": "s",
+      "value": 0.006156,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.006156-0.006156",
+      "extra": "Counting the graph's distinct triples and the findings once every record is done."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/stage/serialising",
+      "unit": "s",
+      "value": 0.08207,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.08207-0.08207",
+      "extra": "Writing the graph and the findings out as Turtle or N-Triples."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/stage/unaccounted",
+      "unit": "s",
+      "value": 0.098199,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.098199-0.098199",
+      "extra": "Seconds of the profiled convert that none of the stages accounts for, such as writing the document and the import into the graph."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/output/graph",
+      "unit": "{count}",
+      "value": 12654,
+      "kind": "output",
+      "sha256": "7cc449ffbde5128e52fafcf8acfb64362df9b08f54ac053668923208f8175856",
+      "extra": "Distinct triples in the output graph, with a SHA-256 fingerprint of the output that is the same whenever the content is the same, whatever order the engine wrote it in and whatever it named its blank nodes."
+    },
+    {
+      "name": "fhir-r4-synthea-10y-trimmed/output/findings",
+      "unit": "{count}",
+      "value": 33875,
+      "kind": "output",
+      "sha256": "b652127fa85ae51be3efc3f467bdff274a9e99631bf26d3f1bccb60d4dc5eb7d",
+      "extra": "Distinct triples in the findings, with a SHA-256 fingerprint of them that is the same whenever the content is the same, whatever order the engine wrote them in and whatever it named its blank nodes."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/convert/first",
+      "unit": "s",
+      "value": 72.637062,
+      "kind": "clock",
+      "samples": 3,
+      "range": "71.126454-74.419162",
+      "extra": "Seconds the first convert of a fresh process takes, timed without the step-by-step breakdown. A caller that opens an adapter and converts once also waits for the engine to start (the boot rows) and the adapter to load (the load rows), which this does not count. The lifetime Synthea record of one person, a 51 MB FHIR R4 Bundle. sha256 f20b86408066ece2d25a7b02d380b7652f22d16df9dab613a0c73c9969b17da8, 51227791 bytes"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/convert/second",
+      "unit": "s",
+      "value": 68.52032,
+      "kind": "clock",
+      "samples": 3,
+      "range": "67.906425-70.132814",
+      "extra": "Seconds a second convert of the same document takes in the same process, timed without the step-by-step breakdown: the warm cost."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/convert/profiled",
+      "unit": "s",
+      "value": 72.516325,
+      "kind": "clock",
+      "samples": 1,
+      "range": "72.516325-72.516325",
+      "extra": "Seconds of the one convert run with the step-by-step breakdown on, from which the stage and query rows are read. The breakdown makes it slower than a plain convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/memory.grow/first",
+      "unit": "{count}",
+      "value": 24,
+      "kind": "cost",
+      "samples": 3,
+      "range": "24-24",
+      "extra": "How many times the engine's memory grew during the first convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/memory.grow/second",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "cost",
+      "samples": 3,
+      "range": "0-0",
+      "extra": "How many times the engine's memory grew during the second convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/wasm-memory/first",
+      "unit": "By",
+      "value": 2518876160,
+      "kind": "cost",
+      "samples": 3,
+      "range": "2518876160-2518876160",
+      "extra": "Bytes of memory the engine holds once the first convert is done."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/wasm-memory/second",
+      "unit": "By",
+      "value": 2518876160,
+      "kind": "cost",
+      "samples": 3,
+      "range": "2518876160-2518876160",
+      "extra": "Bytes of memory the engine holds once the second convert is done."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/rss",
+      "unit": "By",
+      "value": 3344240640,
+      "kind": "clock",
+      "samples": 3,
+      "range": "3341512704-3388235776",
+      "extra": "Peak memory the whole process held in RAM, in bytes: the engine's start, the adapter's load and both converts all count."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/records",
+      "unit": "{count}",
+      "value": 16833,
+      "kind": "output",
+      "extra": "Source records the Bridge found in the document and converted. The lifetime Synthea record of one person, a 51 MB FHIR R4 Bundle."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/triples",
+      "unit": "{count}",
+      "value": 184332,
+      "kind": "output",
+      "extra": "Distinct triples in the output graph."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/findings",
+      "unit": "{count}",
+      "value": 267199,
+      "kind": "output",
+      "extra": "Findings the conversion wrote."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/output-bytes/graph",
+      "unit": "By",
+      "value": 19629620,
+      "kind": "output",
+      "extra": "Bytes of the output graph as Turtle."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/output-bytes/findings",
+      "unit": "By",
+      "value": 276539493,
+      "kind": "output",
+      "extra": "Bytes of the findings as Turtle."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/coding-system-table.rq",
+      "unit": "s",
+      "value": 0.65948,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.65948-0.65948",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/document-table.rq",
+      "unit": "s",
+      "value": 0.068879,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.068879-0.068879",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/lab-result-table.rq",
+      "unit": "s",
+      "value": 0.080839,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.080839-0.080839",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/medication-table.rq",
+      "unit": "s",
+      "value": 0.101998,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.101998-0.101998",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/note-or-document-table.rq",
+      "unit": "s",
+      "value": 0.046923,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.046923-0.046923",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/organization-table.rq",
+      "unit": "s",
+      "value": 0.11619,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.11619-0.11619",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/variant-interpretation-table.rq",
+      "unit": "s",
+      "value": 0.047393,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.047393-0.047393",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/variant-table.rq",
+      "unit": "s",
+      "value": 0.048724,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.048724-0.048724",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/absent-reasons.rq",
+      "unit": "s",
+      "value": 0.573157,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.573157-0.573157",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/allergy-intolerance.rq",
+      "unit": "s",
+      "value": 0.096756,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.096756-0.096756",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/attachments.rq",
+      "unit": "s",
+      "value": 0.149183,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.149183-0.149183",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/condition.rq",
+      "unit": "s",
+      "value": 0.104434,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.104434-0.104434",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/immunization.rq",
+      "unit": "s",
+      "value": 0.0816,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.0816-0.0816",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/lab-result-codes.rq",
+      "unit": "s",
+      "value": 0.259767,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.259767-0.259767",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/lab-result-identifiers.rq",
+      "unit": "s",
+      "value": 0.109468,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.109468-0.109468",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/lab-result-performer.rq",
+      "unit": "s",
+      "value": 0.032955,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.032955-0.032955",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/lab-result-quantities.rq",
+      "unit": "s",
+      "value": 0.239329,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.239329-0.239329",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/lab-result.rq",
+      "unit": "s",
+      "value": 0.308008,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.308008-0.308008",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/medication-dispense-prescription.rq",
+      "unit": "s",
+      "value": 0.096129,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.096129-0.096129",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/medication-dispense.rq",
+      "unit": "s",
+      "value": 0.067777,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.067777-0.067777",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/medication-supply-and-dosages.rq",
+      "unit": "s",
+      "value": 0.11125,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.11125-0.11125",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/medication.rq",
+      "unit": "s",
+      "value": 0.16861,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.16861-0.16861",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/narrative-text.rq",
+      "unit": "s",
+      "value": 0.535375,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.535375-0.535375",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/note-or-document.rq",
+      "unit": "s",
+      "value": 0.18808,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.18808-0.18808",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/organization-from-server.rq",
+      "unit": "s",
+      "value": 0.047405,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.047405-0.047405",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/organization.rq",
+      "unit": "s",
+      "value": 0.102716,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.102716-0.102716",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/patient.rq",
+      "unit": "s",
+      "value": 0.067934,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.067934-0.067934",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/procedure.rq",
+      "unit": "s",
+      "value": 0.194271,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.194271-0.194271",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/record.rq",
+      "unit": "s",
+      "value": 1.468977,
+      "kind": "clock",
+      "samples": 1,
+      "range": "1.468977-1.468977",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/report-and-note-performer.rq",
+      "unit": "s",
+      "value": 0.031563,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.031563-0.031563",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/report-results.rq",
+      "unit": "s",
+      "value": 0.24074,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.24074-0.24074",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/report.rq",
+      "unit": "s",
+      "value": 0.250168,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.250168-0.250168",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/variant-interpretation.rq",
+      "unit": "s",
+      "value": 0.087235,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.087235-0.087235",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/variant.rq",
+      "unit": "s",
+      "value": 0.081269,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.081269-0.081269",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/absent-reason-findings.rq",
+      "unit": "s",
+      "value": 0.286337,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.286337-0.286337",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/category-text-findings.rq",
+      "unit": "s",
+      "value": 0.115651,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.115651-0.115651",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/code-findings.rq",
+      "unit": "s",
+      "value": 0.133481,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.133481-0.133481",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/date-findings.rq",
+      "unit": "s",
+      "value": 0.252165,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.252165-0.252165",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/document-version-findings.rq",
+      "unit": "s",
+      "value": 0.010902,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.010902-0.010902",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/lab-result-findings.rq",
+      "unit": "s",
+      "value": 0.353102,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.353102-0.353102",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/medication-dispense-findings.rq",
+      "unit": "s",
+      "value": 0.07717,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.07717-0.07717",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/medication-dispense-prescription-findings.rq",
+      "unit": "s",
+      "value": 0.089009,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.089009-0.089009",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/medication-findings.rq",
+      "unit": "s",
+      "value": 0.941297,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.941297-0.941297",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/narrative-findings.rq",
+      "unit": "s",
+      "value": 0.06272,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.06272-0.06272",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/observation-component-findings.rq",
+      "unit": "s",
+      "value": 0.117408,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.117408-0.117408",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/observation-findings.rq",
+      "unit": "s",
+      "value": 0.27783,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.27783-0.27783",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/organization-findings.rq",
+      "unit": "s",
+      "value": 0.071153,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.071153-0.071153",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/patient-findings.rq",
+      "unit": "s",
+      "value": 0.06416,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.06416-0.06416",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/patient-reference-findings.rq",
+      "unit": "s",
+      "value": 0.276872,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.276872-0.276872",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/recorded-date-findings.rq",
+      "unit": "s",
+      "value": 0.080414,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.080414-0.080414",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/reference-display-findings.rq",
+      "unit": "s",
+      "value": 0.294978,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.294978-0.294978",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/reference-without-server-findings.rq",
+      "unit": "s",
+      "value": 0.135708,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.135708-0.135708",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/repeated-id-findings.rq",
+      "unit": "s",
+      "value": 0.133167,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.133167-0.133167",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/report-and-note-findings.rq",
+      "unit": "s",
+      "value": 0.180743,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.180743-0.180743",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/report-result-findings.rq",
+      "unit": "s",
+      "value": 0.135436,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.135436-0.135436",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/resource-type-findings.rq",
+      "unit": "s",
+      "value": 1.188278,
+      "kind": "clock",
+      "samples": 1,
+      "range": "1.188278-1.188278",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/variant-findings.rq",
+      "unit": "s",
+      "value": 0.118828,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.118828-0.118828",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/variant-interpretation-findings.rq",
+      "unit": "s",
+      "value": 0.095769,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.095769-0.095769",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-time/detect.rq",
+      "unit": "s",
+      "value": 0.009857,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.009857-0.009857",
+      "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/coding-system-table.rq",
+      "unit": "{count}",
+      "value": 106718,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/document-table.rq",
+      "unit": "{count}",
+      "value": 67332,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/lab-result-table.rq",
+      "unit": "{count}",
+      "value": 4054,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/medication-table.rq",
+      "unit": "{count}",
+      "value": 16733,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/note-or-document-table.rq",
+      "unit": "{count}",
+      "value": 992,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/organization-table.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/variant-interpretation-table.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/variant-table.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/absent-reasons.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/allergy-intolerance.rq",
+      "unit": "{count}",
+      "value": 45,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/attachments.rq",
+      "unit": "{count}",
+      "value": 3968,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/condition.rq",
+      "unit": "{count}",
+      "value": 1382,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/immunization.rq",
+      "unit": "{count}",
+      "value": 260,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/lab-result-codes.rq",
+      "unit": "{count}",
+      "value": 4054,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/lab-result-identifiers.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/lab-result-performer.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/lab-result-quantities.rq",
+      "unit": "{count}",
+      "value": 15000,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/lab-result.rq",
+      "unit": "{count}",
+      "value": 18323,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/medication-dispense-prescription.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/medication-dispense.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/medication-supply-and-dosages.rq",
+      "unit": "{count}",
+      "value": 350,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/medication.rq",
+      "unit": "{count}",
+      "value": 4318,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/narrative-text.rq",
+      "unit": "{count}",
+      "value": 1984,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/note-or-document.rq",
+      "unit": "{count}",
+      "value": 4960,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/organization-from-server.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/organization.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/patient.rq",
+      "unit": "{count}",
+      "value": 4,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/procedure.rq",
+      "unit": "{count}",
+      "value": 6436,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/record.rq",
+      "unit": "{count}",
+      "value": 45364,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/report-and-note-performer.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/report-results.rq",
+      "unit": "{count}",
+      "value": 3880,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/report.rq",
+      "unit": "{count}",
+      "value": 10481,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/variant-interpretation.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/variant.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/absent-reason-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/category-text-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/code-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/date-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/document-version-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/lab-result-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/medication-dispense-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/medication-dispense-prescription-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/medication-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/narrative-findings.rq",
+      "unit": "{count}",
+      "value": 270,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/observation-component-findings.rq",
+      "unit": "{count}",
+      "value": 31880,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/observation-findings.rq",
+      "unit": "{count}",
+      "value": 21050,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/organization-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/patient-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/patient-reference-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/recorded-date-findings.rq",
+      "unit": "{count}",
+      "value": 2070,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/reference-display-findings.rq",
+      "unit": "{count}",
+      "value": 94940,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/reference-without-server-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/repeated-id-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/report-and-note-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/report-result-findings.rq",
+      "unit": "{count}",
+      "value": 1220,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/resource-type-findings.rq",
+      "unit": "{count}",
+      "value": 84800,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/variant-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/variant-interpretation-findings.rq",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 16833"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/query-rows/detect.rq",
+      "unit": "{count}",
+      "value": 1,
+      "kind": "output",
+      "extra": "Rows one of the adapter's queries returned, summed over every record it ran on. executions: 1"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/stage/document-table",
+      "unit": "s",
+      "value": 1.676903,
+      "kind": "clock",
+      "samples": 1,
+      "range": "1.676903-1.676903",
+      "extra": "Running the adapter's document-table query on every record of the document, to link a record to any other record, in the document or not. (Specification stage: link records.)"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/stage/lift",
+      "unit": "s",
+      "value": 5.764523,
+      "kind": "clock",
+      "samples": 1,
+      "range": "5.764523-5.764523",
+      "extra": "Reading the source document into the triples the adapter's queries can ask about, one record at a time. (Specification stage: read and chunk.)"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/stage/source-validation",
+      "unit": "s",
+      "value": 12.049987,
+      "kind": "clock",
+      "samples": 1,
+      "range": "12.049987-12.049987",
+      "extra": "Checking each source record, and the document as a whole where the adapter gives a document schema, against the adapter's schema (XSD or JSON Schema). A failure is a finding, never a refusal. (Specification stage: check, validate.)"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/stage/accounting",
+      "unit": "s",
+      "value": 3.27758,
+      "kind": "clock",
+      "samples": 1,
+      "range": "3.27758-3.27758",
+      "extra": "Working out, against the adapter's accounting file, what became of each part of each source record."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/stage/dataset",
+      "unit": "s",
+      "value": 0.081523,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.081523-0.081523",
+      "extra": "Putting the facts about a record into the store its queries run over."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/stage/index",
+      "unit": "s",
+      "value": 2.802748,
+      "kind": "clock",
+      "samples": 1,
+      "range": "2.802748-2.802748",
+      "extra": "Building the lookup structure that compiled queries read, from a record's triples. A query the general evaluator answers needs none."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/stage/mapping",
+      "unit": "s",
+      "value": 5.925566,
+      "kind": "clock",
+      "samples": 1,
+      "range": "5.925566-5.925566",
+      "extra": "Running the adapter's mapping queries on each record, without the time of building their lookup structure. (Specification stage: transform.)"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/stage/records",
+      "unit": "s",
+      "value": 1.039291,
+      "kind": "clock",
+      "samples": 1,
+      "range": "1.039291-1.039291",
+      "extra": "Turning what the mapping produced into each record's graph: naming its versions, keeping one where the mapping wrote several, and writing their arrivals. (Specification stage: name versions, write arrivals.)"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/stage/output-validation",
+      "unit": "s",
+      "value": 18.064441,
+      "kind": "clock",
+      "samples": 1,
+      "range": "18.064441-18.064441",
+      "extra": "Checking each record's output against the vocabulary's SHACL shapes."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/stage/findings",
+      "unit": "s",
+      "value": 6.95001,
+      "kind": "clock",
+      "samples": 1,
+      "range": "6.95001-6.95001",
+      "extra": "Running the adapter's findings queries to find what the source record got wrong or left out. (Specification stage: findings.)"
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/stage/unresolved-addresses",
+      "unit": "s",
+      "value": 0.373334,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.373334-0.373334",
+      "extra": "Finding the references to records the document does not hold, which keep their computed names."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/stage/detect",
+      "unit": "s",
+      "value": 0.009966,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.009966-0.009966",
+      "extra": "Running the adapter's detect query, which reports whether the adapter reads this document. The Bridge converts every record whatever the answer; it never routes."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/stage/summary",
+      "unit": "s",
+      "value": 0.136672,
+      "kind": "clock",
+      "samples": 1,
+      "range": "0.136672-0.136672",
+      "extra": "Counting the graph's distinct triples and the findings once every record is done."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/stage/serialising",
+      "unit": "s",
+      "value": 9.183836,
+      "kind": "clock",
+      "samples": 1,
+      "range": "9.183836-9.183836",
+      "extra": "Writing the graph and the findings out as Turtle or N-Triples."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/stage/unaccounted",
+      "unit": "s",
+      "value": 5.179947,
+      "kind": "clock",
+      "samples": 1,
+      "range": "5.179947-5.179947",
+      "extra": "Seconds of the profiled convert that none of the stages accounts for, such as writing the document and the import into the graph."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/output/graph",
+      "unit": "{count}",
+      "value": 184332,
+      "kind": "output",
+      "sha256": "7a293b50f329e9697119ef46a49e0e55365198126021106ead2739fd58656a51",
+      "extra": "Distinct triples in the output graph, with a SHA-256 fingerprint of the output that is the same whenever the content is the same, whatever order the engine wrote it in and whatever it named its blank nodes."
+    },
+    {
+      "name": "fhir-r4-synthea-lifetime/output/findings",
+      "unit": "{count}",
+      "value": 4050084,
+      "kind": "output",
+      "sha256": "4b992f4465adb297491a6571d8108f50b9d23e5375d2b20338ace4af174e227d",
+      "extra": "Distinct triples in the findings, with a SHA-256 fingerprint of them that is the same whenever the content is the same, whatever order the engine wrote them in and whatever it named its blank nodes."
+    },
+    {
+      "name": "fhir-r4/load",
+      "unit": "s",
+      "value": 1.038742,
+      "kind": "clock",
+      "samples": 9,
+      "range": "0.975495-1.221337",
+      "extra": "Seconds to read the adapter's and the vocabulary's files, describe the adapter and prepare it, with the engine already started."
+    },
+    {
+      "name": "fhir-r4/load/read-files",
+      "unit": "s",
+      "value": 0.015744,
+      "kind": "clock",
+      "samples": 9,
+      "range": "0.012802-0.016971",
+      "extra": "Seconds of the load spent reading files from disk."
+    },
+    {
+      "name": "fhir-r4/load/prepare",
+      "unit": "s",
+      "value": 1.023165,
+      "kind": "clock",
+      "samples": 9,
+      "range": "0.961286-1.20498",
+      "extra": "Seconds of the load spent describing the adapter and preparing it: parsing and compiling its queries, schemas and shapes."
+    },
+    {
+      "name": "fhir-r4/load/files-read",
+      "unit": "{count}",
+      "value": 68,
+      "kind": "cost",
+      "samples": 9,
+      "range": "68-68",
+      "extra": "Files read for the load, the adapter's and the vocabulary's."
+    },
+    {
+      "name": "fhir-r4/load/missing-files",
+      "unit": "{count}",
+      "value": 0,
+      "kind": "cost",
+      "samples": 9,
+      "range": "0-0",
+      "extra": "Files the load needed that the adapter's description did not list, which the host read from the folder as the load asked for them."
+    },
+    {
+      "name": "fhir-r4/boot/read-wasm",
+      "unit": "s",
+      "value": 0.008248,
+      "kind": "clock",
+      "samples": 9,
+      "range": "0.007693-0.00913",
+      "extra": "Seconds to read the engine's compiled code from disk."
+    },
+    {
+      "name": "fhir-r4/boot/compile-wasm",
+      "unit": "s",
+      "value": 0.023745,
+      "kind": "clock",
+      "samples": 9,
+      "range": "0.023129-0.02986",
+      "extra": "Seconds to turn the engine's compiled code into something the machine can run."
+    },
+    {
+      "name": "fhir-r4/boot/instantiate-wasm",
+      "unit": "s",
+      "value": 0.001602,
+      "kind": "clock",
+      "samples": 9,
+      "range": "0.001467-0.003921",
+      "extra": "Seconds to start the compiled code, which runs its start-up work."
+    }
+  ]
+}
