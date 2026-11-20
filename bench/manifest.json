@@ -66,6 +66,72 @@
       ],
       "onPullRequests": false,
       "timeoutSeconds": 3600
+    },
+    {
+      "id": "fhir-r4-synthea-lifetime-ab74ec30",
+      "description": "The lifetime Synthea record of Justa Moore, a 15 MB FHIR R4 Bundle of 3,987 entries.",
+      "path": "bench/synthea-lifetime-ab74ec30.json.gz",
+      "sha256": "da8b599d1bafbc500fd74a1aded71f6a426dde36edc25b0fd86856595e9ad292",
+      "bytes": 14900379,
+      "envelope": "ro-crate-metadata.json#envelope-bundle",
+      "measures": [
+        "convert",
+        "memory.grow",
+        "wasm-memory",
+        "rss",
+        "query-time",
+        "query-rows",
+        "records",
+        "triples",
+        "findings",
+        "output-bytes"
+      ],
+      "onPullRequests": false,
+      "timeoutSeconds": 600
+    },
+    {
+      "id": "fhir-r4-synthea-lifetime-3541f47c",
+      "description": "The lifetime Synthea record of Dona Okuneva, a 56 MB FHIR R4 Bundle of 19,728 entries, one of the three people of the family pod with Xochitl Corkery's lifetime record and Cole Gaylord's.",
+      "path": "bench/synthea-lifetime-3541f47c.json.gz",
+      "sha256": "4a4a24b9c8a052cc60465fffe5da9f34ab71101f3479ebdcc794e61e6d76d7f2",
+      "bytes": 56150281,
+      "envelope": "ro-crate-metadata.json#envelope-bundle",
+      "measures": [
+        "convert",
+        "memory.grow",
+        "wasm-memory",
+        "rss",
+        "query-time",
+        "query-rows",
+        "records",
+        "triples",
+        "findings",
+        "output-bytes"
+      ],
+      "onPullRequests": false,
+      "timeoutSeconds": 3600
+    },
+    {
+      "id": "fhir-r4-synthea-lifetime-4f159b52",
+      "description": "The lifetime Synthea record of Cole Gaylord, a 19 MB FHIR R4 Bundle of 6,223 entries, one of the three people of the family pod with Xochitl Corkery's lifetime record and Dona Okuneva's.",
+      "path": "bench/synthea-lifetime-4f159b52.json.gz",
+      "sha256": "843940715d3b2edbdc883697a79ebf312a7754df290d28b0cd89e228549fa678",
+      "bytes": 19009113,
+      "envelope": "ro-crate-metadata.json#envelope-bundle",
+      "measures": [
+        "convert",
+        "memory.grow",
+        "wasm-memory",
+        "rss",
+        "query-time",
+        "query-rows",
+        "records",
+        "triples",
+        "findings",
+        "output-bytes"
+      ],
+      "onPullRequests": false,
+      "timeoutSeconds": 1800
     }
   ]
 }
