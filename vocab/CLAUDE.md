@@ -7,7 +7,7 @@ term is minted here.
 ## A lookup table is a concept map, and its rows are transcribed
 
 What a concept map holds, and the form a `skos:notation` is written in, is
-[`shapes/concept-map.shapes.ttl`](https://github.com/jayostis/cascade-bridge-spec/blob/main/shapes/concept-map.shapes.ttl)'s
+[`shapes/concept-map.shapes.ttl`](https://github.com/the-cascade-protocol/cascade-bridge-spec/blob/main/shapes/concept-map.shapes.ttl)'s
 to say, and a failing run prints it.
 
 - `skos:closeMatch` where the code and the term do not mean the same thing.
@@ -33,7 +33,7 @@ only place a findings query may take a body from.
   whose loss reads as two sentences are two gaps, even where one rule reports
   both; where one sentence covers both, they open one gap between them.
 - Every `skos:broader` names a concept of the specification's `bridge:gapKinds`.
-  Adding a kind is a change to [cascade-bridge-spec](https://github.com/jayostis/cascade-bridge-spec).
+  Adding a kind is a change to [cascade-bridge-spec](https://github.com/the-cascade-protocol/cascade-bridge-spec).
 - A gap whose sentence proposed two `bridge:closedBy` terms names neither until
   the rule is split.
 
@@ -46,7 +46,7 @@ red. So a findings query, the `fixtures/findings/` files and
 A gap no findings query constructs is **not** red. An entry of the source
 accounting may report it instead, from its verdict or from its
 `bridge:lookupIn`; which entries report, and how many findings each one yields,
-is [`engine/sparql.md`](https://github.com/jayostis/cascade-bridge-spec/blob/main/engine/sparql.md)'s
+is [`engine/sparql.md`](https://github.com/the-cascade-protocol/cascade-bridge-spec/blob/main/engine/sparql.md)'s
 to say. A gap nothing names at all — no query, no entry — is dead, and goes.
 
 A gap whose findings are not `sh:Info` carries its own `sh:resultSeverity`,
@@ -69,7 +69,7 @@ under either. A path is relative to the record, so the envelopes' paths differ.
   for each resource type and property, the same nodes on the four forms of a path. A term is read from the query
   that writes it, not from the path's name, and a node is made for a resource type only when FHIR R4 defines the
   element on it **and** a query writes the term from it. What the specification's
-  [check](https://github.com/jayostis/cascade-bridge-spec/blob/main/adapter/validation.md) catches is not a reason to
+  [check](https://github.com/the-cascade-protocol/cascade-bridge-spec/blob/main/adapter/validation.md) catches is not a reason to
   rely on it.
 - A gap no entry names is a rule about an absence, a construct the judged
   inputs do not carry, or a path whose verdict is not a gap at all. Which one it

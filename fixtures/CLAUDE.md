@@ -27,7 +27,7 @@ An expected graph and a findings file are a Bridge's own `convert --out` and
 and committed unedited, never written or edited by hand. Both are compared as
 graphs, never as bytes: a rerun writes the same triples under other blank node
 labels and in another order
-([jayostis/cascade-bridge-rs#35](https://github.com/jayostis/cascade-bridge-rs/issues/35)).
+([the-cascade-protocol/cascade-bridge-rs#35](https://github.com/the-cascade-protocol/cascade-bridge-rs/issues/35)).
 A regenerated graph is checked, not trusted: its record names are recomputed
 from each rule's inputs by cascade-vocabulary's `tests/naming.py`, and its
 version names by the check below.
