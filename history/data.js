@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1795233900297,
+  "lastUpdate": 1795297904744,
   "repoUrl": "https://github.com/the-cascade-protocol/cascade-bridge-adapter-fhir-r4",
   "entries": {
     "Bridge performance": [
@@ -6772,6 +6772,668 @@ window.BENCHMARK_DATA = {
             "name": "fhir-r4/boot/instantiate-wasm",
             "value": 0.001208,
             "range": "0.001-0.002963",
+            "unit": "s",
+            "extra": "Seconds to start the compiled code, which runs its start-up work."
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "jayostis@gmail.com",
+            "name": "jayostis",
+            "username": "jayostis"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "15621eef1b6e4578c254871490838e45939a8487",
+          "message": "Merge pull request #77 from the-cascade-protocol/chore/org-addresses\n\nchore(org): addresses name the-cascade-protocol, not the personal account",
+          "timestamp": "2026-11-21T13:50:16-08:00",
+          "tree_id": "cca51dae8561e86a721074c110a82ffe4aec570a",
+          "url": "https://github.com/the-cascade-protocol/cascade-bridge-adapter-fhir-r4/commit/15621eef1b6e4578c254871490838e45939a8487"
+        },
+        "date": 1795297904370,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "fhir-r4-lab-pull-3000/convert/first",
+            "value": 6.399473,
+            "range": "6.283246-6.409673",
+            "unit": "s",
+            "extra": "Seconds the first convert of a fresh process takes, timed without the step-by-step breakdown. A caller that opens an adapter and converts once also waits for the engine to start (the boot rows) and the adapter to load (the load rows), which this does not count. A pull of 3,000 lab results in one FHIR R4 searchset Bundle. sha256 69b4daac45fd32449b8c290be9a7551566b537a6171218e8125169e94ca5882b, 2760035 bytes"
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/convert/second",
+            "value": 6.035439,
+            "range": "5.954601-6.103896",
+            "unit": "s",
+            "extra": "Seconds a second convert of the same document takes in the same process, timed without the step-by-step breakdown: the warm cost."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/convert/profiled",
+            "value": 6.751204,
+            "range": "6.751204-6.751204",
+            "unit": "s",
+            "extra": "Seconds of the one convert run with the step-by-step breakdown on, from which the stage and query rows are read. The breakdown makes it slower than a plain convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/wasm-memory/first",
+            "value": 136511488,
+            "range": "136511488-136511488",
+            "unit": "By",
+            "extra": "Bytes of memory the engine holds once the first convert is done."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/wasm-memory/second",
+            "value": 136511488,
+            "range": "136511488-136511488",
+            "unit": "By",
+            "extra": "Bytes of memory the engine holds once the second convert is done."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/rss",
+            "value": 394608640,
+            "range": "349335552-417955840",
+            "unit": "By",
+            "extra": "Peak memory the whole process held in RAM, in bytes: the engine's start, the adapter's load and both converts all count."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/records",
+            "value": 3004,
+            "unit": "{count}",
+            "extra": "Source records the Bridge found in the document and converted. A pull of 3,000 lab results in one FHIR R4 searchset Bundle."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/triples",
+            "value": 63025,
+            "unit": "{count}",
+            "extra": "Distinct triples in the output graph."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/findings",
+            "value": 3006,
+            "unit": "{count}",
+            "extra": "Findings the conversion wrote."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/fallbacks",
+            "value": 0,
+            "unit": "{count}",
+            "extra": "Record executions the general evaluator answered because a query was not compiled or a compiled plan gave up. The detect query, which runs once, is not counted."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/coding-system-table.rq",
+            "value": 0.061357,
+            "range": "0.061357-0.061357",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/document-table.rq",
+            "value": 0.008905,
+            "range": "0.008905-0.008905",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/lab-result-table.rq",
+            "value": 0.018202,
+            "range": "0.018202-0.018202",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/medication-table.rq",
+            "value": 0.009492,
+            "range": "0.009492-0.009492",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/note-or-document-table.rq",
+            "value": 0.004861,
+            "range": "0.004861-0.004861",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/organization-table.rq",
+            "value": 0.016978,
+            "range": "0.016978-0.016978",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/variant-interpretation-table.rq",
+            "value": 0.006937,
+            "range": "0.006937-0.006937",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/variant-table.rq",
+            "value": 0.007455,
+            "range": "0.007455-0.007455",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/absent-reasons.rq",
+            "value": 0.064461,
+            "range": "0.064461-0.064461",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/allergy-intolerance.rq",
+            "value": 0.009048,
+            "range": "0.009048-0.009048",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/attachments.rq",
+            "value": 0.010947,
+            "range": "0.010947-0.010947",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/condition.rq",
+            "value": 0.009041,
+            "range": "0.009041-0.009041",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/immunization.rq",
+            "value": 0.008712,
+            "range": "0.008712-0.008712",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/lab-result-codes.rq",
+            "value": 0.101675,
+            "range": "0.101675-0.101675",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/lab-result-identifiers.rq",
+            "value": 0.022276,
+            "range": "0.022276-0.022276",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/lab-result-performer.rq",
+            "value": 0.003805,
+            "range": "0.003805-0.003805",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/lab-result-quantities.rq",
+            "value": 0.117604,
+            "range": "0.117604-0.117604",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/lab-result.rq",
+            "value": 0.119067,
+            "range": "0.119067-0.119067",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/medication-dispense-prescription.rq",
+            "value": 0.011433,
+            "range": "0.011433-0.011433",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/medication-dispense.rq",
+            "value": 0.007499,
+            "range": "0.007499-0.007499",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/medication-supply-and-dosages.rq",
+            "value": 0.009669,
+            "range": "0.009669-0.009669",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/medication.rq",
+            "value": 0.008984,
+            "range": "0.008984-0.008984",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/narrative-text.rq",
+            "value": 0.029991,
+            "range": "0.029991-0.029991",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/note-or-document.rq",
+            "value": 0.008209,
+            "range": "0.008209-0.008209",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/organization-from-server.rq",
+            "value": 0.005084,
+            "range": "0.005084-0.005084",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/organization.rq",
+            "value": 0.011986,
+            "range": "0.011986-0.011986",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/patient.rq",
+            "value": 0.008148,
+            "range": "0.008148-0.008148",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/procedure.rq",
+            "value": 0.007274,
+            "range": "0.007274-0.007274",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/record.rq",
+            "value": 0.273463,
+            "range": "0.273463-0.273463",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/report-and-note-performer.rq",
+            "value": 0.003656,
+            "range": "0.003656-0.003656",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/report-results.rq",
+            "value": 0.010204,
+            "range": "0.010204-0.010204",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/report.rq",
+            "value": 0.007877,
+            "range": "0.007877-0.007877",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/variant-interpretation.rq",
+            "value": 0.0104,
+            "range": "0.0104-0.0104",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/variant.rq",
+            "value": 0.008997,
+            "range": "0.008997-0.008997",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/absent-reason-findings.rq",
+            "value": 0.038178,
+            "range": "0.038178-0.038178",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/category-text-findings.rq",
+            "value": 0.01181,
+            "range": "0.01181-0.01181",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/code-findings.rq",
+            "value": 0.008502,
+            "range": "0.008502-0.008502",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/date-findings.rq",
+            "value": 0.041002,
+            "range": "0.041002-0.041002",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/document-version-findings.rq",
+            "value": 0.001489,
+            "range": "0.001489-0.001489",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/lab-result-findings.rq",
+            "value": 0.079154,
+            "range": "0.079154-0.079154",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/medication-dispense-findings.rq",
+            "value": 0.008387,
+            "range": "0.008387-0.008387",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/medication-dispense-prescription-findings.rq",
+            "value": 0.009986,
+            "range": "0.009986-0.009986",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/medication-findings.rq",
+            "value": 0.064804,
+            "range": "0.064804-0.064804",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/narrative-findings.rq",
+            "value": 0.007152,
+            "range": "0.007152-0.007152",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/observation-component-findings.rq",
+            "value": 0.009948,
+            "range": "0.009948-0.009948",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/observation-findings.rq",
+            "value": 0.062831,
+            "range": "0.062831-0.062831",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/organization-findings.rq",
+            "value": 0.008348,
+            "range": "0.008348-0.008348",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/patient-findings.rq",
+            "value": 0.006962,
+            "range": "0.006962-0.006962",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/patient-reference-findings.rq",
+            "value": 0.057021,
+            "range": "0.057021-0.057021",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/recorded-date-findings.rq",
+            "value": 0.008756,
+            "range": "0.008756-0.008756",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/reference-display-findings.rq",
+            "value": 0.032243,
+            "range": "0.032243-0.032243",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/reference-without-server-findings.rq",
+            "value": 0.037726,
+            "range": "0.037726-0.037726",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/repeated-id-findings.rq",
+            "value": 0.025345,
+            "range": "0.025345-0.025345",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/report-and-note-findings.rq",
+            "value": 0.011608,
+            "range": "0.011608-0.011608",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/report-result-findings.rq",
+            "value": 0.010082,
+            "range": "0.010082-0.010082",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/resource-type-findings.rq",
+            "value": 0.009961,
+            "range": "0.009961-0.009961",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/variant-findings.rq",
+            "value": 0.017364,
+            "range": "0.017364-0.017364",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/variant-interpretation-findings.rq",
+            "value": 0.01182,
+            "range": "0.01182-0.01182",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/query-time/detect.rq",
+            "value": 0.007121,
+            "range": "0.007121-0.007121",
+            "unit": "s",
+            "extra": "Seconds one of the adapter's queries took, summed over every record it ran on, in the profiled convert."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/stage/document-table",
+            "value": 0.173304,
+            "range": "0.173304-0.173304",
+            "unit": "s",
+            "extra": "Running the adapter's document-table query on every record of the document, to link a record to any other record, in the document or not. (Specification stage: link records.)"
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/stage/lift",
+            "value": 0.355599,
+            "range": "0.355599-0.355599",
+            "unit": "s",
+            "extra": "Reading the source document into the triples the adapter's queries can ask about, one record at a time. (Specification stage: read and chunk.)"
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/stage/source-validation",
+            "value": 0.955745,
+            "range": "0.955745-0.955745",
+            "unit": "s",
+            "extra": "Checking each source record, and the document as a whole where the adapter gives a document schema, against the adapter's schema (XSD or JSON Schema). A failure is a finding, never a refusal. (Specification stage: check, validate.)"
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/stage/accounting",
+            "value": 0.017509,
+            "range": "0.017509-0.017509",
+            "unit": "s",
+            "extra": "Working out, against the adapter's accounting file, what became of each part of each source record."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/stage/dataset",
+            "value": 0.010278,
+            "range": "0.010278-0.010278",
+            "unit": "s",
+            "extra": "Putting the facts about a record into the store its queries run over."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/stage/index",
+            "value": 0.198513,
+            "range": "0.198513-0.198513",
+            "unit": "s",
+            "extra": "Building the lookup structure that compiled queries read, from a record's triples. A query the general evaluator answers needs none."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/stage/mapping",
+            "value": 0.921015,
+            "range": "0.921015-0.921015",
+            "unit": "s",
+            "extra": "Running the adapter's mapping queries on each record, without the time of building their lookup structure. (Specification stage: transform.)"
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/stage/records",
+            "value": 0.226576,
+            "range": "0.226576-0.226576",
+            "unit": "s",
+            "extra": "Turning what the mapping produced into each record's graph: naming its versions, keeping one where the mapping wrote several, and writing their arrivals. (Specification stage: name versions, write arrivals.)"
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/stage/output-validation",
+            "value": 2.748478,
+            "range": "2.748478-2.748478",
+            "unit": "s",
+            "extra": "Checking each record's output against the vocabulary's SHACL shapes."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/stage/findings",
+            "value": 0.793016,
+            "range": "0.793016-0.793016",
+            "unit": "s",
+            "extra": "Running the adapter's findings queries to find what the source record got wrong or left out. (Specification stage: findings.)"
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/stage/unresolved-addresses",
+            "value": 0.036342,
+            "range": "0.036342-0.036342",
+            "unit": "s",
+            "extra": "Finding the references to records the document does not hold, which keep their computed names."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/stage/detect",
+            "value": 0.007246,
+            "range": "0.007246-0.007246",
+            "unit": "s",
+            "extra": "Running the adapter's detect query, which reports whether the adapter reads this document. The Bridge converts every record whatever the answer; it never routes."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/stage/summary",
+            "value": 0.014263,
+            "range": "0.014263-0.014263",
+            "unit": "s",
+            "extra": "Counting the graph's distinct triples and the findings once every record is done."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/stage/serialising",
+            "value": 0.128987,
+            "range": "0.128987-0.128987",
+            "unit": "s",
+            "extra": "Writing the graph and the findings out as Turtle or N-Triples."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/stage/unaccounted",
+            "value": 0.164331,
+            "range": "0.164331-0.164331",
+            "unit": "s",
+            "extra": "Seconds of the profiled convert that none of the stages accounts for, such as writing the document and the import into the graph."
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/output/graph",
+            "value": 63025,
+            "unit": "{count}",
+            "extra": "Distinct triples in the output graph, with a SHA-256 fingerprint of the output that is the same whenever the content is the same, whatever order the engine wrote it in and whatever it named its blank nodes. sha256 37ddd3ff45eedcca686486482a5dd0ea90120d791c04352fb96a41e20d5fe7ac"
+          },
+          {
+            "name": "fhir-r4-lab-pull-3000/output/findings",
+            "value": 45090,
+            "unit": "{count}",
+            "extra": "Distinct triples in the findings, with a SHA-256 fingerprint of them that is the same whenever the content is the same, whatever order the engine wrote them in and whatever it named its blank nodes. sha256 21239a39a4729ba969bd423ee6088a728e8605fcfbcd31a1c9d285695c6251e5"
+          },
+          {
+            "name": "fhir-r4/load",
+            "value": 0.708435,
+            "range": "0.690466-0.708728",
+            "unit": "s",
+            "extra": "Seconds to read the adapter's and the vocabulary's files, describe the adapter and prepare it, with the engine already started."
+          },
+          {
+            "name": "fhir-r4/load/read-files",
+            "value": 0.011092,
+            "range": "0.010337-0.011993",
+            "unit": "s",
+            "extra": "Seconds of the load spent reading files from disk."
+          },
+          {
+            "name": "fhir-r4/load/prepare",
+            "value": 0.696442,
+            "range": "0.679374-0.698391",
+            "unit": "s",
+            "extra": "Seconds of the load spent describing the adapter and preparing it: parsing and compiling its queries, schemas and shapes."
+          },
+          {
+            "name": "fhir-r4/boot/read-wasm",
+            "value": 0.003666,
+            "range": "0.003561-0.003869",
+            "unit": "s",
+            "extra": "Seconds to read the engine's compiled code from disk."
+          },
+          {
+            "name": "fhir-r4/boot/compile-wasm",
+            "value": 0.016935,
+            "range": "0.0169-0.024756",
+            "unit": "s",
+            "extra": "Seconds to turn the engine's compiled code into something the machine can run."
+          },
+          {
+            "name": "fhir-r4/boot/instantiate-wasm",
+            "value": 0.001494,
+            "range": "0.001243-0.005287",
             "unit": "s",
             "extra": "Seconds to start the compiled code, which runs its start-up work."
           }
