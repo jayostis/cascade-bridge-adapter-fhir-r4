@@ -56,10 +56,10 @@
       },
       "isBasedOn": [
         {
-          "@id": "https://github.com/jayostis/conformance/tree/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir"
+          "@id": "https://github.com/the-cascade-protocol/conformance/tree/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir"
         },
         {
-          "@id": "https://github.com/jayostis/conformance/tree/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/genomics/fhir-genomics-ig"
+          "@id": "https://github.com/the-cascade-protocol/conformance/tree/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/genomics/fhir-genomics-ig"
         }
       ],
       "bridge:requiresProfile": [
@@ -68,7 +68,7 @@
         }
       ],
       "bridge:cascadeVocabularyRepository": {
-        "@id": "https://github.com/jayostis/cascade-vocabulary"
+        "@id": "https://github.com/the-cascade-protocol/cascade-vocabulary"
       },
       "bridge:vocabulary": [
         {
@@ -1106,7 +1106,7 @@
           "@id": "https://hl7.org/fhir/R4/fhir.schema.json"
         },
         {
-          "@id": "https://github.com/jayostis/cascade-vocabulary"
+          "@id": "https://github.com/the-cascade-protocol/cascade-vocabulary"
         },
         {
           "@id": "docs/format.md"
@@ -2208,7 +2208,7 @@
       "description": "The RO-Crate 1.2 Profile Crate a conforming adapter package names in conformsTo; the Profile Crate describing it is adapter/profile/ro-crate-metadata.json in cascade-bridge-spec."
     },
     {
-      "@id": "https://github.com/jayostis/cascade-vocabulary",
+      "@id": "https://github.com/the-cascade-protocol/cascade-vocabulary",
       "@type": [
         "SoftwareSourceCode",
         "File"
@@ -2366,15 +2366,15 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "One row for each system the record writes, named by the system as written, and the system a mapping reads it as: the cascade:codingSystemUri of the concept of vocab/fhir-code-systems.ttl whose skos:notation is its OID after urn:oid: (the prefix in any case) or whose skos:hiddenLabel is it, a URI HL7 Terminology lists as not preferred; else urn:oid: and the OID, or the system as written. A system that is no absolute URI, or holds a space or a character an IRI may not, has no row, and no code of it is carried. So one code from this adapter and from the C-CDA adapter is one term (https://github.com/jayostis/cascade-vocabulary/issues/290)."
+      "description": "One row for each system the record writes, named by the system as written, and the system a mapping reads it as: the cascade:codingSystemUri of the concept of vocab/fhir-code-systems.ttl whose skos:notation is its OID after urn:oid: (the prefix in any case) or whose skos:hiddenLabel is it, a URI HL7 Terminology lists as not preferred; else urn:oid: and the OID, or the system as written. A system that is no absolute URI, or holds a space or a character an IRI may not, has no row, and no code of it is carried. So one code from this adapter and from the C-CDA adapter is one term (https://github.com/the-cascade-protocol/cascade-vocabulary/issues/290)."
     },
     {
       "@id": "in/sparql/record.rq",
       "@type": "File",
       "name": "Mapping: records, versions and arrivals",
       "encodingFormat": "application/sparql-query",
-      "contentSize": "14137",
-      "sha256": "81280dfe3f2de14706c0b58899fe7be120ee086740609db91778d2e208d14d15",
+      "contentSize": "14149",
+      "sha256": "5f443b7e4880141cedba0215c659e5c3b59c5a1be0f860b60b13acd6610ca009",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
@@ -2402,7 +2402,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "What a Condition says, written on the version record.rq names: name, every code, in a system the vocabulary lists an IRI stem for as a cascade:conditionCode IRI and in any other system as a cascade:conditionCodeInOtherSystem literal typed by the system coding-system-table.rq reads (https://github.com/jayostis/cascade-vocabulary/issues/290), clinical and verification status, category, onset, abatement and notes."
+      "description": "What a Condition says, written on the version record.rq names: name, every code, in a system the vocabulary lists an IRI stem for as a cascade:conditionCode IRI and in any other system as a cascade:conditionCodeInOtherSystem literal typed by the system coding-system-table.rq reads (https://github.com/the-cascade-protocol/cascade-vocabulary/issues/290), clinical and verification status, category, onset, abatement and notes."
     },
     {
       "@id": "in/sparql/immunization.rq",
@@ -2426,7 +2426,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "What a Procedure says, written on the version record.rq names: name, every code, in a system the vocabulary lists an IRI stem for as a cascade:procedureCode IRI (CPT's first code only, under https://ns.cascadeprotocol.org/codes/cpt/) and in any other system, HCPCS's among them, as a cascade:procedureCodeInOtherSystem literal typed by the system coding-system-table.rq reads (https://github.com/jayostis/cascade-vocabulary/issues/290), date, the performed date or else the start of the performed period, and status."
+      "description": "What a Procedure says, written on the version record.rq names: name, every code, in a system the vocabulary lists an IRI stem for as a cascade:procedureCode IRI (CPT's first code only, under https://ns.cascadeprotocol.org/codes/cpt/) and in any other system, HCPCS's among them, as a cascade:procedureCodeInOtherSystem literal typed by the system coding-system-table.rq reads (https://github.com/the-cascade-protocol/cascade-vocabulary/issues/290), date, the performed date or else the start of the performed period, and status."
     },
     {
       "@id": "in/sparql/patient.rq",
@@ -2450,7 +2450,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "What a medication says, written on the version record.rq names: whether it was prescribed or reported, prescribed for a request unless its reported[x] says it was reported, and reportedUse for a statement or such a request; a prescribed request's intent, where it is one of the eight codes of medicationrequest-intent (cascade:medicationRequestIntent); the drug's name and every code, from its concept or from the Medication its reference resolves to in the document, else the reference's display: RxNorm and NDC as IRIs, the first userSelected one the selected code, and any other system's as cascade:medicationCodeInOtherSystem literals typed by the system coding-system-table.rq reads (https://github.com/jayostis/cascade-vocabulary/issues/290); status, start and end dates of use, the day a request was written, never a start, and the first dosage's text. Its supply and dosages are medication-supply-and-dosages.rq's. A MedicationDispense's drug, codes and status are read alike and nothing else of this is; medication-dispense.rq reads the rest."
+      "description": "What a medication says, written on the version record.rq names: whether it was prescribed or reported, prescribed for a request unless its reported[x] says it was reported, and reportedUse for a statement or such a request; a prescribed request's intent, where it is one of the eight codes of medicationrequest-intent (cascade:medicationRequestIntent); the drug's name and every code, from its concept or from the Medication its reference resolves to in the document, else the reference's display: RxNorm and NDC as IRIs, the first userSelected one the selected code, and any other system's as cascade:medicationCodeInOtherSystem literals typed by the system coding-system-table.rq reads (https://github.com/the-cascade-protocol/cascade-vocabulary/issues/290); status, start and end dates of use, the day a request was written, never a start, and the first dosage's text. Its supply and dosages are medication-supply-and-dosages.rq's. A MedicationDispense's drug, codes and status are read alike and nothing else of this is; medication-dispense.rq reads the rest."
     },
     {
       "@id": "in/sparql/medication-supply-and-dosages.rq",
@@ -2462,7 +2462,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "On the version medication.rq writes (https://github.com/jayostis/cascade-vocabulary/issues/299): a request's cascade:courseOfTherapyType (a code of FHIR's medicationrequest-course-of-therapy), cascade:numberOfRepeatsAllowed (0 included), cascade:expectedSupplyDuration (a quantity node <version>#expected-supply-duration, only in one of UCUM's seven units of time, with its comparator where it is one of R4's four) and cascade:dispenseRequestValidityPeriodStart and End; and for every dosage, a request's dosageInstruction or a statement's dosage, a cascade:structuredDosage node <version>#dosage-n whatever it holds, with its first dose quantity (<version>#dosage-n-dose-quantity), its timing's cascade:dosageRepeatFrequency, cascade:dosageRepeatPeriod and cascade:dosageRepeatPeriodUnit, its bounds period's start and end, and every route code, SNOMED CT's as cascade:dosageRouteCode IRIs and any other system's as cascade:dosageRouteCodeInOtherSystem literals. Numbers are written as written and as canonical xsd:decimal values; dates are typed by their precision, a time to the minute padded with a cascade:PaddedDateTime node."
+      "description": "On the version medication.rq writes (https://github.com/the-cascade-protocol/cascade-vocabulary/issues/299): a request's cascade:courseOfTherapyType (a code of FHIR's medicationrequest-course-of-therapy), cascade:numberOfRepeatsAllowed (0 included), cascade:expectedSupplyDuration (a quantity node <version>#expected-supply-duration, only in one of UCUM's seven units of time, with its comparator where it is one of R4's four) and cascade:dispenseRequestValidityPeriodStart and End; and for every dosage, a request's dosageInstruction or a statement's dosage, a cascade:structuredDosage node <version>#dosage-n whatever it holds, with its first dose quantity (<version>#dosage-n-dose-quantity), its timing's cascade:dosageRepeatFrequency, cascade:dosageRepeatPeriod and cascade:dosageRepeatPeriodUnit, its bounds period's start and end, and every route code, SNOMED CT's as cascade:dosageRouteCode IRIs and any other system's as cascade:dosageRouteCodeInOtherSystem literals. Numbers are written as written and as canonical xsd:decimal values; dates are typed by their precision, a time to the minute padded with a cascade:PaddedDateTime node."
     },
     {
       "@id": "in/sparql/medication-dispense.rq",
@@ -2474,7 +2474,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "On the version medication.rq writes (https://github.com/jayostis/cascade-vocabulary/issues/300): a dispense's cascade:dispensePreparedTime and cascade:dispenseHandedOverTime, typed by their precision, a time to the minute padded with a cascade:PaddedDateTime node; its quantity dispensed (cascade:dispenseQuantity, a quantity node <version>#dispense-quantity) and its days' supply (cascade:dispenseDaysSupply, <version>#dispense-days-supply, only in one of UCUM's seven units of time). A number is written as written and as a canonical xsd:decimal; a quantity with a comparator is none."
+      "description": "On the version medication.rq writes (https://github.com/the-cascade-protocol/cascade-vocabulary/issues/300): a dispense's cascade:dispensePreparedTime and cascade:dispenseHandedOverTime, typed by their precision, a time to the minute padded with a cascade:PaddedDateTime node; its quantity dispensed (cascade:dispenseQuantity, a quantity node <version>#dispense-quantity) and its days' supply (cascade:dispenseDaysSupply, <version>#dispense-days-supply, only in one of UCUM's seven units of time). A number is written as written and as a canonical xsd:decimal; a quantity with a comparator is none."
     },
     {
       "@id": "in/sparql/medication-dispense-prescription.rq",
@@ -2534,7 +2534,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "Every coding of a lab result's code, on the version record.rq names: one in LOINC or SNOMED CT as a cascade:testCode IRI, one in any other system as a cascade:testCodeInOtherSystem literal typed by the system coding-system-table.rq reads (https://github.com/jayostis/cascade-vocabulary/issues/290); and every flag of every interpretation in HL7's v3 ObservationInterpretation as a cascade:resultInterpretationCode IRI under https://ns.cascadeprotocol.org/codes/observationinterpretation/, the code as written, case kept (https://github.com/jayostis/cascade-vocabulary/issues/298). Each in its own branch, so that one does not multiply the others; a code is trimmed of leading and trailing whitespace."
+      "description": "Every coding of a lab result's code, on the version record.rq names: one in LOINC or SNOMED CT as a cascade:testCode IRI, one in any other system as a cascade:testCodeInOtherSystem literal typed by the system coding-system-table.rq reads (https://github.com/the-cascade-protocol/cascade-vocabulary/issues/290); and every flag of every interpretation in HL7's v3 ObservationInterpretation as a cascade:resultInterpretationCode IRI under https://ns.cascadeprotocol.org/codes/observationinterpretation/, the code as written, case kept (https://github.com/the-cascade-protocol/cascade-vocabulary/issues/298). Each in its own branch, so that one does not multiply the others; a code is trimmed of leading and trailing whitespace."
     },
     {
       "@id": "in/sparql/lab-result-quantities.rq",
@@ -3012,8 +3012,8 @@
       "@type": "File",
       "name": "FHIR R4 code systems",
       "encodingFormat": "text/turtle",
-      "contentSize": "13232",
-      "sha256": "f02ae1dda693ef8a8ea080bfc7c2c7d41ca67a66901eaa3e8cbb3006d68d2222",
+      "contentSize": "13448",
+      "sha256": "356ff952cff77b4420c4a396a8e1a1308904daac04e75d4ece6e7acbd3d7b03b",
       "isBasedOn": [
         {
           "@id": "https://terminology.hl7.org/SNOMEDCT.html"
@@ -3046,7 +3046,7 @@
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The bridge:table every mapping reads for the system a Coding.system is read as and for the IRI stem of a code it writes as an IRI: one skos:Concept per system, its cascade:codingSystemUri the system URI as FHIR writes it, its skos:notation the system's HL7 OID, which a Coding.system may give after urn:oid:, any URI HL7 Terminology lists for it as not preferred as a skos:hiddenLabel, and, for a system whose codes a mapping writes as IRIs, its void:uriSpace the stem, which is never the system URI, each as cascade-vocabulary's cascade:CodeSystem for it states them and its decisions/code-iris.md rules them. The rows the system table of https://github.com/jayostis/cascade-vocabulary/issues/290 gives are the C-CDA adapter's too, so one code from either adapter is one term: ICD-9-CM under its four OIDs and HL7 Terminology's retired URI, HCPCS Level II, ICD-10-PCS, CDT and UNII with no stem, read in HL7's UTG at 777bba6 and on terminology.hl7.org on 2026-10-29; and v3 ObservationInterpretation (https://github.com/jayostis/cascade-vocabulary/issues/298). SNOMED CT's stem is HL7 Terminology's (SNOMEDCT.html, section RDF) and LOINC's is THO's iri-stem (v3-loinc.xml), authoritative though FHIR R5's table writes https; RxNorm's, ICD-10-CM's, CVX's, CPT's and ObservationInterpretation's are Cascade's own under https://ns.cascadeprotocol.org/codes/, THO stating none. NDC's is the 11-digit space cascade-vocabulary registers, the code normalised into it, since FHIR's NDC code is the 10-digit label code (https://hl7.org/fhir/R4/ndc.html, https://github.com/jayostis/cascade-vocabulary/issues/104). OIDs read in FHIR R4's terminologies-systems.html on 2026-10-29. Not a concept map: no code maps to a Cascade term, and no entry of the source accounting looks a value up in it."
+      "description": "The bridge:table every mapping reads for the system a Coding.system is read as and for the IRI stem of a code it writes as an IRI: one skos:Concept per system, its cascade:codingSystemUri the system URI as FHIR writes it, its skos:notation the system's HL7 OID, which a Coding.system may give after urn:oid:, any URI HL7 Terminology lists for it as not preferred as a skos:hiddenLabel, and, for a system whose codes a mapping writes as IRIs, its void:uriSpace the stem, which is never the system URI, each as cascade-vocabulary's cascade:CodeSystem for it states them and its decisions/code-iris.md rules them. The rows the system table of https://github.com/the-cascade-protocol/cascade-vocabulary/issues/290 gives are the C-CDA adapter's too, so one code from either adapter is one term: ICD-9-CM under its four OIDs and HL7 Terminology's retired URI, HCPCS Level II, ICD-10-PCS, CDT and UNII with no stem, read in HL7's UTG at 777bba6 and on terminology.hl7.org on 2026-10-29; and v3 ObservationInterpretation (https://github.com/the-cascade-protocol/cascade-vocabulary/issues/298). SNOMED CT's stem is HL7 Terminology's (SNOMEDCT.html, section RDF) and LOINC's is THO's iri-stem (v3-loinc.xml), authoritative though FHIR R5's table writes https; RxNorm's, ICD-10-CM's, CVX's, CPT's and ObservationInterpretation's are Cascade's own under https://ns.cascadeprotocol.org/codes/, THO stating none. NDC's is the 11-digit space cascade-vocabulary registers, the code normalised into it, since FHIR's NDC code is the 10-digit label code (https://hl7.org/fhir/R4/ndc.html, https://github.com/the-cascade-protocol/cascade-vocabulary/issues/104). OIDs read in FHIR R4's terminologies-systems.html on 2026-10-29. Not a concept map: no code maps to a Cascade term, and no entry of the source accounting looks a value up in it."
     },
     {
       "@id": "vocab/fhir-acmg-classifications.ttl",
@@ -3056,7 +3056,7 @@
       "contentSize": "1353",
       "sha256": "05b4ac8dfe28e2d74a6fac725f06bb2a6aa58a06ab20dbc6a291a3d79e3030a3",
       "isBasedOn": {
-        "@id": "https://github.com/jayostis/cascade-vocabulary/blob/c0da7d2c4eda3249bfac9730a6e0ddaf1193f0d5/ontologies/cascade.ttl"
+        "@id": "https://github.com/the-cascade-protocol/cascade-vocabulary/blob/c0da7d2c4eda3249bfac9730a6e0ddaf1193f0d5/ontologies/cascade.ttl"
       },
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -3071,7 +3071,7 @@
       "contentSize": "360",
       "sha256": "d2b7b67e56847f9a132b376c37d8076702dd1e2df0b237e3a52ba62713385569",
       "sameAs": {
-        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/allergy-with-id.json"
+        "@id": "https://github.com/the-cascade-protocol/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/allergy-with-id.json"
       },
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -3099,7 +3099,7 @@
       "contentSize": "339",
       "sha256": "1c0e1482af4578ca8bf2ddeaadcbbe8e9f4a4b00f87437fc46a59b33b07bf950",
       "sameAs": {
-        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/allergy-no-id-penicillin.json"
+        "@id": "https://github.com/the-cascade-protocol/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/allergy-no-id-penicillin.json"
       },
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -3114,7 +3114,7 @@
       "contentSize": "348",
       "sha256": "ee3b3a640d7dd72dbe4cf004fb94cad8ec42b816a0febe892e0eeac9ca00d333",
       "sameAs": {
-        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/allergy-no-id-sulfa.json"
+        "@id": "https://github.com/the-cascade-protocol/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/allergy-no-id-sulfa.json"
       },
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -3129,7 +3129,7 @@
       "contentSize": "363",
       "sha256": "4761a9def4d0461e1c9bc4b8d079b70a6b969ba4874dd53c5d2808eee4796e92",
       "sameAs": {
-        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/condition-with-id.json"
+        "@id": "https://github.com/the-cascade-protocol/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/condition-with-id.json"
       },
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -3157,7 +3157,7 @@
       "contentSize": "494",
       "sha256": "4fe3e1f3444d6e5d788110647ffc61807c825a043624f6f2ff12b1655c8b9413",
       "sameAs": {
-        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/condition-with-id-meta-fetch-a.json"
+        "@id": "https://github.com/the-cascade-protocol/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/condition-with-id-meta-fetch-a.json"
       },
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -3172,7 +3172,7 @@
       "contentSize": "495",
       "sha256": "2a8d80209db1cbba456fc3f0d4af46940789c4c3f35789ae85fa5e07abc2f2f1",
       "sameAs": {
-        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/condition-with-id-meta-fetch-b.json"
+        "@id": "https://github.com/the-cascade-protocol/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/condition-with-id-meta-fetch-b.json"
       },
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -3213,7 +3213,7 @@
       "contentSize": "341",
       "sha256": "24147d36c2b81a2948f81ccf9dbb9a01466888b4cfed3482c67686dd3678e0b4",
       "sameAs": {
-        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/condition-no-id-structured-hypertension.json"
+        "@id": "https://github.com/the-cascade-protocol/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/condition-no-id-structured-hypertension.json"
       },
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -3228,7 +3228,7 @@
       "contentSize": "345",
       "sha256": "e284b6e13793ecf64744611dc21b2887d77814553caba234cb6ac7a4e592c0d6",
       "sameAs": {
-        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/condition-no-id-structured-diabetes.json"
+        "@id": "https://github.com/the-cascade-protocol/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/condition-no-id-structured-diabetes.json"
       },
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -3243,7 +3243,7 @@
       "contentSize": "166",
       "sha256": "2ca34932cbeeb1b9c5162216cab1c9bd623cef9bcd79ce0874f18cedf1b0a283",
       "sameAs": {
-        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/condition-no-id-narrative-diabetes.json"
+        "@id": "https://github.com/the-cascade-protocol/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/condition-no-id-narrative-diabetes.json"
       },
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -3258,7 +3258,7 @@
       "contentSize": "166",
       "sha256": "d7785734ea567d110563605d5280764f43219dbe6cf90e093c26ad2ec52860fe",
       "sameAs": {
-        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/condition-no-id-narrative-breast-cancer.json"
+        "@id": "https://github.com/the-cascade-protocol/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/condition-no-id-narrative-breast-cancer.json"
       },
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -3273,7 +3273,7 @@
       "contentSize": "399",
       "sha256": "b0f0ac71cbdfaf3b56ee459737af67ce4f253c8c948eb40d376724a9cce1acb8",
       "sameAs": {
-        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/immunization-with-id.json"
+        "@id": "https://github.com/the-cascade-protocol/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/immunization-with-id.json"
       },
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -3301,7 +3301,7 @@
       "contentSize": "375",
       "sha256": "d2c4156b3d6ee1ed8f0fb6f33965699c9de3255183abe7ce14277e192131e30e",
       "sameAs": {
-        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/immunization-no-id-2024.json"
+        "@id": "https://github.com/the-cascade-protocol/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/immunization-no-id-2024.json"
       },
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -3316,7 +3316,7 @@
       "contentSize": "375",
       "sha256": "0bf4d358fec2e86195283bd5a64ce62f2ef00a7e5245e07a989cb3db7a7c8323",
       "sameAs": {
-        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/immunization-no-id-2025.json"
+        "@id": "https://github.com/the-cascade-protocol/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/immunization-no-id-2025.json"
       },
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -3331,7 +3331,7 @@
       "contentSize": "378",
       "sha256": "a6a8e9555297368de5c3302b743f1cfe53deccaca4a5812a967244526a3b03a6",
       "sameAs": {
-        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/procedure-with-id.json"
+        "@id": "https://github.com/the-cascade-protocol/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/procedure-with-id.json"
       },
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -3346,7 +3346,7 @@
       "contentSize": "348",
       "sha256": "64737f146250bc93aab280774727a923dc246b15f4b9b303e5dd422980db0206",
       "sameAs": {
-        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/procedure-no-id-colonoscopy.json"
+        "@id": "https://github.com/the-cascade-protocol/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/procedure-no-id-colonoscopy.json"
       },
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -3361,7 +3361,7 @@
       "contentSize": "358",
       "sha256": "7cfefe9e6666b8f8db4b815990e9cd1bdff147a67702e04fa1e0b29cd18da21f",
       "sameAs": {
-        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/procedure-no-id-echocardiogram.json"
+        "@id": "https://github.com/the-cascade-protocol/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/procedure-no-id-echocardiogram.json"
       },
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -3376,7 +3376,7 @@
       "contentSize": "207",
       "sha256": "88bb6fb4ce098c61d1633f78ac808164be961b70fec85841306f0263570e4b2a",
       "sameAs": {
-        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/patient-with-id.json"
+        "@id": "https://github.com/the-cascade-protocol/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/patient-with-id.json"
       },
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -3391,7 +3391,7 @@
       "contentSize": "180",
       "sha256": "b50120451d486e843f9f191b772451c69badfdfbb2afb98aa55962e28d34ffeb",
       "sameAs": {
-        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/patient-no-id.json"
+        "@id": "https://github.com/the-cascade-protocol/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/patient-no-id.json"
       },
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -3406,7 +3406,7 @@
       "contentSize": "367",
       "sha256": "93ab47aee7a3e7bb80bdf7a2a5feb94012d79d637c5a079b57df8020de08214c",
       "sameAs": {
-        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/encounter-with-id.json"
+        "@id": "https://github.com/the-cascade-protocol/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/encounter-with-id.json"
       },
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -3421,7 +3421,7 @@
       "contentSize": "713",
       "sha256": "f0b8b3d5e077b2e14fdcd2cf838424dfda4ce738ea99cc1d535f1d60268cd97c",
       "sameAs": {
-        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/lab-glucose-fasting.json"
+        "@id": "https://github.com/the-cascade-protocol/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/lab-glucose-fasting.json"
       },
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -3436,7 +3436,7 @@
       "contentSize": "719",
       "sha256": "598933ee41457f0659e1c70b04600a30d30fda9d5efc6347852872678d2b822d",
       "sameAs": {
-        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/lab-glucose-postprandial.json"
+        "@id": "https://github.com/the-cascade-protocol/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/lab-glucose-postprandial.json"
       },
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -3451,7 +3451,7 @@
       "contentSize": "682",
       "sha256": "c64e8e7fc10bf1d33bac49b1de9f7c427f25f5debafdf78e36ad8074ece7b9ed",
       "sameAs": {
-        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/lab-glucose-no-id-fasting.json"
+        "@id": "https://github.com/the-cascade-protocol/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/lab-glucose-no-id-fasting.json"
       },
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -3466,7 +3466,7 @@
       "contentSize": "683",
       "sha256": "7bf9b52a17fd89bb9b801dbb7d3d40a74f53718bd3de9cae6d4cdbbaea90a9c2",
       "sameAs": {
-        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/lab-glucose-no-id-postprandial.json"
+        "@id": "https://github.com/the-cascade-protocol/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/lab-glucose-no-id-postprandial.json"
       },
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -3481,7 +3481,7 @@
       "contentSize": "426",
       "sha256": "8d89c751f75708dfb2f66a2a762d85e5334d0f3034ecccfd40f0c82fffbb87c9",
       "sameAs": {
-        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/medication-with-id.json"
+        "@id": "https://github.com/the-cascade-protocol/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/medication-with-id.json"
       },
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -3496,7 +3496,7 @@
       "contentSize": "44",
       "sha256": "135a494fa33915a713947f15649908a921b429ec8188fb225a2d745562f9a929",
       "sameAs": {
-        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/medication-no-id-bare.json"
+        "@id": "https://github.com/the-cascade-protocol/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/medication-no-id-bare.json"
       },
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -3511,7 +3511,7 @@
       "contentSize": "161",
       "sha256": "585a18ddc4174f8b5e261b0aad1a356d6d23b6cda0dc280679a83e192573b803",
       "sameAs": {
-        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/medication-no-id-note-only.json"
+        "@id": "https://github.com/the-cascade-protocol/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/medication-no-id-note-only.json"
       },
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -3526,7 +3526,7 @@
       "contentSize": "698",
       "sha256": "0e82a43a6681ab23a87cca98bd51d96a70155baa0205b720d4fae11f1ee26d6c",
       "sameAs": {
-        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/vital-heartrate-with-id.json"
+        "@id": "https://github.com/the-cascade-protocol/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir/vital-heartrate-with-id.json"
       },
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -4834,7 +4834,7 @@
       "contentSize": "61829",
       "sha256": "b8e0ac45bba3dcb759ce646a2009aa81cac2b9fd1d9c7feaa77a1929a3aa143a",
       "sameAs": {
-        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/genomics/fhir-genomics-ig/Bundle-bundle-cgexample.input.json"
+        "@id": "https://github.com/the-cascade-protocol/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/genomics/fhir-genomics-ig/Bundle-bundle-cgexample.input.json"
       },
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -4849,7 +4849,7 @@
       "contentSize": "14196",
       "sha256": "f5caf2418e2cc198603d151339fd527282d1cc73ae9c83e9fcf8869a5a7e1c1e",
       "sameAs": {
-        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/genomics/fhir-genomics-ig/Bundle-bundle-compound-heterozygote.input.json"
+        "@id": "https://github.com/the-cascade-protocol/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/genomics/fhir-genomics-ig/Bundle-bundle-compound-heterozygote.input.json"
       },
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -4864,7 +4864,7 @@
       "contentSize": "23801",
       "sha256": "00ee21db9c7aadb5335881fa9150d07306b7111bc8589ad3cff5ffc844608ead",
       "sameAs": {
-        "@id": "https://github.com/jayostis/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/genomics/fhir-genomics-ig/Bundle-bundle-oncology-diagnostic.input.json"
+        "@id": "https://github.com/the-cascade-protocol/conformance/blob/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/genomics/fhir-genomics-ig/Bundle-bundle-oncology-diagnostic.input.json"
       },
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
@@ -5620,7 +5620,7 @@
       "contentSize": "60774",
       "sha256": "7de65487c87c6c27d8576d7031876fcf43172969ec0bfef119f735b685dd750f",
       "isBasedOn": {
-        "@id": "https://github.com/jayostis/cascade-sandbox/tree/6b46cd7b593a46fbc9a6a693a569c5ef81ad61cf"
+        "@id": "https://github.com/the-cascade-protocol/cascade-sandbox/tree/6b46cd7b593a46fbc9a6a693a569c5ef81ad61cf"
       },
       "dateCreated": "2026-10-17",
       "license": {
@@ -5636,7 +5636,7 @@
       "contentSize": "4732316",
       "sha256": "4bfb6e61f1b9a66f59d05c836e57d50c333cb150f6d2b7dbf4e724ee2407d468",
       "isBasedOn": {
-        "@id": "https://github.com/jayostis/cascade-bridge-spec/blob/651fe561867f1260b9b1144e8f431fba05eb9c7b/bench/synthea/generate.sh"
+        "@id": "https://github.com/the-cascade-protocol/cascade-bridge-spec/blob/651fe561867f1260b9b1144e8f431fba05eb9c7b/bench/synthea/generate.sh"
       },
       "dateCreated": "2026-10-11",
       "license": {
@@ -5652,7 +5652,7 @@
       "contentSize": "1047941",
       "sha256": "ac48ff2434abcf09cb9ef16879f4873cdfd40ab8d8a938531999c5cf31d03ef6",
       "isBasedOn": {
-        "@id": "https://github.com/jayostis/cascade-bridge-spec/blob/f4e6ca3badd4e63715b3c672e9167d8fd5e52674/bench/synthea/generate.sh"
+        "@id": "https://github.com/the-cascade-protocol/cascade-bridge-spec/blob/f4e6ca3badd4e63715b3c672e9167d8fd5e52674/bench/synthea/generate.sh"
       },
       "dateCreated": "2026-11-20",
       "license": {
@@ -5668,7 +5668,7 @@
       "contentSize": "4551714",
       "sha256": "e23ae5c8f23daafcf161c0e5e2ccb37b86775383739df1cc1f98c4d13ef9de09",
       "isBasedOn": {
-        "@id": "https://github.com/jayostis/cascade-bridge-spec/blob/f4e6ca3badd4e63715b3c672e9167d8fd5e52674/bench/synthea/generate.sh"
+        "@id": "https://github.com/the-cascade-protocol/cascade-bridge-spec/blob/f4e6ca3badd4e63715b3c672e9167d8fd5e52674/bench/synthea/generate.sh"
       },
       "dateCreated": "2026-11-20",
       "license": {
@@ -5684,7 +5684,7 @@
       "contentSize": "1422853",
       "sha256": "9befffca6cd2a67bdc90ae87320c0ef5dccbd302f19fe31ec97ebf9c6f121ba2",
       "isBasedOn": {
-        "@id": "https://github.com/jayostis/cascade-bridge-spec/blob/f4e6ca3badd4e63715b3c672e9167d8fd5e52674/bench/synthea/generate.sh"
+        "@id": "https://github.com/the-cascade-protocol/cascade-bridge-spec/blob/f4e6ca3badd4e63715b3c672e9167d8fd5e52674/bench/synthea/generate.sh"
       },
       "dateCreated": "2026-11-20",
       "license": {
@@ -5706,7 +5706,7 @@
       "description": "A searchset Bundle as a server's pull answers it, 2,760,035 bytes gunzipped: one Patient (pat-1), three Organizations each with an NPI, and 3,000 laboratory Observations of potassium (LOINC 2823-3), sodium (2951-2) and glucose (2345-7), each about Patient/pat-1 and performed by one of the Organizations, every entry under its fullUrl on https://fhir.example.org/r4 except as follows. The first Observation and the first Organization share the id shared-1; the first and third Observations share the id obs-1; the fourth Observation has no id and no fullUrl; the fifth is under a urn:uuid fullUrl. Authored here on 2026-10-25 by a script, for the cost of a whole pull in one Bundle (#46); the person, the organizations and the values are invented. This material contains content from LOINC (http://loinc.org), copyright Regenstrief Institute, Inc. and the Logical Observation Identifiers Names and Codes (LOINC) Committee, available at no cost under the license at http://loinc.org/license; LOINC is a registered United States trademark of Regenstrief Institute, Inc."
     },
     {
-      "@id": "https://github.com/jayostis/cascade-sandbox/tree/6b46cd7b593a46fbc9a6a693a569c5ef81ad61cf",
+      "@id": "https://github.com/the-cascade-protocol/cascade-sandbox/tree/6b46cd7b593a46fbc9a6a693a569c5ef81ad61cf",
       "@type": "CreativeWork",
       "name": "cascade-sandbox at 6b46cd7",
       "version": "6b46cd7b593a46fbc9a6a693a569c5ef81ad61cf",
@@ -5716,7 +5716,7 @@
       "description": "The sandbox that serves the demo hospitals. The benchmark input is its export of one patient, made from a checkout of this commit with `npm run export -- cascade-north syn-c521b4f4b8f5b303 <out>` and no --as-of. A contextual entity: the source of the benchmark input, not part of the crate."
     },
     {
-      "@id": "https://github.com/jayostis/cascade-bridge-spec/blob/651fe561867f1260b9b1144e8f431fba05eb9c7b/bench/synthea/generate.sh",
+      "@id": "https://github.com/the-cascade-protocol/cascade-bridge-spec/blob/651fe561867f1260b9b1144e8f431fba05eb9c7b/bench/synthea/generate.sh",
       "@type": "CreativeWork",
       "name": "generate.sh in cascade-bridge-spec at 651fe56",
       "version": "651fe561867f1260b9b1144e8f431fba05eb9c7b",
@@ -5726,7 +5726,7 @@
       "description": "The recipe of the Synthea inputs: it pins Synthea v4.0.0 by the sha256 of its jar, the container image by digest, the seeds and the end date, and scrubs the provider detail. A contextual entity: referenced and not committed here, as an adapter holds no code."
     },
     {
-      "@id": "https://github.com/jayostis/cascade-bridge-spec/blob/f4e6ca3badd4e63715b3c672e9167d8fd5e52674/bench/synthea/generate.sh",
+      "@id": "https://github.com/the-cascade-protocol/cascade-bridge-spec/blob/f4e6ca3badd4e63715b3c672e9167d8fd5e52674/bench/synthea/generate.sh",
       "@type": "CreativeWork",
       "name": "generate.sh in cascade-bridge-spec at f4e6ca3",
       "version": "f4e6ca3badd4e63715b3c672e9167d8fd5e52674",
@@ -11165,7 +11165,7 @@
       "isBasedOn": {
         "@id": "https://github.com/the-cascade-protocol/cascade-cli/tree/05d02255855e675f7c1c33d8219e57ac4dc7e47f"
       },
-      "description": "cascade-cli writes a LOINC code as an IRI in http://loinc.org/rdf#, where step 2 of jayostis/cascade-runtime-js#70 and the adapter write http://loinc.org/rdf/; read as the code alone."
+      "description": "cascade-cli writes a LOINC code as an IRI in http://loinc.org/rdf#, where step 2 of the-cascade-protocol/cascade-runtime-js#70 and the adapter write http://loinc.org/rdf/; read as the code alone."
     },
     {
       "@id": "#correction-numbers-reprinted",
@@ -11520,8 +11520,8 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "What a record is, reports and notes, medication dispenses, the two envelopes, how a record is named, JSON as FHIR writes it, the schema, the versions in and out of scope, and what is known about the committed inputs. Read from hl7.org/fhir/R4/ on 2026-09-27, reports and notes on 2026-10-30, medication dispenses on 2026-10-31.",
-      "contentSize": "37116",
-      "sha256": "d9de2680c2549df077a6767ce0842f401070db31ca4d30fb1f162b655f1ea435"
+      "contentSize": "37224",
+      "sha256": "a66db620339510aeec5e410f0f796feb96afea598621445e3147484dd5704507"
     },
     {
       "@id": "CONTRIBUTING.md",
@@ -11532,8 +11532,8 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "How to set up, what a pull request must pass (the adapter and ready-to-merge checks), the commit and pull request conventions, and how a change that spans two repositories names its counterparts on a Depends-On line.",
-      "contentSize": "4238",
-      "sha256": "cf96b4b4e6d6e1c619486698dd8b03a9f7808622e5513b81edddfdf81125416e"
+      "contentSize": "4310",
+      "sha256": "545dddbc9523db60b01db32c5a26664f9a7d8ec873bbfe4ed48d36b045795ce9"
     },
     {
       "@id": "fixtures/CLAUDE.md",
@@ -11544,8 +11544,8 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "How the fixtures are treated: every byte is recorded, an input is copied or authored here and never edited, an expected graph or findings file is the Bridge's output committed unedited, and the checks the specification's lint cannot run: copied inputs against conformance, and each expected version's name against the hash of its own triples.",
-      "contentSize": "3775",
-      "sha256": "189d7ff2fc1f153318a296bfbda4fc37c7dd66bacf4f9c2afc3d6394fe27357a"
+      "contentSize": "3799",
+      "sha256": "65068a14912881d3a79c993b3339997ccd76a0a17e3e28f84da596d4bf2f9d40"
     },
     {
       "@id": "in/CLAUDE.md",
@@ -11580,28 +11580,28 @@
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
       "description": "What a lookup table is and how its rows are written, what a gap is and is not, what changes with it when a gap is added, removed or renamed, and how a path of the source gets its verdict.",
-      "contentSize": "4467",
-      "sha256": "9753288f900ed12514f7640d090061ac0f4c0d9794c2aa6324c079159ecf23d8"
+      "contentSize": "4515",
+      "sha256": "da80ee8cd840065f84d5ca1836c054084b91597bdbc3fdd655442b62efbc5874"
     },
     {
-      "@id": "https://github.com/jayostis/conformance/tree/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir",
+      "@id": "https://github.com/the-cascade-protocol/conformance/tree/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/clinical-fhir",
       "@type": "CreativeWork",
       "name": "conformance fixtures/clinical-fhir at 0ea48bb",
       "version": "0ea48bb1c044ac9bf8086d456601357135cf79e6",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The general clinical FHIR fixtures the copied inputs are taken from, and identity-expectations.json, the relations between them the test manifest asserts where both inputs are of a mapped type. A contextual entity: the source of the fixtures, not part of the crate. The commit is on the fork, jayostis/conformance, and is not an ancestor of the-cascade-protocol/conformance main, so this entity and the inputs' links name the fork."
+      "description": "The general clinical FHIR fixtures the copied inputs are taken from, and identity-expectations.json, the relations between them the test manifest asserts where both inputs are of a mapped type. A contextual entity: the source of the fixtures, not part of the crate. The commit is on the fork, the-cascade-protocol/conformance, and is not an ancestor of the-cascade-protocol/conformance main, so this entity and the inputs' links name the fork."
     },
     {
-      "@id": "https://github.com/jayostis/conformance/tree/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/genomics/fhir-genomics-ig",
+      "@id": "https://github.com/the-cascade-protocol/conformance/tree/0ea48bb1c044ac9bf8086d456601357135cf79e6/fixtures/genomics/fhir-genomics-ig",
       "@type": "CreativeWork",
       "name": "conformance fixtures/genomics/fhir-genomics-ig at 0ea48bb",
       "version": "0ea48bb1c044ac9bf8086d456601357135cf79e6",
       "license": {
         "@id": "https://spdx.org/licenses/Apache-2.0"
       },
-      "description": "The Genomics Reporting IG's example Bundles, from which three inputs are copied. A contextual entity: the source of the fixtures, not part of the crate. The commit is on the fork, jayostis/conformance, as the other folder's is."
+      "description": "The Genomics Reporting IG's example Bundles, from which three inputs are copied. A contextual entity: the source of the fixtures, not part of the crate. The commit is on the fork, the-cascade-protocol/conformance, as the other folder's is."
     },
     {
       "@id": "https://spdx.org/licenses/Apache-2.0",

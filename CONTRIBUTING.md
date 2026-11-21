@@ -5,8 +5,8 @@ Bridge runs to turn FHIR R4 resources into Cascade records. There is no code her
 a manifest. [`README.md`](README.md) names the parts, and [`CLAUDE.md`](CLAUDE.md) holds the rules a change here follows;
 read it before you change a mapping, a fixture or the manifest.
 
-The contract is the [Cascade Bridge Specification](https://github.com/jayostis/cascade-bridge-spec), and the terms the
-adapter writes are [cascade-vocabulary](https://github.com/jayostis/cascade-vocabulary)'s. Where either is silent or
+The contract is the [Cascade Bridge Specification](https://github.com/the-cascade-protocol/cascade-bridge-spec), and the terms the
+adapter writes are [cascade-vocabulary](https://github.com/the-cascade-protocol/cascade-vocabulary)'s. Where either is silent or
 wrong, the fix is a pull request there, not a copy or a new term here.
 
 Report a security problem privately, by email to contact@cascadeprotocol.org, never in a public issue.
@@ -21,8 +21,8 @@ cd cascade-bridge-adapter-fhir-r4
 ```
 
 The checks are the specification's, and they run in CI. To run the adapter lint yourself you need Python 3.12 and a
-checkout of [cascade-bridge-spec](https://github.com/jayostis/cascade-bridge-spec);
-[`adapter/validation.md`](https://github.com/jayostis/cascade-bridge-spec/blob/main/adapter/validation.md) there gives
+checkout of [cascade-bridge-spec](https://github.com/the-cascade-protocol/cascade-bridge-spec);
+[`adapter/validation.md`](https://github.com/the-cascade-protocol/cascade-bridge-spec/blob/main/adapter/validation.md) there gives
 the command and says what it checks. Running a mapping over a fixture is a Bridge's job: the one that must pass is
 named in [`compatibility.json`](compatibility.json), and CI runs it.
 
@@ -57,7 +57,7 @@ specification, is a set of pull requests, each naming the others it needs in its
 with the full URL:
 
 ```
-Depends-On: https://github.com/jayostis/cascade-bridge-rs/pull/123
+Depends-On: https://github.com/the-cascade-protocol/cascade-bridge-rs/pull/123
 ```
 
 The `adapter` check then runs the named pull requests together, and `ready-to-merge` holds each until the others can
@@ -70,7 +70,7 @@ A named pull request must be from a branch of its repository itself: one from a 
 without write access to the other repository asks a maintainer to open the counterpart.
 
 The full rules are in the specification's
-[`compatibility.md`](https://github.com/jayostis/cascade-bridge-spec/blob/main/compatibility.md).
+[`compatibility.md`](https://github.com/the-cascade-protocol/cascade-bridge-spec/blob/main/compatibility.md).
 
 ## Licence
 

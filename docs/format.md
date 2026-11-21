@@ -174,7 +174,7 @@ outside R4's eight codes is not carried and is a finding,
 
 A request's supply is carried as US Core sends it, so an order with only
 `authoredOn` has an exposure end
-([cascade-vocabulary#299](https://github.com/jayostis/cascade-vocabulary/issues/299)):
+([cascade-vocabulary#299](https://github.com/the-cascade-protocol/cascade-vocabulary/issues/299)):
 `courseOfTherapyType`, a code of
 [medicationrequest-course-of-therapy](https://terminology.hl7.org/CodeSystem-medicationrequest-course-of-therapy.html);
 `dispenseRequest.numberOfRepeatsAllowed`, `0` included, since it says no
@@ -223,7 +223,7 @@ A [MedicationDispense](https://hl7.org/fhir/R4/medicationdispense.html), read on
 2026-10-31, is a pharmacy's supply of a drug to the person: a record of its own
 kind, `cascade:MedicationDispense`, never a medication, so a fill is evidence of
 use and no course
-([cascade-vocabulary#300](https://github.com/jayostis/cascade-vocabulary/issues/300)).
+([cascade-vocabulary#300](https://github.com/the-cascade-protocol/cascade-vocabulary/issues/300)).
 It states neither whether it was prescribed or reported, nor an intent, a dosage
 or a date of use. Its drug and its `status`, as written, are read as a request's
 are: `medicationCodeableConcept` or `medicationReference`, every coding carried
@@ -261,7 +261,7 @@ Every other element, among them `type`, `category`, `statusReason[x]`,
 and `eventHistory`, is `fhirr4:medicationDispenseElementNotCarried`, at the
 element; a `note` is `fhirr4:medicationNote`. A C-CDA Medication Dispense is the
 C-CDA adapter's
-([cascade-bridge-adapter-ccda#54](https://github.com/jayostis/cascade-bridge-adapter-ccda/issues/54)).
+([cascade-bridge-adapter-ccda#54](https://github.com/the-cascade-protocol/cascade-bridge-adapter-ccda/issues/54)).
 
 ## Variants and interpretations
 
@@ -353,7 +353,7 @@ A record's name is one of cascade-vocabulary's naming rules, each the body of
 its `tests/vectors/naming/<rule>.rq` there, copied into
 [`in/sparql/record.rq`](../in/sparql/record.rq) and hashed once for the rule
 picked. The rules and why they are what they are are
-[cascade-vocabulary's naming note](https://github.com/jayostis/cascade-vocabulary/blob/alpha/naming/decisions/naming.md).
+[cascade-vocabulary's naming note](https://github.com/the-cascade-protocol/cascade-vocabulary/blob/alpha/naming/decisions/naming.md).
 
 | a resource | its rule | its inputs, after the rule |
 |---|---|---|
@@ -402,7 +402,7 @@ its `id`.
 ## Dates, and values absent for a reason
 
 As cascade-vocabulary's
-[ruling on partial dates and absent reasons](https://github.com/jayostis/cascade-vocabulary/blob/main/decisions/partial-dates-and-absent-reasons.md)
+[ruling on partial dates and absent reasons](https://github.com/the-cascade-protocol/cascade-vocabulary/blob/main/decisions/partial-dates-and-absent-reasons.md)
 says, read on 2026-10-24:
 
 - **A date is typed by the precision FHIR wrote it to.** A `date` or `dateTime`
@@ -454,7 +454,7 @@ says, read on 2026-10-24:
 
 Every coding of a lab result's test, a medication's drug, a condition and a
 procedure is carried, so that a result coded only by its lab's own code keeps it
-([cascade-vocabulary#290](https://github.com/jayostis/cascade-vocabulary/issues/290)).
+([cascade-vocabulary#290](https://github.com/the-cascade-protocol/cascade-vocabulary/issues/290)).
 A coding in a system its kind has a term for is that term's IRI: LOINC and
 SNOMED CT for a test, RxNorm and NDC for a drug, and for a condition and a
 procedure every system [`vocab/fhir-code-systems.ttl`](../vocab/fhir-code-systems.ttl)
@@ -473,7 +473,7 @@ holds is `urn:oid:` and the OID. A coding with no system, a system that is no
 absolute URI, or no code is a finding, `fhirr4:codingNotCarried`. A lab result's interpretation is carried as every coding in HL7's
 [v3 ObservationInterpretation](https://terminology.hl7.org/CodeSystem-v3-ObservationInterpretation.html),
 the code kept as written
-([cascade-vocabulary#298](https://github.com/jayostis/cascade-vocabulary/issues/298));
+([cascade-vocabulary#298](https://github.com/the-cascade-protocol/cascade-vocabulary/issues/298));
 a flag in v2's table 0078 or another system, and an interpretation of text
 alone, are findings.
 
@@ -484,7 +484,7 @@ Coding.system" ([RDF](https://hl7.org/fhir/R5/rdf.html#iri-stem), read on
 [`vocab/fhir-code-systems.ttl`](../vocab/fhir-code-systems.ttl) gives its
 `Coding.system`, which the row holds as `cascade:codingSystemUri`, then the code
 percent-encoded. The stem is cascade-vocabulary's `void:uriSpace`, as its
-[code IRIs ruling](https://github.com/jayostis/cascade-vocabulary/blob/main/decisions/code-iris.md)
+[code IRIs ruling](https://github.com/the-cascade-protocol/cascade-vocabulary/blob/main/decisions/code-iris.md)
 gives it, and is never the `Coding.system` URI: SNOMED CT's `http://snomed.info/sct`
 names the code system, and its concepts are under `http://snomed.info/id/`.
 
@@ -535,7 +535,7 @@ Bundles, with the ids and fullUrls the IG's authors gave them. The resources in
 them that this release does not map (a Specimen, a Task, a ServiceRequest)
 yield findings and no record. The authored Bundles of variants and
 interpretations are for the rules above, and the two named for Martin Okafor
-are for a story of cascade-vocabulary, jayostis/cascade-vocabulary#138: the
+are for a story of cascade-vocabulary, the-cascade-protocol/cascade-vocabulary#138: the
 variants and ClinVar's data are real, and the person, the lab, the hospital, the
 dates and the identifiers are invented.
 
